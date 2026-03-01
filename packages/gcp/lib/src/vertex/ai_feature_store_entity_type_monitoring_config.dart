@@ -8,23 +8,16 @@ import 'ai_feature_store_entity_type_monitoring_config_snapshot_analysis.dart';
 class AiFeatureStoreEntityTypeMonitoringConfig {
   /// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
   /// Structure is documented below.
-  final AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig?
-  categoricalThresholdConfig;
-
+  final AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig? categoricalThresholdConfig;
   /// The config for ImportFeatures Analysis Based Feature Monitoring.
   /// Structure is documented below.
-  final AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis?
-  importFeaturesAnalysis;
-
+  final AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis? importFeaturesAnalysis;
   /// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
   /// Structure is documented below.
-  final AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig?
-  numericalThresholdConfig;
-
+  final AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig? numericalThresholdConfig;
   /// The config for Snapshot Analysis Based Feature Monitoring.
   /// Structure is documented below.
-  final AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis?
-  snapshotAnalysis;
+  final AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis? snapshotAnalysis;
 
   /// Creates a new [AiFeatureStoreEntityTypeMonitoringConfig].
   /// [categoricalThresholdConfig] Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -40,46 +33,20 @@ class AiFeatureStoreEntityTypeMonitoringConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categoricalThresholdConfig': ?categoricalThresholdConfig == null
-          ? null
-          : categoricalThresholdConfig!.toMap(),
-      'importFeaturesAnalysis': ?importFeaturesAnalysis == null
-          ? null
-          : importFeaturesAnalysis!.toMap(),
-      'numericalThresholdConfig': ?numericalThresholdConfig == null
-          ? null
-          : numericalThresholdConfig!.toMap(),
-      'snapshotAnalysis': ?snapshotAnalysis == null
-          ? null
-          : snapshotAnalysis!.toMap(),
+      'categoricalThresholdConfig': ?categoricalThresholdConfig == null ? null : categoricalThresholdConfig!.toMap(),
+      'importFeaturesAnalysis': ?importFeaturesAnalysis == null ? null : importFeaturesAnalysis!.toMap(),
+      'numericalThresholdConfig': ?numericalThresholdConfig == null ? null : numericalThresholdConfig!.toMap(),
+      'snapshotAnalysis': ?snapshotAnalysis == null ? null : snapshotAnalysis!.toMap(),
     };
   }
 
-  factory AiFeatureStoreEntityTypeMonitoringConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureStoreEntityTypeMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfig(
-      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null
-          ? null
-          : AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig.fromMap(
-              (map['categoricalThresholdConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null
-          ? null
-          : AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis.fromMap(
-              (map['importFeaturesAnalysis'] as Map).cast<String, dynamic>(),
-            ),
-      numericalThresholdConfig: map['numericalThresholdConfig'] == null
-          ? null
-          : AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(
-              (map['numericalThresholdConfig'] as Map).cast<String, dynamic>(),
-            ),
-      snapshotAnalysis: map['snapshotAnalysis'] == null
-          ? null
-          : AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis.fromMap(
-              (map['snapshotAnalysis'] as Map).cast<String, dynamic>(),
-            ),
+      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null ? null : AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig.fromMap((map['categoricalThresholdConfig'] as Map).cast<String, dynamic>()),
+      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null ? null : AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis.fromMap((map['importFeaturesAnalysis'] as Map).cast<String, dynamic>()),
+      numericalThresholdConfig: map['numericalThresholdConfig'] == null ? null : AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap((map['numericalThresholdConfig'] as Map).cast<String, dynamic>()),
+      snapshotAnalysis: map['snapshotAnalysis'] == null ? null : AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis.fromMap((map['snapshotAnalysis'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

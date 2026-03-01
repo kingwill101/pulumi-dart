@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceShieldedInstanceConfig {
   /// - Whether integrity monitoring is enabled for the instance.
   final bool enableIntegrityMonitoring;
-
   /// - Whether secure boot is enabled for the instance.
   final bool enableSecureBoot;
-
   /// - Whether the instance uses vTPM.
   final bool enableVtpm;
 
@@ -36,3 +35,4 @@ class GetInstanceShieldedInstanceConfig {
     );
   }
 }
+

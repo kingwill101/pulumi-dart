@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheArgs {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   final pulumi.Input<String> diskId;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   final pulumi.Input<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class CacheArgs {
     required String diskId,
     required String gatewayArn,
     String? region,
-  }) : diskId = pulumi.Input.asInput<String>(diskId),
-       gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      diskId = pulumi.Input.asInput<String>(diskId),
+      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class CacheArgs {
     );
   }
 }
+

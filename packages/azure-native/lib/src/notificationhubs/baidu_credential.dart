@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Description of a NotificationHub BaiduCredential.
+class BaiduCredential {
+  /// Gets or sets baidu Api Key.
+  final String baiduApiKey;
+  /// Gets or sets baidu Endpoint.
+  final String baiduEndPoint;
+  /// Gets or sets baidu Secret Key
+  final String baiduSecretKey;
+
+  /// Creates a new [BaiduCredential].
+  /// [baiduApiKey] Gets or sets baidu Api Key.
+  /// [baiduEndPoint] Gets or sets baidu Endpoint.
+  /// [baiduSecretKey] Gets or sets baidu Secret Key
+  BaiduCredential({
+    required this.baiduApiKey,
+    required this.baiduEndPoint,
+    required this.baiduSecretKey,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'baiduApiKey': baiduApiKey,
+      'baiduEndPoint': baiduEndPoint,
+      'baiduSecretKey': baiduSecretKey,
+    };
+  }
+
+  factory BaiduCredential.fromMap(Map<String, dynamic> map) {
+    return BaiduCredential(
+      baiduApiKey: map['baiduApiKey'] as String,
+      baiduEndPoint: map['baiduEndPoint'] as String,
+      baiduSecretKey: map['baiduSecretKey'] as String,
+    );
+  }
+}
+

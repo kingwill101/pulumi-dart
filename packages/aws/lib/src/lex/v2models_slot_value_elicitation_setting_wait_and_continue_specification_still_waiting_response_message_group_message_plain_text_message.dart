@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupMessagePlainTextMessage {
   final String value;
 
@@ -10,14 +11,15 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitin
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupMessagePlainTextMessage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupMessagePlainTextMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupMessagePlainTextMessage(
       value: map['value'] as String,
     );
   }
 }
+

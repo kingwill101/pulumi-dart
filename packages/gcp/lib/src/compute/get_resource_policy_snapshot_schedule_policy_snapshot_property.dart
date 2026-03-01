@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
   /// Creates the new snapshot in the snapshot chain labeled with the
   /// specified name. The chain name must be 1-63 characters long and comply
   /// with RFC1035.
   final String chainName;
-
   /// Whether to perform a 'guest aware' snapshot.
   final bool guestFlush;
-
   /// A set of key-value pairs.
   final Map<String, String> labels;
-
   /// Cloud Storage bucket location to store the auto snapshot
   /// (regional or multi-regional)
   final List<String> storageLocations;
@@ -37,9 +35,7 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     };
   }
 
-  factory GetResourcePolicySnapshotSchedulePolicySnapshotProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourcePolicySnapshotSchedulePolicySnapshotProperty.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicySnapshotProperty(
       chainName: map['chainName'] as String,
       guestFlush: map['guestFlush'] as bool,
@@ -48,3 +44,4 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     );
   }
 }
+

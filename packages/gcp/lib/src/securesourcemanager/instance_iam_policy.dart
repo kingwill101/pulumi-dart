@@ -17,11 +17,11 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     InstanceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.etag = registerOutput<String>('etag');
     this.instanceId = registerOutput<String>('instanceId');
     this.location = registerOutput<String>('location');

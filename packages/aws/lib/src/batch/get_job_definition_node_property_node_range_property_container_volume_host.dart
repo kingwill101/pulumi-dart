@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
   /// The path on the host container instance that's presented to the container.
   final String sourcePath;
@@ -11,14 +12,15 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourcePath': sourcePath};
+    return <String, dynamic>{
+      'sourcePath': sourcePath,
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost(
       sourcePath: map['sourcePath'] as String,
     );
   }
 }
+

@@ -12,10 +12,8 @@ class WebAppArgs {
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   final pulumi.Input<String>? apiKeyId;
   final pulumi.Input<String>? deletionPolicy;
-
   /// The user-assigned display name of the App.
   final pulumi.Input<String> displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -30,10 +28,11 @@ class WebAppArgs {
     String? deletionPolicy,
     required String displayName,
     String? project,
-  }) : apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-       deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-       displayName = pulumi.Input.asInput<String>(displayName),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
+      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +46,10 @@ class WebAppArgs {
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
       apiKeyId: map['apiKeyId'] == null ? null : map['apiKeyId'] as String,
-      deletionPolicy: map['deletionPolicy'] == null
-          ? null
-          : map['deletionPolicy'] as String,
+      deletionPolicy: map['deletionPolicy'] == null ? null : map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

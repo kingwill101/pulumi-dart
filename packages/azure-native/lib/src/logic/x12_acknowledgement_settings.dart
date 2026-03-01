@@ -1,0 +1,111 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The X12 agreement acknowledgement settings.
+class X12AcknowledgementSettings {
+  /// The acknowledgement control number lower bound.
+  final int acknowledgementControlNumberLowerBound;
+  /// The acknowledgement control number prefix.
+  final String? acknowledgementControlNumberPrefix;
+  /// The acknowledgement control number suffix.
+  final String? acknowledgementControlNumberSuffix;
+  /// The acknowledgement control number upper bound.
+  final int acknowledgementControlNumberUpperBound;
+  /// The value indicating whether to batch functional acknowledgements.
+  final bool batchFunctionalAcknowledgements;
+  /// The value indicating whether to batch implementation acknowledgements.
+  final bool batchImplementationAcknowledgements;
+  /// The value indicating whether to batch the technical acknowledgements.
+  final bool batchTechnicalAcknowledgements;
+  /// The functional acknowledgement version.
+  final String? functionalAcknowledgementVersion;
+  /// The implementation acknowledgement version.
+  final String? implementationAcknowledgementVersion;
+  /// The value indicating whether functional acknowledgement is needed.
+  final bool needFunctionalAcknowledgement;
+  /// The value indicating whether implementation acknowledgement is needed.
+  final bool needImplementationAcknowledgement;
+  /// The value indicating whether a loop is needed for valid messages.
+  final bool needLoopForValidMessages;
+  /// The value indicating whether technical acknowledgement is needed.
+  final bool needTechnicalAcknowledgement;
+  /// The value indicating whether to rollover acknowledgement control number.
+  final bool rolloverAcknowledgementControlNumber;
+  /// The value indicating whether to send synchronous acknowledgement.
+  final bool sendSynchronousAcknowledgement;
+
+  /// Creates a new [X12AcknowledgementSettings].
+  /// [acknowledgementControlNumberLowerBound] The acknowledgement control number lower bound.
+  /// [acknowledgementControlNumberPrefix] The acknowledgement control number prefix.
+  /// [acknowledgementControlNumberSuffix] The acknowledgement control number suffix.
+  /// [acknowledgementControlNumberUpperBound] The acknowledgement control number upper bound.
+  /// [batchFunctionalAcknowledgements] The value indicating whether to batch functional acknowledgements.
+  /// [batchImplementationAcknowledgements] The value indicating whether to batch implementation acknowledgements.
+  /// [batchTechnicalAcknowledgements] The value indicating whether to batch the technical acknowledgements.
+  /// [functionalAcknowledgementVersion] The functional acknowledgement version.
+  /// [implementationAcknowledgementVersion] The implementation acknowledgement version.
+  /// [needFunctionalAcknowledgement] The value indicating whether functional acknowledgement is needed.
+  /// [needImplementationAcknowledgement] The value indicating whether implementation acknowledgement is needed.
+  /// [needLoopForValidMessages] The value indicating whether a loop is needed for valid messages.
+  /// [needTechnicalAcknowledgement] The value indicating whether technical acknowledgement is needed.
+  /// [rolloverAcknowledgementControlNumber] The value indicating whether to rollover acknowledgement control number.
+  /// [sendSynchronousAcknowledgement] The value indicating whether to send synchronous acknowledgement.
+  X12AcknowledgementSettings({
+    required this.acknowledgementControlNumberLowerBound,
+    this.acknowledgementControlNumberPrefix,
+    this.acknowledgementControlNumberSuffix,
+    required this.acknowledgementControlNumberUpperBound,
+    required this.batchFunctionalAcknowledgements,
+    required this.batchImplementationAcknowledgements,
+    required this.batchTechnicalAcknowledgements,
+    this.functionalAcknowledgementVersion,
+    this.implementationAcknowledgementVersion,
+    required this.needFunctionalAcknowledgement,
+    required this.needImplementationAcknowledgement,
+    required this.needLoopForValidMessages,
+    required this.needTechnicalAcknowledgement,
+    required this.rolloverAcknowledgementControlNumber,
+    required this.sendSynchronousAcknowledgement,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'acknowledgementControlNumberLowerBound': acknowledgementControlNumberLowerBound,
+      'acknowledgementControlNumberPrefix': ?acknowledgementControlNumberPrefix,
+      'acknowledgementControlNumberSuffix': ?acknowledgementControlNumberSuffix,
+      'acknowledgementControlNumberUpperBound': acknowledgementControlNumberUpperBound,
+      'batchFunctionalAcknowledgements': batchFunctionalAcknowledgements,
+      'batchImplementationAcknowledgements': batchImplementationAcknowledgements,
+      'batchTechnicalAcknowledgements': batchTechnicalAcknowledgements,
+      'functionalAcknowledgementVersion': ?functionalAcknowledgementVersion,
+      'implementationAcknowledgementVersion': ?implementationAcknowledgementVersion,
+      'needFunctionalAcknowledgement': needFunctionalAcknowledgement,
+      'needImplementationAcknowledgement': needImplementationAcknowledgement,
+      'needLoopForValidMessages': needLoopForValidMessages,
+      'needTechnicalAcknowledgement': needTechnicalAcknowledgement,
+      'rolloverAcknowledgementControlNumber': rolloverAcknowledgementControlNumber,
+      'sendSynchronousAcknowledgement': sendSynchronousAcknowledgement,
+    };
+  }
+
+  factory X12AcknowledgementSettings.fromMap(Map<String, dynamic> map) {
+    return X12AcknowledgementSettings(
+      acknowledgementControlNumberLowerBound: map['acknowledgementControlNumberLowerBound'] as int,
+      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : map['acknowledgementControlNumberPrefix'] as String,
+      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : map['acknowledgementControlNumberSuffix'] as String,
+      acknowledgementControlNumberUpperBound: map['acknowledgementControlNumberUpperBound'] as int,
+      batchFunctionalAcknowledgements: map['batchFunctionalAcknowledgements'] as bool,
+      batchImplementationAcknowledgements: map['batchImplementationAcknowledgements'] as bool,
+      batchTechnicalAcknowledgements: map['batchTechnicalAcknowledgements'] as bool,
+      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : map['functionalAcknowledgementVersion'] as String,
+      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : map['implementationAcknowledgementVersion'] as String,
+      needFunctionalAcknowledgement: map['needFunctionalAcknowledgement'] as bool,
+      needImplementationAcknowledgement: map['needImplementationAcknowledgement'] as bool,
+      needLoopForValidMessages: map['needLoopForValidMessages'] as bool,
+      needTechnicalAcknowledgement: map['needTechnicalAcknowledgement'] as bool,
+      rolloverAcknowledgementControlNumber: map['rolloverAcknowledgementControlNumber'] as bool,
+      sendSynchronousAcknowledgement: map['sendSynchronousAcknowledgement'] as bool,
+    );
+  }
+}
+

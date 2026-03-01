@@ -7,10 +7,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfig
   /// The configuration of specific filters applied to your data source content. Minimum of 1 filter and maximum of 25 filters.
   ///
   /// Each filter object should contain the following configuration:
-  final List<
-    AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter
-  >?
-  filters;
+  final List<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter>? filters;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter].
   /// [filters] The configuration of specific filters applied to your data source content. Minimum of 1 filter and maximum of 25 filters.
@@ -20,30 +17,14 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfig
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter
-            >(
-              map['filters'],
-              (value) =>
-                  AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter>(map['filters'], (value) => AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

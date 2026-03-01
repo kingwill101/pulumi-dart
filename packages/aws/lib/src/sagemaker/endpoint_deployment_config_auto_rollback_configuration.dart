@@ -9,34 +9,20 @@ class EndpointDeploymentConfigAutoRollbackConfiguration {
 
   /// Creates a new [EndpointDeploymentConfigAutoRollbackConfiguration].
   /// [alarms] List of CloudWatch alarms in your account that are configured to monitor metrics on an endpoint. If any alarms are tripped during a deployment, SageMaker AI rolls back the deployment. See Alarms.
-  EndpointDeploymentConfigAutoRollbackConfiguration({this.alarms});
+  EndpointDeploymentConfigAutoRollbackConfiguration({
+    this.alarms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alarms': ?alarms == null
-          ? null
-          : pulumi.Input.encodeList<
-              EndpointDeploymentConfigAutoRollbackConfigurationAlarm,
-              Map<String, dynamic>
-            >(alarms!, (value) => value.toMap()),
+      'alarms': ?alarms == null ? null : pulumi.Input.encodeList<EndpointDeploymentConfigAutoRollbackConfigurationAlarm, Map<String, dynamic>>(alarms!, (value) => value.toMap()),
     };
   }
 
-  factory EndpointDeploymentConfigAutoRollbackConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointDeploymentConfigAutoRollbackConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigAutoRollbackConfiguration(
-      alarms: map['alarms'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              EndpointDeploymentConfigAutoRollbackConfigurationAlarm
-            >(
-              map['alarms'],
-              (value) =>
-                  EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      alarms: map['alarms'] == null ? null : pulumi.Input.decodeList<EndpointDeploymentConfigAutoRollbackConfigurationAlarm>(map['alarms'], (value) => EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

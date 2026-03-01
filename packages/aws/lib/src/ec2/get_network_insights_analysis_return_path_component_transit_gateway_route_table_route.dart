@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
   final String attachmentId;
   final String destinationCidr;
@@ -39,9 +40,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
     };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute(
       attachmentId: map['attachmentId'] as String,
       destinationCidr: map['destinationCidr'] as String,
@@ -53,3 +52,4 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
     );
   }
 }
+

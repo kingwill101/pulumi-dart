@@ -4,8 +4,7 @@ import 'application_application_configuration_sql_application_configuration_inpu
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration {
   /// Describes the Lambda function that is used to preprocess the records in the stream before being processed by your application code.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor
-  inputLambdaProcessor;
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor inputLambdaProcessor;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration].
   /// [inputLambdaProcessor] Describes the Lambda function that is used to preprocess the records in the stream before being processed by your application code.
@@ -19,14 +18,10 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPr
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration(
-      inputLambdaProcessor:
-          ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor.fromMap(
-            (map['inputLambdaProcessor'] as Map).cast<String, dynamic>(),
-          ),
+      inputLambdaProcessor: ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor.fromMap((map['inputLambdaProcessor'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

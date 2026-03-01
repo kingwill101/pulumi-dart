@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ManagedClusterNodeTypeVmSecretCertificate {
+  /// The certificate store on the Virtual Machine to which the certificate should be added.
+  final String store;
+  /// The URL of a certificate that has been uploaded to Key Vault as a secret
+  final String url;
+
+  /// Creates a new [ManagedClusterNodeTypeVmSecretCertificate].
+  /// [store] The certificate store on the Virtual Machine to which the certificate should be added.
+  /// [url] The URL of a certificate that has been uploaded to Key Vault as a secret
+  ManagedClusterNodeTypeVmSecretCertificate({
+    required this.store,
+    required this.url,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'store': store,
+      'url': url,
+    };
+  }
+
+  factory ManagedClusterNodeTypeVmSecretCertificate.fromMap(Map<String, dynamic> map) {
+    return ManagedClusterNodeTypeVmSecretCertificate(
+      store: map['store'] as String,
+      url: map['url'] as String,
+    );
+  }
+}
+

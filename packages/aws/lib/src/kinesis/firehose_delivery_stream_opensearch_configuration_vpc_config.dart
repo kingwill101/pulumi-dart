@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
   /// The ARN of the IAM role to be assumed by Firehose for calling the Amazon EC2 configuration API and for creating network interfaces. Make sure role has necessary [IAM permissions](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-es-vpc)
   final String roleArn;
-
   /// A list of security group IDs to associate with Kinesis Firehose.
   final List<String> securityGroupIds;
-
   /// A list of subnet IDs to associate with Kinesis Firehose.
   final List<String> subnetIds;
   final String? vpcId;
@@ -32,9 +31,7 @@ class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
     };
   }
 
-  factory FirehoseDeliveryStreamOpensearchConfigurationVpcConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamOpensearchConfigurationVpcConfig.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamOpensearchConfigurationVpcConfig(
       roleArn: map['roleArn'] as String,
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
@@ -43,3 +40,4 @@ class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
     );
   }
 }
+

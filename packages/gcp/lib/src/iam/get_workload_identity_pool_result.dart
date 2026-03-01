@@ -9,11 +9,9 @@ class GetWorkloadIdentityPoolResult {
   final String description;
   final bool disabled;
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  final List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig>
-  inlineCertificateIssuanceConfigs;
+  final List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfigs;
   final List<GetWorkloadIdentityPoolInlineTrustConfig> inlineTrustConfigs;
   final String mode;
   final String name;
@@ -53,16 +51,8 @@ class GetWorkloadIdentityPoolResult {
       'disabled': disabled,
       'displayName': displayName,
       'id': id,
-      'inlineCertificateIssuanceConfigs':
-          pulumi.Input.encodeList<
-            GetWorkloadIdentityPoolInlineCertificateIssuanceConfig,
-            Map<String, dynamic>
-          >(inlineCertificateIssuanceConfigs, (value) => value.toMap()),
-      'inlineTrustConfigs':
-          pulumi.Input.encodeList<
-            GetWorkloadIdentityPoolInlineTrustConfig,
-            Map<String, dynamic>
-          >(inlineTrustConfigs, (value) => value.toMap()),
+      'inlineCertificateIssuanceConfigs': pulumi.Input.encodeList<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig, Map<String, dynamic>>(inlineCertificateIssuanceConfigs, (value) => value.toMap()),
+      'inlineTrustConfigs': pulumi.Input.encodeList<GetWorkloadIdentityPoolInlineTrustConfig, Map<String, dynamic>>(inlineTrustConfigs, (value) => value.toMap()),
       'mode': mode,
       'name': name,
       'project': ?project,
@@ -77,23 +67,8 @@ class GetWorkloadIdentityPoolResult {
       disabled: map['disabled'] as bool,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      inlineCertificateIssuanceConfigs:
-          pulumi.Input.decodeList<
-            GetWorkloadIdentityPoolInlineCertificateIssuanceConfig
-          >(
-            map['inlineCertificateIssuanceConfigs'],
-            (value) =>
-                GetWorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      inlineTrustConfigs:
-          pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfig>(
-            map['inlineTrustConfigs'],
-            (value) => GetWorkloadIdentityPoolInlineTrustConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      inlineCertificateIssuanceConfigs: pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig>(map['inlineCertificateIssuanceConfigs'], (value) => GetWorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      inlineTrustConfigs: pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfig>(map['inlineTrustConfigs'], (value) => GetWorkloadIdentityPoolInlineTrustConfig.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -102,3 +77,4 @@ class GetWorkloadIdentityPoolResult {
     );
   }
 }
+

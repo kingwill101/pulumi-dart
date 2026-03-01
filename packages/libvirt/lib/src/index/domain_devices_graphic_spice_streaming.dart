@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesGraphicSpiceStreaming {
+  /// Sets the operational mode for streaming data in the Spice graphical session.
+  final String mode;
+
+  /// Creates a new [DomainDevicesGraphicSpiceStreaming].
+  /// [mode] Sets the operational mode for streaming data in the Spice graphical session.
+  DomainDevicesGraphicSpiceStreaming({
+    required this.mode,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mode': mode,
+    };
+  }
+
+  factory DomainDevicesGraphicSpiceStreaming.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesGraphicSpiceStreaming(
+      mode: map['mode'] as String,
+    );
+  }
+}
+

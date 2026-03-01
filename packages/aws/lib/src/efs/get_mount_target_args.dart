@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMountTargetArgs {
   /// ID or ARN of the access point whose mount target that you want to find. It must be included if a `file_system_id` and `mount_target_id` are not included.
   final pulumi.Input<String>? accessPointId;
-
   /// ID or ARN of the file system whose mount target that you want to find. It must be included if an `access_point_id` and `mount_target_id` are not included.
   final pulumi.Input<String>? fileSystemId;
-
   /// ID or ARN of the mount target that you want to find. It must be included in your request if an `access_point_id` and `file_system_id` are not included.
   final pulumi.Input<String>? mountTargetId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,10 +26,11 @@ class GetMountTargetArgs {
     String? fileSystemId,
     String? mountTargetId,
     String? region,
-  }) : accessPointId = pulumi.Input.asOptionalInput<String>(accessPointId),
-       fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-       mountTargetId = pulumi.Input.asOptionalInput<String>(mountTargetId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accessPointId = pulumi.Input.asOptionalInput<String>(accessPointId),
+      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
+      mountTargetId = pulumi.Input.asOptionalInput<String>(mountTargetId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,16 +43,11 @@ class GetMountTargetArgs {
 
   factory GetMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetArgs(
-      accessPointId: map['accessPointId'] == null
-          ? null
-          : map['accessPointId'] as String,
-      fileSystemId: map['fileSystemId'] == null
-          ? null
-          : map['fileSystemId'] as String,
-      mountTargetId: map['mountTargetId'] == null
-          ? null
-          : map['mountTargetId'] as String,
+      accessPointId: map['accessPointId'] == null ? null : map['accessPointId'] as String,
+      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId'] as String,
+      mountTargetId: map['mountTargetId'] == null ? null : map['mountTargetId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

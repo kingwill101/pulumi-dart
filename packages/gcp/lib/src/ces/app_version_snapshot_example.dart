@@ -7,41 +7,33 @@ class AppVersionSnapshotExample {
   /// (Output)
   /// Timestamp when the toolset was created.
   final String? createTime;
-
   /// The description of the app version.
   final String? description;
-
   /// The display name of the app version.
   final String? displayName;
-
   /// (Output)
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   final String? entryAgent;
-
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final String? etag;
-
   /// (Output)
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
   final bool? invalid;
-
   /// (Output)
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
   final List<AppVersionSnapshotExampleMessage>? messages;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final String? name;
-
   /// (Output)
   /// Timestamp when the toolset was last updated.
   final String? updateTime;
@@ -76,12 +68,7 @@ class AppVersionSnapshotExample {
       'entryAgent': ?entryAgent,
       'etag': ?etag,
       'invalid': ?invalid,
-      'messages': ?messages == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppVersionSnapshotExampleMessage,
-              Map<String, dynamic>
-            >(messages!, (value) => value.toMap()),
+      'messages': ?messages == null ? null : pulumi.Input.encodeList<AppVersionSnapshotExampleMessage, Map<String, dynamic>>(messages!, (value) => value.toMap()),
       'name': ?name,
       'updateTime': ?updateTime,
     };
@@ -89,32 +76,16 @@ class AppVersionSnapshotExample {
 
   factory AppVersionSnapshotExample.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExample(
-      createTime: map['createTime'] == null
-          ? null
-          : map['createTime'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
-      entryAgent: map['entryAgent'] == null
-          ? null
-          : map['entryAgent'] as String,
+      createTime: map['createTime'] == null ? null : map['createTime'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      entryAgent: map['entryAgent'] == null ? null : map['entryAgent'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
       invalid: map['invalid'] == null ? null : map['invalid'] as bool,
-      messages: map['messages'] == null
-          ? null
-          : pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(
-              map['messages'],
-              (value) => AppVersionSnapshotExampleMessage.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      messages: map['messages'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(map['messages'], (value) => AppVersionSnapshotExampleMessage.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
-      updateTime: map['updateTime'] == null
-          ? null
-          : map['updateTime'] as String,
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
     );
   }
 }
+

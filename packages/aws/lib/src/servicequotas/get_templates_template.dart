@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTemplatesTemplate {
   /// Indicates whether the quota is global.
   final bool globalQuota;
-
   /// Quota identifier.
   final String quotaCode;
-
   /// Quota name.
   final String quotaName;
-
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   final String region;
-
   /// Service identifier.
   final String serviceCode;
-
   /// Service name.
   final String serviceName;
-
   /// Unit of measurement.
   final String unit;
-
   /// The new, increased value for the quota.
   final double value;
 
@@ -71,3 +65,4 @@ class GetTemplatesTemplate {
     );
   }
 }
+

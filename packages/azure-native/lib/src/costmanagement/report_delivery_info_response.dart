@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'report_delivery_destination_response.dart';
+
+/// The delivery information associated with a report.
+class ReportDeliveryInfoResponse {
+  /// Has destination for the report being delivered.
+  final ReportDeliveryDestinationResponse destination;
+
+  /// Creates a new [ReportDeliveryInfoResponse].
+  /// [destination] Has destination for the report being delivered.
+  ReportDeliveryInfoResponse({
+    required this.destination,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'destination': destination.toMap(),
+    };
+  }
+
+  factory ReportDeliveryInfoResponse.fromMap(Map<String, dynamic> map) {
+    return ReportDeliveryInfoResponse(
+      destination: ReportDeliveryDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

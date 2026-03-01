@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation {
   /// Specifies the S3 bucket for the customer input file.
   final String? bucket;
-
   /// The name assigned to the file when it was created in S3. You use the object key to retrieve the object.
   final String? key;
 
@@ -16,15 +16,17 @@ class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocatio
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': ?bucket, 'key': ?key};
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'key': ?key,
+    };
   }
 
-  factory WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation(
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
       key: map['key'] == null ? null : map['key'] as String,
     );
   }
 }
+

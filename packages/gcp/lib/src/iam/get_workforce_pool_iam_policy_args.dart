@@ -11,7 +11,6 @@ class GetWorkforcePoolIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workforcePoolId;
 
@@ -21,8 +20,9 @@ class GetWorkforcePoolIamPolicyArgs {
   GetWorkforcePoolIamPolicyArgs({
     String? location,
     required String workforcePoolId,
-  }) : location = pulumi.Input.asOptionalInput<String>(location),
-       workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,3 +38,4 @@ class GetWorkforcePoolIamPolicyArgs {
     );
   }
 }
+

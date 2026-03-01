@@ -7,13 +7,10 @@ class BackupPlanAssociationRulesConfigInfo {
   /// (Output)
   /// google.rpc.Status object to store the last backup error
   /// Structure is documented below.
-  final List<BackupPlanAssociationRulesConfigInfoLastBackupError>?
-  lastBackupErrors;
-
+  final List<BackupPlanAssociationRulesConfigInfoLastBackupError>? lastBackupErrors;
   /// (Output)
   /// State of last backup taken.
   final String? lastBackupState;
-
   /// (Output)
   /// Backup Rule id fetched from backup plan.
   final String? ruleId;
@@ -30,36 +27,18 @@ class BackupPlanAssociationRulesConfigInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastBackupErrors': ?lastBackupErrors == null
-          ? null
-          : pulumi.Input.encodeList<
-              BackupPlanAssociationRulesConfigInfoLastBackupError,
-              Map<String, dynamic>
-            >(lastBackupErrors!, (value) => value.toMap()),
+      'lastBackupErrors': ?lastBackupErrors == null ? null : pulumi.Input.encodeList<BackupPlanAssociationRulesConfigInfoLastBackupError, Map<String, dynamic>>(lastBackupErrors!, (value) => value.toMap()),
       'lastBackupState': ?lastBackupState,
       'ruleId': ?ruleId,
     };
   }
 
-  factory BackupPlanAssociationRulesConfigInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPlanAssociationRulesConfigInfo.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationRulesConfigInfo(
-      lastBackupErrors: map['lastBackupErrors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              BackupPlanAssociationRulesConfigInfoLastBackupError
-            >(
-              map['lastBackupErrors'],
-              (value) =>
-                  BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      lastBackupState: map['lastBackupState'] == null
-          ? null
-          : map['lastBackupState'] as String,
+      lastBackupErrors: map['lastBackupErrors'] == null ? null : pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors'], (value) => BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>())),
+      lastBackupState: map['lastBackupState'] == null ? null : map['lastBackupState'] as String,
       ruleId: map['ruleId'] == null ? null : map['ruleId'] as String,
     );
   }
 }
+

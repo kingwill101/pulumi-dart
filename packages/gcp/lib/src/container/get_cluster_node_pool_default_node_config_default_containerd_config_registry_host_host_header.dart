@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader {
   /// Configures the header key.
   final String key;
-
   /// Configures the header value.
   final List<String> values;
 
@@ -16,15 +16,17 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'values': values};
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
-  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader(
       key: map['key'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointS3Setting {
   final bool addColumnName;
   final String bucketFolder;
@@ -163,8 +164,7 @@ class GetEndpointS3Setting {
       'serviceAccessRoleArn': serviceAccessRoleArn,
       'timestampColumnName': timestampColumnName,
       'useCsvNoSupValue': useCsvNoSupValue,
-      'useTaskStartTimeForFullLoadTimestamp':
-          useTaskStartTimeForFullLoadTimestamp,
+      'useTaskStartTimeForFullLoadTimestamp': useTaskStartTimeForFullLoadTimestamp,
     };
   }
 
@@ -199,19 +199,17 @@ class GetEndpointS3Setting {
       ignoreHeadersRow: map['ignoreHeadersRow'] as int,
       includeOpForFullLoad: map['includeOpForFullLoad'] as bool,
       maxFileSize: map['maxFileSize'] as int,
-      parquetTimestampInMillisecond:
-          map['parquetTimestampInMillisecond'] as bool,
+      parquetTimestampInMillisecond: map['parquetTimestampInMillisecond'] as bool,
       parquetVersion: map['parquetVersion'] as String,
       preserveTransactions: map['preserveTransactions'] as bool,
       rfc4180: map['rfc4180'] as bool,
       rowGroupLength: map['rowGroupLength'] as int,
-      serverSideEncryptionKmsKeyId:
-          map['serverSideEncryptionKmsKeyId'] as String,
+      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] as String,
       serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
       timestampColumnName: map['timestampColumnName'] as String,
       useCsvNoSupValue: map['useCsvNoSupValue'] as bool,
-      useTaskStartTimeForFullLoadTimestamp:
-          map['useTaskStartTimeForFullLoadTimestamp'] as bool,
+      useTaskStartTimeForFullLoadTimestamp: map['useTaskStartTimeForFullLoadTimestamp'] as bool,
     );
   }
 }
+

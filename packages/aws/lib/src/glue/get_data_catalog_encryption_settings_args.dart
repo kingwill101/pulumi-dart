@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCatalogEncryptionSettingsArgs {
   /// ID of the Data Catalog. This is typically the AWS account ID.
   final pulumi.Input<String> catalogId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,19 +18,22 @@ class GetDataCatalogEncryptionSettingsArgs {
   GetDataCatalogEncryptionSettingsArgs({
     required String catalogId,
     String? region,
-  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      catalogId = pulumi.Input.asInput<String>(catalogId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'catalogId': catalogId, 'region': ?region};
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'region': ?region,
+    };
   }
 
-  factory GetDataCatalogEncryptionSettingsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsArgs(
       catalogId: map['catalogId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The Defender for servers connection configuration
+class DefenderForServersAwsOfferingResponseDefenderForServers {
+  /// The cloud role ARN in AWS for this feature
+  final String? cloudRoleArn;
+
+  /// Creates a new [DefenderForServersAwsOfferingResponseDefenderForServers].
+  /// [cloudRoleArn] The cloud role ARN in AWS for this feature
+  DefenderForServersAwsOfferingResponseDefenderForServers({
+    this.cloudRoleArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cloudRoleArn': ?cloudRoleArn,
+    };
+  }
+
+  factory DefenderForServersAwsOfferingResponseDefenderForServers.fromMap(Map<String, dynamic> map) {
+    return DefenderForServersAwsOfferingResponseDefenderForServers(
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
+    );
+  }
+}
+

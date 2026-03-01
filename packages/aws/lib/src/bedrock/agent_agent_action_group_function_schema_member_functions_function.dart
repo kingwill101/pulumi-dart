@@ -6,15 +6,10 @@ import 'agent_agent_action_group_function_schema_member_functions_function_param
 class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction {
   /// Description of the function and its purpose.
   final String? description;
-
   /// Name for the function.
   final String name;
-
   /// Parameters that the agent elicits from the user to fulfill the function. See `parameters` Block for details.
-  final List<
-    AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter
-  >?
-  parameters;
+  final List<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter>? parameters;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction].
   /// [description] Description of the function and its purpose.
@@ -30,34 +25,16 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction {
     return <String, dynamic>{
       'description': ?description,
       'name': name,
-      'parameters': ?parameters == null
-          ? null
-          : pulumi.Input.encodeList<
-              AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter,
-              Map<String, dynamic>
-            >(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
     };
   }
 
-  factory AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter
-            >(
-              map['parameters'],
-              (value) =>
-                  AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter>(map['parameters'], (value) => AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

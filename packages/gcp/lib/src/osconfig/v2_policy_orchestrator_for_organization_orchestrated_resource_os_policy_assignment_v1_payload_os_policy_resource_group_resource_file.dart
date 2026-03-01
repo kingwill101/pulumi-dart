@@ -6,15 +6,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// A a file with this content.
   /// The size of the content is limited to 32KiB.
   final String? content;
-
   /// A remote or local file.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile?
-  file;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile? file;
   /// Required. The absolute path of the file within the VM.
   final String path;
-
   /// Consists of three octal digits which represent, in
   /// order, the permissions of the owner, group, and other users for the
   /// file (similarly to the numeric mode used in the linux chmod
@@ -28,7 +24,6 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// read and write: 6
   /// read only: 4
   final String? permissions;
-
   /// Required. Desired state of the file.
   /// Possible values:
   /// DESIRED_STATE_UNSPECIFIED
@@ -61,21 +56,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile(
       content: map['content'] == null ? null : map['content'] as String,
-      file: map['file'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
+      file: map['file'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
       path: map['path'] as String,
-      permissions: map['permissions'] == null
-          ? null
-          : map['permissions'] as String,
+      permissions: map['permissions'] == null ? null : map['permissions'] as String,
       state: map['state'] as String,
     );
   }
 }
+

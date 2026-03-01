@@ -9,17 +9,20 @@ class BatchOperationsJobBucketList {
 
   /// Creates a new [BatchOperationsJobBucketList].
   /// [buckets] List of buckets and their objects to be transformed.
-  BatchOperationsJobBucketList({required this.buckets});
+  BatchOperationsJobBucketList({
+    required this.buckets,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'buckets': buckets.toMap()};
+    return <String, dynamic>{
+      'buckets': buckets.toMap(),
+    };
   }
 
   factory BatchOperationsJobBucketList.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketList(
-      buckets: BatchOperationsJobBucketListBuckets.fromMap(
-        (map['buckets'] as Map).cast<String, dynamic>(),
-      ),
+      buckets: BatchOperationsJobBucketListBuckets.fromMap((map['buckets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

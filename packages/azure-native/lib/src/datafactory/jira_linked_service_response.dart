@@ -1,0 +1,110 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'azure_key_vault_secret_reference_response.dart';
+import 'integration_runtime_reference_response.dart';
+import 'parameter_specification_response.dart';
+
+/// Jira Service linked service.
+class JiraLinkedServiceResponse {
+  /// List of tags that can be used for describing the linked service.
+  final List<dynamic>? annotations;
+  /// The integration runtime reference.
+  final IntegrationRuntimeReferenceResponse? connectVia;
+  /// Linked service description.
+  final String? description;
+  /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+  final String? encryptedCredential;
+  /// The IP address or host name of the Jira service. (e.g. jira.example.com)
+  final dynamic host;
+  /// Parameters for linked service.
+  final Map<String, ParameterSpecificationResponse>? parameters;
+  /// The password corresponding to the user name that you provided in the username field.
+  final AzureKeyVaultSecretReferenceResponse? password;
+  /// The TCP port that the Jira server uses to listen for client connections. The default value is 443 if connecting through HTTPS, or 8080 if connecting through HTTP.
+  final dynamic port;
+  /// Type of linked service.
+  /// Expected value is 'Jira'.
+  final String type;
+  /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+  final dynamic useEncryptedEndpoints;
+  /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
+  final dynamic useHostVerification;
+  /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
+  final dynamic usePeerVerification;
+  /// The user name that you use to access Jira Service.
+  final dynamic username;
+  /// Version of the linked service.
+  final String? version;
+
+  /// Creates a new [JiraLinkedServiceResponse].
+  /// [annotations] List of tags that can be used for describing the linked service.
+  /// [connectVia] The integration runtime reference.
+  /// [description] Linked service description.
+  /// [encryptedCredential] The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+  /// [host] The IP address or host name of the Jira service. (e.g. jira.example.com)
+  /// [parameters] Parameters for linked service.
+  /// [password] The password corresponding to the user name that you provided in the username field.
+  /// [port] The TCP port that the Jira server uses to listen for client connections. The default value is 443 if connecting through HTTPS, or 8080 if connecting through HTTP.
+  /// [type] Type of linked service.
+  /// [useEncryptedEndpoints] Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+  /// [useHostVerification] Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
+  /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
+  /// [username] The user name that you use to access Jira Service.
+  /// [version] Version of the linked service.
+  JiraLinkedServiceResponse({
+    this.annotations,
+    this.connectVia,
+    this.description,
+    this.encryptedCredential,
+    required this.host,
+    this.parameters,
+    this.password,
+    this.port,
+    required this.type,
+    this.useEncryptedEndpoints,
+    this.useHostVerification,
+    this.usePeerVerification,
+    required this.username,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'description': ?description,
+      'encryptedCredential': ?encryptedCredential,
+      'host': host,
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'password': ?password == null ? null : password!.toMap(),
+      'port': ?port,
+      'type': type,
+      'useEncryptedEndpoints': ?useEncryptedEndpoints,
+      'useHostVerification': ?useHostVerification,
+      'usePeerVerification': ?usePeerVerification,
+      'username': username,
+      'version': ?version,
+    };
+  }
+
+  factory JiraLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
+    return JiraLinkedServiceResponse(
+      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
+      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
+      host: map['host'],
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
+      port: map['port'] == null ? null : map['port'],
+      type: map['type'] as String,
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
+      useHostVerification: map['useHostVerification'] == null ? null : map['useHostVerification'],
+      usePeerVerification: map['usePeerVerification'] == null ? null : map['usePeerVerification'],
+      username: map['username'],
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleGroupArgs {
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,10 +26,11 @@ class ScheduleGroupArgs {
     String? namePrefix,
     String? region,
     Map<String, String>? tags,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,13 +44,10 @@ class ScheduleGroupArgs {
   factory ScheduleGroupArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleGroupArgs(
       name: map['name'] == null ? null : map['name'] as String,
-      namePrefix: map['namePrefix'] == null
-          ? null
-          : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

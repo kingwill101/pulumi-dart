@@ -337,23 +337,18 @@ import 'source_credential_args.dart';
 class SourceCredential extends pulumi.CustomResource {
   /// The ARN of Source Credential.
   late final pulumi.Output<String> arn;
-
   /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket
   /// repository. Valid values are `BASIC_AUTH`,
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
   late final pulumi.Output<String> authType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The source provider used for this project.
   late final pulumi.Output<String> serverType;
-
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   late final pulumi.Output<String> token;
-
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
   late final pulumi.Output<String?> userName;
@@ -367,11 +362,11 @@ class SourceCredential extends pulumi.CustomResource {
     SourceCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codebuild/sourceCredential:SourceCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codebuild/sourceCredential:SourceCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.authType = registerOutput<String>('authType');
     this.region = registerOutput<String>('region');

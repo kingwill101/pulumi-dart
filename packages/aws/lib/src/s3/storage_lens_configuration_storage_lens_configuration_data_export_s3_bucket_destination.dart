@@ -5,20 +5,14 @@ import 'storage_lens_configuration_storage_lens_configuration_data_export_s3_buc
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination {
   /// The account ID of the owner of the S3 Storage Lens metrics export bucket.
   final String accountId;
-
   /// The Amazon Resource Name (ARN) of the bucket.
   final String arn;
-
   /// Encryption of the metrics exports in this bucket. See Encryption below for more details.
-  final StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption?
-  encryption;
-
+  final StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption? encryption;
   /// The export format. Valid values: `CSV`, `Parquet`.
   final String format;
-
   /// The schema version of the export file. Valid values: `V_1`.
   final String outputSchemaVersion;
-
   /// The prefix of the destination bucket where the metrics export will be delivered.
   final String? prefix;
 
@@ -49,20 +43,15 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
     };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination(
       accountId: map['accountId'] as String,
       arn: map['arn'] as String,
-      encryption: map['encryption'] == null
-          ? null
-          : StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap(
-              (map['encryption'] as Map).cast<String, dynamic>(),
-            ),
+      encryption: map['encryption'] == null ? null : StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
       format: map['format'] as String,
       outputSchemaVersion: map['outputSchemaVersion'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
     );
   }
 }
+

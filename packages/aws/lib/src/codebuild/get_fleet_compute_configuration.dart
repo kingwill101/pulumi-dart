@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
   final int disk;
-
   /// EC2 instance type in the fleet.
   final String instanceType;
-
   /// Machine type of the instance type included in the fleet.
   final String machineType;
-
   /// Amount of memory of the instance type included in the fleet.
   final int memory;
-
   /// Number of vCPUs of the instance type included in the fleet.
   final int vcpu;
 
@@ -50,3 +47,4 @@ class GetFleetComputeConfiguration {
     );
   }
 }
+

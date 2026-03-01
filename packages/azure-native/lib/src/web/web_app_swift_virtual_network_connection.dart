@@ -1,0 +1,51 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'web_app_swift_virtual_network_connection_args.dart';
+
+/// Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
+///
+/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+///
+/// Other available API versions: 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:web:WebAppSwiftVirtualNetworkConnection myresource1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork
+/// ```
+class WebAppSwiftVirtualNetworkConnection extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Kind of resource.
+  late final pulumi.Output<String?> kind;
+  /// Resource Name.
+  late final pulumi.Output<String> name;
+  /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+  late final pulumi.Output<String?> subnetResourceId;
+  /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
+  late final pulumi.Output<bool?> swiftSupported;
+  /// Resource type.
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [WebAppSwiftVirtualNetworkConnection].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [WebAppSwiftVirtualNetworkConnection]. {@macro pulumi_web_web_app_swift_virtual_network_connection_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  WebAppSwiftVirtualNetworkConnection(
+    String name, {
+    WebAppSwiftVirtualNetworkConnectionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:web:WebAppSwiftVirtualNetworkConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    this.subnetResourceId = registerOutput<String?>('subnetResourceId');
+    this.swiftSupported = registerOutput<bool?>('swiftSupported');
+    this.type = registerOutput<String>('type');
+  }
+}

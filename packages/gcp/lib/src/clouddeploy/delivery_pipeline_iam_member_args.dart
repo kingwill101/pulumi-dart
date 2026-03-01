@@ -29,23 +29,17 @@ class DeliveryPipelineIamMemberArgs {
     String? name,
     String? project,
     required String role,
-  }) : condition =
-           pulumi.Input.asOptionalInput<DeliveryPipelineIamMemberCondition>(
-             condition,
-           ),
-       location = pulumi.Input.asOptionalInput<String>(location),
-       member = pulumi.Input.asInput<String>(member),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<DeliveryPipelineIamMemberCondition>(condition),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      member = pulumi.Input.asInput<String>(member),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeliveryPipelineIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'location': ?location,
       'member': member,
       'name': ?name,
@@ -56,11 +50,7 @@ class DeliveryPipelineIamMemberArgs {
 
   factory DeliveryPipelineIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : DeliveryPipelineIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : DeliveryPipelineIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       location: map['location'] == null ? null : map['location'] as String,
       member: map['member'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -69,3 +59,4 @@ class DeliveryPipelineIamMemberArgs {
     );
   }
 }
+

@@ -4413,36 +4413,28 @@ class Repository extends pulumi.CustomResource {
   /// unique within a repository and be under 128 characters in length.
   /// Structure is documented below.
   late final pulumi.Output<List<RepositoryCleanupPolicy>?> cleanupPolicies;
-
   /// If true, the cleanup pipeline is prevented from deleting versions in this
   /// repository.
   late final pulumi.Output<bool?> cleanupPolicyDryRun;
-
   /// The time when the repository was created.
   late final pulumi.Output<String> createTime;
-
   /// The user-provided description of the repository.
   late final pulumi.Output<String?> description;
-
   /// Docker repository config contains repository level configuration for the repositories of docker type.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryDockerConfig?> dockerConfig;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The format of packages that are stored in the repository. Supported formats
   /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
   /// You can only create alpha formats if you are a member of the
   /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
   late final pulumi.Output<String> format;
-
   /// The Cloud KMS resource name of the customer managed encryption key that’s
   /// used to encrypt the contents of the Repository. Has the form:
   /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
   /// This value may not be changed after the Repository has been created.
   late final pulumi.Output<String?> kmsKeyName;
-
   /// Labels with user-defined metadata.
   /// This field may contain up to 64 entries. Label keys and values may be no
   /// longer than 63 characters. Label keys must begin with a lowercase letter
@@ -4452,7 +4444,6 @@ class Repository extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -4460,54 +4451,40 @@ class Repository extends pulumi.CustomResource {
   /// gcp.artifactregistry.getLocations
   /// data source for possible values.
   late final pulumi.Output<String> location;
-
   /// MavenRepositoryConfig is maven related repository details.
   /// Provides additional configuration details for repositories of the maven
   /// format type.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryMavenConfig?> mavenConfig;
-
   /// The mode configures the repository to serve artifacts from different sources.
   /// Default value is `STANDARD_REPOSITORY`.
   /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
   late final pulumi.Output<String?> mode;
-
   /// The name of the repository, for example:
   /// "repo1"
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
   late final pulumi.Output<String> registryUri;
-
   /// Configuration specific for a Remote Repository.
   /// Structure is documented below.
-  late final pulumi.Output<RepositoryRemoteRepositoryConfig?>
-  remoteRepositoryConfig;
-
+  late final pulumi.Output<RepositoryRemoteRepositoryConfig?> remoteRepositoryConfig;
   /// The last part of the repository name, for example:
   /// "repo1"
   late final pulumi.Output<String> repositoryId;
-
   /// The time when the repository was last updated.
   late final pulumi.Output<String> updateTime;
-
   /// Configuration specific for a Virtual Repository.
   /// Structure is documented below.
-  late final pulumi.Output<RepositoryVirtualRepositoryConfig?>
-  virtualRepositoryConfig;
-
+  late final pulumi.Output<RepositoryVirtualRepositoryConfig?> virtualRepositoryConfig;
   /// Configuration for vulnerability scanning of artifacts stored in this repository.
   /// Structure is documented below.
-  late final pulumi.Output<RepositoryVulnerabilityScanningConfig>
-  vulnerabilityScanningConfig;
+  late final pulumi.Output<RepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfig;
 
   /// Creates a new [Repository].
   /// [name] The Pulumi resource name.
@@ -4518,21 +4495,17 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:artifactregistry/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>(
-      'cleanupPolicies',
-    );
+          'gcp:artifactregistry/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies');
     this.cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.format = registerOutput<String>('format');
     this.kmsKeyName = registerOutput<String?>('kmsKeyName');
     this.labels = registerOutput<Map<String, String>?>('labels');
@@ -4543,19 +4516,10 @@ class Repository extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.registryUri = registerOutput<String>('registryUri');
-    this.remoteRepositoryConfig =
-        registerOutput<RepositoryRemoteRepositoryConfig?>(
-          'remoteRepositoryConfig',
-        );
+    this.remoteRepositoryConfig = registerOutput<RepositoryRemoteRepositoryConfig?>('remoteRepositoryConfig');
     this.repositoryId = registerOutput<String>('repositoryId');
     this.updateTime = registerOutput<String>('updateTime');
-    this.virtualRepositoryConfig =
-        registerOutput<RepositoryVirtualRepositoryConfig?>(
-          'virtualRepositoryConfig',
-        );
-    this.vulnerabilityScanningConfig =
-        registerOutput<RepositoryVulnerabilityScanningConfig>(
-          'vulnerabilityScanningConfig',
-        );
+    this.virtualRepositoryConfig = registerOutput<RepositoryVirtualRepositoryConfig?>('virtualRepositoryConfig');
+    this.vulnerabilityScanningConfig = registerOutput<RepositoryVulnerabilityScanningConfig>('vulnerabilityScanningConfig');
   }
 }

@@ -5,8 +5,7 @@ import 'rule_group_rule_action_challenge_custom_request_handling_insert_header.d
 
 class RuleGroupRuleActionChallengeCustomRequestHandling {
   /// The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
-  final List<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader>
-  insertHeaders;
+  final List<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader> insertHeaders;
 
   /// Creates a new [RuleGroupRuleActionChallengeCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
@@ -16,28 +15,14 @@ class RuleGroupRuleActionChallengeCustomRequestHandling {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders':
-          pulumi.Input.encodeList<
-            RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader,
-            Map<String, dynamic>
-          >(insertHeaders, (value) => value.toMap()),
+      'insertHeaders': pulumi.Input.encodeList<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders, (value) => value.toMap()),
     };
   }
 
-  factory RuleGroupRuleActionChallengeCustomRequestHandling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleActionChallengeCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionChallengeCustomRequestHandling(
-      insertHeaders:
-          pulumi.Input.decodeList<
-            RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader
-          >(
-            map['insertHeaders'],
-            (value) =>
-                RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      insertHeaders: pulumi.Input.decodeList<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

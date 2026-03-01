@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
   /// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
   final String mode;
@@ -11,14 +12,15 @@ class GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig(
       mode: map['mode'] as String,
     );
   }
 }
+

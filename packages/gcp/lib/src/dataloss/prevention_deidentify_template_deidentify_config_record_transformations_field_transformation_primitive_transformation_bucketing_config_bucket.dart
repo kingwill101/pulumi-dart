@@ -8,20 +8,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Upper bound of the range, exclusive; type must match min.
   /// The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax?
-  max;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax? max;
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
   /// The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin?
-  min;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin? min;
   /// Replacement value for this bucket.
   /// The `replacement_value` block must only contain one argument.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue
-  replacementValue;
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue replacementValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket].
   /// [max] Upper bound of the range, exclusive; type must match min.
@@ -41,24 +36,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket(
-      max: map['max'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax.fromMap(
-              (map['max'] as Map).cast<String, dynamic>(),
-            ),
-      min: map['min'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin.fromMap(
-              (map['min'] as Map).cast<String, dynamic>(),
-            ),
-      replacementValue:
-          PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue.fromMap(
-            (map['replacementValue'] as Map).cast<String, dynamic>(),
-          ),
+      max: map['max'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax.fromMap((map['max'] as Map).cast<String, dynamic>()),
+      min: map['min'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin.fromMap((map['min'] as Map).cast<String, dynamic>()),
+      replacementValue: PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue.fromMap((map['replacementValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

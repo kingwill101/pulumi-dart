@@ -5,13 +5,10 @@ import 'registration_contact_settings_admin_contact_postal_address.dart';
 class RegistrationContactSettingsAdminContact {
   /// Required. Email address of the contact.
   final String email;
-
   /// Fax number of the contact in international format. For example, "+1-800-555-0123".
   final String? faxNumber;
-
   /// Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
   final String phoneNumber;
-
   /// Required. Postal address of the contact.
   /// Structure is documented below.
   final RegistrationContactSettingsAdminContactPostalAddress postalAddress;
@@ -37,17 +34,13 @@ class RegistrationContactSettingsAdminContact {
     };
   }
 
-  factory RegistrationContactSettingsAdminContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistrationContactSettingsAdminContact.fromMap(Map<String, dynamic> map) {
     return RegistrationContactSettingsAdminContact(
       email: map['email'] as String,
       faxNumber: map['faxNumber'] == null ? null : map['faxNumber'] as String,
       phoneNumber: map['phoneNumber'] as String,
-      postalAddress:
-          RegistrationContactSettingsAdminContactPostalAddress.fromMap(
-            (map['postalAddress'] as Map).cast<String, dynamic>(),
-          ),
+      postalAddress: RegistrationContactSettingsAdminContactPostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

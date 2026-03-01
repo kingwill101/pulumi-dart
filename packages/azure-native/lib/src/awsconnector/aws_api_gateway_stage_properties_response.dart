@@ -1,0 +1,110 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'access_log_setting_response.dart';
+import 'canary_setting_response.dart';
+import 'method_setting_response.dart';
+import 'tag_response.dart';
+
+/// Definition of awsApiGatewayStage
+class AwsApiGatewayStagePropertiesResponse {
+  /// Access log settings, including the access log format and access log destination ARN. The ``AccessLogSetting`` property type specifies settings for logging access in this stage.  ``AccessLogSetting`` is a property of the [AWS::ApiGateway::Stage](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html) resource.
+  final AccessLogSettingResponse? accessLogSetting;
+  /// Specifies whether a cache cluster is enabled for the stage.
+  final bool? cacheClusterEnabled;
+  /// The stage's cache capacity in GB. For more information about choosing a cache size, see [Enabling API caching to enhance responsiveness](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html).
+  final String? cacheClusterSize;
+  /// Settings for the canary deployment in this stage. Configuration settings of a canary deployment.
+  final CanarySettingResponse? canarySetting;
+  /// The identifier of a client certificate for an API stage.
+  final String? clientCertificateId;
+  /// The identifier of the Deployment that the stage points to.
+  final String? deploymentId;
+  /// The stage's description.
+  final String? description;
+  /// The version of the associated API documentation.
+  final String? documentationVersion;
+  /// A map that defines the method settings for a Stage resource. Keys (designated as ``/{method_setting_key`` below) are method paths defined as ``{resource_path}/{http_method}`` for an individual method override, or ``/\*/\*`` for overriding all methods in the stage.
+  final List<MethodSettingResponse>? methodSettings;
+  /// The string identifier of the associated RestApi.
+  final String? restApiId;
+  /// The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
+  final String? stageName;
+  /// The collection of tags. Each tag element is associated with a given resource.
+  final List<TagResponse>? tags;
+  /// Specifies whether active tracing with X-ray is enabled for the Stage.
+  final bool? tracingEnabled;
+  /// A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: ``[A-Za-z0-9-._~:/?#&=,]+``.
+  final Map<String, String>? variables;
+
+  /// Creates a new [AwsApiGatewayStagePropertiesResponse].
+  /// [accessLogSetting] Access log settings, including the access log format and access log destination ARN. The ``AccessLogSetting`` property type specifies settings for logging access in this stage.  ``AccessLogSetting`` is a property of the [AWS::ApiGateway::Stage](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html) resource.
+  /// [cacheClusterEnabled] Specifies whether a cache cluster is enabled for the stage.
+  /// [cacheClusterSize] The stage's cache capacity in GB. For more information about choosing a cache size, see [Enabling API caching to enhance responsiveness](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html).
+  /// [canarySetting] Settings for the canary deployment in this stage. Configuration settings of a canary deployment.
+  /// [clientCertificateId] The identifier of a client certificate for an API stage.
+  /// [deploymentId] The identifier of the Deployment that the stage points to.
+  /// [description] The stage's description.
+  /// [documentationVersion] The version of the associated API documentation.
+  /// [methodSettings] A map that defines the method settings for a Stage resource. Keys (designated as ``/{method_setting_key`` below) are method paths defined as ``{resource_path}/{http_method}`` for an individual method override, or ``/\*/\*`` for overriding all methods in the stage.
+  /// [restApiId] The string identifier of the associated RestApi.
+  /// [stageName] The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
+  /// [tags] The collection of tags. Each tag element is associated with a given resource.
+  /// [tracingEnabled] Specifies whether active tracing with X-ray is enabled for the Stage.
+  /// [variables] A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: ``[A-Za-z0-9-._~:/?#&=,]+``.
+  AwsApiGatewayStagePropertiesResponse({
+    this.accessLogSetting,
+    this.cacheClusterEnabled,
+    this.cacheClusterSize,
+    this.canarySetting,
+    this.clientCertificateId,
+    this.deploymentId,
+    this.description,
+    this.documentationVersion,
+    this.methodSettings,
+    this.restApiId,
+    this.stageName,
+    this.tags,
+    this.tracingEnabled,
+    this.variables,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accessLogSetting': ?accessLogSetting == null ? null : accessLogSetting!.toMap(),
+      'cacheClusterEnabled': ?cacheClusterEnabled,
+      'cacheClusterSize': ?cacheClusterSize,
+      'canarySetting': ?canarySetting == null ? null : canarySetting!.toMap(),
+      'clientCertificateId': ?clientCertificateId,
+      'deploymentId': ?deploymentId,
+      'description': ?description,
+      'documentationVersion': ?documentationVersion,
+      'methodSettings': ?methodSettings == null ? null : pulumi.Input.encodeList<MethodSettingResponse, Map<String, dynamic>>(methodSettings!, (value) => value.toMap()),
+      'restApiId': ?restApiId,
+      'stageName': ?stageName,
+      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tracingEnabled': ?tracingEnabled,
+      'variables': ?variables,
+    };
+  }
+
+  factory AwsApiGatewayStagePropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return AwsApiGatewayStagePropertiesResponse(
+      accessLogSetting: map['accessLogSetting'] == null ? null : AccessLogSettingResponse.fromMap((map['accessLogSetting'] as Map).cast<String, dynamic>()),
+      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : map['cacheClusterEnabled'] as bool,
+      cacheClusterSize: map['cacheClusterSize'] == null ? null : map['cacheClusterSize'] as String,
+      canarySetting: map['canarySetting'] == null ? null : CanarySettingResponse.fromMap((map['canarySetting'] as Map).cast<String, dynamic>()),
+      clientCertificateId: map['clientCertificateId'] == null ? null : map['clientCertificateId'] as String,
+      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      documentationVersion: map['documentationVersion'] == null ? null : map['documentationVersion'] as String,
+      methodSettings: map['methodSettings'] == null ? null : pulumi.Input.decodeList<MethodSettingResponse>(map['methodSettings'], (value) => MethodSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      restApiId: map['restApiId'] == null ? null : map['restApiId'] as String,
+      stageName: map['stageName'] == null ? null : map['stageName'] as String,
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tracingEnabled: map['tracingEnabled'] == null ? null : map['tracingEnabled'] as bool,
+      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
+    );
+  }
+}
+

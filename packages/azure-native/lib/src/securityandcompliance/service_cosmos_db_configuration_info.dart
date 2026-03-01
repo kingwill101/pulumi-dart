@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The settings for the Cosmos DB database backing the service.
+class ServiceCosmosDbConfigurationInfo {
+  /// The URI of the customer-managed key for the backing database.
+  final String? keyVaultKeyUri;
+  /// The provisioned throughput for the backing database.
+  final double? offerThroughput;
+
+  /// Creates a new [ServiceCosmosDbConfigurationInfo].
+  /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
+  /// [offerThroughput] The provisioned throughput for the backing database.
+  ServiceCosmosDbConfigurationInfo({
+    this.keyVaultKeyUri,
+    this.offerThroughput,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'keyVaultKeyUri': ?keyVaultKeyUri,
+      'offerThroughput': ?offerThroughput,
+    };
+  }
+
+  factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
+    return ServiceCosmosDbConfigurationInfo(
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : map['keyVaultKeyUri'] as String,
+      offerThroughput: map['offerThroughput'] == null ? null : map['offerThroughput'] as double,
+    );
+  }
+}
+

@@ -4047,75 +4047,55 @@ import 'datascan_execution_status.dart';
 class Datascan extends pulumi.CustomResource {
   /// The time when the scan was created.
   late final pulumi.Output<String> createTime;
-
   /// The data source for DataScan.
   /// Structure is documented below.
   late final pulumi.Output<DatascanData> data;
-
   /// DataDiscoveryScan related setting.
   /// Structure is documented below.
   late final pulumi.Output<DatascanDataDiscoverySpec?> dataDiscoverySpec;
-
   /// DataDocumentationScan related setting.
   late final pulumi.Output<Map<String, dynamic>?> dataDocumentationSpec;
-
   /// DataProfileScan related setting.
   /// Structure is documented below.
   late final pulumi.Output<DatascanDataProfileSpec?> dataProfileSpec;
-
   /// DataQualityScan related setting.
   /// Structure is documented below.
   late final pulumi.Output<DatascanDataQualitySpec?> dataQualitySpec;
-
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
   late final pulumi.Output<String> dataScanId;
-
   /// Description of the scan.
   late final pulumi.Output<String?> description;
-
   /// User friendly display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// DataScan execution settings.
   /// Structure is documented below.
   late final pulumi.Output<DatascanExecutionSpec> executionSpec;
-
   /// Status of the data scan execution.
   /// Structure is documented below.
   late final pulumi.Output<List<DatascanExecutionStatus>> executionStatuses;
-
   /// User-defined labels for the scan. A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location where the data scan should reside.
   late final pulumi.Output<String> location;
-
   /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Current state of the DataScan.
   late final pulumi.Output<String> state;
-
   /// The type of DataScan.
   late final pulumi.Output<String> type;
-
   /// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
   late final pulumi.Output<String> uid;
-
   /// The time when the scan was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -4128,35 +4108,23 @@ class Datascan extends pulumi.CustomResource {
     DatascanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/datascan:Datascan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/datascan:Datascan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.data = registerOutput<DatascanData>('data');
-    this.dataDiscoverySpec = registerOutput<DatascanDataDiscoverySpec?>(
-      'dataDiscoverySpec',
-    );
-    this.dataDocumentationSpec = registerOutput<Map<String, dynamic>?>(
-      'dataDocumentationSpec',
-    );
-    this.dataProfileSpec = registerOutput<DatascanDataProfileSpec?>(
-      'dataProfileSpec',
-    );
-    this.dataQualitySpec = registerOutput<DatascanDataQualitySpec?>(
-      'dataQualitySpec',
-    );
+    this.dataDiscoverySpec = registerOutput<DatascanDataDiscoverySpec?>('dataDiscoverySpec');
+    this.dataDocumentationSpec = registerOutput<Map<String, dynamic>?>('dataDocumentationSpec');
+    this.dataProfileSpec = registerOutput<DatascanDataProfileSpec?>('dataProfileSpec');
+    this.dataQualitySpec = registerOutput<DatascanDataQualitySpec?>('dataQualitySpec');
     this.dataScanId = registerOutput<String>('dataScanId');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec');
-    this.executionStatuses = registerOutput<List<DatascanExecutionStatus>>(
-      'executionStatuses',
-    );
+    this.executionStatuses = registerOutput<List<DatascanExecutionStatus>>('executionStatuses');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

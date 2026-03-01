@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Tags for Managed CCF Certificates
+class CertificateTagsResponse {
+  /// Additional tags for Managed CCF Certificates
+  final Map<String, String>? tags;
+
+  /// Creates a new [CertificateTagsResponse].
+  /// [tags] Additional tags for Managed CCF Certificates
+  CertificateTagsResponse({
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'tags': ?tags,
+    };
+  }
+
+  factory CertificateTagsResponse.fromMap(Map<String, dynamic> map) {
+    return CertificateTagsResponse(
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}
+

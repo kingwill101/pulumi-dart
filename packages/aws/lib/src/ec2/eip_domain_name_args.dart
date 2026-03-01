@@ -10,10 +10,8 @@ import 'eip_domain_name_timeouts.dart';
 class EipDomainNameArgs {
   /// The allocation ID.
   final pulumi.Input<String> allocationId;
-
   /// The domain name to modify for the IP address.
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<EipDomainNameTimeouts>? timeouts;
@@ -28,21 +26,18 @@ class EipDomainNameArgs {
     required String domainName,
     String? region,
     EipDomainNameTimeouts? timeouts,
-  }) : allocationId = pulumi.Input.asInput<String>(allocationId),
-       domainName = pulumi.Input.asInput<String>(domainName),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       timeouts = pulumi.Input.asOptionalInput<EipDomainNameTimeouts>(timeouts);
+  }) :
+      allocationId = pulumi.Input.asInput<String>(allocationId),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<EipDomainNameTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationId': allocationId,
       'domainName': domainName,
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            EipDomainNameTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<EipDomainNameTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -51,11 +46,8 @@ class EipDomainNameArgs {
       allocationId: map['allocationId'] as String,
       domainName: map['domainName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : EipDomainNameTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

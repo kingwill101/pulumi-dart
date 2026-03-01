@@ -1,33 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionDynamodb {
   /// The hash key name.
   final String hashKeyField;
-
   /// The hash key type. Valid values are "STRING" or "NUMBER".
   final String? hashKeyType;
-
   /// The hash key value.
   final String hashKeyValue;
-
   /// The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
   final String? operation;
-
   /// The action payload.
   final String? payloadField;
-
   /// The range key name.
   final String? rangeKeyField;
-
   /// The range key type. Valid values are "STRING" or "NUMBER".
   final String? rangeKeyType;
-
   /// The range key value.
   final String? rangeKeyValue;
-
   /// The ARN of the IAM role that grants access to the DynamoDB table.
   final String roleArn;
-
   /// The name of the DynamoDB table.
   final String tableName;
 
@@ -73,25 +65,16 @@ class TopicRuleErrorActionDynamodb {
   factory TopicRuleErrorActionDynamodb.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodb(
       hashKeyField: map['hashKeyField'] as String,
-      hashKeyType: map['hashKeyType'] == null
-          ? null
-          : map['hashKeyType'] as String,
+      hashKeyType: map['hashKeyType'] == null ? null : map['hashKeyType'] as String,
       hashKeyValue: map['hashKeyValue'] as String,
       operation: map['operation'] == null ? null : map['operation'] as String,
-      payloadField: map['payloadField'] == null
-          ? null
-          : map['payloadField'] as String,
-      rangeKeyField: map['rangeKeyField'] == null
-          ? null
-          : map['rangeKeyField'] as String,
-      rangeKeyType: map['rangeKeyType'] == null
-          ? null
-          : map['rangeKeyType'] as String,
-      rangeKeyValue: map['rangeKeyValue'] == null
-          ? null
-          : map['rangeKeyValue'] as String,
+      payloadField: map['payloadField'] == null ? null : map['payloadField'] as String,
+      rangeKeyField: map['rangeKeyField'] == null ? null : map['rangeKeyField'] as String,
+      rangeKeyType: map['rangeKeyType'] == null ? null : map['rangeKeyType'] as String,
+      rangeKeyValue: map['rangeKeyValue'] == null ? null : map['rangeKeyValue'] as String,
       roleArn: map['roleArn'] as String,
       tableName: map['tableName'] as String,
     );
   }
 }
+

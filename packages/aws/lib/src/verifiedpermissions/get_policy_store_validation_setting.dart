@@ -1,17 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPolicyStoreValidationSetting {
   final String mode;
 
   /// Creates a new [GetPolicyStoreValidationSetting].
   /// [mode] Required.
-  GetPolicyStoreValidationSetting({required this.mode});
+  GetPolicyStoreValidationSetting({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory GetPolicyStoreValidationSetting.fromMap(Map<String, dynamic> map) {
-    return GetPolicyStoreValidationSetting(mode: map['mode'] as String);
+    return GetPolicyStoreValidationSetting(
+      mode: map['mode'] as String,
+    );
   }
 }
+

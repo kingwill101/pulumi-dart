@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMeshIstioServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
@@ -8,10 +9,14 @@ class GetMeshIstioServiceTelemetry {
 
   /// Creates a new [GetMeshIstioServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetMeshIstioServiceTelemetry({required this.resourceName});
+  GetMeshIstioServiceTelemetry({
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceName': resourceName};
+    return <String, dynamic>{
+      'resourceName': resourceName,
+    };
   }
 
   factory GetMeshIstioServiceTelemetry.fromMap(Map<String, dynamic> map) {
@@ -20,3 +25,4 @@ class GetMeshIstioServiceTelemetry {
     );
   }
 }
+

@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPrebuiltEcrImage.
 class GetPrebuiltEcrImageResult {
   final String? dnsSuffix;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? imageTag;
   final String region;
-
   /// Account ID containing the image. For example, `469771592824`.
   final String registryId;
-
   /// Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.
   final String registryPath;
   final String repositoryName;
@@ -58,3 +56,4 @@ class GetPrebuiltEcrImageResult {
     );
   }
 }
+

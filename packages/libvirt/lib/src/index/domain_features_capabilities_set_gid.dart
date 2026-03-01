@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainFeaturesCapabilitiesSetGid {
+  /// Sets the state of the capability to wake from an alarm.
+  final String? state;
+
+  /// Creates a new [DomainFeaturesCapabilitiesSetGid].
+  /// [state] Sets the state of the capability to wake from an alarm.
+  DomainFeaturesCapabilitiesSetGid({
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': ?state,
+    };
+  }
+
+  factory DomainFeaturesCapabilitiesSetGid.fromMap(Map<String, dynamic> map) {
+    return DomainFeaturesCapabilitiesSetGid(
+      state: map['state'] == null ? null : map['state'] as String,
+    );
+  }
+}
+

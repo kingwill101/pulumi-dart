@@ -10,30 +10,23 @@ class IntentRejectionStatement {
   /// Creates a new [IntentRejectionStatement].
   /// [messages] Required.
   /// [responseCard] Optional.
-  IntentRejectionStatement({required this.messages, this.responseCard});
+  IntentRejectionStatement({
+    required this.messages,
+    this.responseCard,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'messages':
-          pulumi.Input.encodeList<
-            IntentRejectionStatementMessage,
-            Map<String, dynamic>
-          >(messages, (value) => value.toMap()),
+      'messages': pulumi.Input.encodeList<IntentRejectionStatementMessage, Map<String, dynamic>>(messages, (value) => value.toMap()),
       'responseCard': ?responseCard,
     };
   }
 
   factory IntentRejectionStatement.fromMap(Map<String, dynamic> map) {
     return IntentRejectionStatement(
-      messages: pulumi.Input.decodeList<IntentRejectionStatementMessage>(
-        map['messages'],
-        (value) => IntentRejectionStatementMessage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      responseCard: map['responseCard'] == null
-          ? null
-          : map['responseCard'] as String,
+      messages: pulumi.Input.decodeList<IntentRejectionStatementMessage>(map['messages'], (value) => IntentRejectionStatementMessage.fromMap((value as Map).cast<String, dynamic>())),
+      responseCard: map['responseCard'] == null ? null : map['responseCard'] as String,
     );
   }
 }
+

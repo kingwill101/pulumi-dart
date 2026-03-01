@@ -10,42 +10,32 @@ import 'job_template_template_container_volume_mount.dart';
 class JobTemplateTemplateContainer {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
   final List<String>? args;
-
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
   final List<String>? commands;
-
   /// Names of the containers that must start before this container.
   final List<String>? dependsOns;
-
   /// List of environment variables to set in the container.
   /// Structure is documented below.
   final List<JobTemplateTemplateContainerEnv>? envs;
-
   /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
   final String image;
-
   /// Name of the container specified as a DNS_LABEL.
   final String? name;
-
   /// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
   /// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
   /// Structure is documented below.
   final List<JobTemplateTemplateContainerPort>? ports;
-
   /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   /// Structure is documented below.
   final JobTemplateTemplateContainerResources? resources;
-
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
   /// Structure is documented below.
   final JobTemplateTemplateContainerStartupProbe? startupProbe;
-
   /// Volume to mount into the container's filesystem.
   /// Structure is documented below.
   final List<JobTemplateTemplateContainerVolumeMount>? volumeMounts;
-
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
   final String? workingDir;
 
@@ -80,28 +70,13 @@ class JobTemplateTemplateContainer {
       'args': ?args,
       'commands': ?commands,
       'dependsOns': ?dependsOns,
-      'envs': ?envs == null
-          ? null
-          : pulumi.Input.encodeList<
-              JobTemplateTemplateContainerEnv,
-              Map<String, dynamic>
-            >(envs!, (value) => value.toMap()),
+      'envs': ?envs == null ? null : pulumi.Input.encodeList<JobTemplateTemplateContainerEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
       'image': image,
       'name': ?name,
-      'ports': ?ports == null
-          ? null
-          : pulumi.Input.encodeList<
-              JobTemplateTemplateContainerPort,
-              Map<String, dynamic>
-            >(ports!, (value) => value.toMap()),
+      'ports': ?ports == null ? null : pulumi.Input.encodeList<JobTemplateTemplateContainerPort, Map<String, dynamic>>(ports!, (value) => value.toMap()),
       'resources': ?resources == null ? null : resources!.toMap(),
       'startupProbe': ?startupProbe == null ? null : startupProbe!.toMap(),
-      'volumeMounts': ?volumeMounts == null
-          ? null
-          : pulumi.Input.encodeList<
-              JobTemplateTemplateContainerVolumeMount,
-              Map<String, dynamic>
-            >(volumeMounts!, (value) => value.toMap()),
+      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<JobTemplateTemplateContainerVolumeMount, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
       'workingDir': ?workingDir,
     };
   }
@@ -109,51 +84,17 @@ class JobTemplateTemplateContainer {
   factory JobTemplateTemplateContainer.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainer(
       args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      commands: map['commands'] == null
-          ? null
-          : (map['commands'] as List).cast<String>(),
-      dependsOns: map['dependsOns'] == null
-          ? null
-          : (map['dependsOns'] as List).cast<String>(),
-      envs: map['envs'] == null
-          ? null
-          : pulumi.Input.decodeList<JobTemplateTemplateContainerEnv>(
-              map['envs'],
-              (value) => JobTemplateTemplateContainerEnv.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
+      dependsOns: map['dependsOns'] == null ? null : (map['dependsOns'] as List).cast<String>(),
+      envs: map['envs'] == null ? null : pulumi.Input.decodeList<JobTemplateTemplateContainerEnv>(map['envs'], (value) => JobTemplateTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      ports: map['ports'] == null
-          ? null
-          : pulumi.Input.decodeList<JobTemplateTemplateContainerPort>(
-              map['ports'],
-              (value) => JobTemplateTemplateContainerPort.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      resources: map['resources'] == null
-          ? null
-          : JobTemplateTemplateContainerResources.fromMap(
-              (map['resources'] as Map).cast<String, dynamic>(),
-            ),
-      startupProbe: map['startupProbe'] == null
-          ? null
-          : JobTemplateTemplateContainerStartupProbe.fromMap(
-              (map['startupProbe'] as Map).cast<String, dynamic>(),
-            ),
-      volumeMounts: map['volumeMounts'] == null
-          ? null
-          : pulumi.Input.decodeList<JobTemplateTemplateContainerVolumeMount>(
-              map['volumeMounts'],
-              (value) => JobTemplateTemplateContainerVolumeMount.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      workingDir: map['workingDir'] == null
-          ? null
-          : map['workingDir'] as String,
+      ports: map['ports'] == null ? null : pulumi.Input.decodeList<JobTemplateTemplateContainerPort>(map['ports'], (value) => JobTemplateTemplateContainerPort.fromMap((value as Map).cast<String, dynamic>())),
+      resources: map['resources'] == null ? null : JobTemplateTemplateContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>()),
+      startupProbe: map['startupProbe'] == null ? null : JobTemplateTemplateContainerStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>()),
+      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<JobTemplateTemplateContainerVolumeMount>(map['volumeMounts'], (value) => JobTemplateTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>())),
+      workingDir: map['workingDir'] == null ? null : map['workingDir'] as String,
     );
   }
 }
+

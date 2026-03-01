@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainCpuFeature {
+  /// Specifies the name of a CPU feature that is being configured or controlled.
+  final String? name;
+  /// Sets the policy for how the specified CPU feature is utilized in the domain.
+  final String? policy;
+
+  /// Creates a new [DomainCpuFeature].
+  /// [name] Specifies the name of a CPU feature that is being configured or controlled.
+  /// [policy] Sets the policy for how the specified CPU feature is utilized in the domain.
+  DomainCpuFeature({
+    this.name,
+    this.policy,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'policy': ?policy,
+    };
+  }
+
+  factory DomainCpuFeature.fromMap(Map<String, dynamic> map) {
+    return DomainCpuFeature(
+      name: map['name'] == null ? null : map['name'] as String,
+      policy: map['policy'] == null ? null : map['policy'] as String,
+    );
+  }
+}
+

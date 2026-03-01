@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'persistence_configurations.dart';
+import 'pipeline.dart';
+
+/// Service Info.
+class Service {
+  /// Persistence options to all pipelines in the instance.
+  final PersistenceConfigurations? persistence;
+  /// Pipelines belonging to a given pipeline group.
+  final List<Pipeline> pipelines;
+
+  /// Creates a new [Service].
+  /// [persistence] Persistence options to all pipelines in the instance.
+  /// [pipelines] Pipelines belonging to a given pipeline group.
+  Service({
+    this.persistence,
+    required this.pipelines,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'persistence': ?persistence == null ? null : persistence!.toMap(),
+      'pipelines': pulumi.Input.encodeList<Pipeline, Map<String, dynamic>>(pipelines, (value) => value.toMap()),
+    };
+  }
+
+  factory Service.fromMap(Map<String, dynamic> map) {
+    return Service(
+      persistence: map['persistence'] == null ? null : PersistenceConfigurations.fromMap((map['persistence'] as Map).cast<String, dynamic>()),
+      pipelines: pulumi.Input.decodeList<Pipeline>(map['pipelines'], (value) => Pipeline.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

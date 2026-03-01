@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class InstanceKibanaConfiguration {
+  /// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+  final int? amount;
+  /// Elasticsearch Kibana node disk size
+  final int? disk;
+  /// Elasticsearch Kibana node disk specifications
+  final String spec;
+
+  /// Creates a new [InstanceKibanaConfiguration].
+  /// [amount] The number of disks of the Elasticsearch Kibana node. The default value is 1.
+  /// [disk] Elasticsearch Kibana node disk size
+  /// [spec] Elasticsearch Kibana node disk specifications
+  InstanceKibanaConfiguration({
+    this.amount,
+    this.disk,
+    required this.spec,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'amount': ?amount,
+      'disk': ?disk,
+      'spec': spec,
+    };
+  }
+
+  factory InstanceKibanaConfiguration.fromMap(Map<String, dynamic> map) {
+    return InstanceKibanaConfiguration(
+      amount: map['amount'] == null ? null : map['amount'] as int,
+      disk: map['disk'] == null ? null : map['disk'] as int,
+      spec: map['spec'] as String,
+    );
+  }
+}
+

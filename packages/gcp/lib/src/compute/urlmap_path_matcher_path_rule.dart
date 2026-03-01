@@ -13,15 +13,12 @@ class URLMapPathMatcherPathRule {
   /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
   /// customErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleCustomErrorResponsePolicy?
-  customErrorResponsePolicy;
-
+  final URLMapPathMatcherPathRuleCustomErrorResponsePolicy? customErrorResponsePolicy;
   /// The list of path patterns to match. Each must start with / and the only place a
   /// \* is allowed is at the end following a /. The string fed to the path matcher
   /// does not include any text after the first ? or #, and those chars are not
   /// allowed here.
   final List<String> paths;
-
   /// In response to a matching path, the load balancer performs advanced routing
   /// actions like URL rewrites, header transformations, etc. prior to forwarding the
   /// request to the selected backend. If routeAction specifies any
@@ -30,10 +27,8 @@ class URLMapPathMatcherPathRule {
   /// or urlRedirect must be set.
   /// Structure is documented below.
   final URLMapPathMatcherPathRuleRouteAction? routeAction;
-
   /// The backend service or backend bucket to use if any of the given paths match.
   final String? service;
-
   /// When a path pattern is matched, the request is redirected to a URL specified
   /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
   /// be set.
@@ -56,9 +51,7 @@ class URLMapPathMatcherPathRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customErrorResponsePolicy': ?customErrorResponsePolicy == null
-          ? null
-          : customErrorResponsePolicy!.toMap(),
+      'customErrorResponsePolicy': ?customErrorResponsePolicy == null ? null : customErrorResponsePolicy!.toMap(),
       'paths': paths,
       'routeAction': ?routeAction == null ? null : routeAction!.toMap(),
       'service': ?service,
@@ -68,23 +61,12 @@ class URLMapPathMatcherPathRule {
 
   factory URLMapPathMatcherPathRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRule(
-      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null
-          ? null
-          : URLMapPathMatcherPathRuleCustomErrorResponsePolicy.fromMap(
-              (map['customErrorResponsePolicy'] as Map).cast<String, dynamic>(),
-            ),
+      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : URLMapPathMatcherPathRuleCustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy'] as Map).cast<String, dynamic>()),
       paths: (map['paths'] as List).cast<String>(),
-      routeAction: map['routeAction'] == null
-          ? null
-          : URLMapPathMatcherPathRuleRouteAction.fromMap(
-              (map['routeAction'] as Map).cast<String, dynamic>(),
-            ),
+      routeAction: map['routeAction'] == null ? null : URLMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>()),
       service: map['service'] == null ? null : map['service'] as String,
-      urlRedirect: map['urlRedirect'] == null
-          ? null
-          : URLMapPathMatcherPathRuleUrlRedirect.fromMap(
-              (map['urlRedirect'] as Map).cast<String, dynamic>(),
-            ),
+      urlRedirect: map['urlRedirect'] == null ? null : URLMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

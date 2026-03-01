@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Template Options for the static site.
+class StaticSiteTemplateOptionsResponse {
+  /// Description of the newly generated repository.
+  final String? description;
+  /// Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
+  final bool? isPrivate;
+  /// Owner of the newly generated repository.
+  final String? owner;
+  /// Name of the newly generated repository.
+  final String? repositoryName;
+  /// URL of the template repository. The newly generated repository will be based on this one.
+  final String? templateRepositoryUrl;
+
+  /// Creates a new [StaticSiteTemplateOptionsResponse].
+  /// [description] Description of the newly generated repository.
+  /// [isPrivate] Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
+  /// [owner] Owner of the newly generated repository.
+  /// [repositoryName] Name of the newly generated repository.
+  /// [templateRepositoryUrl] URL of the template repository. The newly generated repository will be based on this one.
+  StaticSiteTemplateOptionsResponse({
+    this.description,
+    this.isPrivate,
+    this.owner,
+    this.repositoryName,
+    this.templateRepositoryUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'isPrivate': ?isPrivate,
+      'owner': ?owner,
+      'repositoryName': ?repositoryName,
+      'templateRepositoryUrl': ?templateRepositoryUrl,
+    };
+  }
+
+  factory StaticSiteTemplateOptionsResponse.fromMap(Map<String, dynamic> map) {
+    return StaticSiteTemplateOptionsResponse(
+      description: map['description'] == null ? null : map['description'] as String,
+      isPrivate: map['isPrivate'] == null ? null : map['isPrivate'] as bool,
+      owner: map['owner'] == null ? null : map['owner'] as String,
+      repositoryName: map['repositoryName'] == null ? null : map['repositoryName'] as String,
+      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : map['templateRepositoryUrl'] as String,
+    );
+  }
+}
+

@@ -8,7 +8,9 @@ class VirtualNodeSpecLogging {
 
   /// Creates a new [VirtualNodeSpecLogging].
   /// [accessLog] Access log configuration for a virtual node.
-  VirtualNodeSpecLogging({this.accessLog});
+  VirtualNodeSpecLogging({
+    this.accessLog,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class VirtualNodeSpecLogging {
 
   factory VirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLogging(
-      accessLog: map['accessLog'] == null
-          ? null
-          : VirtualNodeSpecLoggingAccessLog.fromMap(
-              (map['accessLog'] as Map).cast<String, dynamic>(),
-            ),
+      accessLog: map['accessLog'] == null ? null : VirtualNodeSpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

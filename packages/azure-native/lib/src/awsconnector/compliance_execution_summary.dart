@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of ComplianceExecutionSummary
+class ComplianceExecutionSummary {
+  /// <p>An ID created by the system when <code>PutComplianceItems</code> was called. For example, <code>CommandID</code> is a valid execution ID. You can use this ID in subsequent calls.</p>
+  final String? executionId;
+  /// <p>The time the execution ran as a datetime object that is saved in the following format: <code>yyyy-MM-dd'T'HH:mm:ss'Z'</code> </p>
+  final String? executionTime;
+  /// <p>The type of execution. For example, <code>Command</code> is a valid execution type.</p>
+  final String? executionType;
+
+  /// Creates a new [ComplianceExecutionSummary].
+  /// [executionId] <p>An ID created by the system when <code>PutComplianceItems</code> was called. For example, <code>CommandID</code> is a valid execution ID. You can use this ID in subsequent calls.</p>
+  /// [executionTime] <p>The time the execution ran as a datetime object that is saved in the following format: <code>yyyy-MM-dd'T'HH:mm:ss'Z'</code> </p>
+  /// [executionType] <p>The type of execution. For example, <code>Command</code> is a valid execution type.</p>
+  ComplianceExecutionSummary({
+    this.executionId,
+    this.executionTime,
+    this.executionType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'executionId': ?executionId,
+      'executionTime': ?executionTime,
+      'executionType': ?executionType,
+    };
+  }
+
+  factory ComplianceExecutionSummary.fromMap(Map<String, dynamic> map) {
+    return ComplianceExecutionSummary(
+      executionId: map['executionId'] == null ? null : map['executionId'] as String,
+      executionTime: map['executionTime'] == null ? null : map['executionTime'] as String,
+      executionType: map['executionType'] == null ? null : map['executionType'] as String,
+    );
+  }
+}
+

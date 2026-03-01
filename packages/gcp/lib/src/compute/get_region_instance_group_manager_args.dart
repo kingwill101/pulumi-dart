@@ -9,13 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceGroupManagerArgs {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   ///
   /// * `Region` - (Optional) The region where the managed instance group resides. If not provided, the provider region is used.
   final pulumi.Input<String>? project;
   final pulumi.Input<String>? region;
-
   /// The self link of the instance group. Either `name` or `self_link` must be provided.
   final pulumi.Input<String>? selfLink;
 
@@ -29,10 +27,11 @@ class GetRegionInstanceGroupManagerArgs {
     String? project,
     String? region,
     String? selfLink,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,3 +51,4 @@ class GetRegionInstanceGroupManagerArgs {
     );
   }
 }
+

@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutposts.
 class GetOutpostsResult {
   /// Set of Amazon Resource Names (ARNs).
   final List<String> arns;
   final String availabilityZone;
   final String availabilityZoneId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of identifiers.
   final List<String> ids;
   final String ownerId;
@@ -62,3 +61,4 @@ class GetOutpostsResult {
     );
   }
 }
+

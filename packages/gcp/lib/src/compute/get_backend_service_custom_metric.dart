@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
   final bool dryRun;
-
   /// The name of the Backend Service.
   ///
   /// - - -
@@ -12,10 +12,16 @@ class GetBackendServiceCustomMetric {
   /// Creates a new [GetBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] The name of the Backend Service.
-  GetBackendServiceCustomMetric({required this.dryRun, required this.name});
+  GetBackendServiceCustomMetric({
+    required this.dryRun,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dryRun': dryRun, 'name': name};
+    return <String, dynamic>{
+      'dryRun': dryRun,
+      'name': name,
+    };
   }
 
   factory GetBackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
@@ -25,3 +31,4 @@ class GetBackendServiceCustomMetric {
     );
   }
 }
+

@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The source image used for creating the disk.
+class ImageDiskReference {
+  /// A relative uri containing a community Azure Compute Gallery image reference.
+  final String? communityGalleryImageId;
+  /// A relative uri containing either a Platform Image Repository, user image, or Azure Compute Gallery image reference.
+  final String? id;
+  /// If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.
+  final int? lun;
+  /// A relative uri containing a direct shared Azure Compute Gallery image reference.
+  final String? sharedGalleryImageId;
+
+  /// Creates a new [ImageDiskReference].
+  /// [communityGalleryImageId] A relative uri containing a community Azure Compute Gallery image reference.
+  /// [id] A relative uri containing either a Platform Image Repository, user image, or Azure Compute Gallery image reference.
+  /// [lun] If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.
+  /// [sharedGalleryImageId] A relative uri containing a direct shared Azure Compute Gallery image reference.
+  ImageDiskReference({
+    this.communityGalleryImageId,
+    this.id,
+    this.lun,
+    this.sharedGalleryImageId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'communityGalleryImageId': ?communityGalleryImageId,
+      'id': ?id,
+      'lun': ?lun,
+      'sharedGalleryImageId': ?sharedGalleryImageId,
+    };
+  }
+
+  factory ImageDiskReference.fromMap(Map<String, dynamic> map) {
+    return ImageDiskReference(
+      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : map['communityGalleryImageId'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+      lun: map['lun'] == null ? null : map['lun'] as int,
+      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : map['sharedGalleryImageId'] as String,
+    );
+  }
+}
+

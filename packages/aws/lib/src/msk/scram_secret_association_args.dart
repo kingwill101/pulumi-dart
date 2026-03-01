@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScramSecretAssociationArgs {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   final pulumi.Input<String> clusterArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// List of AWS Secrets Manager secret ARNs.
   final pulumi.Input<List<String>> secretArnLists;
 
@@ -24,9 +22,10 @@ class ScramSecretAssociationArgs {
     required String clusterArn,
     String? region,
     required List<String> secretArnLists,
-  }) : clusterArn = pulumi.Input.asInput<String>(clusterArn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       secretArnLists = pulumi.Input.asInput<List<String>>(secretArnLists);
+  }) :
+      clusterArn = pulumi.Input.asInput<String>(clusterArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secretArnLists = pulumi.Input.asInput<List<String>>(secretArnLists);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class ScramSecretAssociationArgs {
     );
   }
 }
+

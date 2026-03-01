@@ -11,22 +11,16 @@ class ResourceArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
-
   /// Flag to enable AWS LakeFormation hybrid access permission mode.
   final pulumi.Input<bool>? hybridAccessEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Role that has read/write access to the resource.
   final pulumi.Input<String>? roleArn;
-
   /// Designates an AWS Identity and Access Management (IAM) service-linked role by registering this role with the Data Catalog.
   final pulumi.Input<bool>? useServiceLinkedRole;
-
   /// Whether or not the resource is a federated resource. Set to true when registering AWS Glue connections for federated catalog functionality.
   final pulumi.Input<bool>? withFederation;
-
   /// Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
   ///
   /// > **NOTE:** AWS does not support registering an S3 location with an IAM role and subsequently updating the S3 location registration to a service-linked role.
@@ -48,19 +42,14 @@ class ResourceArgs {
     bool? useServiceLinkedRole,
     bool? withFederation,
     bool? withPrivilegedAccess,
-  }) : arn = pulumi.Input.asInput<String>(arn),
-       hybridAccessEnabled = pulumi.Input.asOptionalInput<bool>(
-         hybridAccessEnabled,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-       useServiceLinkedRole = pulumi.Input.asOptionalInput<bool>(
-         useServiceLinkedRole,
-       ),
-       withFederation = pulumi.Input.asOptionalInput<bool>(withFederation),
-       withPrivilegedAccess = pulumi.Input.asOptionalInput<bool>(
-         withPrivilegedAccess,
-       );
+  }) :
+      arn = pulumi.Input.asInput<String>(arn),
+      hybridAccessEnabled = pulumi.Input.asOptionalInput<bool>(hybridAccessEnabled),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
+      useServiceLinkedRole = pulumi.Input.asOptionalInput<bool>(useServiceLinkedRole),
+      withFederation = pulumi.Input.asOptionalInput<bool>(withFederation),
+      withPrivilegedAccess = pulumi.Input.asOptionalInput<bool>(withPrivilegedAccess);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,20 +66,13 @@ class ResourceArgs {
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
       arn: map['arn'] as String,
-      hybridAccessEnabled: map['hybridAccessEnabled'] == null
-          ? null
-          : map['hybridAccessEnabled'] as bool,
+      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : map['hybridAccessEnabled'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      useServiceLinkedRole: map['useServiceLinkedRole'] == null
-          ? null
-          : map['useServiceLinkedRole'] as bool,
-      withFederation: map['withFederation'] == null
-          ? null
-          : map['withFederation'] as bool,
-      withPrivilegedAccess: map['withPrivilegedAccess'] == null
-          ? null
-          : map['withPrivilegedAccess'] as bool,
+      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : map['useServiceLinkedRole'] as bool,
+      withFederation: map['withFederation'] == null ? null : map['withFederation'] as bool,
+      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : map['withPrivilegedAccess'] as bool,
     );
   }
 }
+

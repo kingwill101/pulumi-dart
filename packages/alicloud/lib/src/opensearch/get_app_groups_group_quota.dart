@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetAppGroupsGroupQuota {
+  /// Computing resources. Unit: LCU.
+  final String computeResource;
+  /// Storage Size. Unit: GB.
+  final String docSize;
+  /// Specification. Valid values:
+  /// * `opensearch.share.junior`: Entry-level.
+  /// * `opensearch.share.common`: Shared universal.
+  /// * `opensearch.share.compute`: Shared computing.
+  /// * `opensearch.share.storage`: Shared storage type.
+  /// * `opensearch.private.common`: Exclusive universal type.
+  /// * `opensearch.private.compute`: Exclusive computing type.
+  /// * `opensearch.private.storage`: Exclusive storage type
+  final String spec;
+
+  /// Creates a new [GetAppGroupsGroupQuota].
+  /// [computeResource] Computing resources. Unit: LCU.
+  /// [docSize] Storage Size. Unit: GB.
+  /// [spec] Specification. Valid values:
+  GetAppGroupsGroupQuota({
+    required this.computeResource,
+    required this.docSize,
+    required this.spec,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'computeResource': computeResource,
+      'docSize': docSize,
+      'spec': spec,
+    };
+  }
+
+  factory GetAppGroupsGroupQuota.fromMap(Map<String, dynamic> map) {
+    return GetAppGroupsGroupQuota(
+      computeResource: map['computeResource'] as String,
+      docSize: map['docSize'] as String,
+      spec: map['spec'] as String,
+    );
+  }
+}
+

@@ -7,10 +7,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Set of buckets. Ranges must be non-overlapping.
   /// Bucket is represented as a range, along with replacement values.
   /// Structure is documented below.
-  final List<
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket
-  >?
-  buckets;
+  final List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket>? buckets;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
@@ -20,30 +17,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': ?buckets == null
-          ? null
-          : pulumi.Input.encodeList<
-              PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket,
-              Map<String, dynamic>
-            >(buckets!, (value) => value.toMap()),
+      'buckets': ?buckets == null ? null : pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket, Map<String, dynamic>>(buckets!, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig(
-      buckets: map['buckets'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket
-            >(
-              map['buckets'],
-              (value) =>
-                  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      buckets: map['buckets'] == null ? null : pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket>(map['buckets'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

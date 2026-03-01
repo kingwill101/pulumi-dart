@@ -12,34 +12,20 @@ class AppVersionSnapshotToolOpenApiToolTlsConfig {
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)
-  AppVersionSnapshotToolOpenApiToolTlsConfig({this.caCerts});
+  AppVersionSnapshotToolOpenApiToolTlsConfig({
+    this.caCerts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': ?caCerts == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppVersionSnapshotToolOpenApiToolTlsConfigCaCert,
-              Map<String, dynamic>
-            >(caCerts!, (value) => value.toMap()),
+      'caCerts': ?caCerts == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert, Map<String, dynamic>>(caCerts!, (value) => value.toMap()),
     };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfig(
-      caCerts: map['caCerts'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AppVersionSnapshotToolOpenApiToolTlsConfigCaCert
-            >(
-              map['caCerts'],
-              (value) =>
-                  AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      caCerts: map['caCerts'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>(map['caCerts'], (value) => AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

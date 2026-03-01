@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
+class B2CResourceSKUResponse {
+  /// The name of the SKU for the tenant.
+  final String? name;
+  /// The tier of the tenant.
+  final String? tier;
+
+  /// Creates a new [B2CResourceSKUResponse].
+  /// [name] The name of the SKU for the tenant.
+  /// [tier] The tier of the tenant.
+  B2CResourceSKUResponse({
+    this.name,
+    this.tier,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'tier': ?tier,
+    };
+  }
+
+  factory B2CResourceSKUResponse.fromMap(Map<String, dynamic> map) {
+    return B2CResourceSKUResponse(
+      name: map['name'] == null ? null : map['name'] as String,
+      tier: map['tier'] == null ? null : map['tier'] as String,
+    );
+  }
+}
+

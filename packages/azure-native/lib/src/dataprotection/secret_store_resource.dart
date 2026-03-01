@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Class representing a secret store resource.
+class SecretStoreResource {
+  /// Gets or sets the type of secret store
+  final String secretStoreType;
+  /// Uri to get to the resource
+  final String? uri;
+  /// Gets or sets value stored in secret store resource
+  final String? value;
+
+  /// Creates a new [SecretStoreResource].
+  /// [secretStoreType] Gets or sets the type of secret store
+  /// [uri] Uri to get to the resource
+  /// [value] Gets or sets value stored in secret store resource
+  SecretStoreResource({
+    required this.secretStoreType,
+    this.uri,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'secretStoreType': secretStoreType,
+      'uri': ?uri,
+      'value': ?value,
+    };
+  }
+
+  factory SecretStoreResource.fromMap(Map<String, dynamic> map) {
+    return SecretStoreResource(
+      secretStoreType: map['secretStoreType'] as String,
+      uri: map['uri'] == null ? null : map['uri'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

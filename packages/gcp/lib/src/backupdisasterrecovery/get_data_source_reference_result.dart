@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDataSourceReference.
 class GetDataSourceReferenceResult {
   final String backupConfigState;
@@ -7,7 +8,6 @@ class GetDataSourceReferenceResult {
   final String dataSource;
   final String dataSourceReferenceId;
   final String gcpResourceName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastBackupState;
@@ -79,3 +79,4 @@ class GetDataSourceReferenceResult {
     );
   }
 }
+

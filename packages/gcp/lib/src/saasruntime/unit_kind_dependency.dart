@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitKindDependency {
   /// An alias for the dependency. Used for input variable mapping.
   final String alias;
-
   /// The unit kind of the dependency.
   final String unitKind;
 
   /// Creates a new [UnitKindDependency].
   /// [alias] An alias for the dependency. Used for input variable mapping.
   /// [unitKind] The unit kind of the dependency.
-  UnitKindDependency({required this.alias, required this.unitKind});
+  UnitKindDependency({
+    required this.alias,
+    required this.unitKind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'alias': alias, 'unitKind': unitKind};
+    return <String, dynamic>{
+      'alias': alias,
+      'unitKind': unitKind,
+    };
   }
 
   factory UnitKindDependency.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class UnitKindDependency {
     );
   }
 }
+

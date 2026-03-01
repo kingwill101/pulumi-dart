@@ -809,32 +809,24 @@ import 'region_network_endpoint_args.dart';
 class RegionNetworkEndpoint extends pulumi.CustomResource {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
   late final pulumi.Output<int?> clientDestinationPort;
-
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   late final pulumi.Output<String?> fqdn;
-
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
   late final pulumi.Output<String?> instance;
-
   /// IPv4 address external endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
   late final pulumi.Output<String?> ipAddress;
-
   /// The unique identifier number for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> networkEndpointId;
-
   /// Port number of network endpoint.
   late final pulumi.Output<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where the containing network endpoint group is located.
   late final pulumi.Output<String> region;
-
   /// The network endpoint group this endpoint is part of.
   late final pulumi.Output<String> regionNetworkEndpointGroup;
 
@@ -847,11 +839,11 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
     RegionNetworkEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     this.fqdn = registerOutput<String?>('fqdn');
     this.instance = registerOutput<String?>('instance');
@@ -860,8 +852,6 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
     this.port = registerOutput<int>('port');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');
-    this.regionNetworkEndpointGroup = registerOutput<String>(
-      'regionNetworkEndpointGroup',
-    );
+    this.regionNetworkEndpointGroup = registerOutput<String>('regionNetworkEndpointGroup');
   }
 }

@@ -8,27 +8,20 @@ class GetDataSetColumnGroup {
 
   /// Creates a new [GetDataSetColumnGroup].
   /// [geoSpatialColumnGroups] Required.
-  GetDataSetColumnGroup({required this.geoSpatialColumnGroups});
+  GetDataSetColumnGroup({
+    required this.geoSpatialColumnGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoSpatialColumnGroups':
-          pulumi.Input.encodeList<
-            GetDataSetColumnGroupGeoSpatialColumnGroup,
-            Map<String, dynamic>
-          >(geoSpatialColumnGroups, (value) => value.toMap()),
+      'geoSpatialColumnGroups': pulumi.Input.encodeList<GetDataSetColumnGroupGeoSpatialColumnGroup, Map<String, dynamic>>(geoSpatialColumnGroups, (value) => value.toMap()),
     };
   }
 
   factory GetDataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroup(
-      geoSpatialColumnGroups:
-          pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(
-            map['geoSpatialColumnGroups'],
-            (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      geoSpatialColumnGroups: pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(map['geoSpatialColumnGroups'], (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

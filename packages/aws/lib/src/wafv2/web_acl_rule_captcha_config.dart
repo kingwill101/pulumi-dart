@@ -8,23 +8,20 @@ class WebAclRuleCaptchaConfig {
 
   /// Creates a new [WebAclRuleCaptchaConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See `immunity_time_property` below for details.
-  WebAclRuleCaptchaConfig({this.immunityTimeProperty});
+  WebAclRuleCaptchaConfig({
+    this.immunityTimeProperty,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'immunityTimeProperty': ?immunityTimeProperty == null
-          ? null
-          : immunityTimeProperty!.toMap(),
+      'immunityTimeProperty': ?immunityTimeProperty == null ? null : immunityTimeProperty!.toMap(),
     };
   }
 
   factory WebAclRuleCaptchaConfig.fromMap(Map<String, dynamic> map) {
     return WebAclRuleCaptchaConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null
-          ? null
-          : WebAclRuleCaptchaConfigImmunityTimeProperty.fromMap(
-              (map['immunityTimeProperty'] as Map).cast<String, dynamic>(),
-            ),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : WebAclRuleCaptchaConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

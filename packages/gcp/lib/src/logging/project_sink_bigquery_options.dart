@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectSinkBigqueryOptions {
   /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
   /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog_20170523`. With partitioned
@@ -9,10 +10,14 @@ class ProjectSinkBigqueryOptions {
 
   /// Creates a new [ProjectSinkBigqueryOptions].
   /// [usePartitionedTables] Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  ProjectSinkBigqueryOptions({required this.usePartitionedTables});
+  ProjectSinkBigqueryOptions({
+    required this.usePartitionedTables,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'usePartitionedTables': usePartitionedTables};
+    return <String, dynamic>{
+      'usePartitionedTables': usePartitionedTables,
+    };
   }
 
   factory ProjectSinkBigqueryOptions.fromMap(Map<String, dynamic> map) {
@@ -21,3 +26,4 @@ class ProjectSinkBigqueryOptions {
     );
   }
 }
+

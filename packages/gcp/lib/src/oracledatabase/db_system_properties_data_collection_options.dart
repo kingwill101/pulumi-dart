@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DbSystemPropertiesDataCollectionOptions {
   /// Indicates whether to enable data collection for diagnostics.
   final bool? isDiagnosticsEventsEnabled;
-
   /// Indicates whether to enable incident logs and trace collection.
   final bool? isIncidentLogsEnabled;
 
@@ -22,16 +22,11 @@ class DbSystemPropertiesDataCollectionOptions {
     };
   }
 
-  factory DbSystemPropertiesDataCollectionOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DbSystemPropertiesDataCollectionOptions.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDataCollectionOptions(
-      isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] == null
-          ? null
-          : map['isDiagnosticsEventsEnabled'] as bool,
-      isIncidentLogsEnabled: map['isIncidentLogsEnabled'] == null
-          ? null
-          : map['isIncidentLogsEnabled'] as bool,
+      isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] == null ? null : map['isDiagnosticsEventsEnabled'] as bool,
+      isIncidentLogsEnabled: map['isIncidentLogsEnabled'] == null ? null : map['isIncidentLogsEnabled'] as bool,
     );
   }
 }
+

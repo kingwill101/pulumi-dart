@@ -6,13 +6,10 @@ import 'get_service_quota_usage_metric_metric_dimension.dart';
 class GetServiceQuotaUsageMetric {
   /// The metric dimensions.
   final List<GetServiceQuotaUsageMetricMetricDimension> metricDimensions;
-
   /// The name of the metric.
   final String metricName;
-
   /// The namespace of the metric.
   final String metricNamespace;
-
   /// The metric statistic that AWS recommend you use when determining quota usage.
   final String metricStatisticRecommendation;
 
@@ -30,11 +27,7 @@ class GetServiceQuotaUsageMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDimensions':
-          pulumi.Input.encodeList<
-            GetServiceQuotaUsageMetricMetricDimension,
-            Map<String, dynamic>
-          >(metricDimensions, (value) => value.toMap()),
+      'metricDimensions': pulumi.Input.encodeList<GetServiceQuotaUsageMetricMetricDimension, Map<String, dynamic>>(metricDimensions, (value) => value.toMap()),
       'metricName': metricName,
       'metricNamespace': metricNamespace,
       'metricStatisticRecommendation': metricStatisticRecommendation,
@@ -43,17 +36,11 @@ class GetServiceQuotaUsageMetric {
 
   factory GetServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaUsageMetric(
-      metricDimensions:
-          pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(
-            map['metricDimensions'],
-            (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      metricDimensions: pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
       metricName: map['metricName'] as String,
       metricNamespace: map['metricNamespace'] as String,
-      metricStatisticRecommendation:
-          map['metricStatisticRecommendation'] as String,
+      metricStatisticRecommendation: map['metricStatisticRecommendation'] as String,
     );
   }
 }
+

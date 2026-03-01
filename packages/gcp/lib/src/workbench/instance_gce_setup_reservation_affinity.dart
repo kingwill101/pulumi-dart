@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGceSetupReservationAffinity {
   /// Specifies the type of reservation from which this instance can consume resources:
   /// RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
   /// Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
   final String? consumeReservationType;
-
   /// Corresponds to the label key of a reservation resource. To target a
   /// RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
   /// as the key and specify the name of your reservation as its value.
   final String? key;
-
   /// Corresponds to the label values of a reservation resource. This can be
   /// either a name to a reservation in the same project or
   /// "projects/different-project/reservations/some-reservation-name"
@@ -35,17 +34,12 @@ class InstanceGceSetupReservationAffinity {
     };
   }
 
-  factory InstanceGceSetupReservationAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGceSetupReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] == null
-          ? null
-          : map['consumeReservationType'] as String,
+      consumeReservationType: map['consumeReservationType'] == null ? null : map['consumeReservationType'] as String,
       key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null
-          ? null
-          : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

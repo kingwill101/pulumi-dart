@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Secret to be added to volume.
+class SecretVolumeItem {
+  /// Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
+  final String? path;
+  /// Name of the Container App secret from which to pull the secret value.
+  final String? secretRef;
+
+  /// Creates a new [SecretVolumeItem].
+  /// [path] Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
+  /// [secretRef] Name of the Container App secret from which to pull the secret value.
+  SecretVolumeItem({
+    this.path,
+    this.secretRef,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'path': ?path,
+      'secretRef': ?secretRef,
+    };
+  }
+
+  factory SecretVolumeItem.fromMap(Map<String, dynamic> map) {
+    return SecretVolumeItem(
+      path: map['path'] == null ? null : map['path'] as String,
+      secretRef: map['secretRef'] == null ? null : map['secretRef'] as String,
+    );
+  }
+}
+

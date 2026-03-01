@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketReplicationConfigRuleFilterTag {
   /// Name of the object key.
   final String key;
-
   /// Value of the tag.
   final String value;
 
@@ -16,15 +16,17 @@ class BucketReplicationConfigRuleFilterTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory BucketReplicationConfigRuleFilterTag.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketReplicationConfigRuleFilterTag.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleFilterTag(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
+

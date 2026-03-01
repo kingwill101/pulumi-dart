@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A copy activity source for a Cassandra database.
+class CassandraSource {
+  /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+  final dynamic additionalColumns;
+  /// The consistency level specifies how many Cassandra servers must respond to a read request before returning data to the client application. Cassandra checks the specified number of Cassandra servers for data to satisfy the read request. Must be one of cassandraSourceReadConsistencyLevels. The default value is 'ONE'. It is case-insensitive.
+  final String? consistencyLevel;
+  /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+  final dynamic disableMetricsCollection;
+  /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+  final dynamic maxConcurrentConnections;
+  /// Database query. Should be a SQL-92 query expression or Cassandra Query Language (CQL) command. Type: string (or Expression with resultType string).
+  final dynamic query;
+  /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+  final dynamic queryTimeout;
+  /// Source retry count. Type: integer (or Expression with resultType integer).
+  final dynamic sourceRetryCount;
+  /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+  final dynamic sourceRetryWait;
+  /// Copy source type.
+  /// Expected value is 'CassandraSource'.
+  final String type;
+
+  /// Creates a new [CassandraSource].
+  /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+  /// [consistencyLevel] The consistency level specifies how many Cassandra servers must respond to a read request before returning data to the client application. Cassandra checks the specified number of Cassandra servers for data to satisfy the read request. Must be one of cassandraSourceReadConsistencyLevels. The default value is 'ONE'. It is case-insensitive.
+  /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+  /// [maxConcurrentConnections] The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+  /// [query] Database query. Should be a SQL-92 query expression or Cassandra Query Language (CQL) command. Type: string (or Expression with resultType string).
+  /// [queryTimeout] Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+  /// [sourceRetryCount] Source retry count. Type: integer (or Expression with resultType integer).
+  /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+  /// [type] Copy source type.
+  CassandraSource({
+    this.additionalColumns,
+    this.consistencyLevel,
+    this.disableMetricsCollection,
+    this.maxConcurrentConnections,
+    this.query,
+    this.queryTimeout,
+    this.sourceRetryCount,
+    this.sourceRetryWait,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'additionalColumns': ?additionalColumns,
+      'consistencyLevel': ?consistencyLevel,
+      'disableMetricsCollection': ?disableMetricsCollection,
+      'maxConcurrentConnections': ?maxConcurrentConnections,
+      'query': ?query,
+      'queryTimeout': ?queryTimeout,
+      'sourceRetryCount': ?sourceRetryCount,
+      'sourceRetryWait': ?sourceRetryWait,
+      'type': type,
+    };
+  }
+
+  factory CassandraSource.fromMap(Map<String, dynamic> map) {
+    return CassandraSource(
+      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
+      consistencyLevel: map['consistencyLevel'] == null ? null : map['consistencyLevel'] as String,
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
+      query: map['query'] == null ? null : map['query'],
+      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
+      type: map['type'] as String,
+    );
+  }
+}
+

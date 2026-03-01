@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationSecurityPolicyArgs {
   /// A textual description for the organization security policy.
   final pulumi.Input<String>? description;
-
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
   final pulumi.Input<String>? displayName;
-
   /// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   final pulumi.Input<String> parent;
-
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
   final pulumi.Input<String>? shortName;
-
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
   /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
@@ -37,11 +33,12 @@ class OrganizationSecurityPolicyArgs {
     required String parent,
     String? shortName,
     String? type,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       parent = pulumi.Input.asInput<String>(parent),
-       shortName = pulumi.Input.asOptionalInput<String>(shortName),
-       type = pulumi.Input.asOptionalInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      parent = pulumi.Input.asInput<String>(parent),
+      shortName = pulumi.Input.asOptionalInput<String>(shortName),
+      type = pulumi.Input.asOptionalInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,15 +52,12 @@ class OrganizationSecurityPolicyArgs {
 
   factory OrganizationSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       parent: map['parent'] as String,
       shortName: map['shortName'] == null ? null : map['shortName'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment {
   /// What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
   final String? fallbackBehavior;
@@ -11,16 +12,15 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': ?fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': ?fallbackBehavior,
+    };
   }
 
-  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null
-          ? null
-          : map['fallbackBehavior'] as String,
+      fallbackBehavior: map['fallbackBehavior'] == null ? null : map['fallbackBehavior'] as String,
     );
   }
 }
+

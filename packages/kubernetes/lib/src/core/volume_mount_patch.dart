@@ -1,0 +1,71 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// VolumeMount describes a mounting of a Volume within a container.
+class VolumeMountPatch {
+  /// Path within the container at which the volume should be mounted.  Must not contain ':'.
+  final String? mountPath;
+  /// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10. When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified (which defaults to None).
+  final String? mountPropagation;
+  /// This must match the Name of a Volume.
+  final String? name;
+  /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+  final bool? readOnly;
+  /// RecursiveReadOnly specifies whether read-only mounts should be handled recursively.
+  ///
+  /// If ReadOnly is false, this field has no meaning and must be unspecified.
+  ///
+  /// If ReadOnly is true, and this field is set to Disabled, the mount is not made recursively read-only.  If this field is set to IfPossible, the mount is made recursively read-only, if it is supported by the container runtime.  If this field is set to Enabled, the mount is made recursively read-only if it is supported by the container runtime, otherwise the pod will not be started and an error will be generated to indicate the reason.
+  ///
+  /// If this field is set to IfPossible or Enabled, MountPropagation must be set to None (or be unspecified, which defaults to None).
+  ///
+  /// If this field is not specified, it is treated as an equivalent of Disabled.
+  final String? recursiveReadOnly;
+  /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+  final String? subPath;
+  /// Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
+  final String? subPathExpr;
+
+  /// Creates a new [VolumeMountPatch].
+  /// [mountPath] Path within the container at which the volume should be mounted.  Must not contain ':'.
+  /// [mountPropagation] mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10. When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified (which defaults to None).
+  /// [name] This must match the Name of a Volume.
+  /// [readOnly] Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+  /// [recursiveReadOnly] RecursiveReadOnly specifies whether read-only mounts should be handled recursively.
+  /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+  /// [subPathExpr] Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
+  VolumeMountPatch({
+    this.mountPath,
+    this.mountPropagation,
+    this.name,
+    this.readOnly,
+    this.recursiveReadOnly,
+    this.subPath,
+    this.subPathExpr,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mountPath': ?mountPath,
+      'mountPropagation': ?mountPropagation,
+      'name': ?name,
+      'readOnly': ?readOnly,
+      'recursiveReadOnly': ?recursiveReadOnly,
+      'subPath': ?subPath,
+      'subPathExpr': ?subPathExpr,
+    };
+  }
+
+  factory VolumeMountPatch.fromMap(Map<String, dynamic> map) {
+    return VolumeMountPatch(
+      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
+      mountPropagation: map['mountPropagation'] == null ? null : map['mountPropagation'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : map['recursiveReadOnly'] as String,
+      subPath: map['subPath'] == null ? null : map['subPath'] as String,
+      subPathExpr: map['subPathExpr'] == null ? null : map['subPathExpr'] as String,
+    );
+  }
+}
+

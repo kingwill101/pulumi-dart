@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlConditionQueryTerm {
   /// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
   final bool? fullMatch;
-
   /// The value of the query term.
   final String? value;
 
   /// Creates a new [ControlConditionQueryTerm].
   /// [fullMatch] If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
   /// [value] The value of the query term.
-  ControlConditionQueryTerm({this.fullMatch, this.value});
+  ControlConditionQueryTerm({
+    this.fullMatch,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fullMatch': ?fullMatch, 'value': ?value};
+    return <String, dynamic>{
+      'fullMatch': ?fullMatch,
+      'value': ?value,
+    };
   }
 
   factory ControlConditionQueryTerm.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class ControlConditionQueryTerm {
     );
   }
 }
+

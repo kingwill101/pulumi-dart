@@ -7,7 +7,6 @@ class EnvironmentLastUpdated {
   /// The Created At date of the MWAA Environment
   final String? createdAt;
   final List<EnvironmentLastUpdatedError>? errors;
-
   /// The status of the Amazon MWAA Environment
   final String? status;
 
@@ -15,17 +14,16 @@ class EnvironmentLastUpdated {
   /// [createdAt] The Created At date of the MWAA Environment
   /// [errors] Optional.
   /// [status] The status of the Amazon MWAA Environment
-  EnvironmentLastUpdated({this.createdAt, this.errors, this.status});
+  EnvironmentLastUpdated({
+    this.createdAt,
+    this.errors,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAt': ?createdAt,
-      'errors': ?errors == null
-          ? null
-          : pulumi.Input.encodeList<
-              EnvironmentLastUpdatedError,
-              Map<String, dynamic>
-            >(errors!, (value) => value.toMap()),
+      'errors': ?errors == null ? null : pulumi.Input.encodeList<EnvironmentLastUpdatedError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -33,15 +31,9 @@ class EnvironmentLastUpdated {
   factory EnvironmentLastUpdated.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdated(
       createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      errors: map['errors'] == null
-          ? null
-          : pulumi.Input.decodeList<EnvironmentLastUpdatedError>(
-              map['errors'],
-              (value) => EnvironmentLastUpdatedError.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      errors: map['errors'] == null ? null : pulumi.Input.decodeList<EnvironmentLastUpdatedError>(map['errors'], (value) => EnvironmentLastUpdatedError.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] == null ? null : map['status'] as String,
     );
   }
 }
+

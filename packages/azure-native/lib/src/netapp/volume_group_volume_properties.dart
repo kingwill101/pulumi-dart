@@ -1,0 +1,279 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'placement_key_value_pairs.dart';
+import 'volume_properties_data_protection.dart';
+import 'volume_properties_export_policy.dart';
+
+/// Volume resource
+class VolumeGroupVolumeProperties {
+  /// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
+  final String? avsDataStore;
+  /// Resource identifier used to identify the Backup.
+  final String? backupId;
+  /// Pool Resource Id used in case of creating a volume through volume group
+  final String? capacityPoolResourceId;
+  /// Specifies whether Cool Access(tiering) is enabled for the volume.
+  final bool? coolAccess;
+  /// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
+  /// Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+  /// OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+  /// Never - No client-driven data is pulled from cool tier to standard storage.
+  final String? coolAccessRetrievalPolicy;
+  /// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+  final String? coolAccessTieringPolicy;
+  /// Specifies the number of days after which data that is not accessed by clients will be tiered.
+  final int? coolnessPeriod;
+  /// A unique file path for the volume. Used when creating mount targets
+  final String creationToken;
+  /// DataProtection type volumes include an object containing details of the replication
+  final VolumePropertiesDataProtection? dataProtection;
+  /// Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
+  final double? defaultGroupQuotaInKiBs;
+  /// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
+  final double? defaultUserQuotaInKiBs;
+  /// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+  final bool? deleteBaseSnapshot;
+  /// Flag indicating whether subvolume operations are enabled on the volume
+  final String? enableSubvolumes;
+  /// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+  final String? encryptionKeySource;
+  /// Set of export policy rules
+  final VolumePropertiesExportPolicy? exportPolicy;
+  /// Specifies if default quota is enabled for the volume.
+  final bool? isDefaultQuotaEnabled;
+  /// Specifies whether volume is a Large Volume or Regular Volume.
+  final bool? isLargeVolume;
+  /// Restoring
+  final bool? isRestoring;
+  /// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
+  final bool? kerberosEnabled;
+  /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+  final String? keyVaultPrivateEndpointResourceId;
+  /// Specifies whether LDAP is enabled or not for a given NFS volume.
+  final bool? ldapEnabled;
+  /// Resource name
+  final String? name;
+  /// The original value of the network features type available to the volume at the time it was created.
+  final String? networkFeatures;
+  /// Application specific placement rules for the particular volume
+  final List<PlacementKeyValuePairs>? placementRules;
+  /// Set of protocol types, default NFSv3, CIFS for SMB protocol
+  final List<String>? protocolTypes;
+  /// Proximity placement group associated with the volume
+  final String? proximityPlacementGroup;
+  /// The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
+  final String? securityStyle;
+  /// The service level of the file system
+  final String? serviceLevel;
+  /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+  final String? smbAccessBasedEnumeration;
+  /// Enables continuously available share property for smb volume. Only applicable for SMB volume
+  final bool? smbContinuouslyAvailable;
+  /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+  final bool? smbEncryption;
+  /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+  final String? smbNonBrowsable;
+  /// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
+  final bool? snapshotDirectoryVisible;
+  /// Resource identifier used to identify the Snapshot.
+  final String? snapshotId;
+  /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
+  final String subnetId;
+  /// Resource tags
+  final Map<String, String>? tags;
+  final double? throughputMibps;
+  /// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
+  final String? unixPermissions;
+  /// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+  final double usageThreshold;
+  /// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
+  final String? volumeSpecName;
+  /// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
+  final String? volumeType;
+  /// Availability Zone
+  final List<String>? zones;
+
+  /// Creates a new [VolumeGroupVolumeProperties].
+  /// [avsDataStore] Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
+  /// [backupId] Resource identifier used to identify the Backup.
+  /// [capacityPoolResourceId] Pool Resource Id used in case of creating a volume through volume group
+  /// [coolAccess] Specifies whether Cool Access(tiering) is enabled for the volume.
+  /// [coolAccessRetrievalPolicy] coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
+  /// [coolAccessTieringPolicy] coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+  /// [coolnessPeriod] Specifies the number of days after which data that is not accessed by clients will be tiered.
+  /// [creationToken] A unique file path for the volume. Used when creating mount targets
+  /// [dataProtection] DataProtection type volumes include an object containing details of the replication
+  /// [defaultGroupQuotaInKiBs] Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
+  /// [defaultUserQuotaInKiBs] Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
+  /// [deleteBaseSnapshot] If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+  /// [enableSubvolumes] Flag indicating whether subvolume operations are enabled on the volume
+  /// [encryptionKeySource] Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+  /// [exportPolicy] Set of export policy rules
+  /// [isDefaultQuotaEnabled] Specifies if default quota is enabled for the volume.
+  /// [isLargeVolume] Specifies whether volume is a Large Volume or Regular Volume.
+  /// [isRestoring] Restoring
+  /// [kerberosEnabled] Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
+  /// [keyVaultPrivateEndpointResourceId] The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+  /// [ldapEnabled] Specifies whether LDAP is enabled or not for a given NFS volume.
+  /// [name] Resource name
+  /// [networkFeatures] The original value of the network features type available to the volume at the time it was created.
+  /// [placementRules] Application specific placement rules for the particular volume
+  /// [protocolTypes] Set of protocol types, default NFSv3, CIFS for SMB protocol
+  /// [proximityPlacementGroup] Proximity placement group associated with the volume
+  /// [securityStyle] The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
+  /// [serviceLevel] The service level of the file system
+  /// [smbAccessBasedEnumeration] Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+  /// [smbContinuouslyAvailable] Enables continuously available share property for smb volume. Only applicable for SMB volume
+  /// [smbEncryption] Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+  /// [smbNonBrowsable] Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+  /// [snapshotDirectoryVisible] If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
+  /// [snapshotId] Resource identifier used to identify the Snapshot.
+  /// [subnetId] The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
+  /// [tags] Resource tags
+  /// [throughputMibps] Optional.
+  /// [unixPermissions] UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
+  /// [usageThreshold] Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+  /// [volumeSpecName] Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
+  /// [volumeType] What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
+  /// [zones] Availability Zone
+  VolumeGroupVolumeProperties({
+    this.avsDataStore,
+    this.backupId,
+    this.capacityPoolResourceId,
+    this.coolAccess,
+    this.coolAccessRetrievalPolicy,
+    this.coolAccessTieringPolicy,
+    this.coolnessPeriod,
+    required this.creationToken,
+    this.dataProtection,
+    this.defaultGroupQuotaInKiBs,
+    this.defaultUserQuotaInKiBs,
+    this.deleteBaseSnapshot,
+    this.enableSubvolumes,
+    this.encryptionKeySource,
+    this.exportPolicy,
+    this.isDefaultQuotaEnabled,
+    this.isLargeVolume,
+    this.isRestoring,
+    this.kerberosEnabled,
+    this.keyVaultPrivateEndpointResourceId,
+    this.ldapEnabled,
+    this.name,
+    this.networkFeatures,
+    this.placementRules,
+    this.protocolTypes,
+    this.proximityPlacementGroup,
+    this.securityStyle,
+    this.serviceLevel,
+    this.smbAccessBasedEnumeration,
+    this.smbContinuouslyAvailable,
+    this.smbEncryption,
+    this.smbNonBrowsable,
+    this.snapshotDirectoryVisible,
+    this.snapshotId,
+    required this.subnetId,
+    this.tags,
+    this.throughputMibps,
+    this.unixPermissions,
+    required this.usageThreshold,
+    this.volumeSpecName,
+    this.volumeType,
+    this.zones,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'avsDataStore': ?avsDataStore,
+      'backupId': ?backupId,
+      'capacityPoolResourceId': ?capacityPoolResourceId,
+      'coolAccess': ?coolAccess,
+      'coolAccessRetrievalPolicy': ?coolAccessRetrievalPolicy,
+      'coolAccessTieringPolicy': ?coolAccessTieringPolicy,
+      'coolnessPeriod': ?coolnessPeriod,
+      'creationToken': creationToken,
+      'dataProtection': ?dataProtection == null ? null : dataProtection!.toMap(),
+      'defaultGroupQuotaInKiBs': ?defaultGroupQuotaInKiBs,
+      'defaultUserQuotaInKiBs': ?defaultUserQuotaInKiBs,
+      'deleteBaseSnapshot': ?deleteBaseSnapshot,
+      'enableSubvolumes': ?enableSubvolumes,
+      'encryptionKeySource': ?encryptionKeySource,
+      'exportPolicy': ?exportPolicy == null ? null : exportPolicy!.toMap(),
+      'isDefaultQuotaEnabled': ?isDefaultQuotaEnabled,
+      'isLargeVolume': ?isLargeVolume,
+      'isRestoring': ?isRestoring,
+      'kerberosEnabled': ?kerberosEnabled,
+      'keyVaultPrivateEndpointResourceId': ?keyVaultPrivateEndpointResourceId,
+      'ldapEnabled': ?ldapEnabled,
+      'name': ?name,
+      'networkFeatures': ?networkFeatures,
+      'placementRules': ?placementRules == null ? null : pulumi.Input.encodeList<PlacementKeyValuePairs, Map<String, dynamic>>(placementRules!, (value) => value.toMap()),
+      'protocolTypes': ?protocolTypes,
+      'proximityPlacementGroup': ?proximityPlacementGroup,
+      'securityStyle': ?securityStyle,
+      'serviceLevel': ?serviceLevel,
+      'smbAccessBasedEnumeration': ?smbAccessBasedEnumeration,
+      'smbContinuouslyAvailable': ?smbContinuouslyAvailable,
+      'smbEncryption': ?smbEncryption,
+      'smbNonBrowsable': ?smbNonBrowsable,
+      'snapshotDirectoryVisible': ?snapshotDirectoryVisible,
+      'snapshotId': ?snapshotId,
+      'subnetId': subnetId,
+      'tags': ?tags,
+      'throughputMibps': ?throughputMibps,
+      'unixPermissions': ?unixPermissions,
+      'usageThreshold': usageThreshold,
+      'volumeSpecName': ?volumeSpecName,
+      'volumeType': ?volumeType,
+      'zones': ?zones,
+    };
+  }
+
+  factory VolumeGroupVolumeProperties.fromMap(Map<String, dynamic> map) {
+    return VolumeGroupVolumeProperties(
+      avsDataStore: map['avsDataStore'] == null ? null : map['avsDataStore'] as String,
+      backupId: map['backupId'] == null ? null : map['backupId'] as String,
+      capacityPoolResourceId: map['capacityPoolResourceId'] == null ? null : map['capacityPoolResourceId'] as String,
+      coolAccess: map['coolAccess'] == null ? null : map['coolAccess'] as bool,
+      coolAccessRetrievalPolicy: map['coolAccessRetrievalPolicy'] == null ? null : map['coolAccessRetrievalPolicy'] as String,
+      coolAccessTieringPolicy: map['coolAccessTieringPolicy'] == null ? null : map['coolAccessTieringPolicy'] as String,
+      coolnessPeriod: map['coolnessPeriod'] == null ? null : map['coolnessPeriod'] as int,
+      creationToken: map['creationToken'] as String,
+      dataProtection: map['dataProtection'] == null ? null : VolumePropertiesDataProtection.fromMap((map['dataProtection'] as Map).cast<String, dynamic>()),
+      defaultGroupQuotaInKiBs: map['defaultGroupQuotaInKiBs'] == null ? null : map['defaultGroupQuotaInKiBs'] as double,
+      defaultUserQuotaInKiBs: map['defaultUserQuotaInKiBs'] == null ? null : map['defaultUserQuotaInKiBs'] as double,
+      deleteBaseSnapshot: map['deleteBaseSnapshot'] == null ? null : map['deleteBaseSnapshot'] as bool,
+      enableSubvolumes: map['enableSubvolumes'] == null ? null : map['enableSubvolumes'] as String,
+      encryptionKeySource: map['encryptionKeySource'] == null ? null : map['encryptionKeySource'] as String,
+      exportPolicy: map['exportPolicy'] == null ? null : VolumePropertiesExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>()),
+      isDefaultQuotaEnabled: map['isDefaultQuotaEnabled'] == null ? null : map['isDefaultQuotaEnabled'] as bool,
+      isLargeVolume: map['isLargeVolume'] == null ? null : map['isLargeVolume'] as bool,
+      isRestoring: map['isRestoring'] == null ? null : map['isRestoring'] as bool,
+      kerberosEnabled: map['kerberosEnabled'] == null ? null : map['kerberosEnabled'] as bool,
+      keyVaultPrivateEndpointResourceId: map['keyVaultPrivateEndpointResourceId'] == null ? null : map['keyVaultPrivateEndpointResourceId'] as String,
+      ldapEnabled: map['ldapEnabled'] == null ? null : map['ldapEnabled'] as bool,
+      name: map['name'] == null ? null : map['name'] as String,
+      networkFeatures: map['networkFeatures'] == null ? null : map['networkFeatures'] as String,
+      placementRules: map['placementRules'] == null ? null : pulumi.Input.decodeList<PlacementKeyValuePairs>(map['placementRules'], (value) => PlacementKeyValuePairs.fromMap((value as Map).cast<String, dynamic>())),
+      protocolTypes: map['protocolTypes'] == null ? null : (map['protocolTypes'] as List).cast<String>(),
+      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : map['proximityPlacementGroup'] as String,
+      securityStyle: map['securityStyle'] == null ? null : map['securityStyle'] as String,
+      serviceLevel: map['serviceLevel'] == null ? null : map['serviceLevel'] as String,
+      smbAccessBasedEnumeration: map['smbAccessBasedEnumeration'] == null ? null : map['smbAccessBasedEnumeration'] as String,
+      smbContinuouslyAvailable: map['smbContinuouslyAvailable'] == null ? null : map['smbContinuouslyAvailable'] as bool,
+      smbEncryption: map['smbEncryption'] == null ? null : map['smbEncryption'] as bool,
+      smbNonBrowsable: map['smbNonBrowsable'] == null ? null : map['smbNonBrowsable'] as String,
+      snapshotDirectoryVisible: map['snapshotDirectoryVisible'] == null ? null : map['snapshotDirectoryVisible'] as bool,
+      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
+      subnetId: map['subnetId'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      throughputMibps: map['throughputMibps'] == null ? null : map['throughputMibps'] as double,
+      unixPermissions: map['unixPermissions'] == null ? null : map['unixPermissions'] as String,
+      usageThreshold: map['usageThreshold'] as double,
+      volumeSpecName: map['volumeSpecName'] == null ? null : map['volumeSpecName'] as String,
+      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+    );
+  }
+}
+

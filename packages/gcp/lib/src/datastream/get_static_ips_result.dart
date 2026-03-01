@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStaticIps.
 class GetStaticIpsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String? project;
-
   /// A list of static IP addresses that Datastream will connect from.
   final List<String> staticIps;
 
@@ -40,3 +40,4 @@ class GetStaticIpsResult {
     );
   }
 }
+

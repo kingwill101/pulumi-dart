@@ -6,12 +6,8 @@ import 'firehose_delivery_stream_elasticsearch_configuration_processing_configur
 class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final bool? enabled;
-
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final List<
-    FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor
-  >?
-  processors;
+  final List<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
@@ -24,31 +20,15 @@ class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'processors': ?processors == null
-          ? null
-          : pulumi.Input.encodeList<
-              FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor,
-              Map<String, dynamic>
-            >(processors!, (value) => value.toMap()),
+      'processors': ?processors == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(processors!, (value) => value.toMap()),
     };
   }
 
-  factory FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      processors: map['processors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor
-            >(
-              map['processors'],
-              (value) =>
-                  FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      processors: map['processors'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

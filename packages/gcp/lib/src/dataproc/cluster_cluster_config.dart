@@ -22,66 +22,51 @@ class ClusterClusterConfig {
   /// only be removed by setting `policy_uri = ""`, rather than removing the whole block.
   /// Structure defined below.
   final ClusterClusterConfigAutoscalingConfig? autoscalingConfig;
-
   /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
   /// Structure defined below.
   final List<ClusterClusterConfigAuxiliaryNodeGroup>? auxiliaryNodeGroups;
-
   /// The name of the cloud storage bucket ultimately used to house the staging data
   /// for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
   /// it will be the auto generated name.
   final String? bucket;
-
   /// The tier of the cluster.
   final String? clusterTier;
-
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
   /// Structure defined below.
   final ClusterClusterConfigDataprocMetricConfig? dataprocMetricConfig;
-
   /// The Customer managed encryption keys settings for the cluster.
   /// Structure defined below.
   final ClusterClusterConfigEncryptionConfig? encryptionConfig;
-
   /// The config settings for port access on the cluster.
   /// Structure defined below.
   final ClusterClusterConfigEndpointConfig? endpointConfig;
-
   /// Common config settings for resources of Google Compute Engine cluster
   /// instances, applicable to all instances in the cluster. Structure defined below.
   final ClusterClusterConfigGceClusterConfig? gceClusterConfig;
-
   /// Commands to execute on each node after config is completed.
   /// You can specify multiple versions of these. Structure defined below.
   final List<ClusterClusterConfigInitializationAction>? initializationActions;
-
   /// The settings for auto deletion cluster schedule.
   /// Structure defined below.
   final ClusterClusterConfigLifecycleConfig? lifecycleConfig;
-
   /// The Google Compute Engine config settings for the master instances
   /// in a cluster. Structure defined below.
   final ClusterClusterConfigMasterConfig? masterConfig;
-
   /// The config setting for metastore service with the cluster.
   /// Structure defined below.
   /// - - -
   final ClusterClusterConfigMetastoreConfig? metastoreConfig;
-
   /// The Google Compute Engine config settings for the additional
   /// instances in a cluster. Structure defined below.
   /// * **NOTE** : `preemptible_worker_config` is
   /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
   /// such for legacy/compatibility reasons.
   final ClusterClusterConfigPreemptibleWorkerConfig? preemptibleWorkerConfig;
-
   /// Security related configuration. Structure defined below.
   final ClusterClusterConfigSecurityConfig? securityConfig;
-
   /// The config settings for software inside the cluster.
   /// Structure defined below.
   final ClusterClusterConfigSoftwareConfig? softwareConfig;
-
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
   /// Note: If you don't explicitly specify a `staging_bucket`
@@ -90,12 +75,10 @@ class ClusterClusterConfig {
   /// with other clusters in the same region/zone also choosing to use the auto generation
   /// option.
   final String? stagingBucket;
-
   /// The Cloud Storage temp bucket used to store ephemeral cluster
   /// and jobs data, such as Spark and MapReduce history files.
   /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
   final String? tempBucket;
-
   /// The Google Compute Engine config settings for the worker instances
   /// in a cluster. Structure defined below.
   final ClusterClusterConfigWorkerConfig? workerConfig;
@@ -142,51 +125,21 @@ class ClusterClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingConfig': ?autoscalingConfig == null
-          ? null
-          : autoscalingConfig!.toMap(),
-      'auxiliaryNodeGroups': ?auxiliaryNodeGroups == null
-          ? null
-          : pulumi.Input.encodeList<
-              ClusterClusterConfigAuxiliaryNodeGroup,
-              Map<String, dynamic>
-            >(auxiliaryNodeGroups!, (value) => value.toMap()),
+      'autoscalingConfig': ?autoscalingConfig == null ? null : autoscalingConfig!.toMap(),
+      'auxiliaryNodeGroups': ?auxiliaryNodeGroups == null ? null : pulumi.Input.encodeList<ClusterClusterConfigAuxiliaryNodeGroup, Map<String, dynamic>>(auxiliaryNodeGroups!, (value) => value.toMap()),
       'bucket': ?bucket,
       'clusterTier': ?clusterTier,
-      'dataprocMetricConfig': ?dataprocMetricConfig == null
-          ? null
-          : dataprocMetricConfig!.toMap(),
-      'encryptionConfig': ?encryptionConfig == null
-          ? null
-          : encryptionConfig!.toMap(),
-      'endpointConfig': ?endpointConfig == null
-          ? null
-          : endpointConfig!.toMap(),
-      'gceClusterConfig': ?gceClusterConfig == null
-          ? null
-          : gceClusterConfig!.toMap(),
-      'initializationActions': ?initializationActions == null
-          ? null
-          : pulumi.Input.encodeList<
-              ClusterClusterConfigInitializationAction,
-              Map<String, dynamic>
-            >(initializationActions!, (value) => value.toMap()),
-      'lifecycleConfig': ?lifecycleConfig == null
-          ? null
-          : lifecycleConfig!.toMap(),
+      'dataprocMetricConfig': ?dataprocMetricConfig == null ? null : dataprocMetricConfig!.toMap(),
+      'encryptionConfig': ?encryptionConfig == null ? null : encryptionConfig!.toMap(),
+      'endpointConfig': ?endpointConfig == null ? null : endpointConfig!.toMap(),
+      'gceClusterConfig': ?gceClusterConfig == null ? null : gceClusterConfig!.toMap(),
+      'initializationActions': ?initializationActions == null ? null : pulumi.Input.encodeList<ClusterClusterConfigInitializationAction, Map<String, dynamic>>(initializationActions!, (value) => value.toMap()),
+      'lifecycleConfig': ?lifecycleConfig == null ? null : lifecycleConfig!.toMap(),
       'masterConfig': ?masterConfig == null ? null : masterConfig!.toMap(),
-      'metastoreConfig': ?metastoreConfig == null
-          ? null
-          : metastoreConfig!.toMap(),
-      'preemptibleWorkerConfig': ?preemptibleWorkerConfig == null
-          ? null
-          : preemptibleWorkerConfig!.toMap(),
-      'securityConfig': ?securityConfig == null
-          ? null
-          : securityConfig!.toMap(),
-      'softwareConfig': ?softwareConfig == null
-          ? null
-          : softwareConfig!.toMap(),
+      'metastoreConfig': ?metastoreConfig == null ? null : metastoreConfig!.toMap(),
+      'preemptibleWorkerConfig': ?preemptibleWorkerConfig == null ? null : preemptibleWorkerConfig!.toMap(),
+      'securityConfig': ?securityConfig == null ? null : securityConfig!.toMap(),
+      'softwareConfig': ?softwareConfig == null ? null : softwareConfig!.toMap(),
       'stagingBucket': ?stagingBucket,
       'tempBucket': ?tempBucket,
       'workerConfig': ?workerConfig == null ? null : workerConfig!.toMap(),
@@ -195,92 +148,25 @@ class ClusterClusterConfig {
 
   factory ClusterClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfig(
-      autoscalingConfig: map['autoscalingConfig'] == null
-          ? null
-          : ClusterClusterConfigAutoscalingConfig.fromMap(
-              (map['autoscalingConfig'] as Map).cast<String, dynamic>(),
-            ),
-      auxiliaryNodeGroups: map['auxiliaryNodeGroups'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroup>(
-              map['auxiliaryNodeGroups'],
-              (value) => ClusterClusterConfigAuxiliaryNodeGroup.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : ClusterClusterConfigAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>()),
+      auxiliaryNodeGroups: map['auxiliaryNodeGroups'] == null ? null : pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroup>(map['auxiliaryNodeGroups'], (value) => ClusterClusterConfigAuxiliaryNodeGroup.fromMap((value as Map).cast<String, dynamic>())),
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      clusterTier: map['clusterTier'] == null
-          ? null
-          : map['clusterTier'] as String,
-      dataprocMetricConfig: map['dataprocMetricConfig'] == null
-          ? null
-          : ClusterClusterConfigDataprocMetricConfig.fromMap(
-              (map['dataprocMetricConfig'] as Map).cast<String, dynamic>(),
-            ),
-      encryptionConfig: map['encryptionConfig'] == null
-          ? null
-          : ClusterClusterConfigEncryptionConfig.fromMap(
-              (map['encryptionConfig'] as Map).cast<String, dynamic>(),
-            ),
-      endpointConfig: map['endpointConfig'] == null
-          ? null
-          : ClusterClusterConfigEndpointConfig.fromMap(
-              (map['endpointConfig'] as Map).cast<String, dynamic>(),
-            ),
-      gceClusterConfig: map['gceClusterConfig'] == null
-          ? null
-          : ClusterClusterConfigGceClusterConfig.fromMap(
-              (map['gceClusterConfig'] as Map).cast<String, dynamic>(),
-            ),
-      initializationActions: map['initializationActions'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterClusterConfigInitializationAction>(
-              map['initializationActions'],
-              (value) => ClusterClusterConfigInitializationAction.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      lifecycleConfig: map['lifecycleConfig'] == null
-          ? null
-          : ClusterClusterConfigLifecycleConfig.fromMap(
-              (map['lifecycleConfig'] as Map).cast<String, dynamic>(),
-            ),
-      masterConfig: map['masterConfig'] == null
-          ? null
-          : ClusterClusterConfigMasterConfig.fromMap(
-              (map['masterConfig'] as Map).cast<String, dynamic>(),
-            ),
-      metastoreConfig: map['metastoreConfig'] == null
-          ? null
-          : ClusterClusterConfigMetastoreConfig.fromMap(
-              (map['metastoreConfig'] as Map).cast<String, dynamic>(),
-            ),
-      preemptibleWorkerConfig: map['preemptibleWorkerConfig'] == null
-          ? null
-          : ClusterClusterConfigPreemptibleWorkerConfig.fromMap(
-              (map['preemptibleWorkerConfig'] as Map).cast<String, dynamic>(),
-            ),
-      securityConfig: map['securityConfig'] == null
-          ? null
-          : ClusterClusterConfigSecurityConfig.fromMap(
-              (map['securityConfig'] as Map).cast<String, dynamic>(),
-            ),
-      softwareConfig: map['softwareConfig'] == null
-          ? null
-          : ClusterClusterConfigSoftwareConfig.fromMap(
-              (map['softwareConfig'] as Map).cast<String, dynamic>(),
-            ),
-      stagingBucket: map['stagingBucket'] == null
-          ? null
-          : map['stagingBucket'] as String,
-      tempBucket: map['tempBucket'] == null
-          ? null
-          : map['tempBucket'] as String,
-      workerConfig: map['workerConfig'] == null
-          ? null
-          : ClusterClusterConfigWorkerConfig.fromMap(
-              (map['workerConfig'] as Map).cast<String, dynamic>(),
-            ),
+      clusterTier: map['clusterTier'] == null ? null : map['clusterTier'] as String,
+      dataprocMetricConfig: map['dataprocMetricConfig'] == null ? null : ClusterClusterConfigDataprocMetricConfig.fromMap((map['dataprocMetricConfig'] as Map).cast<String, dynamic>()),
+      encryptionConfig: map['encryptionConfig'] == null ? null : ClusterClusterConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      endpointConfig: map['endpointConfig'] == null ? null : ClusterClusterConfigEndpointConfig.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>()),
+      gceClusterConfig: map['gceClusterConfig'] == null ? null : ClusterClusterConfigGceClusterConfig.fromMap((map['gceClusterConfig'] as Map).cast<String, dynamic>()),
+      initializationActions: map['initializationActions'] == null ? null : pulumi.Input.decodeList<ClusterClusterConfigInitializationAction>(map['initializationActions'], (value) => ClusterClusterConfigInitializationAction.fromMap((value as Map).cast<String, dynamic>())),
+      lifecycleConfig: map['lifecycleConfig'] == null ? null : ClusterClusterConfigLifecycleConfig.fromMap((map['lifecycleConfig'] as Map).cast<String, dynamic>()),
+      masterConfig: map['masterConfig'] == null ? null : ClusterClusterConfigMasterConfig.fromMap((map['masterConfig'] as Map).cast<String, dynamic>()),
+      metastoreConfig: map['metastoreConfig'] == null ? null : ClusterClusterConfigMetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>()),
+      preemptibleWorkerConfig: map['preemptibleWorkerConfig'] == null ? null : ClusterClusterConfigPreemptibleWorkerConfig.fromMap((map['preemptibleWorkerConfig'] as Map).cast<String, dynamic>()),
+      securityConfig: map['securityConfig'] == null ? null : ClusterClusterConfigSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>()),
+      softwareConfig: map['softwareConfig'] == null ? null : ClusterClusterConfigSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>()),
+      stagingBucket: map['stagingBucket'] == null ? null : map['stagingBucket'] as String,
+      tempBucket: map['tempBucket'] == null ? null : map['tempBucket'] as String,
+      workerConfig: map['workerConfig'] == null ? null : ClusterClusterConfigWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

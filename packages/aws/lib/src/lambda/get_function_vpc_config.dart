@@ -1,14 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionVpcConfig {
   final bool ipv6AllowedForDualStack;
-
   /// List of security group IDs associated with the Lambda function.
   final List<String> securityGroupIds;
-
   /// List of subnet IDs associated with the Lambda function.
   final List<String> subnetIds;
-
   /// ID of the VPC.
   final String vpcId;
 
@@ -42,3 +40,4 @@ class GetFunctionVpcConfig {
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   final String arn;
-
   /// PEM-encoded certificate value.
   final String certificate;
   final String certificateAuthorityArn;
-
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA.
   final String certificateChain;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -53,3 +51,4 @@ class GetCertificateResult {
     );
   }
 }
+

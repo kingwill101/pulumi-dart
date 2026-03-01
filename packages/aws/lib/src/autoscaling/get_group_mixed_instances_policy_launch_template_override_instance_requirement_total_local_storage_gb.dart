@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb {
   /// Maximum.
   final double max;
-
   /// Minimum.
   final double min;
 
@@ -16,15 +16,17 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotal
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb(
       max: map['max'] as double,
       min: map['min'] as double,
     );
   }
 }
+

@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetServicesServiceLogConfig {
+  /// Log Service store name.
+  final String logstore;
+  /// Log Service project name.
+  final String project;
+
+  /// Creates a new [GetServicesServiceLogConfig].
+  /// [logstore] Log Service store name.
+  /// [project] Log Service project name.
+  GetServicesServiceLogConfig({
+    required this.logstore,
+    required this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'logstore': logstore,
+      'project': project,
+    };
+  }
+
+  factory GetServicesServiceLogConfig.fromMap(Map<String, dynamic> map) {
+    return GetServicesServiceLogConfig(
+      logstore: map['logstore'] as String,
+      project: map['project'] as String,
+    );
+  }
+}
+

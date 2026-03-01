@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigBlockingFunctionsTrigger {
   /// The identifier for this object. Format specified above.
   final String eventType;
-
   /// HTTP URI trigger for the Cloud Function.
   final String functionUri;
-
   /// (Output)
   /// When the trigger was changed.
   final String? updateTime;
@@ -33,9 +32,8 @@ class ConfigBlockingFunctionsTrigger {
     return ConfigBlockingFunctionsTrigger(
       eventType: map['eventType'] as String,
       functionUri: map['functionUri'] as String,
-      updateTime: map['updateTime'] == null
-          ? null
-          : map['updateTime'] as String,
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
     );
   }
 }
+

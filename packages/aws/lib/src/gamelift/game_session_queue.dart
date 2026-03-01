@@ -191,32 +191,22 @@ import 'game_session_queue_player_latency_policy.dart';
 class GameSessionQueue extends pulumi.CustomResource {
   /// Game Session Queue ARN.
   late final pulumi.Output<String> arn;
-
   /// Information to be added to all events that are related to this game session queue.
   late final pulumi.Output<String?> customEventData;
-
   /// List of fleet/alias ARNs used by session queue for placing game sessions.
   late final pulumi.Output<List<String>?> destinations;
-
   /// Name of the session queue.
   late final pulumi.Output<String> name;
-
   /// An SNS topic ARN that is set up to receive game session placement notifications.
   late final pulumi.Output<String?> notificationTarget;
-
   /// One or more policies used to choose fleet based on player latency. See below.
-  late final pulumi.Output<List<GameSessionQueuePlayerLatencyPolicy>?>
-  playerLatencyPolicies;
-
+  late final pulumi.Output<List<GameSessionQueuePlayerLatencyPolicy>?> playerLatencyPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Maximum time a game session request can remain in the queue.
   late final pulumi.Output<int?> timeoutInSeconds;
 
@@ -229,20 +219,17 @@ class GameSessionQueue extends pulumi.CustomResource {
     GameSessionQueueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:gamelift/gameSessionQueue:GameSessionQueue',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:gamelift/gameSessionQueue:GameSessionQueue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.customEventData = registerOutput<String?>('customEventData');
     this.destinations = registerOutput<List<String>?>('destinations');
     this.name = registerOutput<String>('name');
     this.notificationTarget = registerOutput<String?>('notificationTarget');
-    this.playerLatencyPolicies =
-        registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>(
-          'playerLatencyPolicies',
-        );
+    this.playerLatencyPolicies = registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>('playerLatencyPolicies');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

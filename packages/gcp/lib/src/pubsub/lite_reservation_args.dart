@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiteReservationArgs {
   /// Name of the reservation.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the pubsub lite reservation.
   final pulumi.Input<String>? region;
-
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
@@ -32,10 +29,11 @@ class LiteReservationArgs {
     String? project,
     String? region,
     required int throughputCapacity,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       throughputCapacity = pulumi.Input.asInput<int>(throughputCapacity);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      throughputCapacity = pulumi.Input.asInput<int>(throughputCapacity);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,3 +53,4 @@ class LiteReservationArgs {
     );
   }
 }
+

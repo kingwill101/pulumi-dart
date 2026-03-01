@@ -15,17 +15,20 @@ class EntitlementApprovalWorkflow {
 
   /// Creates a new [EntitlementApprovalWorkflow].
   /// [manualApprovals] A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
-  EntitlementApprovalWorkflow({required this.manualApprovals});
+  EntitlementApprovalWorkflow({
+    required this.manualApprovals,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'manualApprovals': manualApprovals.toMap()};
+    return <String, dynamic>{
+      'manualApprovals': manualApprovals.toMap(),
+    };
   }
 
   factory EntitlementApprovalWorkflow.fromMap(Map<String, dynamic> map) {
     return EntitlementApprovalWorkflow(
-      manualApprovals: EntitlementApprovalWorkflowManualApprovals.fromMap(
-        (map['manualApprovals'] as Map).cast<String, dynamic>(),
-      ),
+      manualApprovals: EntitlementApprovalWorkflowManualApprovals.fromMap((map['manualApprovals'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

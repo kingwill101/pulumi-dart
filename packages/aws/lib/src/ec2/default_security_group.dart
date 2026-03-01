@@ -389,33 +389,24 @@ import 'default_security_group_ingress.dart';
 class DefaultSecurityGroup extends pulumi.CustomResource {
   /// ARN of the security group.
   late final pulumi.Output<String> arn;
-
   /// Description of the security group.
   late final pulumi.Output<String> description;
-
   /// Configuration block. Detailed below.
   late final pulumi.Output<List<DefaultSecurityGroupEgress>> egress;
-
   /// Configuration block. Detailed below.
   late final pulumi.Output<List<DefaultSecurityGroupIngress>> ingress;
-
   /// Name of the security group.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> namePrefix;
-
   /// Owner ID.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<bool?> revokeRulesOnDelete;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
   late final pulumi.Output<String> vpcId;
 
@@ -428,11 +419,11 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
     DefaultSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String>('description');
     this.egress = registerOutput<List<DefaultSecurityGroupEgress>>('egress');

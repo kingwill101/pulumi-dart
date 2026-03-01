@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Uploads files required for validation to VMs (Linux, Windows). Corresponds to Packer file provisioner
+class ImageTemplateFileValidator {
+  /// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
+  final String? destination;
+  /// Friendly Name to provide context on what this validation step does
+  final String? name;
+  /// SHA256 checksum of the file provided in the sourceUri field above
+  final String? sha256Checksum;
+  /// The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
+  final String? sourceUri;
+  /// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+  /// Expected value is 'File'.
+  final String type;
+
+  /// Creates a new [ImageTemplateFileValidator].
+  /// [destination] The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
+  /// [name] Friendly Name to provide context on what this validation step does
+  /// [sha256Checksum] SHA256 checksum of the file provided in the sourceUri field above
+  /// [sourceUri] The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
+  /// [type] The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+  ImageTemplateFileValidator({
+    this.destination,
+    this.name,
+    this.sha256Checksum,
+    this.sourceUri,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'destination': ?destination,
+      'name': ?name,
+      'sha256Checksum': ?sha256Checksum,
+      'sourceUri': ?sourceUri,
+      'type': type,
+    };
+  }
+
+  factory ImageTemplateFileValidator.fromMap(Map<String, dynamic> map) {
+    return ImageTemplateFileValidator(
+      destination: map['destination'] == null ? null : map['destination'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      sha256Checksum: map['sha256Checksum'] == null ? null : map['sha256Checksum'] as String,
+      sourceUri: map['sourceUri'] == null ? null : map['sourceUri'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

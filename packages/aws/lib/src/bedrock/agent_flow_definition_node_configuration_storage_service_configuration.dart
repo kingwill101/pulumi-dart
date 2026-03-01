@@ -7,21 +7,20 @@ class AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration].
   /// [s3] Optional.
-  AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration({this.s3});
+  AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration({
+    this.s3,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3': ?s3 == null ? null : s3!.toMap()};
+    return <String, dynamic>{
+      's3': ?s3 == null ? null : s3!.toMap(),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration(
-      s3: map['s3'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3.fromMap(
-              (map['s3'] as Map).cast<String, dynamic>(),
-            ),
+      s3: map['s3'] == null ? null : AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

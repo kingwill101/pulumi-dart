@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAndroidAppConfig.
 class GetAndroidAppConfigResult {
   final String appId;
@@ -42,3 +43,4 @@ class GetAndroidAppConfigResult {
     );
   }
 }
+

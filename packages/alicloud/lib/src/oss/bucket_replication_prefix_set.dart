@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class BucketReplicationPrefixSet {
+  /// The list of object key name prefix identifying one or more objects to which the rule applies.
+  ///
+  /// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+  final List<String> prefixes;
+
+  /// Creates a new [BucketReplicationPrefixSet].
+  /// [prefixes] The list of object key name prefix identifying one or more objects to which the rule applies.
+  BucketReplicationPrefixSet({
+    required this.prefixes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'prefixes': prefixes,
+    };
+  }
+
+  factory BucketReplicationPrefixSet.fromMap(Map<String, dynamic> map) {
+    return BucketReplicationPrefixSet(
+      prefixes: (map['prefixes'] as List).cast<String>(),
+    );
+  }
+}
+

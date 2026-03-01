@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTableItem.
 class GetTableItemResult {
   final Map<String, String>? expressionAttributeNames;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// JSON representation of a map of attribute names to [AttributeValue](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_AttributeValue.html) objects, as specified by ProjectionExpression.
   final String item;
   final String key;
@@ -46,17 +45,14 @@ class GetTableItemResult {
 
   factory GetTableItemResult.fromMap(Map<String, dynamic> map) {
     return GetTableItemResult(
-      expressionAttributeNames: map['expressionAttributeNames'] == null
-          ? null
-          : (map['expressionAttributeNames'] as Map).cast<String, String>(),
+      expressionAttributeNames: map['expressionAttributeNames'] == null ? null : (map['expressionAttributeNames'] as Map).cast<String, String>(),
       id: map['id'] as String,
       item: map['item'] as String,
       key: map['key'] as String,
-      projectionExpression: map['projectionExpression'] == null
-          ? null
-          : map['projectionExpression'] as String,
+      projectionExpression: map['projectionExpression'] == null ? null : map['projectionExpression'] as String,
       region: map['region'] as String,
       tableName: map['tableName'] as String,
     );
   }
 }
+

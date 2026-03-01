@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTrafficPolicyDocumentRuleLocation {
   /// Value of a continent.
   final String? continent;
-
   /// Value of a country.
   final String? country;
-
   /// References to an endpoint.
   final String? endpointReference;
-
   /// Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
   final bool? evaluateTargetHealth;
-
   /// If you want to associate a health check with the endpoint or rule.
   final String? healthCheck;
-
   /// Indicates whether this set of values represents the default location.
   final bool? isDefault;
-
   /// References to a rule.
   final String? ruleReference;
-
   /// Value of a subdivision.
   final String? subdivision;
 
@@ -58,28 +52,17 @@ class GetTrafficPolicyDocumentRuleLocation {
     };
   }
 
-  factory GetTrafficPolicyDocumentRuleLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTrafficPolicyDocumentRuleLocation.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleLocation(
       continent: map['continent'] == null ? null : map['continent'] as String,
       country: map['country'] == null ? null : map['country'] as String,
-      endpointReference: map['endpointReference'] == null
-          ? null
-          : map['endpointReference'] as String,
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null
-          ? null
-          : map['evaluateTargetHealth'] as bool,
-      healthCheck: map['healthCheck'] == null
-          ? null
-          : map['healthCheck'] as String,
+      endpointReference: map['endpointReference'] == null ? null : map['endpointReference'] as String,
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : map['evaluateTargetHealth'] as bool,
+      healthCheck: map['healthCheck'] == null ? null : map['healthCheck'] as String,
       isDefault: map['isDefault'] == null ? null : map['isDefault'] as bool,
-      ruleReference: map['ruleReference'] == null
-          ? null
-          : map['ruleReference'] as String,
-      subdivision: map['subdivision'] == null
-          ? null
-          : map['subdivision'] as String,
+      ruleReference: map['ruleReference'] == null ? null : map['ruleReference'] as String,
+      subdivision: map['subdivision'] == null ? null : map['subdivision'] as String,
     );
   }
 }
+

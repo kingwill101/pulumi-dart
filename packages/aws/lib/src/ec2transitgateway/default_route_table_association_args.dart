@@ -11,10 +11,8 @@ class DefaultRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<DefaultRouteTableAssociationTimeouts>? timeouts;
-
   /// ID of the Transit Gateway to change the default association route table on.
   final pulumi.Input<String> transitGatewayId;
-
   /// ID of the Transit Gateway Route Table to be made the default association route table.
   final pulumi.Input<String> transitGatewayRouteTableId;
 
@@ -28,24 +26,16 @@ class DefaultRouteTableAssociationArgs {
     DefaultRouteTableAssociationTimeouts? timeouts,
     required String transitGatewayId,
     required String transitGatewayRouteTableId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       timeouts =
-           pulumi.Input.asOptionalInput<DefaultRouteTableAssociationTimeouts>(
-             timeouts,
-           ),
-       transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId),
-       transitGatewayRouteTableId = pulumi.Input.asInput<String>(
-         transitGatewayRouteTableId,
-       );
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<DefaultRouteTableAssociationTimeouts>(timeouts),
+      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId),
+      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefaultRouteTableAssociationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DefaultRouteTableAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'transitGatewayId': transitGatewayId,
       'transitGatewayRouteTableId': transitGatewayRouteTableId,
     };
@@ -54,13 +44,10 @@ class DefaultRouteTableAssociationArgs {
   factory DefaultRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableAssociationArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : DefaultRouteTableAssociationTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : DefaultRouteTableAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       transitGatewayId: map['transitGatewayId'] as String,
       transitGatewayRouteTableId: map['transitGatewayRouteTableId'] as String,
     );
   }
 }
+

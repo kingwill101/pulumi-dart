@@ -10,27 +10,20 @@ import 'workload_attributes.dart';
 class WorkloadArgs {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> applicationId;
-
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<WorkloadAttributes>? attributes;
-
   /// User-defined description of a Workload.
   final pulumi.Input<String>? description;
-
   /// Immutable. The resource name of the original discovered workload.
   final pulumi.Input<String> discoveredWorkload;
-
   /// User-defined name for the Workload.
   final pulumi.Input<String>? displayName;
-
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Workload identifier.
   final pulumi.Input<String> workloadId;
 
@@ -52,25 +45,20 @@ class WorkloadArgs {
     required String location,
     String? project,
     required String workloadId,
-  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
-       attributes = pulumi.Input.asOptionalInput<WorkloadAttributes>(
-         attributes,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       discoveredWorkload = pulumi.Input.asInput<String>(discoveredWorkload),
-       displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       workloadId = pulumi.Input.asInput<String>(workloadId);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      attributes = pulumi.Input.asOptionalInput<WorkloadAttributes>(attributes),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      discoveredWorkload = pulumi.Input.asInput<String>(discoveredWorkload),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadId = pulumi.Input.asInput<String>(workloadId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkloadAttributes,
-            Map<String, dynamic>
-          >(attributes, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<WorkloadAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
       'description': ?description,
       'discoveredWorkload': discoveredWorkload,
       'displayName': ?displayName,
@@ -83,21 +71,14 @@ class WorkloadArgs {
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
       applicationId: map['applicationId'] as String,
-      attributes: map['attributes'] == null
-          ? null
-          : WorkloadAttributes.fromMap(
-              (map['attributes'] as Map).cast<String, dynamic>(),
-            ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      attributes: map['attributes'] == null ? null : WorkloadAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       discoveredWorkload: map['discoveredWorkload'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       workloadId: map['workloadId'] as String,
     );
   }
 }
+

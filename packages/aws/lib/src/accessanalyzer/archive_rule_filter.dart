@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ArchiveRuleFilter {
   /// Contains comparator.
   final List<String>? contains;
-
   /// Filter criteria.
   final String criteria;
-
   /// Equals comparator.
   final List<String>? eqs;
-
   /// Boolean comparator.
   final String? exists;
-
   /// Not Equals comparator.
   final List<String>? neqs;
 
@@ -42,9 +39,7 @@ class ArchiveRuleFilter {
 
   factory ArchiveRuleFilter.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleFilter(
-      contains: map['contains'] == null
-          ? null
-          : (map['contains'] as List).cast<String>(),
+      contains: map['contains'] == null ? null : (map['contains'] as List).cast<String>(),
       criteria: map['criteria'] as String,
       eqs: map['eqs'] == null ? null : (map['eqs'] as List).cast<String>(),
       exists: map['exists'] == null ? null : map['exists'] as String,
@@ -52,3 +47,4 @@ class ArchiveRuleFilter {
     );
   }
 }
+

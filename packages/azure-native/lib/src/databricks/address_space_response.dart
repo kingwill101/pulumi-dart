@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
+class AddressSpaceResponse {
+  /// A list of address blocks reserved for this virtual network in CIDR notation.
+  final List<String>? addressPrefixes;
+
+  /// Creates a new [AddressSpaceResponse].
+  /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
+  AddressSpaceResponse({
+    this.addressPrefixes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'addressPrefixes': ?addressPrefixes,
+    };
+  }
+
+  factory AddressSpaceResponse.fromMap(Map<String, dynamic> map) {
+    return AddressSpaceResponse(
+      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes'] as List).cast<String>(),
+    );
+  }
+}
+

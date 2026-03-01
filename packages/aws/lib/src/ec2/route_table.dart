@@ -668,28 +668,21 @@ import 'route_table_route.dart';
 class RouteTable extends pulumi.CustomResource {
   /// The ARN of the route table.
   late final pulumi.Output<String> arn;
-
   /// The ID of the AWS account that owns the route table.
   late final pulumi.Output<String> ownerId;
-
   /// A list of virtual gateways for propagation.
   late final pulumi.Output<List<String>> propagatingVgws;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of route objects. Their keys are documented below.
   /// This means that omitting this argument is interpreted as ignoring any existing routes. To remove all managed routes an empty list should be specified. See the example above.
   ///
   /// > **NOTE on Route Tables and Routes:** This provider currently provides both a standalone Route resource (`aws.ec2.Route`) and a Route Table resource with routes defined in-line (`aws.ec2.RouteTable`). At this time you cannot use a `aws.ec2.RouteTable` inline `route` blocks in conjunction with any `aws.ec2.Route` resources. Doing so will cause a conflict of rule settings and will overwrite rules.
   late final pulumi.Output<List<RouteTableRoute>> routes;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
 
@@ -702,11 +695,11 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.ownerId = registerOutput<String>('ownerId');
     this.propagatingVgws = registerOutput<List<String>>('propagatingVgws');

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceEnclaveOptions {
   /// Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
   ///
@@ -8,10 +9,14 @@ class InstanceEnclaveOptions {
 
   /// Creates a new [InstanceEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
-  InstanceEnclaveOptions({this.enabled});
+  InstanceEnclaveOptions({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory InstanceEnclaveOptions.fromMap(Map<String, dynamic> map) {
@@ -20,3 +25,4 @@ class InstanceEnclaveOptions {
     );
   }
 }
+

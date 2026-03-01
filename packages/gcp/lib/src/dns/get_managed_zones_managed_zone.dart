@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedZonesManagedZone {
   final String description;
   final String dnsName;
@@ -7,7 +8,6 @@ class GetManagedZonesManagedZone {
   final String managedZoneId;
   final String? name;
   final List<String> nameServers;
-
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
   final String? project;
   final String visibility;
@@ -58,3 +58,4 @@ class GetManagedZonesManagedZone {
     );
   }
 }
+

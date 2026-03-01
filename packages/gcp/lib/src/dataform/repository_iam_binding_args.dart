@@ -29,22 +29,17 @@ class RepositoryIamBindingArgs {
     String? region,
     required String repository,
     required String role,
-  }) : condition = pulumi.Input.asOptionalInput<RepositoryIamBindingCondition>(
-         condition,
-       ),
-       members = pulumi.Input.asInput<List<String>>(members),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       repository = pulumi.Input.asInput<String>(repository),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<RepositoryIamBindingCondition>(condition),
+      members = pulumi.Input.asInput<List<String>>(members),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      repository = pulumi.Input.asInput<String>(repository),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryIamBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<RepositoryIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'members': members,
       'project': ?project,
       'region': ?region,
@@ -55,11 +50,7 @@ class RepositoryIamBindingArgs {
 
   factory RepositoryIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamBindingArgs(
-      condition: map['condition'] == null
-          ? null
-          : RepositoryIamBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : RepositoryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       members: (map['members'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -68,3 +59,4 @@ class RepositoryIamBindingArgs {
     );
   }
 }
+

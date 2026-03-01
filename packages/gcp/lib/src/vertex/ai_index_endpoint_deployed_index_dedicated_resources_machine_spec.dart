@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
   /// The type of the machine.
   /// See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
@@ -9,19 +10,20 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
 
   /// Creates a new [AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec].
   /// [machineType] The type of the machine.
-  AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({this.machineType});
+  AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({
+    this.machineType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'machineType': ?machineType};
+    return <String, dynamic>{
+      'machineType': ?machineType,
+    };
   }
 
-  factory AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec(
-      machineType: map['machineType'] == null
-          ? null
-          : map['machineType'] as String,
+      machineType: map['machineType'] == null ? null : map['machineType'] as String,
     );
   }
 }
+

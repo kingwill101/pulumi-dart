@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'logs_config_status_type_enum_value.dart';
+
+/// Definition of CloudWatchLogsConfig
+class CloudWatchLogsConfig {
+  /// <p> The group name of the logs in CloudWatch Logs. For more information, see <a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'>Working with Log Groups and Log Streams</a>. </p>
+  final String? groupName;
+  /// <p>The current status of the logs in CloudWatch Logs for a build project. Valid values are:</p> <ul> <li> <p> <code>ENABLED</code>: CloudWatch Logs are enabled for this build project.</p> </li> <li> <p> <code>DISABLED</code>: CloudWatch Logs are not enabled for this build project.</p> </li> </ul>
+  final LogsConfigStatusTypeEnumValue? status;
+  /// <p> The prefix of the stream name of the CloudWatch Logs. For more information, see <a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'>Working with Log Groups and Log Streams</a>. </p>
+  final String? streamName;
+
+  /// Creates a new [CloudWatchLogsConfig].
+  /// [groupName] <p> The group name of the logs in CloudWatch Logs. For more information, see <a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'>Working with Log Groups and Log Streams</a>. </p>
+  /// [status] <p>The current status of the logs in CloudWatch Logs for a build project. Valid values are:</p> <ul> <li> <p> <code>ENABLED</code>: CloudWatch Logs are enabled for this build project.</p> </li> <li> <p> <code>DISABLED</code>: CloudWatch Logs are not enabled for this build project.</p> </li> </ul>
+  /// [streamName] <p> The prefix of the stream name of the CloudWatch Logs. For more information, see <a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'>Working with Log Groups and Log Streams</a>. </p>
+  CloudWatchLogsConfig({
+    this.groupName,
+    this.status,
+    this.streamName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'groupName': ?groupName,
+      'status': ?status == null ? null : status!.toMap(),
+      'streamName': ?streamName,
+    };
+  }
+
+  factory CloudWatchLogsConfig.fromMap(Map<String, dynamic> map) {
+    return CloudWatchLogsConfig(
+      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      status: map['status'] == null ? null : LogsConfigStatusTypeEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      streamName: map['streamName'] == null ? null : map['streamName'] as String,
+    );
+  }
+}
+

@@ -258,10 +258,8 @@ import 'policy_attachment_args.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// The name of the policy to attach.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The identity to which the policy is attached.
   late final pulumi.Output<String> target;
 
@@ -274,11 +272,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');
     this.target = registerOutput<String>('target');

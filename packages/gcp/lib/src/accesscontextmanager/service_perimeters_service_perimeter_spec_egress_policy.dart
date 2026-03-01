@@ -7,12 +7,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy {
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
   final ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom? egressFrom;
-
   /// Defines the conditions on the `ApiOperation` and destination resources that
   /// cause this `EgressPolicy` to apply.
   /// Structure is documented below.
   final ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo? egressTo;
-
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   final String? title;
 
@@ -34,21 +32,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy {
     };
   }
 
-  factory ServicePerimetersServicePerimeterSpecEgressPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePerimetersServicePerimeterSpecEgressPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeterSpecEgressPolicy(
-      egressFrom: map['egressFrom'] == null
-          ? null
-          : ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom.fromMap(
-              (map['egressFrom'] as Map).cast<String, dynamic>(),
-            ),
-      egressTo: map['egressTo'] == null
-          ? null
-          : ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.fromMap(
-              (map['egressTo'] as Map).cast<String, dynamic>(),
-            ),
+      egressFrom: map['egressFrom'] == null ? null : ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>()),
+      egressTo: map['egressTo'] == null ? null : ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>()),
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
+

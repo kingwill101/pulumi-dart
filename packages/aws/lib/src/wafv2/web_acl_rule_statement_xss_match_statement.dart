@@ -7,10 +7,8 @@ import 'web_acl_rule_statement_xss_match_statement_text_transformation.dart';
 class WebAclRuleStatementXssMatchStatement {
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
   final WebAclRuleStatementXssMatchStatementFieldToMatch? fieldToMatch;
-
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final List<WebAclRuleStatementXssMatchStatementTextTransformation>
-  textTransformations;
+  final List<WebAclRuleStatementXssMatchStatementTextTransformation> textTransformations;
 
   /// Creates a new [WebAclRuleStatementXssMatchStatement].
   /// [fieldToMatch] Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
@@ -23,33 +21,15 @@ class WebAclRuleStatementXssMatchStatement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fieldToMatch': ?fieldToMatch == null ? null : fieldToMatch!.toMap(),
-      'textTransformations':
-          pulumi.Input.encodeList<
-            WebAclRuleStatementXssMatchStatementTextTransformation,
-            Map<String, dynamic>
-          >(textTransformations, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementXssMatchStatementTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementXssMatchStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap(
-              (map['fieldToMatch'] as Map).cast<String, dynamic>(),
-            ),
-      textTransformations:
-          pulumi.Input.decodeList<
-            WebAclRuleStatementXssMatchStatementTextTransformation
-          >(
-            map['textTransformations'],
-            (value) =>
-                WebAclRuleStatementXssMatchStatementTextTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      fieldToMatch: map['fieldToMatch'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
+      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -22,55 +22,18 @@ class GetGatewayRouteSpecHttp2RouteActionRewrite {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostnames':
-          pulumi.Input.encodeList<
-            GetGatewayRouteSpecHttp2RouteActionRewriteHostname,
-            Map<String, dynamic>
-          >(hostnames, (value) => value.toMap()),
-      'paths':
-          pulumi.Input.encodeList<
-            GetGatewayRouteSpecHttp2RouteActionRewritePath,
-            Map<String, dynamic>
-          >(paths, (value) => value.toMap()),
-      'prefixes':
-          pulumi.Input.encodeList<
-            GetGatewayRouteSpecHttp2RouteActionRewritePrefix,
-            Map<String, dynamic>
-          >(prefixes, (value) => value.toMap()),
+      'hostnames': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionRewriteHostname, Map<String, dynamic>>(hostnames, (value) => value.toMap()),
+      'paths': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionRewritePath, Map<String, dynamic>>(paths, (value) => value.toMap()),
+      'prefixes': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionRewritePrefix, Map<String, dynamic>>(prefixes, (value) => value.toMap()),
     };
   }
 
-  factory GetGatewayRouteSpecHttp2RouteActionRewrite.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayRouteSpecHttp2RouteActionRewrite.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteActionRewrite(
-      hostnames:
-          pulumi.Input.decodeList<
-            GetGatewayRouteSpecHttp2RouteActionRewriteHostname
-          >(
-            map['hostnames'],
-            (value) =>
-                GetGatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      paths:
-          pulumi
-              .Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewritePath>(
-            map['paths'],
-            (value) => GetGatewayRouteSpecHttp2RouteActionRewritePath.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      prefixes:
-          pulumi.Input.decodeList<
-            GetGatewayRouteSpecHttp2RouteActionRewritePrefix
-          >(
-            map['prefixes'],
-            (value) => GetGatewayRouteSpecHttp2RouteActionRewritePrefix.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      hostnames: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewriteHostname>(map['hostnames'], (value) => GetGatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap((value as Map).cast<String, dynamic>())),
+      paths: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewritePath>(map['paths'], (value) => GetGatewayRouteSpecHttp2RouteActionRewritePath.fromMap((value as Map).cast<String, dynamic>())),
+      prefixes: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewritePrefix>(map['prefixes'], (value) => GetGatewayRouteSpecHttp2RouteActionRewritePrefix.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

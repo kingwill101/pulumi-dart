@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// configuration for Vulnerability Assessment autoprovisioning
+class DefenderForServersGcpOfferingResponseConfiguration {
+  /// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+  final String? type;
+
+  /// Creates a new [DefenderForServersGcpOfferingResponseConfiguration].
+  /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+  DefenderForServersGcpOfferingResponseConfiguration({
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': ?type,
+    };
+  }
+
+  factory DefenderForServersGcpOfferingResponseConfiguration.fromMap(Map<String, dynamic> map) {
+    return DefenderForServersGcpOfferingResponseConfiguration(
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

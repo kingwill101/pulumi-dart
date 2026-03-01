@@ -1,0 +1,103 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Result data returned by getSoaRecord.
+class GetSoaRecordResult {
+  /// The email contact for the SOA record.
+  final String email;
+  /// The expire time for the SOA record.
+  final int expireTime;
+  /// The FQDN of the Private DNS SOA Record.
+  final String fqdn;
+  /// The domain name of the authoritative name server for the SOA record.
+  final String hostName;
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  /// The minimum Time To Live for the SOA record. By convention, it is used to determine the negative caching duration.
+  final int minimumTtl;
+  /// The name of the Private DNS SOA Record.
+  final String? name;
+  /// The refresh time for the SOA record.
+  final int refreshTime;
+  final String resourceGroupName;
+  /// The retry time for the SOA record.
+  final int retryTime;
+  /// The serial number for the SOA record.
+  final int serialNumber;
+  /// A mapping of tags assigned to the resource.
+  final Map<String, String> tags;
+  /// The Time To Live (TTL) of the Private DNS record in seconds.
+  final int ttl;
+  final String zoneName;
+
+  /// Creates a new [GetSoaRecordResult].
+  /// [email] The email contact for the SOA record.
+  /// [expireTime] The expire time for the SOA record.
+  /// [fqdn] The FQDN of the Private DNS SOA Record.
+  /// [hostName] The domain name of the authoritative name server for the SOA record.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [minimumTtl] The minimum Time To Live for the SOA record. By convention, it is used to determine the negative caching duration.
+  /// [name] The name of the Private DNS SOA Record.
+  /// [refreshTime] The refresh time for the SOA record.
+  /// [resourceGroupName] Required.
+  /// [retryTime] The retry time for the SOA record.
+  /// [serialNumber] The serial number for the SOA record.
+  /// [tags] A mapping of tags assigned to the resource.
+  /// [ttl] The Time To Live (TTL) of the Private DNS record in seconds.
+  /// [zoneName] Required.
+  GetSoaRecordResult({
+    required this.email,
+    required this.expireTime,
+    required this.fqdn,
+    required this.hostName,
+    required this.id,
+    required this.minimumTtl,
+    this.name,
+    required this.refreshTime,
+    required this.resourceGroupName,
+    required this.retryTime,
+    required this.serialNumber,
+    required this.tags,
+    required this.ttl,
+    required this.zoneName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'email': email,
+      'expireTime': expireTime,
+      'fqdn': fqdn,
+      'hostName': hostName,
+      'id': id,
+      'minimumTtl': minimumTtl,
+      'name': ?name,
+      'refreshTime': refreshTime,
+      'resourceGroupName': resourceGroupName,
+      'retryTime': retryTime,
+      'serialNumber': serialNumber,
+      'tags': tags,
+      'ttl': ttl,
+      'zoneName': zoneName,
+    };
+  }
+
+  factory GetSoaRecordResult.fromMap(Map<String, dynamic> map) {
+    return GetSoaRecordResult(
+      email: map['email'] as String,
+      expireTime: map['expireTime'] as int,
+      fqdn: map['fqdn'] as String,
+      hostName: map['hostName'] as String,
+      id: map['id'] as String,
+      minimumTtl: map['minimumTtl'] as int,
+      name: map['name'] == null ? null : map['name'] as String,
+      refreshTime: map['refreshTime'] as int,
+      resourceGroupName: map['resourceGroupName'] as String,
+      retryTime: map['retryTime'] as int,
+      serialNumber: map['serialNumber'] as int,
+      tags: (map['tags'] as Map).cast<String, String>(),
+      ttl: map['ttl'] as int,
+      zoneName: map['zoneName'] as String,
+    );
+  }
+}
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTriggerGithubPullRequest {
   /// Regex of branches to match.
   final String branch;
-
   /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final String commentControl;
-
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final bool invertRegex;
 
@@ -36,3 +35,4 @@ class GetTriggerGithubPullRequest {
     );
   }
 }
+

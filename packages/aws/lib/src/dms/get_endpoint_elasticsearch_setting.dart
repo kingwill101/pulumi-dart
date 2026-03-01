@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointElasticsearchSetting {
   final String endpointUri;
   final int errorRetryDuration;
@@ -36,3 +37,4 @@ class GetEndpointElasticsearchSetting {
     );
   }
 }
+

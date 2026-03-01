@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentClosingSettingConditionalConditionalBranchCondition {
   /// Expression string that is evaluated.
   final String expressionString;
@@ -11,14 +12,15 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expressionString': expressionString};
+    return <String, dynamic>{
+      'expressionString': expressionString,
+    };
   }
 
-  factory V2modelsIntentClosingSettingConditionalConditionalBranchCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentClosingSettingConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalConditionalBranchCondition(
       expressionString: map['expressionString'] as String,
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Properties specific to the dashboard definition.
+class DashboardDefinitionProperties {
+  /// The dashboard definition data in JSON format.
+  final String? serializedData;
+
+  /// Creates a new [DashboardDefinitionProperties].
+  /// [serializedData] The dashboard definition data in JSON format.
+  DashboardDefinitionProperties({
+    this.serializedData,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'serializedData': ?serializedData,
+    };
+  }
+
+  factory DashboardDefinitionProperties.fromMap(Map<String, dynamic> map) {
+    return DashboardDefinitionProperties(
+      serializedData: map['serializedData'] == null ? null : map['serializedData'] as String,
+    );
+  }
+}
+

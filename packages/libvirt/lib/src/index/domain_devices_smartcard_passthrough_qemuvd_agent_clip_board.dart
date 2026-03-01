@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard {
+  /// Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
+  final String copyPaste;
+
+  /// Creates a new [DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard].
+  /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
+  DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard({
+    required this.copyPaste,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'copyPaste': copyPaste,
+    };
+  }
+
+  factory DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard(
+      copyPaste: map['copyPaste'] as String,
+    );
+  }
+}
+

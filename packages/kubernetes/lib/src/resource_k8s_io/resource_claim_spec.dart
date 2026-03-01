@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'device_claim.dart';
+
+/// ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.
+class ResourceClaimSpec {
+  /// Devices defines how to request devices.
+  final DeviceClaim? devices;
+
+  /// Creates a new [ResourceClaimSpec].
+  /// [devices] Devices defines how to request devices.
+  ResourceClaimSpec({
+    this.devices,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'devices': ?devices == null ? null : devices!.toMap(),
+    };
+  }
+
+  factory ResourceClaimSpec.fromMap(Map<String, dynamic> map) {
+    return ResourceClaimSpec(
+      devices: map['devices'] == null ? null : DeviceClaim.fromMap((map['devices'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

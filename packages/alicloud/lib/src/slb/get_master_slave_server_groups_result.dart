@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_master_slave_server_groups_group.dart';
+
+/// Result data returned by getMasterSlaveServerGroups.
+class GetMasterSlaveServerGroupsResult {
+  /// A list of SLB master slave server groups. Each element contains the following attributes:
+  final List<GetMasterSlaveServerGroupsGroup> groups;
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  /// A list of SLB master slave server groups IDs.
+  final List<String> ids;
+  final String loadBalancerId;
+  final String? nameRegex;
+  /// A list of SLB master slave server groups names.
+  final List<String> names;
+  final String? outputFile;
+
+  /// Creates a new [GetMasterSlaveServerGroupsResult].
+  /// [groups] A list of SLB master slave server groups. Each element contains the following attributes:
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ids] A list of SLB master slave server groups IDs.
+  /// [loadBalancerId] Required.
+  /// [nameRegex] Optional.
+  /// [names] A list of SLB master slave server groups names.
+  /// [outputFile] Optional.
+  GetMasterSlaveServerGroupsResult({
+    required this.groups,
+    required this.id,
+    required this.ids,
+    required this.loadBalancerId,
+    this.nameRegex,
+    required this.names,
+    this.outputFile,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'groups': pulumi.Input.encodeList<GetMasterSlaveServerGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'id': id,
+      'ids': ids,
+      'loadBalancerId': loadBalancerId,
+      'nameRegex': ?nameRegex,
+      'names': names,
+      'outputFile': ?outputFile,
+    };
+  }
+
+  factory GetMasterSlaveServerGroupsResult.fromMap(Map<String, dynamic> map) {
+    return GetMasterSlaveServerGroupsResult(
+      groups: pulumi.Input.decodeList<GetMasterSlaveServerGroupsGroup>(map['groups'], (value) => GetMasterSlaveServerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      loadBalancerId: map['loadBalancerId'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      names: (map['names'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+    );
+  }
+}
+

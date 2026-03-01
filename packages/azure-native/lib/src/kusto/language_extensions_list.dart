@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'language_extension.dart';
+
+/// The list of language extension objects.
+class LanguageExtensionsList {
+  /// The list of language extensions.
+  final List<LanguageExtension>? value;
+
+  /// Creates a new [LanguageExtensionsList].
+  /// [value] The list of language extensions.
+  LanguageExtensionsList({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value == null ? null : pulumi.Input.encodeList<LanguageExtension, Map<String, dynamic>>(value!, (value) => value.toMap()),
+    };
+  }
+
+  factory LanguageExtensionsList.fromMap(Map<String, dynamic> map) {
+    return LanguageExtensionsList(
+      value: map['value'] == null ? null : pulumi.Input.decodeList<LanguageExtension>(map['value'], (value) => LanguageExtension.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

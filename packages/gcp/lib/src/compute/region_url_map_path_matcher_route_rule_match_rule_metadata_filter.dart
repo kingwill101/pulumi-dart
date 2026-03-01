@@ -8,9 +8,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
   /// based on filterMatchCriteria  This list must not be empty and can have at the
   /// most 64 entries.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>
-  filterLabels;
-
+  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels;
   /// Specifies how individual filterLabel matches within the list of filterLabels
   /// contribute towards the overall metadataFilter match. Supported values are:
   /// * MATCH_ANY: At least one of the filterLabels must have a matching label in the
@@ -30,30 +28,16 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels':
-          pulumi.Input.encodeList<
-            RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel,
-            Map<String, dynamic>
-          >(filterLabels, (value) => value.toMap()),
+      'filterLabels': pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel, Map<String, dynamic>>(filterLabels, (value) => value.toMap()),
       'filterMatchCriteria': filterMatchCriteria,
     };
   }
 
-  factory RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(
-      filterLabels:
-          pulumi.Input.decodeList<
-            RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel
-          >(
-            map['filterLabels'],
-            (value) =>
-                RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      filterLabels: pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>(map['filterLabels'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel.fromMap((value as Map).cast<String, dynamic>())),
       filterMatchCriteria: map['filterMatchCriteria'] as String,
     );
   }
 }
+

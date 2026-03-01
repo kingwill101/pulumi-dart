@@ -201,34 +201,25 @@ import 'configured_table_table_reference.dart';
 class ConfiguredTable extends pulumi.CustomResource {
   /// The columns of the references table which will be included in the configured table.
   late final pulumi.Output<List<String>> allowedColumns;
-
   /// The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
   late final pulumi.Output<String> analysisMethod;
-
   /// The ARN of the configured table.
   late final pulumi.Output<String> arn;
-
   /// The date and time the configured table was created.
   late final pulumi.Output<String> createTime;
-
   /// A description for the configured table.
   late final pulumi.Output<String?> description;
-
   /// The name of the configured table.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A reference to the AWS Glue table which will be used to create the configured table.
   /// * `table_reference.database_name` - (Required - Forces new resource) - The name of the AWS Glue database which contains the table.
   /// * `table_reference.table_name` - (Required - Forces new resource) - The name of the AWS Glue table which will be used to create the configured table.
   late final pulumi.Output<ConfiguredTableTableReference> tableReference;
-
   /// Key value pairs which tag the configured table.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The date and time the configured table was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -241,11 +232,11 @@ class ConfiguredTable extends pulumi.CustomResource {
     ConfiguredTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cleanrooms/configuredTable:ConfiguredTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cleanrooms/configuredTable:ConfiguredTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.allowedColumns = registerOutput<List<String>>('allowedColumns');
     this.analysisMethod = registerOutput<String>('analysisMethod');
     this.arn = registerOutput<String>('arn');
@@ -253,9 +244,7 @@ class ConfiguredTable extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.tableReference = registerOutput<ConfiguredTableTableReference>(
-      'tableReference',
-    );
+    this.tableReference = registerOutput<ConfiguredTableTableReference>('tableReference');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.updateTime = registerOutput<String>('updateTime');

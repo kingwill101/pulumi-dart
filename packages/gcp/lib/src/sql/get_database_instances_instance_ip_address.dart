@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstancesInstanceIpAddress {
   final String ipAddress;
   final String timeToRetire;
@@ -23,9 +24,7 @@ class GetDatabaseInstancesInstanceIpAddress {
     };
   }
 
-  factory GetDatabaseInstancesInstanceIpAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceIpAddress.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceIpAddress(
       ipAddress: map['ipAddress'] as String,
       timeToRetire: map['timeToRetire'] as String,
@@ -33,3 +32,4 @@ class GetDatabaseInstancesInstanceIpAddress {
     );
   }
 }
+

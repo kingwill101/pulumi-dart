@@ -8,40 +8,28 @@ import 'get_domain_cluster_config_zone_awareness_config.dart';
 class GetDomainClusterConfig {
   /// Configuration block containing cold storage configuration.
   final List<GetDomainClusterConfigColdStorageOption> coldStorageOptions;
-
   /// Number of dedicated master nodes in the cluster.
   final int dedicatedMasterCount;
-
   /// Indicates whether dedicated master nodes are enabled for the cluster.
   final bool dedicatedMasterEnabled;
-
   /// Instance type of the dedicated master nodes in the cluster.
   final String dedicatedMasterType;
-
   /// Number of instances in the cluster.
   final int instanceCount;
-
   /// Instance type of data nodes in the cluster.
   final String instanceType;
-
   /// Whether a multi-AZ domain is turned on with a standby AZ.
   final bool multiAzWithStandbyEnabled;
-
   /// List of node options for the domain.
   final List<GetDomainClusterConfigNodeOption> nodeOptions;
-
   /// Number of warm nodes in the cluster.
   final int warmCount;
-
   /// Warm storage is enabled.
   final bool? warmEnabled;
-
   /// Instance type for the OpenSearch cluster's warm nodes.
   final String warmType;
-
   /// Configuration block containing zone awareness settings.
   final List<GetDomainClusterConfigZoneAwarenessConfig> zoneAwarenessConfigs;
-
   /// Indicates whether zone awareness is enabled.
   final bool zoneAwarenessEnabled;
 
@@ -77,68 +65,38 @@ class GetDomainClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'coldStorageOptions':
-          pulumi.Input.encodeList<
-            GetDomainClusterConfigColdStorageOption,
-            Map<String, dynamic>
-          >(coldStorageOptions, (value) => value.toMap()),
+      'coldStorageOptions': pulumi.Input.encodeList<GetDomainClusterConfigColdStorageOption, Map<String, dynamic>>(coldStorageOptions, (value) => value.toMap()),
       'dedicatedMasterCount': dedicatedMasterCount,
       'dedicatedMasterEnabled': dedicatedMasterEnabled,
       'dedicatedMasterType': dedicatedMasterType,
       'instanceCount': instanceCount,
       'instanceType': instanceType,
       'multiAzWithStandbyEnabled': multiAzWithStandbyEnabled,
-      'nodeOptions':
-          pulumi.Input.encodeList<
-            GetDomainClusterConfigNodeOption,
-            Map<String, dynamic>
-          >(nodeOptions, (value) => value.toMap()),
+      'nodeOptions': pulumi.Input.encodeList<GetDomainClusterConfigNodeOption, Map<String, dynamic>>(nodeOptions, (value) => value.toMap()),
       'warmCount': warmCount,
       'warmEnabled': ?warmEnabled,
       'warmType': warmType,
-      'zoneAwarenessConfigs':
-          pulumi.Input.encodeList<
-            GetDomainClusterConfigZoneAwarenessConfig,
-            Map<String, dynamic>
-          >(zoneAwarenessConfigs, (value) => value.toMap()),
+      'zoneAwarenessConfigs': pulumi.Input.encodeList<GetDomainClusterConfigZoneAwarenessConfig, Map<String, dynamic>>(zoneAwarenessConfigs, (value) => value.toMap()),
       'zoneAwarenessEnabled': zoneAwarenessEnabled,
     };
   }
 
   factory GetDomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfig(
-      coldStorageOptions:
-          pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(
-            map['coldStorageOptions'],
-            (value) => GetDomainClusterConfigColdStorageOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      coldStorageOptions: pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(map['coldStorageOptions'], (value) => GetDomainClusterConfigColdStorageOption.fromMap((value as Map).cast<String, dynamic>())),
       dedicatedMasterCount: map['dedicatedMasterCount'] as int,
       dedicatedMasterEnabled: map['dedicatedMasterEnabled'] as bool,
       dedicatedMasterType: map['dedicatedMasterType'] as String,
       instanceCount: map['instanceCount'] as int,
       instanceType: map['instanceType'] as String,
       multiAzWithStandbyEnabled: map['multiAzWithStandbyEnabled'] as bool,
-      nodeOptions: pulumi.Input.decodeList<GetDomainClusterConfigNodeOption>(
-        map['nodeOptions'],
-        (value) => GetDomainClusterConfigNodeOption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodeOptions: pulumi.Input.decodeList<GetDomainClusterConfigNodeOption>(map['nodeOptions'], (value) => GetDomainClusterConfigNodeOption.fromMap((value as Map).cast<String, dynamic>())),
       warmCount: map['warmCount'] as int,
-      warmEnabled: map['warmEnabled'] == null
-          ? null
-          : map['warmEnabled'] as bool,
+      warmEnabled: map['warmEnabled'] == null ? null : map['warmEnabled'] as bool,
       warmType: map['warmType'] as String,
-      zoneAwarenessConfigs:
-          pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(
-            map['zoneAwarenessConfigs'],
-            (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      zoneAwarenessConfigs: pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(map['zoneAwarenessConfigs'], (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap((value as Map).cast<String, dynamic>())),
       zoneAwarenessEnabled: map['zoneAwarenessEnabled'] as bool,
     );
   }
 }
+

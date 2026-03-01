@@ -202,24 +202,18 @@ import 'custom_log_source_provider_detail.dart';
 class CustomLogSource extends pulumi.CustomResource {
   /// The attributes of a third-party custom source.
   late final pulumi.Output<List<CustomLogSourceAttribute>> attributes;
-
   /// The configuration for the third-party custom source.
   late final pulumi.Output<CustomLogSourceConfiguration> configuration;
-
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
   late final pulumi.Output<List<String>?> eventClasses;
-
   /// The details of the log provider for a third-party custom source.
   late final pulumi.Output<List<CustomLogSourceProviderDetail>> providerDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
   late final pulumi.Output<String> sourceName;
-
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
   late final pulumi.Output<String> sourceVersion;
 
@@ -232,21 +226,15 @@ class CustomLogSource extends pulumi.CustomResource {
     CustomLogSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securitylake/customLogSource:CustomLogSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.attributes = registerOutput<List<CustomLogSourceAttribute>>(
-      'attributes',
-    );
-    this.configuration = registerOutput<CustomLogSourceConfiguration>(
-      'configuration',
-    );
+          'aws:securitylake/customLogSource:CustomLogSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes');
+    this.configuration = registerOutput<CustomLogSourceConfiguration>('configuration');
     this.eventClasses = registerOutput<List<String>?>('eventClasses');
-    this.providerDetails = registerOutput<List<CustomLogSourceProviderDetail>>(
-      'providerDetails',
-    );
+    this.providerDetails = registerOutput<List<CustomLogSourceProviderDetail>>('providerDetails');
     this.region = registerOutput<String>('region');
     this.sourceName = registerOutput<String>('sourceName');
     this.sourceVersion = registerOutput<String>('sourceVersion');

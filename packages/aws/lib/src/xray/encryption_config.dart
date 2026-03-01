@@ -370,10 +370,8 @@ import 'encryption_config_args.dart';
 class EncryptionConfig extends pulumi.CustomResource {
   /// An AWS KMS customer master key (CMK) ARN.
   late final pulumi.Output<String?> keyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   late final pulumi.Output<String> type;
 
@@ -386,11 +384,11 @@ class EncryptionConfig extends pulumi.CustomResource {
     EncryptionConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:xray/encryptionConfig:EncryptionConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:xray/encryptionConfig:EncryptionConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.keyId = registerOutput<String?>('keyId');
     this.region = registerOutput<String>('region');
     this.type = registerOutput<String>('type');

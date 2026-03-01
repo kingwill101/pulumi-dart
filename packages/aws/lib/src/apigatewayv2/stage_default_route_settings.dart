@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StageDefaultRouteSettings {
   /// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
   /// Defaults to `false`. Supported only for WebSocket APIs.
   final bool? dataTraceEnabled;
-
   /// Whether detailed metrics are enabled for the default route. Defaults to `false`.
   final bool? detailedMetricsEnabled;
-
   /// Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
   /// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
   final String? loggingLevel;
-
   /// Throttling burst limit for the default route.
   final int? throttlingBurstLimit;
-
   /// Throttling rate limit for the default route.
   final double? throttlingRateLimit;
 
@@ -44,21 +41,12 @@ class StageDefaultRouteSettings {
 
   factory StageDefaultRouteSettings.fromMap(Map<String, dynamic> map) {
     return StageDefaultRouteSettings(
-      dataTraceEnabled: map['dataTraceEnabled'] == null
-          ? null
-          : map['dataTraceEnabled'] as bool,
-      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null
-          ? null
-          : map['detailedMetricsEnabled'] as bool,
-      loggingLevel: map['loggingLevel'] == null
-          ? null
-          : map['loggingLevel'] as String,
-      throttlingBurstLimit: map['throttlingBurstLimit'] == null
-          ? null
-          : map['throttlingBurstLimit'] as int,
-      throttlingRateLimit: map['throttlingRateLimit'] == null
-          ? null
-          : map['throttlingRateLimit'] as double,
+      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : map['dataTraceEnabled'] as bool,
+      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null ? null : map['detailedMetricsEnabled'] as bool,
+      loggingLevel: map['loggingLevel'] == null ? null : map['loggingLevel'] as String,
+      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : map['throttlingBurstLimit'] as int,
+      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : map['throttlingRateLimit'] as double,
     );
   }
 }
+

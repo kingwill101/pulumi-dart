@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// ProxyUrl configuration of cache node
+class ProxyUrlConfiguration {
+  /// Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
+  final String? proxyUrl;
+
+  /// Creates a new [ProxyUrlConfiguration].
+  /// [proxyUrl] Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
+  ProxyUrlConfiguration({
+    this.proxyUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'proxyUrl': ?proxyUrl,
+    };
+  }
+
+  factory ProxyUrlConfiguration.fromMap(Map<String, dynamic> map) {
+    return ProxyUrlConfiguration(
+      proxyUrl: map['proxyUrl'] == null ? null : map['proxyUrl'] as String,
+    );
+  }
+}
+

@@ -6,7 +6,6 @@ import 'get_autonomous_databases_autonomous_database.dart';
 /// Result data returned by getAutonomousDatabases.
 class GetAutonomousDatabasesResult {
   final List<GetAutonomousDatabasesAutonomousDatabase> autonomousDatabases;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -26,11 +25,7 @@ class GetAutonomousDatabasesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autonomousDatabases':
-          pulumi.Input.encodeList<
-            GetAutonomousDatabasesAutonomousDatabase,
-            Map<String, dynamic>
-          >(autonomousDatabases, (value) => value.toMap()),
+      'autonomousDatabases': pulumi.Input.encodeList<GetAutonomousDatabasesAutonomousDatabase, Map<String, dynamic>>(autonomousDatabases, (value) => value.toMap()),
       'id': id,
       'location': location,
       'project': ?project,
@@ -39,16 +34,11 @@ class GetAutonomousDatabasesResult {
 
   factory GetAutonomousDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesResult(
-      autonomousDatabases:
-          pulumi.Input.decodeList<GetAutonomousDatabasesAutonomousDatabase>(
-            map['autonomousDatabases'],
-            (value) => GetAutonomousDatabasesAutonomousDatabase.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      autonomousDatabases: pulumi.Input.decodeList<GetAutonomousDatabasesAutonomousDatabase>(map['autonomousDatabases'], (value) => GetAutonomousDatabasesAutonomousDatabase.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

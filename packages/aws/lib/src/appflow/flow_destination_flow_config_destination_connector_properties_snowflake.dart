@@ -4,8 +4,7 @@ import 'flow_destination_flow_config_destination_connector_properties_snowflake_
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
   final String? bucketPrefix;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig?
-  errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig? errorHandlingConfig;
   final String intermediateBucketName;
   final String object;
 
@@ -24,28 +23,19 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketPrefix': ?bucketPrefix,
-      'errorHandlingConfig': ?errorHandlingConfig == null
-          ? null
-          : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
       'intermediateBucketName': intermediateBucketName,
       'object': object,
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake(
-      bucketPrefix: map['bucketPrefix'] == null
-          ? null
-          : map['bucketPrefix'] as String,
-      errorHandlingConfig: map['errorHandlingConfig'] == null
-          ? null
-          : FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig.fromMap(
-              (map['errorHandlingConfig'] as Map).cast<String, dynamic>(),
-            ),
+      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
       intermediateBucketName: map['intermediateBucketName'] as String,
       object: map['object'] as String,
     );
   }
 }
+

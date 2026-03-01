@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableRangePartitioningRange {
   /// End of the range partitioning, exclusive.
   final int end;
-
   /// The width of each range within the partition.
   final int interval;
-
   /// Start of the range partitioning, inclusive.
   final int start;
 
@@ -21,7 +20,11 @@ class TableRangePartitioningRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': end, 'interval': interval, 'start': start};
+    return <String, dynamic>{
+      'end': end,
+      'interval': interval,
+      'start': start,
+    };
   }
 
   factory TableRangePartitioningRange.fromMap(Map<String, dynamic> map) {
@@ -32,3 +35,4 @@ class TableRangePartitioningRange {
     );
   }
 }
+

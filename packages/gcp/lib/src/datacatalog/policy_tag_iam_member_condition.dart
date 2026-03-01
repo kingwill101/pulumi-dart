@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyTagIamMemberCondition {
   final String? description;
   final String expression;
@@ -25,11 +26,10 @@ class PolicyTagIamMemberCondition {
 
   factory PolicyTagIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamMemberCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

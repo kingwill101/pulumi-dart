@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResolverRules.
 class GetResolverRulesResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -8,7 +9,6 @@ class GetResolverRulesResult {
   final String? ownerId;
   final String region;
   final String? resolverEndpointId;
-
   /// IDs of the matched resolver rules.
   final List<String> resolverRuleIds;
   final String? ruleType;
@@ -53,14 +53,11 @@ class GetResolverRulesResult {
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
       ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
       region: map['region'] as String,
-      resolverEndpointId: map['resolverEndpointId'] == null
-          ? null
-          : map['resolverEndpointId'] as String,
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : map['resolverEndpointId'] as String,
       resolverRuleIds: (map['resolverRuleIds'] as List).cast<String>(),
       ruleType: map['ruleType'] == null ? null : map['ruleType'] as String,
-      shareStatus: map['shareStatus'] == null
-          ? null
-          : map['shareStatus'] as String,
+      shareStatus: map['shareStatus'] == null ? null : map['shareStatus'] as String,
     );
   }
 }
+

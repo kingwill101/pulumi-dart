@@ -1,0 +1,19 @@
+/// The variable on which we evaluate the exception condition
+enum ExceptionEntryMatchVariable {
+  valueRequestURI("RequestURI"),
+  valueRemoteAddr("RemoteAddr"),
+  valueRequestHeader("RequestHeader");
+
+  const ExceptionEntryMatchVariable(this.value);
+  final String value;
+
+  static ExceptionEntryMatchVariable fromValue(String value) {
+    for (final item in ExceptionEntryMatchVariable.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown ExceptionEntryMatchVariable value: $value');
+  }
+}
+

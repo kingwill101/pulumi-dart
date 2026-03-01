@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentAgentGuardrailConfiguration {
   /// Unique identifier of the guardrail.
   final String guardrailIdentifier;
-
   /// Version of the guardrail.
   final String guardrailVersion;
 
@@ -29,3 +29,4 @@ class AgentAgentGuardrailConfiguration {
     );
   }
 }
+

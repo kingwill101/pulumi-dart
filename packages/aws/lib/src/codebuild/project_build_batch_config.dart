@@ -6,13 +6,10 @@ class ProjectBuildBatchConfig {
   /// Specifies if the build artifacts for the batch build should be combined into a single
   /// artifact location.
   final bool? combineArtifacts;
-
   /// Configuration block specifying the restrictions for the batch build. Detailed below.
   final ProjectBuildBatchConfigRestrictions? restrictions;
-
   /// Specifies the service role ARN for the batch build project.
   final String serviceRole;
-
   /// Specifies the maximum amount of time, in minutes, that the batch build must be
   /// completed in.
   final int? timeoutInMins;
@@ -40,18 +37,11 @@ class ProjectBuildBatchConfig {
 
   factory ProjectBuildBatchConfig.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfig(
-      combineArtifacts: map['combineArtifacts'] == null
-          ? null
-          : map['combineArtifacts'] as bool,
-      restrictions: map['restrictions'] == null
-          ? null
-          : ProjectBuildBatchConfigRestrictions.fromMap(
-              (map['restrictions'] as Map).cast<String, dynamic>(),
-            ),
+      combineArtifacts: map['combineArtifacts'] == null ? null : map['combineArtifacts'] as bool,
+      restrictions: map['restrictions'] == null ? null : ProjectBuildBatchConfigRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>()),
       serviceRole: map['serviceRole'] as String,
-      timeoutInMins: map['timeoutInMins'] == null
-          ? null
-          : map['timeoutInMins'] as int,
+      timeoutInMins: map['timeoutInMins'] == null ? null : map['timeoutInMins'] as int,
     );
   }
 }
+

@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_datamigration_get_database_migrations_mongo_to_cosmos_dbv_core_mongo_args_doc}
+/// Arguments for getDatabaseMigrationsMongoToCosmosDbvCoreMongo.
+/// {@endtemplate}
+/// {@macro pulumi_datamigration_get_database_migrations_mongo_to_cosmos_dbv_core_mongo_args_doc}
+class GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
+  /// Name of the migration.
+  final pulumi.Input<String> migrationName;
+  /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the target resource/account.
+  final pulumi.Input<String> targetResourceName;
+
+  /// Creates a new [GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs].
+  /// [migrationName] Name of the migration.
+  /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [targetResourceName] The name of the target resource/account.
+  GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs({
+    required String migrationName,
+    required String resourceGroupName,
+    required String targetResourceName,
+  }) :
+      migrationName = pulumi.Input.asInput<String>(migrationName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      targetResourceName = pulumi.Input.asInput<String>(targetResourceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'migrationName': migrationName,
+      'resourceGroupName': resourceGroupName,
+      'targetResourceName': targetResourceName,
+    };
+  }
+
+  factory GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs.fromMap(Map<String, dynamic> map) {
+    return GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs(
+      migrationName: map['migrationName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      targetResourceName: map['targetResourceName'] as String,
+    );
+  }
+}
+

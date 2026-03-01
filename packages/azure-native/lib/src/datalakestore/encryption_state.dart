@@ -1,0 +1,18 @@
+/// The current state of encryption for this Data Lake Store account.
+enum EncryptionState {
+  valueEnabled("Enabled"),
+  valueDisabled("Disabled");
+
+  const EncryptionState(this.value);
+  final String value;
+
+  static EncryptionState fromValue(String value) {
+    for (final item in EncryptionState.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown EncryptionState value: $value');
+  }
+}
+

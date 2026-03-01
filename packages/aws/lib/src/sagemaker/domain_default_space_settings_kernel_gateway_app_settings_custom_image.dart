@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage {
   /// The name of the App Image Config.
   final String appImageConfigName;
-
   /// The name of the Custom Image.
   final String imageName;
-
   /// The version number of the Custom Image.
   final int? imageVersionNumber;
 
@@ -28,15 +27,12 @@ class DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage {
     };
   }
 
-  factory DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage(
       appImageConfigName: map['appImageConfigName'] as String,
       imageName: map['imageName'] as String,
-      imageVersionNumber: map['imageVersionNumber'] == null
-          ? null
-          : map['imageVersionNumber'] as int,
+      imageVersionNumber: map['imageVersionNumber'] == null ? null : map['imageVersionNumber'] as int,
     );
   }
 }
+

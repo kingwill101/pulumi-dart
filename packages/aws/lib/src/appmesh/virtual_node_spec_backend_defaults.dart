@@ -8,7 +8,9 @@ class VirtualNodeSpecBackendDefaults {
 
   /// Creates a new [VirtualNodeSpecBackendDefaults].
   /// [clientPolicy] Default client policy for virtual service backends. See above for details.
-  VirtualNodeSpecBackendDefaults({this.clientPolicy});
+  VirtualNodeSpecBackendDefaults({
+    this.clientPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class VirtualNodeSpecBackendDefaults {
 
   factory VirtualNodeSpecBackendDefaults.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaults(
-      clientPolicy: map['clientPolicy'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicy.fromMap(
-              (map['clientPolicy'] as Map).cast<String, dynamic>(),
-            ),
+      clientPolicy: map['clientPolicy'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicy.fromMap((map['clientPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

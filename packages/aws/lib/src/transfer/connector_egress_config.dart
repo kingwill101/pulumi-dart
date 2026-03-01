@@ -8,7 +8,9 @@ class ConnectorEgressConfig {
 
   /// Creates a new [ConnectorEgressConfig].
   /// [vpcLattice] VPC Lattice configuration for routing connector traffic through customer VPCs. Fields documented below.
-  ConnectorEgressConfig({this.vpcLattice});
+  ConnectorEgressConfig({
+    this.vpcLattice,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class ConnectorEgressConfig {
 
   factory ConnectorEgressConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorEgressConfig(
-      vpcLattice: map['vpcLattice'] == null
-          ? null
-          : ConnectorEgressConfigVpcLattice.fromMap(
-              (map['vpcLattice'] as Map).cast<String, dynamic>(),
-            ),
+      vpcLattice: map['vpcLattice'] == null ? null : ConnectorEgressConfigVpcLattice.fromMap((map['vpcLattice'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

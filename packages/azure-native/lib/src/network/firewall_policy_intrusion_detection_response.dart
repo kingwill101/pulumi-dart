@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'firewall_policy_intrusion_detection_configuration_response.dart';
+
+/// Configuration for intrusion detection mode and rules.
+class FirewallPolicyIntrusionDetectionResponse {
+  /// Intrusion detection configuration properties.
+  final FirewallPolicyIntrusionDetectionConfigurationResponse? configuration;
+  /// Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
+  final String? mode;
+  /// IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+  final String? profile;
+
+  /// Creates a new [FirewallPolicyIntrusionDetectionResponse].
+  /// [configuration] Intrusion detection configuration properties.
+  /// [mode] Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
+  /// [profile] IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+  FirewallPolicyIntrusionDetectionResponse({
+    this.configuration,
+    this.mode,
+    this.profile,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'mode': ?mode,
+      'profile': ?profile,
+    };
+  }
+
+  factory FirewallPolicyIntrusionDetectionResponse.fromMap(Map<String, dynamic> map) {
+    return FirewallPolicyIntrusionDetectionResponse(
+      configuration: map['configuration'] == null ? null : FirewallPolicyIntrusionDetectionConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
+      mode: map['mode'] == null ? null : map['mode'] as String,
+      profile: map['profile'] == null ? null : map['profile'] as String,
+    );
+  }
+}
+

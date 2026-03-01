@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetContactsRotationRecurrenceWeeklySettingHandOffTime {
   final int hourOfDay;
   final int minuteOfHour;
@@ -19,12 +20,11 @@ class GetContactsRotationRecurrenceWeeklySettingHandOffTime {
     };
   }
 
-  factory GetContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceWeeklySettingHandOffTime(
       hourOfDay: map['hourOfDay'] as int,
       minuteOfHour: map['minuteOfHour'] as int,
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// These properties lets user specify default catalog properties during workspace creation.
+class DefaultCatalogPropertiesResponse {
+  /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
+  final String? initialName;
+  /// Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+  final String? initialType;
+
+  /// Creates a new [DefaultCatalogPropertiesResponse].
+  /// [initialName] Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
+  /// [initialType] Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+  DefaultCatalogPropertiesResponse({
+    this.initialName,
+    this.initialType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'initialName': ?initialName,
+      'initialType': ?initialType,
+    };
+  }
+
+  factory DefaultCatalogPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return DefaultCatalogPropertiesResponse(
+      initialName: map['initialName'] == null ? null : map['initialName'] as String,
+      initialType: map['initialType'] == null ? null : map['initialType'] as String,
+    );
+  }
+}
+

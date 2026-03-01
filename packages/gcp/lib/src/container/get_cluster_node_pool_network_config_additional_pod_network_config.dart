@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
   /// The maximum number of pods per node which use this pod network.
   final int maxPodsPerNode;
-
   /// The name of the secondary range on the subnet which provides IP address for this pod range.
   final String secondaryPodRange;
-
   /// Name of the subnetwork where the additional pod network belongs.
   final String subnetwork;
 
@@ -28,9 +27,7 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
     };
   }
 
-  factory GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(
       maxPodsPerNode: map['maxPodsPerNode'] as int,
       secondaryPodRange: map['secondaryPodRange'] as String,
@@ -38,3 +35,4 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
     );
   }
 }
+

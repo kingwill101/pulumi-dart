@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowMetadataCatalogConfigGlueDataCatalog {
   /// The name of an existing Glue database to store the metadata tables that Amazon AppFlow creates.
   final String databaseName;
-
   /// The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions.
   final String roleArn;
-
   /// A naming prefix for each Data Catalog table that Amazon AppFlow creates
   final String tablePrefix;
 
@@ -28,9 +27,7 @@ class FlowMetadataCatalogConfigGlueDataCatalog {
     };
   }
 
-  factory FlowMetadataCatalogConfigGlueDataCatalog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowMetadataCatalogConfigGlueDataCatalog.fromMap(Map<String, dynamic> map) {
     return FlowMetadataCatalogConfigGlueDataCatalog(
       databaseName: map['databaseName'] as String,
       roleArn: map['roleArn'] as String,
@@ -38,3 +35,4 @@ class FlowMetadataCatalogConfigGlueDataCatalog {
     );
   }
 }
+

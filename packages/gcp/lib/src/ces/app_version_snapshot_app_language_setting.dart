@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppLanguageSetting {
   /// (Output)
   /// The default language code of the app.
   final String? defaultLanguageCode;
-
   /// (Output)
   /// Enables multilingual support. If true, agents in the app will use pre-built
   /// instructions to improve handling of multilingual input.
   final bool? enableMultilingualSupport;
-
   /// (Output)
   /// The action to perform when an agent receives input in an unsupported
   /// language.
@@ -20,7 +19,6 @@ class AppVersionSnapshotAppLanguageSetting {
   /// an EndSession signal with corresponding metadata
   /// to terminate the conversation.
   final String? fallbackAction;
-
   /// (Output)
   /// List of languages codes supported by the app, in addition to the
   /// `default_language_code`.
@@ -47,22 +45,13 @@ class AppVersionSnapshotAppLanguageSetting {
     };
   }
 
-  factory AppVersionSnapshotAppLanguageSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppLanguageSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLanguageSetting(
-      defaultLanguageCode: map['defaultLanguageCode'] == null
-          ? null
-          : map['defaultLanguageCode'] as String,
-      enableMultilingualSupport: map['enableMultilingualSupport'] == null
-          ? null
-          : map['enableMultilingualSupport'] as bool,
-      fallbackAction: map['fallbackAction'] == null
-          ? null
-          : map['fallbackAction'] as String,
-      supportedLanguageCodes: map['supportedLanguageCodes'] == null
-          ? null
-          : (map['supportedLanguageCodes'] as List).cast<String>(),
+      defaultLanguageCode: map['defaultLanguageCode'] == null ? null : map['defaultLanguageCode'] as String,
+      enableMultilingualSupport: map['enableMultilingualSupport'] == null ? null : map['enableMultilingualSupport'] as bool,
+      fallbackAction: map['fallbackAction'] == null ? null : map['fallbackAction'] as String,
+      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : (map['supportedLanguageCodes'] as List).cast<String>(),
     );
   }
 }
+

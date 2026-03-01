@@ -7,36 +7,27 @@ import 'get_workspace_workspace_property.dart';
 class GetWorkspaceResult {
   /// ID of the bundle for the WorkSpace.
   final String bundleId;
-
   /// Name of the WorkSpace, as seen by the operating system.
   final String computerName;
   final String directoryId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// IP address of the WorkSpace.
   final String ipAddress;
   final String region;
-
   /// Indicates whether the data stored on the root volume is encrypted.
   final bool rootVolumeEncryptionEnabled;
-
   /// Operational state of the WorkSpace.
   final String state;
-
   /// Tags for the WorkSpace.
   final Map<String, String> tags;
   final String userName;
-
   /// Indicates whether the data stored on the user volume
   /// is encrypted.
   final bool userVolumeEncryptionEnabled;
-
   /// Symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   final String volumeEncryptionKey;
   final String workspaceId;
-
   /// WorkSpace properties.
   final List<GetWorkspaceWorkspaceProperty> workspaceProperties;
 
@@ -87,11 +78,7 @@ class GetWorkspaceResult {
       'userVolumeEncryptionEnabled': userVolumeEncryptionEnabled,
       'volumeEncryptionKey': volumeEncryptionKey,
       'workspaceId': workspaceId,
-      'workspaceProperties':
-          pulumi.Input.encodeList<
-            GetWorkspaceWorkspaceProperty,
-            Map<String, dynamic>
-          >(workspaceProperties, (value) => value.toMap()),
+      'workspaceProperties': pulumi.Input.encodeList<GetWorkspaceWorkspaceProperty, Map<String, dynamic>>(workspaceProperties, (value) => value.toMap()),
     };
   }
 
@@ -110,13 +97,8 @@ class GetWorkspaceResult {
       userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] as bool,
       volumeEncryptionKey: map['volumeEncryptionKey'] as String,
       workspaceId: map['workspaceId'] as String,
-      workspaceProperties:
-          pulumi.Input.decodeList<GetWorkspaceWorkspaceProperty>(
-            map['workspaceProperties'],
-            (value) => GetWorkspaceWorkspaceProperty.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      workspaceProperties: pulumi.Input.decodeList<GetWorkspaceWorkspaceProperty>(map['workspaceProperties'], (value) => GetWorkspaceWorkspaceProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

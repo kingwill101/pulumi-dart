@@ -1,0 +1,25 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DeliveryChannelResourceSnapshotDeliverySlsProperties {
+  final String? oversizedDataOssTargetArn;
+
+  /// Creates a new [DeliveryChannelResourceSnapshotDeliverySlsProperties].
+  /// [oversizedDataOssTargetArn] Optional.
+  DeliveryChannelResourceSnapshotDeliverySlsProperties({
+    this.oversizedDataOssTargetArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'oversizedDataOssTargetArn': ?oversizedDataOssTargetArn,
+    };
+  }
+
+  factory DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(Map<String, dynamic> map) {
+    return DeliveryChannelResourceSnapshotDeliverySlsProperties(
+      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : map['oversizedDataOssTargetArn'] as String,
+    );
+  }
+}
+

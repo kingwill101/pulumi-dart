@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// Defines percentage of minimum reclaim for imagefs.available.
   final String imagefsAvailable;
-
   /// Defines percentage of minimum reclaim for imagefs.inodesFree.
   final String imagefsInodesFree;
-
   /// Defines percentage of minimum reclaim for memory.available.
   final String memoryAvailable;
-
   /// Defines percentage of minimum reclaim for nodefs.available.
   final String nodefsAvailable;
-
   /// Defines percentage of minimum reclaim for nodefs.inodesFree.
   final String nodefsInodesFree;
-
   /// Defines percentage of minimum reclaim for pid.available.
   final String pidAvailable;
 
@@ -46,9 +42,7 @@ class GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
     };
   }
 
-  factory GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim(
       imagefsAvailable: map['imagefsAvailable'] as String,
       imagefsInodesFree: map['imagefsInodesFree'] as String,
@@ -59,3 +53,4 @@ class GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
     );
   }
 }
+

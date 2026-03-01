@@ -11,29 +11,20 @@ class ResizeRequestStatusError {
 
   /// Creates a new [ResizeRequestStatusError].
   /// [errors] (Output)
-  ResizeRequestStatusError({this.errors});
+  ResizeRequestStatusError({
+    this.errors,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null
-          ? null
-          : pulumi.Input.encodeList<
-              ResizeRequestStatusErrorError,
-              Map<String, dynamic>
-            >(errors!, (value) => value.toMap()),
+      'errors': ?errors == null ? null : pulumi.Input.encodeList<ResizeRequestStatusErrorError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
     };
   }
 
   factory ResizeRequestStatusError.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusError(
-      errors: map['errors'] == null
-          ? null
-          : pulumi.Input.decodeList<ResizeRequestStatusErrorError>(
-              map['errors'],
-              (value) => ResizeRequestStatusErrorError.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusErrorError>(map['errors'], (value) => ResizeRequestStatusErrorError.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

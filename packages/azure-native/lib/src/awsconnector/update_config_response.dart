@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of UpdateConfig
+class UpdateConfigResponse {
+  /// The maximum number of nodes unavailable at once during a version update. Nodes will be updated in parallel. This value or maxUnavailablePercentage is required to have a value.The maximum number is 100.
+  final int? maxUnavailable;
+  /// The maximum percentage of nodes unavailable during a version update. This percentage of nodes will be updated in parallel, up to 100 nodes at once. This value or maxUnavailable is required to have a value.
+  final int? maxUnavailablePercentage;
+
+  /// Creates a new [UpdateConfigResponse].
+  /// [maxUnavailable] The maximum number of nodes unavailable at once during a version update. Nodes will be updated in parallel. This value or maxUnavailablePercentage is required to have a value.The maximum number is 100.
+  /// [maxUnavailablePercentage] The maximum percentage of nodes unavailable during a version update. This percentage of nodes will be updated in parallel, up to 100 nodes at once. This value or maxUnavailable is required to have a value.
+  UpdateConfigResponse({
+    this.maxUnavailable,
+    this.maxUnavailablePercentage,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'maxUnavailable': ?maxUnavailable,
+      'maxUnavailablePercentage': ?maxUnavailablePercentage,
+    };
+  }
+
+  factory UpdateConfigResponse.fromMap(Map<String, dynamic> map) {
+    return UpdateConfigResponse(
+      maxUnavailable: map['maxUnavailable'] == null ? null : map['maxUnavailable'] as int,
+      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : map['maxUnavailablePercentage'] as int,
+    );
+  }
+}
+

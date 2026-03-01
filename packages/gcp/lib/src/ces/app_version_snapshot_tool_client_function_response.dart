@@ -1,30 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolClientFunctionResponse {
   /// (Output)
   /// Optional. Defines the schema for additional properties allowed in an object.
   /// The value must be a valid JSON string representing the Schema object.
   /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
   final String? additionalProperties;
-
   /// (Output)
   /// Optional. The instance value should be valid against at least one of the schemas in this list.
   final String? anyOf;
-
   /// (Output)
   /// Optional. Default value of the data. Represents a dynamically typed value
   /// which can be either null, a number, a string, a boolean, a struct,
   /// or a list of values. The provided default value must be compatible
   /// with the defined 'type' and other schema constraints.
   final String? default_;
-
   /// (Output)
   /// A map of definitions for use by ref. Only allowed at the root of the schema.
   final String? defs;
-
   /// The description of the app version.
   final String? description;
-
   /// (Output)
   /// Possible values of the element of primitive type with enum format.
   /// Examples:
@@ -33,23 +29,18 @@ class AppVersionSnapshotToolClientFunctionResponse {
   /// 2. We can define apartment number as :
   /// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
   final List<String>? enums;
-
   /// (Output)
   /// Schema of the elements of Type.ARRAY.
   final String? items;
-
   /// (Output)
   /// Indicates if the value may be null.
   final bool? nullable;
-
   /// (Output)
   /// Optional. Schemas of initial elements of Type.ARRAY.
   final String? prefixItems;
-
   /// (Output)
   /// Properties of Type.OBJECT.
   final String? properties;
-
   /// (Output)
   /// Allows indirect references between schema nodes. The value should be a
   /// valid reference to a child of the root `defs`.
@@ -70,11 +61,9 @@ class AppVersionSnapshotToolClientFunctionResponse {
   /// See details in
   /// https://json-schema.org/understanding-json-schema/structuring.
   final String? ref;
-
   /// (Output)
   /// Required properties of Type.OBJECT.
   final List<String>? requireds;
-
   /// (Output)
   /// The type of the data store. This field is readonly and populated by the
   /// server.
@@ -84,7 +73,6 @@ class AppVersionSnapshotToolClientFunctionResponse {
   /// FAQ
   /// CONNECTOR
   final String? type;
-
   /// (Output)
   /// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
   final bool? uniqueItems;
@@ -140,38 +128,23 @@ class AppVersionSnapshotToolClientFunctionResponse {
     };
   }
 
-  factory AppVersionSnapshotToolClientFunctionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolClientFunctionResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolClientFunctionResponse(
-      additionalProperties: map['additionalProperties'] == null
-          ? null
-          : map['additionalProperties'] as String,
+      additionalProperties: map['additionalProperties'] == null ? null : map['additionalProperties'] as String,
       anyOf: map['anyOf'] == null ? null : map['anyOf'] as String,
       default_: map['default'] == null ? null : map['default'] as String,
       defs: map['defs'] == null ? null : map['defs'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      enums: map['enums'] == null
-          ? null
-          : (map['enums'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      enums: map['enums'] == null ? null : (map['enums'] as List).cast<String>(),
       items: map['items'] == null ? null : map['items'] as String,
       nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      prefixItems: map['prefixItems'] == null
-          ? null
-          : map['prefixItems'] as String,
-      properties: map['properties'] == null
-          ? null
-          : map['properties'] as String,
+      prefixItems: map['prefixItems'] == null ? null : map['prefixItems'] as String,
+      properties: map['properties'] == null ? null : map['properties'] as String,
       ref: map['ref'] == null ? null : map['ref'] as String,
-      requireds: map['requireds'] == null
-          ? null
-          : (map['requireds'] as List).cast<String>(),
+      requireds: map['requireds'] == null ? null : (map['requireds'] as List).cast<String>(),
       type: map['type'] == null ? null : map['type'] as String,
-      uniqueItems: map['uniqueItems'] == null
-          ? null
-          : map['uniqueItems'] as bool,
+      uniqueItems: map['uniqueItems'] == null ? null : map['uniqueItems'] as bool,
     );
   }
 }
+

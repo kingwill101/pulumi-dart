@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeTargetParametersHttpParameters {
   final Map<String, String>? headerParameters;
   final String? pathParameterValues;
@@ -25,15 +26,10 @@ class PipeTargetParametersHttpParameters {
 
   factory PipeTargetParametersHttpParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersHttpParameters(
-      headerParameters: map['headerParameters'] == null
-          ? null
-          : (map['headerParameters'] as Map).cast<String, String>(),
-      pathParameterValues: map['pathParameterValues'] == null
-          ? null
-          : map['pathParameterValues'] as String,
-      queryStringParameters: map['queryStringParameters'] == null
-          ? null
-          : (map['queryStringParameters'] as Map).cast<String, String>(),
+      headerParameters: map['headerParameters'] == null ? null : (map['headerParameters'] as Map).cast<String, String>(),
+      pathParameterValues: map['pathParameterValues'] == null ? null : map['pathParameterValues'] as String,
+      queryStringParameters: map['queryStringParameters'] == null ? null : (map['queryStringParameters'] as Map).cast<String, String>(),
     );
   }
 }
+

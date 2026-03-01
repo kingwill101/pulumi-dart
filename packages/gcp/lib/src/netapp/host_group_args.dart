@@ -9,32 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostGroupArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// The list of hosts associated with the host group
   final pulumi.Input<List<String>> hosts;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location (region) of the Host Group.
   final pulumi.Input<String> location;
-
   /// The resource name of the Host Group. Needs to be unique per location.
   final pulumi.Input<String>? name;
-
   /// The OS type of the host group. It indicates the type of operating system
   /// used by all of the hosts in the HostGroup. All hosts in a HostGroup must be
   /// of the same OS type. This can be set only when creating a HostGroup.
   /// Possible values are: `LINUX`, `WINDOWS`, `ESXI`.
   final pulumi.Input<String> osType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Type of the host group.
   /// Possible values are: `ISCSI_INITIATOR`.
   final pulumi.Input<String> type;
@@ -57,14 +50,15 @@ class HostGroupArgs {
     required String osType,
     String? project,
     required String type,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       hosts = pulumi.Input.asInput<List<String>>(hosts),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       osType = pulumi.Input.asInput<String>(osType),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       type = pulumi.Input.asInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      hosts = pulumi.Input.asInput<List<String>>(hosts),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      osType = pulumi.Input.asInput<String>(osType),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,13 +75,9 @@ class HostGroupArgs {
 
   factory HostGroupArgs.fromMap(Map<String, dynamic> map) {
     return HostGroupArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       hosts: (map['hosts'] as List).cast<String>(),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       osType: map['osType'] as String,
@@ -96,3 +86,4 @@ class HostGroupArgs {
     );
   }
 }
+

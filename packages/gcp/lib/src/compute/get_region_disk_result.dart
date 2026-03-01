@@ -18,7 +18,6 @@ class GetRegionDiskResult {
   final String diskId;
   final Map<String, String> effectiveLabels;
   final List<GetRegionDiskGuestOsFeature> guestOsFeatures;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String interface;
@@ -40,8 +39,7 @@ class GetRegionDiskResult {
   final String snapshot;
   final String sourceDisk;
   final String sourceDiskId;
-  final List<GetRegionDiskSourceSnapshotEncryptionKey>
-  sourceSnapshotEncryptionKeys;
+  final List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
   final String sourceSnapshotId;
   final String type;
   final List<String> users;
@@ -121,27 +119,15 @@ class GetRegionDiskResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessMode': accessMode,
-      'asyncPrimaryDisks':
-          pulumi.Input.encodeList<
-            GetRegionDiskAsyncPrimaryDisk,
-            Map<String, dynamic>
-          >(asyncPrimaryDisks, (value) => value.toMap()),
+      'asyncPrimaryDisks': pulumi.Input.encodeList<GetRegionDiskAsyncPrimaryDisk, Map<String, dynamic>>(asyncPrimaryDisks, (value) => value.toMap()),
       'createSnapshotBeforeDestroy': createSnapshotBeforeDestroy,
       'createSnapshotBeforeDestroyPrefix': createSnapshotBeforeDestroyPrefix,
       'creationTimestamp': creationTimestamp,
       'description': description,
-      'diskEncryptionKeys':
-          pulumi.Input.encodeList<
-            GetRegionDiskDiskEncryptionKey,
-            Map<String, dynamic>
-          >(diskEncryptionKeys, (value) => value.toMap()),
+      'diskEncryptionKeys': pulumi.Input.encodeList<GetRegionDiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap()),
       'diskId': diskId,
       'effectiveLabels': effectiveLabels,
-      'guestOsFeatures':
-          pulumi.Input.encodeList<
-            GetRegionDiskGuestOsFeature,
-            Map<String, dynamic>
-          >(guestOsFeatures, (value) => value.toMap()),
+      'guestOsFeatures': pulumi.Input.encodeList<GetRegionDiskGuestOsFeature, Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap()),
       'id': id,
       'interface': interface,
       'labelFingerprint': labelFingerprint,
@@ -162,11 +148,7 @@ class GetRegionDiskResult {
       'snapshot': snapshot,
       'sourceDisk': sourceDisk,
       'sourceDiskId': sourceDiskId,
-      'sourceSnapshotEncryptionKeys':
-          pulumi.Input.encodeList<
-            GetRegionDiskSourceSnapshotEncryptionKey,
-            Map<String, dynamic>
-          >(sourceSnapshotEncryptionKeys, (value) => value.toMap()),
+      'sourceSnapshotEncryptionKeys': pulumi.Input.encodeList<GetRegionDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKeys, (value) => value.toMap()),
       'sourceSnapshotId': sourceSnapshotId,
       'type': type,
       'users': users,
@@ -176,32 +158,15 @@ class GetRegionDiskResult {
   factory GetRegionDiskResult.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskResult(
       accessMode: map['accessMode'] as String,
-      asyncPrimaryDisks: pulumi.Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(
-        map['asyncPrimaryDisks'],
-        (value) => GetRegionDiskAsyncPrimaryDisk.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      asyncPrimaryDisks: pulumi.Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(map['asyncPrimaryDisks'], (value) => GetRegionDiskAsyncPrimaryDisk.fromMap((value as Map).cast<String, dynamic>())),
       createSnapshotBeforeDestroy: map['createSnapshotBeforeDestroy'] as bool,
-      createSnapshotBeforeDestroyPrefix:
-          map['createSnapshotBeforeDestroyPrefix'] as String,
+      createSnapshotBeforeDestroyPrefix: map['createSnapshotBeforeDestroyPrefix'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      diskEncryptionKeys:
-          pulumi.Input.decodeList<GetRegionDiskDiskEncryptionKey>(
-            map['diskEncryptionKeys'],
-            (value) => GetRegionDiskDiskEncryptionKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      diskEncryptionKeys: pulumi.Input.decodeList<GetRegionDiskDiskEncryptionKey>(map['diskEncryptionKeys'], (value) => GetRegionDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       diskId: map['diskId'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      guestOsFeatures: pulumi.Input.decodeList<GetRegionDiskGuestOsFeature>(
-        map['guestOsFeatures'],
-        (value) => GetRegionDiskGuestOsFeature.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      guestOsFeatures: pulumi.Input.decodeList<GetRegionDiskGuestOsFeature>(map['guestOsFeatures'], (value) => GetRegionDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       interface: map['interface'] as String,
       labelFingerprint: map['labelFingerprint'] as String,
@@ -222,16 +187,11 @@ class GetRegionDiskResult {
       snapshot: map['snapshot'] as String,
       sourceDisk: map['sourceDisk'] as String,
       sourceDiskId: map['sourceDiskId'] as String,
-      sourceSnapshotEncryptionKeys:
-          pulumi.Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(
-            map['sourceSnapshotEncryptionKeys'],
-            (value) => GetRegionDiskSourceSnapshotEncryptionKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys'], (value) => GetRegionDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       sourceSnapshotId: map['sourceSnapshotId'] as String,
       type: map['type'] as String,
       users: (map['users'] as List).cast<String>(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'get_job_template_template_container_env_value_source.dart';
 class GetJobTemplateTemplateContainerEnv {
   /// The name of the Cloud Run v2 Job.
   final String name;
-
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   final String value;
-
   /// Source for the environment variable's value.
   final List<GetJobTemplateTemplateContainerEnvValueSource> valueSources;
 
@@ -27,11 +25,7 @@ class GetJobTemplateTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueSources':
-          pulumi.Input.encodeList<
-            GetJobTemplateTemplateContainerEnvValueSource,
-            Map<String, dynamic>
-          >(valueSources, (value) => value.toMap()),
+      'valueSources': pulumi.Input.encodeList<GetJobTemplateTemplateContainerEnvValueSource, Map<String, dynamic>>(valueSources, (value) => value.toMap()),
     };
   }
 
@@ -39,14 +33,8 @@ class GetJobTemplateTemplateContainerEnv {
     return GetJobTemplateTemplateContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueSources:
-          pulumi
-              .Input.decodeList<GetJobTemplateTemplateContainerEnvValueSource>(
-            map['valueSources'],
-            (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      valueSources: pulumi.Input.decodeList<GetJobTemplateTemplateContainerEnvValueSource>(map['valueSources'], (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

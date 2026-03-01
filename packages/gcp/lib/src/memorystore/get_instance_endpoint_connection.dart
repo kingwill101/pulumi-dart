@@ -9,28 +9,20 @@ class GetInstanceEndpointConnection {
 
   /// Creates a new [GetInstanceEndpointConnection].
   /// [pscAutoConnections] Detailed information of a PSC connection that is created through service connectivity automation.
-  GetInstanceEndpointConnection({required this.pscAutoConnections});
+  GetInstanceEndpointConnection({
+    required this.pscAutoConnections,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pscAutoConnections':
-          pulumi.Input.encodeList<
-            GetInstanceEndpointConnectionPscAutoConnection,
-            Map<String, dynamic>
-          >(pscAutoConnections, (value) => value.toMap()),
+      'pscAutoConnections': pulumi.Input.encodeList<GetInstanceEndpointConnectionPscAutoConnection, Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap()),
     };
   }
 
   factory GetInstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return GetInstanceEndpointConnection(
-      pscAutoConnections:
-          pulumi
-              .Input.decodeList<GetInstanceEndpointConnectionPscAutoConnection>(
-            map['pscAutoConnections'],
-            (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      pscAutoConnections: pulumi.Input.decodeList<GetInstanceEndpointConnectionPscAutoConnection>(map['pscAutoConnections'], (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

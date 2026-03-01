@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketObjectCustomerEncryption {
   /// Encryption algorithm. Default: AES256
   final String? encryptionAlgorithm;
-
   /// Base64 encoded Customer-Supplied Encryption Key.
   final String encryptionKey;
 
@@ -24,10 +24,9 @@ class BucketObjectCustomerEncryption {
 
   factory BucketObjectCustomerEncryption.fromMap(Map<String, dynamic> map) {
     return BucketObjectCustomerEncryption(
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null
-          ? null
-          : map['encryptionAlgorithm'] as String,
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : map['encryptionAlgorithm'] as String,
       encryptionKey: map['encryptionKey'] as String,
     );
   }
 }
+

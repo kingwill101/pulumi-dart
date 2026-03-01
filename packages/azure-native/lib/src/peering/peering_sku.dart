@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The SKU that defines the tier and kind of the peering.
+class PeeringSku {
+  /// The name of the peering SKU.
+  final String? name;
+
+  /// Creates a new [PeeringSku].
+  /// [name] The name of the peering SKU.
+  PeeringSku({
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+    };
+  }
+
+  factory PeeringSku.fromMap(Map<String, dynamic> map) {
+    return PeeringSku(
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

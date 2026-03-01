@@ -1,0 +1,257 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'amount_response.dart';
+import 'student_args.dart';
+import 'system_data_response.dart';
+
+/// Student details.
+///
+/// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Student
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var student = new AzureNative.Education.Student("student", new()
+///     {
+///         BillingAccountName = "{billingAccountName}",
+///         BillingProfileName = "{billingProfileName}",
+///         Budget = new AzureNative.Education.Inputs.AmountArgs
+///         {
+///             Currency = "USD",
+///             Value = 100,
+///         },
+///         Email = "test@contoso.com",
+///         ExpirationDate = "2021-11-09T22:13:21.795Z",
+///         FirstName = "test",
+///         InvoiceSectionName = "{invoiceSectionName}",
+///         LastName = "user",
+///         Role = AzureNative.Education.StudentRole.Student,
+///         StudentAlias = "{studentAlias}",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	education "github.com/pulumi/pulumi-azure-native-sdk/education/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := education.NewStudent(ctx, "student", &education.StudentArgs{
+/// 			BillingAccountName: pulumi.String("{billingAccountName}"),
+/// 			BillingProfileName: pulumi.String("{billingProfileName}"),
+/// 			Budget: &education.AmountArgs{
+/// 				Currency: pulumi.String("USD"),
+/// 				Value:    pulumi.Float64(100),
+/// 			},
+/// 			Email:              pulumi.String("test@contoso.com"),
+/// 			ExpirationDate:     pulumi.String("2021-11-09T22:13:21.795Z"),
+/// 			FirstName:          pulumi.String("test"),
+/// 			InvoiceSectionName: pulumi.String("{invoiceSectionName}"),
+/// 			LastName:           pulumi.String("user"),
+/// 			Role:               pulumi.String(education.StudentRoleStudent),
+/// 			StudentAlias:       pulumi.String("{studentAlias}"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.education.Student;
+/// import com.pulumi.azurenative.education.StudentArgs;
+/// import com.pulumi.azurenative.education.inputs.AmountArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var student = new Student("student", StudentArgs.builder()
+///             .billingAccountName("{billingAccountName}")
+///             .billingProfileName("{billingProfileName}")
+///             .budget(AmountArgs.builder()
+///                 .currency("USD")
+///                 .value(100.0)
+///                 .build())
+///             .email("test@contoso.com")
+///             .expirationDate("2021-11-09T22:13:21.795Z")
+///             .firstName("test")
+///             .invoiceSectionName("{invoiceSectionName}")
+///             .lastName("user")
+///             .role("Student")
+///             .studentAlias("{studentAlias}")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const student = new azure_native.education.Student("student", {
+///     billingAccountName: "{billingAccountName}",
+///     billingProfileName: "{billingProfileName}",
+///     budget: {
+///         currency: "USD",
+///         value: 100,
+///     },
+///     email: "test@contoso.com",
+///     expirationDate: "2021-11-09T22:13:21.795Z",
+///     firstName: "test",
+///     invoiceSectionName: "{invoiceSectionName}",
+///     lastName: "user",
+///     role: azure_native.education.StudentRole.Student,
+///     studentAlias: "{studentAlias}",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// student = azure_native.education.Student("student",
+///     billing_account_name="{billingAccountName}",
+///     billing_profile_name="{billingProfileName}",
+///     budget={
+///         "currency": "USD",
+///         "value": 100,
+///     },
+///     email="test@contoso.com",
+///     expiration_date="2021-11-09T22:13:21.795Z",
+///     first_name="test",
+///     invoice_section_name="{invoiceSectionName}",
+///     last_name="user",
+///     role=azure_native.education.StudentRole.STUDENT,
+///     student_alias="{studentAlias}")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   student:
+///     type: azure-native:education:Student
+///     properties:
+///       billingAccountName: '{billingAccountName}'
+///       billingProfileName: '{billingProfileName}'
+///       budget:
+///         currency: USD
+///         value: 100
+///       email: test@contoso.com
+///       expirationDate: 2021-11-09T22:13:21.795Z
+///       firstName: test
+///       invoiceSectionName: '{invoiceSectionName}'
+///       lastName: user
+///       role: Student
+///       studentAlias: '{studentAlias}'
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:education:Student {studentAlias} /providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/providers/Microsoft.Education/labs/default/students/{studentAlias}
+/// ```
+class Student extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Student Budget
+  late final pulumi.Output<AmountResponse> budget;
+  /// Date student was added to the lab
+  late final pulumi.Output<String> effectiveDate;
+  /// Student Email
+  late final pulumi.Output<String> email;
+  /// Date this student is set to expire from the lab.
+  late final pulumi.Output<String> expirationDate;
+  /// First Name
+  late final pulumi.Output<String> firstName;
+  /// Last Name
+  late final pulumi.Output<String> lastName;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// Student Role
+  late final pulumi.Output<String> role;
+  /// Student Lab Status
+  late final pulumi.Output<String> status;
+  /// Subscription alias
+  late final pulumi.Output<String?> subscriptionAlias;
+  /// Subscription Id
+  late final pulumi.Output<String> subscriptionId;
+  /// subscription invite last sent date
+  late final pulumi.Output<String?> subscriptionInviteLastSentDate;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [Student].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Student]. {@macro pulumi_education_student_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Student(
+    String name, {
+    StudentArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:education:Student',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.budget = registerOutput<AmountResponse>('budget');
+    this.effectiveDate = registerOutput<String>('effectiveDate');
+    this.email = registerOutput<String>('email');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.firstName = registerOutput<String>('firstName');
+    this.lastName = registerOutput<String>('lastName');
+    this.name = registerOutput<String>('name');
+    this.role = registerOutput<String>('role');
+    this.status = registerOutput<String>('status');
+    this.subscriptionAlias = registerOutput<String?>('subscriptionAlias');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
+    this.subscriptionInviteLastSentDate = registerOutput<String?>('subscriptionInviteLastSentDate');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.type = registerOutput<String>('type');
+  }
+}

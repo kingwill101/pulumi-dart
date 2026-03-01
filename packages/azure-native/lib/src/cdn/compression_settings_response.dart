@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// settings for compression.
+class CompressionSettingsResponse {
+  /// List of content types on which compression applies. The value should be a valid MIME type.
+  final List<String>? contentTypesToCompress;
+  /// Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+  final bool? isCompressionEnabled;
+
+  /// Creates a new [CompressionSettingsResponse].
+  /// [contentTypesToCompress] List of content types on which compression applies. The value should be a valid MIME type.
+  /// [isCompressionEnabled] Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+  CompressionSettingsResponse({
+    this.contentTypesToCompress,
+    this.isCompressionEnabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'contentTypesToCompress': ?contentTypesToCompress,
+      'isCompressionEnabled': ?isCompressionEnabled,
+    };
+  }
+
+  factory CompressionSettingsResponse.fromMap(Map<String, dynamic> map) {
+    return CompressionSettingsResponse(
+      contentTypesToCompress: map['contentTypesToCompress'] == null ? null : (map['contentTypesToCompress'] as List).cast<String>(),
+      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : map['isCompressionEnabled'] as bool,
+    );
+  }
+}
+

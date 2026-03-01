@@ -8,15 +8,12 @@ class CxTestCaseTestCaseConversationTurnUserInputInput {
   /// The DTMF event to be handled.
   /// Structure is documented below.
   final CxTestCaseTestCaseConversationTurnUserInputInputDtmf? dtmf;
-
   /// The event to be triggered.
   /// Structure is documented below.
   final CxTestCaseTestCaseConversationTurnUserInputInputEvent? event;
-
   /// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
   /// Note that queries in the same session do not necessarily need to specify the same language.
   final String? languageCode;
-
   /// The natural language text to be processed.
   /// Structure is documented below.
   final CxTestCaseTestCaseConversationTurnUserInputInputText? text;
@@ -42,28 +39,13 @@ class CxTestCaseTestCaseConversationTurnUserInputInput {
     };
   }
 
-  factory CxTestCaseTestCaseConversationTurnUserInputInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseTestCaseConversationTurnUserInputInput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInputInput(
-      dtmf: map['dtmf'] == null
-          ? null
-          : CxTestCaseTestCaseConversationTurnUserInputInputDtmf.fromMap(
-              (map['dtmf'] as Map).cast<String, dynamic>(),
-            ),
-      event: map['event'] == null
-          ? null
-          : CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap(
-              (map['event'] as Map).cast<String, dynamic>(),
-            ),
-      languageCode: map['languageCode'] == null
-          ? null
-          : map['languageCode'] as String,
-      text: map['text'] == null
-          ? null
-          : CxTestCaseTestCaseConversationTurnUserInputInputText.fromMap(
-              (map['text'] as Map).cast<String, dynamic>(),
-            ),
+      dtmf: map['dtmf'] == null ? null : CxTestCaseTestCaseConversationTurnUserInputInputDtmf.fromMap((map['dtmf'] as Map).cast<String, dynamic>()),
+      event: map['event'] == null ? null : CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap((map['event'] as Map).cast<String, dynamic>()),
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      text: map['text'] == null ? null : CxTestCaseTestCaseConversationTurnUserInputInputText.fromMap((map['text'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

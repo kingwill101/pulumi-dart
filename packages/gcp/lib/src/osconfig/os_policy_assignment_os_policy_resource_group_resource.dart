@@ -9,11 +9,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// Exec resource Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceExec? exec;
-
   /// File resource Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceFile? file;
-
   /// The id of the resource with the following restrictions:
   ///
   /// *   Must contain only lowercase letters, numbers, and hyphens.
@@ -22,11 +20,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// *   Must end with a number or a letter.
   /// *   Must be unique within the OS policy.
   final String id;
-
   /// Package resource Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkg? pkg;
-
   /// Package repository resource Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceRepository? repository;
@@ -55,31 +51,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResource(
-      exec: map['exec'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(
-              (map['exec'] as Map).cast<String, dynamic>(),
-            ),
-      file: map['file'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
+      exec: map['exec'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap((map['exec'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      pkg: map['pkg'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap(
-              (map['pkg'] as Map).cast<String, dynamic>(),
-            ),
-      repository: map['repository'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap(
-              (map['repository'] as Map).cast<String, dynamic>(),
-            ),
+      pkg: map['pkg'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap((map['pkg'] as Map).cast<String, dynamic>()),
+      repository: map['repository'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap((map['repository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

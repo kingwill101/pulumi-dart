@@ -18,64 +18,48 @@ class ConnectionArgs {
   /// authConfig for the connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionAuthConfig>? authConfig;
-
   /// Config Variables for the connection.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionConfigVariable>>? configVariables;
-
   /// connectorVersion of the Connector.
   final pulumi.Input<String> connectorVersion;
-
   /// An arbitrary description for the Connection.
   final pulumi.Input<String>? description;
-
   /// Define the Connectors target endpoint.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionDestinationConfig>>? destinationConfigs;
-
   /// Eventing Configuration of a connection
   /// Structure is documented below.
   final pulumi.Input<ConnectionEventingConfig>? eventingConfig;
-
   /// Eventing enablement type. Will be nil if eventing is not enabled.
   /// Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
   final pulumi.Input<String>? eventingEnablementType;
-
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location in which Connection needs to be created.
   final pulumi.Input<String> location;
-
   /// Determines whether or no a connection is locked. If locked, a reason must be specified.
   /// Structure is documented below.
   final pulumi.Input<ConnectionLockConfig>? lockConfig;
-
   /// Log configuration for the connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionLogConfig>? logConfig;
-
   /// Name of Connection needs to be created.
   final pulumi.Input<String>? name;
-
   /// Node configuration for the connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionNodeConfig>? nodeConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Service account needed for runtime plane to access Google Cloud resources.
   final pulumi.Input<String>? serviceAccount;
-
   /// SSL Configuration of a connection
   /// Structure is documented below.
   final pulumi.Input<ConnectionSslConfig>? sslConfig;
-
   /// Suspended indicates if a user has suspended a connection or not.
   final pulumi.Input<bool>? suspended;
 
@@ -115,173 +99,67 @@ class ConnectionArgs {
     String? serviceAccount,
     ConnectionSslConfig? sslConfig,
     bool? suspended,
-  }) : authConfig = pulumi.Input.asOptionalInput<ConnectionAuthConfig>(
-         authConfig,
-       ),
-       configVariables =
-           pulumi.Input.asOptionalInput<List<ConnectionConfigVariable>>(
-             configVariables,
-           ),
-       connectorVersion = pulumi.Input.asInput<String>(connectorVersion),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       destinationConfigs =
-           pulumi.Input.asOptionalInput<List<ConnectionDestinationConfig>>(
-             destinationConfigs,
-           ),
-       eventingConfig = pulumi.Input.asOptionalInput<ConnectionEventingConfig>(
-         eventingConfig,
-       ),
-       eventingEnablementType = pulumi.Input.asOptionalInput<String>(
-         eventingEnablementType,
-       ),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       lockConfig = pulumi.Input.asOptionalInput<ConnectionLockConfig>(
-         lockConfig,
-       ),
-       logConfig = pulumi.Input.asOptionalInput<ConnectionLogConfig>(logConfig),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       nodeConfig = pulumi.Input.asOptionalInput<ConnectionNodeConfig>(
-         nodeConfig,
-       ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-       sslConfig = pulumi.Input.asOptionalInput<ConnectionSslConfig>(sslConfig),
-       suspended = pulumi.Input.asOptionalInput<bool>(suspended);
+  }) :
+      authConfig = pulumi.Input.asOptionalInput<ConnectionAuthConfig>(authConfig),
+      configVariables = pulumi.Input.asOptionalInput<List<ConnectionConfigVariable>>(configVariables),
+      connectorVersion = pulumi.Input.asInput<String>(connectorVersion),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      destinationConfigs = pulumi.Input.asOptionalInput<List<ConnectionDestinationConfig>>(destinationConfigs),
+      eventingConfig = pulumi.Input.asOptionalInput<ConnectionEventingConfig>(eventingConfig),
+      eventingEnablementType = pulumi.Input.asOptionalInput<String>(eventingEnablementType),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      lockConfig = pulumi.Input.asOptionalInput<ConnectionLockConfig>(lockConfig),
+      logConfig = pulumi.Input.asOptionalInput<ConnectionLogConfig>(logConfig),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      nodeConfig = pulumi.Input.asOptionalInput<ConnectionNodeConfig>(nodeConfig),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
+      sslConfig = pulumi.Input.asOptionalInput<ConnectionSslConfig>(sslConfig),
+      suspended = pulumi.Input.asOptionalInput<bool>(suspended);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionAuthConfig,
-            Map<String, dynamic>
-          >(authConfig, (value) => value.toMap()),
-      'configVariables':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConnectionConfigVariable>,
-            List<Map<String, dynamic>>
-          >(
-            configVariables,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConnectionConfigVariable,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'configVariables': ?pulumi.Input.mapOptionalInputValue<List<ConnectionConfigVariable>, List<Map<String, dynamic>>>(configVariables, (value) => pulumi.Input.encodeList<ConnectionConfigVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectorVersion': connectorVersion,
       'description': ?description,
-      'destinationConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConnectionDestinationConfig>,
-            List<Map<String, dynamic>>
-          >(
-            destinationConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConnectionDestinationConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'eventingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionEventingConfig,
-            Map<String, dynamic>
-          >(eventingConfig, (value) => value.toMap()),
+      'destinationConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionDestinationConfig>, List<Map<String, dynamic>>>(destinationConfigs, (value) => pulumi.Input.encodeList<ConnectionDestinationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'eventingConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionEventingConfig, Map<String, dynamic>>(eventingConfig, (value) => value.toMap()),
       'eventingEnablementType': ?eventingEnablementType,
       'labels': ?labels,
       'location': location,
-      'lockConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionLockConfig,
-            Map<String, dynamic>
-          >(lockConfig, (value) => value.toMap()),
-      'logConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionLogConfig,
-            Map<String, dynamic>
-          >(logConfig, (value) => value.toMap()),
+      'lockConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionLockConfig, Map<String, dynamic>>(lockConfig, (value) => value.toMap()),
+      'logConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionLogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
       'name': ?name,
-      'nodeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionNodeConfig,
-            Map<String, dynamic>
-          >(nodeConfig, (value) => value.toMap()),
+      'nodeConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionNodeConfig, Map<String, dynamic>>(nodeConfig, (value) => value.toMap()),
       'project': ?project,
       'serviceAccount': ?serviceAccount,
-      'sslConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionSslConfig,
-            Map<String, dynamic>
-          >(sslConfig, (value) => value.toMap()),
+      'sslConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfig, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
       'suspended': ?suspended,
     };
   }
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      authConfig: map['authConfig'] == null
-          ? null
-          : ConnectionAuthConfig.fromMap(
-              (map['authConfig'] as Map).cast<String, dynamic>(),
-            ),
-      configVariables: map['configVariables'] == null
-          ? null
-          : pulumi.Input.decodeList<ConnectionConfigVariable>(
-              map['configVariables'],
-              (value) => ConnectionConfigVariable.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      authConfig: map['authConfig'] == null ? null : ConnectionAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
+      configVariables: map['configVariables'] == null ? null : pulumi.Input.decodeList<ConnectionConfigVariable>(map['configVariables'], (value) => ConnectionConfigVariable.fromMap((value as Map).cast<String, dynamic>())),
       connectorVersion: map['connectorVersion'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      destinationConfigs: map['destinationConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<ConnectionDestinationConfig>(
-              map['destinationConfigs'],
-              (value) => ConnectionDestinationConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      eventingConfig: map['eventingConfig'] == null
-          ? null
-          : ConnectionEventingConfig.fromMap(
-              (map['eventingConfig'] as Map).cast<String, dynamic>(),
-            ),
-      eventingEnablementType: map['eventingEnablementType'] == null
-          ? null
-          : map['eventingEnablementType'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      destinationConfigs: map['destinationConfigs'] == null ? null : pulumi.Input.decodeList<ConnectionDestinationConfig>(map['destinationConfigs'], (value) => ConnectionDestinationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      eventingConfig: map['eventingConfig'] == null ? null : ConnectionEventingConfig.fromMap((map['eventingConfig'] as Map).cast<String, dynamic>()),
+      eventingEnablementType: map['eventingEnablementType'] == null ? null : map['eventingEnablementType'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      lockConfig: map['lockConfig'] == null
-          ? null
-          : ConnectionLockConfig.fromMap(
-              (map['lockConfig'] as Map).cast<String, dynamic>(),
-            ),
-      logConfig: map['logConfig'] == null
-          ? null
-          : ConnectionLogConfig.fromMap(
-              (map['logConfig'] as Map).cast<String, dynamic>(),
-            ),
+      lockConfig: map['lockConfig'] == null ? null : ConnectionLockConfig.fromMap((map['lockConfig'] as Map).cast<String, dynamic>()),
+      logConfig: map['logConfig'] == null ? null : ConnectionLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      nodeConfig: map['nodeConfig'] == null
-          ? null
-          : ConnectionNodeConfig.fromMap(
-              (map['nodeConfig'] as Map).cast<String, dynamic>(),
-            ),
+      nodeConfig: map['nodeConfig'] == null ? null : ConnectionNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : map['serviceAccount'] as String,
-      sslConfig: map['sslConfig'] == null
-          ? null
-          : ConnectionSslConfig.fromMap(
-              (map['sslConfig'] as Map).cast<String, dynamic>(),
-            ),
+      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      sslConfig: map['sslConfig'] == null ? null : ConnectionSslConfig.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
       suspended: map['suspended'] == null ? null : map['suspended'] as bool,
     );
   }
 }
+

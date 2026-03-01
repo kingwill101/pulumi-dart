@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate {
   /// ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.
   final String? resourceArn;
@@ -11,16 +12,15 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceArn': ?resourceArn};
+    return <String, dynamic>{
+      'resourceArn': ?resourceArn,
+    };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate(
-      resourceArn: map['resourceArn'] == null
-          ? null
-          : map['resourceArn'] as String,
+      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
     );
   }
 }
+

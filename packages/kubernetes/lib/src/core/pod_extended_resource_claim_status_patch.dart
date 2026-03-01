@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_extended_resource_request_patch.dart';
+
+/// PodExtendedResourceClaimStatus is stored in the PodStatus for the extended resource requests backed by DRA. It stores the generated name for the corresponding special ResourceClaim created by the scheduler.
+class PodExtendedResourceClaimStatusPatch {
+  /// RequestMappings identifies the mapping of <container, extended resource backed by DRA> to  device request in the generated ResourceClaim.
+  final List<ContainerExtendedResourceRequestPatch>? requestMappings;
+  /// ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.
+  final String? resourceClaimName;
+
+  /// Creates a new [PodExtendedResourceClaimStatusPatch].
+  /// [requestMappings] RequestMappings identifies the mapping of <container, extended resource backed by DRA> to  device request in the generated ResourceClaim.
+  /// [resourceClaimName] ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.
+  PodExtendedResourceClaimStatusPatch({
+    this.requestMappings,
+    this.resourceClaimName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'requestMappings': ?requestMappings == null ? null : pulumi.Input.encodeList<ContainerExtendedResourceRequestPatch, Map<String, dynamic>>(requestMappings!, (value) => value.toMap()),
+      'resourceClaimName': ?resourceClaimName,
+    };
+  }
+
+  factory PodExtendedResourceClaimStatusPatch.fromMap(Map<String, dynamic> map) {
+    return PodExtendedResourceClaimStatusPatch(
+      requestMappings: map['requestMappings'] == null ? null : pulumi.Input.decodeList<ContainerExtendedResourceRequestPatch>(map['requestMappings'], (value) => ContainerExtendedResourceRequestPatch.fromMap((value as Map).cast<String, dynamic>())),
+      resourceClaimName: map['resourceClaimName'] == null ? null : map['resourceClaimName'] as String,
+    );
+  }
+}
+

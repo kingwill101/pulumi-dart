@@ -12,19 +12,24 @@ class SyncAuthorizationArgs {
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
   /// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
   final pulumi.Input<List<String>> identities;
-
   /// Name of the Apigee organization.
   final pulumi.Input<String>? name;
 
   /// Creates a new [SyncAuthorizationArgs].
   /// [identities] Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
   /// [name] Name of the Apigee organization.
-  SyncAuthorizationArgs({required List<String> identities, String? name})
-    : identities = pulumi.Input.asInput<List<String>>(identities),
+  SyncAuthorizationArgs({
+    required List<String> identities,
+    String? name,
+  }) :
+      identities = pulumi.Input.asInput<List<String>>(identities),
       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'identities': identities, 'name': ?name};
+    return <String, dynamic>{
+      'identities': identities,
+      'name': ?name,
+    };
   }
 
   factory SyncAuthorizationArgs.fromMap(Map<String, dynamic> map) {
@@ -34,3 +39,4 @@ class SyncAuthorizationArgs {
     );
   }
 }
+

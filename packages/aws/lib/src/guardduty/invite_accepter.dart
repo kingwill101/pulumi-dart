@@ -197,10 +197,8 @@ import 'invite_accepter_args.dart';
 class InviteAccepter extends pulumi.CustomResource {
   /// The detector ID of the member GuardDuty account.
   late final pulumi.Output<String> detectorId;
-
   /// AWS account ID for primary account.
   late final pulumi.Output<String> masterAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -213,11 +211,11 @@ class InviteAccepter extends pulumi.CustomResource {
     InviteAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:guardduty/inviteAccepter:InviteAccepter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:guardduty/inviteAccepter:InviteAccepter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.detectorId = registerOutput<String>('detectorId');
     this.masterAccountId = registerOutput<String>('masterAccountId');
     this.region = registerOutput<String>('region');

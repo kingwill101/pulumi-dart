@@ -4,8 +4,7 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount {
   /// Custom handling for counted requests. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling?
-  customRequestHandling;
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Custom handling for counted requests. See below.
@@ -15,21 +14,14 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCou
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null
-          ? null
-          : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
-            ),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

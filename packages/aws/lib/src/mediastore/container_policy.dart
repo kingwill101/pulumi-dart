@@ -326,10 +326,8 @@ import 'container_policy_args.dart';
 class ContainerPolicy extends pulumi.CustomResource {
   /// The name of the container.
   late final pulumi.Output<String> containerName;
-
   /// The contents of the policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -342,11 +340,11 @@ class ContainerPolicy extends pulumi.CustomResource {
     ContainerPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:mediastore/containerPolicy:ContainerPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:mediastore/containerPolicy:ContainerPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.containerName = registerOutput<String>('containerName');
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

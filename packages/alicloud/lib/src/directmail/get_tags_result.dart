@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_tags_tag.dart';
+
+/// Result data returned by getTags.
+class GetTagsResult {
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final List<String> ids;
+  final String? nameRegex;
+  final List<String> names;
+  final String? outputFile;
+  final List<GetTagsTag> tags;
+
+  /// Creates a new [GetTagsResult].
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ids] Required.
+  /// [nameRegex] Optional.
+  /// [names] Required.
+  /// [outputFile] Optional.
+  /// [tags] Required.
+  GetTagsResult({
+    required this.id,
+    required this.ids,
+    this.nameRegex,
+    required this.names,
+    this.outputFile,
+    required this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'ids': ids,
+      'nameRegex': ?nameRegex,
+      'names': names,
+      'outputFile': ?outputFile,
+      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+    };
+  }
+
+  factory GetTagsResult.fromMap(Map<String, dynamic> map) {
+    return GetTagsResult(
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      names: (map['names'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      tags: pulumi.Input.decodeList<GetTagsTag>(map['tags'], (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

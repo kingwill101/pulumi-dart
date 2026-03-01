@@ -18,28 +18,15 @@ class GetLaunchTemplateInstanceMarketOption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'marketType': marketType,
-      'spotOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateInstanceMarketOptionSpotOption,
-            Map<String, dynamic>
-          >(spotOptions, (value) => value.toMap()),
+      'spotOptions': pulumi.Input.encodeList<GetLaunchTemplateInstanceMarketOptionSpotOption, Map<String, dynamic>>(spotOptions, (value) => value.toMap()),
     };
   }
 
-  factory GetLaunchTemplateInstanceMarketOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateInstanceMarketOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOption(
       marketType: map['marketType'] as String,
-      spotOptions:
-          pulumi.Input.decodeList<
-            GetLaunchTemplateInstanceMarketOptionSpotOption
-          >(
-            map['spotOptions'],
-            (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      spotOptions: pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(map['spotOptions'], (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

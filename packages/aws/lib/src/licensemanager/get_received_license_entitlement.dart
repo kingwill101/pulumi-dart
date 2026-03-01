@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseEntitlement {
   /// Indicates whether check-ins are allowed.
   final bool allowCheckIn;
-
   /// Maximum entitlement count. Use if the unit is not None.
   final int maxCount;
-
   /// The key name.
   final String name;
-
   /// Indicates whether overages are allowed.
   final bool overage;
-
   /// Entitlement unit.
   final String unit;
-
   /// The value.
   final String value;
 
@@ -57,3 +53,4 @@ class GetReceivedLicenseEntitlement {
     );
   }
 }
+

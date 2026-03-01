@@ -10,29 +10,21 @@ class ClusterAutomatedBackupPolicy {
   /// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final String? backupWindow;
-
   /// Whether automated backups are enabled.
   final bool? enabled;
-
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// Structure is documented below.
   final ClusterAutomatedBackupPolicyEncryptionConfig? encryptionConfig;
-
   /// Labels to apply to backups created using this configuration.
   final Map<String, String>? labels;
-
   /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
   final String? location;
-
   /// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
   /// Structure is documented below.
-  final ClusterAutomatedBackupPolicyQuantityBasedRetention?
-  quantityBasedRetention;
-
+  final ClusterAutomatedBackupPolicyQuantityBasedRetention? quantityBasedRetention;
   /// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
   /// Structure is documented below.
   final ClusterAutomatedBackupPolicyTimeBasedRetention? timeBasedRetention;
-
   /// Weekly schedule for the Backup.
   /// Structure is documented below.
   final ClusterAutomatedBackupPolicyWeeklySchedule? weeklySchedule;
@@ -61,53 +53,26 @@ class ClusterAutomatedBackupPolicy {
     return <String, dynamic>{
       'backupWindow': ?backupWindow,
       'enabled': ?enabled,
-      'encryptionConfig': ?encryptionConfig == null
-          ? null
-          : encryptionConfig!.toMap(),
+      'encryptionConfig': ?encryptionConfig == null ? null : encryptionConfig!.toMap(),
       'labels': ?labels,
       'location': ?location,
-      'quantityBasedRetention': ?quantityBasedRetention == null
-          ? null
-          : quantityBasedRetention!.toMap(),
-      'timeBasedRetention': ?timeBasedRetention == null
-          ? null
-          : timeBasedRetention!.toMap(),
-      'weeklySchedule': ?weeklySchedule == null
-          ? null
-          : weeklySchedule!.toMap(),
+      'quantityBasedRetention': ?quantityBasedRetention == null ? null : quantityBasedRetention!.toMap(),
+      'timeBasedRetention': ?timeBasedRetention == null ? null : timeBasedRetention!.toMap(),
+      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
     };
   }
 
   factory ClusterAutomatedBackupPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicy(
-      backupWindow: map['backupWindow'] == null
-          ? null
-          : map['backupWindow'] as String,
+      backupWindow: map['backupWindow'] == null ? null : map['backupWindow'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      encryptionConfig: map['encryptionConfig'] == null
-          ? null
-          : ClusterAutomatedBackupPolicyEncryptionConfig.fromMap(
-              (map['encryptionConfig'] as Map).cast<String, dynamic>(),
-            ),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : ClusterAutomatedBackupPolicyEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      quantityBasedRetention: map['quantityBasedRetention'] == null
-          ? null
-          : ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(
-              (map['quantityBasedRetention'] as Map).cast<String, dynamic>(),
-            ),
-      timeBasedRetention: map['timeBasedRetention'] == null
-          ? null
-          : ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(
-              (map['timeBasedRetention'] as Map).cast<String, dynamic>(),
-            ),
-      weeklySchedule: map['weeklySchedule'] == null
-          ? null
-          : ClusterAutomatedBackupPolicyWeeklySchedule.fromMap(
-              (map['weeklySchedule'] as Map).cast<String, dynamic>(),
-            ),
+      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap((map['quantityBasedRetention'] as Map).cast<String, dynamic>()),
+      timeBasedRetention: map['timeBasedRetention'] == null ? null : ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap((map['timeBasedRetention'] as Map).cast<String, dynamic>()),
+      weeklySchedule: map['weeklySchedule'] == null ? null : ClusterAutomatedBackupPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

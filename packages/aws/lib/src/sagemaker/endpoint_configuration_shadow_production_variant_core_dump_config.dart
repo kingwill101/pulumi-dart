@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointConfigurationShadowProductionVariantCoreDumpConfig {
   /// S3 bucket to send the core dump to.
   final String destinationS3Uri;
-
   /// KMS key that SageMaker AI uses to encrypt the core dump data at rest using S3 server-side encryption.
   final String kmsKeyId;
 
@@ -22,12 +22,11 @@ class EndpointConfigurationShadowProductionVariantCoreDumpConfig {
     };
   }
 
-  factory EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariantCoreDumpConfig(
       destinationS3Uri: map['destinationS3Uri'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
     );
   }
 }
+

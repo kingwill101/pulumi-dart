@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// An entry of HealthBotKeysResponse
+class HealthBotKeyResponse {
+  /// The name of the key.
+  final String? keyName;
+  /// The value of the key.
+  final String? value;
+
+  /// Creates a new [HealthBotKeyResponse].
+  /// [keyName] The name of the key.
+  /// [value] The value of the key.
+  HealthBotKeyResponse({
+    this.keyName,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'keyName': ?keyName,
+      'value': ?value,
+    };
+  }
+
+  factory HealthBotKeyResponse.fromMap(Map<String, dynamic> map) {
+    return HealthBotKeyResponse(
+      keyName: map['keyName'] == null ? null : map['keyName'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_gateway_rewrite_rule_action_set.dart';
+import 'application_gateway_rewrite_rule_condition.dart';
+
+/// Rewrite rule of an application gateway.
+class ApplicationGatewayRewriteRule {
+  /// Set of actions to be done as part of the rewrite Rule.
+  final ApplicationGatewayRewriteRuleActionSet? actionSet;
+  /// Conditions based on which the action set execution will be evaluated.
+  final List<ApplicationGatewayRewriteRuleCondition>? conditions;
+  /// Name of the rewrite rule that is unique within an Application Gateway.
+  final String? name;
+  /// Rule Sequence of the rewrite rule that determines the order of execution of a particular rule in a RewriteRuleSet.
+  final int? ruleSequence;
+
+  /// Creates a new [ApplicationGatewayRewriteRule].
+  /// [actionSet] Set of actions to be done as part of the rewrite Rule.
+  /// [conditions] Conditions based on which the action set execution will be evaluated.
+  /// [name] Name of the rewrite rule that is unique within an Application Gateway.
+  /// [ruleSequence] Rule Sequence of the rewrite rule that determines the order of execution of a particular rule in a RewriteRuleSet.
+  ApplicationGatewayRewriteRule({
+    this.actionSet,
+    this.conditions,
+    this.name,
+    this.ruleSequence,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actionSet': ?actionSet == null ? null : actionSet!.toMap(),
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ApplicationGatewayRewriteRuleCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'name': ?name,
+      'ruleSequence': ?ruleSequence,
+    };
+  }
+
+  factory ApplicationGatewayRewriteRule.fromMap(Map<String, dynamic> map) {
+    return ApplicationGatewayRewriteRule(
+      actionSet: map['actionSet'] == null ? null : ApplicationGatewayRewriteRuleActionSet.fromMap((map['actionSet'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayRewriteRuleCondition>(map['conditions'], (value) => ApplicationGatewayRewriteRuleCondition.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : map['name'] as String,
+      ruleSequence: map['ruleSequence'] == null ? null : map['ruleSequence'] as int,
+    );
+  }
+}
+

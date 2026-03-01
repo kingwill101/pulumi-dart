@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
   final String? amazonBedrockRoleArn;
 
@@ -10,16 +11,15 @@ class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'amazonBedrockRoleArn': ?amazonBedrockRoleArn};
+    return <String, dynamic>{
+      'amazonBedrockRoleArn': ?amazonBedrockRoleArn,
+    };
   }
 
-  factory UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings(
-      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null
-          ? null
-          : map['amazonBedrockRoleArn'] as String,
+      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : map['amazonBedrockRoleArn'] as String,
     );
   }
 }
+

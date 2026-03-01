@@ -1,0 +1,22 @@
+library module_config;
+
+export 'config/features.dart';
+export 'config/features_api_management.dart';
+export 'config/features_app_configuration.dart';
+export 'config/features_application_insights.dart';
+export 'config/features_cognitive_account.dart';
+export 'config/features_databricks_workspace.dart';
+export 'config/features_key_vault.dart';
+export 'config/features_log_analytics_workspace.dart';
+export 'config/features_machine_learning.dart';
+export 'config/features_managed_disk.dart';
+export 'config/features_netapp.dart';
+export 'config/features_postgresql_flexible_server.dart';
+export 'config/features_recovery_service.dart';
+export 'config/features_recovery_services_vaults.dart';
+export 'config/features_resource_group.dart';
+export 'config/features_storage.dart';
+export 'config/features_subscription.dart';
+export 'config/features_template_deployment.dart';
+export 'config/features_virtual_machine.dart';
+export 'config/features_virtual_machine_scale_set.dart';

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyGroupArgs {
   /// A comment to describe the key group..
   final pulumi.Input<String>? comment;
-
   /// A list of the identifiers of the public keys in the key group.
   final pulumi.Input<List<String>> items;
-
   /// A name to identify the key group.
   final pulumi.Input<String>? name;
 
@@ -20,8 +18,12 @@ class KeyGroupArgs {
   /// [comment] A comment to describe the key group..
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
-  KeyGroupArgs({String? comment, required List<String> items, String? name})
-    : comment = pulumi.Input.asOptionalInput<String>(comment),
+  KeyGroupArgs({
+    String? comment,
+    required List<String> items,
+    String? name,
+  }) :
+      comment = pulumi.Input.asOptionalInput<String>(comment),
       items = pulumi.Input.asInput<List<String>>(items),
       name = pulumi.Input.asOptionalInput<String>(name);
 
@@ -41,3 +43,4 @@ class KeyGroupArgs {
     );
   }
 }
+

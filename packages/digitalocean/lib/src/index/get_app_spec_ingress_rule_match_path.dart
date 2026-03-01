@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetAppSpecIngressRuleMatchPath {
+  /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+  final String prefix;
+
+  /// Creates a new [GetAppSpecIngressRuleMatchPath].
+  /// [prefix] The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+  GetAppSpecIngressRuleMatchPath({
+    required this.prefix,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'prefix': prefix,
+    };
+  }
+
+  factory GetAppSpecIngressRuleMatchPath.fromMap(Map<String, dynamic> map) {
+    return GetAppSpecIngressRuleMatchPath(
+      prefix: map['prefix'] as String,
+    );
+  }
+}
+

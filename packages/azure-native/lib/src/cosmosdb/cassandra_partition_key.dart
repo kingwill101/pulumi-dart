@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Cosmos DB Cassandra table partition key
+class CassandraPartitionKey {
+  /// Name of the Cosmos DB Cassandra table partition key
+  final String? name;
+
+  /// Creates a new [CassandraPartitionKey].
+  /// [name] Name of the Cosmos DB Cassandra table partition key
+  CassandraPartitionKey({
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+    };
+  }
+
+  factory CassandraPartitionKey.fromMap(Map<String, dynamic> map) {
+    return CassandraPartitionKey(
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

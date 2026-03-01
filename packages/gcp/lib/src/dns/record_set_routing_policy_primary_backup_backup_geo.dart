@@ -4,9 +4,7 @@ import 'record_set_routing_policy_primary_backup_backup_geo_health_checked_targe
 
 class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
   /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-  final RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets?
-  healthCheckedTargets;
-
+  final RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets? healthCheckedTargets;
   /// The location name defined in Google Cloud.
   final String location;
   final List<String>? rrdatas;
@@ -23,27 +21,18 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckedTargets': ?healthCheckedTargets == null
-          ? null
-          : healthCheckedTargets!.toMap(),
+      'healthCheckedTargets': ?healthCheckedTargets == null ? null : healthCheckedTargets!.toMap(),
       'location': location,
       'rrdatas': ?rrdatas,
     };
   }
 
-  factory RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyPrimaryBackupBackupGeo(
-      healthCheckedTargets: map['healthCheckedTargets'] == null
-          ? null
-          : RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets.fromMap(
-              (map['healthCheckedTargets'] as Map).cast<String, dynamic>(),
-            ),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      rrdatas: map['rrdatas'] == null
-          ? null
-          : (map['rrdatas'] as List).cast<String>(),
+      rrdatas: map['rrdatas'] == null ? null : (map['rrdatas'] as List).cast<String>(),
     );
   }
 }
+

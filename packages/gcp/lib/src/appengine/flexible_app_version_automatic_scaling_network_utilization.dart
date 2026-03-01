@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionAutomaticScalingNetworkUtilization {
   /// Target bytes received per second.
   final int? targetReceivedBytesPerSecond;
-
   /// Target packets received per second.
   final int? targetReceivedPacketsPerSecond;
-
   /// Target bytes sent per second.
   final int? targetSentBytesPerSecond;
-
   /// Target packets sent per second.
   final int? targetSentPacketsPerSecond;
 
@@ -34,23 +32,13 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization {
     };
   }
 
-  factory FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingNetworkUtilization(
-      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null
-          ? null
-          : map['targetReceivedBytesPerSecond'] as int,
-      targetReceivedPacketsPerSecond:
-          map['targetReceivedPacketsPerSecond'] == null
-          ? null
-          : map['targetReceivedPacketsPerSecond'] as int,
-      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null
-          ? null
-          : map['targetSentBytesPerSecond'] as int,
-      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null
-          ? null
-          : map['targetSentPacketsPerSecond'] as int,
+      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null ? null : map['targetReceivedBytesPerSecond'] as int,
+      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] == null ? null : map['targetReceivedPacketsPerSecond'] as int,
+      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null ? null : map['targetSentBytesPerSecond'] as int,
+      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null ? null : map['targetSentPacketsPerSecond'] as int,
     );
   }
 }
+

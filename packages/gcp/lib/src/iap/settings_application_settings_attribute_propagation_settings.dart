@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SettingsApplicationSettingsAttributePropagationSettings {
   /// Whether the provided attribute propagation settings should be evaluated on user requests.
   /// If set to true, attributes returned from the expression will be propagated in the set output credentials.
   final bool? enable;
-
   /// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
   /// be selected. Expressions can select different attribute types from attributes:
   /// attributes.saml_attributes, attributes.iap_attributes.
   final String? expression;
-
   /// Which output credentials attributes selected by the CEL expression should be propagated in.
   /// All attributes will be fully duplicated in each selected output credential.
   /// Possible values are:
@@ -39,17 +38,12 @@ class SettingsApplicationSettingsAttributePropagationSettings {
     };
   }
 
-  factory SettingsApplicationSettingsAttributePropagationSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SettingsApplicationSettingsAttributePropagationSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettingsAttributePropagationSettings(
       enable: map['enable'] == null ? null : map['enable'] as bool,
-      expression: map['expression'] == null
-          ? null
-          : map['expression'] as String,
-      outputCredentials: map['outputCredentials'] == null
-          ? null
-          : (map['outputCredentials'] as List).cast<String>(),
+      expression: map['expression'] == null ? null : map['expression'] as String,
+      outputCredentials: map['outputCredentials'] == null ? null : (map['outputCredentials'] as List).cast<String>(),
     );
   }
 }
+

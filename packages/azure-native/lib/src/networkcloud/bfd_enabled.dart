@@ -1,0 +1,18 @@
+/// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+enum BfdEnabled {
+  valueTrue("True"),
+  valueFalse("False");
+
+  const BfdEnabled(this.value);
+  final String value;
+
+  static BfdEnabled fromValue(String value) {
+    for (final item in BfdEnabled.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown BfdEnabled value: $value');
+  }
+}
+

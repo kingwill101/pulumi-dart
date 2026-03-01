@@ -10,13 +10,10 @@ import 'directory_bucket_access_point_scope_scope.dart';
 class DirectoryBucketAccessPointScopeArgs {
   /// The AWS account ID that owns the specified access point.
   final pulumi.Input<String> accountId;
-
   /// The name of the access point that you want to apply the scope to.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
   final pulumi.Input<DirectoryBucketAccessPointScopeScope> scope;
 
@@ -30,36 +27,28 @@ class DirectoryBucketAccessPointScopeArgs {
     String? name,
     String? region,
     required DirectoryBucketAccessPointScopeScope scope,
-  }) : accountId = pulumi.Input.asInput<String>(accountId),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       scope = pulumi.Input.asInput<DirectoryBucketAccessPointScopeScope>(
-         scope,
-       );
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scope = pulumi.Input.asInput<DirectoryBucketAccessPointScopeScope>(scope);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
       'name': ?name,
       'region': ?region,
-      'scope':
-          pulumi.Input.mapInputValue<
-            DirectoryBucketAccessPointScopeScope,
-            Map<String, dynamic>
-          >(scope, (value) => value.toMap()),
+      'scope': pulumi.Input.mapInputValue<DirectoryBucketAccessPointScopeScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
-  factory DirectoryBucketAccessPointScopeArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DirectoryBucketAccessPointScopeArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketAccessPointScopeArgs(
       accountId: map['accountId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      scope: DirectoryBucketAccessPointScopeScope.fromMap(
-        (map['scope'] as Map).cast<String, dynamic>(),
-      ),
+      scope: DirectoryBucketAccessPointScopeScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketObjectContextsCustom {
   /// The time when context was first added to the storage object in RFC 3399 format.
   final String? createTime;
-
   /// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
   final String key;
-
   /// The time when context was last updated in RFC 3399 format.
   ///
   /// <a name>
   final String? updateTime;
-
   /// The value associated with this context. This field holds the primary information for the given context key.
   final String value;
 
@@ -38,14 +36,11 @@ class BucketObjectContextsCustom {
 
   factory BucketObjectContextsCustom.fromMap(Map<String, dynamic> map) {
     return BucketObjectContextsCustom(
-      createTime: map['createTime'] == null
-          ? null
-          : map['createTime'] as String,
+      createTime: map['createTime'] == null ? null : map['createTime'] as String,
       key: map['key'] as String,
-      updateTime: map['updateTime'] == null
-          ? null
-          : map['updateTime'] as String,
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
       value: map['value'] as String,
     );
   }
 }
+

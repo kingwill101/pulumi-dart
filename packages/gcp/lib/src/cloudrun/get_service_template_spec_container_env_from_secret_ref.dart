@@ -5,11 +5,7 @@ import 'get_service_template_spec_container_env_from_secret_ref_local_object_ref
 
 class GetServiceTemplateSpecContainerEnvFromSecretRef {
   /// The Secret to select from.
-  final List<
-    GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference
-  >
-  localObjectReferences;
-
+  final List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences;
   /// Specify whether the Secret must be defined
   final bool optional;
 
@@ -23,30 +19,16 @@ class GetServiceTemplateSpecContainerEnvFromSecretRef {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localObjectReferences':
-          pulumi.Input.encodeList<
-            GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference,
-            Map<String, dynamic>
-          >(localObjectReferences, (value) => value.toMap()),
+      'localObjectReferences': pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference, Map<String, dynamic>>(localObjectReferences, (value) => value.toMap()),
       'optional': optional,
     };
   }
 
-  factory GetServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateSpecContainerEnvFromSecretRef.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvFromSecretRef(
-      localObjectReferences:
-          pulumi.Input.decodeList<
-            GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference
-          >(
-            map['localObjectReferences'],
-            (value) =>
-                GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      localObjectReferences: pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference>(map['localObjectReferences'], (value) => GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap((value as Map).cast<String, dynamic>())),
       optional: map['optional'] as bool,
     );
   }
 }
+

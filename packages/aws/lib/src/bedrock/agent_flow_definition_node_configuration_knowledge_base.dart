@@ -5,13 +5,9 @@ import 'agent_flow_definition_node_configuration_knowledge_base_inference_config
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
   /// Contains configurations for a guardrail to apply during query and response generation for the knowledge base in this configuration. See Guardrail Configuration for more information.
-  final AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration?
-  guardrailConfiguration;
-
+  final AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration? guardrailConfiguration;
   /// Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
-  final AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration?
-  inferenceConfiguration;
-
+  final AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration? inferenceConfiguration;
   /// The unique identifier of the knowledge base to query.
   final String knowledgeBaseId;
   final String modelId;
@@ -33,37 +29,22 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guardrailConfiguration': ?guardrailConfiguration == null
-          ? null
-          : guardrailConfiguration!.toMap(),
-      'inferenceConfiguration': ?inferenceConfiguration == null
-          ? null
-          : inferenceConfiguration!.toMap(),
+      'guardrailConfiguration': ?guardrailConfiguration == null ? null : guardrailConfiguration!.toMap(),
+      'inferenceConfiguration': ?inferenceConfiguration == null ? null : inferenceConfiguration!.toMap(),
       'knowledgeBaseId': knowledgeBaseId,
       'modelId': modelId,
       'numberOfResults': ?numberOfResults,
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationKnowledgeBase(
-      guardrailConfiguration: map['guardrailConfiguration'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap(
-              (map['guardrailConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      inferenceConfiguration: map['inferenceConfiguration'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap(
-              (map['inferenceConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      guardrailConfiguration: map['guardrailConfiguration'] == null ? null : AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap((map['guardrailConfiguration'] as Map).cast<String, dynamic>()),
+      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((map['inferenceConfiguration'] as Map).cast<String, dynamic>()),
       knowledgeBaseId: map['knowledgeBaseId'] as String,
       modelId: map['modelId'] as String,
-      numberOfResults: map['numberOfResults'] == null
-          ? null
-          : map['numberOfResults'] as int,
+      numberOfResults: map['numberOfResults'] == null ? null : map['numberOfResults'] as int,
     );
   }
 }
+

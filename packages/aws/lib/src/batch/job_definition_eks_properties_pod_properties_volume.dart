@@ -7,7 +7,6 @@ import 'job_definition_eks_properties_pod_properties_volume_secret.dart';
 class JobDefinitionEksPropertiesPodPropertiesVolume {
   final JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir? emptyDir;
   final JobDefinitionEksPropertiesPodPropertiesVolumeHostPath? hostPath;
-
   /// Name of the job definition.
   final String? name;
   final JobDefinitionEksPropertiesPodPropertiesVolumeSecret? secret;
@@ -33,26 +32,13 @@ class JobDefinitionEksPropertiesPodPropertiesVolume {
     };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesVolume.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobDefinitionEksPropertiesPodPropertiesVolume.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesVolume(
-      emptyDir: map['emptyDir'] == null
-          ? null
-          : JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap(
-              (map['emptyDir'] as Map).cast<String, dynamic>(),
-            ),
-      hostPath: map['hostPath'] == null
-          ? null
-          : JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap(
-              (map['hostPath'] as Map).cast<String, dynamic>(),
-            ),
+      emptyDir: map['emptyDir'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
+      hostPath: map['hostPath'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap((map['hostPath'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      secret: map['secret'] == null
-          ? null
-          : JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap(
-              (map['secret'] as Map).cast<String, dynamic>(),
-            ),
+      secret: map['secret'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

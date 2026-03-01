@@ -6,7 +6,6 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_certificate_sds.
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
   /// Local file certificate.
   final VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile? file;
-
   /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds? sds;
 
@@ -25,20 +24,11 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
     };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate(
-      file: map['file'] == null
-          ? null
-          : VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
-      sds: map['sds'] == null
-          ? null
-          : VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap(
-              (map['sds'] as Map).cast<String, dynamic>(),
-            ),
+      file: map['file'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
+      sds: map['sds'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

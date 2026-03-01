@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class PoolSourceDir {
+  /// Provides the path to the directory that serves as a source for the storage pool.
+  final String path;
+
+  /// Creates a new [PoolSourceDir].
+  /// [path] Provides the path to the directory that serves as a source for the storage pool.
+  PoolSourceDir({
+    required this.path,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'path': path,
+    };
+  }
+
+  factory PoolSourceDir.fromMap(Map<String, dynamic> map) {
+    return PoolSourceDir(
+      path: map['path'] as String,
+    );
+  }
+}
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
   /// A duration string, e.g. 10s.
   /// Good service is defined to be the count of requests made to
@@ -13,14 +14,15 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threshold': threshold};
+    return <String, dynamic>{
+      'threshold': threshold,
+    };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(
       threshold: map['threshold'] as String,
     );
   }
 }
+

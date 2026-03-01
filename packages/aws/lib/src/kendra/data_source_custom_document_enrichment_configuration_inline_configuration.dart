@@ -5,15 +5,11 @@ import 'data_source_custom_document_enrichment_configuration_inline_configuratio
 
 class DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration {
   /// Configuration of the condition used for the target document attribute or metadata field when ingesting documents into Amazon Kendra. See condition.
-  final DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition?
-  condition;
-
+  final DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition? condition;
   /// `TRUE` to delete content if the condition used for the target attribute is met.
   final bool? documentContentDeletion;
-
   /// Configuration of the target document attribute or metadata field when ingesting documents into Amazon Kendra. You can also include a value. Detailed below.
-  final DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget?
-  target;
+  final DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget? target;
 
   /// Creates a new [DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration].
   /// [condition] Configuration of the condition used for the target document attribute or metadata field when ingesting documents into Amazon Kendra. See condition.
@@ -33,23 +29,12 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration {
     };
   }
 
-  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration(
-      condition: map['condition'] == null
-          ? null
-          : DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
-      documentContentDeletion: map['documentContentDeletion'] == null
-          ? null
-          : map['documentContentDeletion'] as bool,
-      target: map['target'] == null
-          ? null
-          : DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget.fromMap(
-              (map['target'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      documentContentDeletion: map['documentContentDeletion'] == null ? null : map['documentContentDeletion'] as bool,
+      target: map['target'] == null ? null : DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

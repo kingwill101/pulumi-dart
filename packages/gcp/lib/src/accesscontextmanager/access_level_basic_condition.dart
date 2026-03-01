@@ -10,7 +10,6 @@ class AccessLevelBasicCondition {
   /// allowed.
   /// Structure is documented below.
   final AccessLevelBasicConditionDevicePolicy? devicePolicy;
-
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
   /// Note that for a CIDR IP address block, the specified IP address
@@ -22,7 +21,6 @@ class AccessLevelBasicCondition {
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
   final List<String>? ipSubnetworks;
-
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
   /// The signed-in user originating the request must be a part of one
@@ -31,24 +29,20 @@ class AccessLevelBasicCondition {
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
   final List<String>? members;
-
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
   final bool? negate;
-
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
   final List<String>? regions;
-
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final List<String>? requiredAccessLevels;
-
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
   final List<AccessLevelBasicConditionVpcNetworkSource>? vpcNetworkSources;
@@ -79,43 +73,20 @@ class AccessLevelBasicCondition {
       'negate': ?negate,
       'regions': ?regions,
       'requiredAccessLevels': ?requiredAccessLevels,
-      'vpcNetworkSources': ?vpcNetworkSources == null
-          ? null
-          : pulumi.Input.encodeList<
-              AccessLevelBasicConditionVpcNetworkSource,
-              Map<String, dynamic>
-            >(vpcNetworkSources!, (value) => value.toMap()),
+      'vpcNetworkSources': ?vpcNetworkSources == null ? null : pulumi.Input.encodeList<AccessLevelBasicConditionVpcNetworkSource, Map<String, dynamic>>(vpcNetworkSources!, (value) => value.toMap()),
     };
   }
 
   factory AccessLevelBasicCondition.fromMap(Map<String, dynamic> map) {
     return AccessLevelBasicCondition(
-      devicePolicy: map['devicePolicy'] == null
-          ? null
-          : AccessLevelBasicConditionDevicePolicy.fromMap(
-              (map['devicePolicy'] as Map).cast<String, dynamic>(),
-            ),
-      ipSubnetworks: map['ipSubnetworks'] == null
-          ? null
-          : (map['ipSubnetworks'] as List).cast<String>(),
-      members: map['members'] == null
-          ? null
-          : (map['members'] as List).cast<String>(),
+      devicePolicy: map['devicePolicy'] == null ? null : AccessLevelBasicConditionDevicePolicy.fromMap((map['devicePolicy'] as Map).cast<String, dynamic>()),
+      ipSubnetworks: map['ipSubnetworks'] == null ? null : (map['ipSubnetworks'] as List).cast<String>(),
+      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
       negate: map['negate'] == null ? null : map['negate'] as bool,
-      regions: map['regions'] == null
-          ? null
-          : (map['regions'] as List).cast<String>(),
-      requiredAccessLevels: map['requiredAccessLevels'] == null
-          ? null
-          : (map['requiredAccessLevels'] as List).cast<String>(),
-      vpcNetworkSources: map['vpcNetworkSources'] == null
-          ? null
-          : pulumi.Input.decodeList<AccessLevelBasicConditionVpcNetworkSource>(
-              map['vpcNetworkSources'],
-              (value) => AccessLevelBasicConditionVpcNetworkSource.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
+      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : (map['requiredAccessLevels'] as List).cast<String>(),
+      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : pulumi.Input.decodeList<AccessLevelBasicConditionVpcNetworkSource>(map['vpcNetworkSources'], (value) => AccessLevelBasicConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'package:pulumi_aws/ecs.dart' as pulumi_aws_ecs;
 class EC2Service extends pulumi.ComponentResource {
   /// Underlying ECS Service resource
   late final pulumi.Output<pulumi_aws_ecs.Service> service;
-
   /// Underlying EC2 Task definition component resource if created from args
   late final pulumi.Output<pulumi_aws_ecs.TaskDefinition?> taskDefinition;
 
@@ -20,14 +19,12 @@ class EC2Service extends pulumi.ComponentResource {
     EC2ServiceArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:ecs:EC2Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-       ) {
+          'awsx:ecs:EC2Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+        ) {
     this.service = registerOutput<pulumi_aws_ecs.Service>('service');
-    this.taskDefinition = registerOutput<pulumi_aws_ecs.TaskDefinition?>(
-      'taskDefinition',
-    );
+    this.taskDefinition = registerOutput<pulumi_aws_ecs.TaskDefinition?>('taskDefinition');
   }
 }

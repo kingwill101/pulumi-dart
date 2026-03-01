@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigParseCloudfront {
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
   final String? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseCloudfront].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseCloudfront({this.source});
+  LogTransformerTransformerConfigParseCloudfront({
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': ?source};
+    return <String, dynamic>{
+      'source': ?source,
+    };
   }
 
-  factory LogTransformerTransformerConfigParseCloudfront.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigParseCloudfront.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseCloudfront(
       source: map['source'] == null ? null : map['source'] as String,
     );
   }
 }
+

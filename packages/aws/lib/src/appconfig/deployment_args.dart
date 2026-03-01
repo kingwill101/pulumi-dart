@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentArgs {
   /// Application ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String> applicationId;
-
   /// Configuration profile ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String> configurationProfileId;
-
   /// Configuration version to deploy. Can be at most 1024 characters.
   final pulumi.Input<String> configurationVersion;
-
   /// Deployment strategy ID or name of a predefined deployment strategy. See [Predefined Deployment Strategies](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-deployment-strategy.html#appconfig-creating-deployment-strategy-predefined) for more details.
   final pulumi.Input<String> deploymentStrategyId;
-
   /// Description of the deployment. Can be at most 1024 characters.
   final pulumi.Input<String>? description;
-
   /// Environment ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String> environmentId;
-
   /// The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
   final pulumi.Input<String>? kmsKeyIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,23 +46,16 @@ class DeploymentArgs {
     String? kmsKeyIdentifier,
     String? region,
     Map<String, String>? tags,
-  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
-       configurationProfileId = pulumi.Input.asInput<String>(
-         configurationProfileId,
-       ),
-       configurationVersion = pulumi.Input.asInput<String>(
-         configurationVersion,
-       ),
-       deploymentStrategyId = pulumi.Input.asInput<String>(
-         deploymentStrategyId,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       environmentId = pulumi.Input.asInput<String>(environmentId),
-       kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(
-         kmsKeyIdentifier,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      configurationProfileId = pulumi.Input.asInput<String>(configurationProfileId),
+      configurationVersion = pulumi.Input.asInput<String>(configurationVersion),
+      deploymentStrategyId = pulumi.Input.asInput<String>(deploymentStrategyId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +77,12 @@ class DeploymentArgs {
       configurationProfileId: map['configurationProfileId'] as String,
       configurationVersion: map['configurationVersion'] as String,
       deploymentStrategyId: map['deploymentStrategyId'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       environmentId: map['environmentId'] as String,
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null
-          ? null
-          : map['kmsKeyIdentifier'] as String,
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : map['kmsKeyIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

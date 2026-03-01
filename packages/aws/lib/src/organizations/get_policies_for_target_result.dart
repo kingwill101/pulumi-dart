@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPoliciesForTarget.
 class GetPoliciesForTargetResult {
   final String filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of all the policy ids found.
   final List<String> ids;
   final String targetId;
@@ -41,3 +40,4 @@ class GetPoliciesForTargetResult {
     );
   }
 }
+

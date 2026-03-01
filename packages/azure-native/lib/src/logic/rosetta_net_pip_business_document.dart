@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The RosettaNet ProcessConfiguration business document settings.
+class RosettaNetPipBusinessDocument {
+  /// The business document description.
+  final String? description;
+  /// The business document name.
+  final String name;
+  /// The business document version.
+  final String version;
+
+  /// Creates a new [RosettaNetPipBusinessDocument].
+  /// [description] The business document description.
+  /// [name] The business document name.
+  /// [version] The business document version.
+  RosettaNetPipBusinessDocument({
+    this.description,
+    required this.name,
+    required this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'name': name,
+      'version': version,
+    };
+  }
+
+  factory RosettaNetPipBusinessDocument.fromMap(Map<String, dynamic> map) {
+    return RosettaNetPipBusinessDocument(
+      description: map['description'] == null ? null : map['description'] as String,
+      name: map['name'] as String,
+      version: map['version'] as String,
+    );
+  }
+}
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VMwareNodePoolNodePoolAutoscaling {
   /// Maximum number of replicas in the NodePool.
   final int maxReplicas;
-
   /// Minimum number of replicas in the NodePool.
   final int minReplicas;
 
@@ -29,3 +29,4 @@ class VMwareNodePoolNodePoolAutoscaling {
     );
   }
 }
+

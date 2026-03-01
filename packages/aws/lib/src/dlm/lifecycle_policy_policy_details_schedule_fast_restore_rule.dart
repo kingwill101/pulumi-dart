@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LifecyclePolicyPolicyDetailsScheduleFastRestoreRule {
   /// The Availability Zones in which to enable fast snapshot restore.
   final List<String> availabilityZones;
@@ -28,16 +29,13 @@ class LifecyclePolicyPolicyDetailsScheduleFastRestoreRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleFastRestoreRule(
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       count: map['count'] == null ? null : map['count'] as int,
       interval: map['interval'] == null ? null : map['interval'] as int,
-      intervalUnit: map['intervalUnit'] == null
-          ? null
-          : map['intervalUnit'] as String,
+      intervalUnit: map['intervalUnit'] == null ? null : map['intervalUnit'] as String,
     );
   }
 }
+

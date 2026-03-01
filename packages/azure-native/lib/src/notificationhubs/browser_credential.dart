@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Description of a NotificationHub BrowserCredential.
+class BrowserCredential {
+  /// Gets or sets web push subject.
+  final String subject;
+  /// Gets or sets VAPID private key.
+  final String vapidPrivateKey;
+  /// Gets or sets VAPID public key.
+  final String vapidPublicKey;
+
+  /// Creates a new [BrowserCredential].
+  /// [subject] Gets or sets web push subject.
+  /// [vapidPrivateKey] Gets or sets VAPID private key.
+  /// [vapidPublicKey] Gets or sets VAPID public key.
+  BrowserCredential({
+    required this.subject,
+    required this.vapidPrivateKey,
+    required this.vapidPublicKey,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'subject': subject,
+      'vapidPrivateKey': vapidPrivateKey,
+      'vapidPublicKey': vapidPublicKey,
+    };
+  }
+
+  factory BrowserCredential.fromMap(Map<String, dynamic> map) {
+    return BrowserCredential(
+      subject: map['subject'] as String,
+      vapidPrivateKey: map['vapidPrivateKey'] as String,
+      vapidPublicKey: map['vapidPublicKey'] as String,
+    );
+  }
+}
+

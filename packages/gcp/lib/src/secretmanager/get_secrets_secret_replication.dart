@@ -8,7 +8,6 @@ class GetSecretsSecretReplication {
   /// The Secret will automatically be replicated without any restrictions.
   /// Structure is documented below.
   final List<GetSecretsSecretReplicationAuto> autos;
-
   /// The Secret will be replicated to the regions specified by the user.
   /// Structure is documented below.
   final List<GetSecretsSecretReplicationUserManaged> userManageds;
@@ -23,34 +22,16 @@ class GetSecretsSecretReplication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autos':
-          pulumi.Input.encodeList<
-            GetSecretsSecretReplicationAuto,
-            Map<String, dynamic>
-          >(autos, (value) => value.toMap()),
-      'userManageds':
-          pulumi.Input.encodeList<
-            GetSecretsSecretReplicationUserManaged,
-            Map<String, dynamic>
-          >(userManageds, (value) => value.toMap()),
+      'autos': pulumi.Input.encodeList<GetSecretsSecretReplicationAuto, Map<String, dynamic>>(autos, (value) => value.toMap()),
+      'userManageds': pulumi.Input.encodeList<GetSecretsSecretReplicationUserManaged, Map<String, dynamic>>(userManageds, (value) => value.toMap()),
     };
   }
 
   factory GetSecretsSecretReplication.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecretReplication(
-      autos: pulumi.Input.decodeList<GetSecretsSecretReplicationAuto>(
-        map['autos'],
-        (value) => GetSecretsSecretReplicationAuto.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      userManageds:
-          pulumi.Input.decodeList<GetSecretsSecretReplicationUserManaged>(
-            map['userManageds'],
-            (value) => GetSecretsSecretReplicationUserManaged.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      autos: pulumi.Input.decodeList<GetSecretsSecretReplicationAuto>(map['autos'], (value) => GetSecretsSecretReplicationAuto.fromMap((value as Map).cast<String, dynamic>())),
+      userManageds: pulumi.Input.decodeList<GetSecretsSecretReplicationUserManaged>(map['userManageds'], (value) => GetSecretsSecretReplicationUserManaged.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

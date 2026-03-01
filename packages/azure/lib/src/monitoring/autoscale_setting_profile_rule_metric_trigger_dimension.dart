@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AutoscaleSettingProfileRuleMetricTriggerDimension {
+  /// The name of the dimension.
+  final String name;
+  /// The dimension operator. Possible values are `Equals` and `NotEquals`. `Equals` means being equal to any of the values. `NotEquals` means being not equal to any of the values.
+  final String operator;
+  /// A list of dimension values.
+  final List<String> values;
+
+  /// Creates a new [AutoscaleSettingProfileRuleMetricTriggerDimension].
+  /// [name] The name of the dimension.
+  /// [operator] The dimension operator. Possible values are `Equals` and `NotEquals`. `Equals` means being equal to any of the values. `NotEquals` means being not equal to any of the values.
+  /// [values] A list of dimension values.
+  AutoscaleSettingProfileRuleMetricTriggerDimension({
+    required this.name,
+    required this.operator,
+    required this.values,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'operator': operator,
+      'values': values,
+    };
+  }
+
+  factory AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap(Map<String, dynamic> map) {
+    return AutoscaleSettingProfileRuleMetricTriggerDimension(
+      name: map['name'] as String,
+      operator: map['operator'] as String,
+      values: (map['values'] as List).cast<String>(),
+    );
+  }
+}
+

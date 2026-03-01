@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus {
   final String? revokedStatusAction;
   final String? unknownStatusAction;
@@ -19,16 +20,11 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
     };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus(
-      revokedStatusAction: map['revokedStatusAction'] == null
-          ? null
-          : map['revokedStatusAction'] as String,
-      unknownStatusAction: map['unknownStatusAction'] == null
-          ? null
-          : map['unknownStatusAction'] as String,
+      revokedStatusAction: map['revokedStatusAction'] == null ? null : map['revokedStatusAction'] as String,
+      unknownStatusAction: map['unknownStatusAction'] == null ? null : map['unknownStatusAction'] as String,
     );
   }
 }
+

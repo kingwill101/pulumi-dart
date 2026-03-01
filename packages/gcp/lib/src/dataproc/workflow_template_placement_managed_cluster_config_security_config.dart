@@ -4,8 +4,7 @@ import 'workflow_template_placement_managed_cluster_config_security_config_kerbe
 
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
   /// Kerberos related configuration.
-  final WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig?
-  kerberosConfig;
+  final WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig? kerberosConfig;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecurityConfig].
   /// [kerberosConfig] Kerberos related configuration.
@@ -15,21 +14,14 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kerberosConfig': ?kerberosConfig == null
-          ? null
-          : kerberosConfig!.toMap(),
+      'kerberosConfig': ?kerberosConfig == null ? null : kerberosConfig!.toMap(),
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(
-      kerberosConfig: map['kerberosConfig'] == null
-          ? null
-          : WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig.fromMap(
-              (map['kerberosConfig'] as Map).cast<String, dynamic>(),
-            ),
+      kerberosConfig: map['kerberosConfig'] == null ? null : WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

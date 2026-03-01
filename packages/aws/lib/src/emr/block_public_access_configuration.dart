@@ -468,13 +468,8 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<bool> blockPublicSecurityGroupRules;
-
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
-  late final pulumi.Output<
-    List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?
-  >
-  permittedPublicSecurityGroupRuleRanges;
-
+  late final pulumi.Output<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?> permittedPublicSecurityGroupRuleRanges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -487,20 +482,13 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
     BlockPublicAccessConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.blockPublicSecurityGroupRules = registerOutput<bool>(
-      'blockPublicSecurityGroupRules',
-    );
-    this.permittedPublicSecurityGroupRuleRanges =
-        registerOutput<
-          List<
-            BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange
-          >?
-        >('permittedPublicSecurityGroupRuleRanges');
+          'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
+    this.permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges');
     this.region = registerOutput<String>('region');
   }
 }

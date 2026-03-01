@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetIndexIndexStatisticFaqStatistic {
   /// The total number of FAQ questions and answers contained in the index.
   final int indexedQuestionAnswersCount;
@@ -22,3 +23,4 @@ class GetIndexIndexStatisticFaqStatistic {
     );
   }
 }
+

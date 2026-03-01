@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings {
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
   final int? connectionRetryInterval;
   final int? filecacheDuration;
   final String? httpTransferMode;
-
   /// Number of retry attempts.
   final int? numRetries;
-
   /// Number of seconds to wait until a restart is initiated.
   final int? restartDelay;
 
@@ -36,23 +35,14 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null
-          ? null
-          : map['connectionRetryInterval'] as int,
-      filecacheDuration: map['filecacheDuration'] == null
-          ? null
-          : map['filecacheDuration'] as int,
-      httpTransferMode: map['httpTransferMode'] == null
-          ? null
-          : map['httpTransferMode'] as String,
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
+      filecacheDuration: map['filecacheDuration'] == null ? null : map['filecacheDuration'] as int,
+      httpTransferMode: map['httpTransferMode'] == null ? null : map['httpTransferMode'] as String,
       numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
-      restartDelay: map['restartDelay'] == null
-          ? null
-          : map['restartDelay'] as int,
+      restartDelay: map['restartDelay'] == null ? null : map['restartDelay'] as int,
     );
   }
 }
+

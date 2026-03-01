@@ -1,0 +1,23 @@
+/// The language extension image name.
+enum LanguageExtensionImageName {
+  valueR("R"),
+  valuePython365("Python3_6_5"),
+  valuePython3108("Python3_10_8"),
+  valuePython3108DL("Python3_10_8_DL"),
+  valuePythonCustomImage("PythonCustomImage"),
+  valuePython3117("Python3_11_7"),
+  valuePython3117DL("Python3_11_7_DL");
+
+  const LanguageExtensionImageName(this.value);
+  final String value;
+
+  static LanguageExtensionImageName fromValue(String value) {
+    for (final item in LanguageExtensionImageName.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown LanguageExtensionImageName value: $value');
+  }
+}
+

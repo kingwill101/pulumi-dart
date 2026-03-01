@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPolicyArgs {
   /// The name of the security policy. Provide either this or a `self_link`.
   final pulumi.Input<String>? name;
-
   /// The project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The self_link of the security policy. Provide either this or a `name`
   final pulumi.Input<String>? selfLink;
 
@@ -20,8 +18,12 @@ class GetSecurityPolicyArgs {
   /// [name] The name of the security policy. Provide either this or a `self_link`.
   /// [project] The project in which the resource belongs. If it is not provided, the provider project is used.
   /// [selfLink] The self_link of the security policy. Provide either this or a `name`
-  GetSecurityPolicyArgs({String? name, String? project, String? selfLink})
-    : name = pulumi.Input.asOptionalInput<String>(name),
+  GetSecurityPolicyArgs({
+    String? name,
+    String? project,
+    String? selfLink,
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
 
@@ -41,3 +43,4 @@ class GetSecurityPolicyArgs {
     );
   }
 }
+

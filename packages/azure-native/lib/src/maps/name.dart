@@ -1,0 +1,17 @@
+/// The name of the SKU, in standard format (such as G2).
+enum Name {
+  valueG2("G2");
+
+  const Name(this.value);
+  final String value;
+
+  static Name fromValue(String value) {
+    for (final item in Name.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown Name value: $value');
+  }
+}
+

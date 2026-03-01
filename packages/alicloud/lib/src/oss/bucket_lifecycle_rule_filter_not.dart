@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'bucket_lifecycle_rule_filter_not_tag.dart';
+
+class BucketLifecycleRuleFilterNot {
+  /// The prefix in the names of the objects to which the lifecycle rule does not apply.
+  final String? prefix;
+  /// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+  final BucketLifecycleRuleFilterNotTag? tag;
+
+  /// Creates a new [BucketLifecycleRuleFilterNot].
+  /// [prefix] The prefix in the names of the objects to which the lifecycle rule does not apply.
+  /// [tag] The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+  BucketLifecycleRuleFilterNot({
+    this.prefix,
+    this.tag,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'prefix': ?prefix,
+      'tag': ?tag == null ? null : tag!.toMap(),
+    };
+  }
+
+  factory BucketLifecycleRuleFilterNot.fromMap(Map<String, dynamic> map) {
+    return BucketLifecycleRuleFilterNot(
+      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      tag: map['tag'] == null ? null : BucketLifecycleRuleFilterNotTag.fromMap((map['tag'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getContactFlow.
 class GetContactFlowResult {
   /// ARN of the Contact Flow.
   final String arn;
   final String contactFlowId;
-
   /// Logic of the Contact Flow.
   final String content;
-
   /// Description of the Contact Flow.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
   final String region;
-
   /// Tags to assign to the Contact Flow.
   final Map<String, String> tags;
-
   /// Type of Contact Flow.
   final String? type;
 
@@ -78,3 +74,4 @@ class GetContactFlowResult {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd {
   /// The name of the header to add.
   final String headerName;
-
   /// The value of the header to add.
   final String headerValue;
-
   /// Whether to replace all existing headers with the same name.
   final bool? replace;
 
@@ -28,9 +27,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd(
       headerName: map['headerName'] as String,
       headerValue: map['headerValue'] as String,
@@ -38,3 +35,4 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
     );
   }
 }
+

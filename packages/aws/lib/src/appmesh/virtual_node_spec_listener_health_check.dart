@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualNodeSpecListenerHealthCheck {
   /// Number of consecutive successful health checks that must occur before declaring listener healthy.
   final int healthyThreshold;
-
   /// Time period in milliseconds between each health check execution.
   final int intervalMillis;
-
   /// Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
   final String? path;
-
   /// Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
   final int? port;
-
   /// Protocol for the health check request. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final String protocol;
-
   /// Amount of time to wait when receiving a response from the health check, in milliseconds.
   final int timeoutMillis;
-
   /// Number of consecutive failed health checks that must occur before declaring a virtual node unhealthy.
   final int unhealthyThreshold;
 
@@ -64,3 +59,4 @@ class VirtualNodeSpecListenerHealthCheck {
     );
   }
 }
+

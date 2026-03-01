@@ -7,7 +7,6 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicy {
   /// The specification for how client requests are aborted as part of fault injection.
   /// Structure is documented below.
   final RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort? abort;
-
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   /// Structure is documented below.
   final RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay? delay;
@@ -15,7 +14,10 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicy {
   /// Creates a new [RegionUrlMapDefaultRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  RegionUrlMapDefaultRouteActionFaultInjectionPolicy({this.abort, this.delay});
+  RegionUrlMapDefaultRouteActionFaultInjectionPolicy({
+    this.abort,
+    this.delay,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,20 +26,11 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicy {
     };
   }
 
-  factory RegionUrlMapDefaultRouteActionFaultInjectionPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionUrlMapDefaultRouteActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapDefaultRouteActionFaultInjectionPolicy(
-      abort: map['abort'] == null
-          ? null
-          : RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap(
-              (map['abort'] as Map).cast<String, dynamic>(),
-            ),
-      delay: map['delay'] == null
-          ? null
-          : RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay.fromMap(
-              (map['delay'] as Map).cast<String, dynamic>(),
-            ),
+      abort: map['abort'] == null ? null : RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: map['delay'] == null ? null : RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

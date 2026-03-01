@@ -767,30 +767,22 @@ import 'document_args.dart';
 class Document extends pulumi.CustomResource {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
   late final pulumi.Output<String> collection;
-
   /// Creation timestamp in RFC3339 format.
   late final pulumi.Output<String> createTime;
-
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
-
   /// The client-assigned document ID to use for this document during creation.
   late final pulumi.Output<String> documentId;
-
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   late final pulumi.Output<String> fields;
-
   /// A server defined name for this document. Format:
   /// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
   late final pulumi.Output<String> name;
-
   /// A relative path to the collection this document exists within
   late final pulumi.Output<String> path;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Last update timestamp in RFC3339 format.
   late final pulumi.Output<String> updateTime;
 
@@ -803,11 +795,11 @@ class Document extends pulumi.CustomResource {
     DocumentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firestore/document:Document',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firestore/document:Document',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.collection = registerOutput<String>('collection');
     this.createTime = registerOutput<String>('createTime');
     this.database = registerOutput<String?>('database');

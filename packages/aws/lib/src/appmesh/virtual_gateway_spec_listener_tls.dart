@@ -6,10 +6,8 @@ import 'virtual_gateway_spec_listener_tls_validation.dart';
 class VirtualGatewaySpecListenerTls {
   /// Listener's TLS certificate.
   final VirtualGatewaySpecListenerTlsCertificate certificate;
-
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   final String mode;
-
   /// Listener's Transport Layer Security (TLS) validation context.
   final VirtualGatewaySpecListenerTlsValidation? validation;
 
@@ -33,15 +31,10 @@ class VirtualGatewaySpecListenerTls {
 
   factory VirtualGatewaySpecListenerTls.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTls(
-      certificate: VirtualGatewaySpecListenerTlsCertificate.fromMap(
-        (map['certificate'] as Map).cast<String, dynamic>(),
-      ),
+      certificate: VirtualGatewaySpecListenerTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
       mode: map['mode'] as String,
-      validation: map['validation'] == null
-          ? null
-          : VirtualGatewaySpecListenerTlsValidation.fromMap(
-              (map['validation'] as Map).cast<String, dynamic>(),
-            ),
+      validation: map['validation'] == null ? null : VirtualGatewaySpecListenerTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

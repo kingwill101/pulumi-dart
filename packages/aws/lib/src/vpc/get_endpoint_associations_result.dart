@@ -7,7 +7,6 @@ import 'get_endpoint_associations_association.dart';
 class GetEndpointAssociationsResult {
   /// Associations for the VPC Endpoint. Association blocks are documented below.
   final List<GetEndpointAssociationsAssociation> associations;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -27,11 +26,7 @@ class GetEndpointAssociationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associations':
-          pulumi.Input.encodeList<
-            GetEndpointAssociationsAssociation,
-            Map<String, dynamic>
-          >(associations, (value) => value.toMap()),
+      'associations': pulumi.Input.encodeList<GetEndpointAssociationsAssociation, Map<String, dynamic>>(associations, (value) => value.toMap()),
       'id': id,
       'region': region,
       'vpcEndpointId': vpcEndpointId,
@@ -40,15 +35,11 @@ class GetEndpointAssociationsResult {
 
   factory GetEndpointAssociationsResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsResult(
-      associations: pulumi.Input.decodeList<GetEndpointAssociationsAssociation>(
-        map['associations'],
-        (value) => GetEndpointAssociationsAssociation.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      associations: pulumi.Input.decodeList<GetEndpointAssociationsAssociation>(map['associations'], (value) => GetEndpointAssociationsAssociation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
       vpcEndpointId: map['vpcEndpointId'] as String,
     );
   }
 }
+

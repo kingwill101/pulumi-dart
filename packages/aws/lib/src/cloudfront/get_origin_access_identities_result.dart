@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOriginAccessIdentities.
 class GetOriginAccessIdentitiesResult {
   final List<String>? comments;
-
   /// Set of ARNs of the matched origin access identities.
   final List<String> iamArns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of ids of the matched origin access identities.
   final List<String> ids;
-
   /// Set of S3 canonical user IDs of the matched origin access identities.
   final List<String> s3CanonicalUserIds;
 
@@ -42,9 +39,7 @@ class GetOriginAccessIdentitiesResult {
 
   factory GetOriginAccessIdentitiesResult.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesResult(
-      comments: map['comments'] == null
-          ? null
-          : (map['comments'] as List).cast<String>(),
+      comments: map['comments'] == null ? null : (map['comments'] as List).cast<String>(),
       iamArns: (map['iamArns'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
@@ -52,3 +47,4 @@ class GetOriginAccessIdentitiesResult {
     );
   }
 }
+

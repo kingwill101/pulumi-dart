@@ -9,26 +9,20 @@ class GetConnectorEgressConfig {
 
   /// Creates a new [GetConnectorEgressConfig].
   /// [vpcLattices] VPC Lattice configuration. Contains the following attributes:
-  GetConnectorEgressConfig({required this.vpcLattices});
+  GetConnectorEgressConfig({
+    required this.vpcLattices,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vpcLattices':
-          pulumi.Input.encodeList<
-            GetConnectorEgressConfigVpcLattice,
-            Map<String, dynamic>
-          >(vpcLattices, (value) => value.toMap()),
+      'vpcLattices': pulumi.Input.encodeList<GetConnectorEgressConfigVpcLattice, Map<String, dynamic>>(vpcLattices, (value) => value.toMap()),
     };
   }
 
   factory GetConnectorEgressConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectorEgressConfig(
-      vpcLattices: pulumi.Input.decodeList<GetConnectorEgressConfigVpcLattice>(
-        map['vpcLattices'],
-        (value) => GetConnectorEgressConfigVpcLattice.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      vpcLattices: pulumi.Input.decodeList<GetConnectorEgressConfigVpcLattice>(map['vpcLattices'], (value) => GetConnectorEgressConfigVpcLattice.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

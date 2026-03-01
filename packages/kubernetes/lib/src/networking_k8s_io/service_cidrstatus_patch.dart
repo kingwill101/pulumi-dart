@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/condition_patch.dart';
+
+/// ServiceCIDRStatus describes the current state of the ServiceCIDR.
+class ServiceCIDRStatusPatch {
+  /// conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
+  final List<ConditionPatch>? conditions;
+
+  /// Creates a new [ServiceCIDRStatusPatch].
+  /// [conditions] conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
+  ServiceCIDRStatusPatch({
+    this.conditions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+    };
+  }
+
+  factory ServiceCIDRStatusPatch.fromMap(Map<String, dynamic> map) {
+    return ServiceCIDRStatusPatch(
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

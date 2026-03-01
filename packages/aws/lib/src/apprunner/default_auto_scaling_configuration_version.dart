@@ -148,7 +148,6 @@ import 'default_auto_scaling_configuration_version_args.dart';
 class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
   /// The ARN of the App Runner auto scaling configuration that you want to set as the default.
   late final pulumi.Output<String> autoScalingConfigurationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -161,14 +160,12 @@ class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
     DefaultAutoScalingConfigurationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.autoScalingConfigurationArn = registerOutput<String>(
-      'autoScalingConfigurationArn',
-    );
+          'aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
     this.region = registerOutput<String>('region');
   }
 }

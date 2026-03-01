@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
   /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
   /// - - -
@@ -12,16 +13,15 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataprocCluster': ?dataprocCluster};
+    return <String, dynamic>{
+      'dataprocCluster': ?dataprocCluster,
+    };
   }
 
-  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null
-          ? null
-          : map['dataprocCluster'] as String,
+      dataprocCluster: map['dataprocCluster'] == null ? null : map['dataprocCluster'] as String,
     );
   }
 }
+

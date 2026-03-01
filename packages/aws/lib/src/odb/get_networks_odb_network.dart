@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworksOdbNetwork {
   /// Amazon Resource Name (ARN) of the odb network resource.
   final String arn;
-
   /// Display name for the network resource.
   final String displayName;
-
   /// Unique identifier of the odb network resource.
   final String id;
-
   /// The unique identifier of the OCI network anchor for the ODB network.
   final String ociNetworkAnchorId;
-
   /// The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
   final String ociVcnId;
-
   /// The URL of the OCI VCN for the ODB network.
   final String ociVcnUrl;
 
@@ -57,3 +53,4 @@ class GetNetworksOdbNetwork {
     );
   }
 }
+

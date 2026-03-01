@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of AutoTuneStateEnumValue
+class AutoTuneStateEnumValue {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [AutoTuneStateEnumValue].
+  /// [value] Property value
+  AutoTuneStateEnumValue({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory AutoTuneStateEnumValue.fromMap(Map<String, dynamic> map) {
+    return AutoTuneStateEnumValue(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

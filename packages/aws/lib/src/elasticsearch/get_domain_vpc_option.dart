@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainVpcOption {
   /// The availability zones used by the domain.
   final List<String> availabilityZones;
-
   /// The security groups used by the domain.
   final List<String> securityGroupIds;
-
   /// The subnets used by the domain.
   final List<String> subnetIds;
-
   /// The VPC used by the domain.
   final String vpcId;
 
@@ -43,3 +41,4 @@ class GetDomainVpcOption {
     );
   }
 }
+

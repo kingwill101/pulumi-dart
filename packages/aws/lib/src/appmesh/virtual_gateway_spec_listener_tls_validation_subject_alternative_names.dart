@@ -4,8 +4,7 @@ import 'virtual_gateway_spec_listener_tls_validation_subject_alternative_names_m
 
 class VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
   /// Criteria for determining a SAN's match.
-  final VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch
-  match;
+  final VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch match;
 
   /// Creates a new [VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
@@ -14,17 +13,15 @@ class VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'match': match.toMap()};
+    return <String, dynamic>{
+      'match': match.toMap(),
+    };
   }
 
-  factory VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames(
-      match:
-          VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap(
-            (map['match'] as Map).cast<String, dynamic>(),
-          ),
+      match: VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSourceBackupConfigInfoGcpBackupConfig {
   /// The name of the backup plan.
   final String backupPlan;
-
   /// The name of the backup plan association.
   final String backupPlanAssociation;
-
   /// The description of the backup plan.
   final String backupPlanDescription;
-
   /// The names of the backup plan rules which point to this backupvault
   final List<String> backupPlanRules;
 
@@ -34,9 +32,7 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
     };
   }
 
-  factory GetDataSourceBackupConfigInfoGcpBackupConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSourceBackupConfigInfoGcpBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetDataSourceBackupConfigInfoGcpBackupConfig(
       backupPlan: map['backupPlan'] as String,
       backupPlanAssociation: map['backupPlanAssociation'] as String,
@@ -45,3 +41,4 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
     );
   }
 }
+

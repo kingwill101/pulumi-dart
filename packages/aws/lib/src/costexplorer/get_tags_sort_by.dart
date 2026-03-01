@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTagsSortBy {
   /// key that's used to sort the data. Valid values are: `BlendedCost`,  `UnblendedCost`, `AmortizedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `UsageQuantity`, `NormalizedUsageAmount`.
   final String? key;
-
   /// order that's used to sort the data. Valid values are: `ASCENDING`,  `DESCENDING`.
   final String? sortOrder;
 
   /// Creates a new [GetTagsSortBy].
   /// [key] key that's used to sort the data. Valid values are: `BlendedCost`,  `UnblendedCost`, `AmortizedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `UsageQuantity`, `NormalizedUsageAmount`.
   /// [sortOrder] order that's used to sort the data. Valid values are: `ASCENDING`,  `DESCENDING`.
-  GetTagsSortBy({this.key, this.sortOrder});
+  GetTagsSortBy({
+    this.key,
+    this.sortOrder,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'sortOrder': ?sortOrder};
+    return <String, dynamic>{
+      'key': ?key,
+      'sortOrder': ?sortOrder,
+    };
   }
 
   factory GetTagsSortBy.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class GetTagsSortBy {
     );
   }
 }
+

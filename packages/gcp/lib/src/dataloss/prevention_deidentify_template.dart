@@ -927,33 +927,25 @@ import 'prevention_deidentify_template_deidentify_config.dart';
 class PreventionDeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an deidentifyTemplate. Set by the server.
   late final pulumi.Output<String> createTime;
-
   /// Configuration of the deidentify template
   /// Structure is documented below.
-  late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig>
-  deidentifyConfig;
-
+  late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig;
   /// A description of the template.
   late final pulumi.Output<String?> description;
-
   /// User set display name of the template.
   late final pulumi.Output<String?> displayName;
-
   /// The resource name of the template. Set by the server.
   late final pulumi.Output<String> name;
-
   /// The parent of the template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
   late final pulumi.Output<String> parent;
-
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
   late final pulumi.Output<String> templateId;
-
   /// The last update timestamp of an deidentifyTemplate. Set by the server.
   late final pulumi.Output<String> updateTime;
 
@@ -966,16 +958,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     PreventionDeidentifyTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
-    this.deidentifyConfig =
-        registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
-          'deidentifyConfig',
-        );
+    this.deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

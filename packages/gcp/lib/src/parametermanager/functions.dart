@@ -774,8 +774,7 @@ Future<GetRegionalParameterVersionResult> getRegionalParameterVersion(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_parametermanager_get_regional_parameter_version_render_get_regional_parameter_version_render_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionalParameterVersionRenderResult>
-getRegionalParameterVersionRender(
+Future<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRender(
   GetRegionalParameterVersionRenderArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

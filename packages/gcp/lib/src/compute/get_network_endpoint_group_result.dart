@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkEndpointGroup.
 class GetNetworkEndpointGroupResult {
   /// The NEG default port.
   final int defaultPort;
-
   /// The NEG description.
   final String description;
   final int generatedId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
-
   /// The network to which all network endpoints in the NEG belong.
   final String network;
-
   /// Type of network endpoints in this network endpoint group.
   final String networkEndpointType;
   final String? project;
   final String? selfLink;
-
   /// Number of network endpoints in the network endpoint group.
   final int size;
-
   /// subnetwork to which all network endpoints in the NEG belong.
   final String subnetwork;
   final String? zone;
@@ -90,3 +85,4 @@ class GetNetworkEndpointGroupResult {
     );
   }
 }
+

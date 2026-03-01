@@ -7,11 +7,9 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption {
   /// A nested object resource.
   /// Structure is documented below.
   final InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides overrides;
-
   /// A nested object resource.
   /// Structure is documented below.
-  final InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection
-  replicaSelection;
+  final InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection replicaSelection;
 
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOption].
   /// [overrides] A nested object resource.
@@ -28,18 +26,11 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption {
     };
   }
 
-  factory InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOption(
-      overrides:
-          InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap(
-            (map['overrides'] as Map).cast<String, dynamic>(),
-          ),
-      replicaSelection:
-          InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(
-            (map['replicaSelection'] as Map).cast<String, dynamic>(),
-          ),
+      overrides: InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap((map['overrides'] as Map).cast<String, dynamic>()),
+      replicaSelection: InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap((map['replicaSelection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

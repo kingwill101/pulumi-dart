@@ -1,0 +1,209 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_endpoint_connection_args.dart';
+import 'private_endpoint_response.dart';
+import 'private_link_service_connection_state_response.dart';
+import 'system_data_response.dart';
+
+/// The private endpoint connection resource.
+///
+/// Uses Azure REST API version 2025-09-01-preview.
+///
+/// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Create or update private endpoint connection
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var privateEndpointConnection = new AzureNative.Security.PrivateEndpointConnection("privateEndpointConnection", new()
+///     {
+///         PrivateEndpointConnectionName = "pe",
+///         PrivateLinkName = "pls",
+///         PrivateLinkServiceConnectionState = new AzureNative.Security.Inputs.PrivateLinkServiceConnectionStateArgs
+///         {
+///             ActionsRequired = "None",
+///             Description = "Approved by administrator",
+///             Status = AzureNative.Security.PrivateEndpointServiceConnectionStatus.Approved,
+///         },
+///         ResourceGroupName = "rg",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	security "github.com/pulumi/pulumi-azure-native-sdk/security/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := security.NewPrivateEndpointConnection(ctx, "privateEndpointConnection", &security.PrivateEndpointConnectionArgs{
+/// 			PrivateEndpointConnectionName: pulumi.String("pe"),
+/// 			PrivateLinkName:               pulumi.String("pls"),
+/// 			PrivateLinkServiceConnectionState: &security.PrivateLinkServiceConnectionStateArgs{
+/// 				ActionsRequired: pulumi.String("None"),
+/// 				Description:     pulumi.String("Approved by administrator"),
+/// 				Status:          pulumi.String(security.PrivateEndpointServiceConnectionStatusApproved),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("rg"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.security.PrivateEndpointConnection;
+/// import com.pulumi.azurenative.security.PrivateEndpointConnectionArgs;
+/// import com.pulumi.azurenative.security.inputs.PrivateLinkServiceConnectionStateArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var privateEndpointConnection = new PrivateEndpointConnection("privateEndpointConnection", PrivateEndpointConnectionArgs.builder()
+///             .privateEndpointConnectionName("pe")
+///             .privateLinkName("pls")
+///             .privateLinkServiceConnectionState(PrivateLinkServiceConnectionStateArgs.builder()
+///                 .actionsRequired("None")
+///                 .description("Approved by administrator")
+///                 .status("Approved")
+///                 .build())
+///             .resourceGroupName("rg")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const privateEndpointConnection = new azure_native.security.PrivateEndpointConnection("privateEndpointConnection", {
+///     privateEndpointConnectionName: "pe",
+///     privateLinkName: "pls",
+///     privateLinkServiceConnectionState: {
+///         actionsRequired: "None",
+///         description: "Approved by administrator",
+///         status: azure_native.security.PrivateEndpointServiceConnectionStatus.Approved,
+///     },
+///     resourceGroupName: "rg",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// private_endpoint_connection = azure_native.security.PrivateEndpointConnection("privateEndpointConnection",
+///     private_endpoint_connection_name="pe",
+///     private_link_name="pls",
+///     private_link_service_connection_state={
+///         "actions_required": "None",
+///         "description": "Approved by administrator",
+///         "status": azure_native.security.PrivateEndpointServiceConnectionStatus.APPROVED,
+///     },
+///     resource_group_name="rg")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   privateEndpointConnection:
+///     type: azure-native:security:PrivateEndpointConnection
+///     properties:
+///       privateEndpointConnectionName: pe
+///       privateLinkName: pls
+///       privateLinkServiceConnectionState:
+///         actionsRequired: None
+///         description: Approved by administrator
+///         status: Approved
+///       resourceGroupName: rg
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:security:PrivateEndpointConnection pe /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/privateLinks/{privateLinkName}/privateEndpointConnections/{privateEndpointConnectionName}
+/// ```
+class PrivateEndpointConnection extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The group ids for the private endpoint resource.
+  late final pulumi.Output<List<String>> groupIds;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// The private endpoint resource.
+  late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+  /// A collection of information about the state of the connection between service consumer and provider.
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
+  /// The provisioning state of the private endpoint connection resource.
+  late final pulumi.Output<String> provisioningState;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [PrivateEndpointConnection].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [PrivateEndpointConnection]. {@macro pulumi_security_private_endpoint_connection_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  PrivateEndpointConnection(
+    String name, {
+    PrivateEndpointConnectionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:security:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.groupIds = registerOutput<List<String>>('groupIds');
+    this.name = registerOutput<String>('name');
+    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
+    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState');
+    this.provisioningState = registerOutput<String>('provisioningState');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.type = registerOutput<String>('type');
+  }
+}

@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetRedshiftTarget {
   /// The name of the database.
   final String database;
-
   /// The database user name.
   final String? dbUser;
-
   /// The name or ARN of the secret that enables access to the database.
   final String? secretsManagerArn;
-
   /// The SQL statement text to run.
   final String? sql;
-
   /// The name of the SQL statement.
   final String? statementName;
-
   /// Indicates whether to send an event back to EventBridge after the SQL statement runs.
   final bool? withEvent;
 
@@ -50,14 +46,11 @@ class EventTargetRedshiftTarget {
     return EventTargetRedshiftTarget(
       database: map['database'] as String,
       dbUser: map['dbUser'] == null ? null : map['dbUser'] as String,
-      secretsManagerArn: map['secretsManagerArn'] == null
-          ? null
-          : map['secretsManagerArn'] as String,
+      secretsManagerArn: map['secretsManagerArn'] == null ? null : map['secretsManagerArn'] as String,
       sql: map['sql'] == null ? null : map['sql'] as String,
-      statementName: map['statementName'] == null
-          ? null
-          : map['statementName'] as String,
+      statementName: map['statementName'] == null ? null : map['statementName'] as String,
       withEvent: map['withEvent'] == null ? null : map['withEvent'] as bool,
     );
   }
 }
+

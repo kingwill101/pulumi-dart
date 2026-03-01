@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+class TolerationPatch {
+  /// Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+  final String? effect;
+  /// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+  final String? key;
+  /// Operator represents a key's relationship to the value. Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
+  final String? operator;
+  /// TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+  final int? tolerationSeconds;
+  /// Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+  final String? value;
+
+  /// Creates a new [TolerationPatch].
+  /// [effect] Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+  /// [key] Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+  /// [operator] Operator represents a key's relationship to the value. Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
+  /// [tolerationSeconds] TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+  /// [value] Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+  TolerationPatch({
+    this.effect,
+    this.key,
+    this.operator,
+    this.tolerationSeconds,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'effect': ?effect,
+      'key': ?key,
+      'operator': ?operator,
+      'tolerationSeconds': ?tolerationSeconds,
+      'value': ?value,
+    };
+  }
+
+  factory TolerationPatch.fromMap(Map<String, dynamic> map) {
+    return TolerationPatch(
+      effect: map['effect'] == null ? null : map['effect'] as String,
+      key: map['key'] == null ? null : map['key'] as String,
+      operator: map['operator'] == null ? null : map['operator'] as String,
+      tolerationSeconds: map['tolerationSeconds'] == null ? null : map['tolerationSeconds'] as int,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

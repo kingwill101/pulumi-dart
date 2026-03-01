@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionBuildConfigSourceStorageSource {
   /// Google Cloud Storage bucket containing the source
   final String bucket;
-
   /// Google Cloud Storage generation for the object. If the generation
   /// is omitted, the latest generation will be used.
   final int generation;
-
   /// Google Cloud Storage object containing the source.
   final String object;
 
@@ -29,9 +28,7 @@ class GetFunctionBuildConfigSourceStorageSource {
     };
   }
 
-  factory GetFunctionBuildConfigSourceStorageSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFunctionBuildConfigSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return GetFunctionBuildConfigSourceStorageSource(
       bucket: map['bucket'] as String,
       generation: map['generation'] as int,
@@ -39,3 +36,4 @@ class GetFunctionBuildConfigSourceStorageSource {
     );
   }
 }
+

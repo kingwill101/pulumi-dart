@@ -1517,39 +1517,29 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// A human readable description of this Bare Metal Admin Cluster.
   late final pulumi.Output<String?> bareMetalVersion;
-
   /// Specifies the Admin Cluster's observability infrastructure.
   /// Structure is documented below.
-  late final pulumi.Output<BareMetalAdminClusterClusterOperations?>
-  clusterOperations;
-
+  late final pulumi.Output<BareMetalAdminClusterClusterOperations?> clusterOperations;
   /// Specifies the control plane configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterControlPlane?> controlPlane;
-
   /// The time the cluster was created, in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// The time the cluster was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
-
   /// A human readable description of this Bare Metal Admin Cluster.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// The IP address name of Bare Metal Admin Cluster's API server.
   late final pulumi.Output<String> endpoint;
-
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   late final pulumi.Output<String> etag;
-
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
@@ -1558,11 +1548,9 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   /// more details on Anthos multi-cluster capabilities using Fleets.
   /// Structure is documented below.
   late final pulumi.Output<List<BareMetalAdminClusterFleet>> fleets;
-
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterLoadBalancer?> loadBalancer;
-
   /// The object name of the Bare Metal Admin Cluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
   /// names when enrolling existing clusters to the API. When used as a part of
@@ -1574,69 +1562,50 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
   late final pulumi.Output<String> localName;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  late final pulumi.Output<BareMetalAdminClusterMaintenanceConfig?>
-  maintenanceConfig;
-
+  late final pulumi.Output<BareMetalAdminClusterMaintenanceConfig?> maintenanceConfig;
   /// The bare metal admin cluster name.
   late final pulumi.Output<String> name;
-
   /// Network configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterNetworkConfig?> networkConfig;
-
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
-  late final pulumi.Output<BareMetalAdminClusterNodeAccessConfig?>
-  nodeAccessConfig;
-
+  late final pulumi.Output<BareMetalAdminClusterNodeAccessConfig?> nodeAccessConfig;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterNodeConfig?> nodeConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterProxy?> proxy;
-
   /// If set, there are currently changes in flight to the Bare Metal Admin Cluster.
   late final pulumi.Output<bool> reconciling;
-
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterSecurityConfig?> securityConfig;
-
   /// (Output)
   /// The lifecycle state of the condition.
   late final pulumi.Output<String> state;
-
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
   late final pulumi.Output<List<BareMetalAdminClusterStatus>> statuses;
-
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterStorage?> storage;
-
   /// The unique identifier of the Bare Metal Admin Cluster.
   late final pulumi.Output<String> uid;
-
   /// The time the cluster was last updated, in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
-
   /// Specifies the security related settings for the Bare Metal Admin Cluster.
   /// Structure is documented below.
-  late final pulumi.Output<List<BareMetalAdminClusterValidationCheck>>
-  validationChecks;
+  late final pulumi.Output<List<BareMetalAdminClusterValidationCheck>> validationChecks;
 
   /// Creates a new [BareMetalAdminCluster].
   /// [name] The Pulumi resource name.
@@ -1647,65 +1616,39 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
     BareMetalAdminClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.bareMetalVersion = registerOutput<String?>('bareMetalVersion');
-    this.clusterOperations =
-        registerOutput<BareMetalAdminClusterClusterOperations?>(
-          'clusterOperations',
-        );
-    this.controlPlane = registerOutput<BareMetalAdminClusterControlPlane?>(
-      'controlPlane',
-    );
+    this.clusterOperations = registerOutput<BareMetalAdminClusterClusterOperations?>('clusterOperations');
+    this.controlPlane = registerOutput<BareMetalAdminClusterControlPlane?>('controlPlane');
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     this.endpoint = registerOutput<String>('endpoint');
     this.etag = registerOutput<String>('etag');
     this.fleets = registerOutput<List<BareMetalAdminClusterFleet>>('fleets');
-    this.loadBalancer = registerOutput<BareMetalAdminClusterLoadBalancer?>(
-      'loadBalancer',
-    );
+    this.loadBalancer = registerOutput<BareMetalAdminClusterLoadBalancer?>('loadBalancer');
     this.localName = registerOutput<String>('localName');
     this.location = registerOutput<String>('location');
-    this.maintenanceConfig =
-        registerOutput<BareMetalAdminClusterMaintenanceConfig?>(
-          'maintenanceConfig',
-        );
+    this.maintenanceConfig = registerOutput<BareMetalAdminClusterMaintenanceConfig?>('maintenanceConfig');
     this.name = registerOutput<String>('name');
-    this.networkConfig = registerOutput<BareMetalAdminClusterNetworkConfig?>(
-      'networkConfig',
-    );
-    this.nodeAccessConfig =
-        registerOutput<BareMetalAdminClusterNodeAccessConfig?>(
-          'nodeAccessConfig',
-        );
-    this.nodeConfig = registerOutput<BareMetalAdminClusterNodeConfig?>(
-      'nodeConfig',
-    );
+    this.networkConfig = registerOutput<BareMetalAdminClusterNetworkConfig?>('networkConfig');
+    this.nodeAccessConfig = registerOutput<BareMetalAdminClusterNodeAccessConfig?>('nodeAccessConfig');
+    this.nodeConfig = registerOutput<BareMetalAdminClusterNodeConfig?>('nodeConfig');
     this.project = registerOutput<String>('project');
     this.proxy = registerOutput<BareMetalAdminClusterProxy?>('proxy');
     this.reconciling = registerOutput<bool>('reconciling');
-    this.securityConfig = registerOutput<BareMetalAdminClusterSecurityConfig?>(
-      'securityConfig',
-    );
+    this.securityConfig = registerOutput<BareMetalAdminClusterSecurityConfig?>('securityConfig');
     this.state = registerOutput<String>('state');
-    this.statuses = registerOutput<List<BareMetalAdminClusterStatus>>(
-      'statuses',
-    );
+    this.statuses = registerOutput<List<BareMetalAdminClusterStatus>>('statuses');
     this.storage = registerOutput<BareMetalAdminClusterStorage?>('storage');
     this.uid = registerOutput<String>('uid');
     this.updateTime = registerOutput<String>('updateTime');
-    this.validationChecks =
-        registerOutput<List<BareMetalAdminClusterValidationCheck>>(
-          'validationChecks',
-        );
+    this.validationChecks = registerOutput<List<BareMetalAdminClusterValidationCheck>>('validationChecks');
   }
 }

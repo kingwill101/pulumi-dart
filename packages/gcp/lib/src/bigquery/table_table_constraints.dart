@@ -9,7 +9,6 @@ class TableTableConstraints {
   /// The foreign key is not enforced.
   /// Structure is documented below.
   final List<TableTableConstraintsForeignKey>? foreignKeys;
-
   /// Represents the primary key constraint
   /// on a table's columns. Present only if the table has a primary key.
   /// The primary key is not enforced.
@@ -19,35 +18,23 @@ class TableTableConstraints {
   /// Creates a new [TableTableConstraints].
   /// [foreignKeys] Present only if the table has a foreign key.
   /// [primaryKey] Represents the primary key constraint
-  TableTableConstraints({this.foreignKeys, this.primaryKey});
+  TableTableConstraints({
+    this.foreignKeys,
+    this.primaryKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'foreignKeys': ?foreignKeys == null
-          ? null
-          : pulumi.Input.encodeList<
-              TableTableConstraintsForeignKey,
-              Map<String, dynamic>
-            >(foreignKeys!, (value) => value.toMap()),
+      'foreignKeys': ?foreignKeys == null ? null : pulumi.Input.encodeList<TableTableConstraintsForeignKey, Map<String, dynamic>>(foreignKeys!, (value) => value.toMap()),
       'primaryKey': ?primaryKey == null ? null : primaryKey!.toMap(),
     };
   }
 
   factory TableTableConstraints.fromMap(Map<String, dynamic> map) {
     return TableTableConstraints(
-      foreignKeys: map['foreignKeys'] == null
-          ? null
-          : pulumi.Input.decodeList<TableTableConstraintsForeignKey>(
-              map['foreignKeys'],
-              (value) => TableTableConstraintsForeignKey.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      primaryKey: map['primaryKey'] == null
-          ? null
-          : TableTableConstraintsPrimaryKey.fromMap(
-              (map['primaryKey'] as Map).cast<String, dynamic>(),
-            ),
+      foreignKeys: map['foreignKeys'] == null ? null : pulumi.Input.decodeList<TableTableConstraintsForeignKey>(map['foreignKeys'], (value) => TableTableConstraintsForeignKey.fromMap((value as Map).cast<String, dynamic>())),
+      primaryKey: map['primaryKey'] == null ? null : TableTableConstraintsPrimaryKey.fromMap((map['primaryKey'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

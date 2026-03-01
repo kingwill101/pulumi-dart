@@ -6,10 +6,7 @@ import 'bucket_v2_replication_configuration_rule_source_selection_criteria_sse_k
 class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
   /// Match SSE-KMS encrypted objects (documented below). If specified, `replica_kms_key_id`
   /// in `destination` must be specified as well.
-  final List<
-    BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject
-  >?
-  sseKmsEncryptedObjects;
+  final List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>? sseKmsEncryptedObjects;
 
   /// Creates a new [BucketV2ReplicationConfigurationRuleSourceSelectionCriteria].
   /// [sseKmsEncryptedObjects] Match SSE-KMS encrypted objects (documented below). If specified, `replica_kms_key_id`
@@ -19,30 +16,14 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sseKmsEncryptedObjects': ?sseKmsEncryptedObjects == null
-          ? null
-          : pulumi.Input.encodeList<
-              BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject,
-              Map<String, dynamic>
-            >(sseKmsEncryptedObjects!, (value) => value.toMap()),
+      'sseKmsEncryptedObjects': ?sseKmsEncryptedObjects == null ? null : pulumi.Input.encodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject, Map<String, dynamic>>(sseKmsEncryptedObjects!, (value) => value.toMap()),
     };
   }
 
-  factory BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleSourceSelectionCriteria(
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject
-            >(
-              map['sseKmsEncryptedObjects'],
-              (value) =>
-                  BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>(map['sseKmsEncryptedObjects'], (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

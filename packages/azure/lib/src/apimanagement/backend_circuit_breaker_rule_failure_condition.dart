@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'backend_circuit_breaker_rule_failure_condition_status_code_range.dart';
+
+class BackendCircuitBreakerRuleFailureCondition {
+  /// Specifies the number of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `10000`.
+  final int? count;
+  /// Specifies a list of error reasons to consider as failures.
+  final List<String>? errorReasons;
+  /// Specifies the time window over which failures are counted, in ISO 8601 format.
+  final String intervalDuration;
+  /// Specifies the percentage of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `100`.
+  ///
+  /// > **Note:** Exactly one of `percentage` or `count` must be specified.
+  final int? percentage;
+  /// One or more `status_code_range` blocks as defined below.
+  ///
+  /// > **Note:** At least one of `status_code_range`, and `error_reasons` must be set.
+  final List<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>? statusCodeRanges;
+
+  /// Creates a new [BackendCircuitBreakerRuleFailureCondition].
+  /// [count] Specifies the number of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `10000`.
+  /// [errorReasons] Specifies a list of error reasons to consider as failures.
+  /// [intervalDuration] Specifies the time window over which failures are counted, in ISO 8601 format.
+  /// [percentage] Specifies the percentage of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `100`.
+  /// [statusCodeRanges] One or more `status_code_range` blocks as defined below.
+  BackendCircuitBreakerRuleFailureCondition({
+    this.count,
+    this.errorReasons,
+    required this.intervalDuration,
+    this.percentage,
+    this.statusCodeRanges,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': ?count,
+      'errorReasons': ?errorReasons,
+      'intervalDuration': intervalDuration,
+      'percentage': ?percentage,
+      'statusCodeRanges': ?statusCodeRanges == null ? null : pulumi.Input.encodeList<BackendCircuitBreakerRuleFailureConditionStatusCodeRange, Map<String, dynamic>>(statusCodeRanges!, (value) => value.toMap()),
+    };
+  }
+
+  factory BackendCircuitBreakerRuleFailureCondition.fromMap(Map<String, dynamic> map) {
+    return BackendCircuitBreakerRuleFailureCondition(
+      count: map['count'] == null ? null : map['count'] as int,
+      errorReasons: map['errorReasons'] == null ? null : (map['errorReasons'] as List).cast<String>(),
+      intervalDuration: map['intervalDuration'] as String,
+      percentage: map['percentage'] == null ? null : map['percentage'] as int,
+      statusCodeRanges: map['statusCodeRanges'] == null ? null : pulumi.Input.decodeList<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>(map['statusCodeRanges'], (value) => BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

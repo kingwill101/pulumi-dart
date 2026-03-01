@@ -6,7 +6,6 @@ import 'get_crypto_key_versions_version_public_key.dart';
 class GetCryptoKeyVersionsVersion {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   final String algorithm;
-
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
   final String cryptoKey;
@@ -44,11 +43,7 @@ class GetCryptoKeyVersionsVersion {
       'id': id,
       'name': name,
       'protectionLevel': protectionLevel,
-      'publicKeys':
-          pulumi.Input.encodeList<
-            GetCryptoKeyVersionsVersionPublicKey,
-            Map<String, dynamic>
-          >(publicKeys, (value) => value.toMap()),
+      'publicKeys': pulumi.Input.encodeList<GetCryptoKeyVersionsVersionPublicKey, Map<String, dynamic>>(publicKeys, (value) => value.toMap()),
       'state': state,
       'version': version,
     };
@@ -61,14 +56,10 @@ class GetCryptoKeyVersionsVersion {
       id: map['id'] as String,
       name: map['name'] as String,
       protectionLevel: map['protectionLevel'] as String,
-      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(
-        map['publicKeys'],
-        (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(map['publicKeys'], (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       version: map['version'] as int,
     );
   }
 }
+

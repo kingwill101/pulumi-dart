@@ -23,16 +23,10 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
   /// autoscaling_metric_specs.target to `80`.
   /// Structure is documented below.
-  final List<
-    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec
-  >?
-  autoscalingMetricSpecs;
-
+  final List<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>? autoscalingMetricSpecs;
   /// Specification of a single machine.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec
-  machineSpec;
-
+  final AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec machineSpec;
   /// The maximum number of replicas that may be deployed on when the traffic
   /// against it increases. If the requested value is too large, the deployment
   /// will error, but if deployment succeeds then the ability to scale to that
@@ -45,13 +39,11 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// number of cores in the selected machine type) and (max_replica_count *
   /// number of GPUs per replica in the selected machine type).
   final int? maxReplicaCount;
-
   /// The minimum number of machine replicas that will be always deployed on.
   /// This value must be greater than or equal to 1.
   /// If traffic increases, it may dynamically be deployed onto more replicas,
   /// and as traffic decreases, some of these extra replicas may be freed.
   final int minReplicaCount;
-
   /// Number of required available replicas for the deployment to succeed.
   /// This field is only needed when partial deployment/mutation is
   /// desired. If set, the deploy/mutate operation will succeed once
@@ -59,7 +51,6 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// the replicas will be retried. If not set, the default
   /// required_replica_count will be min_replica_count.
   final int? requiredReplicaCount;
-
   /// If true, schedule the deployment workload on [spot
   /// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
   final bool? spot;
@@ -82,12 +73,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingMetricSpecs': ?autoscalingMetricSpecs == null
-          ? null
-          : pulumi.Input.encodeList<
-              AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec,
-              Map<String, dynamic>
-            >(autoscalingMetricSpecs!, (value) => value.toMap()),
+      'autoscalingMetricSpecs': ?autoscalingMetricSpecs == null ? null : pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec, Map<String, dynamic>>(autoscalingMetricSpecs!, (value) => value.toMap()),
       'machineSpec': machineSpec.toMap(),
       'maxReplicaCount': ?maxReplicaCount,
       'minReplicaCount': minReplicaCount,
@@ -96,33 +82,15 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(
-      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec
-            >(
-              map['autoscalingMetricSpecs'],
-              (value) =>
-                  AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      machineSpec:
-          AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap(
-            (map['machineSpec'] as Map).cast<String, dynamic>(),
-          ),
-      maxReplicaCount: map['maxReplicaCount'] == null
-          ? null
-          : map['maxReplicaCount'] as int,
+      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>(map['autoscalingMetricSpecs'], (value) => AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>())),
+      machineSpec: AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : map['maxReplicaCount'] as int,
       minReplicaCount: map['minReplicaCount'] as int,
-      requiredReplicaCount: map['requiredReplicaCount'] == null
-          ? null
-          : map['requiredReplicaCount'] as int,
+      requiredReplicaCount: map['requiredReplicaCount'] == null ? null : map['requiredReplicaCount'] as int,
       spot: map['spot'] == null ? null : map['spot'] as bool,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainSamlOptionsSamlOptionsIdp {
   /// The unique Entity ID of the application in SAML Identity Provider.
   final String entityId;
-
   /// The Metadata of the SAML application in xml format.
   final String metadataContent;
 
@@ -29,3 +29,4 @@ class DomainSamlOptionsSamlOptionsIdp {
     );
   }
 }
+

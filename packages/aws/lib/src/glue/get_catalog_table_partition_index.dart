@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCatalogTablePartitionIndex {
   /// Name of the partition index.
   final String indexName;
   final String indexStatus;
-
   /// Keys for the partition index.
   final List<String> keys;
 
@@ -34,3 +34,4 @@ class GetCatalogTablePartitionIndex {
     );
   }
 }
+

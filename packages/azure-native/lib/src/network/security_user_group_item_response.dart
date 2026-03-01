@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Network manager security user group item.
+class SecurityUserGroupItemResponse {
+  /// Network manager group Id.
+  final String networkGroupId;
+
+  /// Creates a new [SecurityUserGroupItemResponse].
+  /// [networkGroupId] Network manager group Id.
+  SecurityUserGroupItemResponse({
+    required this.networkGroupId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'networkGroupId': networkGroupId,
+    };
+  }
+
+  factory SecurityUserGroupItemResponse.fromMap(Map<String, dynamic> map) {
+    return SecurityUserGroupItemResponse(
+      networkGroupId: map['networkGroupId'] as String,
+    );
+  }
+}
+

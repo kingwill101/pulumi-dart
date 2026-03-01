@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixListReferenceArgs {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
   final pulumi.Input<bool>? blackhole;
-
   /// Identifier of EC2 Prefix List.
   final pulumi.Input<String> prefixListId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String>? transitGatewayAttachmentId;
-
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
@@ -36,15 +32,12 @@ class PrefixListReferenceArgs {
     String? region,
     String? transitGatewayAttachmentId,
     required String transitGatewayRouteTableId,
-  }) : blackhole = pulumi.Input.asOptionalInput<bool>(blackhole),
-       prefixListId = pulumi.Input.asInput<String>(prefixListId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(
-         transitGatewayAttachmentId,
-       ),
-       transitGatewayRouteTableId = pulumi.Input.asInput<String>(
-         transitGatewayRouteTableId,
-       );
+  }) :
+      blackhole = pulumi.Input.asOptionalInput<bool>(blackhole),
+      prefixListId = pulumi.Input.asInput<String>(prefixListId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
+      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,10 +54,9 @@ class PrefixListReferenceArgs {
       blackhole: map['blackhole'] == null ? null : map['blackhole'] as bool,
       prefixListId: map['prefixListId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null
-          ? null
-          : map['transitGatewayAttachmentId'] as String,
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : map['transitGatewayAttachmentId'] as String,
       transitGatewayRouteTableId: map['transitGatewayRouteTableId'] as String,
     );
   }
 }
+

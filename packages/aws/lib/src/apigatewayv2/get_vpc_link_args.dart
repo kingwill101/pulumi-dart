@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcLinkArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// VPC Link Tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// VPC Link ID
   final pulumi.Input<String> vpcLinkId;
 
@@ -24,9 +22,10 @@ class GetVpcLinkArgs {
     String? region,
     Map<String, String>? tags,
     required String vpcLinkId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       vpcLinkId = pulumi.Input.asInput<String>(vpcLinkId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcLinkId = pulumi.Input.asInput<String>(vpcLinkId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +38,9 @@ class GetVpcLinkArgs {
   factory GetVpcLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcLinkArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vpcLinkId: map['vpcLinkId'] as String,
     );
   }
 }
+

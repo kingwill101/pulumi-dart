@@ -123,10 +123,8 @@ import 'shared_vpcservice_project_args.dart';
 class SharedVPCServiceProject extends pulumi.CustomResource {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
   late final pulumi.Output<String?> deletionPolicy;
-
   /// The ID of a host project to associate.
   late final pulumi.Output<String> hostProject;
-
   /// The ID of the project that will serve as a Shared VPC service project.
   late final pulumi.Output<String> serviceProject;
 
@@ -139,11 +137,11 @@ class SharedVPCServiceProject extends pulumi.CustomResource {
     SharedVPCServiceProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.hostProject = registerOutput<String>('hostProject');
     this.serviceProject = registerOutput<String>('serviceProject');

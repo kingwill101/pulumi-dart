@@ -44,23 +44,14 @@ class TaskDefinitionPortMapping {
 
   factory TaskDefinitionPortMapping.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionPortMapping(
-      appProtocol: map['appProtocol'] == null
-          ? null
-          : TaskDefinitionPortMappingAppProtocol.fromValue(
-              map['appProtocol'] as String,
-            ),
-      containerPort: map['containerPort'] == null
-          ? null
-          : map['containerPort'] as int,
-      containerPortRange: map['containerPortRange'] == null
-          ? null
-          : map['containerPortRange'] as String,
+      appProtocol: map['appProtocol'] == null ? null : TaskDefinitionPortMappingAppProtocol.fromValue(map['appProtocol'] as String),
+      containerPort: map['containerPort'] == null ? null : map['containerPort'] as int,
+      containerPortRange: map['containerPortRange'] == null ? null : map['containerPortRange'] as String,
       hostPort: map['hostPort'] == null ? null : map['hostPort'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      targetGroup: map['targetGroup'] == null
-          ? null
-          : map['targetGroup'] as pulumi_aws_lb.TargetGroup,
+      targetGroup: map['targetGroup'] == null ? null : map['targetGroup'] as pulumi_aws_lb.TargetGroup,
     );
   }
 }
+

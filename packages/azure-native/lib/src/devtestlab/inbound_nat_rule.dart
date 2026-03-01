@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer.
+class InboundNatRule {
+  /// The port to which the external traffic will be redirected.
+  final int? backendPort;
+  /// The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically.
+  final int? frontendPort;
+  /// The transport protocol for the endpoint.
+  final String? transportProtocol;
+
+  /// Creates a new [InboundNatRule].
+  /// [backendPort] The port to which the external traffic will be redirected.
+  /// [frontendPort] The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically.
+  /// [transportProtocol] The transport protocol for the endpoint.
+  InboundNatRule({
+    this.backendPort,
+    this.frontendPort,
+    this.transportProtocol,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'backendPort': ?backendPort,
+      'frontendPort': ?frontendPort,
+      'transportProtocol': ?transportProtocol,
+    };
+  }
+
+  factory InboundNatRule.fromMap(Map<String, dynamic> map) {
+    return InboundNatRule(
+      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
+      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
+      transportProtocol: map['transportProtocol'] == null ? null : map['transportProtocol'] as String,
+    );
+  }
+}
+

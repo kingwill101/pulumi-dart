@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPublicIpv4PoolPoolAddressRange {
   /// Number of addresses in the range.
   final int addressCount;
-
   /// Number of available addresses in the range.
   final int availableAddressCount;
-
   /// First address in the range.
   final String firstAddress;
-
   /// Last address in the range.
   final String lastAddress;
 
@@ -43,3 +41,4 @@ class GetPublicIpv4PoolPoolAddressRange {
     );
   }
 }
+

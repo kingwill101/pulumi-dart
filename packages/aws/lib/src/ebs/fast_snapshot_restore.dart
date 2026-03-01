@@ -112,13 +112,10 @@ import 'fast_snapshot_restore_timeouts.dart';
 class FastSnapshotRestore extends pulumi.CustomResource {
   /// Availability zone in which to enable fast snapshot restores.
   late final pulumi.Output<String> availabilityZone;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the snapshot.
   late final pulumi.Output<String> snapshotId;
-
   /// State of fast snapshot restores. Valid values are `enabling`, `optimizing`, `enabled`, `disabling`, `disabled`.
   late final pulumi.Output<String> state;
   late final pulumi.Output<FastSnapshotRestoreTimeouts?> timeouts;
@@ -132,11 +129,11 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     FastSnapshotRestoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.availabilityZone = registerOutput<String>('availabilityZone');
     this.region = registerOutput<String>('region');
     this.snapshotId = registerOutput<String>('snapshotId');

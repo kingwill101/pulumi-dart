@@ -7,26 +7,19 @@ import 'reservation_specific_reservation_instance_properties_local_ssd.dart';
 class ReservationSpecificReservationInstanceProperties {
   /// Guest accelerator type and count.
   /// Structure is documented below.
-  final List<ReservationSpecificReservationInstancePropertiesGuestAccelerator>?
-  guestAccelerators;
-
+  final List<ReservationSpecificReservationInstancePropertiesGuestAccelerator>? guestAccelerators;
   /// The amount of local ssd to reserve with each instance. This
   /// reserves disks of type `local-ssd`.
   /// Structure is documented below.
-  final List<ReservationSpecificReservationInstancePropertiesLocalSsd>?
-  localSsds;
-
+  final List<ReservationSpecificReservationInstancePropertiesLocalSsd>? localSsds;
   /// (Output)
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   final String? locationHint;
-
   /// The name of the machine type to reserve.
   final String machineType;
-
   /// Specifies the frequency of planned maintenance events.
   /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
   final String? maintenanceInterval;
-
   /// The minimum CPU platform for the reservation. For example,
   /// `"Intel Skylake"`. See
   /// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -51,18 +44,8 @@ class ReservationSpecificReservationInstanceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guestAccelerators': ?guestAccelerators == null
-          ? null
-          : pulumi.Input.encodeList<
-              ReservationSpecificReservationInstancePropertiesGuestAccelerator,
-              Map<String, dynamic>
-            >(guestAccelerators!, (value) => value.toMap()),
-      'localSsds': ?localSsds == null
-          ? null
-          : pulumi.Input.encodeList<
-              ReservationSpecificReservationInstancePropertiesLocalSsd,
-              Map<String, dynamic>
-            >(localSsds!, (value) => value.toMap()),
+      'guestAccelerators': ?guestAccelerators == null ? null : pulumi.Input.encodeList<ReservationSpecificReservationInstancePropertiesGuestAccelerator, Map<String, dynamic>>(guestAccelerators!, (value) => value.toMap()),
+      'localSsds': ?localSsds == null ? null : pulumi.Input.encodeList<ReservationSpecificReservationInstancePropertiesLocalSsd, Map<String, dynamic>>(localSsds!, (value) => value.toMap()),
       'locationHint': ?locationHint,
       'machineType': machineType,
       'maintenanceInterval': ?maintenanceInterval,
@@ -70,42 +53,15 @@ class ReservationSpecificReservationInstanceProperties {
     };
   }
 
-  factory ReservationSpecificReservationInstanceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReservationSpecificReservationInstanceProperties.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstanceProperties(
-      guestAccelerators: map['guestAccelerators'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ReservationSpecificReservationInstancePropertiesGuestAccelerator
-            >(
-              map['guestAccelerators'],
-              (value) =>
-                  ReservationSpecificReservationInstancePropertiesGuestAccelerator.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      localSsds: map['localSsds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ReservationSpecificReservationInstancePropertiesLocalSsd
-            >(
-              map['localSsds'],
-              (value) =>
-                  ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      locationHint: map['locationHint'] == null
-          ? null
-          : map['locationHint'] as String,
+      guestAccelerators: map['guestAccelerators'] == null ? null : pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesGuestAccelerator>(map['guestAccelerators'], (value) => ReservationSpecificReservationInstancePropertiesGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
+      localSsds: map['localSsds'] == null ? null : pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesLocalSsd>(map['localSsds'], (value) => ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap((value as Map).cast<String, dynamic>())),
+      locationHint: map['locationHint'] == null ? null : map['locationHint'] as String,
       machineType: map['machineType'] as String,
-      maintenanceInterval: map['maintenanceInterval'] == null
-          ? null
-          : map['maintenanceInterval'] as String,
-      minCpuPlatform: map['minCpuPlatform'] == null
-          ? null
-          : map['minCpuPlatform'] as String,
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : map['maintenanceInterval'] as String,
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : map['minCpuPlatform'] as String,
     );
   }
 }
+

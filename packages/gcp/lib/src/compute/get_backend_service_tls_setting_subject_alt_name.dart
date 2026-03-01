@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceTlsSettingSubjectAltName {
   /// The SAN specified as a DNS Name.
   final String dnsName;
-
   /// The SAN specified as a URI.
   final String uniformResourceIdentifier;
 
@@ -22,12 +22,11 @@ class GetBackendServiceTlsSettingSubjectAltName {
     };
   }
 
-  factory GetBackendServiceTlsSettingSubjectAltName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackendServiceTlsSettingSubjectAltName.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceTlsSettingSubjectAltName(
       dnsName: map['dnsName'] as String,
       uniformResourceIdentifier: map['uniformResourceIdentifier'] as String,
     );
   }
 }
+

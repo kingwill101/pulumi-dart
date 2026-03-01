@@ -1,0 +1,57 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'fleet_managed_namespace_args.dart';
+import 'fleet_managed_namespace_properties_response.dart';
+import 'system_data_response.dart';
+
+/// A fleet managed namespace.
+///
+/// Uses Azure REST API version 2025-08-01-preview.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:containerservice:FleetManagedNamespace namespace1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces/{managedNamespaceName}
+/// ```
+class FleetManagedNamespace extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+  late final pulumi.Output<String> eTag;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// The resource-specific properties for this resource.
+  late final pulumi.Output<FleetManagedNamespacePropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [FleetManagedNamespace].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [FleetManagedNamespace]. {@macro pulumi_containerservice_fleet_managed_namespace_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  FleetManagedNamespace(
+    String name, {
+    FleetManagedNamespaceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:containerservice:FleetManagedNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.eTag = registerOutput<String>('eTag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.properties = registerOutput<FleetManagedNamespacePropertiesResponse>('properties');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

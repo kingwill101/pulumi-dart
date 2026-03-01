@@ -6,19 +6,13 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch {
   /// Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
-  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition?
-  condition;
-
+  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition? condition;
   /// Name of the branch.
   final String name;
-
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStep?
-  nextStep;
-
+  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStep? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponse?
-  response;
+  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponse? response;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
@@ -41,26 +35,13 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch(
-      condition: map['condition'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      nextStep: map['nextStep'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStep.fromMap(
-              (map['nextStep'] as Map).cast<String, dynamic>(),
-            ),
-      response: map['response'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponse.fromMap(
-              (map['response'] as Map).cast<String, dynamic>(),
-            ),
+      nextStep: map['nextStep'] == null ? null : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
+      response: map['response'] == null ? null : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

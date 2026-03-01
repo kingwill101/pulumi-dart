@@ -1,30 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConversationProfileNotificationConfig {
   /// Format of the message
   /// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
   final String? messageFormat;
-
   /// Name of the Pub/Sub topic to publish conversation events
   final String? topic;
 
   /// Creates a new [ConversationProfileNotificationConfig].
   /// [messageFormat] Format of the message
   /// [topic] Name of the Pub/Sub topic to publish conversation events
-  ConversationProfileNotificationConfig({this.messageFormat, this.topic});
+  ConversationProfileNotificationConfig({
+    this.messageFormat,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'messageFormat': ?messageFormat, 'topic': ?topic};
+    return <String, dynamic>{
+      'messageFormat': ?messageFormat,
+      'topic': ?topic,
+    };
   }
 
-  factory ConversationProfileNotificationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileNotificationConfig(
-      messageFormat: map['messageFormat'] == null
-          ? null
-          : map['messageFormat'] as String,
+      messageFormat: map['messageFormat'] == null ? null : map['messageFormat'] as String,
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
+

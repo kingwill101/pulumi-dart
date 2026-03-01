@@ -6,7 +6,6 @@ class ListenerRuleMatchHttpMatchPathMatch {
   /// Indicates whether the match is case sensitive.
   /// Default is `false`.
   final bool? caseSensitive;
-
   /// The header match type.
   /// See Path Match `match` Block for details.
   final ListenerRuleMatchHttpMatchPathMatchMatch match;
@@ -26,16 +25,11 @@ class ListenerRuleMatchHttpMatchPathMatch {
     };
   }
 
-  factory ListenerRuleMatchHttpMatchPathMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleMatchHttpMatchPathMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchPathMatch(
-      caseSensitive: map['caseSensitive'] == null
-          ? null
-          : map['caseSensitive'] as bool,
-      match: ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(
-        (map['match'] as Map).cast<String, dynamic>(),
-      ),
+      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
+      match: ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

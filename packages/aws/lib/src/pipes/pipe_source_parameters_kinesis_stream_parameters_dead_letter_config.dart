@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeSourceParametersKinesisStreamParametersDeadLetterConfig {
   /// ARN of this pipe.
   final String? arn;
 
   /// Creates a new [PipeSourceParametersKinesisStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.
-  PipeSourceParametersKinesisStreamParametersDeadLetterConfig({this.arn});
+  PipeSourceParametersKinesisStreamParametersDeadLetterConfig({
+    this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn};
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
-  factory PipeSourceParametersKinesisStreamParametersDeadLetterConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersKinesisStreamParametersDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersKinesisStreamParametersDeadLetterConfig(
       arn: map['arn'] == null ? null : map['arn'] as String,
     );
   }
 }
+

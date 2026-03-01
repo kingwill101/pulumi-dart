@@ -1,27 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GatewayRouteSpecHttpRouteMatchHostname {
   /// Exact host name to match on.
   final String? exact;
-
   /// Specified ending characters of the host name to match on.
   final String? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
   /// [exact] Exact host name to match on.
   /// [suffix] Specified ending characters of the host name to match on.
-  GatewayRouteSpecHttpRouteMatchHostname({this.exact, this.suffix});
+  GatewayRouteSpecHttpRouteMatchHostname({
+    this.exact,
+    this.suffix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': ?exact, 'suffix': ?suffix};
+    return <String, dynamic>{
+      'exact': ?exact,
+      'suffix': ?suffix,
+    };
   }
 
-  factory GatewayRouteSpecHttpRouteMatchHostname.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayRouteSpecHttpRouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteMatchHostname(
       exact: map['exact'] == null ? null : map['exact'] as String,
       suffix: map['suffix'] == null ? null : map['suffix'] as String,
     );
   }
 }
+

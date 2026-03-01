@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAuthorityConfigSubjectConfigSubject {
   /// The common name of the distinguished name.
   final String commonName;
-
   /// The country code of the subject.
   final String countryCode;
-
   /// The locality or city of the subject.
   final String locality;
-
   /// The organization of the subject.
   final String organization;
-
   /// The organizational unit of the subject.
   final String organizationalUnit;
-
   /// The postal code of the subject.
   final String postalCode;
-
   /// The province, territory, or regional state of the subject.
   final String province;
-
   /// The street address of the subject.
   final String streetAddress;
 
@@ -58,9 +52,7 @@ class GetAuthorityConfigSubjectConfigSubject {
     };
   }
 
-  factory GetAuthorityConfigSubjectConfigSubject.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAuthorityConfigSubjectConfigSubject.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigSubjectConfigSubject(
       commonName: map['commonName'] as String,
       countryCode: map['countryCode'] as String,
@@ -73,3 +65,4 @@ class GetAuthorityConfigSubjectConfigSubject {
     );
   }
 }
+

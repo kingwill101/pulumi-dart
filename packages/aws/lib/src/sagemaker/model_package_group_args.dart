@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelPackageGroupArgs {
   /// A description for the model group.
   final pulumi.Input<String>? modelPackageGroupDescription;
-
   /// The name of the model group.
   final pulumi.Input<String> modelPackageGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,14 +26,11 @@ class ModelPackageGroupArgs {
     required String modelPackageGroupName,
     String? region,
     Map<String, String>? tags,
-  }) : modelPackageGroupDescription = pulumi.Input.asOptionalInput<String>(
-         modelPackageGroupDescription,
-       ),
-       modelPackageGroupName = pulumi.Input.asInput<String>(
-         modelPackageGroupName,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      modelPackageGroupDescription = pulumi.Input.asOptionalInput<String>(modelPackageGroupDescription),
+      modelPackageGroupName = pulumi.Input.asInput<String>(modelPackageGroupName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,14 +43,11 @@ class ModelPackageGroupArgs {
 
   factory ModelPackageGroupArgs.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupArgs(
-      modelPackageGroupDescription: map['modelPackageGroupDescription'] == null
-          ? null
-          : map['modelPackageGroupDescription'] as String,
+      modelPackageGroupDescription: map['modelPackageGroupDescription'] == null ? null : map['modelPackageGroupDescription'] as String,
       modelPackageGroupName: map['modelPackageGroupName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

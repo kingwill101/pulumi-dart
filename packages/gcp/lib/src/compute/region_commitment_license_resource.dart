@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionCommitmentLicenseResource {
   /// The number of licenses purchased.
   final String? amount;
-
   /// Specifies the core range of the instance for which this license applies.
   final String? coresPerLicense;
-
   /// Any applicable license URI.
   final String license;
 
@@ -31,10 +30,9 @@ class RegionCommitmentLicenseResource {
   factory RegionCommitmentLicenseResource.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentLicenseResource(
       amount: map['amount'] == null ? null : map['amount'] as String,
-      coresPerLicense: map['coresPerLicense'] == null
-          ? null
-          : map['coresPerLicense'] as String,
+      coresPerLicense: map['coresPerLicense'] == null ? null : map['coresPerLicense'] as String,
       license: map['license'] as String,
     );
   }
 }
+

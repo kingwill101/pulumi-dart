@@ -6,19 +6,14 @@ import 'workflow_template_job_spark_sql_job_query_list.dart';
 class WorkflowTemplateJobSparkSqlJob {
   /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
   final List<String>? jarFileUris;
-
   /// The runtime log config for job execution.
   final WorkflowTemplateJobSparkSqlJobLoggingConfig? loggingConfig;
-
   /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
   final Map<String, String>? properties;
-
   /// The HCFS URI of the script that contains SQL queries.
   final String? queryFileUri;
-
   /// A list of queries.
   final WorkflowTemplateJobSparkSqlJobQueryList? queryList;
-
   /// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
   final Map<String, String>? scriptVariables;
 
@@ -51,28 +46,13 @@ class WorkflowTemplateJobSparkSqlJob {
 
   factory WorkflowTemplateJobSparkSqlJob.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobSparkSqlJob(
-      jarFileUris: map['jarFileUris'] == null
-          ? null
-          : (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : WorkflowTemplateJobSparkSqlJobLoggingConfig.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>(),
-            ),
-      properties: map['properties'] == null
-          ? null
-          : (map['properties'] as Map).cast<String, String>(),
-      queryFileUri: map['queryFileUri'] == null
-          ? null
-          : map['queryFileUri'] as String,
-      queryList: map['queryList'] == null
-          ? null
-          : WorkflowTemplateJobSparkSqlJobQueryList.fromMap(
-              (map['queryList'] as Map).cast<String, dynamic>(),
-            ),
-      scriptVariables: map['scriptVariables'] == null
-          ? null
-          : (map['scriptVariables'] as Map).cast<String, String>(),
+      jarFileUris: map['jarFileUris'] == null ? null : (map['jarFileUris'] as List).cast<String>(),
+      loggingConfig: map['loggingConfig'] == null ? null : WorkflowTemplateJobSparkSqlJobLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      queryFileUri: map['queryFileUri'] == null ? null : map['queryFileUri'] as String,
+      queryList: map['queryList'] == null ? null : WorkflowTemplateJobSparkSqlJobQueryList.fromMap((map['queryList'] as Map).cast<String, dynamic>()),
+      scriptVariables: map['scriptVariables'] == null ? null : (map['scriptVariables'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -7,17 +7,20 @@ class MembershipPaymentConfiguration {
 
   /// Creates a new [MembershipPaymentConfiguration].
   /// [queryCompute] Required.
-  MembershipPaymentConfiguration({required this.queryCompute});
+  MembershipPaymentConfiguration({
+    required this.queryCompute,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'queryCompute': queryCompute.toMap()};
+    return <String, dynamic>{
+      'queryCompute': queryCompute.toMap(),
+    };
   }
 
   factory MembershipPaymentConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipPaymentConfiguration(
-      queryCompute: MembershipPaymentConfigurationQueryCompute.fromMap(
-        (map['queryCompute'] as Map).cast<String, dynamic>(),
-      ),
+      queryCompute: MembershipPaymentConfigurationQueryCompute.fromMap((map['queryCompute'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

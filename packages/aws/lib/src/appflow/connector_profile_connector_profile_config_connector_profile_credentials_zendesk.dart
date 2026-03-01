@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest?
-  oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk].
   /// [accessToken] Optional.
@@ -30,20 +29,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk(
-      accessToken: map['accessToken'] == null
-          ? null
-          : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest.fromMap(
-              (map['oauthRequest'] as Map).cast<String, dynamic>(),
-            ),
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

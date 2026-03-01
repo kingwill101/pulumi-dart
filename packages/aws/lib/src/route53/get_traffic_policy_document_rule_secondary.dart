@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTrafficPolicyDocumentRuleSecondary {
   final String? endpointReference;
   final bool? evaluateTargetHealth;
@@ -27,22 +28,13 @@ class GetTrafficPolicyDocumentRuleSecondary {
     };
   }
 
-  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleSecondary(
-      endpointReference: map['endpointReference'] == null
-          ? null
-          : map['endpointReference'] as String,
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null
-          ? null
-          : map['evaluateTargetHealth'] as bool,
-      healthCheck: map['healthCheck'] == null
-          ? null
-          : map['healthCheck'] as String,
-      ruleReference: map['ruleReference'] == null
-          ? null
-          : map['ruleReference'] as String,
+      endpointReference: map['endpointReference'] == null ? null : map['endpointReference'] as String,
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : map['evaluateTargetHealth'] as bool,
+      healthCheck: map['healthCheck'] == null ? null : map['healthCheck'] as String,
+      ruleReference: map['ruleReference'] == null ? null : map['ruleReference'] as String,
     );
   }
 }
+

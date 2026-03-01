@@ -9,7 +9,9 @@ class RestoreWorkloadTargetResource {
 
   /// Creates a new [RestoreWorkloadTargetResource].
   /// [gcpResource] Output only. Details of the native Google Cloud resource created as part of restore.
-  RestoreWorkloadTargetResource({this.gcpResource});
+  RestoreWorkloadTargetResource({
+    this.gcpResource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class RestoreWorkloadTargetResource {
 
   factory RestoreWorkloadTargetResource.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadTargetResource(
-      gcpResource: map['gcpResource'] == null
-          ? null
-          : RestoreWorkloadTargetResourceGcpResource.fromMap(
-              (map['gcpResource'] as Map).cast<String, dynamic>(),
-            ),
+      gcpResource: map['gcpResource'] == null ? null : RestoreWorkloadTargetResourceGcpResource.fromMap((map['gcpResource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

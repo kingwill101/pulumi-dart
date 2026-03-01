@@ -9,27 +9,19 @@ import 'prevention_job_trigger_inspect_job_storage_config_timespan_config.dart';
 class PreventionJobTriggerInspectJobStorageConfig {
   /// Options defining BigQuery table and row identifiers.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobStorageConfigBigQueryOptions?
-  bigQueryOptions;
-
+  final PreventionJobTriggerInspectJobStorageConfigBigQueryOptions? bigQueryOptions;
   /// Options defining a file or a set of files within a Google Cloud Storage bucket.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions?
-  cloudStorageOptions;
-
+  final PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions? cloudStorageOptions;
   /// Options defining a data set within Google Cloud Datastore.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobStorageConfigDatastoreOptions?
-  datastoreOptions;
-
+  final PreventionJobTriggerInspectJobStorageConfigDatastoreOptions? datastoreOptions;
   /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
   /// Structure is documented below.
   final PreventionJobTriggerInspectJobStorageConfigHybridOptions? hybridOptions;
-
   /// Configuration of the timespan of the items to include in scanning
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobStorageConfigTimespanConfig?
-  timespanConfig;
+  final PreventionJobTriggerInspectJobStorageConfigTimespanConfig? timespanConfig;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfig].
   /// [bigQueryOptions] Options defining BigQuery table and row identifiers.
@@ -47,51 +39,22 @@ class PreventionJobTriggerInspectJobStorageConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQueryOptions': ?bigQueryOptions == null
-          ? null
-          : bigQueryOptions!.toMap(),
-      'cloudStorageOptions': ?cloudStorageOptions == null
-          ? null
-          : cloudStorageOptions!.toMap(),
-      'datastoreOptions': ?datastoreOptions == null
-          ? null
-          : datastoreOptions!.toMap(),
+      'bigQueryOptions': ?bigQueryOptions == null ? null : bigQueryOptions!.toMap(),
+      'cloudStorageOptions': ?cloudStorageOptions == null ? null : cloudStorageOptions!.toMap(),
+      'datastoreOptions': ?datastoreOptions == null ? null : datastoreOptions!.toMap(),
       'hybridOptions': ?hybridOptions == null ? null : hybridOptions!.toMap(),
-      'timespanConfig': ?timespanConfig == null
-          ? null
-          : timespanConfig!.toMap(),
+      'timespanConfig': ?timespanConfig == null ? null : timespanConfig!.toMap(),
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfig(
-      bigQueryOptions: map['bigQueryOptions'] == null
-          ? null
-          : PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.fromMap(
-              (map['bigQueryOptions'] as Map).cast<String, dynamic>(),
-            ),
-      cloudStorageOptions: map['cloudStorageOptions'] == null
-          ? null
-          : PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap(
-              (map['cloudStorageOptions'] as Map).cast<String, dynamic>(),
-            ),
-      datastoreOptions: map['datastoreOptions'] == null
-          ? null
-          : PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap(
-              (map['datastoreOptions'] as Map).cast<String, dynamic>(),
-            ),
-      hybridOptions: map['hybridOptions'] == null
-          ? null
-          : PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap(
-              (map['hybridOptions'] as Map).cast<String, dynamic>(),
-            ),
-      timespanConfig: map['timespanConfig'] == null
-          ? null
-          : PreventionJobTriggerInspectJobStorageConfigTimespanConfig.fromMap(
-              (map['timespanConfig'] as Map).cast<String, dynamic>(),
-            ),
+      bigQueryOptions: map['bigQueryOptions'] == null ? null : PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.fromMap((map['bigQueryOptions'] as Map).cast<String, dynamic>()),
+      cloudStorageOptions: map['cloudStorageOptions'] == null ? null : PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap((map['cloudStorageOptions'] as Map).cast<String, dynamic>()),
+      datastoreOptions: map['datastoreOptions'] == null ? null : PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap((map['datastoreOptions'] as Map).cast<String, dynamic>()),
+      hybridOptions: map['hybridOptions'] == null ? null : PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap((map['hybridOptions'] as Map).cast<String, dynamic>()),
+      timespanConfig: map['timespanConfig'] == null ? null : PreventionJobTriggerInspectJobStorageConfigTimespanConfig.fromMap((map['timespanConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,0 +1,194 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class KubernetesClusterNodePoolLinuxOsConfigSysctlConfig {
+  /// The sysctl setting fs.aio-max-nr. Must be between `65536` and `6553500`.
+  final int? fsAioMaxNr;
+  /// The sysctl setting fs.file-max. Must be between `8192` and `12000500`.
+  final int? fsFileMax;
+  /// The sysctl setting fs.inotify.max_user_watches. Must be between `781250` and `2097152`.
+  final int? fsInotifyMaxUserWatches;
+  /// The sysctl setting fs.nr_open. Must be between `8192` and `20000500`.
+  final int? fsNrOpen;
+  /// The sysctl setting kernel.threads-max. Must be between `20` and `513785`.
+  final int? kernelThreadsMax;
+  /// The sysctl setting net.core.netdev_max_backlog. Must be between `1000` and `3240000`.
+  final int? netCoreNetdevMaxBacklog;
+  /// The sysctl setting net.core.optmem_max. Must be between `20480` and `4194304`.
+  final int? netCoreOptmemMax;
+  /// The sysctl setting net.core.rmem_default. Must be between `212992` and `134217728`.
+  final int? netCoreRmemDefault;
+  /// The sysctl setting net.core.rmem_max. Must be between `212992` and `134217728`.
+  final int? netCoreRmemMax;
+  /// The sysctl setting net.core.somaxconn. Must be between `4096` and `3240000`.
+  final int? netCoreSomaxconn;
+  /// The sysctl setting net.core.wmem_default. Must be between `212992` and `134217728`.
+  final int? netCoreWmemDefault;
+  /// The sysctl setting net.core.wmem_max. Must be between `212992` and `134217728`.
+  final int? netCoreWmemMax;
+  /// The sysctl setting net.ipv4.ip_local_port_range max value. Must be between `32768` and `65535`.
+  final int? netIpv4IpLocalPortRangeMax;
+  /// The sysctl setting net.ipv4.ip_local_port_range min value. Must be between `1024` and `60999`.
+  final int? netIpv4IpLocalPortRangeMin;
+  /// The sysctl setting net.ipv4.neigh.default.gc_thresh1. Must be between `128` and `80000`.
+  final int? netIpv4NeighDefaultGcThresh1;
+  /// The sysctl setting net.ipv4.neigh.default.gc_thresh2. Must be between `512` and `90000`.
+  final int? netIpv4NeighDefaultGcThresh2;
+  /// The sysctl setting net.ipv4.neigh.default.gc_thresh3. Must be between `1024` and `100000`.
+  final int? netIpv4NeighDefaultGcThresh3;
+  /// The sysctl setting net.ipv4.tcp_fin_timeout. Must be between `5` and `120`.
+  final int? netIpv4TcpFinTimeout;
+  /// The sysctl setting net.ipv4.tcp_keepalive_intvl. Must be between `10` and `90`.
+  final int? netIpv4TcpKeepaliveIntvl;
+  /// The sysctl setting net.ipv4.tcp_keepalive_probes. Must be between `1` and `15`.
+  final int? netIpv4TcpKeepaliveProbes;
+  /// The sysctl setting net.ipv4.tcp_keepalive_time. Must be between `30` and `432000`.
+  final int? netIpv4TcpKeepaliveTime;
+  /// The sysctl setting net.ipv4.tcp_max_syn_backlog. Must be between `128` and `3240000`.
+  final int? netIpv4TcpMaxSynBacklog;
+  /// The sysctl setting net.ipv4.tcp_max_tw_buckets. Must be between `8000` and `1440000`.
+  final int? netIpv4TcpMaxTwBuckets;
+  /// Is sysctl setting net.ipv4.tcp_tw_reuse enabled?
+  final bool? netIpv4TcpTwReuse;
+  /// The sysctl setting net.netfilter.nf_conntrack_buckets. Must be between `65536` and `524288`.
+  final int? netNetfilterNfConntrackBuckets;
+  /// The sysctl setting net.netfilter.nf_conntrack_max. Must be between `131072` and `2097152`.
+  final int? netNetfilterNfConntrackMax;
+  /// The sysctl setting vm.max_map_count. Must be between `65530` and `262144`.
+  final int? vmMaxMapCount;
+  /// The sysctl setting vm.swappiness. Must be between `0` and `100`.
+  final int? vmSwappiness;
+  /// The sysctl setting vm.vfs_cache_pressure. Must be between `0` and `100`.
+  final int? vmVfsCachePressure;
+
+  /// Creates a new [KubernetesClusterNodePoolLinuxOsConfigSysctlConfig].
+  /// [fsAioMaxNr] The sysctl setting fs.aio-max-nr. Must be between `65536` and `6553500`.
+  /// [fsFileMax] The sysctl setting fs.file-max. Must be between `8192` and `12000500`.
+  /// [fsInotifyMaxUserWatches] The sysctl setting fs.inotify.max_user_watches. Must be between `781250` and `2097152`.
+  /// [fsNrOpen] The sysctl setting fs.nr_open. Must be between `8192` and `20000500`.
+  /// [kernelThreadsMax] The sysctl setting kernel.threads-max. Must be between `20` and `513785`.
+  /// [netCoreNetdevMaxBacklog] The sysctl setting net.core.netdev_max_backlog. Must be between `1000` and `3240000`.
+  /// [netCoreOptmemMax] The sysctl setting net.core.optmem_max. Must be between `20480` and `4194304`.
+  /// [netCoreRmemDefault] The sysctl setting net.core.rmem_default. Must be between `212992` and `134217728`.
+  /// [netCoreRmemMax] The sysctl setting net.core.rmem_max. Must be between `212992` and `134217728`.
+  /// [netCoreSomaxconn] The sysctl setting net.core.somaxconn. Must be between `4096` and `3240000`.
+  /// [netCoreWmemDefault] The sysctl setting net.core.wmem_default. Must be between `212992` and `134217728`.
+  /// [netCoreWmemMax] The sysctl setting net.core.wmem_max. Must be between `212992` and `134217728`.
+  /// [netIpv4IpLocalPortRangeMax] The sysctl setting net.ipv4.ip_local_port_range max value. Must be between `32768` and `65535`.
+  /// [netIpv4IpLocalPortRangeMin] The sysctl setting net.ipv4.ip_local_port_range min value. Must be between `1024` and `60999`.
+  /// [netIpv4NeighDefaultGcThresh1] The sysctl setting net.ipv4.neigh.default.gc_thresh1. Must be between `128` and `80000`.
+  /// [netIpv4NeighDefaultGcThresh2] The sysctl setting net.ipv4.neigh.default.gc_thresh2. Must be between `512` and `90000`.
+  /// [netIpv4NeighDefaultGcThresh3] The sysctl setting net.ipv4.neigh.default.gc_thresh3. Must be between `1024` and `100000`.
+  /// [netIpv4TcpFinTimeout] The sysctl setting net.ipv4.tcp_fin_timeout. Must be between `5` and `120`.
+  /// [netIpv4TcpKeepaliveIntvl] The sysctl setting net.ipv4.tcp_keepalive_intvl. Must be between `10` and `90`.
+  /// [netIpv4TcpKeepaliveProbes] The sysctl setting net.ipv4.tcp_keepalive_probes. Must be between `1` and `15`.
+  /// [netIpv4TcpKeepaliveTime] The sysctl setting net.ipv4.tcp_keepalive_time. Must be between `30` and `432000`.
+  /// [netIpv4TcpMaxSynBacklog] The sysctl setting net.ipv4.tcp_max_syn_backlog. Must be between `128` and `3240000`.
+  /// [netIpv4TcpMaxTwBuckets] The sysctl setting net.ipv4.tcp_max_tw_buckets. Must be between `8000` and `1440000`.
+  /// [netIpv4TcpTwReuse] Is sysctl setting net.ipv4.tcp_tw_reuse enabled?
+  /// [netNetfilterNfConntrackBuckets] The sysctl setting net.netfilter.nf_conntrack_buckets. Must be between `65536` and `524288`.
+  /// [netNetfilterNfConntrackMax] The sysctl setting net.netfilter.nf_conntrack_max. Must be between `131072` and `2097152`.
+  /// [vmMaxMapCount] The sysctl setting vm.max_map_count. Must be between `65530` and `262144`.
+  /// [vmSwappiness] The sysctl setting vm.swappiness. Must be between `0` and `100`.
+  /// [vmVfsCachePressure] The sysctl setting vm.vfs_cache_pressure. Must be between `0` and `100`.
+  KubernetesClusterNodePoolLinuxOsConfigSysctlConfig({
+    this.fsAioMaxNr,
+    this.fsFileMax,
+    this.fsInotifyMaxUserWatches,
+    this.fsNrOpen,
+    this.kernelThreadsMax,
+    this.netCoreNetdevMaxBacklog,
+    this.netCoreOptmemMax,
+    this.netCoreRmemDefault,
+    this.netCoreRmemMax,
+    this.netCoreSomaxconn,
+    this.netCoreWmemDefault,
+    this.netCoreWmemMax,
+    this.netIpv4IpLocalPortRangeMax,
+    this.netIpv4IpLocalPortRangeMin,
+    this.netIpv4NeighDefaultGcThresh1,
+    this.netIpv4NeighDefaultGcThresh2,
+    this.netIpv4NeighDefaultGcThresh3,
+    this.netIpv4TcpFinTimeout,
+    this.netIpv4TcpKeepaliveIntvl,
+    this.netIpv4TcpKeepaliveProbes,
+    this.netIpv4TcpKeepaliveTime,
+    this.netIpv4TcpMaxSynBacklog,
+    this.netIpv4TcpMaxTwBuckets,
+    this.netIpv4TcpTwReuse,
+    this.netNetfilterNfConntrackBuckets,
+    this.netNetfilterNfConntrackMax,
+    this.vmMaxMapCount,
+    this.vmSwappiness,
+    this.vmVfsCachePressure,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'fsAioMaxNr': ?fsAioMaxNr,
+      'fsFileMax': ?fsFileMax,
+      'fsInotifyMaxUserWatches': ?fsInotifyMaxUserWatches,
+      'fsNrOpen': ?fsNrOpen,
+      'kernelThreadsMax': ?kernelThreadsMax,
+      'netCoreNetdevMaxBacklog': ?netCoreNetdevMaxBacklog,
+      'netCoreOptmemMax': ?netCoreOptmemMax,
+      'netCoreRmemDefault': ?netCoreRmemDefault,
+      'netCoreRmemMax': ?netCoreRmemMax,
+      'netCoreSomaxconn': ?netCoreSomaxconn,
+      'netCoreWmemDefault': ?netCoreWmemDefault,
+      'netCoreWmemMax': ?netCoreWmemMax,
+      'netIpv4IpLocalPortRangeMax': ?netIpv4IpLocalPortRangeMax,
+      'netIpv4IpLocalPortRangeMin': ?netIpv4IpLocalPortRangeMin,
+      'netIpv4NeighDefaultGcThresh1': ?netIpv4NeighDefaultGcThresh1,
+      'netIpv4NeighDefaultGcThresh2': ?netIpv4NeighDefaultGcThresh2,
+      'netIpv4NeighDefaultGcThresh3': ?netIpv4NeighDefaultGcThresh3,
+      'netIpv4TcpFinTimeout': ?netIpv4TcpFinTimeout,
+      'netIpv4TcpKeepaliveIntvl': ?netIpv4TcpKeepaliveIntvl,
+      'netIpv4TcpKeepaliveProbes': ?netIpv4TcpKeepaliveProbes,
+      'netIpv4TcpKeepaliveTime': ?netIpv4TcpKeepaliveTime,
+      'netIpv4TcpMaxSynBacklog': ?netIpv4TcpMaxSynBacklog,
+      'netIpv4TcpMaxTwBuckets': ?netIpv4TcpMaxTwBuckets,
+      'netIpv4TcpTwReuse': ?netIpv4TcpTwReuse,
+      'netNetfilterNfConntrackBuckets': ?netNetfilterNfConntrackBuckets,
+      'netNetfilterNfConntrackMax': ?netNetfilterNfConntrackMax,
+      'vmMaxMapCount': ?vmMaxMapCount,
+      'vmSwappiness': ?vmSwappiness,
+      'vmVfsCachePressure': ?vmVfsCachePressure,
+    };
+  }
+
+  factory KubernetesClusterNodePoolLinuxOsConfigSysctlConfig.fromMap(Map<String, dynamic> map) {
+    return KubernetesClusterNodePoolLinuxOsConfigSysctlConfig(
+      fsAioMaxNr: map['fsAioMaxNr'] == null ? null : map['fsAioMaxNr'] as int,
+      fsFileMax: map['fsFileMax'] == null ? null : map['fsFileMax'] as int,
+      fsInotifyMaxUserWatches: map['fsInotifyMaxUserWatches'] == null ? null : map['fsInotifyMaxUserWatches'] as int,
+      fsNrOpen: map['fsNrOpen'] == null ? null : map['fsNrOpen'] as int,
+      kernelThreadsMax: map['kernelThreadsMax'] == null ? null : map['kernelThreadsMax'] as int,
+      netCoreNetdevMaxBacklog: map['netCoreNetdevMaxBacklog'] == null ? null : map['netCoreNetdevMaxBacklog'] as int,
+      netCoreOptmemMax: map['netCoreOptmemMax'] == null ? null : map['netCoreOptmemMax'] as int,
+      netCoreRmemDefault: map['netCoreRmemDefault'] == null ? null : map['netCoreRmemDefault'] as int,
+      netCoreRmemMax: map['netCoreRmemMax'] == null ? null : map['netCoreRmemMax'] as int,
+      netCoreSomaxconn: map['netCoreSomaxconn'] == null ? null : map['netCoreSomaxconn'] as int,
+      netCoreWmemDefault: map['netCoreWmemDefault'] == null ? null : map['netCoreWmemDefault'] as int,
+      netCoreWmemMax: map['netCoreWmemMax'] == null ? null : map['netCoreWmemMax'] as int,
+      netIpv4IpLocalPortRangeMax: map['netIpv4IpLocalPortRangeMax'] == null ? null : map['netIpv4IpLocalPortRangeMax'] as int,
+      netIpv4IpLocalPortRangeMin: map['netIpv4IpLocalPortRangeMin'] == null ? null : map['netIpv4IpLocalPortRangeMin'] as int,
+      netIpv4NeighDefaultGcThresh1: map['netIpv4NeighDefaultGcThresh1'] == null ? null : map['netIpv4NeighDefaultGcThresh1'] as int,
+      netIpv4NeighDefaultGcThresh2: map['netIpv4NeighDefaultGcThresh2'] == null ? null : map['netIpv4NeighDefaultGcThresh2'] as int,
+      netIpv4NeighDefaultGcThresh3: map['netIpv4NeighDefaultGcThresh3'] == null ? null : map['netIpv4NeighDefaultGcThresh3'] as int,
+      netIpv4TcpFinTimeout: map['netIpv4TcpFinTimeout'] == null ? null : map['netIpv4TcpFinTimeout'] as int,
+      netIpv4TcpKeepaliveIntvl: map['netIpv4TcpKeepaliveIntvl'] == null ? null : map['netIpv4TcpKeepaliveIntvl'] as int,
+      netIpv4TcpKeepaliveProbes: map['netIpv4TcpKeepaliveProbes'] == null ? null : map['netIpv4TcpKeepaliveProbes'] as int,
+      netIpv4TcpKeepaliveTime: map['netIpv4TcpKeepaliveTime'] == null ? null : map['netIpv4TcpKeepaliveTime'] as int,
+      netIpv4TcpMaxSynBacklog: map['netIpv4TcpMaxSynBacklog'] == null ? null : map['netIpv4TcpMaxSynBacklog'] as int,
+      netIpv4TcpMaxTwBuckets: map['netIpv4TcpMaxTwBuckets'] == null ? null : map['netIpv4TcpMaxTwBuckets'] as int,
+      netIpv4TcpTwReuse: map['netIpv4TcpTwReuse'] == null ? null : map['netIpv4TcpTwReuse'] as bool,
+      netNetfilterNfConntrackBuckets: map['netNetfilterNfConntrackBuckets'] == null ? null : map['netNetfilterNfConntrackBuckets'] as int,
+      netNetfilterNfConntrackMax: map['netNetfilterNfConntrackMax'] == null ? null : map['netNetfilterNfConntrackMax'] as int,
+      vmMaxMapCount: map['vmMaxMapCount'] == null ? null : map['vmMaxMapCount'] as int,
+      vmSwappiness: map['vmSwappiness'] == null ? null : map['vmSwappiness'] as int,
+      vmVfsCachePressure: map['vmVfsCachePressure'] == null ? null : map['vmVfsCachePressure'] as int,
+    );
+  }
+}
+

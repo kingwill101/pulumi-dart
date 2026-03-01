@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// SELinuxOptions are the labels to be applied to the container
+class SELinuxOptions {
+  /// Level is SELinux level label that applies to the container.
+  final String? level;
+  /// Role is a SELinux role label that applies to the container.
+  final String? role;
+  /// Type is a SELinux type label that applies to the container.
+  final String? type;
+  /// User is a SELinux user label that applies to the container.
+  final String? user;
+
+  /// Creates a new [SELinuxOptions].
+  /// [level] Level is SELinux level label that applies to the container.
+  /// [role] Role is a SELinux role label that applies to the container.
+  /// [type] Type is a SELinux type label that applies to the container.
+  /// [user] User is a SELinux user label that applies to the container.
+  SELinuxOptions({
+    this.level,
+    this.role,
+    this.type,
+    this.user,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'level': ?level,
+      'role': ?role,
+      'type': ?type,
+      'user': ?user,
+    };
+  }
+
+  factory SELinuxOptions.fromMap(Map<String, dynamic> map) {
+    return SELinuxOptions(
+      level: map['level'] == null ? null : map['level'] as String,
+      role: map['role'] == null ? null : map['role'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+      user: map['user'] == null ? null : map['user'] as String,
+    );
+  }
+}
+

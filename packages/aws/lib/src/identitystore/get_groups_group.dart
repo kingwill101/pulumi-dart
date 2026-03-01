@@ -6,16 +6,12 @@ import 'get_groups_group_external_id.dart';
 class GetGroupsGroup {
   /// Description of the specified group.
   final String description;
-
   /// Group's display name.
   final String displayName;
-
   /// List of identifiers issued to this resource by an external identity provider.
   final List<GetGroupsGroupExternalId> externalIds;
-
   /// Identifier of the group in the Identity Store.
   final String groupId;
-
   /// Identity Store ID associated with the Single Sign-On (SSO) Instance.
   final String identityStoreId;
 
@@ -37,11 +33,7 @@ class GetGroupsGroup {
     return <String, dynamic>{
       'description': description,
       'displayName': displayName,
-      'externalIds':
-          pulumi.Input.encodeList<
-            GetGroupsGroupExternalId,
-            Map<String, dynamic>
-          >(externalIds, (value) => value.toMap()),
+      'externalIds': pulumi.Input.encodeList<GetGroupsGroupExternalId, Map<String, dynamic>>(externalIds, (value) => value.toMap()),
       'groupId': groupId,
       'identityStoreId': identityStoreId,
     };
@@ -51,14 +43,10 @@ class GetGroupsGroup {
     return GetGroupsGroup(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      externalIds: pulumi.Input.decodeList<GetGroupsGroupExternalId>(
-        map['externalIds'],
-        (value) => GetGroupsGroupExternalId.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      externalIds: pulumi.Input.decodeList<GetGroupsGroupExternalId>(map['externalIds'], (value) => GetGroupsGroupExternalId.fromMap((value as Map).cast<String, dynamic>())),
       groupId: map['groupId'] as String,
       identityStoreId: map['identityStoreId'] as String,
     );
   }
 }
+

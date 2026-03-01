@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionInstanceTemplateShieldedInstanceConfig {
   /// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
   final bool? enableIntegrityMonitoring;
-
   /// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
   final bool? enableSecureBoot;
-
   /// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
   final bool? enableVtpm;
 
@@ -28,17 +27,12 @@ class RegionInstanceTemplateShieldedInstanceConfig {
     };
   }
 
-  factory RegionInstanceTemplateShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceTemplateShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
       enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
     );
   }
 }
+

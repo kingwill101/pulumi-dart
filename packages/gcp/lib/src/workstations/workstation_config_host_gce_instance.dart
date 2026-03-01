@@ -10,49 +10,34 @@ class WorkstationConfigHostGceInstance {
   /// An accelerator card attached to the instance.
   /// Structure is documented below.
   final List<WorkstationConfigHostGceInstanceAccelerator>? accelerators;
-
   /// A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
   /// Structure is documented below.
   final List<WorkstationConfigHostGceInstanceBoostConfig>? boostConfigs;
-
   /// Size of the boot disk in GB.
   final int? bootDiskSizeGb;
-
   /// A set of Compute Engine Confidential VM instance options.
   /// Structure is documented below.
-  final WorkstationConfigHostGceInstanceConfidentialInstanceConfig?
-  confidentialInstanceConfig;
-
+  final WorkstationConfigHostGceInstanceConfidentialInstanceConfig? confidentialInstanceConfig;
   /// Whether instances have no public IP address.
   final bool? disablePublicIpAddresses;
-
   /// Whether to disable SSH access to the VM.
   final bool? disableSsh;
-
   /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
   /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
   final bool? enableNestedVirtualization;
-
   /// The name of a Compute Engine machine type.
   final String? machineType;
-
   /// Number of instances to pool for faster workstation startup.
   final int? poolSize;
-
   /// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
   final String? serviceAccount;
-
   /// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
   final List<String>? serviceAccountScopes;
-
   /// A set of Compute Engine Shielded instance options.
   /// Structure is documented below.
-  final WorkstationConfigHostGceInstanceShieldedInstanceConfig?
-  shieldedInstanceConfig;
-
+  final WorkstationConfigHostGceInstanceShieldedInstanceConfig? shieldedInstanceConfig;
   /// Network tags to add to the Compute Engine machines backing the Workstations.
   final List<String>? tags;
-
   /// Resource manager tags to be bound to the VM instances backing the Workstations.
   /// Tag keys and values have the same definition as
   /// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
@@ -94,22 +79,10 @@ class WorkstationConfigHostGceInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerators': ?accelerators == null
-          ? null
-          : pulumi.Input.encodeList<
-              WorkstationConfigHostGceInstanceAccelerator,
-              Map<String, dynamic>
-            >(accelerators!, (value) => value.toMap()),
-      'boostConfigs': ?boostConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              WorkstationConfigHostGceInstanceBoostConfig,
-              Map<String, dynamic>
-            >(boostConfigs!, (value) => value.toMap()),
+      'accelerators': ?accelerators == null ? null : pulumi.Input.encodeList<WorkstationConfigHostGceInstanceAccelerator, Map<String, dynamic>>(accelerators!, (value) => value.toMap()),
+      'boostConfigs': ?boostConfigs == null ? null : pulumi.Input.encodeList<WorkstationConfigHostGceInstanceBoostConfig, Map<String, dynamic>>(boostConfigs!, (value) => value.toMap()),
       'bootDiskSizeGb': ?bootDiskSizeGb,
-      'confidentialInstanceConfig': ?confidentialInstanceConfig == null
-          ? null
-          : confidentialInstanceConfig!.toMap(),
+      'confidentialInstanceConfig': ?confidentialInstanceConfig == null ? null : confidentialInstanceConfig!.toMap(),
       'disablePublicIpAddresses': ?disablePublicIpAddresses,
       'disableSsh': ?disableSsh,
       'enableNestedVirtualization': ?enableNestedVirtualization,
@@ -117,9 +90,7 @@ class WorkstationConfigHostGceInstance {
       'poolSize': ?poolSize,
       'serviceAccount': ?serviceAccount,
       'serviceAccountScopes': ?serviceAccountScopes,
-      'shieldedInstanceConfig': ?shieldedInstanceConfig == null
-          ? null
-          : shieldedInstanceConfig!.toMap(),
+      'shieldedInstanceConfig': ?shieldedInstanceConfig == null ? null : shieldedInstanceConfig!.toMap(),
       'tags': ?tags,
       'vmTags': ?vmTags,
     };
@@ -127,59 +98,21 @@ class WorkstationConfigHostGceInstance {
 
   factory WorkstationConfigHostGceInstance.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstance(
-      accelerators: map['accelerators'] == null
-          ? null
-          : pulumi
-                .Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(
-              map['accelerators'],
-              (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      boostConfigs: map['boostConfigs'] == null
-          ? null
-          : pulumi
-                .Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(
-              map['boostConfigs'],
-              (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null
-          ? null
-          : map['bootDiskSizeGb'] as int,
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null
-          ? null
-          : WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap(
-              (map['confidentialInstanceConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null
-          ? null
-          : map['disablePublicIpAddresses'] as bool,
+      accelerators: map['accelerators'] == null ? null : pulumi.Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(map['accelerators'], (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap((value as Map).cast<String, dynamic>())),
+      boostConfigs: map['boostConfigs'] == null ? null : pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(map['boostConfigs'], (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : map['bootDiskSizeGb'] as int,
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>()),
+      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null ? null : map['disablePublicIpAddresses'] as bool,
       disableSsh: map['disableSsh'] == null ? null : map['disableSsh'] as bool,
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null
-          ? null
-          : map['enableNestedVirtualization'] as bool,
-      machineType: map['machineType'] == null
-          ? null
-          : map['machineType'] as String,
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : map['enableNestedVirtualization'] as bool,
+      machineType: map['machineType'] == null ? null : map['machineType'] as String,
       poolSize: map['poolSize'] == null ? null : map['poolSize'] as int,
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : map['serviceAccount'] as String,
-      serviceAccountScopes: map['serviceAccountScopes'] == null
-          ? null
-          : (map['serviceAccountScopes'] as List).cast<String>(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
-          ? null
-          : WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap(
-              (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>(),
-            ),
+      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : (map['serviceAccountScopes'] as List).cast<String>(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      vmTags: map['vmTags'] == null
-          ? null
-          : (map['vmTags'] as Map).cast<String, String>(),
+      vmTags: map['vmTags'] == null ? null : (map['vmTags'] as Map).cast<String, String>(),
     );
   }
 }
+

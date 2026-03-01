@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_containerinstance_get_cgprofile_args_doc}
+/// Arguments for getCGProfile.
+/// {@endtemplate}
+/// {@macro pulumi_containerinstance_get_cgprofile_args_doc}
+class GetCGProfileArgs {
+  /// ContainerGroupProfile name.
+  final pulumi.Input<String> containerGroupProfileName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetCGProfileArgs].
+  /// [containerGroupProfileName] ContainerGroupProfile name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  GetCGProfileArgs({
+    required String containerGroupProfileName,
+    required String resourceGroupName,
+  }) :
+      containerGroupProfileName = pulumi.Input.asInput<String>(containerGroupProfileName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'containerGroupProfileName': containerGroupProfileName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetCGProfileArgs.fromMap(Map<String, dynamic> map) {
+    return GetCGProfileArgs(
+      containerGroupProfileName: map['containerGroupProfileName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+    );
+  }
+}
+

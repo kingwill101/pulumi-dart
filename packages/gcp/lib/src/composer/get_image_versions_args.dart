@@ -10,7 +10,6 @@ class GetImageVersionsArgs {
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The location to list versions in.
   /// If it is not provider, the provider region is used.
   final pulumi.Input<String>? region;
@@ -18,12 +17,18 @@ class GetImageVersionsArgs {
   /// Creates a new [GetImageVersionsArgs].
   /// [project] The ID of the project to list versions in.
   /// [region] The location to list versions in.
-  GetImageVersionsArgs({String? project, String? region})
-    : project = pulumi.Input.asOptionalInput<String>(project),
+  GetImageVersionsArgs({
+    String? project,
+    String? region,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'region': ?region};
+    return <String, dynamic>{
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetImageVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class GetImageVersionsArgs {
     );
   }
 }
+

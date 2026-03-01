@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleConditionHttpHeader {
   /// Name of the HTTP header to match.
   final String httpHeaderName;
-
   /// Set of regular expressions to compare against the request URL.
   final List<String> regexValues;
-
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final List<String> values;
 
@@ -36,3 +35,4 @@ class GetListenerRuleConditionHttpHeader {
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionBackendServiceLogConfig {
   /// Whether to enable logging for the load balancer traffic served by this backend service.
   final bool enable;
-
   /// Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
   final List<String> optionalFields;
-
   /// Specifies the optional logging mode for the load balancer traffic.
   /// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
   final String optionalMode;
-
   /// This field can only be specified if logging is enabled for this backend service. The value of
   /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
   /// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -47,3 +45,4 @@ class GetRegionBackendServiceLogConfig {
     );
   }
 }
+

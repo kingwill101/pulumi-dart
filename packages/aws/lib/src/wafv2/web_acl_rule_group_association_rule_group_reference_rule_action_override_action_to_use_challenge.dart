@@ -4,8 +4,7 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge {
   /// Custom handling for challenge requests. See below.
-  final WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling?
-  customRequestHandling;
+  final WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge].
   /// [customRequestHandling] Custom handling for challenge requests. See below.
@@ -15,21 +14,14 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null
-          ? null
-          : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
     };
   }
 
-  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
-            ),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

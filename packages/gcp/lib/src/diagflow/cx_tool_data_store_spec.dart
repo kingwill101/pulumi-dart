@@ -7,7 +7,6 @@ class CxToolDataStoreSpec {
   /// List of data stores to search.
   /// Structure is documented below.
   final List<CxToolDataStoreSpecDataStoreConnection> dataStoreConnections;
-
   /// Fallback prompt configurations to use.
   final Map<String, dynamic> fallbackPrompt;
 
@@ -21,25 +20,16 @@ class CxToolDataStoreSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStoreConnections':
-          pulumi.Input.encodeList<
-            CxToolDataStoreSpecDataStoreConnection,
-            Map<String, dynamic>
-          >(dataStoreConnections, (value) => value.toMap()),
+      'dataStoreConnections': pulumi.Input.encodeList<CxToolDataStoreSpecDataStoreConnection, Map<String, dynamic>>(dataStoreConnections, (value) => value.toMap()),
       'fallbackPrompt': fallbackPrompt,
     };
   }
 
   factory CxToolDataStoreSpec.fromMap(Map<String, dynamic> map) {
     return CxToolDataStoreSpec(
-      dataStoreConnections:
-          pulumi.Input.decodeList<CxToolDataStoreSpecDataStoreConnection>(
-            map['dataStoreConnections'],
-            (value) => CxToolDataStoreSpecDataStoreConnection.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      dataStoreConnections: pulumi.Input.decodeList<CxToolDataStoreSpecDataStoreConnection>(map['dataStoreConnections'], (value) => CxToolDataStoreSpecDataStoreConnection.fromMap((value as Map).cast<String, dynamic>())),
       fallbackPrompt: (map['fallbackPrompt'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

@@ -14,24 +14,19 @@ class ApiHubInstanceArgs {
   /// This value should be 4-40 characters, and valid characters
   /// are `/a-z[0-9]-_/`.
   final pulumi.Input<String>? apiHubInstanceId;
-
   /// Available configurations to provision an ApiHub Instance.
   /// Structure is documented below.
   final pulumi.Input<ApiHubInstanceConfig> config;
-
   /// Optional. Description of the ApiHub instance.
   final pulumi.Input<String>? description;
-
   /// Optional. Instance labels to represent user-provided metadata.
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -50,23 +45,18 @@ class ApiHubInstanceArgs {
     Map<String, String>? labels,
     required String location,
     String? project,
-  }) : apiHubInstanceId = pulumi.Input.asOptionalInput<String>(
-         apiHubInstanceId,
-       ),
-       config = pulumi.Input.asInput<ApiHubInstanceConfig>(config),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      apiHubInstanceId = pulumi.Input.asOptionalInput<String>(apiHubInstanceId),
+      config = pulumi.Input.asInput<ApiHubInstanceConfig>(config),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiHubInstanceId': ?apiHubInstanceId,
-      'config':
-          pulumi.Input.mapInputValue<
-            ApiHubInstanceConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<ApiHubInstanceConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'description': ?description,
       'labels': ?labels,
       'location': location,
@@ -76,20 +66,13 @@ class ApiHubInstanceArgs {
 
   factory ApiHubInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceArgs(
-      apiHubInstanceId: map['apiHubInstanceId'] == null
-          ? null
-          : map['apiHubInstanceId'] as String,
-      config: ApiHubInstanceConfig.fromMap(
-        (map['config'] as Map).cast<String, dynamic>(),
-      ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : map['apiHubInstanceId'] as String,
+      config: ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

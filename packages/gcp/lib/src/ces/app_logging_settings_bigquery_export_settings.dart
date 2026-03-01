@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppLoggingSettingsBigqueryExportSettings {
   /// The BigQuery dataset to export the data to.
   final String? dataset;
-
   /// Indicates whether the BigQuery export is enabled.
   final bool? enabled;
-
   /// The project ID of the BigQuery dataset to export the data to.
   /// Note: If the BigQuery dataset is in a different project from the app, you should grant
   /// roles/bigquery.admin role to the CES service agent service-<PROJECT-
@@ -31,9 +30,7 @@ class AppLoggingSettingsBigqueryExportSettings {
     };
   }
 
-  factory AppLoggingSettingsBigqueryExportSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppLoggingSettingsBigqueryExportSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsBigqueryExportSettings(
       dataset: map['dataset'] == null ? null : map['dataset'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
@@ -41,3 +38,4 @@ class AppLoggingSettingsBigqueryExportSettings {
     );
   }
 }
+

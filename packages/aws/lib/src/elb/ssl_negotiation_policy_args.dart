@@ -10,22 +10,17 @@ import 'ssl_negotiation_policy_attribute.dart';
 class SslNegotiationPolicyArgs {
   /// An SSL Negotiation policy attribute. Each has two properties:
   final pulumi.Input<List<SslNegotiationPolicyAttribute>>? attributes;
-
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   final pulumi.Input<int> lbPort;
-
   /// The load balancer to which the policy
   /// should be attached.
   final pulumi.Input<String> loadBalancer;
-
   /// The name of the SSL negotiation policy.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   ///
   /// To set your attributes, please see the [AWS Elastic Load Balancing Developer Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-policy-table.html) for a listing of the supported SSL protocols, SSL options, and SSL ciphers.
@@ -47,30 +42,17 @@ class SslNegotiationPolicyArgs {
     String? name,
     String? region,
     Map<String, String>? triggers,
-  }) : attributes =
-           pulumi.Input.asOptionalInput<List<SslNegotiationPolicyAttribute>>(
-             attributes,
-           ),
-       lbPort = pulumi.Input.asInput<int>(lbPort),
-       loadBalancer = pulumi.Input.asInput<String>(loadBalancer),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+  }) :
+      attributes = pulumi.Input.asOptionalInput<List<SslNegotiationPolicyAttribute>>(attributes),
+      lbPort = pulumi.Input.asInput<int>(lbPort),
+      loadBalancer = pulumi.Input.asInput<String>(loadBalancer),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SslNegotiationPolicyAttribute>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SslNegotiationPolicyAttribute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<SslNegotiationPolicyAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<SslNegotiationPolicyAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lbPort': lbPort,
       'loadBalancer': loadBalancer,
       'name': ?name,
@@ -81,21 +63,13 @@ class SslNegotiationPolicyArgs {
 
   factory SslNegotiationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SslNegotiationPolicyArgs(
-      attributes: map['attributes'] == null
-          ? null
-          : pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(
-              map['attributes'],
-              (value) => SslNegotiationPolicyAttribute.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      attributes: map['attributes'] == null ? null : pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(map['attributes'], (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())),
       lbPort: map['lbPort'] as int,
       loadBalancer: map['loadBalancer'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      triggers: map['triggers'] == null
-          ? null
-          : (map['triggers'] as Map).cast<String, String>(),
+      triggers: map['triggers'] == null ? null : (map['triggers'] as Map).cast<String, String>(),
     );
   }
 }
+

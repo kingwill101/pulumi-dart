@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainFeaturesCapabilitiesSysBoot {
+  /// Sets the state of the capability to wake from an alarm.
+  final String? state;
+
+  /// Creates a new [DomainFeaturesCapabilitiesSysBoot].
+  /// [state] Sets the state of the capability to wake from an alarm.
+  DomainFeaturesCapabilitiesSysBoot({
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': ?state,
+    };
+  }
+
+  factory DomainFeaturesCapabilitiesSysBoot.fromMap(Map<String, dynamic> map) {
+    return DomainFeaturesCapabilitiesSysBoot(
+      state: map['state'] == null ? null : map['state'] as String,
+    );
+  }
+}
+

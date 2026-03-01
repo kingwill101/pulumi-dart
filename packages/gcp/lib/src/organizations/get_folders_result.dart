@@ -7,7 +7,6 @@ import 'get_folders_folder.dart';
 class GetFoldersResult {
   /// A list of folders matching the provided filter. Structure is defined below.
   final List<GetFoldersFolder> folders;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parentId;
@@ -24,11 +23,7 @@ class GetFoldersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'folders':
-          pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(
-            folders,
-            (value) => value.toMap(),
-          ),
+      'folders': pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(folders, (value) => value.toMap()),
       'id': id,
       'parentId': parentId,
     };
@@ -36,13 +31,10 @@ class GetFoldersResult {
 
   factory GetFoldersResult.fromMap(Map<String, dynamic> map) {
     return GetFoldersResult(
-      folders: pulumi.Input.decodeList<GetFoldersFolder>(
-        map['folders'],
-        (value) =>
-            GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      folders: pulumi.Input.decodeList<GetFoldersFolder>(map['folders'], (value) => GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       parentId: map['parentId'] as String,
     );
   }
 }
+

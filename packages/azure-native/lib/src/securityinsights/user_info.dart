@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// User information that made some action
+class UserInfo {
+  /// The object id of the user.
+  final String? objectId;
+
+  /// Creates a new [UserInfo].
+  /// [objectId] The object id of the user.
+  UserInfo({
+    this.objectId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'objectId': ?objectId,
+    };
+  }
+
+  factory UserInfo.fromMap(Map<String, dynamic> map) {
+    return UserInfo(
+      objectId: map['objectId'] == null ? null : map['objectId'] as String,
+    );
+  }
+}
+

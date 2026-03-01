@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ApplicationReadinessV2Exec {
+  /// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+  final List<String>? commands;
+
+  /// Creates a new [ApplicationReadinessV2Exec].
+  /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+  ApplicationReadinessV2Exec({
+    this.commands,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'commands': ?commands,
+    };
+  }
+
+  factory ApplicationReadinessV2Exec.fromMap(Map<String, dynamic> map) {
+    return ApplicationReadinessV2Exec(
+      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
+    );
+  }
+}
+

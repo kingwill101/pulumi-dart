@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AccountManagedResource {
+  /// The ID of the managed event hub namespace.
+  final String? eventHubNamespaceId;
+  /// The ID of the managed resource group.
+  final String? resourceGroupId;
+  /// The ID of the managed storage account.
+  final String? storageAccountId;
+
+  /// Creates a new [AccountManagedResource].
+  /// [eventHubNamespaceId] The ID of the managed event hub namespace.
+  /// [resourceGroupId] The ID of the managed resource group.
+  /// [storageAccountId] The ID of the managed storage account.
+  AccountManagedResource({
+    this.eventHubNamespaceId,
+    this.resourceGroupId,
+    this.storageAccountId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'eventHubNamespaceId': ?eventHubNamespaceId,
+      'resourceGroupId': ?resourceGroupId,
+      'storageAccountId': ?storageAccountId,
+    };
+  }
+
+  factory AccountManagedResource.fromMap(Map<String, dynamic> map) {
+    return AccountManagedResource(
+      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : map['eventHubNamespaceId'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+    );
+  }
+}
+

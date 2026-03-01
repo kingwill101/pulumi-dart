@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AlertPolicyConditionConditionMatchedLog {
   /// A logs-based filter.
   final String filter;
-
   /// A map from a label key to an extractor expression, which is used to
   /// extract the value for this label key. Each entry in this map is
   /// a specification for how data should be extracted from log entries that
@@ -28,14 +28,11 @@ class AlertPolicyConditionConditionMatchedLog {
     };
   }
 
-  factory AlertPolicyConditionConditionMatchedLog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionMatchedLog.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMatchedLog(
       filter: map['filter'] as String,
-      labelExtractors: map['labelExtractors'] == null
-          ? null
-          : (map['labelExtractors'] as Map).cast<String, String>(),
+      labelExtractors: map['labelExtractors'] == null ? null : (map['labelExtractors'] as Map).cast<String, String>(),
     );
   }
 }
+

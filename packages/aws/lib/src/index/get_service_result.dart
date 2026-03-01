@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   final String dnsName;
@@ -9,7 +10,6 @@ class GetServiceResult {
   final String reverseDnsName;
   final String reverseDnsPrefix;
   final String serviceId;
-
   /// Whether the service is supported in the region's partition. New services may not be listed immediately as supported.
   final bool supported;
 
@@ -59,3 +59,4 @@ class GetServiceResult {
     );
   }
 }
+

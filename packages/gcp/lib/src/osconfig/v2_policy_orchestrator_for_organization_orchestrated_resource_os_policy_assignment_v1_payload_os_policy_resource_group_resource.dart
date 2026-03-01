@@ -29,14 +29,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// reasons of consistency and being explicit, exit codes `100` and `101`
   /// were chosen.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec?
-  exec;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec? exec;
   /// A resource that manages the state of a file.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile?
-  file;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile? file;
   /// Required. The id of the resource with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -44,16 +40,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// * Must end with a number or a letter.
   /// * Must be unique within the OS policy.
   final String id;
-
   /// A resource that manages a system package.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg?
-  pkg;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg? pkg;
   /// A resource that manages a package repository.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository?
-  repository;
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository? repository;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource].
   /// [exec] A resource that allows executing scripts on the VM.
@@ -79,31 +71,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource(
-      exec: map['exec'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap(
-              (map['exec'] as Map).cast<String, dynamic>(),
-            ),
-      file: map['file'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
+      exec: map['exec'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap((map['exec'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      pkg: map['pkg'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(
-              (map['pkg'] as Map).cast<String, dynamic>(),
-            ),
-      repository: map['repository'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap(
-              (map['repository'] as Map).cast<String, dynamic>(),
-            ),
+      pkg: map['pkg'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap((map['pkg'] as Map).cast<String, dynamic>()),
+      repository: map['repository'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap((map['repository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -141,7 +141,6 @@ class SourceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<SourceIamBindingCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<List<String>> members;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;
@@ -157,11 +156,11 @@ class SourceIamBinding extends pulumi.CustomResource {
     SourceIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<SourceIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.members = registerOutput<List<String>>('members');

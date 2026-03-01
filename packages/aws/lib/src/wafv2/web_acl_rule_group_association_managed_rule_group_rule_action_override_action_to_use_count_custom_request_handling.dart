@@ -5,10 +5,7 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling {
   /// Headers to insert into the request. See below.
-  final List<
-    WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader
-  >?
-  insertHeaders;
+  final List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>? insertHeaders;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.
@@ -18,30 +15,14 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCou
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders': ?insertHeaders == null
-          ? null
-          : pulumi.Input.encodeList<
-              WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader,
-              Map<String, dynamic>
-            >(insertHeaders!, (value) => value.toMap()),
+      'insertHeaders': ?insertHeaders == null ? null : pulumi.Input.encodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders!, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling(
-      insertHeaders: map['insertHeaders'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader
-            >(
-              map['insertHeaders'],
-              (value) =>
-                  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      insertHeaders: map['insertHeaders'] == null ? null : pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

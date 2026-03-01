@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationalUnitArgs {
   /// The name for the organizational unit
   final pulumi.Input<String>? name;
-
   /// ID of the parent organizational unit, which may be the root
   final pulumi.Input<String> parentId;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,9 +22,10 @@ class OrganizationalUnitArgs {
     String? name,
     required String parentId,
     Map<String, String>? tags,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       parentId = pulumi.Input.asInput<String>(parentId),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parentId = pulumi.Input.asInput<String>(parentId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +39,8 @@ class OrganizationalUnitArgs {
     return OrganizationalUnitArgs(
       name: map['name'] == null ? null : map['name'] as String,
       parentId: map['parentId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

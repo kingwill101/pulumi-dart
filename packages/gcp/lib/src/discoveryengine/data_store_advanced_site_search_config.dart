@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataStoreAdvancedSiteSearchConfig {
   /// If set true, automatic refresh is disabled for the DataStore.
   final bool? disableAutomaticRefresh;
-
   /// If set true, initial indexing is disabled for the DataStore.
   final bool? disableInitialIndex;
 
@@ -24,12 +24,9 @@ class DataStoreAdvancedSiteSearchConfig {
 
   factory DataStoreAdvancedSiteSearchConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreAdvancedSiteSearchConfig(
-      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null
-          ? null
-          : map['disableAutomaticRefresh'] as bool,
-      disableInitialIndex: map['disableInitialIndex'] == null
-          ? null
-          : map['disableInitialIndex'] as bool,
+      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null ? null : map['disableAutomaticRefresh'] as bool,
+      disableInitialIndex: map['disableInitialIndex'] == null ? null : map['disableInitialIndex'] as bool,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VMwareClusterControlPlaneNodeVsphereConfig {
   /// The Vsphere datastore used by the Control Plane Node.
   final String? datastore;
-
   /// The Vsphere storage policy used by the control plane Node.
   final String? storagePolicyName;
 
@@ -22,14 +22,11 @@ class VMwareClusterControlPlaneNodeVsphereConfig {
     };
   }
 
-  factory VMwareClusterControlPlaneNodeVsphereConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareClusterControlPlaneNodeVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterControlPlaneNodeVsphereConfig(
       datastore: map['datastore'] == null ? null : map['datastore'] as String,
-      storagePolicyName: map['storagePolicyName'] == null
-          ? null
-          : map['storagePolicyName'] as String,
+      storagePolicyName: map['storagePolicyName'] == null ? null : map['storagePolicyName'] as String,
     );
   }
 }
+

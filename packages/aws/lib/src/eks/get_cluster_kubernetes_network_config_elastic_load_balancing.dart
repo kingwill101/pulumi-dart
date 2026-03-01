@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterKubernetesNetworkConfigElasticLoadBalancing {
   /// Whether zonal shift is enabled.
   final bool enabled;
@@ -11,14 +12,15 @@ class GetClusterKubernetesNetworkConfigElasticLoadBalancing {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GetClusterKubernetesNetworkConfigElasticLoadBalancing(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class EndpointDeliveryRuleRemoteAddressCondition {
+  /// List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
+  final List<String>? matchValues;
+  /// Defaults to `false`.
+  final bool? negateCondition;
+  /// Valid values are `Any`, `GeoMatch` and `IPMatch`.
+  final String operator;
+
+  /// Creates a new [EndpointDeliveryRuleRemoteAddressCondition].
+  /// [matchValues] List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
+  /// [negateCondition] Defaults to `false`.
+  /// [operator] Valid values are `Any`, `GeoMatch` and `IPMatch`.
+  EndpointDeliveryRuleRemoteAddressCondition({
+    this.matchValues,
+    this.negateCondition,
+    required this.operator,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'matchValues': ?matchValues,
+      'negateCondition': ?negateCondition,
+      'operator': operator,
+    };
+  }
+
+  factory EndpointDeliveryRuleRemoteAddressCondition.fromMap(Map<String, dynamic> map) {
+    return EndpointDeliveryRuleRemoteAddressCondition(
+      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as List).cast<String>(),
+      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
+      operator: map['operator'] as String,
+    );
+  }
+}
+

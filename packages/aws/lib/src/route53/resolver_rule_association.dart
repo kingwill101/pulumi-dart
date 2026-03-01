@@ -121,13 +121,10 @@ import 'resolver_rule_association_args.dart';
 class ResolverRuleAssociation extends pulumi.CustomResource {
   /// A name for the association that you're creating between a resolver rule and a VPC.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the resolver rule that you want to associate with the VPC.
   late final pulumi.Output<String> resolverRuleId;
-
   /// The ID of the VPC that you want to associate the resolver rule with.
   late final pulumi.Output<String> vpcId;
 
@@ -140,11 +137,11 @@ class ResolverRuleAssociation extends pulumi.CustomResource {
     ResolverRuleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
     this.resolverRuleId = registerOutput<String>('resolverRuleId');

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Gets or sets the high availability configuration.
+class HighAvailabilityConfiguration {
+  /// The high availability type.
+  final String highAvailabilityType;
+
+  /// Creates a new [HighAvailabilityConfiguration].
+  /// [highAvailabilityType] The high availability type.
+  HighAvailabilityConfiguration({
+    required this.highAvailabilityType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'highAvailabilityType': highAvailabilityType,
+    };
+  }
+
+  factory HighAvailabilityConfiguration.fromMap(Map<String, dynamic> map) {
+    return HighAvailabilityConfiguration(
+      highAvailabilityType: map['highAvailabilityType'] as String,
+    );
+  }
+}
+

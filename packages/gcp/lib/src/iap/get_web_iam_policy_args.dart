@@ -13,11 +13,15 @@ class GetWebIamPolicyArgs {
 
   /// Creates a new [GetWebIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetWebIamPolicyArgs({String? project})
-    : project = pulumi.Input.asOptionalInput<String>(project);
+  GetWebIamPolicyArgs({
+    String? project,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project};
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory GetWebIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetWebIamPolicyArgs {
     );
   }
 }
+

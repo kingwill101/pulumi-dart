@@ -9,7 +9,6 @@ class RegionUrlMapPathMatcherPathRule {
   /// does not include any text after the first ? or #, and those chars are not
   /// allowed here.
   final List<String> paths;
-
   /// In response to a matching path, the load balancer performs advanced routing
   /// actions like URL rewrites, header transformations, etc. prior to forwarding the
   /// request to the selected backend. If routeAction specifies any
@@ -18,7 +17,6 @@ class RegionUrlMapPathMatcherPathRule {
   /// or urlRedirect must be set.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherPathRuleRouteAction? routeAction;
-
   /// The region backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -27,7 +25,6 @@ class RegionUrlMapPathMatcherPathRule {
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
   final String? service;
-
   /// When a path pattern is matched, the request is redirected to a URL specified
   /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
   /// be set.
@@ -58,17 +55,10 @@ class RegionUrlMapPathMatcherPathRule {
   factory RegionUrlMapPathMatcherPathRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRule(
       paths: (map['paths'] as List).cast<String>(),
-      routeAction: map['routeAction'] == null
-          ? null
-          : RegionUrlMapPathMatcherPathRuleRouteAction.fromMap(
-              (map['routeAction'] as Map).cast<String, dynamic>(),
-            ),
+      routeAction: map['routeAction'] == null ? null : RegionUrlMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>()),
       service: map['service'] == null ? null : map['service'] as String,
-      urlRedirect: map['urlRedirect'] == null
-          ? null
-          : RegionUrlMapPathMatcherPathRuleUrlRedirect.fromMap(
-              (map['urlRedirect'] as Map).cast<String, dynamic>(),
-            ),
+      urlRedirect: map['urlRedirect'] == null ? null : RegionUrlMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

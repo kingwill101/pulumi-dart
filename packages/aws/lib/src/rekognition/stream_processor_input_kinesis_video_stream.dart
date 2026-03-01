@@ -1,20 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamProcessorInputKinesisVideoStream {
   /// ARN of the Kinesis video stream stream that streams the source video.
   final String arn;
 
   /// Creates a new [StreamProcessorInputKinesisVideoStream].
   /// [arn] ARN of the Kinesis video stream stream that streams the source video.
-  StreamProcessorInputKinesisVideoStream({required this.arn});
+  StreamProcessorInputKinesisVideoStream({
+    required this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory StreamProcessorInputKinesisVideoStream.fromMap(
-    Map<String, dynamic> map,
-  ) {
-    return StreamProcessorInputKinesisVideoStream(arn: map['arn'] as String);
+  factory StreamProcessorInputKinesisVideoStream.fromMap(Map<String, dynamic> map) {
+    return StreamProcessorInputKinesisVideoStream(
+      arn: map['arn'] as String,
+    );
   }
 }
+

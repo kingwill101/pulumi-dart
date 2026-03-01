@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesTpmBackendPassthroughDevice {
+  /// Specifies the path to the TPM device that is being passed through to the guest.
+  final String path;
+
+  /// Creates a new [DomainDevicesTpmBackendPassthroughDevice].
+  /// [path] Specifies the path to the TPM device that is being passed through to the guest.
+  DomainDevicesTpmBackendPassthroughDevice({
+    required this.path,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'path': path,
+    };
+  }
+
+  factory DomainDevicesTpmBackendPassthroughDevice.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesTpmBackendPassthroughDevice(
+      path: map['path'] as String,
+    );
+  }
+}
+

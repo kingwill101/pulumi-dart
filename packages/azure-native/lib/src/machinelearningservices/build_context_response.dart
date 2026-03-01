@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Configuration settings for Docker build context
+class BuildContextResponse {
+  /// [Required] URI of the Docker build context used to build the image. Supports blob URIs on environment creation and may return blob or Git URIs.
+  /// <seealso href="https://docs.docker.com/engine/reference/commandline/build/#extended-description" />
+  final String contextUri;
+  /// Path to the Dockerfile in the build context.
+  /// <seealso href="https://docs.docker.com/engine/reference/builder/" />
+  final String? dockerfilePath;
+
+  /// Creates a new [BuildContextResponse].
+  /// [contextUri] [Required] URI of the Docker build context used to build the image. Supports blob URIs on environment creation and may return blob or Git URIs.
+  /// [dockerfilePath] Path to the Dockerfile in the build context.
+  BuildContextResponse({
+    required this.contextUri,
+    this.dockerfilePath,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'contextUri': contextUri,
+      'dockerfilePath': ?dockerfilePath,
+    };
+  }
+
+  factory BuildContextResponse.fromMap(Map<String, dynamic> map) {
+    return BuildContextResponse(
+      contextUri: map['contextUri'] as String,
+      dockerfilePath: map['dockerfilePath'] == null ? null : map['dockerfilePath'] as String,
+    );
+  }
+}
+

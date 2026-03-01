@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AwsEuSovereignIntegrationsBilling {
+  /// The data polling interval in seconds
+  final int? metricsPollingInterval;
+
+  /// Creates a new [AwsEuSovereignIntegrationsBilling].
+  /// [metricsPollingInterval] The data polling interval in seconds
+  AwsEuSovereignIntegrationsBilling({
+    this.metricsPollingInterval,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'metricsPollingInterval': ?metricsPollingInterval,
+    };
+  }
+
+  factory AwsEuSovereignIntegrationsBilling.fromMap(Map<String, dynamic> map) {
+    return AwsEuSovereignIntegrationsBilling(
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
+    );
+  }
+}
+

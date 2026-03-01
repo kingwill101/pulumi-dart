@@ -1,12 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainSoftwareUpdateOption {
   /// Enabled or disabled.
   final bool autoSoftwareUpdateEnabled;
 
   /// Creates a new [GetDomainSoftwareUpdateOption].
   /// [autoSoftwareUpdateEnabled] Enabled or disabled.
-  GetDomainSoftwareUpdateOption({required this.autoSoftwareUpdateEnabled});
+  GetDomainSoftwareUpdateOption({
+    required this.autoSoftwareUpdateEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,3 +23,4 @@ class GetDomainSoftwareUpdateOption {
     );
   }
 }
+

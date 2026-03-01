@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   /// Required. The header field name
   final int port;
-
   /// Optional. The header field value
   final String? value;
 
@@ -16,15 +16,17 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'value': ?value};
+    return <String, dynamic>{
+      'port': port,
+      'value': ?value,
+    };
   }
 
-  factory WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(
       port: map['port'] as int,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
+

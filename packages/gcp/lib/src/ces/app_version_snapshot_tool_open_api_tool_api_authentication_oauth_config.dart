@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// (Output)
   /// The client ID from the OAuth provider.
   final String? clientId;
-
   /// (Output)
   /// The name of the SecretManager secret version resource storing the
   /// client secret.
@@ -13,17 +13,14 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final String? clientSecretVersion;
-
   /// (Output)
   /// OAuth grant types.
   /// Possible values:
   /// CLIENT_CREDENTIAL
   final String? oauthGrantType;
-
   /// (Output)
   /// The OAuth scopes to grant.
   final List<String>? scopes;
-
   /// (Output)
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final String? tokenEndpoint;
@@ -52,23 +49,14 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
     };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecretVersion: map['clientSecretVersion'] == null
-          ? null
-          : map['clientSecretVersion'] as String,
-      oauthGrantType: map['oauthGrantType'] == null
-          ? null
-          : map['oauthGrantType'] as String,
-      scopes: map['scopes'] == null
-          ? null
-          : (map['scopes'] as List).cast<String>(),
-      tokenEndpoint: map['tokenEndpoint'] == null
-          ? null
-          : map['tokenEndpoint'] as String,
+      clientSecretVersion: map['clientSecretVersion'] == null ? null : map['clientSecretVersion'] as String,
+      oauthGrantType: map['oauthGrantType'] == null ? null : map['oauthGrantType'] as String,
+      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
     );
   }
 }
+

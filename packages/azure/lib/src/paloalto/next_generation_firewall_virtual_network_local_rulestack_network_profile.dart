@@ -1,0 +1,55 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'next_generation_firewall_virtual_network_local_rulestack_network_profile_vnet_configuration.dart';
+
+class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile {
+  /// Specifies a list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
+  final List<String>? egressNatIpAddressIds;
+  final List<String>? egressNatIpAddresses;
+  /// Specifies a list of Azure Public IP Address IDs.
+  final List<String> publicIpAddressIds;
+  final List<String>? publicIpAddresses;
+  /// Specifies a list of trusted ranges to use for the Network.
+  final List<String>? trustedAddressRanges;
+  /// A `vnet_configuration` block as defined below.
+  final NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration vnetConfiguration;
+
+  /// Creates a new [NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile].
+  /// [egressNatIpAddressIds] Specifies a list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
+  /// [egressNatIpAddresses] Optional.
+  /// [publicIpAddressIds] Specifies a list of Azure Public IP Address IDs.
+  /// [publicIpAddresses] Optional.
+  /// [trustedAddressRanges] Specifies a list of trusted ranges to use for the Network.
+  /// [vnetConfiguration] A `vnet_configuration` block as defined below.
+  NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile({
+    this.egressNatIpAddressIds,
+    this.egressNatIpAddresses,
+    required this.publicIpAddressIds,
+    this.publicIpAddresses,
+    this.trustedAddressRanges,
+    required this.vnetConfiguration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'egressNatIpAddressIds': ?egressNatIpAddressIds,
+      'egressNatIpAddresses': ?egressNatIpAddresses,
+      'publicIpAddressIds': publicIpAddressIds,
+      'publicIpAddresses': ?publicIpAddresses,
+      'trustedAddressRanges': ?trustedAddressRanges,
+      'vnetConfiguration': vnetConfiguration.toMap(),
+    };
+  }
+
+  factory NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile.fromMap(Map<String, dynamic> map) {
+    return NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile(
+      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : (map['egressNatIpAddressIds'] as List).cast<String>(),
+      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : (map['egressNatIpAddresses'] as List).cast<String>(),
+      publicIpAddressIds: (map['publicIpAddressIds'] as List).cast<String>(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : (map['publicIpAddresses'] as List).cast<String>(),
+      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : (map['trustedAddressRanges'] as List).cast<String>(),
+      vnetConfiguration: NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Federated principal for identity providers.
 class FederatedPrincipal {
   /// The federated principal identifier.
@@ -7,13 +8,20 @@ class FederatedPrincipal {
 
   /// Creates a new [FederatedPrincipal].
   /// [federated] The federated principal identifier.
-  FederatedPrincipal({required this.federated});
+  FederatedPrincipal({
+    required this.federated,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'Federated': federated};
+    return <String, dynamic>{
+      'Federated': federated,
+    };
   }
 
   factory FederatedPrincipal.fromMap(Map<String, dynamic> map) {
-    return FederatedPrincipal(federated: map['Federated'] as String);
+    return FederatedPrincipal(
+      federated: map['Federated'] as String,
+    );
   }
 }
+

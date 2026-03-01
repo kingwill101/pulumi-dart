@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersDatabricks {
   /// The host name of the Databricks data source.
   final String host;
-
   /// The port for the Databricks data source.
   final int port;
-
   /// The HTTP path of the Databricks data source.
   final String sqlEndpointPath;
 
@@ -36,3 +35,4 @@ class DataSourceParametersDatabricks {
     );
   }
 }
+

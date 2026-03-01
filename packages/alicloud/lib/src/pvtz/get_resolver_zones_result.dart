@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_resolver_zones_zone.dart';
+
+/// Result data returned by getResolverZones.
+class GetResolverZonesResult {
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String? outputFile;
+  final String? status;
+  final List<GetResolverZonesZone> zones;
+
+  /// Creates a new [GetResolverZonesResult].
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [outputFile] Optional.
+  /// [status] Optional.
+  /// [zones] Required.
+  GetResolverZonesResult({
+    required this.id,
+    this.outputFile,
+    this.status,
+    required this.zones,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'outputFile': ?outputFile,
+      'status': ?status,
+      'zones': pulumi.Input.encodeList<GetResolverZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+    };
+  }
+
+  factory GetResolverZonesResult.fromMap(Map<String, dynamic> map) {
+    return GetResolverZonesResult(
+      id: map['id'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+      zones: pulumi.Input.decodeList<GetResolverZonesZone>(map['zones'], (value) => GetResolverZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

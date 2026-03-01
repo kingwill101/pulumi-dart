@@ -15,29 +15,21 @@ class V2PolicyOrchestratorForFolderArgs {
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final pulumi.Input<String> action;
-
   /// Freeform text describing the purpose of the resource.
   final pulumi.Input<String>? description;
-
   /// The parent resource name in the form of `folders/{folder_id}/locations/global`.
   final pulumi.Input<String> folderId;
-
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource>
-  orchestratedResource;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource> orchestratedResource;
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope>?
-  orchestrationScope;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope>? orchestrationScope;
   /// The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -46,7 +38,6 @@ class V2PolicyOrchestratorForFolderArgs {
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
   final pulumi.Input<String> policyOrchestratorId;
-
   /// State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -70,27 +61,19 @@ class V2PolicyOrchestratorForFolderArgs {
     String? description,
     required String folderId,
     Map<String, String>? labels,
-    required V2PolicyOrchestratorForFolderOrchestratedResource
-    orchestratedResource,
+    required V2PolicyOrchestratorForFolderOrchestratedResource orchestratedResource,
     V2PolicyOrchestratorForFolderOrchestrationScope? orchestrationScope,
     required String policyOrchestratorId,
     String? state,
-  }) : action = pulumi.Input.asInput<String>(action),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       folderId = pulumi.Input.asInput<String>(folderId),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       orchestratedResource =
-           pulumi.Input.asInput<
-             V2PolicyOrchestratorForFolderOrchestratedResource
-           >(orchestratedResource),
-       orchestrationScope =
-           pulumi.Input.asOptionalInput<
-             V2PolicyOrchestratorForFolderOrchestrationScope
-           >(orchestrationScope),
-       policyOrchestratorId = pulumi.Input.asInput<String>(
-         policyOrchestratorId,
-       ),
-       state = pulumi.Input.asOptionalInput<String>(state);
+  }) :
+      action = pulumi.Input.asInput<String>(action),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      folderId = pulumi.Input.asInput<String>(folderId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      orchestratedResource = pulumi.Input.asInput<V2PolicyOrchestratorForFolderOrchestratedResource>(orchestratedResource),
+      orchestrationScope = pulumi.Input.asOptionalInput<V2PolicyOrchestratorForFolderOrchestrationScope>(orchestrationScope),
+      policyOrchestratorId = pulumi.Input.asInput<String>(policyOrchestratorId),
+      state = pulumi.Input.asOptionalInput<String>(state);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,16 +81,8 @@ class V2PolicyOrchestratorForFolderArgs {
       'description': ?description,
       'folderId': folderId,
       'labels': ?labels,
-      'orchestratedResource':
-          pulumi.Input.mapInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResource,
-            Map<String, dynamic>
-          >(orchestratedResource, (value) => value.toMap()),
-      'orchestrationScope':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestrationScope,
-            Map<String, dynamic>
-          >(orchestrationScope, (value) => value.toMap()),
+      'orchestratedResource': pulumi.Input.mapInputValue<V2PolicyOrchestratorForFolderOrchestratedResource, Map<String, dynamic>>(orchestratedResource, (value) => value.toMap()),
+      'orchestrationScope': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestrationScope, Map<String, dynamic>>(orchestrationScope, (value) => value.toMap()),
       'policyOrchestratorId': policyOrchestratorId,
       'state': ?state,
     };
@@ -116,24 +91,14 @@ class V2PolicyOrchestratorForFolderArgs {
   factory V2PolicyOrchestratorForFolderArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderArgs(
       action: map['action'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       folderId: map['folderId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
-      orchestratedResource:
-          V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(
-            (map['orchestratedResource'] as Map).cast<String, dynamic>(),
-          ),
-      orchestrationScope: map['orchestrationScope'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestrationScope.fromMap(
-              (map['orchestrationScope'] as Map).cast<String, dynamic>(),
-            ),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      orchestratedResource: V2PolicyOrchestratorForFolderOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>()),
+      orchestrationScope: map['orchestrationScope'] == null ? null : V2PolicyOrchestratorForFolderOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>()),
       policyOrchestratorId: map['policyOrchestratorId'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
+

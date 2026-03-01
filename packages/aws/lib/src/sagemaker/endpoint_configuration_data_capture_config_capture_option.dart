@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointConfigurationDataCaptureConfigCaptureOption {
   /// Data to be captured. Should be one of `Input`, `Output` or `InputAndOutput`.
   final String captureMode;
@@ -11,14 +12,15 @@ class EndpointConfigurationDataCaptureConfigCaptureOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'captureMode': captureMode};
+    return <String, dynamic>{
+      'captureMode': captureMode,
+    };
   }
 
-  factory EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfigCaptureOption(
       captureMode: map['captureMode'] as String,
     );
   }
 }
+

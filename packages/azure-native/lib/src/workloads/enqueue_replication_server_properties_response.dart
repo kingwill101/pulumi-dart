@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Defines the SAP Enqueue Replication Server (ERS) properties.
+class EnqueueReplicationServerPropertiesResponse {
+  /// Defines the type of Enqueue Replication Server.
+  final String ersVersion;
+  /// Defines the health of SAP Instances.
+  final String health;
+  /// ERS SAP Hostname.
+  final String hostname;
+  /// ERS Instance Number.
+  final String instanceNo;
+  /// ERS SAP IP Address.
+  final String ipAddress;
+  /// ERS SAP Kernel Patch level.
+  final String kernelPatch;
+  /// ERS SAP Kernel Version.
+  final String kernelVersion;
+
+  /// Creates a new [EnqueueReplicationServerPropertiesResponse].
+  /// [ersVersion] Defines the type of Enqueue Replication Server.
+  /// [health] Defines the health of SAP Instances.
+  /// [hostname] ERS SAP Hostname.
+  /// [instanceNo] ERS Instance Number.
+  /// [ipAddress] ERS SAP IP Address.
+  /// [kernelPatch] ERS SAP Kernel Patch level.
+  /// [kernelVersion] ERS SAP Kernel Version.
+  EnqueueReplicationServerPropertiesResponse({
+    required this.ersVersion,
+    required this.health,
+    required this.hostname,
+    required this.instanceNo,
+    required this.ipAddress,
+    required this.kernelPatch,
+    required this.kernelVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ersVersion': ersVersion,
+      'health': health,
+      'hostname': hostname,
+      'instanceNo': instanceNo,
+      'ipAddress': ipAddress,
+      'kernelPatch': kernelPatch,
+      'kernelVersion': kernelVersion,
+    };
+  }
+
+  factory EnqueueReplicationServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return EnqueueReplicationServerPropertiesResponse(
+      ersVersion: map['ersVersion'] as String,
+      health: map['health'] as String,
+      hostname: map['hostname'] as String,
+      instanceNo: map['instanceNo'] as String,
+      ipAddress: map['ipAddress'] as String,
+      kernelPatch: map['kernelPatch'] as String,
+      kernelVersion: map['kernelVersion'] as String,
+    );
+  }
+}
+

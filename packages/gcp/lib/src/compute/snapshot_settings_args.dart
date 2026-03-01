@@ -11,7 +11,6 @@ class SnapshotSettingsArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Policy of which storage location is going to be resolved, and additional data
   /// that particularizes how the policy is going to be carried out
   /// Structure is documented below.
@@ -23,28 +22,22 @@ class SnapshotSettingsArgs {
   SnapshotSettingsArgs({
     String? project,
     required SnapshotSettingsStorageLocation storageLocation,
-  }) : project = pulumi.Input.asOptionalInput<String>(project),
-       storageLocation = pulumi.Input.asInput<SnapshotSettingsStorageLocation>(
-         storageLocation,
-       );
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      storageLocation = pulumi.Input.asInput<SnapshotSettingsStorageLocation>(storageLocation);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'project': ?project,
-      'storageLocation':
-          pulumi.Input.mapInputValue<
-            SnapshotSettingsStorageLocation,
-            Map<String, dynamic>
-          >(storageLocation, (value) => value.toMap()),
+      'storageLocation': pulumi.Input.mapInputValue<SnapshotSettingsStorageLocation, Map<String, dynamic>>(storageLocation, (value) => value.toMap()),
     };
   }
 
   factory SnapshotSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsArgs(
       project: map['project'] == null ? null : map['project'] as String,
-      storageLocation: SnapshotSettingsStorageLocation.fromMap(
-        (map['storageLocation'] as Map).cast<String, dynamic>(),
-      ),
+      storageLocation: SnapshotSettingsStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

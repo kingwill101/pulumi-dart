@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AmiEphemeralBlockDevice {
   /// Path at which the device is exposed to created instances.
   final String deviceName;
-
   /// Name for the ephemeral device, of the form "ephemeralN" where
   /// *N* is a volume number starting from zero.
   final String virtualName;
@@ -30,3 +30,4 @@ class AmiEphemeralBlockDevice {
     );
   }
 }
+

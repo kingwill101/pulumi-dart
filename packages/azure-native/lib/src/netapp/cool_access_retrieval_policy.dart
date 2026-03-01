@@ -1,0 +1,22 @@
+/// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
+/// Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+/// OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+/// Never - No client-driven data is pulled from cool tier to standard storage.
+enum CoolAccessRetrievalPolicy {
+  valueDefault("Default"),
+  valueOnRead("OnRead"),
+  valueNever("Never");
+
+  const CoolAccessRetrievalPolicy(this.value);
+  final String value;
+
+  static CoolAccessRetrievalPolicy fromValue(String value) {
+    for (final item in CoolAccessRetrievalPolicy.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown CoolAccessRetrievalPolicy value: $value');
+  }
+}
+

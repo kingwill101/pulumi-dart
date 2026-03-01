@@ -221,7 +221,6 @@ import 'user_policy_attachments_exclusive_args.dart';
 class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// A list of managed IAM policy ARNs to be attached to the user. Policies attached to this user but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
-
   /// IAM user name.
   late final pulumi.Output<String> userName;
 
@@ -234,11 +233,11 @@ class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
     UserPolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.policyArns = registerOutput<List<String>>('policyArns');
     this.userName = registerOutput<String>('userName');
   }

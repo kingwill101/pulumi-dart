@@ -8,19 +8,20 @@ class IngestionDestinationProcessingConfiguration {
 
   /// Creates a new [IngestionDestinationProcessingConfiguration].
   /// [auditLog] Contains information about an audit log processing configuration.
-  IngestionDestinationProcessingConfiguration({required this.auditLog});
+  IngestionDestinationProcessingConfiguration({
+    required this.auditLog,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'auditLog': auditLog.toMap()};
+    return <String, dynamic>{
+      'auditLog': auditLog.toMap(),
+    };
   }
 
-  factory IngestionDestinationProcessingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IngestionDestinationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationProcessingConfiguration(
-      auditLog: IngestionDestinationProcessingConfigurationAuditLog.fromMap(
-        (map['auditLog'] as Map).cast<String, dynamic>(),
-      ),
+      auditLog: IngestionDestinationProcessingConfigurationAuditLog.fromMap((map['auditLog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

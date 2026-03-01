@@ -6,9 +6,7 @@ import 'connection_eventing_config_registration_destination_config_destination.d
 class ConnectionEventingConfigRegistrationDestinationConfig {
   /// destinations for the connection
   /// Structure is documented below.
-  final List<ConnectionEventingConfigRegistrationDestinationConfigDestination>?
-  destinations;
-
+  final List<ConnectionEventingConfigRegistrationDestinationConfigDestination>? destinations;
   /// Key for the connection
   final String? key;
 
@@ -22,32 +20,16 @@ class ConnectionEventingConfigRegistrationDestinationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?destinations == null
-          ? null
-          : pulumi.Input.encodeList<
-              ConnectionEventingConfigRegistrationDestinationConfigDestination,
-              Map<String, dynamic>
-            >(destinations!, (value) => value.toMap()),
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<ConnectionEventingConfigRegistrationDestinationConfigDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
       'key': ?key,
     };
   }
 
-  factory ConnectionEventingConfigRegistrationDestinationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionEventingConfigRegistrationDestinationConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigRegistrationDestinationConfig(
-      destinations: map['destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ConnectionEventingConfigRegistrationDestinationConfigDestination
-            >(
-              map['destinations'],
-              (value) =>
-                  ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<ConnectionEventingConfigRegistrationDestinationConfigDestination>(map['destinations'], (value) => ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap((value as Map).cast<String, dynamic>())),
       key: map['key'] == null ? null : map['key'] as String,
     );
   }
 }
+

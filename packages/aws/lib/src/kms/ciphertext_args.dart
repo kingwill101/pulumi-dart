@@ -9,20 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CiphertextArgs {
   /// An optional mapping that makes up the encryption context.
   final pulumi.Input<Map<String, String>>? context;
-
   /// Globally unique key ID for the customer master key.
   final pulumi.Input<String> keyId;
-
   /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   final pulumi.Input<String>? plaintext;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   final pulumi.Input<String>? plaintextWo;
-
   /// Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
   final pulumi.Input<String>? plaintextWoVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -40,14 +35,13 @@ class CiphertextArgs {
     String? plaintextWo,
     String? plaintextWoVersion,
     String? region,
-  }) : context = pulumi.Input.asOptionalInput<Map<String, String>>(context),
-       keyId = pulumi.Input.asInput<String>(keyId),
-       plaintext = pulumi.Input.asOptionalInput<String>(plaintext),
-       plaintextWo = pulumi.Input.asOptionalInput<String>(plaintextWo),
-       plaintextWoVersion = pulumi.Input.asOptionalInput<String>(
-         plaintextWoVersion,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      context = pulumi.Input.asOptionalInput<Map<String, String>>(context),
+      keyId = pulumi.Input.asInput<String>(keyId),
+      plaintext = pulumi.Input.asOptionalInput<String>(plaintext),
+      plaintextWo = pulumi.Input.asOptionalInput<String>(plaintextWo),
+      plaintextWoVersion = pulumi.Input.asOptionalInput<String>(plaintextWoVersion),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,18 +56,13 @@ class CiphertextArgs {
 
   factory CiphertextArgs.fromMap(Map<String, dynamic> map) {
     return CiphertextArgs(
-      context: map['context'] == null
-          ? null
-          : (map['context'] as Map).cast<String, String>(),
+      context: map['context'] == null ? null : (map['context'] as Map).cast<String, String>(),
       keyId: map['keyId'] as String,
       plaintext: map['plaintext'] == null ? null : map['plaintext'] as String,
-      plaintextWo: map['plaintextWo'] == null
-          ? null
-          : map['plaintextWo'] as String,
-      plaintextWoVersion: map['plaintextWoVersion'] == null
-          ? null
-          : map['plaintextWoVersion'] as String,
+      plaintextWo: map['plaintextWo'] == null ? null : map['plaintextWo'] as String,
+      plaintextWoVersion: map['plaintextWoVersion'] == null ? null : map['plaintextWoVersion'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -9,7 +9,9 @@ class AppHostingDomainServe {
 
   /// Creates a new [AppHostingDomainServe].
   /// [redirect] Specifies redirect behavior for a domain.
-  AppHostingDomainServe({this.redirect});
+  AppHostingDomainServe({
+    this.redirect,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class AppHostingDomainServe {
 
   factory AppHostingDomainServe.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServe(
-      redirect: map['redirect'] == null
-          ? null
-          : AppHostingDomainServeRedirect.fromMap(
-              (map['redirect'] as Map).cast<String, dynamic>(),
-            ),
+      redirect: map['redirect'] == null ? null : AppHostingDomainServeRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

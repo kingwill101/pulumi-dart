@@ -85,15 +85,9 @@ class TopicRuleErrorAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchAlarm': ?cloudwatchAlarm == null
-          ? null
-          : cloudwatchAlarm!.toMap(),
-      'cloudwatchLogs': ?cloudwatchLogs == null
-          ? null
-          : cloudwatchLogs!.toMap(),
-      'cloudwatchMetric': ?cloudwatchMetric == null
-          ? null
-          : cloudwatchMetric!.toMap(),
+      'cloudwatchAlarm': ?cloudwatchAlarm == null ? null : cloudwatchAlarm!.toMap(),
+      'cloudwatchLogs': ?cloudwatchLogs == null ? null : cloudwatchLogs!.toMap(),
+      'cloudwatchMetric': ?cloudwatchMetric == null ? null : cloudwatchMetric!.toMap(),
       'dynamodb': ?dynamodb == null ? null : dynamodb!.toMap(),
       'dynamodbv2': ?dynamodbv2 == null ? null : dynamodbv2!.toMap(),
       'elasticsearch': ?elasticsearch == null ? null : elasticsearch!.toMap(),
@@ -115,101 +109,26 @@ class TopicRuleErrorAction {
 
   factory TopicRuleErrorAction.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorAction(
-      cloudwatchAlarm: map['cloudwatchAlarm'] == null
-          ? null
-          : TopicRuleErrorActionCloudwatchAlarm.fromMap(
-              (map['cloudwatchAlarm'] as Map).cast<String, dynamic>(),
-            ),
-      cloudwatchLogs: map['cloudwatchLogs'] == null
-          ? null
-          : TopicRuleErrorActionCloudwatchLogs.fromMap(
-              (map['cloudwatchLogs'] as Map).cast<String, dynamic>(),
-            ),
-      cloudwatchMetric: map['cloudwatchMetric'] == null
-          ? null
-          : TopicRuleErrorActionCloudwatchMetric.fromMap(
-              (map['cloudwatchMetric'] as Map).cast<String, dynamic>(),
-            ),
-      dynamodb: map['dynamodb'] == null
-          ? null
-          : TopicRuleErrorActionDynamodb.fromMap(
-              (map['dynamodb'] as Map).cast<String, dynamic>(),
-            ),
-      dynamodbv2: map['dynamodbv2'] == null
-          ? null
-          : TopicRuleErrorActionDynamodbv2.fromMap(
-              (map['dynamodbv2'] as Map).cast<String, dynamic>(),
-            ),
-      elasticsearch: map['elasticsearch'] == null
-          ? null
-          : TopicRuleErrorActionElasticsearch.fromMap(
-              (map['elasticsearch'] as Map).cast<String, dynamic>(),
-            ),
-      firehose: map['firehose'] == null
-          ? null
-          : TopicRuleErrorActionFirehose.fromMap(
-              (map['firehose'] as Map).cast<String, dynamic>(),
-            ),
-      http: map['http'] == null
-          ? null
-          : TopicRuleErrorActionHttp.fromMap(
-              (map['http'] as Map).cast<String, dynamic>(),
-            ),
-      iotAnalytics: map['iotAnalytics'] == null
-          ? null
-          : TopicRuleErrorActionIotAnalytics.fromMap(
-              (map['iotAnalytics'] as Map).cast<String, dynamic>(),
-            ),
-      iotEvents: map['iotEvents'] == null
-          ? null
-          : TopicRuleErrorActionIotEvents.fromMap(
-              (map['iotEvents'] as Map).cast<String, dynamic>(),
-            ),
-      kafka: map['kafka'] == null
-          ? null
-          : TopicRuleErrorActionKafka.fromMap(
-              (map['kafka'] as Map).cast<String, dynamic>(),
-            ),
-      kinesis: map['kinesis'] == null
-          ? null
-          : TopicRuleErrorActionKinesis.fromMap(
-              (map['kinesis'] as Map).cast<String, dynamic>(),
-            ),
-      lambda: map['lambda'] == null
-          ? null
-          : TopicRuleErrorActionLambda.fromMap(
-              (map['lambda'] as Map).cast<String, dynamic>(),
-            ),
-      republish: map['republish'] == null
-          ? null
-          : TopicRuleErrorActionRepublish.fromMap(
-              (map['republish'] as Map).cast<String, dynamic>(),
-            ),
-      s3: map['s3'] == null
-          ? null
-          : TopicRuleErrorActionS3.fromMap(
-              (map['s3'] as Map).cast<String, dynamic>(),
-            ),
-      sns: map['sns'] == null
-          ? null
-          : TopicRuleErrorActionSns.fromMap(
-              (map['sns'] as Map).cast<String, dynamic>(),
-            ),
-      sqs: map['sqs'] == null
-          ? null
-          : TopicRuleErrorActionSqs.fromMap(
-              (map['sqs'] as Map).cast<String, dynamic>(),
-            ),
-      stepFunctions: map['stepFunctions'] == null
-          ? null
-          : TopicRuleErrorActionStepFunctions.fromMap(
-              (map['stepFunctions'] as Map).cast<String, dynamic>(),
-            ),
-      timestream: map['timestream'] == null
-          ? null
-          : TopicRuleErrorActionTimestream.fromMap(
-              (map['timestream'] as Map).cast<String, dynamic>(),
-            ),
+      cloudwatchAlarm: map['cloudwatchAlarm'] == null ? null : TopicRuleErrorActionCloudwatchAlarm.fromMap((map['cloudwatchAlarm'] as Map).cast<String, dynamic>()),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : TopicRuleErrorActionCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>()),
+      cloudwatchMetric: map['cloudwatchMetric'] == null ? null : TopicRuleErrorActionCloudwatchMetric.fromMap((map['cloudwatchMetric'] as Map).cast<String, dynamic>()),
+      dynamodb: map['dynamodb'] == null ? null : TopicRuleErrorActionDynamodb.fromMap((map['dynamodb'] as Map).cast<String, dynamic>()),
+      dynamodbv2: map['dynamodbv2'] == null ? null : TopicRuleErrorActionDynamodbv2.fromMap((map['dynamodbv2'] as Map).cast<String, dynamic>()),
+      elasticsearch: map['elasticsearch'] == null ? null : TopicRuleErrorActionElasticsearch.fromMap((map['elasticsearch'] as Map).cast<String, dynamic>()),
+      firehose: map['firehose'] == null ? null : TopicRuleErrorActionFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>()),
+      http: map['http'] == null ? null : TopicRuleErrorActionHttp.fromMap((map['http'] as Map).cast<String, dynamic>()),
+      iotAnalytics: map['iotAnalytics'] == null ? null : TopicRuleErrorActionIotAnalytics.fromMap((map['iotAnalytics'] as Map).cast<String, dynamic>()),
+      iotEvents: map['iotEvents'] == null ? null : TopicRuleErrorActionIotEvents.fromMap((map['iotEvents'] as Map).cast<String, dynamic>()),
+      kafka: map['kafka'] == null ? null : TopicRuleErrorActionKafka.fromMap((map['kafka'] as Map).cast<String, dynamic>()),
+      kinesis: map['kinesis'] == null ? null : TopicRuleErrorActionKinesis.fromMap((map['kinesis'] as Map).cast<String, dynamic>()),
+      lambda: map['lambda'] == null ? null : TopicRuleErrorActionLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
+      republish: map['republish'] == null ? null : TopicRuleErrorActionRepublish.fromMap((map['republish'] as Map).cast<String, dynamic>()),
+      s3: map['s3'] == null ? null : TopicRuleErrorActionS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
+      sns: map['sns'] == null ? null : TopicRuleErrorActionSns.fromMap((map['sns'] as Map).cast<String, dynamic>()),
+      sqs: map['sqs'] == null ? null : TopicRuleErrorActionSqs.fromMap((map['sqs'] as Map).cast<String, dynamic>()),
+      stepFunctions: map['stepFunctions'] == null ? null : TopicRuleErrorActionStepFunctions.fromMap((map['stepFunctions'] as Map).cast<String, dynamic>()),
+      timestream: map['timestream'] == null ? null : TopicRuleErrorActionTimestream.fromMap((map['timestream'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

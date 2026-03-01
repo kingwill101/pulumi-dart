@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Dataset reference type.
+class DatasetReferenceResponse {
+  /// Arguments for dataset.
+  final Map<String, dynamic>? parameters;
+  /// Reference dataset name.
+  final String referenceName;
+  /// Dataset reference type.
+  final String type;
+
+  /// Creates a new [DatasetReferenceResponse].
+  /// [parameters] Arguments for dataset.
+  /// [referenceName] Reference dataset name.
+  /// [type] Dataset reference type.
+  DatasetReferenceResponse({
+    this.parameters,
+    required this.referenceName,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'parameters': ?parameters,
+      'referenceName': referenceName,
+      'type': type,
+    };
+  }
+
+  factory DatasetReferenceResponse.fromMap(Map<String, dynamic> map) {
+    return DatasetReferenceResponse(
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
+      referenceName: map['referenceName'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

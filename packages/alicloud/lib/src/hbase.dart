@@ -1,0 +1,19 @@
+library module_hbase;
+
+export 'hbase/functions.dart';
+export 'hbase/get_instance_types_args.dart';
+export 'hbase/get_instance_types_core_instance_type.dart';
+export 'hbase/get_instance_types_master_instance_type.dart';
+export 'hbase/get_instance_types_result.dart';
+export 'hbase/get_instance_types_type.dart';
+export 'hbase/get_instances_args.dart';
+export 'hbase/get_instances_instance.dart';
+export 'hbase/get_instances_result.dart';
+export 'hbase/get_zones_args.dart';
+export 'hbase/get_zones_result.dart';
+export 'hbase/get_zones_zone.dart';
+export 'hbase/instance.dart';
+export 'hbase/instance_args.dart';
+export 'hbase/instance_slb_conn_addr.dart';
+export 'hbase/instance_ui_proxy_conn_addr.dart';
+export 'hbase/instance_zk_conn_addr.dart';

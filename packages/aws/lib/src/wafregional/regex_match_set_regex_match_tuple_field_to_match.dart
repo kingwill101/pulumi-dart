@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegexMatchSetRegexMatchTupleFieldToMatch {
   /// When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// If `type` is any other value, omit this field.
   final String? data;
-
   /// The part of the web request that you want AWS WAF to search for a specified string.
   /// e.g., `HEADER`, `METHOD` or `BODY`.
   /// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
@@ -14,18 +14,23 @@ class RegexMatchSetRegexMatchTupleFieldToMatch {
   /// Creates a new [RegexMatchSetRegexMatchTupleFieldToMatch].
   /// [data] When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// [type] The part of the web request that you want AWS WAF to search for a specified string.
-  RegexMatchSetRegexMatchTupleFieldToMatch({this.data, required this.type});
+  RegexMatchSetRegexMatchTupleFieldToMatch({
+    this.data,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': ?data, 'type': type};
+    return <String, dynamic>{
+      'data': ?data,
+      'type': type,
+    };
   }
 
-  factory RegexMatchSetRegexMatchTupleFieldToMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegexMatchSetRegexMatchTupleFieldToMatch.fromMap(Map<String, dynamic> map) {
     return RegexMatchSetRegexMatchTupleFieldToMatch(
       data: map['data'] == null ? null : map['data'] as String,
       type: map['type'] as String,
     );
   }
 }
+

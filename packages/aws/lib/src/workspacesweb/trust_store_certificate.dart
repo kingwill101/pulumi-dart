@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustStoreCertificate {
   /// Certificate body in PEM format.
   final String body;
-
   /// Certificate issuer.
   final String? issuer;
-
   /// Date and time when the certificate expires in RFC3339 format.
   final String? notValidAfter;
-
   /// Date and time when the certificate becomes valid in RFC3339 format.
   final String? notValidBefore;
-
   /// Certificate subject.
   final String? subject;
-
   /// Certificate thumbprint.
   final String? thumbprint;
 
@@ -50,16 +46,11 @@ class TrustStoreCertificate {
     return TrustStoreCertificate(
       body: map['body'] as String,
       issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      notValidAfter: map['notValidAfter'] == null
-          ? null
-          : map['notValidAfter'] as String,
-      notValidBefore: map['notValidBefore'] == null
-          ? null
-          : map['notValidBefore'] as String,
+      notValidAfter: map['notValidAfter'] == null ? null : map['notValidAfter'] as String,
+      notValidBefore: map['notValidBefore'] == null ? null : map['notValidBefore'] as String,
       subject: map['subject'] == null ? null : map['subject'] as String,
-      thumbprint: map['thumbprint'] == null
-          ? null
-          : map['thumbprint'] as String,
+      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
     );
   }
 }
+

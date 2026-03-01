@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// Name of the MemoryDB cluster to take a snapshot of.
   final pulumi.Input<String> clusterName;
-
   /// ARN of the KMS key used to encrypt the snapshot at rest.
   final pulumi.Input<String>? kmsKeyArn;
-
   /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,12 +34,13 @@ class SnapshotArgs {
     String? namePrefix,
     String? region,
     Map<String, String>? tags,
-  }) : clusterName = pulumi.Input.asInput<String>(clusterName),
-       kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      clusterName = pulumi.Input.asInput<String>(clusterName),
+      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +58,10 @@ class SnapshotArgs {
       clusterName: map['clusterName'] as String,
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      namePrefix: map['namePrefix'] == null
-          ? null
-          : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

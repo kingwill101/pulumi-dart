@@ -6,15 +6,11 @@ import 'service_source_configuration_image_repository.dart';
 
 class ServiceSourceConfiguration {
   /// Describes resources needed to authenticate access to some source repositories. See Authentication Configuration below for more details.
-  final ServiceSourceConfigurationAuthenticationConfiguration?
-  authenticationConfiguration;
-
+  final ServiceSourceConfigurationAuthenticationConfiguration? authenticationConfiguration;
   /// Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
   final bool? autoDeploymentsEnabled;
-
   /// Description of a source code repository. See Code Repository below for more details.
   final ServiceSourceConfigurationCodeRepository? codeRepository;
-
   /// Description of a source image repository. See Image Repository below for more details.
   final ServiceSourceConfigurationImageRepository? imageRepository;
 
@@ -32,40 +28,20 @@ class ServiceSourceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationConfiguration': ?authenticationConfiguration == null
-          ? null
-          : authenticationConfiguration!.toMap(),
+      'authenticationConfiguration': ?authenticationConfiguration == null ? null : authenticationConfiguration!.toMap(),
       'autoDeploymentsEnabled': ?autoDeploymentsEnabled,
-      'codeRepository': ?codeRepository == null
-          ? null
-          : codeRepository!.toMap(),
-      'imageRepository': ?imageRepository == null
-          ? null
-          : imageRepository!.toMap(),
+      'codeRepository': ?codeRepository == null ? null : codeRepository!.toMap(),
+      'imageRepository': ?imageRepository == null ? null : imageRepository!.toMap(),
     };
   }
 
   factory ServiceSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfiguration(
-      authenticationConfiguration: map['authenticationConfiguration'] == null
-          ? null
-          : ServiceSourceConfigurationAuthenticationConfiguration.fromMap(
-              (map['authenticationConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      autoDeploymentsEnabled: map['autoDeploymentsEnabled'] == null
-          ? null
-          : map['autoDeploymentsEnabled'] as bool,
-      codeRepository: map['codeRepository'] == null
-          ? null
-          : ServiceSourceConfigurationCodeRepository.fromMap(
-              (map['codeRepository'] as Map).cast<String, dynamic>(),
-            ),
-      imageRepository: map['imageRepository'] == null
-          ? null
-          : ServiceSourceConfigurationImageRepository.fromMap(
-              (map['imageRepository'] as Map).cast<String, dynamic>(),
-            ),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : ServiceSourceConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>()),
+      autoDeploymentsEnabled: map['autoDeploymentsEnabled'] == null ? null : map['autoDeploymentsEnabled'] as bool,
+      codeRepository: map['codeRepository'] == null ? null : ServiceSourceConfigurationCodeRepository.fromMap((map['codeRepository'] as Map).cast<String, dynamic>()),
+      imageRepository: map['imageRepository'] == null ? null : ServiceSourceConfigurationImageRepository.fromMap((map['imageRepository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

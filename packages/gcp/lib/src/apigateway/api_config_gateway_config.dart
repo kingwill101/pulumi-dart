@@ -9,17 +9,20 @@ class ApiConfigGatewayConfig {
 
   /// Creates a new [ApiConfigGatewayConfig].
   /// [backendConfig] Backend settings that are applied to all backends of the Gateway.
-  ApiConfigGatewayConfig({required this.backendConfig});
+  ApiConfigGatewayConfig({
+    required this.backendConfig,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backendConfig': backendConfig.toMap()};
+    return <String, dynamic>{
+      'backendConfig': backendConfig.toMap(),
+    };
   }
 
   factory ApiConfigGatewayConfig.fromMap(Map<String, dynamic> map) {
     return ApiConfigGatewayConfig(
-      backendConfig: ApiConfigGatewayConfigBackendConfig.fromMap(
-        (map['backendConfig'] as Map).cast<String, dynamic>(),
-      ),
+      backendConfig: ApiConfigGatewayConfigBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

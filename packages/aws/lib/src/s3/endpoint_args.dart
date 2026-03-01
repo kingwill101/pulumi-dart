@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
   final pulumi.Input<String>? accessType;
-
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   final pulumi.Input<String>? customerOwnedIpv4Pool;
-
   /// Identifier of the Outpost to contain this endpoint.
   final pulumi.Input<String> outpostId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of the EC2 Security Group.
   final pulumi.Input<String> securityGroupId;
-
   /// Identifier of the EC2 Subnet.
   final pulumi.Input<String> subnetId;
 
@@ -39,14 +34,13 @@ class EndpointArgs {
     String? region,
     required String securityGroupId,
     required String subnetId,
-  }) : accessType = pulumi.Input.asOptionalInput<String>(accessType),
-       customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(
-         customerOwnedIpv4Pool,
-       ),
-       outpostId = pulumi.Input.asInput<String>(outpostId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-       subnetId = pulumi.Input.asInput<String>(subnetId);
+  }) :
+      accessType = pulumi.Input.asOptionalInput<String>(accessType),
+      customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(customerOwnedIpv4Pool),
+      outpostId = pulumi.Input.asInput<String>(outpostId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
+      subnetId = pulumi.Input.asInput<String>(subnetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,8 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      accessType: map['accessType'] == null
-          ? null
-          : map['accessType'] as String,
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null
-          ? null
-          : map['customerOwnedIpv4Pool'] as String,
+      accessType: map['accessType'] == null ? null : map['accessType'] as String,
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : map['customerOwnedIpv4Pool'] as String,
       outpostId: map['outpostId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       securityGroupId: map['securityGroupId'] as String,
@@ -74,3 +64,4 @@ class EndpointArgs {
     );
   }
 }
+

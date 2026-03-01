@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_gateway_rewrite_rule_set_rewrite_rule.dart';
+
+class ApplicationGatewayRewriteRuleSet {
+  /// The ID of the Rewrite Rule Set
+  final String? id;
+  /// Unique name of the rewrite rule set block
+  final String name;
+  /// One or more `rewrite_rule` blocks as defined below.
+  final List<ApplicationGatewayRewriteRuleSetRewriteRule>? rewriteRules;
+
+  /// Creates a new [ApplicationGatewayRewriteRuleSet].
+  /// [id] The ID of the Rewrite Rule Set
+  /// [name] Unique name of the rewrite rule set block
+  /// [rewriteRules] One or more `rewrite_rule` blocks as defined below.
+  ApplicationGatewayRewriteRuleSet({
+    this.id,
+    required this.name,
+    this.rewriteRules,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'name': name,
+      'rewriteRules': ?rewriteRules == null ? null : pulumi.Input.encodeList<ApplicationGatewayRewriteRuleSetRewriteRule, Map<String, dynamic>>(rewriteRules!, (value) => value.toMap()),
+    };
+  }
+
+  factory ApplicationGatewayRewriteRuleSet.fromMap(Map<String, dynamic> map) {
+    return ApplicationGatewayRewriteRuleSet(
+      id: map['id'] == null ? null : map['id'] as String,
+      name: map['name'] as String,
+      rewriteRules: map['rewriteRules'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRule>(map['rewriteRules'], (value) => ApplicationGatewayRewriteRuleSetRewriteRule.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

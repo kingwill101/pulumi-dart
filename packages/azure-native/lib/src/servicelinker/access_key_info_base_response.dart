@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+class AccessKeyInfoBaseResponse {
+  /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+  final String? authMode;
+  /// The authentication type.
+  /// Expected value is 'accessKey'.
+  final String authType;
+  /// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+  final List<String>? permissions;
+
+  /// Creates a new [AccessKeyInfoBaseResponse].
+  /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+  /// [authType] The authentication type.
+  /// [permissions] Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+  AccessKeyInfoBaseResponse({
+    this.authMode,
+    required this.authType,
+    this.permissions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authMode': ?authMode,
+      'authType': authType,
+      'permissions': ?permissions,
+    };
+  }
+
+  factory AccessKeyInfoBaseResponse.fromMap(Map<String, dynamic> map) {
+    return AccessKeyInfoBaseResponse(
+      authMode: map['authMode'] == null ? null : map['authMode'] as String,
+      authType: map['authType'] as String,
+      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
+    );
+  }
+}
+

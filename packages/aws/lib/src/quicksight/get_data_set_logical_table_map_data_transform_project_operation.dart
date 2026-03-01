@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetLogicalTableMapDataTransformProjectOperation {
   final List<String> projectedColumns;
 
@@ -10,14 +11,15 @@ class GetDataSetLogicalTableMapDataTransformProjectOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'projectedColumns': projectedColumns};
+    return <String, dynamic>{
+      'projectedColumns': projectedColumns,
+    };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformProjectOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformProjectOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformProjectOperation(
       projectedColumns: (map['projectedColumns'] as List).cast<String>(),
     );
   }
 }
+

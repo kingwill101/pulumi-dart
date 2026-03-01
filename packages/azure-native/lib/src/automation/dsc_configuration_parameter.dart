@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of the configuration parameter type.
+class DscConfigurationParameter {
+  /// Gets or sets the default value of parameter.
+  final String? defaultValue;
+  /// Gets or sets a Boolean value to indicate whether the parameter is mandatory or not.
+  final bool? isMandatory;
+  /// Get or sets the position of the parameter.
+  final int? position;
+  /// Gets or sets the type of the parameter.
+  final String? type;
+
+  /// Creates a new [DscConfigurationParameter].
+  /// [defaultValue] Gets or sets the default value of parameter.
+  /// [isMandatory] Gets or sets a Boolean value to indicate whether the parameter is mandatory or not.
+  /// [position] Get or sets the position of the parameter.
+  /// [type] Gets or sets the type of the parameter.
+  DscConfigurationParameter({
+    this.defaultValue,
+    this.isMandatory,
+    this.position,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'defaultValue': ?defaultValue,
+      'isMandatory': ?isMandatory,
+      'position': ?position,
+      'type': ?type,
+    };
+  }
+
+  factory DscConfigurationParameter.fromMap(Map<String, dynamic> map) {
+    return DscConfigurationParameter(
+      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
+      isMandatory: map['isMandatory'] == null ? null : map['isMandatory'] as bool,
+      position: map['position'] == null ? null : map['position'] as int,
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

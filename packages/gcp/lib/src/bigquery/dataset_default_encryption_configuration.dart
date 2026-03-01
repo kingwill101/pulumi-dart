@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatasetDefaultEncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect destination
   /// BigQuery table. The BigQuery Service Account associated with your project requires
@@ -8,17 +9,20 @@ class DatasetDefaultEncryptionConfiguration {
 
   /// Creates a new [DatasetDefaultEncryptionConfiguration].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination
-  DatasetDefaultEncryptionConfiguration({required this.kmsKeyName});
+  DatasetDefaultEncryptionConfiguration({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory DatasetDefaultEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatasetDefaultEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DatasetDefaultEncryptionConfiguration(
       kmsKeyName: map['kmsKeyName'] as String,
     );
   }
 }
+

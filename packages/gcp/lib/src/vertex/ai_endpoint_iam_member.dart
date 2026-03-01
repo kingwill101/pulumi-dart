@@ -20,11 +20,11 @@ class AiEndpointIamMember extends pulumi.CustomResource {
     AiEndpointIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiEndpointIamMember:AiEndpointIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiEndpointIamMember:AiEndpointIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<AiEndpointIamMemberCondition?>('condition');
     this.endpoint = registerOutput<String>('endpoint');
     this.etag = registerOutput<String>('etag');

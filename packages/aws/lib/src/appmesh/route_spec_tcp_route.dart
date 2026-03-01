@@ -8,7 +8,6 @@ class RouteSpecTcpRoute {
   /// Action to take if a match is determined.
   final RouteSpecTcpRouteAction action;
   final RouteSpecTcpRouteMatch? match;
-
   /// Types of timeouts.
   final RouteSpecTcpRouteTimeout? timeout;
 
@@ -16,7 +15,11 @@ class RouteSpecTcpRoute {
   /// [action] Action to take if a match is determined.
   /// [match] Optional.
   /// [timeout] Types of timeouts.
-  RouteSpecTcpRoute({required this.action, this.match, this.timeout});
+  RouteSpecTcpRoute({
+    required this.action,
+    this.match,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,19 +31,10 @@ class RouteSpecTcpRoute {
 
   factory RouteSpecTcpRoute.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRoute(
-      action: RouteSpecTcpRouteAction.fromMap(
-        (map['action'] as Map).cast<String, dynamic>(),
-      ),
-      match: map['match'] == null
-          ? null
-          : RouteSpecTcpRouteMatch.fromMap(
-              (map['match'] as Map).cast<String, dynamic>(),
-            ),
-      timeout: map['timeout'] == null
-          ? null
-          : RouteSpecTcpRouteTimeout.fromMap(
-              (map['timeout'] as Map).cast<String, dynamic>(),
-            ),
+      action: RouteSpecTcpRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      match: map['match'] == null ? null : RouteSpecTcpRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
+      timeout: map['timeout'] == null ? null : RouteSpecTcpRouteTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

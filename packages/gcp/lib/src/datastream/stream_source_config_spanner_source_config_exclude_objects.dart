@@ -10,32 +10,20 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigExcludeObjects].
   /// [schemas] Spanner schemas in the database
-  StreamSourceConfigSpannerSourceConfigExcludeObjects({required this.schemas});
+  StreamSourceConfigSpannerSourceConfigExcludeObjects({
+    required this.schemas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemas':
-          pulumi.Input.encodeList<
-            StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema,
-            Map<String, dynamic>
-          >(schemas, (value) => value.toMap()),
+      'schemas': pulumi.Input.encodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
     };
   }
 
-  factory StreamSourceConfigSpannerSourceConfigExcludeObjects.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigSpannerSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigExcludeObjects(
-      schemas:
-          pulumi.Input.decodeList<
-            StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema
-          >(
-            map['schemas'],
-            (value) =>
-                StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      schemas: pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema>(map['schemas'], (value) => StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

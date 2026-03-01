@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
   final Map<String, dynamic>? all;
@@ -14,19 +15,17 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStateme
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'all': ?all, 'includedPaths': ?includedPaths};
+    return <String, dynamic>{
+      'all': ?all,
+      'includedPaths': ?includedPaths,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern(
-      all: map['all'] == null
-          ? null
-          : (map['all'] as Map).cast<String, dynamic>(),
-      includedPaths: map['includedPaths'] == null
-          ? null
-          : (map['includedPaths'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
+      includedPaths: map['includedPaths'] == null ? null : (map['includedPaths'] as List).cast<String>(),
     );
   }
 }
+

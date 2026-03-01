@@ -13,10 +13,8 @@ class AttestorAttestationAuthorityNotePublicKey {
   /// upper-case hex. If id is provided by the caller, it will
   /// be overwritten by the API-calculated ID.
   final String? asciiArmoredPgpPublicKey;
-
   /// A descriptive comment. This field may be updated.
   final String? comment;
-
   /// The ID of this public key. Signatures verified by BinAuthz
   /// must include the ID of the public key that can be used to
   /// verify them, and that ID must match the contents of this
@@ -24,7 +22,6 @@ class AttestorAttestationAuthorityNotePublicKey {
   /// be imposed based on which public key type is encapsulated.
   /// See the documentation on publicKey cases below for details.
   final String? id;
-
   /// A raw PKIX SubjectPublicKeyInfo format public key.
   /// NOTE: id may be explicitly provided by the caller when using this
   /// type of public key, but it MUST be a valid RFC3986 URI. If id is left
@@ -54,20 +51,13 @@ class AttestorAttestationAuthorityNotePublicKey {
     };
   }
 
-  factory AttestorAttestationAuthorityNotePublicKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttestorAttestationAuthorityNotePublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNotePublicKey(
-      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null
-          ? null
-          : map['asciiArmoredPgpPublicKey'] as String,
+      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null ? null : map['asciiArmoredPgpPublicKey'] as String,
       comment: map['comment'] == null ? null : map['comment'] as String,
       id: map['id'] == null ? null : map['id'] as String,
-      pkixPublicKey: map['pkixPublicKey'] == null
-          ? null
-          : AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(
-              (map['pkixPublicKey'] as Map).cast<String, dynamic>(),
-            ),
+      pkixPublicKey: map['pkixPublicKey'] == null ? null : AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap((map['pkixPublicKey'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

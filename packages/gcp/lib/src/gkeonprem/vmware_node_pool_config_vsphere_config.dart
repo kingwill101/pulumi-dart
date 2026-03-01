@@ -6,10 +6,8 @@ import 'vmware_node_pool_config_vsphere_config_tag.dart';
 class VMwareNodePoolConfigVsphereConfig {
   /// The name of the vCenter datastore. Inherited from the user cluster.
   final String? datastore;
-
   /// Vsphere host groups to apply to all VMs in the node pool
   final List<String>? hostGroups;
-
   /// Tags to apply to VMs.
   /// Structure is documented below.
   final List<VMwareNodePoolConfigVsphereConfigTag>? tags;
@@ -28,29 +26,16 @@ class VMwareNodePoolConfigVsphereConfig {
     return <String, dynamic>{
       'datastore': ?datastore,
       'hostGroups': ?hostGroups,
-      'tags': ?tags == null
-          ? null
-          : pulumi.Input.encodeList<
-              VMwareNodePoolConfigVsphereConfigTag,
-              Map<String, dynamic>
-            >(tags!, (value) => value.toMap()),
+      'tags': ?tags == null ? null : pulumi.Input.encodeList<VMwareNodePoolConfigVsphereConfigTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
     };
   }
 
   factory VMwareNodePoolConfigVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigVsphereConfig(
       datastore: map['datastore'] == null ? null : map['datastore'] as String,
-      hostGroups: map['hostGroups'] == null
-          ? null
-          : (map['hostGroups'] as List).cast<String>(),
-      tags: map['tags'] == null
-          ? null
-          : pulumi.Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(
-              map['tags'],
-              (value) => VMwareNodePoolConfigVsphereConfigTag.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      hostGroups: map['hostGroups'] == null ? null : (map['hostGroups'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(map['tags'], (value) => VMwareNodePoolConfigVsphereConfigTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

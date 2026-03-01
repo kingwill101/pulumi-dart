@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWebAcl.
 class GetWebAclResult {
   /// ARN of the entity.
   final String arn;
-
   /// Description of the WebACL that helps with identification.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
@@ -52,10 +51,9 @@ class GetWebAclResult {
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] as String,
-      resourceArn: map['resourceArn'] == null
-          ? null
-          : map['resourceArn'] as String,
+      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
       scope: map['scope'] as String,
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of ReplicaModifications
+class ReplicaModifications {
+  /// Specifies whether Amazon S3 replicates modifications on replicas.  *Allowed values*: ``Enabled`` | ``Disabled``
+  final String? status;
+
+  /// Creates a new [ReplicaModifications].
+  /// [status] Specifies whether Amazon S3 replicates modifications on replicas.  *Allowed values*: ``Enabled`` | ``Disabled``
+  ReplicaModifications({
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'status': ?status,
+    };
+  }
+
+  factory ReplicaModifications.fromMap(Map<String, dynamic> map) {
+    return ReplicaModifications(
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}
+

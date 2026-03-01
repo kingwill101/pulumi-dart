@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   /// The CPU requirements for every worker instance of the worker type.
   final String cpu;
-
   /// The disk requirements for every worker instance of the worker type.
   final String? disk;
-
   /// The memory requirements for every worker instance of the worker type.
   final String memory;
 
@@ -21,12 +20,14 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'disk': ?disk, 'memory': memory};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'disk': ?disk,
+      'memory': memory,
+    };
   }
 
-  factory ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration(
       cpu: map['cpu'] as String,
       disk: map['disk'] == null ? null : map['disk'] as String,
@@ -34,3 +35,4 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
     );
   }
 }
+

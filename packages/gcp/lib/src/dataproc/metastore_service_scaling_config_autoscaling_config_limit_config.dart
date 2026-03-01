@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
   /// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
   final double? maxScalingFactor;
-
   /// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
   final double? minScalingFactor;
 
@@ -22,16 +22,11 @@ class MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
     };
   }
 
-  factory MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceScalingConfigAutoscalingConfigLimitConfig(
-      maxScalingFactor: map['maxScalingFactor'] == null
-          ? null
-          : map['maxScalingFactor'] as double,
-      minScalingFactor: map['minScalingFactor'] == null
-          ? null
-          : map['minScalingFactor'] as double,
+      maxScalingFactor: map['maxScalingFactor'] == null ? null : map['maxScalingFactor'] as double,
+      minScalingFactor: map['minScalingFactor'] == null ? null : map['minScalingFactor'] as double,
     );
   }
 }
+

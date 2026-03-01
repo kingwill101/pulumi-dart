@@ -145,19 +145,14 @@ import 'backend_environment_args.dart';
 class BackendEnvironment extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
-
   /// ARN for a backend environment that is part of an Amplify app.
   late final pulumi.Output<String> arn;
-
   /// Name of deployment artifacts.
   late final pulumi.Output<String> deploymentArtifacts;
-
   /// Name for the backend environment.
   late final pulumi.Output<String> environmentName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// AWS CloudFormation stack name of a backend environment.
   late final pulumi.Output<String> stackName;
 
@@ -170,11 +165,11 @@ class BackendEnvironment extends pulumi.CustomResource {
     BackendEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amplify/backendEnvironment:BackendEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amplify/backendEnvironment:BackendEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');
     this.deploymentArtifacts = registerOutput<String>('deploymentArtifacts');

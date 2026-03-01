@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainAssociationArgs {
   /// ARN of the certificate for the custom domain association.
   final pulumi.Input<String> customDomainCertificateArn;
-
   /// Custom domain to associate with the workgroup.
   final pulumi.Input<String> customDomainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the workgroup.
   final pulumi.Input<String> workgroupName;
 
@@ -29,12 +26,11 @@ class CustomDomainAssociationArgs {
     required String customDomainName,
     String? region,
     required String workgroupName,
-  }) : customDomainCertificateArn = pulumi.Input.asInput<String>(
-         customDomainCertificateArn,
-       ),
-       customDomainName = pulumi.Input.asInput<String>(customDomainName),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       workgroupName = pulumi.Input.asInput<String>(workgroupName);
+  }) :
+      customDomainCertificateArn = pulumi.Input.asInput<String>(customDomainCertificateArn),
+      customDomainName = pulumi.Input.asInput<String>(customDomainName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workgroupName = pulumi.Input.asInput<String>(workgroupName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,3 +50,4 @@ class CustomDomainAssociationArgs {
     );
   }
 }
+

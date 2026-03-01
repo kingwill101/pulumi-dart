@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetKubernetesVersionMetadataRuntime {
+  /// The runtime name.
+  final String name;
+  /// The runtime version.
+  final String version;
+
+  /// Creates a new [GetKubernetesVersionMetadataRuntime].
+  /// [name] The runtime name.
+  /// [version] The runtime version.
+  GetKubernetesVersionMetadataRuntime({
+    required this.name,
+    required this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'version': version,
+    };
+  }
+
+  factory GetKubernetesVersionMetadataRuntime.fromMap(Map<String, dynamic> map) {
+    return GetKubernetesVersionMetadataRuntime(
+      name: map['name'] as String,
+      version: map['version'] as String,
+    );
+  }
+}
+

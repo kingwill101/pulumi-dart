@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Empty/none datastore credentials.
+class NoneDatastoreCredentialsResponse {
+  /// Enum to determine the datastore credentials type.
+  /// Expected value is 'None'.
+  final String credentialsType;
+
+  /// Creates a new [NoneDatastoreCredentialsResponse].
+  /// [credentialsType] Enum to determine the datastore credentials type.
+  NoneDatastoreCredentialsResponse({
+    required this.credentialsType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'credentialsType': credentialsType,
+    };
+  }
+
+  factory NoneDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
+    return NoneDatastoreCredentialsResponse(
+      credentialsType: map['credentialsType'] as String,
+    );
+  }
+}
+

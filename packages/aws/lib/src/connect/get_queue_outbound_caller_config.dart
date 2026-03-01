@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetQueueOutboundCallerConfig {
   /// Specifies the caller ID name.
   final String outboundCallerIdName;
-
   /// Specifies the caller ID number.
   final String outboundCallerIdNumberId;
-
   /// Outbound whisper flow to be used during an outbound call.
   final String outboundFlowId;
 
@@ -36,3 +35,4 @@ class GetQueueOutboundCallerConfig {
     );
   }
 }
+

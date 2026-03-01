@@ -20,11 +20,11 @@ class TargetIamMember extends pulumi.CustomResource {
     TargetIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/targetIamMember:TargetIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/targetIamMember:TargetIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<TargetIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

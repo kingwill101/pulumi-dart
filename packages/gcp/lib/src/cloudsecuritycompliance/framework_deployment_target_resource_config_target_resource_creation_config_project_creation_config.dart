@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig {
   /// Billing account id to be used for the project.
   final String billingAccountId;
-
   /// organizations/{org} or folders/{folder}
   final String parent;
-
   /// Display name of the project to be created.
   final String projectDisplayName;
 
@@ -28,9 +27,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProject
     };
   }
 
-  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig(
       billingAccountId: map['billingAccountId'] as String,
       parent: map['parent'] as String,
@@ -38,3 +35,4 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProject
     );
   }
 }
+

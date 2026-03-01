@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainFeaturesApic {
+  /// Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
+  final String? eoi;
+
+  /// Creates a new [DomainFeaturesApic].
+  /// [eoi] Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
+  DomainFeaturesApic({
+    this.eoi,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'eoi': ?eoi,
+    };
+  }
+
+  factory DomainFeaturesApic.fromMap(Map<String, dynamic> map) {
+    return DomainFeaturesApic(
+      eoi: map['eoi'] == null ? null : map['eoi'] as String,
+    );
+  }
+}
+

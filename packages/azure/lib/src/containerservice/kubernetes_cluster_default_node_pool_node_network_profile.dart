@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'kubernetes_cluster_default_node_pool_node_network_profile_allowed_host_port.dart';
+
+class KubernetesClusterDefaultNodePoolNodeNetworkProfile {
+  /// One or more `allowed_host_ports` blocks as defined below.
+  final List<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>? allowedHostPorts;
+  /// A list of Application Security Group IDs which should be associated with this Node Pool.
+  final List<String>? applicationSecurityGroupIds;
+  /// Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
+  final Map<String, String>? nodePublicIpTags;
+
+  /// Creates a new [KubernetesClusterDefaultNodePoolNodeNetworkProfile].
+  /// [allowedHostPorts] One or more `allowed_host_ports` blocks as defined below.
+  /// [applicationSecurityGroupIds] A list of Application Security Group IDs which should be associated with this Node Pool.
+  /// [nodePublicIpTags] Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
+  KubernetesClusterDefaultNodePoolNodeNetworkProfile({
+    this.allowedHostPorts,
+    this.applicationSecurityGroupIds,
+    this.nodePublicIpTags,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allowedHostPorts': ?allowedHostPorts == null ? null : pulumi.Input.encodeList<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort, Map<String, dynamic>>(allowedHostPorts!, (value) => value.toMap()),
+      'applicationSecurityGroupIds': ?applicationSecurityGroupIds,
+      'nodePublicIpTags': ?nodePublicIpTags,
+    };
+  }
+
+  factory KubernetesClusterDefaultNodePoolNodeNetworkProfile.fromMap(Map<String, dynamic> map) {
+    return KubernetesClusterDefaultNodePoolNodeNetworkProfile(
+      allowedHostPorts: map['allowedHostPorts'] == null ? null : pulumi.Input.decodeList<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>(map['allowedHostPorts'], (value) => KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap((value as Map).cast<String, dynamic>())),
+      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : (map['applicationSecurityGroupIds'] as List).cast<String>(),
+      nodePublicIpTags: map['nodePublicIpTags'] == null ? null : (map['nodePublicIpTags'] as Map).cast<String, String>(),
+    );
+  }
+}
+

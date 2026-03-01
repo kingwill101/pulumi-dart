@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'provisioning_request.dart';
+
+/// Represents the properties of an Azure Linux restricted operating environment Provision Os job.
+class ProvisionOsJobProperties {
+  /// Deployment mode to trigger job.
+  final String? deploymentMode;
+  /// Job Type supported.
+  /// Expected value is 'ProvisionOs'.
+  final String jobType;
+  /// Os Provisioning request.
+  final ProvisioningRequest provisioningRequest;
+
+  /// Creates a new [ProvisionOsJobProperties].
+  /// [deploymentMode] Deployment mode to trigger job.
+  /// [jobType] Job Type supported.
+  /// [provisioningRequest] Os Provisioning request.
+  ProvisionOsJobProperties({
+    this.deploymentMode,
+    required this.jobType,
+    required this.provisioningRequest,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'deploymentMode': ?deploymentMode,
+      'jobType': jobType,
+      'provisioningRequest': provisioningRequest.toMap(),
+    };
+  }
+
+  factory ProvisionOsJobProperties.fromMap(Map<String, dynamic> map) {
+    return ProvisionOsJobProperties(
+      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
+      jobType: map['jobType'] as String,
+      provisioningRequest: ProvisioningRequest.fromMap((map['provisioningRequest'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

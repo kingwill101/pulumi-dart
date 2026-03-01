@@ -1,0 +1,113 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'schedule_daily_recurrence.dart';
+import 'schedule_hourly_recurrence.dart';
+import 'schedule_notification_settings.dart';
+import 'schedule_weekly_recurrence.dart';
+
+/// {@template pulumi_devtest_schedule_schedule_args_doc}
+/// The set of arguments for Schedule.
+/// {@endtemplate}
+/// {@macro pulumi_devtest_schedule_schedule_args_doc}
+class ScheduleArgs {
+  /// The properties of a daily schedule. If the schedule occurs once each day of the week, specify the daily recurrence. A `daily_recurrence` block as defined below.
+  final pulumi.Input<ScheduleDailyRecurrence>? dailyRecurrence;
+  /// The properties of an hourly schedule. If the schedule occurs multiple times a day, specify the hourly recurrence. A `hourly_recurrence` block as defined below.
+  final pulumi.Input<ScheduleHourlyRecurrence>? hourlyRecurrence;
+  /// The name of the dev test lab. Changing this forces a new resource to be created.
+  final pulumi.Input<String> labName;
+  /// The location where the schedule is created. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// The name of the dev test lab schedule. Valid value for name depends on the `task_type`. For instance for task_type `LabVmsStartupTask` the name needs to be `LabVmAutoStart`. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// The notification setting of a schedule. A `notification_settings` block as defined below.
+  final pulumi.Input<ScheduleNotificationSettings> notificationSettings;
+  /// The name of the resource group in which to create the dev test lab schedule. Changing this forces a new resource to be created.
+  final pulumi.Input<String> resourceGroupName;
+  /// The status of this schedule. Possible values are `Enabled` and `Disabled`. Defaults to `Disabled`.
+  final pulumi.Input<String>? status;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// The task type of the schedule. Possible values include `LabVmsShutdownTask` and `LabVmAutoStart`.
+  final pulumi.Input<String> taskType;
+  /// The time zone ID (e.g. Pacific Standard time).
+  final pulumi.Input<String> timeZoneId;
+  /// The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weekly_recurrence` block as defined below.
+  final pulumi.Input<ScheduleWeeklyRecurrence>? weeklyRecurrence;
+
+  /// Creates a new [ScheduleArgs].
+  /// [dailyRecurrence] The properties of a daily schedule. If the schedule occurs once each day of the week, specify the daily recurrence. A `daily_recurrence` block as defined below.
+  /// [hourlyRecurrence] The properties of an hourly schedule. If the schedule occurs multiple times a day, specify the hourly recurrence. A `hourly_recurrence` block as defined below.
+  /// [labName] The name of the dev test lab. Changing this forces a new resource to be created.
+  /// [location] The location where the schedule is created. Changing this forces a new resource to be created.
+  /// [name] The name of the dev test lab schedule. Valid value for name depends on the `task_type`. For instance for task_type `LabVmsStartupTask` the name needs to be `LabVmAutoStart`. Changing this forces a new resource to be created.
+  /// [notificationSettings] The notification setting of a schedule. A `notification_settings` block as defined below.
+  /// [resourceGroupName] The name of the resource group in which to create the dev test lab schedule. Changing this forces a new resource to be created.
+  /// [status] The status of this schedule. Possible values are `Enabled` and `Disabled`. Defaults to `Disabled`.
+  /// [tags] A mapping of tags to assign to the resource.
+  /// [taskType] The task type of the schedule. Possible values include `LabVmsShutdownTask` and `LabVmAutoStart`.
+  /// [timeZoneId] The time zone ID (e.g. Pacific Standard time).
+  /// [weeklyRecurrence] The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weekly_recurrence` block as defined below.
+  ScheduleArgs({
+    ScheduleDailyRecurrence? dailyRecurrence,
+    ScheduleHourlyRecurrence? hourlyRecurrence,
+    required String labName,
+    String? location,
+    String? name,
+    required ScheduleNotificationSettings notificationSettings,
+    required String resourceGroupName,
+    String? status,
+    Map<String, String>? tags,
+    required String taskType,
+    required String timeZoneId,
+    ScheduleWeeklyRecurrence? weeklyRecurrence,
+  }) :
+      dailyRecurrence = pulumi.Input.asOptionalInput<ScheduleDailyRecurrence>(dailyRecurrence),
+      hourlyRecurrence = pulumi.Input.asOptionalInput<ScheduleHourlyRecurrence>(hourlyRecurrence),
+      labName = pulumi.Input.asInput<String>(labName),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      notificationSettings = pulumi.Input.asInput<ScheduleNotificationSettings>(notificationSettings),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      taskType = pulumi.Input.asInput<String>(taskType),
+      timeZoneId = pulumi.Input.asInput<String>(timeZoneId),
+      weeklyRecurrence = pulumi.Input.asOptionalInput<ScheduleWeeklyRecurrence>(weeklyRecurrence);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dailyRecurrence': ?pulumi.Input.mapOptionalInputValue<ScheduleDailyRecurrence, Map<String, dynamic>>(dailyRecurrence, (value) => value.toMap()),
+      'hourlyRecurrence': ?pulumi.Input.mapOptionalInputValue<ScheduleHourlyRecurrence, Map<String, dynamic>>(hourlyRecurrence, (value) => value.toMap()),
+      'labName': labName,
+      'location': ?location,
+      'name': ?name,
+      'notificationSettings': pulumi.Input.mapInputValue<ScheduleNotificationSettings, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
+      'resourceGroupName': resourceGroupName,
+      'status': ?status,
+      'tags': ?tags,
+      'taskType': taskType,
+      'timeZoneId': timeZoneId,
+      'weeklyRecurrence': ?pulumi.Input.mapOptionalInputValue<ScheduleWeeklyRecurrence, Map<String, dynamic>>(weeklyRecurrence, (value) => value.toMap()),
+    };
+  }
+
+  factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
+    return ScheduleArgs(
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : ScheduleDailyRecurrence.fromMap((map['dailyRecurrence'] as Map).cast<String, dynamic>()),
+      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : ScheduleHourlyRecurrence.fromMap((map['hourlyRecurrence'] as Map).cast<String, dynamic>()),
+      labName: map['labName'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      notificationSettings: ScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>()),
+      resourceGroupName: map['resourceGroupName'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      taskType: map['taskType'] as String,
+      timeZoneId: map['timeZoneId'] as String,
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : ScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

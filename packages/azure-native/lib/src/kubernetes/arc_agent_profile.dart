@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_component.dart';
+
+/// Defines the Arc Agent properties for the clusters.
+class ArcAgentProfile {
+  /// Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
+  final String? agentAutoUpgrade;
+  /// Version of the Arc agents to be installed on the cluster resource
+  final String? desiredAgentVersion;
+  /// List of system extensions can be installed on the cluster resource.
+  final List<SystemComponent>? systemComponents;
+
+  /// Creates a new [ArcAgentProfile].
+  /// [agentAutoUpgrade] Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
+  /// [desiredAgentVersion] Version of the Arc agents to be installed on the cluster resource
+  /// [systemComponents] List of system extensions can be installed on the cluster resource.
+  ArcAgentProfile({
+    this.agentAutoUpgrade,
+    this.desiredAgentVersion,
+    this.systemComponents,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'agentAutoUpgrade': ?agentAutoUpgrade,
+      'desiredAgentVersion': ?desiredAgentVersion,
+      'systemComponents': ?systemComponents == null ? null : pulumi.Input.encodeList<SystemComponent, Map<String, dynamic>>(systemComponents!, (value) => value.toMap()),
+    };
+  }
+
+  factory ArcAgentProfile.fromMap(Map<String, dynamic> map) {
+    return ArcAgentProfile(
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : map['agentAutoUpgrade'] as String,
+      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : map['desiredAgentVersion'] as String,
+      systemComponents: map['systemComponents'] == null ? null : pulumi.Input.decodeList<SystemComponent>(map['systemComponents'], (value) => SystemComponent.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

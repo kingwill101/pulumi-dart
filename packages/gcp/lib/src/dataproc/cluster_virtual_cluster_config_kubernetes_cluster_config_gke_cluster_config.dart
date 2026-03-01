@@ -7,14 +7,10 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
   /// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
   /// (the GKE cluster can be zonal or regional)
   final String? gkeClusterTarget;
-
   /// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
   /// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
   /// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
-  final List<
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget
-  >?
-  nodePoolTargets;
+  final List<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>? nodePoolTargets;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig].
   /// [gkeClusterTarget] A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
@@ -27,33 +23,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gkeClusterTarget': ?gkeClusterTarget,
-      'nodePoolTargets': ?nodePoolTargets == null
-          ? null
-          : pulumi.Input.encodeList<
-              ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget,
-              Map<String, dynamic>
-            >(nodePoolTargets!, (value) => value.toMap()),
+      'nodePoolTargets': ?nodePoolTargets == null ? null : pulumi.Input.encodeList<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget, Map<String, dynamic>>(nodePoolTargets!, (value) => value.toMap()),
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(
-      gkeClusterTarget: map['gkeClusterTarget'] == null
-          ? null
-          : map['gkeClusterTarget'] as String,
-      nodePoolTargets: map['nodePoolTargets'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget
-            >(
-              map['nodePoolTargets'],
-              (value) =>
-                  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      gkeClusterTarget: map['gkeClusterTarget'] == null ? null : map['gkeClusterTarget'] as String,
+      nodePoolTargets: map['nodePoolTargets'] == null ? null : pulumi.Input.decodeList<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>(map['nodePoolTargets'], (value) => ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

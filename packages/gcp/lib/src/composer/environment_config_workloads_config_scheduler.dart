@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentConfigWorkloadsConfigScheduler {
   /// The number of schedulers.
   final int? count;
-
   /// CPU request and limit for a single Airflow scheduler replica
   final double? cpu;
-
   /// Memory (GB) request and limit for a single Airflow scheduler replica.
   final double? memoryGb;
-
   /// Storage (GB) request and limit for a single Airflow scheduler replica.
   final double? storageGb;
 
@@ -34,9 +32,7 @@ class EnvironmentConfigWorkloadsConfigScheduler {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigScheduler.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigWorkloadsConfigScheduler.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigScheduler(
       count: map['count'] == null ? null : map['count'] as int,
       cpu: map['cpu'] == null ? null : map['cpu'] as double,
@@ -45,3 +41,4 @@ class EnvironmentConfigWorkloadsConfigScheduler {
     );
   }
 }
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
+class BrokerResourceRuleResponse {
+  /// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+  final List<String>? clientIds;
+  /// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
+  final String method;
+  /// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
+  final List<String>? topics;
+
+  /// Creates a new [BrokerResourceRuleResponse].
+  /// [clientIds] A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+  /// [method] Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
+  /// [topics] A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
+  BrokerResourceRuleResponse({
+    this.clientIds,
+    required this.method,
+    this.topics,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientIds': ?clientIds,
+      'method': method,
+      'topics': ?topics,
+    };
+  }
+
+  factory BrokerResourceRuleResponse.fromMap(Map<String, dynamic> map) {
+    return BrokerResourceRuleResponse(
+      clientIds: map['clientIds'] == null ? null : (map['clientIds'] as List).cast<String>(),
+      method: map['method'] as String,
+      topics: map['topics'] == null ? null : (map['topics'] as List).cast<String>(),
+    );
+  }
+}
+

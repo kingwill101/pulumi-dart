@@ -425,10 +425,8 @@ import 'resource_data_sync_s3_destination.dart';
 class ResourceDataSync extends pulumi.CustomResource {
   /// Name for the configuration.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon S3 configuration details for the sync.
   late final pulumi.Output<ResourceDataSyncS3Destination> s3Destination;
 
@@ -441,15 +439,13 @@ class ResourceDataSync extends pulumi.CustomResource {
     ResourceDataSyncArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/resourceDataSync:ResourceDataSync',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssm/resourceDataSync:ResourceDataSync',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.s3Destination = registerOutput<ResourceDataSyncS3Destination>(
-      's3Destination',
-    );
+    this.s3Destination = registerOutput<ResourceDataSyncS3Destination>('s3Destination');
   }
 }

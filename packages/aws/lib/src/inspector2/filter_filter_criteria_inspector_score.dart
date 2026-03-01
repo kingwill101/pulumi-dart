@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FilterFilterCriteriaInspectorScore {
   /// (Optional) Lower bound of the range, inclusive.
   final double lowerInclusive;
-
   /// (Optional) Upper bound of the range, inclusive.
   final double upperInclusive;
 
@@ -29,3 +29,4 @@ class FilterFilterCriteriaInspectorScore {
     );
   }
 }
+

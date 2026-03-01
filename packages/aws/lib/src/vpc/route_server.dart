@@ -248,31 +248,22 @@ class RouteServer extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> amazonSideAsn;
-
   /// The ARN of the route server.
   late final pulumi.Output<String> arn;
-
   /// Indicates whether routes should be persisted after all BGP sessions are terminated. Valid values are `enable`, `disable`, `reset`
   late final pulumi.Output<String> persistRoutes;
-
   /// The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persist_routes` is enabled.
   late final pulumi.Output<int?> persistRoutesDuration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The unique identifier of the route server.
   late final pulumi.Output<String> routeServerId;
-
   /// Indicates whether SNS notifications should be enabled for route server events. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by AWS`.
   late final pulumi.Output<bool> snsNotificationsEnabled;
-
   /// The ARN of the SNS topic where notifications are published.
   late final pulumi.Output<String> snsTopicArn;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RouteServerTimeouts?> timeouts;
@@ -286,20 +277,18 @@ class RouteServer extends pulumi.CustomResource {
     RouteServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/routeServer:RouteServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/routeServer:RouteServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.amazonSideAsn = registerOutput<int>('amazonSideAsn');
     this.arn = registerOutput<String>('arn');
     this.persistRoutes = registerOutput<String>('persistRoutes');
     this.persistRoutesDuration = registerOutput<int?>('persistRoutesDuration');
     this.region = registerOutput<String>('region');
     this.routeServerId = registerOutput<String>('routeServerId');
-    this.snsNotificationsEnabled = registerOutput<bool>(
-      'snsNotificationsEnabled',
-    );
+    this.snsNotificationsEnabled = registerOutput<bool>('snsNotificationsEnabled');
     this.snsTopicArn = registerOutput<String>('snsTopicArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

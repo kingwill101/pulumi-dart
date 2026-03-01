@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Web Application Firewall Policy
+class WafPolicyResponse {
+  /// Resource ID of the WAF
+  final String id;
+
+  /// Creates a new [WafPolicyResponse].
+  /// [id] Resource ID of the WAF
+  WafPolicyResponse({
+    required this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+    };
+  }
+
+  factory WafPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return WafPolicyResponse(
+      id: map['id'] as String,
+    );
+  }
+}
+

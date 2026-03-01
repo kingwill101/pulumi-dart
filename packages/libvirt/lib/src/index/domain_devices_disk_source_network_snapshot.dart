@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesDiskSourceNetworkSnapshot {
+  /// Configures the name attribute for the snapshot used in network storage operations.
+  final String name;
+
+  /// Creates a new [DomainDevicesDiskSourceNetworkSnapshot].
+  /// [name] Configures the name attribute for the snapshot used in network storage operations.
+  DomainDevicesDiskSourceNetworkSnapshot({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory DomainDevicesDiskSourceNetworkSnapshot.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesDiskSourceNetworkSnapshot(
+      name: map['name'] as String,
+    );
+  }
+}
+

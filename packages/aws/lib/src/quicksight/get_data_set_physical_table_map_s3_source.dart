@@ -22,39 +22,17 @@ class GetDataSetPhysicalTableMapS3Source {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataSourceArn': dataSourceArn,
-      'inputColumns':
-          pulumi.Input.encodeList<
-            GetDataSetPhysicalTableMapS3SourceInputColumn,
-            Map<String, dynamic>
-          >(inputColumns, (value) => value.toMap()),
-      'uploadSettings':
-          pulumi.Input.encodeList<
-            GetDataSetPhysicalTableMapS3SourceUploadSetting,
-            Map<String, dynamic>
-          >(uploadSettings, (value) => value.toMap()),
+      'inputColumns': pulumi.Input.encodeList<GetDataSetPhysicalTableMapS3SourceInputColumn, Map<String, dynamic>>(inputColumns, (value) => value.toMap()),
+      'uploadSettings': pulumi.Input.encodeList<GetDataSetPhysicalTableMapS3SourceUploadSetting, Map<String, dynamic>>(uploadSettings, (value) => value.toMap()),
     };
   }
 
   factory GetDataSetPhysicalTableMapS3Source.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3Source(
       dataSourceArn: map['dataSourceArn'] as String,
-      inputColumns:
-          pulumi
-              .Input.decodeList<GetDataSetPhysicalTableMapS3SourceInputColumn>(
-            map['inputColumns'],
-            (value) => GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      uploadSettings:
-          pulumi.Input.decodeList<
-            GetDataSetPhysicalTableMapS3SourceUploadSetting
-          >(
-            map['uploadSettings'],
-            (value) => GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      inputColumns: pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap((value as Map).cast<String, dynamic>())),
+      uploadSettings: pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceUploadSetting>(map['uploadSettings'], (value) => GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Resource Uri of Public Ip for Standard Load Balancer Frontend End.
+class InternetIngressPublicIpsPropertiesResponse {
+  /// Resource Uri of Public Ip
+  final String? id;
+
+  /// Creates a new [InternetIngressPublicIpsPropertiesResponse].
+  /// [id] Resource Uri of Public Ip
+  InternetIngressPublicIpsPropertiesResponse({
+    this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+    };
+  }
+
+  factory InternetIngressPublicIpsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return InternetIngressPublicIpsPropertiesResponse(
+      id: map['id'] == null ? null : map['id'] as String,
+    );
+  }
+}
+

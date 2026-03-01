@@ -244,20 +244,16 @@ import 'v2_project_scc_big_query_export_args.dart';
 class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> bigQueryExportId;
-
   /// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   late final pulumi.Output<String?> dataset;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -278,26 +274,20 @@ class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
   late final pulumi.Output<String?> filter;
-
   /// location Id is provided by organization. If not provided, Use global as default.
   late final pulumi.Output<String?> location;
-
   /// Email address of the user who last edited the BigQuery export.
   /// This field is set by the server and will be ignored if provided on export creation or update.
   late final pulumi.Output<String> mostRecentEditor;
-
   /// The resource name of this export, in the format
   /// `projects/{{project}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
   /// This field is provided in responses, and is ignored when provided in create requests.
   late final pulumi.Output<String> name;
-
   /// The service account that needs permission to create table and upload data to the BigQuery dataset.
   late final pulumi.Output<String> principal;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -312,11 +302,11 @@ class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
     V2ProjectSccBigQueryExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bigQueryExportId = registerOutput<String>('bigQueryExportId');
     this.createTime = registerOutput<String>('createTime');
     this.dataset = registerOutput<String?>('dataset');

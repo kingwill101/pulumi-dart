@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoriesArgs {
   /// The location of the artifact registry repositories. eg `us-central1`.
   final pulumi.Input<String> location;
-
   /// Optional. An expression for filtering the results by name. You can also use wildcards `*`. I.e. `my-repo`, `*-repo`, `my-*`, `*-re*`. For further information reach out to the [API docs](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories/list).
   final pulumi.Input<String>? nameFilter;
-
   /// The ID of the project. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -24,9 +22,10 @@ class GetRepositoriesArgs {
     required String location,
     String? nameFilter,
     String? project,
-  }) : location = pulumi.Input.asInput<String>(location),
-       nameFilter = pulumi.Input.asOptionalInput<String>(nameFilter),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      nameFilter = pulumi.Input.asOptionalInput<String>(nameFilter),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +38,9 @@ class GetRepositoriesArgs {
   factory GetRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoriesArgs(
       location: map['location'] as String,
-      nameFilter: map['nameFilter'] == null
-          ? null
-          : map['nameFilter'] as String,
+      nameFilter: map['nameFilter'] == null ? null : map['nameFilter'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

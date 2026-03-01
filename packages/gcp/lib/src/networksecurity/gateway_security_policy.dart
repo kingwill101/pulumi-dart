@@ -782,28 +782,21 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// The location of the gateway security policy.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
-
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
   /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
-
   /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
   late final pulumi.Output<String?> tlsInspectionPolicy;
-
   /// The timestamp when the resource was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -818,11 +811,11 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
     GatewaySecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.location = registerOutput<String?>('location');

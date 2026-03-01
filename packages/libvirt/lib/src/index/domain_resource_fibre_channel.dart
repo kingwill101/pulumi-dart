@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainResourceFibreChannel {
+  /// Sets the application ID for the Fibre Channel resource.
+  final String appId;
+
+  /// Creates a new [DomainResourceFibreChannel].
+  /// [appId] Sets the application ID for the Fibre Channel resource.
+  DomainResourceFibreChannel({
+    required this.appId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appId': appId,
+    };
+  }
+
+  factory DomainResourceFibreChannel.fromMap(Map<String, dynamic> map) {
+    return DomainResourceFibreChannel(
+      appId: map['appId'] as String,
+    );
+  }
+}
+

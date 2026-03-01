@@ -19,9 +19,10 @@ class GetApplicationArgs {
     required String applicationId,
     required String location,
     required String project,
-  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asInput<String>(project);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,3 +40,4 @@ class GetApplicationArgs {
     );
   }
 }
+

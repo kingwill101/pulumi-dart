@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Specifies Windows operating system settings on the virtual machine.
+class WindowsConfiguration {
+  /// The OS Type
+  /// Expected value is 'Windows'.
+  final String osType;
+
+  /// Creates a new [WindowsConfiguration].
+  /// [osType] The OS Type
+  WindowsConfiguration({
+    required this.osType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'osType': osType,
+    };
+  }
+
+  factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
+    return WindowsConfiguration(
+      osType: map['osType'] as String,
+    );
+  }
+}
+

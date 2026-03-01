@@ -4,9 +4,7 @@ import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
-  final ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl?
-  sasl;
-
+  final ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl? sasl;
   /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   final bool? tls;
 
@@ -25,16 +23,11 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
     };
   }
 
-  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasl: map['sasl'] == null
-          ? null
-          : ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(
-              (map['sasl'] as Map).cast<String, dynamic>(),
-            ),
+      sasl: map['sasl'] == null ? null : ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>()),
       tls: map['tls'] == null ? null : map['tls'] as bool,
     );
   }
 }
+

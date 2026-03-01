@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPipelineDefinitionPipelineObjectField {
   /// Field identifier.
   final String key;
-
   /// Field value, expressed as the identifier of another object
   final String refValue;
-
   /// Field value, expressed as a String.
   final String stringValue;
 
@@ -28,9 +27,7 @@ class GetPipelineDefinitionPipelineObjectField {
     };
   }
 
-  factory GetPipelineDefinitionPipelineObjectField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPipelineDefinitionPipelineObjectField.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionPipelineObjectField(
       key: map['key'] as String,
       refValue: map['refValue'] as String,
@@ -38,3 +35,4 @@ class GetPipelineDefinitionPipelineObjectField {
     );
   }
 }
+

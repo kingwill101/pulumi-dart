@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DiAlarmRuleNotificationSettingsNotificationChannel {
+  /// Channel, optional enumeration value:
+  ///
+  /// Mail (Mail)
+  ///
+  /// Phone (Phone)
+  ///
+  /// Sms (Sms)
+  ///
+  /// Ding (DingTalk)
+  final List<String>? channels;
+  final String? severity;
+
+  /// Creates a new [DiAlarmRuleNotificationSettingsNotificationChannel].
+  /// [channels] Channel, optional enumeration value:
+  /// [severity] Optional.
+  DiAlarmRuleNotificationSettingsNotificationChannel({
+    this.channels,
+    this.severity,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'channels': ?channels,
+      'severity': ?severity,
+    };
+  }
+
+  factory DiAlarmRuleNotificationSettingsNotificationChannel.fromMap(Map<String, dynamic> map) {
+    return DiAlarmRuleNotificationSettingsNotificationChannel(
+      channels: map['channels'] == null ? null : (map['channels'] as List).cast<String>(),
+      severity: map['severity'] == null ? null : map['severity'] as String,
+    );
+  }
+}
+

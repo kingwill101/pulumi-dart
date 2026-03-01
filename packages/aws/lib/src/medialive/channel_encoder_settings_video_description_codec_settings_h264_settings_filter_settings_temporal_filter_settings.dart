@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings {
   /// Post filter sharpening.
   final String? postFilterSharpening;
-
   /// Filter strength.
   final String? strength;
 
@@ -22,14 +22,11 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings(
-      postFilterSharpening: map['postFilterSharpening'] == null
-          ? null
-          : map['postFilterSharpening'] as String,
+      postFilterSharpening: map['postFilterSharpening'] == null ? null : map['postFilterSharpening'] as String,
       strength: map['strength'] == null ? null : map['strength'] as String,
     );
   }
 }
+

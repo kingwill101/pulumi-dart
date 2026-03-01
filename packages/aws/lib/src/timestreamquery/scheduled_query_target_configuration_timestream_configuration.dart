@@ -8,29 +8,16 @@ import 'scheduled_query_target_configuration_timestream_configuration_multi_meas
 class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   /// Name of Timestream database to which the query result will be written.
   final String databaseName;
-
   /// Configuration block for mapping of column(s) from the query result to the dimension in the destination table. See below.
-  final List<
-    ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping
-  >
-  dimensionMappings;
-
+  final List<ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping> dimensionMappings;
   /// Name of the measure column.
   final String? measureNameColumn;
-
   /// Configuration block for how to map measures to multi-measure records. See below.
-  final List<
-    ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping
-  >?
-  mixedMeasureMappings;
-
+  final List<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>? mixedMeasureMappings;
   /// Configuration block for multi-measure mappings. Only one of `mixed_measure_mappings` or `multi_measure_mappings` can be provided. `multi_measure_mappings` can be used to ingest data as multi measures in the derived table. See below.
-  final ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings?
-  multiMeasureMappings;
-
+  final ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings? multiMeasureMappings;
   /// Name of Timestream table that the query result will be written to. The table should be within the same database that is provided in Timestream configuration.
   final String tableName;
-
   /// Column from query result that should be used as the time column in destination table. Column type for this should be TIMESTAMP.
   final String timeColumn;
 
@@ -55,62 +42,25 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseName': databaseName,
-      'dimensionMappings':
-          pulumi.Input.encodeList<
-            ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping,
-            Map<String, dynamic>
-          >(dimensionMappings, (value) => value.toMap()),
+      'dimensionMappings': pulumi.Input.encodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping, Map<String, dynamic>>(dimensionMappings, (value) => value.toMap()),
       'measureNameColumn': ?measureNameColumn,
-      'mixedMeasureMappings': ?mixedMeasureMappings == null
-          ? null
-          : pulumi.Input.encodeList<
-              ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping,
-              Map<String, dynamic>
-            >(mixedMeasureMappings!, (value) => value.toMap()),
-      'multiMeasureMappings': ?multiMeasureMappings == null
-          ? null
-          : multiMeasureMappings!.toMap(),
+      'mixedMeasureMappings': ?mixedMeasureMappings == null ? null : pulumi.Input.encodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping, Map<String, dynamic>>(mixedMeasureMappings!, (value) => value.toMap()),
+      'multiMeasureMappings': ?multiMeasureMappings == null ? null : multiMeasureMappings!.toMap(),
       'tableName': tableName,
       'timeColumn': timeColumn,
     };
   }
 
-  factory ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfiguration(
       databaseName: map['databaseName'] as String,
-      dimensionMappings:
-          pulumi.Input.decodeList<
-            ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping
-          >(
-            map['dimensionMappings'],
-            (value) =>
-                ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      measureNameColumn: map['measureNameColumn'] == null
-          ? null
-          : map['measureNameColumn'] as String,
-      mixedMeasureMappings: map['mixedMeasureMappings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping
-            >(
-              map['mixedMeasureMappings'],
-              (value) =>
-                  ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      multiMeasureMappings: map['multiMeasureMappings'] == null
-          ? null
-          : ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap(
-              (map['multiMeasureMappings'] as Map).cast<String, dynamic>(),
-            ),
+      dimensionMappings: pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping>(map['dimensionMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping.fromMap((value as Map).cast<String, dynamic>())),
+      measureNameColumn: map['measureNameColumn'] == null ? null : map['measureNameColumn'] as String,
+      mixedMeasureMappings: map['mixedMeasureMappings'] == null ? null : pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>(map['mixedMeasureMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping.fromMap((value as Map).cast<String, dynamic>())),
+      multiMeasureMappings: map['multiMeasureMappings'] == null ? null : ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap((map['multiMeasureMappings'] as Map).cast<String, dynamic>()),
       tableName: map['tableName'] as String,
       timeColumn: map['timeColumn'] as String,
     );
   }
 }
+

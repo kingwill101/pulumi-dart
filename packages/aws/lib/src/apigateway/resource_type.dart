@@ -149,16 +149,12 @@ import 'resource_args.dart';
 class ResourceType extends pulumi.CustomResource {
   /// ID of the parent API resource
   late final pulumi.Output<String> parentId;
-
   /// Complete path for this API resource, including all parent paths.
   late final pulumi.Output<String> path;
-
   /// Last path segment of this API resource.
   late final pulumi.Output<String> pathPart;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the associated REST API
   late final pulumi.Output<String> restApi;
 
@@ -171,11 +167,11 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.parentId = registerOutput<String>('parentId');
     this.path = registerOutput<String>('path');
     this.pathPart = registerOutput<String>('pathPart');

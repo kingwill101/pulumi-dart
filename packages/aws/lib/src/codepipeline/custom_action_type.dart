@@ -169,27 +169,19 @@ import 'custom_action_type_settings.dart';
 class CustomActionType extends pulumi.CustomResource {
   /// The action ARN.
   late final pulumi.Output<String> arn;
-
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
   late final pulumi.Output<String> category;
-
   /// The configuration properties for the custom action. Max 10 items.
-  late final pulumi.Output<List<CustomActionTypeConfigurationProperty>?>
-  configurationProperties;
-  late final pulumi.Output<CustomActionTypeInputArtifactDetails>
-  inputArtifactDetails;
-  late final pulumi.Output<CustomActionTypeOutputArtifactDetails>
-  outputArtifactDetails;
-
+  late final pulumi.Output<List<CustomActionTypeConfigurationProperty>?> configurationProperties;
+  late final pulumi.Output<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
+  late final pulumi.Output<CustomActionTypeOutputArtifactDetails> outputArtifactDetails;
   /// The creator of the action being called.
   late final pulumi.Output<String> owner;
   late final pulumi.Output<String> providerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<CustomActionTypeSettings?> settings;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> version;
@@ -203,25 +195,16 @@ class CustomActionType extends pulumi.CustomResource {
     CustomActionTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codepipeline/customActionType:CustomActionType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codepipeline/customActionType:CustomActionType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.category = registerOutput<String>('category');
-    this.configurationProperties =
-        registerOutput<List<CustomActionTypeConfigurationProperty>?>(
-          'configurationProperties',
-        );
-    this.inputArtifactDetails =
-        registerOutput<CustomActionTypeInputArtifactDetails>(
-          'inputArtifactDetails',
-        );
-    this.outputArtifactDetails =
-        registerOutput<CustomActionTypeOutputArtifactDetails>(
-          'outputArtifactDetails',
-        );
+    this.configurationProperties = registerOutput<List<CustomActionTypeConfigurationProperty>?>('configurationProperties');
+    this.inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails');
+    this.outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails');
     this.owner = registerOutput<String>('owner');
     this.providerName = registerOutput<String>('providerName');
     this.region = registerOutput<String>('region');

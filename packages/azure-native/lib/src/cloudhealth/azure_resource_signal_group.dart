@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'signal_assignment.dart';
+
+/// A grouping of signal assignments for an Azure resource
+class AzureResourceSignalGroup {
+  /// Reference to the name of the authentication setting which is used for querying the data source
+  final String authenticationSetting;
+  /// Azure resource ID
+  final String azureResourceId;
+  /// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+  final List<SignalAssignment>? signalAssignments;
+
+  /// Creates a new [AzureResourceSignalGroup].
+  /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source
+  /// [azureResourceId] Azure resource ID
+  /// [signalAssignments] Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+  AzureResourceSignalGroup({
+    required this.authenticationSetting,
+    required this.azureResourceId,
+    this.signalAssignments,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authenticationSetting': authenticationSetting,
+      'azureResourceId': azureResourceId,
+      'signalAssignments': ?signalAssignments == null ? null : pulumi.Input.encodeList<SignalAssignment, Map<String, dynamic>>(signalAssignments!, (value) => value.toMap()),
+    };
+  }
+
+  factory AzureResourceSignalGroup.fromMap(Map<String, dynamic> map) {
+    return AzureResourceSignalGroup(
+      authenticationSetting: map['authenticationSetting'] as String,
+      azureResourceId: map['azureResourceId'] as String,
+      signalAssignments: map['signalAssignments'] == null ? null : pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments'], (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

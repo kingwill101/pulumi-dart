@@ -9,34 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayAdvertisedRouteArgs {
   /// An optional description of the gateway advertised route.
   final pulumi.Input<String>? description;
-
   /// This route's advertised IP address range. Must be a valid CIDR-formatted prefix.
   /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128
   final pulumi.Input<String>? ipRange;
-
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The name of the gateway advertised route. Route names must be unique.
   final pulumi.Input<String>? name;
-
   /// The priority of this advertised route. You can choose a value from 0 to 65335.
   /// If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.
   final pulumi.Input<int>? priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// the recipient of this advertised route
   /// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
   final pulumi.Input<String>? recipient;
-
   /// The name of the spoke
   final pulumi.Input<String> spoke;
 
@@ -60,15 +52,16 @@ class GatewayAdvertisedRouteArgs {
     String? project,
     String? recipient,
     required String spoke,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       priority = pulumi.Input.asOptionalInput<int>(priority),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       recipient = pulumi.Input.asOptionalInput<String>(recipient),
-       spoke = pulumi.Input.asInput<String>(spoke);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      priority = pulumi.Input.asOptionalInput<int>(priority),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      recipient = pulumi.Input.asOptionalInput<String>(recipient),
+      spoke = pulumi.Input.asInput<String>(spoke);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,13 +79,9 @@ class GatewayAdvertisedRouteArgs {
 
   factory GatewayAdvertisedRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAdvertisedRouteArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       ipRange: map['ipRange'] == null ? null : map['ipRange'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       priority: map['priority'] == null ? null : map['priority'] as int,
@@ -102,3 +91,4 @@ class GatewayAdvertisedRouteArgs {
     );
   }
 }
+

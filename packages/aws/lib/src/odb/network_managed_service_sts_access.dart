@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceStsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// The status of the network resource.
   final String status;
-
   /// Specifies the endpoint policy for STS access from the ODB network.
   final String stsPolicyDocument;
 
@@ -40,3 +39,4 @@ class NetworkManagedServiceStsAccess {
     );
   }
 }
+

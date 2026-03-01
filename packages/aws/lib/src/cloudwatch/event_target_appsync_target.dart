@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetAppsyncTarget {
   /// Contains the GraphQL mutation to be parsed and executed.
   final String? graphqlOperation;
 
   /// Creates a new [EventTargetAppsyncTarget].
   /// [graphqlOperation] Contains the GraphQL mutation to be parsed and executed.
-  EventTargetAppsyncTarget({this.graphqlOperation});
+  EventTargetAppsyncTarget({
+    this.graphqlOperation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'graphqlOperation': ?graphqlOperation};
+    return <String, dynamic>{
+      'graphqlOperation': ?graphqlOperation,
+    };
   }
 
   factory EventTargetAppsyncTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetAppsyncTarget(
-      graphqlOperation: map['graphqlOperation'] == null
-          ? null
-          : map['graphqlOperation'] as String,
+      graphqlOperation: map['graphqlOperation'] == null ? null : map['graphqlOperation'] as String,
     );
   }
 }
+

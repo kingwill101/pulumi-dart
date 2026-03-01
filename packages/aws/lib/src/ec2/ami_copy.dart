@@ -134,100 +134,74 @@ import 'ami_copy_ephemeral_block_device.dart';
 class AmiCopy extends pulumi.CustomResource {
   /// Machine architecture for created instances. Defaults to `x86_64`.
   late final pulumi.Output<String> architecture;
-
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
-
   /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
   late final pulumi.Output<String> bootMode;
-
   /// Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String?> deprecationTime;
-
   /// Longer, human-readable description for the AMI.
   late final pulumi.Output<String?> description;
-
   /// ARN of the Outpost to which to copy the AMI.
   /// Only specify this parameter when copying an AMI from an AWS Region to an Outpost. The AMI must be in the Region of the destination Outpost.
   late final pulumi.Output<String?> destinationOutpostArn;
-
   /// Nested block describing an EBS block device that should be
   /// attached to created instances. The structure of this block is described below.
   late final pulumi.Output<List<AmiCopyEbsBlockDevice>> ebsBlockDevices;
-
   /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final pulumi.Output<bool> enaSupport;
-
   /// Whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
   late final pulumi.Output<bool?> encrypted;
-
   /// Nested block describing an ephemeral block device that
   /// should be attached to created instances. The structure of this block is described below.
-  late final pulumi.Output<List<AmiCopyEphemeralBlockDevice>>
-  ephemeralBlockDevices;
+  late final pulumi.Output<List<AmiCopyEphemeralBlockDevice>> ephemeralBlockDevices;
   late final pulumi.Output<String> hypervisor;
-
   /// Path to an S3 object containing an image manifest, e.g., created
   /// by the `ec2-upload-bundle` command in the EC2 command line tools.
   late final pulumi.Output<String> imageLocation;
   late final pulumi.Output<String> imageOwnerAlias;
   late final pulumi.Output<String> imageType;
-
   /// If EC2 instances started from this image should require the use of the Instance Metadata Service V2 (IMDSv2), set this argument to `v2.0`. For more information, see [Configure instance metadata options for new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration).
   late final pulumi.Output<String> imdsSupport;
-
   /// ID of the kernel image (AKI) that will be used as the paravirtual
   /// kernel in created instances.
   late final pulumi.Output<String> kernelId;
-
   /// Full ARN of the KMS Key to use when encrypting the snapshots of an image during a copy operation. If not specified, then the default AWS KMS Key will be used
   late final pulumi.Output<String> kmsKeyId;
-
   /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   late final pulumi.Output<String> lastLaunchedTime;
   late final pulumi.Output<bool> manageEbsSnapshots;
-
   /// Region-unique name for the AMI.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerId;
   late final pulumi.Output<String> platform;
   late final pulumi.Output<String> platformDetails;
   late final pulumi.Output<bool> public;
-
   /// ID of an initrd image (ARI) that will be used when booting the
   /// created instances.
   late final pulumi.Output<String> ramdiskId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   late final pulumi.Output<String> rootDeviceName;
   late final pulumi.Output<String> rootSnapshotId;
-
   /// Id of the AMI to copy. This id must be valid in the region
   /// given by `source_ami_region`.
   late final pulumi.Output<String> sourceAmiId;
-
   /// Region from which the AMI will be copied. This may be the
   /// same as the AWS provider region in order to create a copy within the same region.
   late final pulumi.Output<String> sourceAmiRegion;
-
   /// When set to "simple" (the default), enables enhanced networking
   /// for created instances. No other value is supported at this time.
   late final pulumi.Output<String> sriovNetSupport;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   late final pulumi.Output<String> tpmSupport;
-
   /// Base64 representation of the non-volatile UEFI variable store.
   late final pulumi.Output<String> uefiData;
   late final pulumi.Output<String> usageOperation;
-
   /// Keyword to choose what virtualization mode created instances
   /// will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
   /// changes the set of further arguments that are required, as described below.
@@ -242,28 +216,21 @@ class AmiCopy extends pulumi.CustomResource {
     AmiCopyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/amiCopy:AmiCopy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/amiCopy:AmiCopy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.architecture = registerOutput<String>('architecture');
     this.arn = registerOutput<String>('arn');
     this.bootMode = registerOutput<String>('bootMode');
     this.deprecationTime = registerOutput<String?>('deprecationTime');
     this.description = registerOutput<String?>('description');
-    this.destinationOutpostArn = registerOutput<String?>(
-      'destinationOutpostArn',
-    );
-    this.ebsBlockDevices = registerOutput<List<AmiCopyEbsBlockDevice>>(
-      'ebsBlockDevices',
-    );
+    this.destinationOutpostArn = registerOutput<String?>('destinationOutpostArn');
+    this.ebsBlockDevices = registerOutput<List<AmiCopyEbsBlockDevice>>('ebsBlockDevices');
     this.enaSupport = registerOutput<bool>('enaSupport');
     this.encrypted = registerOutput<bool?>('encrypted');
-    this.ephemeralBlockDevices =
-        registerOutput<List<AmiCopyEphemeralBlockDevice>>(
-          'ephemeralBlockDevices',
-        );
+    this.ephemeralBlockDevices = registerOutput<List<AmiCopyEphemeralBlockDevice>>('ephemeralBlockDevices');
     this.hypervisor = registerOutput<String>('hypervisor');
     this.imageLocation = registerOutput<String>('imageLocation');
     this.imageOwnerAlias = registerOutput<String>('imageOwnerAlias');

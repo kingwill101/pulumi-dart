@@ -8,10 +8,8 @@ class HostingCustomDomainRequiredDnsUpdate {
   /// (Output)
   /// The last time Hosting checked your CustomDomain's DNS records.
   final String? checkTime;
-
   /// A text string to serve at the path.
   final List<HostingCustomDomainRequiredDnsUpdateDesired>? desireds;
-
   /// Whether Hosting was able to find the required file contents on the
   /// specified path during its last check.
   final List<HostingCustomDomainRequiredDnsUpdateDiscovered>? discovereds;
@@ -29,45 +27,17 @@ class HostingCustomDomainRequiredDnsUpdate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkTime': ?checkTime,
-      'desireds': ?desireds == null
-          ? null
-          : pulumi.Input.encodeList<
-              HostingCustomDomainRequiredDnsUpdateDesired,
-              Map<String, dynamic>
-            >(desireds!, (value) => value.toMap()),
-      'discovereds': ?discovereds == null
-          ? null
-          : pulumi.Input.encodeList<
-              HostingCustomDomainRequiredDnsUpdateDiscovered,
-              Map<String, dynamic>
-            >(discovereds!, (value) => value.toMap()),
+      'desireds': ?desireds == null ? null : pulumi.Input.encodeList<HostingCustomDomainRequiredDnsUpdateDesired, Map<String, dynamic>>(desireds!, (value) => value.toMap()),
+      'discovereds': ?discovereds == null ? null : pulumi.Input.encodeList<HostingCustomDomainRequiredDnsUpdateDiscovered, Map<String, dynamic>>(discovereds!, (value) => value.toMap()),
     };
   }
 
-  factory HostingCustomDomainRequiredDnsUpdate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HostingCustomDomainRequiredDnsUpdate.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainRequiredDnsUpdate(
       checkTime: map['checkTime'] == null ? null : map['checkTime'] as String,
-      desireds: map['desireds'] == null
-          ? null
-          : pulumi
-                .Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesired>(
-              map['desireds'],
-              (value) => HostingCustomDomainRequiredDnsUpdateDesired.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      discovereds: map['discovereds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              HostingCustomDomainRequiredDnsUpdateDiscovered
-            >(
-              map['discovereds'],
-              (value) => HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      desireds: map['desireds'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesired>(map['desireds'], (value) => HostingCustomDomainRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>())),
+      discovereds: map['discovereds'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDiscovered>(map['discovereds'], (value) => HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

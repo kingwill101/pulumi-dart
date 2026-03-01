@@ -9,14 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
   /// firewall policy with the flag to override the existing attachmentTarget's policy association.
   /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
   /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
   final pulumi.Input<String> firewallPolicy;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
 
@@ -28,9 +26,10 @@ class FirewallPolicyAssociationArgs {
     required String attachmentTarget,
     required String firewallPolicy,
     String? name,
-  }) : attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-       firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-       name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
+      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,3 +47,4 @@ class FirewallPolicyAssociationArgs {
     );
   }
 }
+

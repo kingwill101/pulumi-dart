@@ -148,13 +148,10 @@ import 'table_bucket_replication_rule.dart';
 class TableBucketReplication extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN referencing the IAM role assumed by S3 when replicating tables in this bucket.
   late final pulumi.Output<String> role;
-
   /// Replication rules. See Rule below for more details.
   late final pulumi.Output<TableBucketReplicationRule?> rule;
-
   /// ARN referencing the Table Bucket that owns this replication configuration.
   late final pulumi.Output<String> tableBucketArn;
   late final pulumi.Output<String> versionToken;
@@ -168,11 +165,11 @@ class TableBucketReplication extends pulumi.CustomResource {
     TableBucketReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3tables/tableBucketReplication:TableBucketReplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3tables/tableBucketReplication:TableBucketReplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.role = registerOutput<String>('role');
     this.rule = registerOutput<TableBucketReplicationRule?>('rule');

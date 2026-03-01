@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableTableConstraintForeignKeyReferencedTable {
   /// The dataset ID.
   final String datasetId;
-
   /// The ID of the project containing this table.
   final String projectId;
-
   /// The table ID.
   final String tableId;
 
@@ -28,9 +27,7 @@ class GetTableTableConstraintForeignKeyReferencedTable {
     };
   }
 
-  factory GetTableTableConstraintForeignKeyReferencedTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTableTableConstraintForeignKeyReferencedTable.fromMap(Map<String, dynamic> map) {
     return GetTableTableConstraintForeignKeyReferencedTable(
       datasetId: map['datasetId'] as String,
       projectId: map['projectId'] as String,
@@ -38,3 +35,4 @@ class GetTableTableConstraintForeignKeyReferencedTable {
     );
   }
 }
+

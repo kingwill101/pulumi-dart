@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyvaluestoreKeyArgs {
   /// Key to put.
   final pulumi.Input<String> key;
-
   /// Amazon Resource Name (ARN) of the Key Value Store.
   final pulumi.Input<String> keyValueStoreArn;
-
   /// Value to put.
   final pulumi.Input<String> value;
 
@@ -24,9 +22,10 @@ class KeyvaluestoreKeyArgs {
     required String key,
     required String keyValueStoreArn,
     required String value,
-  }) : key = pulumi.Input.asInput<String>(key),
-       keyValueStoreArn = pulumi.Input.asInput<String>(keyValueStoreArn),
-       value = pulumi.Input.asInput<String>(value);
+  }) :
+      key = pulumi.Input.asInput<String>(key),
+      keyValueStoreArn = pulumi.Input.asInput<String>(keyValueStoreArn),
+      value = pulumi.Input.asInput<String>(value);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class KeyvaluestoreKeyArgs {
     );
   }
 }
+

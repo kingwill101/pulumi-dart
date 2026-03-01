@@ -10,19 +10,15 @@ class BareMetalClusterLoadBalancer {
   /// Configuration for BGP typed load balancers.
   /// Structure is documented below.
   final BareMetalClusterLoadBalancerBgpLbConfig? bgpLbConfig;
-
   /// A nested object resource.
   /// Structure is documented below.
   final BareMetalClusterLoadBalancerManualLbConfig? manualLbConfig;
-
   /// A nested object resource.
   /// Structure is documented below.
   final BareMetalClusterLoadBalancerMetalLbConfig? metalLbConfig;
-
   /// Specifies the load balancer ports.
   /// Structure is documented below.
   final BareMetalClusterLoadBalancerPortConfig portConfig;
-
   /// Specified the Bare Metal Load Balancer Config
   /// Structure is documented below.
   final BareMetalClusterLoadBalancerVipConfig vipConfig;
@@ -44,9 +40,7 @@ class BareMetalClusterLoadBalancer {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bgpLbConfig': ?bgpLbConfig == null ? null : bgpLbConfig!.toMap(),
-      'manualLbConfig': ?manualLbConfig == null
-          ? null
-          : manualLbConfig!.toMap(),
+      'manualLbConfig': ?manualLbConfig == null ? null : manualLbConfig!.toMap(),
       'metalLbConfig': ?metalLbConfig == null ? null : metalLbConfig!.toMap(),
       'portConfig': portConfig.toMap(),
       'vipConfig': vipConfig.toMap(),
@@ -55,27 +49,12 @@ class BareMetalClusterLoadBalancer {
 
   factory BareMetalClusterLoadBalancer.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancer(
-      bgpLbConfig: map['bgpLbConfig'] == null
-          ? null
-          : BareMetalClusterLoadBalancerBgpLbConfig.fromMap(
-              (map['bgpLbConfig'] as Map).cast<String, dynamic>(),
-            ),
-      manualLbConfig: map['manualLbConfig'] == null
-          ? null
-          : BareMetalClusterLoadBalancerManualLbConfig.fromMap(
-              (map['manualLbConfig'] as Map).cast<String, dynamic>(),
-            ),
-      metalLbConfig: map['metalLbConfig'] == null
-          ? null
-          : BareMetalClusterLoadBalancerMetalLbConfig.fromMap(
-              (map['metalLbConfig'] as Map).cast<String, dynamic>(),
-            ),
-      portConfig: BareMetalClusterLoadBalancerPortConfig.fromMap(
-        (map['portConfig'] as Map).cast<String, dynamic>(),
-      ),
-      vipConfig: BareMetalClusterLoadBalancerVipConfig.fromMap(
-        (map['vipConfig'] as Map).cast<String, dynamic>(),
-      ),
+      bgpLbConfig: map['bgpLbConfig'] == null ? null : BareMetalClusterLoadBalancerBgpLbConfig.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>()),
+      manualLbConfig: map['manualLbConfig'] == null ? null : BareMetalClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
+      metalLbConfig: map['metalLbConfig'] == null ? null : BareMetalClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>()),
+      portConfig: BareMetalClusterLoadBalancerPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
+      vipConfig: BareMetalClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

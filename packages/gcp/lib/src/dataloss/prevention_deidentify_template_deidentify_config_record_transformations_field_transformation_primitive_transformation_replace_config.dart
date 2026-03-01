@@ -6,8 +6,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Replace each input value with a given value.
   /// The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue
-  newValue;
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue newValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig].
   /// [newValue] Replace each input value with a given value.
@@ -16,17 +15,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'newValue': newValue.toMap()};
+    return <String, dynamic>{
+      'newValue': newValue.toMap(),
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig(
-      newValue:
-          PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap(
-            (map['newValue'] as Map).cast<String, dynamic>(),
-          ),
+      newValue: PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap((map['newValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

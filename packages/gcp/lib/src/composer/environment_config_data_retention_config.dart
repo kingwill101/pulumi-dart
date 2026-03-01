@@ -6,14 +6,9 @@ import 'environment_config_data_retention_config_task_logs_retention_config.dart
 
 class EnvironmentConfigDataRetentionConfig {
   /// Optional. The policy for airflow metadata database retention.
-  final List<
-    EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig
-  >?
-  airflowMetadataRetentionConfigs;
-
+  final List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>? airflowMetadataRetentionConfigs;
   /// Optional. The configuration setting for Task Logs.
-  final List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>?
-  taskLogsRetentionConfigs;
+  final List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>? taskLogsRetentionConfigs;
 
   /// Creates a new [EnvironmentConfigDataRetentionConfig].
   /// [airflowMetadataRetentionConfigs] Optional. The policy for airflow metadata database retention.
@@ -25,49 +20,16 @@ class EnvironmentConfigDataRetentionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'airflowMetadataRetentionConfigs':
-          ?airflowMetadataRetentionConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig,
-              Map<String, dynamic>
-            >(airflowMetadataRetentionConfigs!, (value) => value.toMap()),
-      'taskLogsRetentionConfigs': ?taskLogsRetentionConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig,
-              Map<String, dynamic>
-            >(taskLogsRetentionConfigs!, (value) => value.toMap()),
+      'airflowMetadataRetentionConfigs': ?airflowMetadataRetentionConfigs == null ? null : pulumi.Input.encodeList<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig, Map<String, dynamic>>(airflowMetadataRetentionConfigs!, (value) => value.toMap()),
+      'taskLogsRetentionConfigs': ?taskLogsRetentionConfigs == null ? null : pulumi.Input.encodeList<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig, Map<String, dynamic>>(taskLogsRetentionConfigs!, (value) => value.toMap()),
     };
   }
 
-  factory EnvironmentConfigDataRetentionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigDataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigDataRetentionConfig(
-      airflowMetadataRetentionConfigs:
-          map['airflowMetadataRetentionConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig
-            >(
-              map['airflowMetadataRetentionConfigs'],
-              (value) =>
-                  EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      taskLogsRetentionConfigs: map['taskLogsRetentionConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig
-            >(
-              map['taskLogsRetentionConfigs'],
-              (value) =>
-                  EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      airflowMetadataRetentionConfigs: map['airflowMetadataRetentionConfigs'] == null ? null : pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>(map['airflowMetadataRetentionConfigs'], (value) => EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      taskLogsRetentionConfigs: map['taskLogsRetentionConfigs'] == null ? null : pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>(map['taskLogsRetentionConfigs'], (value) => EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolGoogleSearchTool {
   /// The description of the app version.
   final String? description;
-
   /// (Output)
   /// List of domains to be excluded from the search results.
   /// Example: "example.com".
   /// A maximum of 2000 domains can be excluded.
   final List<String>? excludeDomains;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
@@ -34,17 +33,12 @@ class AppVersionSnapshotToolGoogleSearchTool {
     };
   }
 
-  factory AppVersionSnapshotToolGoogleSearchTool.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolGoogleSearchTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolGoogleSearchTool(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      excludeDomains: map['excludeDomains'] == null
-          ? null
-          : (map['excludeDomains'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      excludeDomains: map['excludeDomains'] == null ? null : (map['excludeDomains'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

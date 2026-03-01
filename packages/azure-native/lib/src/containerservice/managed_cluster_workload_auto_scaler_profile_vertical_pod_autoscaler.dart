@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
+class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
+  /// Whether to enable VPA. Default value is false.
+  final bool enabled;
+
+  /// Creates a new [ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler].
+  /// [enabled] Whether to enable VPA. Default value is false.
+  ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler({
+    required this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
+  }
+
+  factory ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler.fromMap(Map<String, dynamic> map) {
+    return ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler(
+      enabled: map['enabled'] as bool,
+    );
+  }
+}
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionNodeInput {
   /// How input data flows between iterations in a DoWhile loop.
   final String? category;
   final String expression;
-
   /// A name for the flow.
   final String name;
   final String type;
@@ -39,3 +39,4 @@ class AgentFlowDefinitionNodeInput {
     );
   }
 }
+

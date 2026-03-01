@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ScalingGroupLaunchTemplateOverride {
+  /// The instance type in launchTemplateOverride.
+  final String? instanceType;
+  /// The maximum bid price of instance type in launchTemplateOverride.
+  ///
+  ///
+  /// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+  ///
+  /// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+  ///
+  /// > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
+  final double? spotPriceLimit;
+  /// The weight of the instance type in launchTemplateOverride.
+  final int? weightedCapacity;
+
+  /// Creates a new [ScalingGroupLaunchTemplateOverride].
+  /// [instanceType] The instance type in launchTemplateOverride.
+  /// [spotPriceLimit] The maximum bid price of instance type in launchTemplateOverride.
+  /// [weightedCapacity] The weight of the instance type in launchTemplateOverride.
+  ScalingGroupLaunchTemplateOverride({
+    this.instanceType,
+    this.spotPriceLimit,
+    this.weightedCapacity,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'instanceType': ?instanceType,
+      'spotPriceLimit': ?spotPriceLimit,
+      'weightedCapacity': ?weightedCapacity,
+    };
+  }
+
+  factory ScalingGroupLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
+    return ScalingGroupLaunchTemplateOverride(
+      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      spotPriceLimit: map['spotPriceLimit'] == null ? null : map['spotPriceLimit'] as double,
+      weightedCapacity: map['weightedCapacity'] == null ? null : map['weightedCapacity'] as int,
+    );
+  }
+}
+

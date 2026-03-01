@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   final pulumi.Input<String> secretId;
-
   /// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
   final pulumi.Input<String>? versionId;
-
   /// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
   final pulumi.Input<String>? versionStage;
 
@@ -29,10 +26,11 @@ class GetSecretVersionArgs {
     required String secretId,
     String? versionId,
     String? versionStage,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       secretId = pulumi.Input.asInput<String>(secretId),
-       versionId = pulumi.Input.asOptionalInput<String>(versionId),
-       versionStage = pulumi.Input.asOptionalInput<String>(versionStage);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secretId = pulumi.Input.asInput<String>(secretId),
+      versionId = pulumi.Input.asOptionalInput<String>(versionId),
+      versionStage = pulumi.Input.asOptionalInput<String>(versionStage);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +46,8 @@ class GetSecretVersionArgs {
       region: map['region'] == null ? null : map['region'] as String,
       secretId: map['secretId'] as String,
       versionId: map['versionId'] == null ? null : map['versionId'] as String,
-      versionStage: map['versionStage'] == null
-          ? null
-          : map['versionStage'] as String,
+      versionStage: map['versionStage'] == null ? null : map['versionStage'] as String,
     );
   }
 }
+

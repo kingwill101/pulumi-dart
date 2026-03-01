@@ -5,37 +5,24 @@ import 'get_worker_pool_template_container_env_value_source_secret_key_ref.dart'
 
 class GetWorkerPoolTemplateContainerEnvValueSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
-  final List<GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef>
-  secretKeyReves;
+  final List<GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef> secretKeyReves;
 
   /// Creates a new [GetWorkerPoolTemplateContainerEnvValueSource].
   /// [secretKeyReves] Selects a secret and a specific version from Cloud Secret Manager.
-  GetWorkerPoolTemplateContainerEnvValueSource({required this.secretKeyReves});
+  GetWorkerPoolTemplateContainerEnvValueSource({
+    required this.secretKeyReves,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretKeyReves':
-          pulumi.Input.encodeList<
-            GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef,
-            Map<String, dynamic>
-          >(secretKeyReves, (value) => value.toMap()),
+      'secretKeyReves': pulumi.Input.encodeList<GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef, Map<String, dynamic>>(secretKeyReves, (value) => value.toMap()),
     };
   }
 
-  factory GetWorkerPoolTemplateContainerEnvValueSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkerPoolTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerEnvValueSource(
-      secretKeyReves:
-          pulumi.Input.decodeList<
-            GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef
-          >(
-            map['secretKeyReves'],
-            (value) =>
-                GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      secretKeyReves: pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef>(map['secretKeyReves'], (value) => GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
   /// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
   final String? consumeAllocationType;
-
   /// (Optional)
   final String? key;
-
   /// (Optional)
   final List<String>? values;
 
@@ -28,17 +27,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity(
-      consumeAllocationType: map['consumeAllocationType'] == null
-          ? null
-          : map['consumeAllocationType'] as String,
+      consumeAllocationType: map['consumeAllocationType'] == null ? null : map['consumeAllocationType'] as String,
       key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null
-          ? null
-          : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterFleet {
   /// Full resource name of the registered fleet membership of the cluster.
   final String? membership;
-
   /// Short name of the fleet membership, for example "member-1".
   final String? membershipId;
-
   /// Location of the fleet membership, for example "us-central1".
   final String? membershipLocation;
-
   /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
   final String? membershipType;
-
   /// Whether the cluster has been registered via the fleet API.
   final bool? preRegistered;
-
   /// The name of the Fleet host project where this cluster will be registered.
   final String? project;
 
@@ -48,22 +44,13 @@ class ClusterFleet {
 
   factory ClusterFleet.fromMap(Map<String, dynamic> map) {
     return ClusterFleet(
-      membership: map['membership'] == null
-          ? null
-          : map['membership'] as String,
-      membershipId: map['membershipId'] == null
-          ? null
-          : map['membershipId'] as String,
-      membershipLocation: map['membershipLocation'] == null
-          ? null
-          : map['membershipLocation'] as String,
-      membershipType: map['membershipType'] == null
-          ? null
-          : map['membershipType'] as String,
-      preRegistered: map['preRegistered'] == null
-          ? null
-          : map['preRegistered'] as bool,
+      membership: map['membership'] == null ? null : map['membership'] as String,
+      membershipId: map['membershipId'] == null ? null : map['membershipId'] as String,
+      membershipLocation: map['membershipLocation'] == null ? null : map['membershipLocation'] as String,
+      membershipType: map['membershipType'] == null ? null : map['membershipType'] as String,
+      preRegistered: map['preRegistered'] == null ? null : map['preRegistered'] as bool,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

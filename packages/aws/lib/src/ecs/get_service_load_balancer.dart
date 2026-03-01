@@ -5,18 +5,13 @@ import 'get_service_load_balancer_advanced_configuration.dart';
 
 class GetServiceLoadBalancer {
   /// Settings for Blue/Green deployment. See `advanced_configuration` Block for details.
-  final List<GetServiceLoadBalancerAdvancedConfiguration>
-  advancedConfigurations;
-
+  final List<GetServiceLoadBalancerAdvancedConfiguration> advancedConfigurations;
   /// Name of the container to associate with the load balancer.
   final String containerName;
-
   /// Port on the container to associate with the load balancer.
   final int containerPort;
-
   /// Name of the load balancer.
   final String elbName;
-
   /// ARN of the target group to associate with the load balancer.
   final String targetGroupArn;
 
@@ -36,11 +31,7 @@ class GetServiceLoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedConfigurations':
-          pulumi.Input.encodeList<
-            GetServiceLoadBalancerAdvancedConfiguration,
-            Map<String, dynamic>
-          >(advancedConfigurations, (value) => value.toMap()),
+      'advancedConfigurations': pulumi.Input.encodeList<GetServiceLoadBalancerAdvancedConfiguration, Map<String, dynamic>>(advancedConfigurations, (value) => value.toMap()),
       'containerName': containerName,
       'containerPort': containerPort,
       'elbName': elbName,
@@ -50,13 +41,7 @@ class GetServiceLoadBalancer {
 
   factory GetServiceLoadBalancer.fromMap(Map<String, dynamic> map) {
     return GetServiceLoadBalancer(
-      advancedConfigurations:
-          pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(
-            map['advancedConfigurations'],
-            (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      advancedConfigurations: pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(map['advancedConfigurations'], (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       containerName: map['containerName'] as String,
       containerPort: map['containerPort'] as int,
       elbName: map['elbName'] as String,
@@ -64,3 +49,4 @@ class GetServiceLoadBalancer {
     );
   }
 }
+

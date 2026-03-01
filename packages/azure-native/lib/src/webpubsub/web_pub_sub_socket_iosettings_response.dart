@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// SocketIO settings for the resource
+class WebPubSubSocketIOSettingsResponse {
+  /// The service mode of Web PubSub for Socket.IO. Values allowed:
+  /// "Default": have your own backend Socket.IO server
+  /// "Serverless": your application doesn't have a backend server
+  final String? serviceMode;
+
+  /// Creates a new [WebPubSubSocketIOSettingsResponse].
+  /// [serviceMode] The service mode of Web PubSub for Socket.IO. Values allowed:
+  WebPubSubSocketIOSettingsResponse({
+    this.serviceMode,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'serviceMode': ?serviceMode,
+    };
+  }
+
+  factory WebPubSubSocketIOSettingsResponse.fromMap(Map<String, dynamic> map) {
+    return WebPubSubSocketIOSettingsResponse(
+      serviceMode: map['serviceMode'] == null ? null : map['serviceMode'] as String,
+    );
+  }
+}
+

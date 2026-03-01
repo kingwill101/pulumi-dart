@@ -1,0 +1,130 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_cluster_node_type_vm_secret.dart';
+
+class ManagedClusterNodeType {
+  /// Sets the port range available for applications. Format is `<from_port>-<to_port>`, for example `10000-20000`.
+  final String applicationPortRange;
+  /// Specifies a list of key/value pairs used to set capacity tags for this node type.
+  final Map<String, String>? capacities;
+  /// The size of the data disk in gigabytes..
+  final int dataDiskSizeGb;
+  /// The type of the disk to use for storing data. It can be one of `Premium_LRS`, `Standard_LRS`, or `StandardSSD_LRS`. Defaults to `Standard_LRS`.
+  final String? dataDiskType;
+  /// Sets the port range available for the OS. Format is `<from_port>-<to_port>`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `application_port_range`..
+  final String ephemeralPortRange;
+  /// The ID of the Resource Group.
+  final String? id;
+  /// If set the node type can be composed of multiple placement groups.
+  final bool? multiplePlacementGroupsEnabled;
+  /// The name which should be used for this node type.
+  final String name;
+  /// Specifies a list of placement tags that can be used to indicate where services should run..
+  final Map<String, String>? placementProperties;
+  /// If set to true, system services will run on this node type. Only one node type should be marked as primary. Primary node type cannot be deleted or changed once they're created.
+  final bool? primary;
+  /// If set to true, only stateless workloads can run on this node type.
+  final bool? stateless;
+  /// The offer type of the marketplace image cluster VMs will use.
+  final String vmImageOffer;
+  /// The publisher of the marketplace image cluster VMs will use.
+  final String vmImagePublisher;
+  /// The SKU of the marketplace image cluster VMs will use.
+  final String vmImageSku;
+  /// The version of the marketplace image cluster VMs will use.
+  final String vmImageVersion;
+  /// The number of instances this node type will launch.
+  final int vmInstanceCount;
+  /// One or more `vm_secrets` blocks as defined below.
+  final List<ManagedClusterNodeTypeVmSecret>? vmSecrets;
+  /// The size of the instances in this node type.
+  final String vmSize;
+
+  /// Creates a new [ManagedClusterNodeType].
+  /// [applicationPortRange] Sets the port range available for applications. Format is `<from_port>-<to_port>`, for example `10000-20000`.
+  /// [capacities] Specifies a list of key/value pairs used to set capacity tags for this node type.
+  /// [dataDiskSizeGb] The size of the data disk in gigabytes..
+  /// [dataDiskType] The type of the disk to use for storing data. It can be one of `Premium_LRS`, `Standard_LRS`, or `StandardSSD_LRS`. Defaults to `Standard_LRS`.
+  /// [ephemeralPortRange] Sets the port range available for the OS. Format is `<from_port>-<to_port>`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `application_port_range`..
+  /// [id] The ID of the Resource Group.
+  /// [multiplePlacementGroupsEnabled] If set the node type can be composed of multiple placement groups.
+  /// [name] The name which should be used for this node type.
+  /// [placementProperties] Specifies a list of placement tags that can be used to indicate where services should run..
+  /// [primary] If set to true, system services will run on this node type. Only one node type should be marked as primary. Primary node type cannot be deleted or changed once they're created.
+  /// [stateless] If set to true, only stateless workloads can run on this node type.
+  /// [vmImageOffer] The offer type of the marketplace image cluster VMs will use.
+  /// [vmImagePublisher] The publisher of the marketplace image cluster VMs will use.
+  /// [vmImageSku] The SKU of the marketplace image cluster VMs will use.
+  /// [vmImageVersion] The version of the marketplace image cluster VMs will use.
+  /// [vmInstanceCount] The number of instances this node type will launch.
+  /// [vmSecrets] One or more `vm_secrets` blocks as defined below.
+  /// [vmSize] The size of the instances in this node type.
+  ManagedClusterNodeType({
+    required this.applicationPortRange,
+    this.capacities,
+    required this.dataDiskSizeGb,
+    this.dataDiskType,
+    required this.ephemeralPortRange,
+    this.id,
+    this.multiplePlacementGroupsEnabled,
+    required this.name,
+    this.placementProperties,
+    this.primary,
+    this.stateless,
+    required this.vmImageOffer,
+    required this.vmImagePublisher,
+    required this.vmImageSku,
+    required this.vmImageVersion,
+    required this.vmInstanceCount,
+    this.vmSecrets,
+    required this.vmSize,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationPortRange': applicationPortRange,
+      'capacities': ?capacities,
+      'dataDiskSizeGb': dataDiskSizeGb,
+      'dataDiskType': ?dataDiskType,
+      'ephemeralPortRange': ephemeralPortRange,
+      'id': ?id,
+      'multiplePlacementGroupsEnabled': ?multiplePlacementGroupsEnabled,
+      'name': name,
+      'placementProperties': ?placementProperties,
+      'primary': ?primary,
+      'stateless': ?stateless,
+      'vmImageOffer': vmImageOffer,
+      'vmImagePublisher': vmImagePublisher,
+      'vmImageSku': vmImageSku,
+      'vmImageVersion': vmImageVersion,
+      'vmInstanceCount': vmInstanceCount,
+      'vmSecrets': ?vmSecrets == null ? null : pulumi.Input.encodeList<ManagedClusterNodeTypeVmSecret, Map<String, dynamic>>(vmSecrets!, (value) => value.toMap()),
+      'vmSize': vmSize,
+    };
+  }
+
+  factory ManagedClusterNodeType.fromMap(Map<String, dynamic> map) {
+    return ManagedClusterNodeType(
+      applicationPortRange: map['applicationPortRange'] as String,
+      capacities: map['capacities'] == null ? null : (map['capacities'] as Map).cast<String, String>(),
+      dataDiskSizeGb: map['dataDiskSizeGb'] as int,
+      dataDiskType: map['dataDiskType'] == null ? null : map['dataDiskType'] as String,
+      ephemeralPortRange: map['ephemeralPortRange'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+      multiplePlacementGroupsEnabled: map['multiplePlacementGroupsEnabled'] == null ? null : map['multiplePlacementGroupsEnabled'] as bool,
+      name: map['name'] as String,
+      placementProperties: map['placementProperties'] == null ? null : (map['placementProperties'] as Map).cast<String, String>(),
+      primary: map['primary'] == null ? null : map['primary'] as bool,
+      stateless: map['stateless'] == null ? null : map['stateless'] as bool,
+      vmImageOffer: map['vmImageOffer'] as String,
+      vmImagePublisher: map['vmImagePublisher'] as String,
+      vmImageSku: map['vmImageSku'] as String,
+      vmImageVersion: map['vmImageVersion'] as String,
+      vmInstanceCount: map['vmInstanceCount'] as int,
+      vmSecrets: map['vmSecrets'] == null ? null : pulumi.Input.decodeList<ManagedClusterNodeTypeVmSecret>(map['vmSecrets'], (value) => ManagedClusterNodeTypeVmSecret.fromMap((value as Map).cast<String, dynamic>())),
+      vmSize: map['vmSize'] as String,
+    );
+  }
+}
+

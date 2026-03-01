@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'apply_configuration_admissionregistration_k8s_io_v1beta1.dart';
+import 'jsonpatch_admissionregistration_k8s_io_v1beta1.dart';
+
+/// Mutation specifies the CEL expression which is used to apply the Mutation.
+class MutationAdmissionregistrationK8sIoV1beta1 {
+  /// applyConfiguration defines the desired configuration values of an object. The configuration is applied to the admission object using [structured merge diff](https://github.com/kubernetes-sigs/structured-merge-diff). A CEL expression is used to create apply configuration.
+  final ApplyConfigurationAdmissionregistrationK8sIoV1beta1? applyConfiguration;
+  /// jsonPatch defines a [JSON patch](https://jsonpatch.com/) operation to perform a mutation to the object. A CEL expression is used to create the JSON patch.
+  final JSONPatchAdmissionregistrationK8sIoV1beta1? jsonPatch;
+  /// patchType indicates the patch strategy used. Allowed values are "ApplyConfiguration" and "JSONPatch". Required.
+  final String patchType;
+
+  /// Creates a new [MutationAdmissionregistrationK8sIoV1beta1].
+  /// [applyConfiguration] applyConfiguration defines the desired configuration values of an object. The configuration is applied to the admission object using [structured merge diff](https://github.com/kubernetes-sigs/structured-merge-diff). A CEL expression is used to create apply configuration.
+  /// [jsonPatch] jsonPatch defines a [JSON patch](https://jsonpatch.com/) operation to perform a mutation to the object. A CEL expression is used to create the JSON patch.
+  /// [patchType] patchType indicates the patch strategy used. Allowed values are "ApplyConfiguration" and "JSONPatch". Required.
+  MutationAdmissionregistrationK8sIoV1beta1({
+    this.applyConfiguration,
+    this.jsonPatch,
+    required this.patchType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applyConfiguration': ?applyConfiguration == null ? null : applyConfiguration!.toMap(),
+      'jsonPatch': ?jsonPatch == null ? null : jsonPatch!.toMap(),
+      'patchType': patchType,
+    };
+  }
+
+  factory MutationAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+    return MutationAdmissionregistrationK8sIoV1beta1(
+      applyConfiguration: map['applyConfiguration'] == null ? null : ApplyConfigurationAdmissionregistrationK8sIoV1beta1.fromMap((map['applyConfiguration'] as Map).cast<String, dynamic>()),
+      jsonPatch: map['jsonPatch'] == null ? null : JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['jsonPatch'] as Map).cast<String, dynamic>()),
+      patchType: map['patchType'] as String,
+    );
+  }
+}
+

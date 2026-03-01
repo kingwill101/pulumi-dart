@@ -1,0 +1,3 @@
+library pulumi_kubernetes_flowcontrol_apiserver_k8s_io;
+
+export 'package:pulumi_kubernetes/src/flowcontrol_apiserver_k8s_io.dart';

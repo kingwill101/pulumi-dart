@@ -94,10 +94,8 @@ import 'template_association_args.dart';
 class TemplateAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Skip disassociating the quota increase template upon destruction. This will remove the resource from Terraform state, but leave the remote association in place.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// Association status. Creating this resource will result in an `ASSOCIATED` status, and quota increase requests in the template are automatically applied to new AWS accounts in the organization.
   late final pulumi.Output<String> status;
 
@@ -110,11 +108,11 @@ class TemplateAssociation extends pulumi.CustomResource {
     TemplateAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicequotas/templateAssociation:TemplateAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicequotas/templateAssociation:TemplateAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.skipDestroy = registerOutput<bool?>('skipDestroy');
     this.status = registerOutput<String>('status');

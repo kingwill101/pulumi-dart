@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeSourceParametersSqsQueueParameters {
   /// The maximum number of records to include in each batch. Maximum value of 10000.
   final int? batchSize;
-
   /// The maximum length of a time to wait for events. Maximum value of 300.
   final int? maximumBatchingWindowInSeconds;
 
@@ -22,15 +22,11 @@ class PipeSourceParametersSqsQueueParameters {
     };
   }
 
-  factory PipeSourceParametersSqsQueueParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSqsQueueParameters(
       batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      maximumBatchingWindowInSeconds:
-          map['maximumBatchingWindowInSeconds'] == null
-          ? null
-          : map['maximumBatchingWindowInSeconds'] as int,
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : map['maximumBatchingWindowInSeconds'] as int,
     );
   }
 }
+

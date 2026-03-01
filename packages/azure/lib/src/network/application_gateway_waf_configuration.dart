@@ -1,0 +1,77 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_gateway_waf_configuration_disabled_rule_group.dart';
+import 'application_gateway_waf_configuration_exclusion.dart';
+
+class ApplicationGatewayWafConfiguration {
+  /// One or more `disabled_rule_group` blocks as defined below.
+  final List<ApplicationGatewayWafConfigurationDisabledRuleGroup>? disabledRuleGroups;
+  /// Is the Web Application Firewall enabled?
+  final bool enabled;
+  /// One or more `exclusion` blocks as defined below.
+  final List<ApplicationGatewayWafConfigurationExclusion>? exclusions;
+  /// The File Upload Limit in MB. Accepted values are in the range `1`MB to `750`MB for the `WAF_v2` SKU, and `1`MB to `500`MB for all other SKUs. Defaults to `100`MB.
+  final int? fileUploadLimitMb;
+  /// The Web Application Firewall Mode. Possible values are `Detection` and `Prevention`.
+  final String firewallMode;
+  /// The Maximum Request Body Size in KB. Accepted values are in the range `1`KB to `128`KB. Defaults to `128`KB.
+  final int? maxRequestBodySizeKb;
+  /// Is Request Body Inspection enabled? Defaults to `true`.
+  final bool? requestBodyCheck;
+  /// The Type of the Rule Set used for this Web Application Firewall. Possible values are `OWASP`, `Microsoft_BotManagerRuleSet` and `Microsoft_DefaultRuleSet`. Defaults to `OWASP`.
+  final String? ruleSetType;
+  /// The Version of the Rule Set used for this Web Application Firewall. Possible values are `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
+  final String ruleSetVersion;
+
+  /// Creates a new [ApplicationGatewayWafConfiguration].
+  /// [disabledRuleGroups] One or more `disabled_rule_group` blocks as defined below.
+  /// [enabled] Is the Web Application Firewall enabled?
+  /// [exclusions] One or more `exclusion` blocks as defined below.
+  /// [fileUploadLimitMb] The File Upload Limit in MB. Accepted values are in the range `1`MB to `750`MB for the `WAF_v2` SKU, and `1`MB to `500`MB for all other SKUs. Defaults to `100`MB.
+  /// [firewallMode] The Web Application Firewall Mode. Possible values are `Detection` and `Prevention`.
+  /// [maxRequestBodySizeKb] The Maximum Request Body Size in KB. Accepted values are in the range `1`KB to `128`KB. Defaults to `128`KB.
+  /// [requestBodyCheck] Is Request Body Inspection enabled? Defaults to `true`.
+  /// [ruleSetType] The Type of the Rule Set used for this Web Application Firewall. Possible values are `OWASP`, `Microsoft_BotManagerRuleSet` and `Microsoft_DefaultRuleSet`. Defaults to `OWASP`.
+  /// [ruleSetVersion] The Version of the Rule Set used for this Web Application Firewall. Possible values are `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
+  ApplicationGatewayWafConfiguration({
+    this.disabledRuleGroups,
+    required this.enabled,
+    this.exclusions,
+    this.fileUploadLimitMb,
+    required this.firewallMode,
+    this.maxRequestBodySizeKb,
+    this.requestBodyCheck,
+    this.ruleSetType,
+    required this.ruleSetVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'disabledRuleGroups': ?disabledRuleGroups == null ? null : pulumi.Input.encodeList<ApplicationGatewayWafConfigurationDisabledRuleGroup, Map<String, dynamic>>(disabledRuleGroups!, (value) => value.toMap()),
+      'enabled': enabled,
+      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<ApplicationGatewayWafConfigurationExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+      'fileUploadLimitMb': ?fileUploadLimitMb,
+      'firewallMode': firewallMode,
+      'maxRequestBodySizeKb': ?maxRequestBodySizeKb,
+      'requestBodyCheck': ?requestBodyCheck,
+      'ruleSetType': ?ruleSetType,
+      'ruleSetVersion': ruleSetVersion,
+    };
+  }
+
+  factory ApplicationGatewayWafConfiguration.fromMap(Map<String, dynamic> map) {
+    return ApplicationGatewayWafConfiguration(
+      disabledRuleGroups: map['disabledRuleGroups'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayWafConfigurationDisabledRuleGroup>(map['disabledRuleGroups'], (value) => ApplicationGatewayWafConfigurationDisabledRuleGroup.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] as bool,
+      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayWafConfigurationExclusion>(map['exclusions'], (value) => ApplicationGatewayWafConfigurationExclusion.fromMap((value as Map).cast<String, dynamic>())),
+      fileUploadLimitMb: map['fileUploadLimitMb'] == null ? null : map['fileUploadLimitMb'] as int,
+      firewallMode: map['firewallMode'] as String,
+      maxRequestBodySizeKb: map['maxRequestBodySizeKb'] == null ? null : map['maxRequestBodySizeKb'] as int,
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : map['requestBodyCheck'] as bool,
+      ruleSetType: map['ruleSetType'] == null ? null : map['ruleSetType'] as String,
+      ruleSetVersion: map['ruleSetVersion'] as String,
+    );
+  }
+}
+

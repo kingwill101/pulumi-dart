@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoadBalancerHealthCheck {
   /// The number of checks before the instance is declared healthy.
   final int healthyThreshold;
-
   /// The interval between checks.
   final int interval;
-
   /// The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
   /// values are:
   /// * `HTTP`, `HTTPS` - PORT and PATH are required
   /// * `TCP`, `SSL` - PORT is required, PATH is not supported
   final String target;
-
   /// The length of time before the check times out.
   final int timeout;
-
   /// The number of checks before the instance is declared unhealthy.
   final int unhealthyThreshold;
 
@@ -53,3 +50,4 @@ class LoadBalancerHealthCheck {
     );
   }
 }
+

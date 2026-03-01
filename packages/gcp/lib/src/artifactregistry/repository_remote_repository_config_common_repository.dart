@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryRemoteRepositoryConfigCommonRepository {
   /// One of:
   /// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
@@ -9,17 +10,20 @@ class RepositoryRemoteRepositoryConfigCommonRepository {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigCommonRepository].
   /// [uri] One of:
-  RepositoryRemoteRepositoryConfigCommonRepository({required this.uri});
+  RepositoryRemoteRepositoryConfigCommonRepository({
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory RepositoryRemoteRepositoryConfigCommonRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryRemoteRepositoryConfigCommonRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigCommonRepository(
       uri: map['uri'] as String,
     );
   }
 }
+

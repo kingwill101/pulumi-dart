@@ -6,12 +6,9 @@ import 'get_cluster_control_plane_endpoints_config_ip_endpoints_config.dart';
 
 class GetClusterControlPlaneEndpointsConfig {
   /// DNS endpoint configuration.
-  final List<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig>
-  dnsEndpointConfigs;
-
+  final List<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig> dnsEndpointConfigs;
   /// IP endpoint configuration.
-  final List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig>
-  ipEndpointsConfigs;
+  final List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfigs;
 
   /// Creates a new [GetClusterControlPlaneEndpointsConfig].
   /// [dnsEndpointConfigs] DNS endpoint configuration.
@@ -23,43 +20,16 @@ class GetClusterControlPlaneEndpointsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsEndpointConfigs':
-          pulumi.Input.encodeList<
-            GetClusterControlPlaneEndpointsConfigDnsEndpointConfig,
-            Map<String, dynamic>
-          >(dnsEndpointConfigs, (value) => value.toMap()),
-      'ipEndpointsConfigs':
-          pulumi.Input.encodeList<
-            GetClusterControlPlaneEndpointsConfigIpEndpointsConfig,
-            Map<String, dynamic>
-          >(ipEndpointsConfigs, (value) => value.toMap()),
+      'dnsEndpointConfigs': pulumi.Input.encodeList<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig, Map<String, dynamic>>(dnsEndpointConfigs, (value) => value.toMap()),
+      'ipEndpointsConfigs': pulumi.Input.encodeList<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig, Map<String, dynamic>>(ipEndpointsConfigs, (value) => value.toMap()),
     };
   }
 
-  factory GetClusterControlPlaneEndpointsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterControlPlaneEndpointsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterControlPlaneEndpointsConfig(
-      dnsEndpointConfigs:
-          pulumi.Input.decodeList<
-            GetClusterControlPlaneEndpointsConfigDnsEndpointConfig
-          >(
-            map['dnsEndpointConfigs'],
-            (value) =>
-                GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      ipEndpointsConfigs:
-          pulumi.Input.decodeList<
-            GetClusterControlPlaneEndpointsConfigIpEndpointsConfig
-          >(
-            map['ipEndpointsConfigs'],
-            (value) =>
-                GetClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      dnsEndpointConfigs: pulumi.Input.decodeList<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig>(map['dnsEndpointConfigs'], (value) => GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap((value as Map).cast<String, dynamic>())),
+      ipEndpointsConfigs: pulumi.Input.decodeList<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig>(map['ipEndpointsConfigs'], (value) => GetClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

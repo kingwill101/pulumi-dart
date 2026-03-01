@@ -6,14 +6,9 @@ import 'replication_configuration_replication_configuration_rule_repository_filt
 
 class ReplicationConfigurationReplicationConfigurationRule {
   /// the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.
-  final List<ReplicationConfigurationReplicationConfigurationRuleDestination>
-  destinations;
-
+  final List<ReplicationConfigurationReplicationConfigurationRuleDestination> destinations;
   /// filters for a replication rule. See Repository Filter.
-  final List<
-    ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter
-  >?
-  repositoryFilters;
+  final List<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>? repositoryFilters;
 
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRule].
   /// [destinations] the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.
@@ -25,45 +20,16 @@ class ReplicationConfigurationReplicationConfigurationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations':
-          pulumi.Input.encodeList<
-            ReplicationConfigurationReplicationConfigurationRuleDestination,
-            Map<String, dynamic>
-          >(destinations, (value) => value.toMap()),
-      'repositoryFilters': ?repositoryFilters == null
-          ? null
-          : pulumi.Input.encodeList<
-              ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter,
-              Map<String, dynamic>
-            >(repositoryFilters!, (value) => value.toMap()),
+      'destinations': pulumi.Input.encodeList<ReplicationConfigurationReplicationConfigurationRuleDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'repositoryFilters': ?repositoryFilters == null ? null : pulumi.Input.encodeList<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter, Map<String, dynamic>>(repositoryFilters!, (value) => value.toMap()),
     };
   }
 
-  factory ReplicationConfigurationReplicationConfigurationRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationConfigurationReplicationConfigurationRule.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRule(
-      destinations:
-          pulumi.Input.decodeList<
-            ReplicationConfigurationReplicationConfigurationRuleDestination
-          >(
-            map['destinations'],
-            (value) =>
-                ReplicationConfigurationReplicationConfigurationRuleDestination.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      repositoryFilters: map['repositoryFilters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter
-            >(
-              map['repositoryFilters'],
-              (value) =>
-                  ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      destinations: pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleDestination>(map['destinations'], (value) => ReplicationConfigurationReplicationConfigurationRuleDestination.fromMap((value as Map).cast<String, dynamic>())),
+      repositoryFilters: map['repositoryFilters'] == null ? null : pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>(map['repositoryFilters'], (value) => ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration {
   /// The size of the tasks volume in GiB. Must be at least 1.
   final int storageSizeGib;
@@ -11,14 +12,15 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageSizeGib': storageSizeGib};
+    return <String, dynamic>{
+      'storageSizeGib': storageSizeGib,
+    };
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration(
       storageSizeGib: map['storageSizeGib'] as int,
     );
   }
 }
+

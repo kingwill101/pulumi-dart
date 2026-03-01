@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration {
   /// Specifies whether to enable parsing of multimodal data, including both text and images. Valid value: `MULTIMODAL`.
   final String? parsingModality;
@@ -11,16 +12,15 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockData
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parsingModality': ?parsingModality};
+    return <String, dynamic>{
+      'parsingModality': ?parsingModality,
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration(
-      parsingModality: map['parsingModality'] == null
-          ? null
-          : map['parsingModality'] as String,
+      parsingModality: map['parsingModality'] == null ? null : map['parsingModality'] as String,
     );
   }
 }
+

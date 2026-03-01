@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage {
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   final List<int> objectIdPaths;
@@ -11,14 +12,15 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPaths': objectIdPaths};
+    return <String, dynamic>{
+      'objectIdPaths': objectIdPaths,
+    };
   }
 
-  factory CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage(
       objectIdPaths: (map['objectIdPaths'] as List).cast<int>(),
     );
   }
 }
+

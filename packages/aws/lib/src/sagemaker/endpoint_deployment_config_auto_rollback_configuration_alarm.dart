@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
   /// The name of a CloudWatch alarm in your account.
   final String alarmName;
@@ -11,14 +12,15 @@ class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'alarmName': alarmName};
+    return <String, dynamic>{
+      'alarmName': alarmName,
+    };
   }
 
-  factory EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigAutoRollbackConfigurationAlarm(
       alarmName: map['alarmName'] as String,
     );
   }
 }
+

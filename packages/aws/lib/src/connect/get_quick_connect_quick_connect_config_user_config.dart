@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetQuickConnectQuickConnectConfigUserConfig {
   /// Identifier of the contact flow.
   final String contactFlowId;
-
   /// Identifier for the user.
   final String userId;
 
@@ -16,15 +16,17 @@ class GetQuickConnectQuickConnectConfigUserConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contactFlowId': contactFlowId, 'userId': userId};
+    return <String, dynamic>{
+      'contactFlowId': contactFlowId,
+      'userId': userId,
+    };
   }
 
-  factory GetQuickConnectQuickConnectConfigUserConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetQuickConnectQuickConnectConfigUserConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfigUserConfig(
       contactFlowId: map['contactFlowId'] as String,
       userId: map['userId'] as String,
     );
   }
 }
+

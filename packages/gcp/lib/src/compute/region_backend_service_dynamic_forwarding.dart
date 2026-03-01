@@ -9,25 +9,20 @@ class RegionBackendServiceDynamicForwarding {
 
   /// Creates a new [RegionBackendServiceDynamicForwarding].
   /// [ipPortSelection] IP:PORT based dynamic forwarding configuration.
-  RegionBackendServiceDynamicForwarding({this.ipPortSelection});
+  RegionBackendServiceDynamicForwarding({
+    this.ipPortSelection,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipPortSelection': ?ipPortSelection == null
-          ? null
-          : ipPortSelection!.toMap(),
+      'ipPortSelection': ?ipPortSelection == null ? null : ipPortSelection!.toMap(),
     };
   }
 
-  factory RegionBackendServiceDynamicForwarding.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceDynamicForwarding.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceDynamicForwarding(
-      ipPortSelection: map['ipPortSelection'] == null
-          ? null
-          : RegionBackendServiceDynamicForwardingIpPortSelection.fromMap(
-              (map['ipPortSelection'] as Map).cast<String, dynamic>(),
-            ),
+      ipPortSelection: map['ipPortSelection'] == null ? null : RegionBackendServiceDynamicForwardingIpPortSelection.fromMap((map['ipPortSelection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

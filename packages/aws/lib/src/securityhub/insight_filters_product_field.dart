@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersProductField {
   final String comparison;
-
   /// The key of the map filter. For example, for `ResourceTags`, `Key` identifies the name of the tag. For `UserDefinedFields`, `Key` is the name of the field.
   final String key;
   final String value;
@@ -33,3 +33,4 @@ class InsightFiltersProductField {
     );
   }
 }
+

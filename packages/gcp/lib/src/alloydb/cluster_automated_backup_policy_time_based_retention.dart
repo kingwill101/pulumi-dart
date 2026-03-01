@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAutomatedBackupPolicyTimeBasedRetention {
   /// The retention period.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -7,19 +8,20 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention {
 
   /// Creates a new [ClusterAutomatedBackupPolicyTimeBasedRetention].
   /// [retentionPeriod] The retention period.
-  ClusterAutomatedBackupPolicyTimeBasedRetention({this.retentionPeriod});
+  ClusterAutomatedBackupPolicyTimeBasedRetention({
+    this.retentionPeriod,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'retentionPeriod': ?retentionPeriod};
+    return <String, dynamic>{
+      'retentionPeriod': ?retentionPeriod,
+    };
   }
 
-  factory ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyTimeBasedRetention(
-      retentionPeriod: map['retentionPeriod'] == null
-          ? null
-          : map['retentionPeriod'] as String,
+      retentionPeriod: map['retentionPeriod'] == null ? null : map['retentionPeriod'] as String,
     );
   }
 }
+

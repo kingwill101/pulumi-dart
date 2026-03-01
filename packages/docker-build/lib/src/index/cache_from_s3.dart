@@ -1,0 +1,80 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class CacheFromS3 {
+  /// Defaults to `$AWS_ACCESS_KEY_ID`.
+  final String? accessKeyId;
+  /// Prefix to prepend to blob filenames.
+  final String? blobsPrefix;
+  /// Name of the S3 bucket.
+  final String bucket;
+  /// Endpoint of the S3 bucket.
+  final String? endpointUrl;
+  /// Prefix to prepend on manifest filenames.
+  final String? manifestsPrefix;
+  /// Name of the cache image.
+  final String? name;
+  /// The geographic location of the bucket. Defaults to `$AWS_REGION`.
+  final String region;
+  /// Defaults to `$AWS_SECRET_ACCESS_KEY`.
+  final String? secretAccessKey;
+  /// Defaults to `$AWS_SESSION_TOKEN`.
+  final String? sessionToken;
+  /// Uses `bucket` in the URL instead of hostname when `true`.
+  final bool? usePathStyle;
+
+  /// Creates a new [CacheFromS3].
+  /// [accessKeyId] Defaults to `$AWS_ACCESS_KEY_ID`.
+  /// [blobsPrefix] Prefix to prepend to blob filenames.
+  /// [bucket] Name of the S3 bucket.
+  /// [endpointUrl] Endpoint of the S3 bucket.
+  /// [manifestsPrefix] Prefix to prepend on manifest filenames.
+  /// [name] Name of the cache image.
+  /// [region] The geographic location of the bucket. Defaults to `$AWS_REGION`.
+  /// [secretAccessKey] Defaults to `$AWS_SECRET_ACCESS_KEY`.
+  /// [sessionToken] Defaults to `$AWS_SESSION_TOKEN`.
+  /// [usePathStyle] Uses `bucket` in the URL instead of hostname when `true`.
+  CacheFromS3({
+    this.accessKeyId,
+    this.blobsPrefix,
+    required this.bucket,
+    this.endpointUrl,
+    this.manifestsPrefix,
+    this.name,
+    required this.region,
+    this.secretAccessKey,
+    this.sessionToken,
+    this.usePathStyle,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accessKeyId': ?accessKeyId,
+      'blobsPrefix': ?blobsPrefix,
+      'bucket': bucket,
+      'endpointUrl': ?endpointUrl,
+      'manifestsPrefix': ?manifestsPrefix,
+      'name': ?name,
+      'region': region,
+      'secretAccessKey': ?secretAccessKey,
+      'sessionToken': ?sessionToken,
+      'usePathStyle': ?usePathStyle,
+    };
+  }
+
+  factory CacheFromS3.fromMap(Map<String, dynamic> map) {
+    return CacheFromS3(
+      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
+      blobsPrefix: map['blobsPrefix'] == null ? null : map['blobsPrefix'] as String,
+      bucket: map['bucket'] as String,
+      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
+      manifestsPrefix: map['manifestsPrefix'] == null ? null : map['manifestsPrefix'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] as String,
+      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
+      sessionToken: map['sessionToken'] == null ? null : map['sessionToken'] as String,
+      usePathStyle: map['usePathStyle'] == null ? null : map['usePathStyle'] as bool,
+    );
+  }
+}
+

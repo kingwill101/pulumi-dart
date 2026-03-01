@@ -11,29 +11,20 @@ class ResizeRequestStatusLastAttempt {
 
   /// Creates a new [ResizeRequestStatusLastAttempt].
   /// [errors] (Output)
-  ResizeRequestStatusLastAttempt({this.errors});
+  ResizeRequestStatusLastAttempt({
+    this.errors,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null
-          ? null
-          : pulumi.Input.encodeList<
-              ResizeRequestStatusLastAttemptError,
-              Map<String, dynamic>
-            >(errors!, (value) => value.toMap()),
+      'errors': ?errors == null ? null : pulumi.Input.encodeList<ResizeRequestStatusLastAttemptError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
     };
   }
 
   factory ResizeRequestStatusLastAttempt.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttempt(
-      errors: map['errors'] == null
-          ? null
-          : pulumi.Input.decodeList<ResizeRequestStatusLastAttemptError>(
-              map['errors'],
-              (value) => ResizeRequestStatusLastAttemptError.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusLastAttemptError>(map['errors'], (value) => ResizeRequestStatusLastAttemptError.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

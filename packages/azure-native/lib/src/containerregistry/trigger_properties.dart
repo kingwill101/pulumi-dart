@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'base_image_trigger.dart';
+import 'source_trigger.dart';
+import 'timer_trigger.dart';
+
+/// The properties of a trigger.
+class TriggerProperties {
+  /// The trigger based on base image dependencies.
+  final BaseImageTrigger? baseImageTrigger;
+  /// The collection of triggers based on source code repository.
+  final List<SourceTrigger>? sourceTriggers;
+  /// The collection of timer triggers.
+  final List<TimerTrigger>? timerTriggers;
+
+  /// Creates a new [TriggerProperties].
+  /// [baseImageTrigger] The trigger based on base image dependencies.
+  /// [sourceTriggers] The collection of triggers based on source code repository.
+  /// [timerTriggers] The collection of timer triggers.
+  TriggerProperties({
+    this.baseImageTrigger,
+    this.sourceTriggers,
+    this.timerTriggers,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'baseImageTrigger': ?baseImageTrigger == null ? null : baseImageTrigger!.toMap(),
+      'sourceTriggers': ?sourceTriggers == null ? null : pulumi.Input.encodeList<SourceTrigger, Map<String, dynamic>>(sourceTriggers!, (value) => value.toMap()),
+      'timerTriggers': ?timerTriggers == null ? null : pulumi.Input.encodeList<TimerTrigger, Map<String, dynamic>>(timerTriggers!, (value) => value.toMap()),
+    };
+  }
+
+  factory TriggerProperties.fromMap(Map<String, dynamic> map) {
+    return TriggerProperties(
+      baseImageTrigger: map['baseImageTrigger'] == null ? null : BaseImageTrigger.fromMap((map['baseImageTrigger'] as Map).cast<String, dynamic>()),
+      sourceTriggers: map['sourceTriggers'] == null ? null : pulumi.Input.decodeList<SourceTrigger>(map['sourceTriggers'], (value) => SourceTrigger.fromMap((value as Map).cast<String, dynamic>())),
+      timerTriggers: map['timerTriggers'] == null ? null : pulumi.Input.decodeList<TimerTrigger>(map['timerTriggers'], (value) => TimerTrigger.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

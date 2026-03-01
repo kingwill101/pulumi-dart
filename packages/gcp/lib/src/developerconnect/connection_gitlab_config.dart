@@ -8,12 +8,10 @@ class ConnectionGitlabConfig {
   /// and associated metadata.
   /// Structure is documented below.
   final ConnectionGitlabConfigAuthorizerCredential authorizerCredential;
-
   /// Represents a personal access token that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
   final ConnectionGitlabConfigReadAuthorizerCredential readAuthorizerCredential;
-
   /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
   /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate
   /// webhooks.
@@ -39,14 +37,10 @@ class ConnectionGitlabConfig {
 
   factory ConnectionGitlabConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabConfig(
-      authorizerCredential: ConnectionGitlabConfigAuthorizerCredential.fromMap(
-        (map['authorizerCredential'] as Map).cast<String, dynamic>(),
-      ),
-      readAuthorizerCredential:
-          ConnectionGitlabConfigReadAuthorizerCredential.fromMap(
-            (map['readAuthorizerCredential'] as Map).cast<String, dynamic>(),
-          ),
+      authorizerCredential: ConnectionGitlabConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
+      readAuthorizerCredential: ConnectionGitlabConfigReadAuthorizerCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>()),
       webhookSecretSecretVersion: map['webhookSecretSecretVersion'] as String,
     );
   }
 }
+

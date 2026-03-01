@@ -1,0 +1,58 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'recovery_services_provider_properties_response.dart';
+
+/// Result data returned by getReplicationRecoveryServicesProvider.
+class GetReplicationRecoveryServicesProviderResult {
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// Resource Id
+  final String id;
+  /// Resource Location
+  final String? location;
+  /// Resource Name
+  final String name;
+  /// Provider properties.
+  final RecoveryServicesProviderPropertiesResponse properties;
+  /// Resource Type
+  final String type;
+
+  /// Creates a new [GetReplicationRecoveryServicesProviderResult].
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [id] Resource Id
+  /// [location] Resource Location
+  /// [name] Resource Name
+  /// [properties] Provider properties.
+  /// [type] Resource Type
+  GetReplicationRecoveryServicesProviderResult({
+    required this.azureApiVersion,
+    required this.id,
+    this.location,
+    required this.name,
+    required this.properties,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureApiVersion': azureApiVersion,
+      'id': id,
+      'location': ?location,
+      'name': name,
+      'properties': properties.toMap(),
+      'type': type,
+    };
+  }
+
+  factory GetReplicationRecoveryServicesProviderResult.fromMap(Map<String, dynamic> map) {
+    return GetReplicationRecoveryServicesProviderResult(
+      azureApiVersion: map['azureApiVersion'] as String,
+      id: map['id'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] as String,
+      properties: RecoveryServicesProviderPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+    );
+  }
+}
+

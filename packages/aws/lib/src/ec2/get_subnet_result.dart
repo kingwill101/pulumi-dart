@@ -7,53 +7,39 @@ import 'get_subnet_filter.dart';
 class GetSubnetResult {
   /// ARN of the subnet.
   final String arn;
-
   /// Whether an IPv6 address is assigned on creation.
   final bool assignIpv6AddressOnCreation;
   final String availabilityZone;
   final String availabilityZoneId;
-
   /// Available IP addresses of the subnet.
   final int availableIpAddressCount;
   final String cidrBlock;
-
   /// Identifier of customer owned IPv4 address pool.
   final String customerOwnedIpv4Pool;
   final bool defaultForAz;
-
   /// Whether DNS queries made to the Amazon-provided DNS Resolver in this subnet return synthetic IPv6 addresses for IPv4-only destinations.
   final bool enableDns64;
-
   /// Indicates the device position for local network interfaces in this subnet. For example, 1 indicates local network interfaces in this subnet are the secondary network interface (eth1). A local network interface cannot be the primary network interface (eth0).
   final int enableLniAtDeviceIndex;
-
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records.
   final bool enableResourceNameDnsARecordOnLaunch;
-
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.
   final bool enableResourceNameDnsAaaaRecordOnLaunch;
   final List<GetSubnetFilter>? filters;
   final String id;
   final String ipv6CidrBlock;
-
   /// Association ID of the IPv6 CIDR block.
   final String ipv6CidrBlockAssociationId;
-
   /// Whether this is an IPv6-only subnet.
   final bool ipv6Native;
-
   /// Whether customer owned IP addresses are assigned on network interface creation.
   final bool mapCustomerOwnedIpOnLaunch;
-
   /// Whether public IP addresses are assigned on instance launch.
   final bool mapPublicIpOnLaunch;
-
   /// ARN of the Outpost.
   final String outpostArn;
-
   /// ID of the AWS account that owns the subnet.
   final String ownerId;
-
   /// The type of hostnames assigned to instances in the subnet at launch.
   final String privateDnsHostnameTypeOnLaunch;
   final String region;
@@ -129,16 +115,9 @@ class GetSubnetResult {
       'defaultForAz': defaultForAz,
       'enableDns64': enableDns64,
       'enableLniAtDeviceIndex': enableLniAtDeviceIndex,
-      'enableResourceNameDnsARecordOnLaunch':
-          enableResourceNameDnsARecordOnLaunch,
-      'enableResourceNameDnsAaaaRecordOnLaunch':
-          enableResourceNameDnsAaaaRecordOnLaunch,
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<GetSubnetFilter, Map<String, dynamic>>(
-              filters!,
-              (value) => value.toMap(),
-            ),
+      'enableResourceNameDnsARecordOnLaunch': enableResourceNameDnsARecordOnLaunch,
+      'enableResourceNameDnsAaaaRecordOnLaunch': enableResourceNameDnsAaaaRecordOnLaunch,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetSubnetFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'ipv6CidrBlock': ipv6CidrBlock,
       'ipv6CidrBlockAssociationId': ipv6CidrBlockAssociationId,
@@ -167,18 +146,9 @@ class GetSubnetResult {
       defaultForAz: map['defaultForAz'] as bool,
       enableDns64: map['enableDns64'] as bool,
       enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] as int,
-      enableResourceNameDnsARecordOnLaunch:
-          map['enableResourceNameDnsARecordOnLaunch'] as bool,
-      enableResourceNameDnsAaaaRecordOnLaunch:
-          map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetSubnetFilter>(
-              map['filters'],
-              (value) => GetSubnetFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] as bool,
+      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool,
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSubnetFilter>(map['filters'], (value) => GetSubnetFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipv6CidrBlock: map['ipv6CidrBlock'] as String,
       ipv6CidrBlockAssociationId: map['ipv6CidrBlockAssociationId'] as String,
@@ -187,8 +157,7 @@ class GetSubnetResult {
       mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] as bool,
       outpostArn: map['outpostArn'] as String,
       ownerId: map['ownerId'] as String,
-      privateDnsHostnameTypeOnLaunch:
-          map['privateDnsHostnameTypeOnLaunch'] as String,
+      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] as String,
       region: map['region'] as String,
       state: map['state'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -196,3 +165,4 @@ class GetSubnetResult {
     );
   }
 }
+

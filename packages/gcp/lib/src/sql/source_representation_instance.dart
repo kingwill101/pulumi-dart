@@ -304,41 +304,30 @@ import 'source_representation_instance_args.dart';
 class SourceRepresentationInstance extends pulumi.CustomResource {
   /// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
   late final pulumi.Output<String?> caCertificate;
-
   /// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
   late final pulumi.Output<String?> clientCertificate;
-
   /// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
   late final pulumi.Output<String?> clientKey;
-
   /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
   late final pulumi.Output<String> databaseVersion;
-
   /// A file in the bucket that contains the data from the external server.
   late final pulumi.Output<String?> dumpFilePath;
-
   /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
   late final pulumi.Output<String> host;
-
   /// The name of the source representation instance. Use any valid Cloud SQL instance name.
   late final pulumi.Output<String> name;
-
   /// The password for the replication user account.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> password;
-
   /// The externally accessible port for the source database server.
   /// Defaults to 3306.
   late final pulumi.Output<int?> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Region in which the created instance should reside.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
-
   /// The replication user account on the external server.
   late final pulumi.Output<String?> username;
 
@@ -351,11 +340,11 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     SourceRepresentationInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.caCertificate = registerOutput<String?>('caCertificate');
     this.clientCertificate = registerOutput<String?>('clientCertificate');
     this.clientKey = registerOutput<String?>('clientKey');

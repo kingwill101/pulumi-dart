@@ -7,18 +7,12 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_count.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse {
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow?
-  allow;
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock?
-  block;
-
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow? allow;
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock? block;
   /// Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha?
-  captcha;
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge?
-  challenge;
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount?
-  count;
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha? captcha;
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge? challenge;
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount? count;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse].
   /// [allow] Optional.
@@ -44,35 +38,14 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
     };
   }
 
-  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse(
-      allow: map['allow'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap(
-              (map['allow'] as Map).cast<String, dynamic>(),
-            ),
-      block: map['block'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock.fromMap(
-              (map['block'] as Map).cast<String, dynamic>(),
-            ),
-      captcha: map['captcha'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha.fromMap(
-              (map['captcha'] as Map).cast<String, dynamic>(),
-            ),
-      challenge: map['challenge'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge.fromMap(
-              (map['challenge'] as Map).cast<String, dynamic>(),
-            ),
-      count: map['count'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap(
-              (map['count'] as Map).cast<String, dynamic>(),
-            ),
+      allow: map['allow'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
+      block: map['block'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock.fromMap((map['block'] as Map).cast<String, dynamic>()),
+      captcha: map['captcha'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>()),
+      challenge: map['challenge'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>()),
+      count: map['count'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap((map['count'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

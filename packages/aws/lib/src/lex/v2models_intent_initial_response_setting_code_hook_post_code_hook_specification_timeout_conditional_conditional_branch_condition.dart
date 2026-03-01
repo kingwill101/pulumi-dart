@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition {
   /// Expression string that is evaluated.
   final String expressionString;
@@ -11,14 +12,15 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expressionString': expressionString};
+    return <String, dynamic>{
+      'expressionString': expressionString,
+    };
   }
 
-  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition(
       expressionString: map['expressionString'] as String,
     );
   }
 }
+

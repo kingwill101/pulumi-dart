@@ -5,12 +5,9 @@ import 'workflow_on_exception_step_decrypt_step_details_destination_file_locatio
 
 class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation {
   /// Specifies the details for the EFS file being copied.
-  final WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation?
-  efsFileLocation;
-
+  final WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation? efsFileLocation;
   /// Specifies the details for the S3 file being copied.
-  final WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation?
-  s3FileLocation;
+  final WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation? s3FileLocation;
 
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation].
   /// [efsFileLocation] Specifies the details for the EFS file being copied.
@@ -22,29 +19,16 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efsFileLocation': ?efsFileLocation == null
-          ? null
-          : efsFileLocation!.toMap(),
-      's3FileLocation': ?s3FileLocation == null
-          ? null
-          : s3FileLocation!.toMap(),
+      'efsFileLocation': ?efsFileLocation == null ? null : efsFileLocation!.toMap(),
+      's3FileLocation': ?s3FileLocation == null ? null : s3FileLocation!.toMap(),
     };
   }
 
-  factory WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation(
-      efsFileLocation: map['efsFileLocation'] == null
-          ? null
-          : WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap(
-              (map['efsFileLocation'] as Map).cast<String, dynamic>(),
-            ),
-      s3FileLocation: map['s3FileLocation'] == null
-          ? null
-          : WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap(
-              (map['s3FileLocation'] as Map).cast<String, dynamic>(),
-            ),
+      efsFileLocation: map['efsFileLocation'] == null ? null : WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation'] as Map).cast<String, dynamic>()),
+      s3FileLocation: map['s3FileLocation'] == null ? null : WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

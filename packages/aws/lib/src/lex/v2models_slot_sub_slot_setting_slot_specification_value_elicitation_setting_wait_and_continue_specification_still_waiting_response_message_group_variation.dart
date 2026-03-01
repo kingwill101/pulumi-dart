@@ -6,14 +6,10 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_still_waiting_response_message_group_variation_ssml_message.dart';
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation {
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationCustomPayload?
-  customPayload;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationImageResponseCard?
-  imageResponseCard;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage?
-  plainTextMessage;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationSsmlMessage?
-  ssmlMessage;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationCustomPayload? customPayload;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationImageResponseCard? imageResponseCard;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage? plainTextMessage;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationSsmlMessage? ssmlMessage;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation].
   /// [customPayload] Optional.
@@ -30,40 +26,19 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customPayload': ?customPayload == null ? null : customPayload!.toMap(),
-      'imageResponseCard': ?imageResponseCard == null
-          ? null
-          : imageResponseCard!.toMap(),
-      'plainTextMessage': ?plainTextMessage == null
-          ? null
-          : plainTextMessage!.toMap(),
+      'imageResponseCard': ?imageResponseCard == null ? null : imageResponseCard!.toMap(),
+      'plainTextMessage': ?plainTextMessage == null ? null : plainTextMessage!.toMap(),
       'ssmlMessage': ?ssmlMessage == null ? null : ssmlMessage!.toMap(),
     };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation(
-      customPayload: map['customPayload'] == null
-          ? null
-          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationCustomPayload.fromMap(
-              (map['customPayload'] as Map).cast<String, dynamic>(),
-            ),
-      imageResponseCard: map['imageResponseCard'] == null
-          ? null
-          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationImageResponseCard.fromMap(
-              (map['imageResponseCard'] as Map).cast<String, dynamic>(),
-            ),
-      plainTextMessage: map['plainTextMessage'] == null
-          ? null
-          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage.fromMap(
-              (map['plainTextMessage'] as Map).cast<String, dynamic>(),
-            ),
-      ssmlMessage: map['ssmlMessage'] == null
-          ? null
-          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationSsmlMessage.fromMap(
-              (map['ssmlMessage'] as Map).cast<String, dynamic>(),
-            ),
+      customPayload: map['customPayload'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>()),
+      imageResponseCard: map['imageResponseCard'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>()),
+      plainTextMessage: map['plainTextMessage'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>()),
+      ssmlMessage: map['ssmlMessage'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

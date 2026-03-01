@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectorEgressConfigVpcLattice {
   /// Port number for connecting to the SFTP server through VPC Lattice.
   final int portNumber;
-
   /// ARN of the VPC Lattice Resource Configuration.
   final String resourceConfigurationArn;
 
@@ -29,3 +29,4 @@ class GetConnectorEgressConfigVpcLattice {
     );
   }
 }
+

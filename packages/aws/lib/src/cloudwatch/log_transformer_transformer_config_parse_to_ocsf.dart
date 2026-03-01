@@ -1,11 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigParseToOcsf {
   final String eventSource;
-
   /// Specifies the version of the OCSF schema to use for the transformed log events. The only allowed value is `V1.1`.
   final String ocsfVersion;
-
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
   final String? source;
 
@@ -27,9 +26,7 @@ class LogTransformerTransformerConfigParseToOcsf {
     };
   }
 
-  factory LogTransformerTransformerConfigParseToOcsf.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigParseToOcsf.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseToOcsf(
       eventSource: map['eventSource'] as String,
       ocsfVersion: map['ocsfVersion'] as String,
@@ -37,3 +34,4 @@ class LogTransformerTransformerConfigParseToOcsf {
     );
   }
 }
+

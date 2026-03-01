@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainCognitoOption {
   /// Whether node to node encryption is enabled.
   final bool enabled;
-
   /// The Cognito Identity pool used by the domain.
   final String identityPoolId;
-
   /// The IAM Role with the AmazonESCognitoAccess policy attached.
   final String roleArn;
-
   /// The Cognito User pool used by the domain.
   final String userPoolId;
 
@@ -43,3 +41,4 @@ class GetDomainCognitoOption {
     );
   }
 }
+

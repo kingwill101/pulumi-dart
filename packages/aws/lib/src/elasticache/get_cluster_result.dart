@@ -7,81 +7,58 @@ import 'get_cluster_log_delivery_configuration.dart';
 /// Result data returned by getCluster.
 class GetClusterResult {
   final String arn;
-
   /// Availability Zone for the cache cluster.
   final String availabilityZone;
-
   /// List of node objects including `id`, `address`, `port`, `availability_zone` and `outpost_arn`.
   /// Referenceable e.g., as `${data.aws_elasticache_cluster.bar.cache_nodes.0.address}`
   final List<GetClusterCacheNode> cacheNodes;
-
   /// (Memcached only) DNS name of the cache cluster without the port appended.
   final String clusterAddress;
   final String clusterId;
-
   /// (Memcached only) Configuration endpoint to allow host discovery.
   final String configurationEndpoint;
-
   /// Name of the cache engine.
   final String engine;
-
   /// Version number of the cache engine.
   final String engineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The IP version advertised in the discovery protocol.
   final String ipDiscovery;
-
   /// Redis [SLOWLOG](https://redis.io/commands/slowlog) or Redis [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log) delivery settings.
   final List<GetClusterLogDeliveryConfiguration> logDeliveryConfigurations;
-
   /// Specifies the weekly time range for when maintenance
   /// on the cache cluster is performed.
   final String maintenanceWindow;
-
   /// The IP versions for cache cluster connections.
   final String networkType;
-
   /// The cluster node type.
   final String nodeType;
-
   /// An ARN of an
   /// SNS topic that ElastiCache notifications get sent to.
   final String notificationTopicArn;
-
   /// The number of cache nodes that the cache cluster has.
   final int numCacheNodes;
-
   /// Name of the parameter group associated with this cache cluster.
   final String parameterGroupName;
-
   /// The port number on which each of the cache nodes will
   /// accept connections.
   final int port;
-
   /// The outpost ARN in which the cache cluster was created if created in outpost.
   final String preferredOutpostArn;
   final String region;
-
   /// The replication group to which this cache cluster belongs.
   final String replicationGroupId;
-
   /// List VPC security groups associated with the cache cluster.
   final List<String> securityGroupIds;
-
   /// The number of days for which ElastiCache will
   /// retain automatic cache cluster snapshots before deleting them.
   final int snapshotRetentionLimit;
-
   /// Daily time range (in UTC) during which ElastiCache will
   /// begin taking a daily snapshot of the cache cluster.
   final String snapshotWindow;
-
   /// Name of the subnet group associated to the cache cluster.
   final String subnetGroupName;
-
   /// Tags assigned to the resource
   final Map<String, String> tags;
 
@@ -145,11 +122,7 @@ class GetClusterResult {
     return <String, dynamic>{
       'arn': arn,
       'availabilityZone': availabilityZone,
-      'cacheNodes':
-          pulumi.Input.encodeList<GetClusterCacheNode, Map<String, dynamic>>(
-            cacheNodes,
-            (value) => value.toMap(),
-          ),
+      'cacheNodes': pulumi.Input.encodeList<GetClusterCacheNode, Map<String, dynamic>>(cacheNodes, (value) => value.toMap()),
       'clusterAddress': clusterAddress,
       'clusterId': clusterId,
       'configurationEndpoint': configurationEndpoint,
@@ -157,11 +130,7 @@ class GetClusterResult {
       'engineVersion': engineVersion,
       'id': id,
       'ipDiscovery': ipDiscovery,
-      'logDeliveryConfigurations':
-          pulumi.Input.encodeList<
-            GetClusterLogDeliveryConfiguration,
-            Map<String, dynamic>
-          >(logDeliveryConfigurations, (value) => value.toMap()),
+      'logDeliveryConfigurations': pulumi.Input.encodeList<GetClusterLogDeliveryConfiguration, Map<String, dynamic>>(logDeliveryConfigurations, (value) => value.toMap()),
       'maintenanceWindow': maintenanceWindow,
       'networkType': networkType,
       'nodeType': nodeType,
@@ -184,11 +153,7 @@ class GetClusterResult {
     return GetClusterResult(
       arn: map['arn'] as String,
       availabilityZone: map['availabilityZone'] as String,
-      cacheNodes: pulumi.Input.decodeList<GetClusterCacheNode>(
-        map['cacheNodes'],
-        (value) =>
-            GetClusterCacheNode.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      cacheNodes: pulumi.Input.decodeList<GetClusterCacheNode>(map['cacheNodes'], (value) => GetClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())),
       clusterAddress: map['clusterAddress'] as String,
       clusterId: map['clusterId'] as String,
       configurationEndpoint: map['configurationEndpoint'] as String,
@@ -196,13 +161,7 @@ class GetClusterResult {
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       ipDiscovery: map['ipDiscovery'] as String,
-      logDeliveryConfigurations:
-          pulumi.Input.decodeList<GetClusterLogDeliveryConfiguration>(
-            map['logDeliveryConfigurations'],
-            (value) => GetClusterLogDeliveryConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      logDeliveryConfigurations: pulumi.Input.decodeList<GetClusterLogDeliveryConfiguration>(map['logDeliveryConfigurations'], (value) => GetClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       maintenanceWindow: map['maintenanceWindow'] as String,
       networkType: map['networkType'] as String,
       nodeType: map['nodeType'] as String,
@@ -221,3 +180,4 @@ class GetClusterResult {
     );
   }
 }
+

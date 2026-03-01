@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointRedshiftSetting {
   final String bucketFolder;
   final String bucketName;
@@ -36,9 +37,9 @@ class GetEndpointRedshiftSetting {
       bucketFolder: map['bucketFolder'] as String,
       bucketName: map['bucketName'] as String,
       encryptionMode: map['encryptionMode'] as String,
-      serverSideEncryptionKmsKeyId:
-          map['serverSideEncryptionKmsKeyId'] as String,
+      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] as String,
       serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
     );
   }
 }
+

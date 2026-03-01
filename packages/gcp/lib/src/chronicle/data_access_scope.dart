@@ -920,7 +920,6 @@ class DataAccessScope extends pulumi.CustomResource {
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
   late final pulumi.Output<bool?> allowAll;
-
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
@@ -928,53 +927,39 @@ class DataAccessScope extends pulumi.CustomResource {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  late final pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>?>
-  allowedDataAccessLabels;
-
+  late final pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>?> allowedDataAccessLabels;
   /// Output only. The user who created the data access scope.
   late final pulumi.Output<String> author;
-
   /// Output only. The time at which the data access scope was created.
   late final pulumi.Output<String> createTime;
-
   /// Required. The user provided scope id which will become the last part of the name
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
   late final pulumi.Output<String> dataAccessScopeId;
-
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
   /// E.g.: A customer with scope with denied labels A and B won't be able
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  late final pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>?>
-  deniedDataAccessLabels;
-
+  late final pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>?> deniedDataAccessLabels;
   /// Optional. A description of the data access scope for a human reader.
   late final pulumi.Output<String?> description;
-
   /// Output only. The name to be used for display to customers of the data access scope.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
-
   /// Output only. The user who last updated the data access scope.
   late final pulumi.Output<String> lastEditor;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
-
   /// The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Output only. The time at which the data access scope was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -987,23 +972,17 @@ class DataAccessScope extends pulumi.CustomResource {
     DataAccessScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:chronicle/dataAccessScope:DataAccessScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:chronicle/dataAccessScope:DataAccessScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.allowAll = registerOutput<bool?>('allowAll');
-    this.allowedDataAccessLabels =
-        registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>(
-          'allowedDataAccessLabels',
-        );
+    this.allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels');
     this.author = registerOutput<String>('author');
     this.createTime = registerOutput<String>('createTime');
     this.dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
-    this.deniedDataAccessLabels =
-        registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>(
-          'deniedDataAccessLabels',
-        );
+    this.deniedDataAccessLabels = registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>('deniedDataAccessLabels');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String>('displayName');
     this.instance = registerOutput<String>('instance');

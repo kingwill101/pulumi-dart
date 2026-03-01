@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The private link scope resource reference.
+class PrivateLinkScopedResourceResponse {
+  /// The full resource Id of the private link scope resource.
+  final String? resourceId;
+  /// The private link scope unique Identifier.
+  final String? scopeId;
+
+  /// Creates a new [PrivateLinkScopedResourceResponse].
+  /// [resourceId] The full resource Id of the private link scope resource.
+  /// [scopeId] The private link scope unique Identifier.
+  PrivateLinkScopedResourceResponse({
+    this.resourceId,
+    this.scopeId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+      'scopeId': ?scopeId,
+    };
+  }
+
+  factory PrivateLinkScopedResourceResponse.fromMap(Map<String, dynamic> map) {
+    return PrivateLinkScopedResourceResponse(
+      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      scopeId: map['scopeId'] == null ? null : map['scopeId'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Pipeline ElapsedTime Metric Policy.
+class PipelineElapsedTimeMetricPolicyResponse {
+  /// TimeSpan value, after which an Azure Monitoring Metric is fired.
+  final dynamic duration;
+
+  /// Creates a new [PipelineElapsedTimeMetricPolicyResponse].
+  /// [duration] TimeSpan value, after which an Azure Monitoring Metric is fired.
+  PipelineElapsedTimeMetricPolicyResponse({
+    this.duration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'duration': ?duration,
+    };
+  }
+
+  factory PipelineElapsedTimeMetricPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return PipelineElapsedTimeMetricPolicyResponse(
+      duration: map['duration'] == null ? null : map['duration'],
+    );
+  }
+}
+

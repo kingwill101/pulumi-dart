@@ -6,16 +6,12 @@ import 'get_table_external_catalog_table_option_storage_descriptor_serde_info.da
 class GetTableExternalCatalogTableOptionStorageDescriptor {
   /// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
   final String inputFormat;
-
   /// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
   final String locationUri;
-
   /// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
   final String outputFormat;
-
   /// Serializer and deserializer information.
-  final List<GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo>
-  serdeInfos;
+  final List<GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo> serdeInfos;
 
   /// Creates a new [GetTableExternalCatalogTableOptionStorageDescriptor].
   /// [inputFormat] Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
@@ -34,31 +30,17 @@ class GetTableExternalCatalogTableOptionStorageDescriptor {
       'inputFormat': inputFormat,
       'locationUri': locationUri,
       'outputFormat': outputFormat,
-      'serdeInfos':
-          pulumi.Input.encodeList<
-            GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo,
-            Map<String, dynamic>
-          >(serdeInfos, (value) => value.toMap()),
+      'serdeInfos': pulumi.Input.encodeList<GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo, Map<String, dynamic>>(serdeInfos, (value) => value.toMap()),
     };
   }
 
-  factory GetTableExternalCatalogTableOptionStorageDescriptor.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTableExternalCatalogTableOptionStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return GetTableExternalCatalogTableOptionStorageDescriptor(
       inputFormat: map['inputFormat'] as String,
       locationUri: map['locationUri'] as String,
       outputFormat: map['outputFormat'] as String,
-      serdeInfos:
-          pulumi.Input.decodeList<
-            GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo
-          >(
-            map['serdeInfos'],
-            (value) =>
-                GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      serdeInfos: pulumi.Input.decodeList<GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo>(map['serdeInfos'], (value) => GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

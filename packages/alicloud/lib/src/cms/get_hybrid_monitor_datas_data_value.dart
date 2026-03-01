@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetHybridMonitorDatasDataValue {
+  /// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+  final String ts;
+  /// The value of the monitoring indicator.
+  final String value;
+
+  /// Creates a new [GetHybridMonitorDatasDataValue].
+  /// [ts] The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+  /// [value] The value of the monitoring indicator.
+  GetHybridMonitorDatasDataValue({
+    required this.ts,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ts': ts,
+      'value': value,
+    };
+  }
+
+  factory GetHybridMonitorDatasDataValue.fromMap(Map<String, dynamic> map) {
+    return GetHybridMonitorDatasDataValue(
+      ts: map['ts'] as String,
+      value: map['value'] as String,
+    );
+  }
+}
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LaunchTemplateCreditSpecification {
   /// The credit option for CPU usage.
   /// Can be `standard` or `unlimited`.
@@ -9,17 +10,20 @@ class LaunchTemplateCreditSpecification {
 
   /// Creates a new [LaunchTemplateCreditSpecification].
   /// [cpuCredits] The credit option for CPU usage.
-  LaunchTemplateCreditSpecification({this.cpuCredits});
+  LaunchTemplateCreditSpecification({
+    this.cpuCredits,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpuCredits': ?cpuCredits};
+    return <String, dynamic>{
+      'cpuCredits': ?cpuCredits,
+    };
   }
 
   factory LaunchTemplateCreditSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null
-          ? null
-          : map['cpuCredits'] as String,
+      cpuCredits: map['cpuCredits'] == null ? null : map['cpuCredits'] as String,
     );
   }
 }
+

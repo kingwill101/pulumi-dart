@@ -1,0 +1,24 @@
+library module_standbypool;
+
+export 'standbypool/container_group_profile.dart';
+export 'standbypool/container_group_profile_response.dart';
+export 'standbypool/container_group_properties.dart';
+export 'standbypool/container_group_properties_response.dart';
+export 'standbypool/functions.dart';
+export 'standbypool/get_standby_container_group_pool_args.dart';
+export 'standbypool/get_standby_container_group_pool_result.dart';
+export 'standbypool/get_standby_virtual_machine_pool_args.dart';
+export 'standbypool/get_standby_virtual_machine_pool_result.dart';
+export 'standbypool/refill_policy.dart';
+export 'standbypool/standby_container_group_pool.dart';
+export 'standbypool/standby_container_group_pool_args.dart';
+export 'standbypool/standby_container_group_pool_elasticity_profile.dart';
+export 'standbypool/standby_container_group_pool_elasticity_profile_response.dart';
+export 'standbypool/standby_virtual_machine_pool.dart';
+export 'standbypool/standby_virtual_machine_pool_args.dart';
+export 'standbypool/standby_virtual_machine_pool_elasticity_profile.dart';
+export 'standbypool/standby_virtual_machine_pool_elasticity_profile_response.dart';
+export 'standbypool/subnet.dart';
+export 'standbypool/subnet_response.dart';
+export 'standbypool/system_data_response.dart';
+export 'standbypool/virtual_machine_state.dart';

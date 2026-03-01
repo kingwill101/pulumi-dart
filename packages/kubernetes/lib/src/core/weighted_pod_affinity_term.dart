@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'pod_affinity_term.dart';
+
+/// The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+class WeightedPodAffinityTerm {
+  /// Required. A pod affinity term, associated with the corresponding weight.
+  final PodAffinityTerm podAffinityTerm;
+  /// weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+  final int weight;
+
+  /// Creates a new [WeightedPodAffinityTerm].
+  /// [podAffinityTerm] Required. A pod affinity term, associated with the corresponding weight.
+  /// [weight] weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+  WeightedPodAffinityTerm({
+    required this.podAffinityTerm,
+    required this.weight,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'podAffinityTerm': podAffinityTerm.toMap(),
+      'weight': weight,
+    };
+  }
+
+  factory WeightedPodAffinityTerm.fromMap(Map<String, dynamic> map) {
+    return WeightedPodAffinityTerm(
+      podAffinityTerm: PodAffinityTerm.fromMap((map['podAffinityTerm'] as Map).cast<String, dynamic>()),
+      weight: map['weight'] as int,
+    );
+  }
+}
+

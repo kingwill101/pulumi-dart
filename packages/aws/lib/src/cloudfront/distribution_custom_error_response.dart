@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionCustomErrorResponse {
   /// Minimum amount of time you want HTTP error codes to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated.
   final int? errorCachingMinTtl;
-
   /// 4xx or 5xx HTTP status code that you want to customize.
   final int errorCode;
-
   /// HTTP status code that you want CloudFront to return with the custom error page to the viewer.
   final int? responseCode;
-
   /// Path of the custom error page (for example, `/custom_404.html`).
   final String? responsePagePath;
 
@@ -36,16 +34,11 @@ class DistributionCustomErrorResponse {
 
   factory DistributionCustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return DistributionCustomErrorResponse(
-      errorCachingMinTtl: map['errorCachingMinTtl'] == null
-          ? null
-          : map['errorCachingMinTtl'] as int,
+      errorCachingMinTtl: map['errorCachingMinTtl'] == null ? null : map['errorCachingMinTtl'] as int,
       errorCode: map['errorCode'] as int,
-      responseCode: map['responseCode'] == null
-          ? null
-          : map['responseCode'] as int,
-      responsePagePath: map['responsePagePath'] == null
-          ? null
-          : map['responsePagePath'] as String,
+      responseCode: map['responseCode'] == null ? null : map['responseCode'] as int,
+      responsePagePath: map['responsePagePath'] == null ? null : map['responsePagePath'] as String,
     );
   }
 }
+

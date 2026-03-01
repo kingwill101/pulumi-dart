@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class VpcNatGatewayEgressPublicGateway {
+  /// IPv4 address
+  final String? ipv4;
+
+  /// Creates a new [VpcNatGatewayEgressPublicGateway].
+  /// [ipv4] IPv4 address
+  VpcNatGatewayEgressPublicGateway({
+    this.ipv4,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ipv4': ?ipv4,
+    };
+  }
+
+  factory VpcNatGatewayEgressPublicGateway.fromMap(Map<String, dynamic> map) {
+    return VpcNatGatewayEgressPublicGateway(
+      ipv4: map['ipv4'] == null ? null : map['ipv4'] as String,
+    );
+  }
+}
+

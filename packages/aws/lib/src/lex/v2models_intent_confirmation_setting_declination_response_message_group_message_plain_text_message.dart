@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessagePlainTextMessage {
   /// Message to send to the user.
   final String value;
@@ -11,14 +12,15 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessagePla
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessagePlainTextMessage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessagePlainTextMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessagePlainTextMessage(
       value: map['value'] as String,
     );
   }
 }
+

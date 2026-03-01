@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureClientArgs {
   /// The Azure Active Directory Application ID.
   final pulumi.Input<String> applicationId;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// The Azure Active Directory Tenant ID.
   ///
   ///
@@ -38,11 +34,12 @@ class AzureClientArgs {
     String? name,
     String? project,
     required String tenantId,
-  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,3 +61,4 @@ class AzureClientArgs {
     );
   }
 }
+

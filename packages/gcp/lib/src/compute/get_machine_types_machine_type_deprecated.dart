@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMachineTypesMachineTypeDeprecated {
   /// The URL of the suggested replacement for a deprecated machine type.
   final String replacement;
-
   /// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
   final String state;
 
@@ -16,15 +16,17 @@ class GetMachineTypesMachineTypeDeprecated {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replacement': replacement, 'state': state};
+    return <String, dynamic>{
+      'replacement': replacement,
+      'state': state,
+    };
   }
 
-  factory GetMachineTypesMachineTypeDeprecated.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMachineTypesMachineTypeDeprecated.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeDeprecated(
       replacement: map['replacement'] as String,
       state: map['state'] as String,
     );
   }
 }
+

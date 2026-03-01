@@ -115,22 +115,16 @@ import 'network_interface_attachment_args.dart';
 class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
   /// The ENI Attachment ID.
   late final pulumi.Output<String> attachmentId;
-
   /// Network interface index (int).
   late final pulumi.Output<int> deviceIndex;
-
   /// Instance ID to attach.
   late final pulumi.Output<String> instanceId;
-
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   late final pulumi.Output<int> networkCardIndex;
-
   /// ENI ID to attach.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The status of the Network Interface Attachment.
   late final pulumi.Output<String> status;
 
@@ -143,11 +137,11 @@ class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
     NetworkInterfaceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.attachmentId = registerOutput<String>('attachmentId');
     this.deviceIndex = registerOutput<int>('deviceIndex');
     this.instanceId = registerOutput<String>('instanceId');

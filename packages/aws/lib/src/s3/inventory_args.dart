@@ -12,28 +12,20 @@ import 'inventory_schedule.dart';
 class InventoryArgs {
   /// Name of the source bucket that inventory lists the objects for.
   final pulumi.Input<String> bucket;
-
   /// Contains information about where to publish the inventory results (documented below).
   final pulumi.Input<InventoryDestination> destination;
-
   /// Specifies whether the inventory is enabled or disabled.
   final pulumi.Input<bool>? enabled;
-
   /// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
   final pulumi.Input<InventoryFilter>? filter;
-
   /// Object versions to include in the inventory list. Valid values: `All`, `Current`.
   final pulumi.Input<String> includedObjectVersions;
-
   /// Unique identifier of the inventory configuration for the bucket.
   final pulumi.Input<String>? name;
-
   /// List of optional fields that are included in the inventory results. Please refer to the S3 [documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_InventoryConfiguration.html#AmazonS3-Type-InventoryConfiguration-OptionalFields) for more details.
   final pulumi.Input<List<String>>? optionalFields;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the schedule for generating inventory results (documented below).
   final pulumi.Input<InventorySchedule> schedule;
 
@@ -57,67 +49,43 @@ class InventoryArgs {
     List<String>? optionalFields,
     String? region,
     required InventorySchedule schedule,
-  }) : bucket = pulumi.Input.asInput<String>(bucket),
-       destination = pulumi.Input.asInput<InventoryDestination>(destination),
-       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-       filter = pulumi.Input.asOptionalInput<InventoryFilter>(filter),
-       includedObjectVersions = pulumi.Input.asInput<String>(
-         includedObjectVersions,
-       ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       optionalFields = pulumi.Input.asOptionalInput<List<String>>(
-         optionalFields,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       schedule = pulumi.Input.asInput<InventorySchedule>(schedule);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      destination = pulumi.Input.asInput<InventoryDestination>(destination),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      filter = pulumi.Input.asOptionalInput<InventoryFilter>(filter),
+      includedObjectVersions = pulumi.Input.asInput<String>(includedObjectVersions),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      optionalFields = pulumi.Input.asOptionalInput<List<String>>(optionalFields),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      schedule = pulumi.Input.asInput<InventorySchedule>(schedule);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'destination':
-          pulumi.Input.mapInputValue<
-            InventoryDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': pulumi.Input.mapInputValue<InventoryDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'enabled': ?enabled,
-      'filter':
-          ?pulumi.Input.mapOptionalInputValue<
-            InventoryFilter,
-            Map<String, dynamic>
-          >(filter, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<InventoryFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'includedObjectVersions': includedObjectVersions,
       'name': ?name,
       'optionalFields': ?optionalFields,
       'region': ?region,
-      'schedule':
-          pulumi.Input.mapInputValue<InventorySchedule, Map<String, dynamic>>(
-            schedule,
-            (value) => value.toMap(),
-          ),
+      'schedule': pulumi.Input.mapInputValue<InventorySchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
     };
   }
 
   factory InventoryArgs.fromMap(Map<String, dynamic> map) {
     return InventoryArgs(
       bucket: map['bucket'] as String,
-      destination: InventoryDestination.fromMap(
-        (map['destination'] as Map).cast<String, dynamic>(),
-      ),
+      destination: InventoryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      filter: map['filter'] == null
-          ? null
-          : InventoryFilter.fromMap(
-              (map['filter'] as Map).cast<String, dynamic>(),
-            ),
+      filter: map['filter'] == null ? null : InventoryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
       includedObjectVersions: map['includedObjectVersions'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      optionalFields: map['optionalFields'] == null
-          ? null
-          : (map['optionalFields'] as List).cast<String>(),
+      optionalFields: map['optionalFields'] == null ? null : (map['optionalFields'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      schedule: InventorySchedule.fromMap(
-        (map['schedule'] as Map).cast<String, dynamic>(),
-      ),
+      schedule: InventorySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

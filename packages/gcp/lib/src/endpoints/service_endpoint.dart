@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceEndpoint {
   /// The FQDN of the endpoint as described in the config.
   final String? address;
-
   /// The simple name of the endpoint as described in the config.
   final String? name;
 
   /// Creates a new [ServiceEndpoint].
   /// [address] The FQDN of the endpoint as described in the config.
   /// [name] The simple name of the endpoint as described in the config.
-  ServiceEndpoint({this.address, this.name});
+  ServiceEndpoint({
+    this.address,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address, 'name': ?name};
+    return <String, dynamic>{
+      'address': ?address,
+      'name': ?name,
+    };
   }
 
   factory ServiceEndpoint.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class ServiceEndpoint {
     );
   }
 }
+

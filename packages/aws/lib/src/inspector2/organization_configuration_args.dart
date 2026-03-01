@@ -10,7 +10,6 @@ import 'organization_configuration_auto_enable.dart';
 class OrganizationConfigurationArgs {
   /// Configuration block for auto enabling. See below.
   final pulumi.Input<OrganizationConfigurationAutoEnable> autoEnable;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,28 +19,22 @@ class OrganizationConfigurationArgs {
   OrganizationConfigurationArgs({
     required OrganizationConfigurationAutoEnable autoEnable,
     String? region,
-  }) : autoEnable = pulumi.Input.asInput<OrganizationConfigurationAutoEnable>(
-         autoEnable,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      autoEnable = pulumi.Input.asInput<OrganizationConfigurationAutoEnable>(autoEnable),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoEnable':
-          pulumi.Input.mapInputValue<
-            OrganizationConfigurationAutoEnable,
-            Map<String, dynamic>
-          >(autoEnable, (value) => value.toMap()),
+      'autoEnable': pulumi.Input.mapInputValue<OrganizationConfigurationAutoEnable, Map<String, dynamic>>(autoEnable, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: OrganizationConfigurationAutoEnable.fromMap(
-        (map['autoEnable'] as Map).cast<String, dynamic>(),
-      ),
+      autoEnable: OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,0 +1,35 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_registries_args.dart';
+
+class ContainerRegistries extends pulumi.CustomResource {
+  late final pulumi.Output<String> createdAt;
+  late final pulumi.Output<String> endpoint;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> serverUrl;
+  late final pulumi.Output<int> storageUsageBytes;
+  late final pulumi.Output<String> subscriptionTierSlug;
+
+  /// Creates a new [ContainerRegistries].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ContainerRegistries]. {@macro pulumi_index_container_registries_container_registries_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ContainerRegistries(
+    String name, {
+    ContainerRegistriesArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/containerRegistries:ContainerRegistries',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.createdAt = registerOutput<String>('createdAt');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serverUrl = registerOutput<String>('serverUrl');
+    this.storageUsageBytes = registerOutput<int>('storageUsageBytes');
+    this.subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
+  }
+}

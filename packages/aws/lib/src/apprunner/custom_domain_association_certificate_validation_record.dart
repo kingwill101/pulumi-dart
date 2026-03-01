@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomDomainAssociationCertificateValidationRecord {
   /// Certificate CNAME record name.
   final String? name;
-
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   final String? status;
-
   /// Record type, always `CNAME`.
   final String? type;
-
   /// Certificate CNAME record value.
   final String? value;
 
@@ -34,9 +32,7 @@ class CustomDomainAssociationCertificateValidationRecord {
     };
   }
 
-  factory CustomDomainAssociationCertificateValidationRecord.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomDomainAssociationCertificateValidationRecord.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationCertificateValidationRecord(
       name: map['name'] == null ? null : map['name'] as String,
       status: map['status'] == null ? null : map['status'] as String,
@@ -45,3 +41,4 @@ class CustomDomainAssociationCertificateValidationRecord {
     );
   }
 }
+

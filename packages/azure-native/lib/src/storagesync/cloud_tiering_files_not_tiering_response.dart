@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'files_not_tiering_error_response.dart';
+
+/// Server endpoint cloud tiering status object.
+class CloudTieringFilesNotTieringResponse {
+  /// Array of tiering errors
+  final List<FilesNotTieringErrorResponse> errors;
+  /// Last updated timestamp
+  final String lastUpdatedTimestamp;
+  /// Last cloud tiering result (HResult)
+  final double totalFileCount;
+
+  /// Creates a new [CloudTieringFilesNotTieringResponse].
+  /// [errors] Array of tiering errors
+  /// [lastUpdatedTimestamp] Last updated timestamp
+  /// [totalFileCount] Last cloud tiering result (HResult)
+  CloudTieringFilesNotTieringResponse({
+    required this.errors,
+    required this.lastUpdatedTimestamp,
+    required this.totalFileCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'errors': pulumi.Input.encodeList<FilesNotTieringErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'lastUpdatedTimestamp': lastUpdatedTimestamp,
+      'totalFileCount': totalFileCount,
+    };
+  }
+
+  factory CloudTieringFilesNotTieringResponse.fromMap(Map<String, dynamic> map) {
+    return CloudTieringFilesNotTieringResponse(
+      errors: pulumi.Input.decodeList<FilesNotTieringErrorResponse>(map['errors'], (value) => FilesNotTieringErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
+      totalFileCount: map['totalFileCount'] as double,
+    );
+  }
+}
+

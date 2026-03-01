@@ -11,27 +11,31 @@ class GetOrganizationArgs {
   ///
   /// > **NOTE:** One of `organization` or `domain` must be specified.
   final pulumi.Input<String>? domain;
-
   /// The Organization's numeric ID, including an optional `organizations/` prefix.
   final pulumi.Input<String>? organization;
 
   /// Creates a new [GetOrganizationArgs].
   /// [domain] The domain name of the Organization.
   /// [organization] The Organization's numeric ID, including an optional `organizations/` prefix.
-  GetOrganizationArgs({String? domain, String? organization})
-    : domain = pulumi.Input.asOptionalInput<String>(domain),
+  GetOrganizationArgs({
+    String? domain,
+    String? organization,
+  }) :
+      domain = pulumi.Input.asOptionalInput<String>(domain),
       organization = pulumi.Input.asOptionalInput<String>(organization);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': ?domain, 'organization': ?organization};
+    return <String, dynamic>{
+      'domain': ?domain,
+      'organization': ?organization,
+    };
   }
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
       domain: map['domain'] == null ? null : map['domain'] as String,
-      organization: map['organization'] == null
-          ? null
-          : map['organization'] as String,
+      organization: map['organization'] == null ? null : map['organization'] as String,
     );
   }
 }
+

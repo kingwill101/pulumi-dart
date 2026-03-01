@@ -1,0 +1,72 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ip_permission.dart';
+import 'tag.dart';
+
+/// Definition of awsEc2SecurityGroup
+class AwsEc2SecurityGroupProperties {
+  /// <p>A description of the security group.</p>
+  final String? description;
+  /// <p>The ID of the security group.</p>
+  final String? groupId;
+  /// <p>The name of the security group.</p>
+  final String? groupName;
+  /// <p>The inbound rules associated with the security group.</p>
+  final List<IpPermission>? ipPermissions;
+  /// <p>The outbound rules associated with the security group.</p>
+  final List<IpPermission>? ipPermissionsEgress;
+  /// <p>The Amazon Web Services account ID of the owner of the security group.</p>
+  final String? ownerId;
+  /// <p>Any tags assigned to the security group.</p>
+  final List<Tag>? tags;
+  /// <p>The ID of the VPC for the security group.</p>
+  final String? vpcId;
+
+  /// Creates a new [AwsEc2SecurityGroupProperties].
+  /// [description] <p>A description of the security group.</p>
+  /// [groupId] <p>The ID of the security group.</p>
+  /// [groupName] <p>The name of the security group.</p>
+  /// [ipPermissions] <p>The inbound rules associated with the security group.</p>
+  /// [ipPermissionsEgress] <p>The outbound rules associated with the security group.</p>
+  /// [ownerId] <p>The Amazon Web Services account ID of the owner of the security group.</p>
+  /// [tags] <p>Any tags assigned to the security group.</p>
+  /// [vpcId] <p>The ID of the VPC for the security group.</p>
+  AwsEc2SecurityGroupProperties({
+    this.description,
+    this.groupId,
+    this.groupName,
+    this.ipPermissions,
+    this.ipPermissionsEgress,
+    this.ownerId,
+    this.tags,
+    this.vpcId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'groupId': ?groupId,
+      'groupName': ?groupName,
+      'ipPermissions': ?ipPermissions == null ? null : pulumi.Input.encodeList<IpPermission, Map<String, dynamic>>(ipPermissions!, (value) => value.toMap()),
+      'ipPermissionsEgress': ?ipPermissionsEgress == null ? null : pulumi.Input.encodeList<IpPermission, Map<String, dynamic>>(ipPermissionsEgress!, (value) => value.toMap()),
+      'ownerId': ?ownerId,
+      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'vpcId': ?vpcId,
+    };
+  }
+
+  factory AwsEc2SecurityGroupProperties.fromMap(Map<String, dynamic> map) {
+    return AwsEc2SecurityGroupProperties(
+      description: map['description'] == null ? null : map['description'] as String,
+      groupId: map['groupId'] == null ? null : map['groupId'] as String,
+      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      ipPermissions: map['ipPermissions'] == null ? null : pulumi.Input.decodeList<IpPermission>(map['ipPermissions'], (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>())),
+      ipPermissionsEgress: map['ipPermissionsEgress'] == null ? null : pulumi.Input.decodeList<IpPermission>(map['ipPermissionsEgress'], (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>())),
+      ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+    );
+  }
+}
+

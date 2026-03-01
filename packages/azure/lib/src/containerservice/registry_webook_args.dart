@@ -1,0 +1,95 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_containerservice_registry_webook_registry_webook_args_doc}
+/// The set of arguments for RegistryWebook.
+/// {@endtemplate}
+/// {@macro pulumi_containerservice_registry_webook_registry_webook_args_doc}
+class RegistryWebookArgs {
+  /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+  final pulumi.Input<List<String>> actions;
+  /// Custom headers that will be added to the webhook notifications request.
+  final pulumi.Input<Map<String, String>>? customHeaders;
+  /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// Specifies the name of the Container Registry Webhook. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
+  final pulumi.Input<String> registryName;
+  /// The name of the resource group in which to create the Container Registry Webhook. Changing this forces a new resource to be created.
+  final pulumi.Input<String> resourceGroupName;
+  /// Specifies the scope of repositories that can trigger an event. For example, `foo:*` means events for all tags under repository `foo`. `foo:bar` means events for 'foo:bar' only. `foo` is equivalent to `foo:latest`. Empty means all events. Defaults to `""`.
+  final pulumi.Input<String>? scope;
+  /// Specifies the service URI for the Webhook to post notifications.
+  final pulumi.Input<String> serviceUri;
+  /// Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
+  final pulumi.Input<String>? status;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [RegistryWebookArgs].
+  /// [actions] A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+  /// [customHeaders] Custom headers that will be added to the webhook notifications request.
+  /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+  /// [name] Specifies the name of the Container Registry Webhook. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+  /// [registryName] The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
+  /// [resourceGroupName] The name of the resource group in which to create the Container Registry Webhook. Changing this forces a new resource to be created.
+  /// [scope] Specifies the scope of repositories that can trigger an event. For example, `foo:*` means events for all tags under repository `foo`. `foo:bar` means events for 'foo:bar' only. `foo` is equivalent to `foo:latest`. Empty means all events. Defaults to `""`.
+  /// [serviceUri] Specifies the service URI for the Webhook to post notifications.
+  /// [status] Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
+  /// [tags] A mapping of tags to assign to the resource.
+  RegistryWebookArgs({
+    required List<String> actions,
+    Map<String, String>? customHeaders,
+    String? location,
+    String? name,
+    required String registryName,
+    required String resourceGroupName,
+    String? scope,
+    required String serviceUri,
+    String? status,
+    Map<String, String>? tags,
+  }) :
+      actions = pulumi.Input.asInput<List<String>>(actions),
+      customHeaders = pulumi.Input.asOptionalInput<Map<String, String>>(customHeaders),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      registryName = pulumi.Input.asInput<String>(registryName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      scope = pulumi.Input.asOptionalInput<String>(scope),
+      serviceUri = pulumi.Input.asInput<String>(serviceUri),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actions': actions,
+      'customHeaders': ?customHeaders,
+      'location': ?location,
+      'name': ?name,
+      'registryName': registryName,
+      'resourceGroupName': resourceGroupName,
+      'scope': ?scope,
+      'serviceUri': serviceUri,
+      'status': ?status,
+      'tags': ?tags,
+    };
+  }
+
+  factory RegistryWebookArgs.fromMap(Map<String, dynamic> map) {
+    return RegistryWebookArgs(
+      actions: (map['actions'] as List).cast<String>(),
+      customHeaders: map['customHeaders'] == null ? null : (map['customHeaders'] as Map).cast<String, String>(),
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      registryName: map['registryName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      scope: map['scope'] == null ? null : map['scope'] as String,
+      serviceUri: map['serviceUri'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}
+

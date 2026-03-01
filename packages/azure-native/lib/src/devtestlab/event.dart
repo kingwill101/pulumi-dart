@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// An event to be notified for.
+class Event {
+  /// The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
+  final String? eventName;
+
+  /// Creates a new [Event].
+  /// [eventName] The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
+  Event({
+    this.eventName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'eventName': ?eventName,
+    };
+  }
+
+  factory Event.fromMap(Map<String, dynamic> map) {
+    return Event(
+      eventName: map['eventName'] == null ? null : map['eventName'] as String,
+    );
+  }
+}
+

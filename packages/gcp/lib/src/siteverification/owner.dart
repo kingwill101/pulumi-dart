@@ -370,7 +370,6 @@ class Owner extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> email;
-
   /// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
   /// such as `webResource/https://www.example.com/`
   late final pulumi.Output<String> webResourceId;
@@ -379,13 +378,16 @@ class Owner extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Owner]. {@macro pulumi_siteverification_owner_owner_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Owner(String name, {OwnerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:siteverification/owner:Owner',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Owner(
+    String name, {
+    OwnerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:siteverification/owner:Owner',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.email = registerOutput<String>('email');
     this.webResourceId = registerOutput<String>('webResourceId');
   }

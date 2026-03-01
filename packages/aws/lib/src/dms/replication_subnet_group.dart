@@ -456,22 +456,16 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> replicationSubnetGroupArn;
-
   /// Description for the subnet group.
   late final pulumi.Output<String> replicationSubnetGroupDescription;
-
   /// Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   late final pulumi.Output<String> replicationSubnetGroupId;
-
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   late final pulumi.Output<List<String>> subnetIds;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ID of the VPC the subnet group is in.
   late final pulumi.Output<String> vpcId;
 
@@ -484,21 +478,15 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
     ReplicationSubnetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
-    this.replicationSubnetGroupArn = registerOutput<String>(
-      'replicationSubnetGroupArn',
-    );
-    this.replicationSubnetGroupDescription = registerOutput<String>(
-      'replicationSubnetGroupDescription',
-    );
-    this.replicationSubnetGroupId = registerOutput<String>(
-      'replicationSubnetGroupId',
-    );
+    this.replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
+    this.replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
+    this.replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
     this.subnetIds = registerOutput<List<String>>('subnetIds');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

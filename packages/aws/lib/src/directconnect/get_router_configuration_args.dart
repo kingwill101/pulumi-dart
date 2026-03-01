@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouterConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
   /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
@@ -29,7 +28,6 @@ class GetRouterConfigurationArgs {
   /// }
   /// ```
   final pulumi.Input<String> routerTypeIdentifier;
-
   /// ID of the Direct Connect Virtual Interface
   final pulumi.Input<String> virtualInterfaceId;
 
@@ -41,11 +39,10 @@ class GetRouterConfigurationArgs {
     String? region,
     required String routerTypeIdentifier,
     required String virtualInterfaceId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       routerTypeIdentifier = pulumi.Input.asInput<String>(
-         routerTypeIdentifier,
-       ),
-       virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routerTypeIdentifier = pulumi.Input.asInput<String>(routerTypeIdentifier),
+      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,3 +60,4 @@ class GetRouterConfigurationArgs {
     );
   }
 }
+

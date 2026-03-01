@@ -6,13 +6,10 @@ import 'get_secrets_secret.dart';
 /// Result data returned by getSecrets.
 class GetSecretsResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the project in which the resource belongs.
   final String project;
-
   /// A list of secrets matching the filter. Structure is defined below.
   final List<GetSecretsSecret> secrets;
 
@@ -33,11 +30,7 @@ class GetSecretsResult {
       'filter': ?filter,
       'id': id,
       'project': project,
-      'secrets':
-          pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(
-            secrets,
-            (value) => value.toMap(),
-          ),
+      'secrets': pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
     };
   }
 
@@ -46,11 +39,8 @@ class GetSecretsResult {
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       project: map['project'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(
-        map['secrets'],
-        (value) =>
-            GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

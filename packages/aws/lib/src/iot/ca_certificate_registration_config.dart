@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CaCertificateRegistrationConfig {
   /// The ARN of the role.
   final String? roleArn;
-
   /// The template body.
   final String? templateBody;
-
   /// The name of the provisioning template.
   final String? templateName;
 
@@ -31,12 +30,9 @@ class CaCertificateRegistrationConfig {
   factory CaCertificateRegistrationConfig.fromMap(Map<String, dynamic> map) {
     return CaCertificateRegistrationConfig(
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      templateBody: map['templateBody'] == null
-          ? null
-          : map['templateBody'] as String,
-      templateName: map['templateName'] == null
-          ? null
-          : map['templateName'] as String,
+      templateBody: map['templateBody'] == null ? null : map['templateBody'] as String,
+      templateName: map['templateName'] == null ? null : map['templateName'] as String,
     );
   }
 }
+

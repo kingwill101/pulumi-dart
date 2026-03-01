@@ -8,34 +8,20 @@ class FieldLevelEncryptionProfileEncryptionEntities {
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntities].
   /// [items] Optional.
-  FieldLevelEncryptionProfileEncryptionEntities({this.items});
+  FieldLevelEncryptionProfileEncryptionEntities({
+    this.items,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null
-          ? null
-          : pulumi.Input.encodeList<
-              FieldLevelEncryptionProfileEncryptionEntitiesItem,
-              Map<String, dynamic>
-            >(items!, (value) => value.toMap()),
+      'items': ?items == null ? null : pulumi.Input.encodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
     };
   }
 
-  factory FieldLevelEncryptionProfileEncryptionEntities.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FieldLevelEncryptionProfileEncryptionEntities.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileEncryptionEntities(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FieldLevelEncryptionProfileEncryptionEntitiesItem
-            >(
-              map['items'],
-              (value) =>
-                  FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem>(map['items'], (value) => FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

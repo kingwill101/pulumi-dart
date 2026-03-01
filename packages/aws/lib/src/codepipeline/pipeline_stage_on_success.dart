@@ -8,17 +8,20 @@ class PipelineStageOnSuccess {
 
   /// Creates a new [PipelineStageOnSuccess].
   /// [condition] The conditions that are success conditions. Defined as a `condition` block below.
-  PipelineStageOnSuccess({required this.condition});
+  PipelineStageOnSuccess({
+    required this.condition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'condition': condition.toMap()};
+    return <String, dynamic>{
+      'condition': condition.toMap(),
+    };
   }
 
   factory PipelineStageOnSuccess.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnSuccess(
-      condition: PipelineStageOnSuccessCondition.fromMap(
-        (map['condition'] as Map).cast<String, dynamic>(),
-      ),
+      condition: PipelineStageOnSuccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

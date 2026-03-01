@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubnetworkParams {
   /// Resource manager tags to be bound to the subnetwork. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -11,17 +12,20 @@ class SubnetworkParams {
 
   /// Creates a new [SubnetworkParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the subnetwork. Tag keys and values have the
-  SubnetworkParams({this.resourceManagerTags});
+  SubnetworkParams({
+    this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory SubnetworkParams.fromMap(Map<String, dynamic> map) {
     return SubnetworkParams(
-      resourceManagerTags: map['resourceManagerTags'] == null
-          ? null
-          : (map['resourceManagerTags'] as Map).cast<String, String>(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (map['resourceManagerTags'] as Map).cast<String, String>(),
     );
   }
 }
+

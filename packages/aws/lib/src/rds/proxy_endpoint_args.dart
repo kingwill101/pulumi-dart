@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyEndpointArgs {
   /// The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
   final pulumi.Input<String> dbProxyEndpointName;
-
   /// The name of the DB proxy associated with the DB proxy endpoint that you create.
   final pulumi.Input<String> dbProxyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
   final pulumi.Input<String>? targetRole;
-
   /// One or more VPC security group IDs to associate with the new proxy.
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
-
   /// One or more VPC subnet IDs to associate with the new proxy.
   final pulumi.Input<List<String>> vpcSubnetIds;
 
@@ -44,15 +38,14 @@ class ProxyEndpointArgs {
     String? targetRole,
     List<String>? vpcSecurityGroupIds,
     required List<String> vpcSubnetIds,
-  }) : dbProxyEndpointName = pulumi.Input.asInput<String>(dbProxyEndpointName),
-       dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       targetRole = pulumi.Input.asOptionalInput<String>(targetRole),
-       vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(
-         vpcSecurityGroupIds,
-       ),
-       vpcSubnetIds = pulumi.Input.asInput<List<String>>(vpcSubnetIds);
+  }) :
+      dbProxyEndpointName = pulumi.Input.asInput<String>(dbProxyEndpointName),
+      dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      targetRole = pulumi.Input.asOptionalInput<String>(targetRole),
+      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds),
+      vpcSubnetIds = pulumi.Input.asInput<List<String>>(vpcSubnetIds);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,16 +64,11 @@ class ProxyEndpointArgs {
       dbProxyEndpointName: map['dbProxyEndpointName'] as String,
       dbProxyName: map['dbProxyName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      targetRole: map['targetRole'] == null
-          ? null
-          : map['targetRole'] as String,
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null
-          ? null
-          : (map['vpcSecurityGroupIds'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      targetRole: map['targetRole'] == null ? null : map['targetRole'] as String,
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (map['vpcSecurityGroupIds'] as List).cast<String>(),
       vpcSubnetIds: (map['vpcSubnetIds'] as List).cast<String>(),
     );
   }
 }
+

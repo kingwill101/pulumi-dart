@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class TriggerResponse {
+  /// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+  final String? timeAfterCreate;
+  /// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+  final String? timeBeforeExpiry;
+
+  /// Creates a new [TriggerResponse].
+  /// [timeAfterCreate] The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+  /// [timeBeforeExpiry] The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+  TriggerResponse({
+    this.timeAfterCreate,
+    this.timeBeforeExpiry,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'timeAfterCreate': ?timeAfterCreate,
+      'timeBeforeExpiry': ?timeBeforeExpiry,
+    };
+  }
+
+  factory TriggerResponse.fromMap(Map<String, dynamic> map) {
+    return TriggerResponse(
+      timeAfterCreate: map['timeAfterCreate'] == null ? null : map['timeAfterCreate'] as String,
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : map['timeBeforeExpiry'] as String,
+    );
+  }
+}
+

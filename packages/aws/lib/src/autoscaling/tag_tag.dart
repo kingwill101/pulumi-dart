@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TagTag {
   /// Tag name.
   final String key;
-
   /// Whether to propagate the tags to instances launched by the ASG.
   final bool propagateAtLaunch;
-
   /// Tag value.
   final String value;
 
@@ -36,3 +35,4 @@ class TagTag {
     );
   }
 }
+

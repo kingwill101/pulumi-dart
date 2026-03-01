@@ -1,0 +1,19 @@
+/// This determines if events published to this partner namespace should use the source attribute in the event payload
+/// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+enum PartnerTopicRoutingMode {
+  valueSourceEventAttribute("SourceEventAttribute"),
+  valueChannelNameHeader("ChannelNameHeader");
+
+  const PartnerTopicRoutingMode(this.value);
+  final String value;
+
+  static PartnerTopicRoutingMode fromValue(String value) {
+    for (final item in PartnerTopicRoutingMode.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown PartnerTopicRoutingMode value: $value');
+  }
+}
+

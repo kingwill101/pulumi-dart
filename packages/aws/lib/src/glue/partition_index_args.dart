@@ -10,16 +10,12 @@ import 'partition_index_partition_index.dart';
 class PartitionIndexArgs {
   /// The catalog ID where the table resides.
   final pulumi.Input<String>? catalogId;
-
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final pulumi.Input<String> databaseName;
-
   /// Configuration block for a partition index. See `partition_index` below.
   final pulumi.Input<PartitionIndexPartitionIndex> partitionIndex;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   final pulumi.Input<String> tableName;
 
@@ -35,23 +31,18 @@ class PartitionIndexArgs {
     required PartitionIndexPartitionIndex partitionIndex,
     String? region,
     required String tableName,
-  }) : catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-       databaseName = pulumi.Input.asInput<String>(databaseName),
-       partitionIndex = pulumi.Input.asInput<PartitionIndexPartitionIndex>(
-         partitionIndex,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tableName = pulumi.Input.asInput<String>(tableName);
+  }) :
+      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
+      databaseName = pulumi.Input.asInput<String>(databaseName),
+      partitionIndex = pulumi.Input.asInput<PartitionIndexPartitionIndex>(partitionIndex),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tableName = pulumi.Input.asInput<String>(tableName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalogId': ?catalogId,
       'databaseName': databaseName,
-      'partitionIndex':
-          pulumi.Input.mapInputValue<
-            PartitionIndexPartitionIndex,
-            Map<String, dynamic>
-          >(partitionIndex, (value) => value.toMap()),
+      'partitionIndex': pulumi.Input.mapInputValue<PartitionIndexPartitionIndex, Map<String, dynamic>>(partitionIndex, (value) => value.toMap()),
       'region': ?region,
       'tableName': tableName,
     };
@@ -61,11 +52,10 @@ class PartitionIndexArgs {
     return PartitionIndexArgs(
       catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
       databaseName: map['databaseName'] as String,
-      partitionIndex: PartitionIndexPartitionIndex.fromMap(
-        (map['partitionIndex'] as Map).cast<String, dynamic>(),
-      ),
+      partitionIndex: PartitionIndexPartitionIndex.fromMap((map['partitionIndex'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
       tableName: map['tableName'] as String,
     );
   }
 }
+

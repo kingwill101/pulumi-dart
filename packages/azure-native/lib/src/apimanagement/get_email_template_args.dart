@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apimanagement_get_email_template_args_doc}
+/// Arguments for getEmailTemplate.
+/// {@endtemplate}
+/// {@macro pulumi_apimanagement_get_email_template_args_doc}
+class GetEmailTemplateArgs {
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the API Management service.
+  final pulumi.Input<String> serviceName;
+  /// Email Template Name Identifier.
+  final pulumi.Input<String> templateName;
+
+  /// Creates a new [GetEmailTemplateArgs].
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [serviceName] The name of the API Management service.
+  /// [templateName] Email Template Name Identifier.
+  GetEmailTemplateArgs({
+    required String resourceGroupName,
+    required String serviceName,
+    required String templateName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      serviceName = pulumi.Input.asInput<String>(serviceName),
+      templateName = pulumi.Input.asInput<String>(templateName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'serviceName': serviceName,
+      'templateName': templateName,
+    };
+  }
+
+  factory GetEmailTemplateArgs.fromMap(Map<String, dynamic> map) {
+    return GetEmailTemplateArgs(
+      resourceGroupName: map['resourceGroupName'] as String,
+      serviceName: map['serviceName'] as String,
+      templateName: map['templateName'] as String,
+    );
+  }
+}
+

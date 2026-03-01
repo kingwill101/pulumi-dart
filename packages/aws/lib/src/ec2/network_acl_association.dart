@@ -113,10 +113,8 @@ import 'network_acl_association_args.dart';
 class NetworkAclAssociation extends pulumi.CustomResource {
   /// The ID of the network ACL.
   late final pulumi.Output<String> networkAclId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the associated Subnet.
   late final pulumi.Output<String> subnetId;
 
@@ -129,11 +127,11 @@ class NetworkAclAssociation extends pulumi.CustomResource {
     NetworkAclAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkAclAssociation:NetworkAclAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkAclAssociation:NetworkAclAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.networkAclId = registerOutput<String>('networkAclId');
     this.region = registerOutput<String>('region');
     this.subnetId = registerOutput<String>('subnetId');

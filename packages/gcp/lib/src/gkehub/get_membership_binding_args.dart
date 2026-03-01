@@ -10,13 +10,10 @@ class GetMembershipBindingArgs {
   /// The location for the GKE Hub Membership Binding.
   /// Currently only `global` is supported.
   final pulumi.Input<String> location;
-
   /// The ID of the membership binding.
   final pulumi.Input<String> membershipBindingId;
-
   /// The ID of the membership that this binding applies to.
   final pulumi.Input<String> membershipId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -31,10 +28,11 @@ class GetMembershipBindingArgs {
     required String membershipBindingId,
     required String membershipId,
     String? project,
-  }) : location = pulumi.Input.asInput<String>(location),
-       membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
-       membershipId = pulumi.Input.asInput<String>(membershipId),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
+      membershipId = pulumi.Input.asInput<String>(membershipId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,3 +52,4 @@ class GetMembershipBindingArgs {
     );
   }
 }
+

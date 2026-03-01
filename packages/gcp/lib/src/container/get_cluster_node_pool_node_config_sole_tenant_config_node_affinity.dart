@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
   /// .
   final String key;
-
   /// .
   final String operator;
-
   /// .
   final List<String> values;
 
@@ -28,9 +27,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -38,3 +35,4 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
     );
   }
 }
+

@@ -140,16 +140,12 @@ import 'resolver_dns_sec_config_args.dart';
 class ResolverDnsSecConfig extends pulumi.CustomResource {
   /// The ARN for a configuration for DNSSEC validation.
   late final pulumi.Output<String> arn;
-
   /// The owner account ID of the virtual private cloud (VPC) for a configuration for DNSSEC validation.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
   late final pulumi.Output<String> resourceId;
-
   /// The validation status for a DNSSEC configuration. The status can be one of the following: `ENABLING`, `ENABLED`, `DISABLING` and `DISABLED`.
   late final pulumi.Output<String> validationStatus;
 
@@ -162,11 +158,11 @@ class ResolverDnsSecConfig extends pulumi.CustomResource {
     ResolverDnsSecConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/resolverDnsSecConfig:ResolverDnsSecConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/resolverDnsSecConfig:ResolverDnsSecConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.ownerId = registerOutput<String>('ownerId');
     this.region = registerOutput<String>('region');

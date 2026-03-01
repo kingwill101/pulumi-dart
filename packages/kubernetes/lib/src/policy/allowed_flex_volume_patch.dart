@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
+class AllowedFlexVolumePatch {
+  /// driver is the name of the Flexvolume driver.
+  final String? driver;
+
+  /// Creates a new [AllowedFlexVolumePatch].
+  /// [driver] driver is the name of the Flexvolume driver.
+  AllowedFlexVolumePatch({
+    this.driver,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'driver': ?driver,
+    };
+  }
+
+  factory AllowedFlexVolumePatch.fromMap(Map<String, dynamic> map) {
+    return AllowedFlexVolumePatch(
+      driver: map['driver'] == null ? null : map['driver'] as String,
+    );
+  }
+}
+

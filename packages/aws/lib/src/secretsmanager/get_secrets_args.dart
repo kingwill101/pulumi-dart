@@ -10,46 +10,31 @@ import 'get_secrets_filter.dart';
 class GetSecretsArgs {
   /// Configuration block(s) for filtering. Detailed below.
   final pulumi.Input<List<GetSecretsFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetSecretsArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSecretsArgs({List<GetSecretsFilter>? filters, String? region})
-    : filters = pulumi.Input.asOptionalInput<List<GetSecretsFilter>>(filters),
+  GetSecretsArgs({
+    List<GetSecretsFilter>? filters,
+    String? region,
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetSecretsFilter>>(filters),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetSecretsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetSecretsFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetSecretsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetSecretsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
     };
   }
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetSecretsFilter>(
-              map['filters'],
-              (value) => GetSecretsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecretsFilter>(map['filters'], (value) => GetSecretsFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

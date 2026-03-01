@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecretsSecretRotation {
   /// Timestamp in UTC at which the Secret is scheduled to rotate.
   final String nextRotationTime;
-
   /// The Duration between rotation notifications.
   final String rotationPeriod;
 
@@ -29,3 +29,4 @@ class GetSecretsSecretRotation {
     );
   }
 }
+

@@ -10,12 +10,10 @@ class GetInstanceGuestAttributesResult {
   final String name;
   final String project;
   final String? queryPath;
-
   /// Structure is documented below.
   final List<GetInstanceGuestAttributesQueryValue> queryValues;
   final String region;
   final String? variableKey;
-
   /// Value of the queried guest_attribute.
   final String variableValue;
   final String zone;
@@ -48,11 +46,7 @@ class GetInstanceGuestAttributesResult {
       'name': name,
       'project': project,
       'queryPath': ?queryPath,
-      'queryValues':
-          pulumi.Input.encodeList<
-            GetInstanceGuestAttributesQueryValue,
-            Map<String, dynamic>
-          >(queryValues, (value) => value.toMap()),
+      'queryValues': pulumi.Input.encodeList<GetInstanceGuestAttributesQueryValue, Map<String, dynamic>>(queryValues, (value) => value.toMap()),
       'region': region,
       'variableKey': ?variableKey,
       'variableValue': variableValue,
@@ -66,19 +60,12 @@ class GetInstanceGuestAttributesResult {
       name: map['name'] as String,
       project: map['project'] as String,
       queryPath: map['queryPath'] == null ? null : map['queryPath'] as String,
-      queryValues:
-          pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(
-            map['queryValues'],
-            (value) => GetInstanceGuestAttributesQueryValue.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      queryValues: pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(map['queryValues'], (value) => GetInstanceGuestAttributesQueryValue.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      variableKey: map['variableKey'] == null
-          ? null
-          : map['variableKey'] as String,
+      variableKey: map['variableKey'] == null ? null : map['variableKey'] as String,
       variableValue: map['variableValue'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

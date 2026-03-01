@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerSubnetMapping {
   final String allocationId;
   final String ipv6Address;
@@ -41,3 +42,4 @@ class GetLoadBalancerSubnetMapping {
     );
   }
 }
+

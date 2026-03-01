@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dataset_broker_state_store_destination.dart';
+import 'namespace_dataset_data_point.dart';
+
+/// Defines the dataset properties.
+class NamespaceDataset {
+  /// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+  final List<NamespaceDatasetDataPoint>? dataPoints;
+  /// Reference to a data source for a given dataset.
+  final String? dataSource;
+  /// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+  final String? datasetConfiguration;
+  /// Destinations for a dataset.
+  final List<DatasetBrokerStateStoreDestination>? destinations;
+  /// Name of the dataset.
+  final String name;
+  /// URI or type definition ID.
+  final String? typeRef;
+
+  /// Creates a new [NamespaceDataset].
+  /// [dataPoints] Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+  /// [dataSource] Reference to a data source for a given dataset.
+  /// [datasetConfiguration] Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+  /// [destinations] Destinations for a dataset.
+  /// [name] Name of the dataset.
+  /// [typeRef] URI or type definition ID.
+  NamespaceDataset({
+    this.dataPoints,
+    this.dataSource,
+    this.datasetConfiguration,
+    this.destinations,
+    required this.name,
+    this.typeRef,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dataPoints': ?dataPoints == null ? null : pulumi.Input.encodeList<NamespaceDatasetDataPoint, Map<String, dynamic>>(dataPoints!, (value) => value.toMap()),
+      'dataSource': ?dataSource,
+      'datasetConfiguration': ?datasetConfiguration,
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<DatasetBrokerStateStoreDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'name': name,
+      'typeRef': ?typeRef,
+    };
+  }
+
+  factory NamespaceDataset.fromMap(Map<String, dynamic> map) {
+    return NamespaceDataset(
+      dataPoints: map['dataPoints'] == null ? null : pulumi.Input.decodeList<NamespaceDatasetDataPoint>(map['dataPoints'], (value) => NamespaceDatasetDataPoint.fromMap((value as Map).cast<String, dynamic>())),
+      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : map['datasetConfiguration'] as String,
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<DatasetBrokerStateStoreDestination>(map['destinations'], (value) => DatasetBrokerStateStoreDestination.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] as String,
+      typeRef: map['typeRef'] == null ? null : map['typeRef'] as String,
+    );
+  }
+}
+

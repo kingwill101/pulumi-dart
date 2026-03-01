@@ -109,27 +109,20 @@ import 'control_panel_args.dart';
 class ControlPanel extends pulumi.CustomResource {
   /// ARN of the control panel.
   late final pulumi.Output<String> arn;
-
   /// ARN of the cluster in which this control panel will reside.
   late final pulumi.Output<String> clusterArn;
-
   /// Whether a control panel is default.
   late final pulumi.Output<bool> defaultControlPanel;
-
   /// Name describing the control panel.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Number routing controls in a control panel.
   late final pulumi.Output<int> routingControlCount;
-
   /// Status of control panel: `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -142,11 +135,11 @@ class ControlPanel extends pulumi.CustomResource {
     ControlPanelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoverycontrol/controlPanel:ControlPanel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoverycontrol/controlPanel:ControlPanel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.clusterArn = registerOutput<String>('clusterArn');
     this.defaultControlPanel = registerOutput<bool>('defaultControlPanel');

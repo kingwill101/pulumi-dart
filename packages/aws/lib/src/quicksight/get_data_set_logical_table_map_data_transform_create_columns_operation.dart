@@ -4,8 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_data_set_logical_table_map_data_transform_create_columns_operation_column.dart';
 
 class GetDataSetLogicalTableMapDataTransformCreateColumnsOperation {
-  final List<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>
-  columns;
+  final List<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn> columns;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformCreateColumnsOperation].
   /// [columns] Required.
@@ -15,28 +14,14 @@ class GetDataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns':
-          pulumi.Input.encodeList<
-            GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn,
-            Map<String, dynamic>
-          >(columns, (value) => value.toMap()),
+      'columns': pulumi.Input.encodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn, Map<String, dynamic>>(columns, (value) => value.toMap()),
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformCreateColumnsOperation(
-      columns:
-          pulumi.Input.decodeList<
-            GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn
-          >(
-            map['columns'],
-            (value) =>
-                GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      columns: pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns'], (value) => GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

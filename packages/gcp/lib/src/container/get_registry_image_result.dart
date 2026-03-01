@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistryImage.
 class GetRegistryImageResult {
   final String? digest;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The URL at which the image can be accessed.
   final String imageUrl;
   final String name;
@@ -56,3 +55,4 @@ class GetRegistryImageResult {
     );
   }
 }
+

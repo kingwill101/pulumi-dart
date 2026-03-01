@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupArgs {
   /// The current supported value are `redis`, `valkey` (case insensitive).
   final pulumi.Input<String> engine;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the user group.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userGroupId;
-
   /// The list of user IDs that belong to the user group.
   final pulumi.Input<List<String>>? userIds;
 
@@ -36,11 +32,12 @@ class UserGroupArgs {
     Map<String, String>? tags,
     required String userGroupId,
     List<String>? userIds,
-  }) : engine = pulumi.Input.asInput<String>(engine),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       userGroupId = pulumi.Input.asInput<String>(userGroupId),
-       userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
+  }) :
+      engine = pulumi.Input.asInput<String>(engine),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      userGroupId = pulumi.Input.asInput<String>(userGroupId),
+      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,13 +53,10 @@ class UserGroupArgs {
     return UserGroupArgs(
       engine: map['engine'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       userGroupId: map['userGroupId'] as String,
-      userIds: map['userIds'] == null
-          ? null
-          : (map['userIds'] as List).cast<String>(),
+      userIds: map['userIds'] == null ? null : (map['userIds'] as List).cast<String>(),
     );
   }
 }
+

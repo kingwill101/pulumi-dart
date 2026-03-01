@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceArgs {
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetNamespaceArgs].
   /// [namespaceName] The name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNamespaceArgs({required String namespaceName, String? region})
-    : namespaceName = pulumi.Input.asInput<String>(namespaceName),
+  GetNamespaceArgs({
+    required String namespaceName,
+    String? region,
+  }) :
+      namespaceName = pulumi.Input.asInput<String>(namespaceName),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespaceName': namespaceName, 'region': ?region};
+    return <String, dynamic>{
+      'namespaceName': namespaceName,
+      'region': ?region,
+    };
   }
 
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetNamespaceArgs {
     );
   }
 }
+

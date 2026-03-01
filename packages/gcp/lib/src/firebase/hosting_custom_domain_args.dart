@@ -12,20 +12,16 @@ class HostingCustomDomainArgs {
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
   final pulumi.Input<String>? certPreference;
-
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
   final pulumi.Input<String> customDomain;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
   /// instead.
   final pulumi.Input<String>? redirectTarget;
-
   /// The ID of the site in which to create this custom domain association.
   final pulumi.Input<String> siteId;
   final pulumi.Input<bool>? waitDnsVerification;
@@ -44,14 +40,13 @@ class HostingCustomDomainArgs {
     String? redirectTarget,
     required String siteId,
     bool? waitDnsVerification,
-  }) : certPreference = pulumi.Input.asOptionalInput<String>(certPreference),
-       customDomain = pulumi.Input.asInput<String>(customDomain),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       redirectTarget = pulumi.Input.asOptionalInput<String>(redirectTarget),
-       siteId = pulumi.Input.asInput<String>(siteId),
-       waitDnsVerification = pulumi.Input.asOptionalInput<bool>(
-         waitDnsVerification,
-       );
+  }) :
+      certPreference = pulumi.Input.asOptionalInput<String>(certPreference),
+      customDomain = pulumi.Input.asInput<String>(customDomain),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      redirectTarget = pulumi.Input.asOptionalInput<String>(redirectTarget),
+      siteId = pulumi.Input.asInput<String>(siteId),
+      waitDnsVerification = pulumi.Input.asOptionalInput<bool>(waitDnsVerification);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,18 +61,13 @@ class HostingCustomDomainArgs {
 
   factory HostingCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainArgs(
-      certPreference: map['certPreference'] == null
-          ? null
-          : map['certPreference'] as String,
+      certPreference: map['certPreference'] == null ? null : map['certPreference'] as String,
       customDomain: map['customDomain'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      redirectTarget: map['redirectTarget'] == null
-          ? null
-          : map['redirectTarget'] as String,
+      redirectTarget: map['redirectTarget'] == null ? null : map['redirectTarget'] as String,
       siteId: map['siteId'] as String,
-      waitDnsVerification: map['waitDnsVerification'] == null
-          ? null
-          : map['waitDnsVerification'] as bool,
+      waitDnsVerification: map['waitDnsVerification'] == null ? null : map['waitDnsVerification'] as bool,
     );
   }
 }
+

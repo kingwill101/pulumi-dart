@@ -1,12 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailCrossRegionConfig {
   /// Guardrail profile ARN.
   final String guardrailProfileIdentifier;
 
   /// Creates a new [GuardrailCrossRegionConfig].
   /// [guardrailProfileIdentifier] Guardrail profile ARN.
-  GuardrailCrossRegionConfig({required this.guardrailProfileIdentifier});
+  GuardrailCrossRegionConfig({
+    required this.guardrailProfileIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,3 +23,4 @@ class GuardrailCrossRegionConfig {
     );
   }
 }
+

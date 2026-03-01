@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessCollectionArgs {
   /// ID of the collection.
   final pulumi.Input<String>? id;
-
   /// Name of the collection.
   ///
   /// > Exactly one of `id` or `name` is required.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,13 +20,21 @@ class GetServerlessCollectionArgs {
   /// [id] ID of the collection.
   /// [name] Name of the collection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetServerlessCollectionArgs({String? id, String? name, String? region})
-    : id = pulumi.Input.asOptionalInput<String>(id),
+  GetServerlessCollectionArgs({
+    String? id,
+    String? name,
+    String? region,
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id),
       name = pulumi.Input.asOptionalInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name, 'region': ?region};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory GetServerlessCollectionArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +45,4 @@ class GetServerlessCollectionArgs {
     );
   }
 }
+

@@ -25,45 +25,34 @@ class AttachedClusterArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterAuthorization>? authorization;
-
   /// Binary Authorization configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterBinaryAuthorization>? binaryAuthorization;
-
   /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
   final pulumi.Input<String>? deletionPolicy;
-
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
   final pulumi.Input<String>? description;
-
   /// The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
   final pulumi.Input<String> distribution;
-
   /// Fleet configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterFleet> fleet;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// Logging configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterLoggingConfig>? loggingConfig;
-
   /// Monitoring configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterMonitoringConfig>? monitoringConfig;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// OIDC discovery information of the target cluster.
   /// Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
   /// API server. This fields indicates how GCP services
@@ -75,25 +64,20 @@ class AttachedClusterArgs {
   /// `issuer_url` and `jwks`.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterOidcConfig> oidcConfig;
-
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
   final pulumi.Input<String> platformVersion;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Support for proxy configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterProxyConfig>? proxyConfig;
-
   /// (Optional, Deprecated)
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
   /// > **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
-  final pulumi.Input<AttachedClusterSecurityPostureConfig>?
-  securityPostureConfig;
+  final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
 
   /// Creates a new [AttachedClusterArgs].
   /// [annotations] Optional. Annotations on the cluster. This field has the same
@@ -129,143 +113,64 @@ class AttachedClusterArgs {
     String? project,
     AttachedClusterProxyConfig? proxyConfig,
     AttachedClusterSecurityPostureConfig? securityPostureConfig,
-  }) : annotations = pulumi.Input.asOptionalInput<Map<String, String>>(
-         annotations,
-       ),
-       authorization = pulumi
-           .Input.asOptionalInput<AttachedClusterAuthorization>(authorization),
-       binaryAuthorization =
-           pulumi.Input.asOptionalInput<AttachedClusterBinaryAuthorization>(
-             binaryAuthorization,
-           ),
-       deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       distribution = pulumi.Input.asInput<String>(distribution),
-       fleet = pulumi.Input.asInput<AttachedClusterFleet>(fleet),
-       location = pulumi.Input.asInput<String>(location),
-       loggingConfig = pulumi
-           .Input.asOptionalInput<AttachedClusterLoggingConfig>(loggingConfig),
-       monitoringConfig =
-           pulumi.Input.asOptionalInput<AttachedClusterMonitoringConfig>(
-             monitoringConfig,
-           ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       oidcConfig = pulumi.Input.asInput<AttachedClusterOidcConfig>(oidcConfig),
-       platformVersion = pulumi.Input.asInput<String>(platformVersion),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       proxyConfig = pulumi.Input.asOptionalInput<AttachedClusterProxyConfig>(
-         proxyConfig,
-       ),
-       securityPostureConfig =
-           pulumi.Input.asOptionalInput<AttachedClusterSecurityPostureConfig>(
-             securityPostureConfig,
-           );
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      authorization = pulumi.Input.asOptionalInput<AttachedClusterAuthorization>(authorization),
+      binaryAuthorization = pulumi.Input.asOptionalInput<AttachedClusterBinaryAuthorization>(binaryAuthorization),
+      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      distribution = pulumi.Input.asInput<String>(distribution),
+      fleet = pulumi.Input.asInput<AttachedClusterFleet>(fleet),
+      location = pulumi.Input.asInput<String>(location),
+      loggingConfig = pulumi.Input.asOptionalInput<AttachedClusterLoggingConfig>(loggingConfig),
+      monitoringConfig = pulumi.Input.asOptionalInput<AttachedClusterMonitoringConfig>(monitoringConfig),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      oidcConfig = pulumi.Input.asInput<AttachedClusterOidcConfig>(oidcConfig),
+      platformVersion = pulumi.Input.asInput<String>(platformVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      proxyConfig = pulumi.Input.asOptionalInput<AttachedClusterProxyConfig>(proxyConfig),
+      securityPostureConfig = pulumi.Input.asOptionalInput<AttachedClusterSecurityPostureConfig>(securityPostureConfig);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'authorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterAuthorization,
-            Map<String, dynamic>
-          >(authorization, (value) => value.toMap()),
-      'binaryAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterBinaryAuthorization,
-            Map<String, dynamic>
-          >(binaryAuthorization, (value) => value.toMap()),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<AttachedClusterAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
+      'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<AttachedClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'distribution': distribution,
-      'fleet':
-          pulumi.Input.mapInputValue<
-            AttachedClusterFleet,
-            Map<String, dynamic>
-          >(fleet, (value) => value.toMap()),
+      'fleet': pulumi.Input.mapInputValue<AttachedClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'location': location,
-      'loggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterLoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfig, (value) => value.toMap()),
-      'monitoringConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterMonitoringConfig,
-            Map<String, dynamic>
-          >(monitoringConfig, (value) => value.toMap()),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'monitoringConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterMonitoringConfig, Map<String, dynamic>>(monitoringConfig, (value) => value.toMap()),
       'name': ?name,
-      'oidcConfig':
-          pulumi.Input.mapInputValue<
-            AttachedClusterOidcConfig,
-            Map<String, dynamic>
-          >(oidcConfig, (value) => value.toMap()),
+      'oidcConfig': pulumi.Input.mapInputValue<AttachedClusterOidcConfig, Map<String, dynamic>>(oidcConfig, (value) => value.toMap()),
       'platformVersion': platformVersion,
       'project': ?project,
-      'proxyConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterProxyConfig,
-            Map<String, dynamic>
-          >(proxyConfig, (value) => value.toMap()),
-      'securityPostureConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterSecurityPostureConfig,
-            Map<String, dynamic>
-          >(securityPostureConfig, (value) => value.toMap()),
+      'proxyConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterProxyConfig, Map<String, dynamic>>(proxyConfig, (value) => value.toMap()),
+      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
     };
   }
 
   factory AttachedClusterArgs.fromMap(Map<String, dynamic> map) {
     return AttachedClusterArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
-      authorization: map['authorization'] == null
-          ? null
-          : AttachedClusterAuthorization.fromMap(
-              (map['authorization'] as Map).cast<String, dynamic>(),
-            ),
-      binaryAuthorization: map['binaryAuthorization'] == null
-          ? null
-          : AttachedClusterBinaryAuthorization.fromMap(
-              (map['binaryAuthorization'] as Map).cast<String, dynamic>(),
-            ),
-      deletionPolicy: map['deletionPolicy'] == null
-          ? null
-          : map['deletionPolicy'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      authorization: map['authorization'] == null ? null : AttachedClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : AttachedClusterBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>()),
+      deletionPolicy: map['deletionPolicy'] == null ? null : map['deletionPolicy'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       distribution: map['distribution'] as String,
-      fleet: AttachedClusterFleet.fromMap(
-        (map['fleet'] as Map).cast<String, dynamic>(),
-      ),
+      fleet: AttachedClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : AttachedClusterLoggingConfig.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>(),
-            ),
-      monitoringConfig: map['monitoringConfig'] == null
-          ? null
-          : AttachedClusterMonitoringConfig.fromMap(
-              (map['monitoringConfig'] as Map).cast<String, dynamic>(),
-            ),
+      loggingConfig: map['loggingConfig'] == null ? null : AttachedClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      monitoringConfig: map['monitoringConfig'] == null ? null : AttachedClusterMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      oidcConfig: AttachedClusterOidcConfig.fromMap(
-        (map['oidcConfig'] as Map).cast<String, dynamic>(),
-      ),
+      oidcConfig: AttachedClusterOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>()),
       platformVersion: map['platformVersion'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      proxyConfig: map['proxyConfig'] == null
-          ? null
-          : AttachedClusterProxyConfig.fromMap(
-              (map['proxyConfig'] as Map).cast<String, dynamic>(),
-            ),
-      securityPostureConfig: map['securityPostureConfig'] == null
-          ? null
-          : AttachedClusterSecurityPostureConfig.fromMap(
-              (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
-            ),
+      proxyConfig: map['proxyConfig'] == null ? null : AttachedClusterProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>()),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : AttachedClusterSecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

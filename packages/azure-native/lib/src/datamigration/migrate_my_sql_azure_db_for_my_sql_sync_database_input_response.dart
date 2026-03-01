@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Database specific information for MySQL to Azure Database for MySQL migration task inputs
+class MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse {
+  /// Migration settings which tune the migration behavior
+  final Map<String, String>? migrationSetting;
+  /// Name of the database
+  final String? name;
+  /// Source settings to tune source endpoint migration behavior
+  final Map<String, String>? sourceSetting;
+  /// Mapping of source to target tables
+  final Map<String, String>? tableMap;
+  /// Name of target database. Note: Target database will be truncated before starting migration.
+  final String? targetDatabaseName;
+  /// Target settings to tune target endpoint migration behavior
+  final Map<String, String>? targetSetting;
+
+  /// Creates a new [MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse].
+  /// [migrationSetting] Migration settings which tune the migration behavior
+  /// [name] Name of the database
+  /// [sourceSetting] Source settings to tune source endpoint migration behavior
+  /// [tableMap] Mapping of source to target tables
+  /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
+  /// [targetSetting] Target settings to tune target endpoint migration behavior
+  MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse({
+    this.migrationSetting,
+    this.name,
+    this.sourceSetting,
+    this.tableMap,
+    this.targetDatabaseName,
+    this.targetSetting,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'migrationSetting': ?migrationSetting,
+      'name': ?name,
+      'sourceSetting': ?sourceSetting,
+      'tableMap': ?tableMap,
+      'targetDatabaseName': ?targetDatabaseName,
+      'targetSetting': ?targetSetting,
+    };
+  }
+
+  factory MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
+    return MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse(
+      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting'] as Map).cast<String, String>(),
+      name: map['name'] == null ? null : map['name'] as String,
+      sourceSetting: map['sourceSetting'] == null ? null : (map['sourceSetting'] as Map).cast<String, String>(),
+      tableMap: map['tableMap'] == null ? null : (map['tableMap'] as Map).cast<String, String>(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : map['targetDatabaseName'] as String,
+      targetSetting: map['targetSetting'] == null ? null : (map['targetSetting'] as Map).cast<String, String>(),
+    );
+  }
+}
+

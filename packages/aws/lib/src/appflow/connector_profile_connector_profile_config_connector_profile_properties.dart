@@ -17,70 +17,40 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
   /// The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
   final Map<String, dynamic>? amplitude;
-
   /// The connector-specific profile properties required when using the custom connector. See Custom Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector?
-  customConnector;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector? customConnector;
   /// Connector-specific properties required when using Datadog. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog?
-  datadog;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog? datadog;
   /// The connector-specific properties required when using Dynatrace. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace?
-  dynatrace;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace? dynatrace;
   /// The connector-specific credentials required when using Google Analytics. See Google Analytics Connector Profile Credentials for more details.
   final Map<String, dynamic>? googleAnalytics;
-
   /// The connector-specific credentials required when using Amazon Honeycode. See Honeycode Connector Profile Credentials for more details.
   final Map<String, dynamic>? honeycode;
-
   /// The connector-specific properties required when using Infor Nexus. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus?
-  inforNexus;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus? inforNexus;
   /// Connector-specific properties required when using Marketo. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo?
-  marketo;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo? marketo;
   /// Connector-specific properties required when using Amazon Redshift. See Redshift Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift?
-  redshift;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift? redshift;
   /// The connector-specific properties required when using Salesforce. See Salesforce Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce?
-  salesforce;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce? salesforce;
   /// The connector-specific properties required when using SAPOData. See SAPOData Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData?
-  sapoData;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData? sapoData;
   /// The connector-specific properties required when using ServiceNow. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow?
-  serviceNow;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow? serviceNow;
   /// Connector-specific credentials required when using Singular. See Singular Connector Profile Credentials for more details.
   final Map<String, dynamic>? singular;
-
   /// Connector-specific properties required when using Slack. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack?
-  slack;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack? slack;
   /// The connector-specific properties required when using Snowflake. See Snowflake Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake?
-  snowflake;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake? snowflake;
   /// The connector-specific credentials required when using Trend Micro. See Trend Micro Connector Profile Credentials for more details.
   final Map<String, dynamic>? trendmicro;
-
   /// Connector-specific properties required when using Veeva. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva?
-  veeva;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva? veeva;
   /// Connector-specific properties required when using Zendesk. See Generic Connector Profile Properties for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk?
-  zendesk;
+  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk? zendesk;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileProperties].
   /// [amplitude] The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
@@ -125,9 +95,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'amplitude': ?amplitude,
-      'customConnector': ?customConnector == null
-          ? null
-          : customConnector!.toMap(),
+      'customConnector': ?customConnector == null ? null : customConnector!.toMap(),
       'datadog': ?datadog == null ? null : datadog!.toMap(),
       'dynatrace': ?dynatrace == null ? null : dynatrace!.toMap(),
       'googleAnalytics': ?googleAnalytics,
@@ -147,90 +115,27 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileProperties(
-      amplitude: map['amplitude'] == null
-          ? null
-          : (map['amplitude'] as Map).cast<String, dynamic>(),
-      customConnector: map['customConnector'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector.fromMap(
-              (map['customConnector'] as Map).cast<String, dynamic>(),
-            ),
-      datadog: map['datadog'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap(
-              (map['datadog'] as Map).cast<String, dynamic>(),
-            ),
-      dynatrace: map['dynatrace'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace.fromMap(
-              (map['dynatrace'] as Map).cast<String, dynamic>(),
-            ),
-      googleAnalytics: map['googleAnalytics'] == null
-          ? null
-          : (map['googleAnalytics'] as Map).cast<String, dynamic>(),
-      honeycode: map['honeycode'] == null
-          ? null
-          : (map['honeycode'] as Map).cast<String, dynamic>(),
-      inforNexus: map['inforNexus'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus.fromMap(
-              (map['inforNexus'] as Map).cast<String, dynamic>(),
-            ),
-      marketo: map['marketo'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo.fromMap(
-              (map['marketo'] as Map).cast<String, dynamic>(),
-            ),
-      redshift: map['redshift'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap(
-              (map['redshift'] as Map).cast<String, dynamic>(),
-            ),
-      salesforce: map['salesforce'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce.fromMap(
-              (map['salesforce'] as Map).cast<String, dynamic>(),
-            ),
-      sapoData: map['sapoData'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData.fromMap(
-              (map['sapoData'] as Map).cast<String, dynamic>(),
-            ),
-      serviceNow: map['serviceNow'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow.fromMap(
-              (map['serviceNow'] as Map).cast<String, dynamic>(),
-            ),
-      singular: map['singular'] == null
-          ? null
-          : (map['singular'] as Map).cast<String, dynamic>(),
-      slack: map['slack'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack.fromMap(
-              (map['slack'] as Map).cast<String, dynamic>(),
-            ),
-      snowflake: map['snowflake'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap(
-              (map['snowflake'] as Map).cast<String, dynamic>(),
-            ),
-      trendmicro: map['trendmicro'] == null
-          ? null
-          : (map['trendmicro'] as Map).cast<String, dynamic>(),
-      veeva: map['veeva'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap(
-              (map['veeva'] as Map).cast<String, dynamic>(),
-            ),
-      zendesk: map['zendesk'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk.fromMap(
-              (map['zendesk'] as Map).cast<String, dynamic>(),
-            ),
+      amplitude: map['amplitude'] == null ? null : (map['amplitude'] as Map).cast<String, dynamic>(),
+      customConnector: map['customConnector'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector.fromMap((map['customConnector'] as Map).cast<String, dynamic>()),
+      datadog: map['datadog'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>()),
+      dynatrace: map['dynatrace'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace.fromMap((map['dynatrace'] as Map).cast<String, dynamic>()),
+      googleAnalytics: map['googleAnalytics'] == null ? null : (map['googleAnalytics'] as Map).cast<String, dynamic>(),
+      honeycode: map['honeycode'] == null ? null : (map['honeycode'] as Map).cast<String, dynamic>(),
+      inforNexus: map['inforNexus'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus.fromMap((map['inforNexus'] as Map).cast<String, dynamic>()),
+      marketo: map['marketo'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo.fromMap((map['marketo'] as Map).cast<String, dynamic>()),
+      redshift: map['redshift'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>()),
+      salesforce: map['salesforce'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce.fromMap((map['salesforce'] as Map).cast<String, dynamic>()),
+      sapoData: map['sapoData'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData.fromMap((map['sapoData'] as Map).cast<String, dynamic>()),
+      serviceNow: map['serviceNow'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>()),
+      singular: map['singular'] == null ? null : (map['singular'] as Map).cast<String, dynamic>(),
+      slack: map['slack'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack.fromMap((map['slack'] as Map).cast<String, dynamic>()),
+      snowflake: map['snowflake'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>()),
+      trendmicro: map['trendmicro'] == null ? null : (map['trendmicro'] as Map).cast<String, dynamic>(),
+      veeva: map['veeva'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap((map['veeva'] as Map).cast<String, dynamic>()),
+      zendesk: map['zendesk'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk.fromMap((map['zendesk'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

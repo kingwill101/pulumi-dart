@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserPoolLambdaConfigCustomSmsSender {
   /// - ARN of the Lambda function.
   final String lambdaArn;
-
   /// - Version of the Lambda function.
   final String lambdaVersion;
 
@@ -22,12 +22,11 @@ class GetUserPoolLambdaConfigCustomSmsSender {
     };
   }
 
-  factory GetUserPoolLambdaConfigCustomSmsSender.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserPoolLambdaConfigCustomSmsSender.fromMap(Map<String, dynamic> map) {
     return GetUserPoolLambdaConfigCustomSmsSender(
       lambdaArn: map['lambdaArn'] as String,
       lambdaVersion: map['lambdaVersion'] as String,
     );
   }
 }
+

@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'windows_web_app_slot_site_config_virtual_application_virtual_directory.dart';
+
+class WindowsWebAppSlotSiteConfigVirtualApplication {
+  /// The physical path for the Virtual Application.
+  final String physicalPath;
+  /// Should pre-loading be enabled.
+  final bool preload;
+  /// One or more `virtual_directory` blocks as defined below.
+  final List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>? virtualDirectories;
+  /// The Virtual Path for the Virtual Application.
+  final String virtualPath;
+
+  /// Creates a new [WindowsWebAppSlotSiteConfigVirtualApplication].
+  /// [physicalPath] The physical path for the Virtual Application.
+  /// [preload] Should pre-loading be enabled.
+  /// [virtualDirectories] One or more `virtual_directory` blocks as defined below.
+  /// [virtualPath] The Virtual Path for the Virtual Application.
+  WindowsWebAppSlotSiteConfigVirtualApplication({
+    required this.physicalPath,
+    required this.preload,
+    this.virtualDirectories,
+    required this.virtualPath,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'physicalPath': physicalPath,
+      'preload': preload,
+      'virtualDirectories': ?virtualDirectories == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory, Map<String, dynamic>>(virtualDirectories!, (value) => value.toMap()),
+      'virtualPath': virtualPath,
+    };
+  }
+
+  factory WindowsWebAppSlotSiteConfigVirtualApplication.fromMap(Map<String, dynamic> map) {
+    return WindowsWebAppSlotSiteConfigVirtualApplication(
+      physicalPath: map['physicalPath'] as String,
+      preload: map['preload'] as bool,
+      virtualDirectories: map['virtualDirectories'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>(map['virtualDirectories'], (value) => WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory.fromMap((value as Map).cast<String, dynamic>())),
+      virtualPath: map['virtualPath'] as String,
+    );
+  }
+}
+

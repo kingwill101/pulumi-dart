@@ -11,22 +11,16 @@ import 'domain_association_sub_domain.dart';
 class DomainAssociationArgs {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String> appId;
-
   /// The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.
   final pulumi.Input<DomainAssociationCertificateSettings>? certificateSettings;
-
   /// Domain name for the domain association.
   final pulumi.Input<String> domainName;
-
   /// Enables the automated creation of subdomains for branches.
   final pulumi.Input<bool>? enableAutoSubDomain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Setting for the subdomain. Documented below.
   final pulumi.Input<List<DomainAssociationSubDomain>> subDomains;
-
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
   final pulumi.Input<bool>? waitForVerification;
 
@@ -46,46 +40,23 @@ class DomainAssociationArgs {
     String? region,
     required List<DomainAssociationSubDomain> subDomains,
     bool? waitForVerification,
-  }) : appId = pulumi.Input.asInput<String>(appId),
-       certificateSettings =
-           pulumi.Input.asOptionalInput<DomainAssociationCertificateSettings>(
-             certificateSettings,
-           ),
-       domainName = pulumi.Input.asInput<String>(domainName),
-       enableAutoSubDomain = pulumi.Input.asOptionalInput<bool>(
-         enableAutoSubDomain,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       subDomains = pulumi.Input.asInput<List<DomainAssociationSubDomain>>(
-         subDomains,
-       ),
-       waitForVerification = pulumi.Input.asOptionalInput<bool>(
-         waitForVerification,
-       );
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      certificateSettings = pulumi.Input.asOptionalInput<DomainAssociationCertificateSettings>(certificateSettings),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      enableAutoSubDomain = pulumi.Input.asOptionalInput<bool>(enableAutoSubDomain),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      subDomains = pulumi.Input.asInput<List<DomainAssociationSubDomain>>(subDomains),
+      waitForVerification = pulumi.Input.asOptionalInput<bool>(waitForVerification);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appId': appId,
-      'certificateSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainAssociationCertificateSettings,
-            Map<String, dynamic>
-          >(certificateSettings, (value) => value.toMap()),
+      'certificateSettings': ?pulumi.Input.mapOptionalInputValue<DomainAssociationCertificateSettings, Map<String, dynamic>>(certificateSettings, (value) => value.toMap()),
       'domainName': domainName,
       'enableAutoSubDomain': ?enableAutoSubDomain,
       'region': ?region,
-      'subDomains':
-          pulumi.Input.mapInputValue<
-            List<DomainAssociationSubDomain>,
-            List<Map<String, dynamic>>
-          >(
-            subDomains,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainAssociationSubDomain,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subDomains': pulumi.Input.mapInputValue<List<DomainAssociationSubDomain>, List<Map<String, dynamic>>>(subDomains, (value) => pulumi.Input.encodeList<DomainAssociationSubDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
       'waitForVerification': ?waitForVerification,
     };
   }
@@ -93,25 +64,13 @@ class DomainAssociationArgs {
   factory DomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DomainAssociationArgs(
       appId: map['appId'] as String,
-      certificateSettings: map['certificateSettings'] == null
-          ? null
-          : DomainAssociationCertificateSettings.fromMap(
-              (map['certificateSettings'] as Map).cast<String, dynamic>(),
-            ),
+      certificateSettings: map['certificateSettings'] == null ? null : DomainAssociationCertificateSettings.fromMap((map['certificateSettings'] as Map).cast<String, dynamic>()),
       domainName: map['domainName'] as String,
-      enableAutoSubDomain: map['enableAutoSubDomain'] == null
-          ? null
-          : map['enableAutoSubDomain'] as bool,
+      enableAutoSubDomain: map['enableAutoSubDomain'] == null ? null : map['enableAutoSubDomain'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
-      subDomains: pulumi.Input.decodeList<DomainAssociationSubDomain>(
-        map['subDomains'],
-        (value) => DomainAssociationSubDomain.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      waitForVerification: map['waitForVerification'] == null
-          ? null
-          : map['waitForVerification'] as bool,
+      subDomains: pulumi.Input.decodeList<DomainAssociationSubDomain>(map['subDomains'], (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>())),
+      waitForVerification: map['waitForVerification'] == null ? null : map['waitForVerification'] as bool,
     );
   }
 }
+

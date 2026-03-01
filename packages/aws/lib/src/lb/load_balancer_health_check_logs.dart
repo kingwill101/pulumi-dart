@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoadBalancerHealthCheckLogs {
   /// S3 bucket name to store the logs in.
   final String bucket;
-
   /// Boolean to enable / disable `health_check_logs`. Defaults to `false`, even when `bucket` is specified.
   final bool? enabled;
-
   /// S3 bucket prefix. Logs are stored in the root if not configured.
   final String? prefix;
 
@@ -36,3 +35,4 @@ class LoadBalancerHealthCheckLogs {
     );
   }
 }
+

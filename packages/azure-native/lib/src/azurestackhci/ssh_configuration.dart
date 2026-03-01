@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ssh_public_key.dart';
+
+/// SSH configuration for Linux based VMs running on Azure
+class SshConfiguration {
+  /// The list of SSH public keys used to authenticate with linux based VMs.
+  final List<SshPublicKey>? publicKeys;
+
+  /// Creates a new [SshConfiguration].
+  /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.
+  SshConfiguration({
+    this.publicKeys,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'publicKeys': ?publicKeys == null ? null : pulumi.Input.encodeList<SshPublicKey, Map<String, dynamic>>(publicKeys!, (value) => value.toMap()),
+    };
+  }
+
+  factory SshConfiguration.fromMap(Map<String, dynamic> map) {
+    return SshConfiguration(
+      publicKeys: map['publicKeys'] == null ? null : pulumi.Input.decodeList<SshPublicKey>(map['publicKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

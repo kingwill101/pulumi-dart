@@ -437,23 +437,16 @@ import 'delivery_channel_snapshot_delivery_properties.dart';
 class DeliveryChannel extends pulumi.CustomResource {
   /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the S3 bucket used to store the configuration history.
   late final pulumi.Output<String> s3BucketName;
-
   /// The prefix for the specified S3 bucket.
   late final pulumi.Output<String?> s3KeyPrefix;
-
   /// The ARN of the AWS KMS key used to encrypt objects delivered by AWS Config. Must belong to the same Region as the destination S3 bucket.
   late final pulumi.Output<String?> s3KmsKeyArn;
-
   /// Options for how AWS Config delivers configuration snapshots. See below
-  late final pulumi.Output<DeliveryChannelSnapshotDeliveryProperties?>
-  snapshotDeliveryProperties;
-
+  late final pulumi.Output<DeliveryChannelSnapshotDeliveryProperties?> snapshotDeliveryProperties;
   /// The ARN of the SNS topic that AWS Config delivers notifications to.
   late final pulumi.Output<String?> snsTopicArn;
 
@@ -466,20 +459,17 @@ class DeliveryChannel extends pulumi.CustomResource {
     DeliveryChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/deliveryChannel:DeliveryChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/deliveryChannel:DeliveryChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
     this.s3BucketName = registerOutput<String>('s3BucketName');
     this.s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
     this.s3KmsKeyArn = registerOutput<String?>('s3KmsKeyArn');
-    this.snapshotDeliveryProperties =
-        registerOutput<DeliveryChannelSnapshotDeliveryProperties?>(
-          'snapshotDeliveryProperties',
-        );
+    this.snapshotDeliveryProperties = registerOutput<DeliveryChannelSnapshotDeliveryProperties?>('snapshotDeliveryProperties');
     this.snsTopicArn = registerOutput<String?>('snsTopicArn');
   }
 }

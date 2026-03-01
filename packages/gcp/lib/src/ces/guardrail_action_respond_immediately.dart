@@ -11,27 +11,20 @@ class GuardrailActionRespondImmediately {
 
   /// Creates a new [GuardrailActionRespondImmediately].
   /// [responses] The canned responses for the agent to choose from. The response is chosen
-  GuardrailActionRespondImmediately({required this.responses});
+  GuardrailActionRespondImmediately({
+    required this.responses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'responses':
-          pulumi.Input.encodeList<
-            GuardrailActionRespondImmediatelyResponse,
-            Map<String, dynamic>
-          >(responses, (value) => value.toMap()),
+      'responses': pulumi.Input.encodeList<GuardrailActionRespondImmediatelyResponse, Map<String, dynamic>>(responses, (value) => value.toMap()),
     };
   }
 
   factory GuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediately(
-      responses:
-          pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(
-            map['responses'],
-            (value) => GuardrailActionRespondImmediatelyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      responses: pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => GuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

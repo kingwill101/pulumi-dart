@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader {
   /// Name of the query header to inspect. This setting must be provided as lower case characters.
   final String name;
@@ -11,14 +12,15 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader(
       name: map['name'] as String,
     );
   }
 }
+

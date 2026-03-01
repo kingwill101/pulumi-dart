@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateSourceEntitySourceAnalysisDataSetReference {
   /// Dataset Amazon Resource Name (ARN).
   final String dataSetArn;
-
   /// Dataset placeholder.
   final String dataSetPlaceholder;
 
@@ -22,12 +22,11 @@ class TemplateSourceEntitySourceAnalysisDataSetReference {
     };
   }
 
-  factory TemplateSourceEntitySourceAnalysisDataSetReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TemplateSourceEntitySourceAnalysisDataSetReference.fromMap(Map<String, dynamic> map) {
     return TemplateSourceEntitySourceAnalysisDataSetReference(
       dataSetArn: map['dataSetArn'] as String,
       dataSetPlaceholder: map['dataSetPlaceholder'] as String,
     );
   }
 }
+

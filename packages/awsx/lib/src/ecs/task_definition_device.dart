@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskDefinitionDevice {
   final String? containerPath;
   final String? hostPath;
@@ -9,7 +10,11 @@ class TaskDefinitionDevice {
   /// [containerPath] Optional.
   /// [hostPath] Optional.
   /// [permissions] Optional.
-  TaskDefinitionDevice({this.containerPath, this.hostPath, this.permissions});
+  TaskDefinitionDevice({
+    this.containerPath,
+    this.hostPath,
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,13 +26,10 @@ class TaskDefinitionDevice {
 
   factory TaskDefinitionDevice.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionDevice(
-      containerPath: map['containerPath'] == null
-          ? null
-          : map['containerPath'] as String,
+      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
       hostPath: map['hostPath'] == null ? null : map['hostPath'] as String,
-      permissions: map['permissions'] == null
-          ? null
-          : (map['permissions'] as List).cast<String>(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
     );
   }
 }
+

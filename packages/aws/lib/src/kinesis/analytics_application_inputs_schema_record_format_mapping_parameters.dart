@@ -7,7 +7,6 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
   /// Mapping information when the record format uses delimiters.
   /// See CSV Mapping Parameters below for more details.
   final AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv? csv;
-
   /// Mapping information when JSON is the record format on the streaming source.
   /// See JSON Mapping Parameters below for more details.
   final AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson? json;
@@ -27,20 +26,11 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
     };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParameters(
-      csv: map['csv'] == null
-          ? null
-          : AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(
-              (map['csv'] as Map).cast<String, dynamic>(),
-            ),
-      json: map['json'] == null
-          ? null
-          : AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap(
-              (map['json'] as Map).cast<String, dynamic>(),
-            ),
+      csv: map['csv'] == null ? null : AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap((map['csv'] as Map).cast<String, dynamic>()),
+      json: map['json'] == null ? null : AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap((map['json'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

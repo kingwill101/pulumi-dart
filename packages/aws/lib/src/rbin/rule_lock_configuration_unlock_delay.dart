@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleLockConfigurationUnlockDelay {
   /// Unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.
   final String unlockDelayUnit;
-
   /// Unlock delay period, measured in the unit specified for UnlockDelayUnit.
   final int unlockDelayValue;
 
@@ -29,3 +29,4 @@ class RuleLockConfigurationUnlockDelay {
     );
   }
 }
+

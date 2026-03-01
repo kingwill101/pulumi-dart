@@ -8,27 +8,20 @@ class GetVirtualNodeSpecBackendDefault {
 
   /// Creates a new [GetVirtualNodeSpecBackendDefault].
   /// [clientPolicies] Required.
-  GetVirtualNodeSpecBackendDefault({required this.clientPolicies});
+  GetVirtualNodeSpecBackendDefault({
+    required this.clientPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientPolicies':
-          pulumi.Input.encodeList<
-            GetVirtualNodeSpecBackendDefaultClientPolicy,
-            Map<String, dynamic>
-          >(clientPolicies, (value) => value.toMap()),
+      'clientPolicies': pulumi.Input.encodeList<GetVirtualNodeSpecBackendDefaultClientPolicy, Map<String, dynamic>>(clientPolicies, (value) => value.toMap()),
     };
   }
 
   factory GetVirtualNodeSpecBackendDefault.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefault(
-      clientPolicies:
-          pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicy>(
-            map['clientPolicies'],
-            (value) => GetVirtualNodeSpecBackendDefaultClientPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      clientPolicies: pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicy>(map['clientPolicies'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

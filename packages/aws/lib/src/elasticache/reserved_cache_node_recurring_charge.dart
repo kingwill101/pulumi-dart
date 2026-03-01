@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReservedCacheNodeRecurringCharge {
   final double recurringChargeAmount;
   final String recurringChargeFrequency;
@@ -26,3 +27,4 @@ class ReservedCacheNodeRecurringCharge {
     );
   }
 }
+

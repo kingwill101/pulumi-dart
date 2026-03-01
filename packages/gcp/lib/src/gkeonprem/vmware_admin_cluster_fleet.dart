@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterFleet {
   /// (Output)
   /// The name of the managed Fleet Membership resource associated to this cluster.
@@ -9,17 +10,20 @@ class VmwareAdminClusterFleet {
 
   /// Creates a new [VmwareAdminClusterFleet].
   /// [membership] (Output)
-  VmwareAdminClusterFleet({this.membership});
+  VmwareAdminClusterFleet({
+    this.membership,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'membership': ?membership};
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
   factory VmwareAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterFleet(
-      membership: map['membership'] == null
-          ? null
-          : map['membership'] as String,
+      membership: map['membership'] == null ? null : map['membership'] as String,
     );
   }
 }
+

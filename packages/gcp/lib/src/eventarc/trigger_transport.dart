@@ -9,7 +9,9 @@ class TriggerTransport {
 
   /// Creates a new [TriggerTransport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-  TriggerTransport({this.pubsub});
+  TriggerTransport({
+    this.pubsub,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class TriggerTransport {
 
   factory TriggerTransport.fromMap(Map<String, dynamic> map) {
     return TriggerTransport(
-      pubsub: map['pubsub'] == null
-          ? null
-          : TriggerTransportPubsub.fromMap(
-              (map['pubsub'] as Map).cast<String, dynamic>(),
-            ),
+      pubsub: map['pubsub'] == null ? null : TriggerTransportPubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BuildStorageLocation {
   /// Name of your S3 bucket.
   final String bucket;
-
   /// Name of the zip file containing your build files.
   final String key;
-
   /// A specific version of the file. If not set, the latest version of the file is retrieved.
   final String? objectVersion;
-
   /// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
   final String roleArn;
 
@@ -38,10 +36,9 @@ class BuildStorageLocation {
     return BuildStorageLocation(
       bucket: map['bucket'] as String,
       key: map['key'] as String,
-      objectVersion: map['objectVersion'] == null
-          ? null
-          : map['objectVersion'] as String,
+      objectVersion: map['objectVersion'] == null ? null : map['objectVersion'] as String,
       roleArn: map['roleArn'] as String,
     );
   }
 }
+

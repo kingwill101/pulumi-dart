@@ -10,7 +10,6 @@ class ProjectCloudArmorTierArgs {
   /// Managed protection tier to be set.
   /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
   final pulumi.Input<String> cloudArmorTier;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -18,8 +17,11 @@ class ProjectCloudArmorTierArgs {
   /// Creates a new [ProjectCloudArmorTierArgs].
   /// [cloudArmorTier] Managed protection tier to be set.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectCloudArmorTierArgs({required String cloudArmorTier, String? project})
-    : cloudArmorTier = pulumi.Input.asInput<String>(cloudArmorTier),
+  ProjectCloudArmorTierArgs({
+    required String cloudArmorTier,
+    String? project,
+  }) :
+      cloudArmorTier = pulumi.Input.asInput<String>(cloudArmorTier),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -36,3 +38,4 @@ class ProjectCloudArmorTierArgs {
     );
   }
 }
+

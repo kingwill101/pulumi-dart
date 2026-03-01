@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionArgs {
   /// EC2 endpoint of the region to select.
   final pulumi.Input<String>? endpoint;
-
   /// Region's name (e.g. `us-east-1`).
   final pulumi.Input<String>? id;
-
   /// Full name of the region to select. Use `region` instead.
   final pulumi.Input<String>? name;
-
   /// Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,8 +21,13 @@ class GetRegionArgs {
   /// [id] Region's name (e.g. `us-east-1`).
   /// [name] Full name of the region to select. Use `region` instead.
   /// [region] Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetRegionArgs({String? endpoint, String? id, String? name, String? region})
-    : endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
+  GetRegionArgs({
+    String? endpoint,
+    String? id,
+    String? name,
+    String? region,
+  }) :
+      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
       id = pulumi.Input.asOptionalInput<String>(id),
       name = pulumi.Input.asOptionalInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region);
@@ -48,3 +50,4 @@ class GetRegionArgs {
     );
   }
 }
+

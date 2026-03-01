@@ -1662,13 +1662,10 @@ class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<IAMMemberCondition?> condition;
-
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   late final pulumi.Output<String> folder;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -1676,7 +1673,6 @@ class IAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -1691,11 +1687,11 @@ class IAMMember extends pulumi.CustomResource {
     IAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:folder/iAMMember:IAMMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:folder/iAMMember:IAMMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<IAMMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.folder = registerOutput<String>('folder');

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Result data returned by listIdentityProviderSecrets.
+class ListIdentityProviderSecretsResult {
+  /// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+  final String? clientSecret;
+
+  /// Creates a new [ListIdentityProviderSecretsResult].
+  /// [clientSecret] Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+  ListIdentityProviderSecretsResult({
+    this.clientSecret,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientSecret': ?clientSecret,
+    };
+  }
+
+  factory ListIdentityProviderSecretsResult.fromMap(Map<String, dynamic> map) {
+    return ListIdentityProviderSecretsResult(
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+    );
+  }
+}
+

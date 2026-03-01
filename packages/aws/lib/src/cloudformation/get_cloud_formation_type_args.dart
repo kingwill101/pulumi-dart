@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudFormationTypeArgs {
   /// ARN of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
   final pulumi.Input<String>? arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// CloudFormation Registry Type. For example, `RESOURCE`.
   final pulumi.Input<String>? type;
-
   /// CloudFormation Type name. For example, `AWS::EC2::VPC`.
   final pulumi.Input<String>? typeName;
-
   /// Identifier of the CloudFormation Type version.
   final pulumi.Input<String>? versionId;
 
@@ -34,11 +30,12 @@ class GetCloudFormationTypeArgs {
     String? type,
     String? typeName,
     String? versionId,
-  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       type = pulumi.Input.asOptionalInput<String>(type),
-       typeName = pulumi.Input.asOptionalInput<String>(typeName),
-       versionId = pulumi.Input.asOptionalInput<String>(versionId);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      type = pulumi.Input.asOptionalInput<String>(type),
+      typeName = pulumi.Input.asOptionalInput<String>(typeName),
+      versionId = pulumi.Input.asOptionalInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,3 +57,4 @@ class GetCloudFormationTypeArgs {
     );
   }
 }
+

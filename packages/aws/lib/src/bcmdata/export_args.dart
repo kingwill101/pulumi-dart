@@ -11,7 +11,6 @@ import 'export_timeouts.dart';
 class ExportArgs {
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   final pulumi.Input<ExportExport>? export;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ExportTimeouts>? timeouts;
@@ -24,41 +23,25 @@ class ExportArgs {
     ExportExport? export,
     Map<String, String>? tags,
     ExportTimeouts? timeouts,
-  }) : export = pulumi.Input.asOptionalInput<ExportExport>(export),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       timeouts = pulumi.Input.asOptionalInput<ExportTimeouts>(timeouts);
+  }) :
+      export = pulumi.Input.asOptionalInput<ExportExport>(export),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeouts = pulumi.Input.asOptionalInput<ExportTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'export':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportExport,
-            Map<String, dynamic>
-          >(export, (value) => value.toMap()),
+      'export': ?pulumi.Input.mapOptionalInputValue<ExportExport, Map<String, dynamic>>(export, (value) => value.toMap()),
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ExportTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      export: map['export'] == null
-          ? null
-          : ExportExport.fromMap(
-              (map['export'] as Map).cast<String, dynamic>(),
-            ),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null
-          ? null
-          : ExportTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      export: map['export'] == null ? null : ExportExport.fromMap((map['export'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null ? null : ExportTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

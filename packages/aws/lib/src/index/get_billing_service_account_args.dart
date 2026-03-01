@@ -12,11 +12,15 @@ class GetBillingServiceAccountArgs {
 
   /// Creates a new [GetBillingServiceAccountArgs].
   /// [id] ID of the AWS billing service account.
-  GetBillingServiceAccountArgs({String? id})
-    : id = pulumi.Input.asOptionalInput<String>(id);
+  GetBillingServiceAccountArgs({
+    String? id,
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory GetBillingServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class GetBillingServiceAccountArgs {
     );
   }
 }
+

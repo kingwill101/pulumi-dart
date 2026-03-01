@@ -1,15 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppMonitorCustomEvents {
   /// Specifies whether this app monitor allows the web client to define and send custom events. The default is for custom events to be `DISABLED`. Valid values are `DISABLED` and `ENABLED`.
   final String? status;
 
   /// Creates a new [AppMonitorCustomEvents].
   /// [status] Specifies whether this app monitor allows the web client to define and send custom events. The default is for custom events to be `DISABLED`. Valid values are `DISABLED` and `ENABLED`.
-  AppMonitorCustomEvents({this.status});
+  AppMonitorCustomEvents({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory AppMonitorCustomEvents.fromMap(Map<String, dynamic> map) {
@@ -18,3 +23,4 @@ class AppMonitorCustomEvents {
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'virtual_node_spec_listener_outlier_detection_interval.dart';
 
 class VirtualNodeSpecListenerOutlierDetection {
   /// Base amount of time for which a host is ejected.
-  final VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration
-  baseEjectionDuration;
-
+  final VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration baseEjectionDuration;
   /// Time interval between ejection sweep analysis.
   final VirtualNodeSpecListenerOutlierDetectionInterval interval;
-
   /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
   /// Minimum value of `0`. Maximum value of `100`.
   final int maxEjectionPercent;
-
   /// Number of consecutive `5xx` errors required for ejection. Minimum value of `1`.
   final int maxServerErrors;
 
@@ -39,19 +35,13 @@ class VirtualNodeSpecListenerOutlierDetection {
     };
   }
 
-  factory VirtualNodeSpecListenerOutlierDetection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerOutlierDetection.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerOutlierDetection(
-      baseEjectionDuration:
-          VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration.fromMap(
-            (map['baseEjectionDuration'] as Map).cast<String, dynamic>(),
-          ),
-      interval: VirtualNodeSpecListenerOutlierDetectionInterval.fromMap(
-        (map['interval'] as Map).cast<String, dynamic>(),
-      ),
+      baseEjectionDuration: VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration.fromMap((map['baseEjectionDuration'] as Map).cast<String, dynamic>()),
+      interval: VirtualNodeSpecListenerOutlierDetectionInterval.fromMap((map['interval'] as Map).cast<String, dynamic>()),
       maxEjectionPercent: map['maxEjectionPercent'] as int,
       maxServerErrors: map['maxServerErrors'] as int,
     );
   }
 }
+

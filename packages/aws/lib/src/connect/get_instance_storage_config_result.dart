@@ -6,13 +6,11 @@ import 'get_instance_storage_config_storage_config.dart';
 /// Result data returned by getInstanceStorageConfig.
 class GetInstanceStorageConfigResult {
   final String associationId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String region;
   final String resourceType;
-
   /// Specifies the storage configuration options for the Connect Instance. Documented below.
   final List<GetInstanceStorageConfigStorageConfig> storageConfigs;
 
@@ -39,11 +37,7 @@ class GetInstanceStorageConfigResult {
       'instanceId': instanceId,
       'region': region,
       'resourceType': resourceType,
-      'storageConfigs':
-          pulumi.Input.encodeList<
-            GetInstanceStorageConfigStorageConfig,
-            Map<String, dynamic>
-          >(storageConfigs, (value) => value.toMap()),
+      'storageConfigs': pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfig, Map<String, dynamic>>(storageConfigs, (value) => value.toMap()),
     };
   }
 
@@ -54,13 +48,8 @@ class GetInstanceStorageConfigResult {
       instanceId: map['instanceId'] as String,
       region: map['region'] as String,
       resourceType: map['resourceType'] as String,
-      storageConfigs:
-          pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(
-            map['storageConfigs'],
-            (value) => GetInstanceStorageConfigStorageConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      storageConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(map['storageConfigs'], (value) => GetInstanceStorageConfigStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

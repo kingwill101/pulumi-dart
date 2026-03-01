@@ -5,16 +5,12 @@ import 'agent_flow_definition_connection_configuration.dart';
 class AgentFlowDefinitionConnection {
   /// Configuration of the connection. See Connection Configuration for more information.
   final AgentFlowDefinitionConnectionConfiguration? configuration;
-
   /// A name for the connection that you can reference.
   final String name;
-
   /// The node that the connection starts at.
   final String source;
-
   /// The node that the connection ends at.
   final String target;
-
   /// Whether the source node that the connection begins from is a condition node `Conditional` or not `Data`.
   final String type;
 
@@ -44,11 +40,7 @@ class AgentFlowDefinitionConnection {
 
   factory AgentFlowDefinitionConnection.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnection(
-      configuration: map['configuration'] == null
-          ? null
-          : AgentFlowDefinitionConnectionConfiguration.fromMap(
-              (map['configuration'] as Map).cast<String, dynamic>(),
-            ),
+      configuration: map['configuration'] == null ? null : AgentFlowDefinitionConnectionConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       source: map['source'] as String,
       target: map['target'] as String,
@@ -56,3 +48,4 @@ class AgentFlowDefinitionConnection {
     );
   }
 }
+

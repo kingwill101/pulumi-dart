@@ -10,7 +10,10 @@ class DomainOffPeakWindowOptions {
   /// Creates a new [DomainOffPeakWindowOptions].
   /// [enabled] Enabled disabled toggle for off-peak update window.
   /// [offPeakWindow] Optional.
-  DomainOffPeakWindowOptions({this.enabled, this.offPeakWindow});
+  DomainOffPeakWindowOptions({
+    this.enabled,
+    this.offPeakWindow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,11 +25,8 @@ class DomainOffPeakWindowOptions {
   factory DomainOffPeakWindowOptions.fromMap(Map<String, dynamic> map) {
     return DomainOffPeakWindowOptions(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      offPeakWindow: map['offPeakWindow'] == null
-          ? null
-          : DomainOffPeakWindowOptionsOffPeakWindow.fromMap(
-              (map['offPeakWindow'] as Map).cast<String, dynamic>(),
-            ),
+      offPeakWindow: map['offPeakWindow'] == null ? null : DomainOffPeakWindowOptionsOffPeakWindow.fromMap((map['offPeakWindow'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

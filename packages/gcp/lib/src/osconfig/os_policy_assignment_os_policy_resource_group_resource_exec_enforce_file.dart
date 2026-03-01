@@ -8,18 +8,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
-
   /// A Cloud Storage object. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs? gcs;
-
   /// A local path within the VM to use.
   final String? localPath;
-
   /// A generic remote file. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote?
-  remote;
+  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote? remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile].
   /// [allowInsecure] Defaults to false. When false, files are
@@ -42,24 +38,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(
-      allowInsecure: map['allowInsecure'] == null
-          ? null
-          : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap(
-              (map['gcs'] as Map).cast<String, dynamic>(),
-            ),
+      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote.fromMap(
-              (map['remote'] as Map).cast<String, dynamic>(),
-            ),
+      remote: map['remote'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

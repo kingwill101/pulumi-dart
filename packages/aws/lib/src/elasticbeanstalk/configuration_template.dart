@@ -152,24 +152,18 @@ import 'configuration_template_setting.dart';
 class ConfigurationTemplate extends pulumi.CustomResource {
   /// name of the application to associate with this configuration template
   late final pulumi.Output<String> application;
-
   /// Short description of the Template
   late final pulumi.Output<String?> description;
-
   /// The ID of the environment used with this configuration template
   late final pulumi.Output<String?> environmentId;
-
   /// A unique name for this Template.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
   late final pulumi.Output<List<ConfigurationTemplateSetting>> settings;
-
   /// A solution stack to base your Template
   /// off of. Example stacks can be found in the [Amazon API documentation][1]
   late final pulumi.Output<String?> solutionStackName;
@@ -183,19 +177,17 @@ class ConfigurationTemplate extends pulumi.CustomResource {
     ConfigurationTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.application = registerOutput<String>('application');
     this.description = registerOutput<String?>('description');
     this.environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.settings = registerOutput<List<ConfigurationTemplateSetting>>(
-      'settings',
-    );
+    this.settings = registerOutput<List<ConfigurationTemplateSetting>>('settings');
     this.solutionStackName = registerOutput<String?>('solutionStackName');
   }
 }

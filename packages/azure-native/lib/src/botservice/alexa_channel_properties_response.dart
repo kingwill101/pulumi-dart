@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The parameters to provide for the Alexa channel.
+class AlexaChannelPropertiesResponse {
+  /// The Alexa skill Id
+  final String alexaSkillId;
+  /// Whether this channel is enabled for the bot
+  final bool isEnabled;
+  /// Full Uri used to configured the skill in Alexa
+  final String serviceEndpointUri;
+  /// Url fragment used in part of the Uri configured in Alexa
+  final String urlFragment;
+
+  /// Creates a new [AlexaChannelPropertiesResponse].
+  /// [alexaSkillId] The Alexa skill Id
+  /// [isEnabled] Whether this channel is enabled for the bot
+  /// [serviceEndpointUri] Full Uri used to configured the skill in Alexa
+  /// [urlFragment] Url fragment used in part of the Uri configured in Alexa
+  AlexaChannelPropertiesResponse({
+    required this.alexaSkillId,
+    required this.isEnabled,
+    required this.serviceEndpointUri,
+    required this.urlFragment,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'alexaSkillId': alexaSkillId,
+      'isEnabled': isEnabled,
+      'serviceEndpointUri': serviceEndpointUri,
+      'urlFragment': urlFragment,
+    };
+  }
+
+  factory AlexaChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return AlexaChannelPropertiesResponse(
+      alexaSkillId: map['alexaSkillId'] as String,
+      isEnabled: map['isEnabled'] as bool,
+      serviceEndpointUri: map['serviceEndpointUri'] as String,
+      urlFragment: map['urlFragment'] as String,
+    );
+  }
+}
+

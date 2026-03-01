@@ -6,9 +6,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
   /// Message encapsulating a value that can be either absolute ("fixed") or
   /// relative ("percent") to a value.
   /// Structure is documented below.
-  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget
-  disruptionBudget;
-
+  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget disruptionBudget;
   /// Required. This determines the minimum duration of time to wait after the
   /// configuration changes are applied through the current rollout. A
   /// VM continues to count towards the `disruption_budget` at least
@@ -31,15 +29,11 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout(
-      disruptionBudget:
-          V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap(
-            (map['disruptionBudget'] as Map).cast<String, dynamic>(),
-          ),
+      disruptionBudget: V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>()),
       minWaitDuration: map['minWaitDuration'] as String,
     );
   }
 }
+

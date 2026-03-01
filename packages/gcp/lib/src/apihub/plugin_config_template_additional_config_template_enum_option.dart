@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
   /// Description of the option.
   final String? description;
-
   /// Display name of the option.
   final String displayName;
-
   /// Id of the option.
   final String id;
 
@@ -28,15 +27,12 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
     };
   }
 
-  factory PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAdditionalConfigTemplateEnumOption(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
     );
   }
 }
+

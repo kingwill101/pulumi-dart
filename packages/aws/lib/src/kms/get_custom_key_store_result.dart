@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCustomKeyStore.
 class GetCustomKeyStoreResult {
   final String cloudHsmClusterId;
-
   /// Indicates whether the custom key store is connected to its CloudHSM cluster.
   final String connectionState;
-
   /// The date and time when the custom key store was created.
   final String creationDate;
   final String customKeyStoreId;
   final String customKeyStoreName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The trust anchor certificate of the associated CloudHSM cluster.
   final String trustAnchorCertificate;
 
@@ -65,3 +62,4 @@ class GetCustomKeyStoreResult {
     );
   }
 }
+

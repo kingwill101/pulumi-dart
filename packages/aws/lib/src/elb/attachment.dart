@@ -113,10 +113,8 @@ import 'attachment_args.dart';
 class Attachment extends pulumi.CustomResource {
   /// The name of the ELB.
   late final pulumi.Output<String> elb;
-
   /// Instance ID to place in the ELB pool.
   late final pulumi.Output<String> instance;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -129,11 +127,11 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elb/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elb/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.elb = registerOutput<String>('elb');
     this.instance = registerOutput<String>('instance');
     this.region = registerOutput<String>('region');

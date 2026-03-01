@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayRoutePropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The id of the `aws.ec2.RouteTable` to propagate routes into.
   final pulumi.Input<String> routeTableId;
-
   /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
   final pulumi.Input<String> vpnGatewayId;
 
@@ -24,9 +22,10 @@ class VpnGatewayRoutePropagationArgs {
     String? region,
     required String routeTableId,
     required String vpnGatewayId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       routeTableId = pulumi.Input.asInput<String>(routeTableId),
-       vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routeTableId = pulumi.Input.asInput<String>(routeTableId),
+      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class VpnGatewayRoutePropagationArgs {
     );
   }
 }
+

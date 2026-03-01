@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output {
   /// Local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final String localPath;
-
   /// Whether to upload the results of the monitoring job continuously or after the job completes. Valid values: `Continuous`, `EndOfJob`.
   final String? s3UploadMode;
-
   /// URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final String s3Uri;
 
@@ -28,15 +27,12 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output(
       localPath: map['localPath'] as String,
-      s3UploadMode: map['s3UploadMode'] == null
-          ? null
-          : map['s3UploadMode'] as String,
+      s3UploadMode: map['s3UploadMode'] == null ? null : map['s3UploadMode'] as String,
       s3Uri: map['s3Uri'] as String,
     );
   }
 }
+

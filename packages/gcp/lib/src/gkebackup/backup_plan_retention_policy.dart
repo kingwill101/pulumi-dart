@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackupPlanRetentionPolicy {
   /// Minimum age for a Backup created via this BackupPlan (in days).
   /// Must be an integer value between 0-90 (inclusive).
@@ -8,7 +9,6 @@ class BackupPlanRetentionPolicy {
   /// Updating this field of a BackupPlan does not affect existing Backups.
   /// Backups created after a successful update will inherit this new value.
   final int? backupDeleteLockDays;
-
   /// The default maximum age of a Backup created via this BackupPlan.
   /// This field MUST be an integer value >= 0 and <= 365. If specified,
   /// a Backup created under this BackupPlan will be automatically deleted
@@ -22,7 +22,6 @@ class BackupPlanRetentionPolicy {
   /// If rpo_config is defined, then this must be
   /// <= 360 * targetRpoMinutes/(1440minutes/day)
   final int? backupRetainDays;
-
   /// This flag denotes whether the retention policy of this BackupPlan is locked.
   /// If set to True, no further update is allowed on this policy, including
   /// the locked field itself.
@@ -48,13 +47,10 @@ class BackupPlanRetentionPolicy {
 
   factory BackupPlanRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPlanRetentionPolicy(
-      backupDeleteLockDays: map['backupDeleteLockDays'] == null
-          ? null
-          : map['backupDeleteLockDays'] as int,
-      backupRetainDays: map['backupRetainDays'] == null
-          ? null
-          : map['backupRetainDays'] as int,
+      backupDeleteLockDays: map['backupDeleteLockDays'] == null ? null : map['backupDeleteLockDays'] as int,
+      backupRetainDays: map['backupRetainDays'] == null ? null : map['backupRetainDays'] as int,
       locked: map['locked'] == null ? null : map['locked'] as bool,
     );
   }
 }
+

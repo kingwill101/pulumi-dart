@@ -4,9 +4,7 @@ import 'channel_encoder_settings_output_group_output_output_settings_archive_out
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings {
   /// M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings?
-  m2tsSettings;
-
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings? m2tsSettings;
   /// Raw Settings. This can be set as an empty block.
   final Map<String, dynamic>? rawSettings;
 
@@ -25,18 +23,11 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings(
-      m2tsSettings: map['m2tsSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap(
-              (map['m2tsSettings'] as Map).cast<String, dynamic>(),
-            ),
-      rawSettings: map['rawSettings'] == null
-          ? null
-          : (map['rawSettings'] as Map).cast<String, dynamic>(),
+      m2tsSettings: map['m2tsSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap((map['m2tsSettings'] as Map).cast<String, dynamic>()),
+      rawSettings: map['rawSettings'] == null ? null : (map['rawSettings'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

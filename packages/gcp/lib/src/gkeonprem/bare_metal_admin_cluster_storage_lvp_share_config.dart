@@ -6,7 +6,6 @@ class BareMetalAdminClusterStorageLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   /// Structure is documented below.
   final BareMetalAdminClusterStorageLvpShareConfigLvpConfig lvpConfig;
-
   /// The number of subdirectories to create under path.
   final int? sharedPathPvCount;
 
@@ -25,16 +24,11 @@ class BareMetalAdminClusterStorageLvpShareConfig {
     };
   }
 
-  factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorageLvpShareConfig(
-      lvpConfig: BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap(
-        (map['lvpConfig'] as Map).cast<String, dynamic>(),
-      ),
-      sharedPathPvCount: map['sharedPathPvCount'] == null
-          ? null
-          : map['sharedPathPvCount'] as int,
+      lvpConfig: BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig'] as Map).cast<String, dynamic>()),
+      sharedPathPvCount: map['sharedPathPvCount'] == null ? null : map['sharedPathPvCount'] as int,
     );
   }
 }
+

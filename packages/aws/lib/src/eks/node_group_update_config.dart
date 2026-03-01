@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupUpdateConfig {
   /// Desired max number of unavailable worker nodes during node group update.
   final int? maxUnavailable;
-
   /// Desired max percentage of unavailable worker nodes during node group update.
   final int? maxUnavailablePercentage;
-
   /// Strategy to use for updating the node group. Valid values: `MINIMAL` and `DEFAULT`.
   final String? updateStrategy;
 
@@ -30,15 +29,10 @@ class NodeGroupUpdateConfig {
 
   factory NodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupUpdateConfig(
-      maxUnavailable: map['maxUnavailable'] == null
-          ? null
-          : map['maxUnavailable'] as int,
-      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null
-          ? null
-          : map['maxUnavailablePercentage'] as int,
-      updateStrategy: map['updateStrategy'] == null
-          ? null
-          : map['updateStrategy'] as String,
+      maxUnavailable: map['maxUnavailable'] == null ? null : map['maxUnavailable'] as int,
+      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : map['maxUnavailablePercentage'] as int,
+      updateStrategy: map['updateStrategy'] == null ? null : map['updateStrategy'] as String,
     );
   }
 }
+

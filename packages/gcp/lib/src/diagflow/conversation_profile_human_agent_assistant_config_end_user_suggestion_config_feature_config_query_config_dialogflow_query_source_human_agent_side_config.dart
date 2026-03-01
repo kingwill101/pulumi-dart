@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
   /// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
   final String? agent;
@@ -11,14 +12,15 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'agent': ?agent};
+    return <String, dynamic>{
+      'agent': ?agent,
+    };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig(
       agent: map['agent'] == null ? null : map['agent'] as String,
     );
   }
 }
+

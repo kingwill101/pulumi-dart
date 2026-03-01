@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// A map contains the attributes of the instance. Check the [doc](https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html#API_RegisterInstance_RequestSyntax) for the supported attributes and syntax.
   final pulumi.Input<Map<String, String>> attributes;
-
   /// The ID of the service instance.
   final pulumi.Input<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the service that you want to use to create the instance.
   final pulumi.Input<String> serviceId;
 
@@ -29,10 +26,11 @@ class InstanceArgs {
     required String instanceId,
     String? region,
     required String serviceId,
-  }) : attributes = pulumi.Input.asInput<Map<String, String>>(attributes),
-       instanceId = pulumi.Input.asInput<String>(instanceId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      attributes = pulumi.Input.asInput<Map<String, String>>(attributes),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,3 +50,4 @@ class InstanceArgs {
     );
   }
 }
+

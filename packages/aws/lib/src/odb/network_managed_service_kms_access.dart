@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceKmsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// Specifies the endpoint policy for KMS access from the ODB network.
   final String kmsPolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -40,3 +39,4 @@ class NetworkManagedServiceKmsAccess {
     );
   }
 }
+

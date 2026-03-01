@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheServiceRoutingHostRule {
   /// A human-readable description of the hostRule.
   final String? description;
-
   /// The list of host patterns to match.
   /// Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
   /// When multiple hosts are specified, hosts are matched in the following priority:
@@ -16,7 +16,6 @@ class EdgeCacheServiceRoutingHostRule {
   /// Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
   /// You may specify up to 10 hosts.
   final List<String> hosts;
-
   /// The name of the pathMatcher associated with this hostRule.
   final String pathMatcher;
 
@@ -40,11 +39,10 @@ class EdgeCacheServiceRoutingHostRule {
 
   factory EdgeCacheServiceRoutingHostRule.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingHostRule(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       hosts: (map['hosts'] as List).cast<String>(),
       pathMatcher: map['pathMatcher'] as String,
     );
   }
 }
+

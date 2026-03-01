@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BaselineParameters {
   /// The key of the parameter.
   final String key;
-
   /// The value of the parameter.
   final String value;
 
   /// Creates a new [BaselineParameters].
   /// [key] The key of the parameter.
   /// [value] The value of the parameter.
-  BaselineParameters({required this.key, required this.value});
+  BaselineParameters({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory BaselineParameters.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class BaselineParameters {
     );
   }
 }
+

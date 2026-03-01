@@ -7,10 +7,8 @@ import 'lifecycle_policy_policy_detail_filter.dart';
 class LifecyclePolicyPolicyDetail {
   /// Configuration details for the policy action.
   final LifecyclePolicyPolicyDetailAction action;
-
   /// Additional rules to specify resources that should be exempt from policy actions.
   final LifecyclePolicyPolicyDetailExclusionRules? exclusionRules;
-
   /// Specifies the resources that the lifecycle policy applies to.
   ///
   /// The following arguments are optional:
@@ -29,26 +27,17 @@ class LifecyclePolicyPolicyDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action.toMap(),
-      'exclusionRules': ?exclusionRules == null
-          ? null
-          : exclusionRules!.toMap(),
+      'exclusionRules': ?exclusionRules == null ? null : exclusionRules!.toMap(),
       'filter': filter.toMap(),
     };
   }
 
   factory LifecyclePolicyPolicyDetail.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetail(
-      action: LifecyclePolicyPolicyDetailAction.fromMap(
-        (map['action'] as Map).cast<String, dynamic>(),
-      ),
-      exclusionRules: map['exclusionRules'] == null
-          ? null
-          : LifecyclePolicyPolicyDetailExclusionRules.fromMap(
-              (map['exclusionRules'] as Map).cast<String, dynamic>(),
-            ),
-      filter: LifecyclePolicyPolicyDetailFilter.fromMap(
-        (map['filter'] as Map).cast<String, dynamic>(),
-      ),
+      action: LifecyclePolicyPolicyDetailAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      exclusionRules: map['exclusionRules'] == null ? null : LifecyclePolicyPolicyDetailExclusionRules.fromMap((map['exclusionRules'] as Map).cast<String, dynamic>()),
+      filter: LifecyclePolicyPolicyDetailFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

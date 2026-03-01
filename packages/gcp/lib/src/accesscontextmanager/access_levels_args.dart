@@ -11,7 +11,6 @@ class AccessLevelsArgs {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
   final pulumi.Input<List<AccessLevelsAccessLevel>>? accessLevels;
-
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   final pulumi.Input<String> parent;
@@ -22,39 +21,22 @@ class AccessLevelsArgs {
   AccessLevelsArgs({
     List<AccessLevelsAccessLevel>? accessLevels,
     required String parent,
-  }) : accessLevels = pulumi
-           .Input.asOptionalInput<List<AccessLevelsAccessLevel>>(accessLevels),
-       parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      accessLevels = pulumi.Input.asOptionalInput<List<AccessLevelsAccessLevel>>(accessLevels),
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLevels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AccessLevelsAccessLevel>,
-            List<Map<String, dynamic>>
-          >(
-            accessLevels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessLevelsAccessLevel,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'accessLevels': ?pulumi.Input.mapOptionalInputValue<List<AccessLevelsAccessLevel>, List<Map<String, dynamic>>>(accessLevels, (value) => pulumi.Input.encodeList<AccessLevelsAccessLevel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parent': parent,
     };
   }
 
   factory AccessLevelsArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelsArgs(
-      accessLevels: map['accessLevels'] == null
-          ? null
-          : pulumi.Input.decodeList<AccessLevelsAccessLevel>(
-              map['accessLevels'],
-              (value) => AccessLevelsAccessLevel.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      accessLevels: map['accessLevels'] == null ? null : pulumi.Input.decodeList<AccessLevelsAccessLevel>(map['accessLevels'], (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>())),
       parent: map['parent'] as String,
     );
   }
 }
+

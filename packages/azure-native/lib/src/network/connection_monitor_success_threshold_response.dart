@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes the threshold for declaring a test successful.
+class ConnectionMonitorSuccessThresholdResponse {
+  /// The maximum percentage of failed checks permitted for a test to evaluate as successful.
+  final int? checksFailedPercent;
+  /// The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
+  final double? roundTripTimeMs;
+
+  /// Creates a new [ConnectionMonitorSuccessThresholdResponse].
+  /// [checksFailedPercent] The maximum percentage of failed checks permitted for a test to evaluate as successful.
+  /// [roundTripTimeMs] The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
+  ConnectionMonitorSuccessThresholdResponse({
+    this.checksFailedPercent,
+    this.roundTripTimeMs,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'checksFailedPercent': ?checksFailedPercent,
+      'roundTripTimeMs': ?roundTripTimeMs,
+    };
+  }
+
+  factory ConnectionMonitorSuccessThresholdResponse.fromMap(Map<String, dynamic> map) {
+    return ConnectionMonitorSuccessThresholdResponse(
+      checksFailedPercent: map['checksFailedPercent'] == null ? null : map['checksFailedPercent'] as int,
+      roundTripTimeMs: map['roundTripTimeMs'] == null ? null : map['roundTripTimeMs'] as double,
+    );
+  }
+}
+

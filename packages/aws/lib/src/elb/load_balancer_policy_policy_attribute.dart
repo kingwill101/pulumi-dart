@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoadBalancerPolicyPolicyAttribute {
   final String? name;
   final String? value;
@@ -7,10 +8,16 @@ class LoadBalancerPolicyPolicyAttribute {
   /// Creates a new [LoadBalancerPolicyPolicyAttribute].
   /// [name] Optional.
   /// [value] Optional.
-  LoadBalancerPolicyPolicyAttribute({this.name, this.value});
+  LoadBalancerPolicyPolicyAttribute({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory LoadBalancerPolicyPolicyAttribute.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class LoadBalancerPolicyPolicyAttribute {
     );
   }
 }
+

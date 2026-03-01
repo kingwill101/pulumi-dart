@@ -8,7 +8,9 @@ class ObjectCopyOverrideProvider {
 
   /// Creates a new [ObjectCopyOverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  ObjectCopyOverrideProvider({this.defaultTags});
+  ObjectCopyOverrideProvider({
+    this.defaultTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class ObjectCopyOverrideProvider {
 
   factory ObjectCopyOverrideProvider.fromMap(Map<String, dynamic> map) {
     return ObjectCopyOverrideProvider(
-      defaultTags: map['defaultTags'] == null
-          ? null
-          : ObjectCopyOverrideProviderDefaultTags.fromMap(
-              (map['defaultTags'] as Map).cast<String, dynamic>(),
-            ),
+      defaultTags: map['defaultTags'] == null ? null : ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

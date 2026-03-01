@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestorePlanRestoreConfigTransformationRuleFieldAction {
   /// A string containing a JSON Pointer value that references the
   /// location in the target document to move the value from.
   final String? fromPath;
-
   /// Specifies the operation to perform.
   /// Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
   final String op;
-
   /// A string containing a JSON-Pointer value that references a
   /// location within the target document where the operation is performed.
   final String? path;
-
   /// A string that specifies the desired value in string format
   /// to use for transformation.
   final String? value;
@@ -38,9 +36,7 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction {
     };
   }
 
-  factory RestorePlanRestoreConfigTransformationRuleFieldAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigTransformationRuleFieldAction.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigTransformationRuleFieldAction(
       fromPath: map['fromPath'] == null ? null : map['fromPath'] as String,
       op: map['op'] as String,
@@ -49,3 +45,4 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction {
     );
   }
 }
+

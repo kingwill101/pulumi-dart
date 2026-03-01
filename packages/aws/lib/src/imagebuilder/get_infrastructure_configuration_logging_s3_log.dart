@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInfrastructureConfigurationLoggingS3Log {
   /// Name of the S3 Bucket for logging.
   final String s3BucketName;
-
   /// Key prefix for S3 Bucket logging.
   final String s3KeyPrefix;
 
@@ -22,12 +22,11 @@ class GetInfrastructureConfigurationLoggingS3Log {
     };
   }
 
-  factory GetInfrastructureConfigurationLoggingS3Log.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInfrastructureConfigurationLoggingS3Log.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationLoggingS3Log(
       s3BucketName: map['s3BucketName'] as String,
       s3KeyPrefix: map['s3KeyPrefix'] as String,
     );
   }
 }
+

@@ -8,17 +8,20 @@ class FsxOpenZfsFileSystemProtocol {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocol].
   /// [nfs] Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system. See below.
-  FsxOpenZfsFileSystemProtocol({required this.nfs});
+  FsxOpenZfsFileSystemProtocol({
+    required this.nfs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nfs': nfs.toMap()};
+    return <String, dynamic>{
+      'nfs': nfs.toMap(),
+    };
   }
 
   factory FsxOpenZfsFileSystemProtocol.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemProtocol(
-      nfs: FsxOpenZfsFileSystemProtocolNfs.fromMap(
-        (map['nfs'] as Map).cast<String, dynamic>(),
-      ),
+      nfs: FsxOpenZfsFileSystemProtocolNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

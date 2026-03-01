@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Group of the gallery sharing profile
+class SharingProfileGroupResponse {
+  /// A list of subscription/tenant ids the gallery is aimed to be shared to.
+  final List<String>? ids;
+  /// This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
+  final String? type;
+
+  /// Creates a new [SharingProfileGroupResponse].
+  /// [ids] A list of subscription/tenant ids the gallery is aimed to be shared to.
+  /// [type] This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
+  SharingProfileGroupResponse({
+    this.ids,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ids': ?ids,
+      'type': ?type,
+    };
+  }
+
+  factory SharingProfileGroupResponse.fromMap(Map<String, dynamic> map) {
+    return SharingProfileGroupResponse(
+      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

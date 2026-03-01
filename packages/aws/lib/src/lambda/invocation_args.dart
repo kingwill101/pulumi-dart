@@ -9,25 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvocationArgs {
   /// Name of the Lambda function.
   final pulumi.Input<String> functionName;
-
   /// JSON payload to the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> input;
-
   /// Lifecycle scope of the resource to manage. Valid values are `CREATE_ONLY` and `CRUD`. Defaults to `CREATE_ONLY`. `CREATE_ONLY` will invoke the function only on creation or replacement. `CRUD` will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information.
   final pulumi.Input<String>? lifecycleScope;
-
   /// Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tenant Id to serve invocations from specified tenant.
   final pulumi.Input<String>? tenantId;
   final pulumi.Input<String>? terraformKey;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -49,14 +43,15 @@ class InvocationArgs {
     String? tenantId,
     String? terraformKey,
     Map<String, String>? triggers,
-  }) : functionName = pulumi.Input.asInput<String>(functionName),
-       input = pulumi.Input.asInput<String>(input),
-       lifecycleScope = pulumi.Input.asOptionalInput<String>(lifecycleScope),
-       qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-       terraformKey = pulumi.Input.asOptionalInput<String>(terraformKey),
-       triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+  }) :
+      functionName = pulumi.Input.asInput<String>(functionName),
+      input = pulumi.Input.asInput<String>(input),
+      lifecycleScope = pulumi.Input.asOptionalInput<String>(lifecycleScope),
+      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
+      terraformKey = pulumi.Input.asOptionalInput<String>(terraformKey),
+      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,18 +70,13 @@ class InvocationArgs {
     return InvocationArgs(
       functionName: map['functionName'] as String,
       input: map['input'] as String,
-      lifecycleScope: map['lifecycleScope'] == null
-          ? null
-          : map['lifecycleScope'] as String,
+      lifecycleScope: map['lifecycleScope'] == null ? null : map['lifecycleScope'] as String,
       qualifier: map['qualifier'] == null ? null : map['qualifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      terraformKey: map['terraformKey'] == null
-          ? null
-          : map['terraformKey'] as String,
-      triggers: map['triggers'] == null
-          ? null
-          : (map['triggers'] as Map).cast<String, String>(),
+      terraformKey: map['terraformKey'] == null ? null : map['terraformKey'] as String,
+      triggers: map['triggers'] == null ? null : (map['triggers'] as Map).cast<String, String>(),
     );
   }
 }
+

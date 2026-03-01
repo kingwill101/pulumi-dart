@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReportPlanReportSetting {
   /// Specifies the list of accounts a report covers.
   final List<String>? accounts;
-
   /// Specifies the Amazon Resource Names (ARNs) of the frameworks a report covers.
   final List<String>? frameworkArns;
-
   /// Specifies the number of frameworks a report covers.
   final int? numberOfFrameworks;
-
   /// Specifies the list of Organizational Units a report covers.
   final List<String>? organizationUnits;
-
   /// Specifies the list of regions a report covers.
   final List<String>? regions;
-
   /// Identifies the report template for the report. Reports are built using a report template. The report templates are: `RESOURCE_COMPLIANCE_REPORT` | `CONTROL_COMPLIANCE_REPORT` | `BACKUP_JOB_REPORT` | `COPY_JOB_REPORT` | `RESTORE_JOB_REPORT`.
   final String reportTemplate;
 
@@ -48,22 +44,13 @@ class ReportPlanReportSetting {
 
   factory ReportPlanReportSetting.fromMap(Map<String, dynamic> map) {
     return ReportPlanReportSetting(
-      accounts: map['accounts'] == null
-          ? null
-          : (map['accounts'] as List).cast<String>(),
-      frameworkArns: map['frameworkArns'] == null
-          ? null
-          : (map['frameworkArns'] as List).cast<String>(),
-      numberOfFrameworks: map['numberOfFrameworks'] == null
-          ? null
-          : map['numberOfFrameworks'] as int,
-      organizationUnits: map['organizationUnits'] == null
-          ? null
-          : (map['organizationUnits'] as List).cast<String>(),
-      regions: map['regions'] == null
-          ? null
-          : (map['regions'] as List).cast<String>(),
+      accounts: map['accounts'] == null ? null : (map['accounts'] as List).cast<String>(),
+      frameworkArns: map['frameworkArns'] == null ? null : (map['frameworkArns'] as List).cast<String>(),
+      numberOfFrameworks: map['numberOfFrameworks'] == null ? null : map['numberOfFrameworks'] as int,
+      organizationUnits: map['organizationUnits'] == null ? null : (map['organizationUnits'] as List).cast<String>(),
+      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
       reportTemplate: map['reportTemplate'] as String,
     );
   }
 }
+

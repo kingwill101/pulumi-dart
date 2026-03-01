@@ -5,18 +5,12 @@ import 'workgroup_configuration_monitoring_configuration_cloud_watch_logging_con
 
 class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration {
   final bool enabled;
-
   /// Name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
   final String? logGroup;
-
   /// Prefix for the CloudWatch log stream name.
   final String? logStreamNamePrefix;
-
   /// Repeatable block defining log types to be delivered to CloudWatch.
-  final List<
-    WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType
-  >?
-  logTypes;
+  final List<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>? logTypes;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration].
   /// [enabled] Required.
@@ -35,35 +29,17 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
       'enabled': enabled,
       'logGroup': ?logGroup,
       'logStreamNamePrefix': ?logStreamNamePrefix,
-      'logTypes': ?logTypes == null
-          ? null
-          : pulumi.Input.encodeList<
-              WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType,
-              Map<String, dynamic>
-            >(logTypes!, (value) => value.toMap()),
+      'logTypes': ?logTypes == null ? null : pulumi.Input.encodeList<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType, Map<String, dynamic>>(logTypes!, (value) => value.toMap()),
     };
   }
 
-  factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration(
       enabled: map['enabled'] as bool,
       logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null
-          ? null
-          : map['logStreamNamePrefix'] as String,
-      logTypes: map['logTypes'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType
-            >(
-              map['logTypes'],
-              (value) =>
-                  WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : map['logStreamNamePrefix'] as String,
+      logTypes: map['logTypes'] == null ? null : pulumi.Input.decodeList<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>(map['logTypes'], (value) => WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

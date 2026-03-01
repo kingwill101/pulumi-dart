@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'configuration_backup_retention_policy_daily_schedule_retention_duration.dart';
+
+class ConfigurationBackupRetentionPolicyDailySchedule {
+  /// A `retention_duration` block as defined below.
+  final ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration? retentionDuration;
+  /// The retention times of the backup policy.
+  final List<String>? retentionTimes;
+
+  /// Creates a new [ConfigurationBackupRetentionPolicyDailySchedule].
+  /// [retentionDuration] A `retention_duration` block as defined below.
+  /// [retentionTimes] The retention times of the backup policy.
+  ConfigurationBackupRetentionPolicyDailySchedule({
+    this.retentionDuration,
+    this.retentionTimes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'retentionDuration': ?retentionDuration == null ? null : retentionDuration!.toMap(),
+      'retentionTimes': ?retentionTimes,
+    };
+  }
+
+  factory ConfigurationBackupRetentionPolicyDailySchedule.fromMap(Map<String, dynamic> map) {
+    return ConfigurationBackupRetentionPolicyDailySchedule(
+      retentionDuration: map['retentionDuration'] == null ? null : ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>()),
+      retentionTimes: map['retentionTimes'] == null ? null : (map['retentionTimes'] as List).cast<String>(),
+    );
+  }
+}
+

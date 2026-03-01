@@ -7,44 +7,31 @@ import 'get_stream_stream_mode_detail.dart';
 class GetStreamResult {
   /// ARN of the Kinesis Stream (same as `id`).
   final String arn;
-
   /// List of shard ids in the CLOSED state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
   final List<String> closedShards;
-
   /// Approximate UNIX timestamp that the stream was created.
   final int creationTimestamp;
-
   /// Encryption type used.
   final String encryptionType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// GUID for the customer-managed AWS KMS key to use for encryption.
   final String kmsKeyId;
-
   /// The maximum size for a single data record in KiB.
   final int maxRecordSizeInKib;
-
   /// Name of the Kinesis Stream.
   final String name;
-
   /// List of shard ids in the OPEN state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
   final List<String> openShards;
   final String region;
-
   /// Length of time (in hours) data records are accessible after they are added to the stream.
   final int retentionPeriod;
-
   /// List of shard-level CloudWatch metrics which are enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more.
   final List<String> shardLevelMetrics;
-
   /// Current status of the stream. The stream status is one of CREATING, DELETING, ACTIVE, or UPDATING.
   final String status;
-
   /// [Capacity mode](https://docs.aws.amazon.com/streams/latest/dev/how-do-i-size-a-stream.html) of the data stream. Detailed below.
   final List<GetStreamStreamModeDetail> streamModeDetails;
-
   /// Map of tags to assigned to the stream.
   final Map<String, String> tags;
 
@@ -97,11 +84,7 @@ class GetStreamResult {
       'retentionPeriod': retentionPeriod,
       'shardLevelMetrics': shardLevelMetrics,
       'status': status,
-      'streamModeDetails':
-          pulumi.Input.encodeList<
-            GetStreamStreamModeDetail,
-            Map<String, dynamic>
-          >(streamModeDetails, (value) => value.toMap()),
+      'streamModeDetails': pulumi.Input.encodeList<GetStreamStreamModeDetail, Map<String, dynamic>>(streamModeDetails, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -121,13 +104,9 @@ class GetStreamResult {
       retentionPeriod: map['retentionPeriod'] as int,
       shardLevelMetrics: (map['shardLevelMetrics'] as List).cast<String>(),
       status: map['status'] as String,
-      streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(
-        map['streamModeDetails'],
-        (value) => GetStreamStreamModeDetail.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(map['streamModeDetails'], (value) => GetStreamStreamModeDetail.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

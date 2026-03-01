@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListingCommercialInfoCloudMarketplace {
   /// (Output)
   /// Commercial state of the Marketplace Data Product.
   /// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
   final String? commercialState;
-
   /// (Output)
   /// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
   final String? service;
@@ -13,7 +13,10 @@ class ListingCommercialInfoCloudMarketplace {
   /// Creates a new [ListingCommercialInfoCloudMarketplace].
   /// [commercialState] (Output)
   /// [service] (Output)
-  ListingCommercialInfoCloudMarketplace({this.commercialState, this.service});
+  ListingCommercialInfoCloudMarketplace({
+    this.commercialState,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,14 +25,11 @@ class ListingCommercialInfoCloudMarketplace {
     };
   }
 
-  factory ListingCommercialInfoCloudMarketplace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListingCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingCommercialInfoCloudMarketplace(
-      commercialState: map['commercialState'] == null
-          ? null
-          : map['commercialState'] as String,
+      commercialState: map['commercialState'] == null ? null : map['commercialState'] as String,
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

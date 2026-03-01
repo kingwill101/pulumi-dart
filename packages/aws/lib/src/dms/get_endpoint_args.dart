@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointArgs {
   /// Database endpoint identifier. Identifiers must contain from 1 to 255 alphanumeric characters or hyphens, begin with a letter, contain only ASCII letters, digits, and hyphens, not end with a hyphen, and not contain two consecutive hyphens.
   final pulumi.Input<String> endpointId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -22,9 +21,10 @@ class GetEndpointArgs {
     required String endpointId,
     String? region,
     Map<String, String>? tags,
-  }) : endpointId = pulumi.Input.asInput<String>(endpointId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      endpointId = pulumi.Input.asInput<String>(endpointId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +38,8 @@ class GetEndpointArgs {
     return GetEndpointArgs(
       endpointId: map['endpointId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

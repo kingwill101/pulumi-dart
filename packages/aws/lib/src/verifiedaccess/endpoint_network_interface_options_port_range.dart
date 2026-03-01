@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointNetworkInterfaceOptionsPortRange {
   final int fromPort;
   final int toPort;
@@ -13,15 +14,17 @@ class EndpointNetworkInterfaceOptionsPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
+    return <String, dynamic>{
+      'fromPort': fromPort,
+      'toPort': toPort,
+    };
   }
 
-  factory EndpointNetworkInterfaceOptionsPortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointNetworkInterfaceOptionsPortRange.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterfaceOptionsPortRange(
       fromPort: map['fromPort'] as int,
       toPort: map['toPort'] as int,
     );
   }
 }
+

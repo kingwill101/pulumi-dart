@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'user_assigned_identity_response.dart';
+
+/// Identity for the resource.
+class IdentityResponse {
+  /// The principal ID of resource identity. This property will only be provided for a system assigned identity.
+  final String principalId;
+  /// The tenant ID of resource. This property will only be provided for a system assigned identity.
+  final String tenantId;
+  /// The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
+  final String? type;
+  /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+  /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+  final Map<String, UserAssignedIdentityResponse>? userAssignedIdentities;
+
+  /// Creates a new [IdentityResponse].
+  /// [principalId] The principal ID of resource identity. This property will only be provided for a system assigned identity.
+  /// [tenantId] The tenant ID of resource. This property will only be provided for a system assigned identity.
+  /// [type] The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
+  /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+  IdentityResponse({
+    required this.principalId,
+    required this.tenantId,
+    this.type,
+    this.userAssignedIdentities,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'principalId': principalId,
+      'tenantId': tenantId,
+      'type': ?type,
+      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+    };
+  }
+
+  factory IdentityResponse.fromMap(Map<String, dynamic> map) {
+    return IdentityResponse(
+      principalId: map['principalId'] as String,
+      tenantId: map['tenantId'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

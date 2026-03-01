@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore {
   /// The sensitivity score applied to the resource.
   /// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
@@ -12,14 +13,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'score': score};
+    return <String, dynamic>{
+      'score': score,
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(
       score: map['score'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityGatewayApplicationEndpointMatcher {
   /// Required. Hostname of the application.
   final String hostname;
-
   /// Optional. Ports of the application.
   final List<int> ports;
 
@@ -16,15 +16,17 @@ class SecurityGatewayApplicationEndpointMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostname': hostname, 'ports': ports};
+    return <String, dynamic>{
+      'hostname': hostname,
+      'ports': ports,
+    };
   }
 
-  factory SecurityGatewayApplicationEndpointMatcher.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayApplicationEndpointMatcher.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationEndpointMatcher(
       hostname: map['hostname'] as String,
       ports: (map['ports'] as List).cast<int>(),
     );
   }
 }
+

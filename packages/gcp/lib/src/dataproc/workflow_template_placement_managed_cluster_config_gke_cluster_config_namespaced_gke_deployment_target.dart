@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
   /// A namespace within the GKE cluster to deploy into.
   final String? clusterNamespace;
-
   /// The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final String? targetGkeCluster;
 
@@ -22,16 +22,11 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget(
-      clusterNamespace: map['clusterNamespace'] == null
-          ? null
-          : map['clusterNamespace'] as String,
-      targetGkeCluster: map['targetGkeCluster'] == null
-          ? null
-          : map['targetGkeCluster'] as String,
+      clusterNamespace: map['clusterNamespace'] == null ? null : map['clusterNamespace'] as String,
+      targetGkeCluster: map['targetGkeCluster'] == null ? null : map['targetGkeCluster'] as String,
     );
   }
 }
+

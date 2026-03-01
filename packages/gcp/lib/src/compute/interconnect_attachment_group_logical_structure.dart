@@ -13,34 +13,20 @@ class InterconnectAttachmentGroupLogicalStructure {
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructure].
   /// [regions] (Output)
-  InterconnectAttachmentGroupLogicalStructure({this.regions});
+  InterconnectAttachmentGroupLogicalStructure({
+    this.regions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'regions': ?regions == null
-          ? null
-          : pulumi.Input.encodeList<
-              InterconnectAttachmentGroupLogicalStructureRegion,
-              Map<String, dynamic>
-            >(regions!, (value) => value.toMap()),
+      'regions': ?regions == null ? null : pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegion, Map<String, dynamic>>(regions!, (value) => value.toMap()),
     };
   }
 
-  factory InterconnectAttachmentGroupLogicalStructure.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentGroupLogicalStructure.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructure(
-      regions: map['regions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              InterconnectAttachmentGroupLogicalStructureRegion
-            >(
-              map['regions'],
-              (value) =>
-                  InterconnectAttachmentGroupLogicalStructureRegion.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      regions: map['regions'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegion>(map['regions'], (value) => InterconnectAttachmentGroupLogicalStructureRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

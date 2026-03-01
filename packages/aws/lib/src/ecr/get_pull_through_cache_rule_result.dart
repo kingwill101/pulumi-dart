@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPullThroughCacheRule.
 class GetPullThroughCacheRuleResult {
   /// ARN of the Secret which will be used to authenticate against the registry.
   final String credentialArn;
-
   /// The ARN of the IAM role associated with the pull through cache rule. Used if the upstream registry is a cross-account ECR private registry.
   final String customRoleArn;
   final String ecrRepositoryPrefix;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The registry ID where the repository was created.
   final String registryId;
-
   /// The registry URL of the upstream registry to use as the source.
   final String upstreamRegistryUrl;
-
   /// The upstream repository prefix associated with the pull through cache rule.
   final String upstreamRepositoryPrefix;
 
@@ -68,3 +64,4 @@ class GetPullThroughCacheRuleResult {
     );
   }
 }
+

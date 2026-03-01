@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCardButton {
   /// Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
   final String text;
-
   /// Value returned to Amazon Lex when the user chooses this button. This must be one of the slot values configured for the slot.
   final String value;
 
@@ -16,15 +16,17 @@ class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageIma
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': text, 'value': value};
+    return <String, dynamic>{
+      'text': text,
+      'value': value,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCardButton.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCardButton.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCardButton(
       text: map['text'] as String,
       value: map['value'] as String,
     );
   }
 }
+

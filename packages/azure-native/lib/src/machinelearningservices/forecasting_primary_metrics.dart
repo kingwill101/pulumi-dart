@@ -1,0 +1,20 @@
+/// Primary metric for forecasting task.
+enum ForecastingPrimaryMetrics {
+  valueSpearmanCorrelation("SpearmanCorrelation"),
+  valueNormalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
+  valueR2Score("R2Score"),
+  valueNormalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
+
+  const ForecastingPrimaryMetrics(this.value);
+  final String value;
+
+  static ForecastingPrimaryMetrics fromValue(String value) {
+    for (final item in ForecastingPrimaryMetrics.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown ForecastingPrimaryMetrics value: $value');
+  }
+}
+

@@ -126,10 +126,8 @@ class UsageExportBucket extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucketName;
-
   /// A prefix for the reports, for instance, the project name.
   late final pulumi.Output<String?> prefix;
-
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
 
@@ -142,11 +140,11 @@ class UsageExportBucket extends pulumi.CustomResource {
     UsageExportBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/usageExportBucket:UsageExportBucket',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:projects/usageExportBucket:UsageExportBucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucketName = registerOutput<String>('bucketName');
     this.prefix = registerOutput<String?>('prefix');
     this.project = registerOutput<String>('project');

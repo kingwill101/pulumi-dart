@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanTriggerCondition {
   /// Name of the associated alarm.
   final String associatedAlarmName;
-
   /// Condition to check. Valid values: `red`, `green`.
   final String condition;
 
@@ -29,3 +29,4 @@ class PlanTriggerCondition {
     );
   }
 }
+

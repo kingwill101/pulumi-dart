@@ -330,20 +330,17 @@ class ProjectFeed extends pulumi.CustomResource {
   /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
   /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
   late final pulumi.Output<List<String>?> assetNames;
-
   /// A list of types of the assets to receive updates. You must specify either or both of assetNames
   /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
   /// the feed. For example: "compute.googleapis.com/Disk"
   /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
   /// supported asset types.
   late final pulumi.Output<List<String>?> assetTypes;
-
   /// The project whose identity will be used when sending messages to the
   /// destination pubsub topic. It also specifies the project for API
   /// enablement check, quota, and billing. If not specified, the resource's
   /// project will be used.
   late final pulumi.Output<String?> billingProject;
-
   /// A condition which determines whether an asset update should be published. If specified, an asset
   /// will be returned only when the expression evaluates to true. When set, expression field
   /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
@@ -351,21 +348,16 @@ class ProjectFeed extends pulumi.CustomResource {
   /// condition are optional.
   /// Structure is documented below.
   late final pulumi.Output<ProjectFeedCondition?> condition;
-
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
   late final pulumi.Output<String?> contentType;
-
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   late final pulumi.Output<String> feedId;
-
   /// Output configuration for asset feed destination.
   /// Structure is documented below.
   late final pulumi.Output<ProjectFeedFeedOutputConfig> feedOutputConfig;
-
   /// The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -379,20 +371,18 @@ class ProjectFeed extends pulumi.CustomResource {
     ProjectFeedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudasset/projectFeed:ProjectFeed',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudasset/projectFeed:ProjectFeed',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.assetNames = registerOutput<List<String>?>('assetNames');
     this.assetTypes = registerOutput<List<String>?>('assetTypes');
     this.billingProject = registerOutput<String?>('billingProject');
     this.condition = registerOutput<ProjectFeedCondition?>('condition');
     this.contentType = registerOutput<String?>('contentType');
     this.feedId = registerOutput<String>('feedId');
-    this.feedOutputConfig = registerOutput<ProjectFeedFeedOutputConfig>(
-      'feedOutputConfig',
-    );
+    this.feedOutputConfig = registerOutput<ProjectFeedFeedOutputConfig>('feedOutputConfig');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
   }

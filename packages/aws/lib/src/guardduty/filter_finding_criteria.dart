@@ -8,26 +8,20 @@ class FilterFindingCriteria {
 
   /// Creates a new [FilterFindingCriteria].
   /// [criterions] Required.
-  FilterFindingCriteria({required this.criterions});
+  FilterFindingCriteria({
+    required this.criterions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criterions':
-          pulumi.Input.encodeList<
-            FilterFindingCriteriaCriterion,
-            Map<String, dynamic>
-          >(criterions, (value) => value.toMap()),
+      'criterions': pulumi.Input.encodeList<FilterFindingCriteriaCriterion, Map<String, dynamic>>(criterions, (value) => value.toMap()),
     };
   }
 
   factory FilterFindingCriteria.fromMap(Map<String, dynamic> map) {
     return FilterFindingCriteria(
-      criterions: pulumi.Input.decodeList<FilterFindingCriteriaCriterion>(
-        map['criterions'],
-        (value) => FilterFindingCriteriaCriterion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      criterions: pulumi.Input.decodeList<FilterFindingCriteriaCriterion>(map['criterions'], (value) => FilterFindingCriteriaCriterion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

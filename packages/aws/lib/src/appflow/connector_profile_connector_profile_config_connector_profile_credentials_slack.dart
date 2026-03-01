@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest?
-  oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack].
   /// [accessToken] Optional.
@@ -30,20 +29,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack(
-      accessToken: map['accessToken'] == null
-          ? null
-          : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap(
-              (map['oauthRequest'] as Map).cast<String, dynamic>(),
-            ),
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -804,8 +804,7 @@ Future<GetPermissionSetsResult> getPermissionSets(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ssoadmin_get_principal_application_assignments_get_principal_application_assignments_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrincipalApplicationAssignmentsResult>
-getPrincipalApplicationAssignments(
+Future<GetPrincipalApplicationAssignmentsResult> getPrincipalApplicationAssignments(
   GetPrincipalApplicationAssignmentsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

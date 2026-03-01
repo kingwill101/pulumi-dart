@@ -8,54 +8,38 @@ import 'get_serverless_cache_reader_endpoint.dart';
 class GetServerlessCacheResult {
   /// The Amazon Resource Name (ARN) of the serverless cache.
   final String arn;
-
   /// The cache usage limits for storage and ElastiCache Processing Units for the cache. See `cache_usage_limits` Block for details.
   final GetServerlessCacheCacheUsageLimits cacheUsageLimits;
-
   /// Timestamp of when the serverless cache was created.
   final String createTime;
-
   /// The daily time that snapshots will be created from the new serverless cache. Only available for engine types `"redis"` and `"valkey"`.
   final String dailySnapshotTime;
-
   /// Description of the serverless cache.
   final String description;
-
   /// Represents the information required for client programs to connect to the cache. See `endpoint` Block for details.
   final GetServerlessCacheEndpoint endpoint;
-
   /// Name of the cache engine.
   final String engine;
-
   /// The name and version number of the engine the serverless cache is compatible with.
   final String fullEngineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the customer managed key for encrypting the data at rest.
   final String kmsKeyId;
-
   /// The version number of the engine the serverless cache is compatible with.
   final String majorEngineVersion;
   final String name;
-
   /// Represents the information required for client programs to connect to a cache node. See `reader_endpoint` Block for details.
   final GetServerlessCacheReaderEndpoint readerEndpoint;
   final String region;
-
   /// A list of the one or more VPC security groups associated with the serverless cache.
   final List<String> securityGroupIds;
-
   /// The number of snapshots that will be retained for the serverless cache. Available for Redis only.
   final int snapshotRetentionLimit;
-
   /// The current status of the serverless cache.
   final String status;
-
   /// A list of the identifiers of the subnets where the VPC endpoint for the serverless cache are deployed.
   final List<String> subnetIds;
-
   /// The identifier of the UserGroup associated with the serverless cache. Available for Redis only.
   final String userGroupId;
 
@@ -128,24 +112,18 @@ class GetServerlessCacheResult {
   factory GetServerlessCacheResult.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheResult(
       arn: map['arn'] as String,
-      cacheUsageLimits: GetServerlessCacheCacheUsageLimits.fromMap(
-        (map['cacheUsageLimits'] as Map).cast<String, dynamic>(),
-      ),
+      cacheUsageLimits: GetServerlessCacheCacheUsageLimits.fromMap((map['cacheUsageLimits'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       dailySnapshotTime: map['dailySnapshotTime'] as String,
       description: map['description'] as String,
-      endpoint: GetServerlessCacheEndpoint.fromMap(
-        (map['endpoint'] as Map).cast<String, dynamic>(),
-      ),
+      endpoint: GetServerlessCacheEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
       engine: map['engine'] as String,
       fullEngineVersion: map['fullEngineVersion'] as String,
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       majorEngineVersion: map['majorEngineVersion'] as String,
       name: map['name'] as String,
-      readerEndpoint: GetServerlessCacheReaderEndpoint.fromMap(
-        (map['readerEndpoint'] as Map).cast<String, dynamic>(),
-      ),
+      readerEndpoint: GetServerlessCacheReaderEndpoint.fromMap((map['readerEndpoint'] as Map).cast<String, dynamic>()),
       region: map['region'] as String,
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
       snapshotRetentionLimit: map['snapshotRetentionLimit'] as int,
@@ -155,3 +133,4 @@ class GetServerlessCacheResult {
     );
   }
 }
+

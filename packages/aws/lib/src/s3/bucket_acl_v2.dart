@@ -815,16 +815,12 @@ import 'bucket_acl_v2_args.dart';
 class BucketAclV2 extends pulumi.CustomResource {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
   late final pulumi.Output<BucketAclV2AccessControlPolicy> accessControlPolicy;
-
   /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   late final pulumi.Output<String?> acl;
-
   /// Bucket to which to apply the ACL.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -837,14 +833,12 @@ class BucketAclV2 extends pulumi.CustomResource {
     BucketAclV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketAclV2:BucketAclV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>(
-      'accessControlPolicy',
-    );
+          'aws:s3/bucketAclV2:BucketAclV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy');
     this.acl = registerOutput<String?>('acl');
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

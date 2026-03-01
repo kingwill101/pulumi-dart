@@ -493,13 +493,10 @@ import 'bucket_metric_filter.dart';
 class BucketMetric extends pulumi.CustomResource {
   /// Name of the bucket to put metric configuration.
   late final pulumi.Output<String> bucket;
-
   /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
   late final pulumi.Output<BucketMetricFilter?> filter;
-
   /// Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -512,11 +509,11 @@ class BucketMetric extends pulumi.CustomResource {
     BucketMetricArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketMetric:BucketMetric',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketMetric:BucketMetric',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
     this.filter = registerOutput<BucketMetricFilter?>('filter');
     this.name = registerOutput<String>('name');

@@ -1,0 +1,24 @@
+/// Name of an application gateway SKU.
+enum ApplicationGatewaySkuName {
+  valueStandardSmall("Standard_Small"),
+  valueStandardMedium("Standard_Medium"),
+  valueStandardLarge("Standard_Large"),
+  valueWAFMedium("WAF_Medium"),
+  valueWAFLarge("WAF_Large"),
+  valueStandardV2("Standard_v2"),
+  valueWAFV2("WAF_v2"),
+  valueBasic("Basic");
+
+  const ApplicationGatewaySkuName(this.value);
+  final String value;
+
+  static ApplicationGatewaySkuName fromValue(String value) {
+    for (final item in ApplicationGatewaySkuName.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown ApplicationGatewaySkuName value: $value');
+  }
+}
+

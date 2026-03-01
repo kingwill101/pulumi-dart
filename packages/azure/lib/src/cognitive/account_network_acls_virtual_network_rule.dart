@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AccountNetworkAclsVirtualNetworkRule {
+  /// Whether ignore missing vnet service endpoint or not. Defaults to `false`.
+  final bool? ignoreMissingVnetServiceEndpoint;
+  /// The ID of the subnet which should be able to access this Cognitive Account.
+  final String subnetId;
+
+  /// Creates a new [AccountNetworkAclsVirtualNetworkRule].
+  /// [ignoreMissingVnetServiceEndpoint] Whether ignore missing vnet service endpoint or not. Defaults to `false`.
+  /// [subnetId] The ID of the subnet which should be able to access this Cognitive Account.
+  AccountNetworkAclsVirtualNetworkRule({
+    this.ignoreMissingVnetServiceEndpoint,
+    required this.subnetId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ignoreMissingVnetServiceEndpoint': ?ignoreMissingVnetServiceEndpoint,
+      'subnetId': subnetId,
+    };
+  }
+
+  factory AccountNetworkAclsVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
+    return AccountNetworkAclsVirtualNetworkRule(
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : map['ignoreMissingVnetServiceEndpoint'] as bool,
+      subnetId: map['subnetId'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,36 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/list_meta.dart';
+import 'priority_level_configuration_flowcontrol_apiserver_k8s_io_v1beta2_resource.dart';
+import 'priority_level_configuration_list_flowcontrol_apiserver_k8s_io_v1beta2_args.dart';
+
+/// PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
+class PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta2Resource extends pulumi.CustomResource {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  late final pulumi.Output<String> apiVersion;
+  /// `items` is a list of request-priorities.
+  late final pulumi.Output<List<PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2Resource>> items;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  late final pulumi.Output<String> kind;
+  /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  late final pulumi.Output<ListMeta> metadata;
+
+  /// Creates a new [PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta2Resource].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta2Resource]. {@macro pulumi_flowcontrol_apiserver_k8s_io_v1beta2_priority_level_configuration_list_flowcontrol_apiserver_k8s_io_v1beta2_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta2Resource(
+    String name, {
+    PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta2Args? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfigurationList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.items = registerOutput<List<PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2Resource>>('items');
+    this.kind = registerOutput<String>('kind');
+    this.metadata = registerOutput<ListMeta>('metadata');
+  }
+}

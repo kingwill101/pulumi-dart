@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FaqS3Path {
   /// The name of the S3 bucket that contains the file.
   final String bucket;
-
   /// The name of the file.
   ///
   /// The following arguments are optional:
@@ -12,10 +12,16 @@ class FaqS3Path {
   /// Creates a new [FaqS3Path].
   /// [bucket] The name of the S3 bucket that contains the file.
   /// [key] The name of the file.
-  FaqS3Path({required this.bucket, required this.key});
+  FaqS3Path({
+    required this.bucket,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'key': key};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
   factory FaqS3Path.fromMap(Map<String, dynamic> map) {
@@ -25,3 +31,4 @@ class FaqS3Path {
     );
   }
 }
+

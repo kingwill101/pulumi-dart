@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The expedited rollout definition.
+class DefaultRolloutSpecificationExpeditedRolloutResponse {
+  /// Indicates whether expedited rollout is enabled/disabled
+  final bool? enabled;
+
+  /// Creates a new [DefaultRolloutSpecificationExpeditedRolloutResponse].
+  /// [enabled] Indicates whether expedited rollout is enabled/disabled
+  DefaultRolloutSpecificationExpeditedRolloutResponse({
+    this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
+  }
+
+  factory DefaultRolloutSpecificationExpeditedRolloutResponse.fromMap(Map<String, dynamic> map) {
+    return DefaultRolloutSpecificationExpeditedRolloutResponse(
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+    );
+  }
+}
+

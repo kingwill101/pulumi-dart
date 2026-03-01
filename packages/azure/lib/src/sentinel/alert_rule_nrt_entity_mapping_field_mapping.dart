@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AlertRuleNrtEntityMappingFieldMapping {
+  /// The column name to be mapped to the identifier.
+  final String columnName;
+  /// The identifier of the entity.
+  final String identifier;
+
+  /// Creates a new [AlertRuleNrtEntityMappingFieldMapping].
+  /// [columnName] The column name to be mapped to the identifier.
+  /// [identifier] The identifier of the entity.
+  AlertRuleNrtEntityMappingFieldMapping({
+    required this.columnName,
+    required this.identifier,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'columnName': columnName,
+      'identifier': identifier,
+    };
+  }
+
+  factory AlertRuleNrtEntityMappingFieldMapping.fromMap(Map<String, dynamic> map) {
+    return AlertRuleNrtEntityMappingFieldMapping(
+      columnName: map['columnName'] as String,
+      identifier: map['identifier'] as String,
+    );
+  }
+}
+

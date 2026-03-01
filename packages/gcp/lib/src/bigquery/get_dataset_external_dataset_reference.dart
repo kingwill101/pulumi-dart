@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatasetExternalDatasetReference {
   /// The connection id that is used to access the externalSource.
   /// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
   final String connection;
-
   /// External source that backs this dataset.
   final String externalSource;
 
@@ -30,3 +30,4 @@ class GetDatasetExternalDatasetReference {
     );
   }
 }
+

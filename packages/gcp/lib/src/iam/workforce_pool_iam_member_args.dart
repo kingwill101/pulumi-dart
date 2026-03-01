@@ -9,12 +9,10 @@ import 'workforce_pool_iam_member_condition.dart';
 /// {@macro pulumi_iam_workforce_pool_iam_member_workforce_pool_iam_member_args_doc}
 class WorkforcePoolIamMemberArgs {
   final pulumi.Input<WorkforcePoolIamMemberCondition>? condition;
-
   /// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -28,12 +26,10 @@ class WorkforcePoolIamMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.iam.WorkforcePoolIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workforcePoolId;
 
@@ -49,20 +45,16 @@ class WorkforcePoolIamMemberArgs {
     required String member,
     required String role,
     required String workforcePoolId,
-  }) : condition = pulumi
-           .Input.asOptionalInput<WorkforcePoolIamMemberCondition>(condition),
-       location = pulumi.Input.asOptionalInput<String>(location),
-       member = pulumi.Input.asInput<String>(member),
-       role = pulumi.Input.asInput<String>(role),
-       workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) :
+      condition = pulumi.Input.asOptionalInput<WorkforcePoolIamMemberCondition>(condition),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      member = pulumi.Input.asInput<String>(member),
+      role = pulumi.Input.asInput<String>(role),
+      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkforcePoolIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'location': ?location,
       'member': member,
       'role': role,
@@ -72,11 +64,7 @@ class WorkforcePoolIamMemberArgs {
 
   factory WorkforcePoolIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : WorkforcePoolIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : WorkforcePoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       location: map['location'] == null ? null : map['location'] as String,
       member: map['member'] as String,
       role: map['role'] as String,
@@ -84,3 +72,4 @@ class WorkforcePoolIamMemberArgs {
     );
   }
 }
+

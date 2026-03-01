@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListingBigqueryDatasetEffectiveReplica {
   /// The name of the location this data exchange listing.
   final String? location;
-
   /// Output-only. Indicates that this replica is the primary replica.
   /// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
   final String? primaryState;
-
   /// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
   /// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
   final String? replicaState;
@@ -30,17 +29,12 @@ class ListingBigqueryDatasetEffectiveReplica {
     };
   }
 
-  factory ListingBigqueryDatasetEffectiveReplica.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListingBigqueryDatasetEffectiveReplica.fromMap(Map<String, dynamic> map) {
     return ListingBigqueryDatasetEffectiveReplica(
       location: map['location'] == null ? null : map['location'] as String,
-      primaryState: map['primaryState'] == null
-          ? null
-          : map['primaryState'] as String,
-      replicaState: map['replicaState'] == null
-          ? null
-          : map['replicaState'] as String,
+      primaryState: map['primaryState'] == null ? null : map['primaryState'] as String,
+      replicaState: map['replicaState'] == null ? null : map['replicaState'] as String,
     );
   }
 }
+

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'extension_response.dart';
+
+/// Describes a cloud service extension profile.
+class CloudServiceExtensionProfileResponse {
+  /// List of extensions for the cloud service.
+  final List<ExtensionResponse>? extensions;
+
+  /// Creates a new [CloudServiceExtensionProfileResponse].
+  /// [extensions] List of extensions for the cloud service.
+  CloudServiceExtensionProfileResponse({
+    this.extensions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'extensions': ?extensions == null ? null : pulumi.Input.encodeList<ExtensionResponse, Map<String, dynamic>>(extensions!, (value) => value.toMap()),
+    };
+  }
+
+  factory CloudServiceExtensionProfileResponse.fromMap(Map<String, dynamic> map) {
+    return CloudServiceExtensionProfileResponse(
+      extensions: map['extensions'] == null ? null : pulumi.Input.decodeList<ExtensionResponse>(map['extensions'], (value) => ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

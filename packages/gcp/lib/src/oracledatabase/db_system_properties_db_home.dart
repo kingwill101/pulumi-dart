@@ -7,15 +7,12 @@ class DbSystemPropertiesDbHome {
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
   /// Structure is documented below.
   final DbSystemPropertiesDbHomeDatabase database;
-
   /// A valid Oracle Database version. For a list of supported versions, use the
   /// ListDbVersions operation.
   final String dbVersion;
-
   /// The display name for the Database Home. The name does not have to
   /// be unique within your project.
   final String? displayName;
-
   /// Whether unified auditing is enabled for the Database Home.
   final bool? isUnifiedAuditingEnabled;
 
@@ -42,16 +39,11 @@ class DbSystemPropertiesDbHome {
 
   factory DbSystemPropertiesDbHome.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHome(
-      database: DbSystemPropertiesDbHomeDatabase.fromMap(
-        (map['database'] as Map).cast<String, dynamic>(),
-      ),
+      database: DbSystemPropertiesDbHomeDatabase.fromMap((map['database'] as Map).cast<String, dynamic>()),
       dbVersion: map['dbVersion'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
-      isUnifiedAuditingEnabled: map['isUnifiedAuditingEnabled'] == null
-          ? null
-          : map['isUnifiedAuditingEnabled'] as bool,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      isUnifiedAuditingEnabled: map['isUnifiedAuditingEnabled'] == null ? null : map['isUnifiedAuditingEnabled'] as bool,
     );
   }
 }
+

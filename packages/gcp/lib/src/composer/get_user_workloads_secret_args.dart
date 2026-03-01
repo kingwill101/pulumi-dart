@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserWorkloadsSecretArgs {
   /// Environment where the Secret is stored.
   final pulumi.Input<String> environment;
-
   /// Name of the Secret.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The location or Compute Engine region of the environment.
   final pulumi.Input<String>? region;
 
@@ -30,10 +27,11 @@ class GetUserWorkloadsSecretArgs {
     required String name,
     String? project,
     String? region,
-  }) : environment = pulumi.Input.asInput<String>(environment),
-       name = pulumi.Input.asInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      environment = pulumi.Input.asInput<String>(environment),
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,3 +51,4 @@ class GetUserWorkloadsSecretArgs {
     );
   }
 }
+

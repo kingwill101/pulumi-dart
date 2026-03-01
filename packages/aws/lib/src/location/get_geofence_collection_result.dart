@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGeofenceCollection.
 class GetGeofenceCollectionResult {
   /// ARN for the geofence collection resource. Used when you need to specify a resource across all AWS.
   final String collectionArn;
   final String collectionName;
-
   /// Timestamp for when the geofence collection resource was created in ISO 8601 format.
   final String createTime;
-
   /// Optional description of the geofence collection resource.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   final String kmsKeyId;
   final String region;
-
   /// Key-value map of resource tags for the geofence collection.
   final Map<String, String> tags;
-
   /// Timestamp for when the geofence collection resource was last updated in ISO 8601 format.
   final String updateTime;
 
@@ -75,3 +70,4 @@ class GetGeofenceCollectionResult {
     );
   }
 }
+

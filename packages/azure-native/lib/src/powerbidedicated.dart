@@ -1,0 +1,21 @@
+library module_powerbidedicated;
+
+export 'powerbidedicated/auto_scale_vcore.dart';
+export 'powerbidedicated/auto_scale_vcore_args.dart';
+export 'powerbidedicated/auto_scale_vcore_sku.dart';
+export 'powerbidedicated/auto_scale_vcore_sku_response.dart';
+export 'powerbidedicated/capacity_details.dart';
+export 'powerbidedicated/capacity_details_args.dart';
+export 'powerbidedicated/capacity_sku.dart';
+export 'powerbidedicated/capacity_sku_response.dart';
+export 'powerbidedicated/capacity_sku_tier.dart';
+export 'powerbidedicated/dedicated_capacity_administrators.dart';
+export 'powerbidedicated/dedicated_capacity_administrators_response.dart';
+export 'powerbidedicated/functions.dart';
+export 'powerbidedicated/get_auto_scale_vcore_args.dart';
+export 'powerbidedicated/get_auto_scale_vcore_result.dart';
+export 'powerbidedicated/get_capacity_details_args.dart';
+export 'powerbidedicated/get_capacity_details_result.dart';
+export 'powerbidedicated/mode.dart';
+export 'powerbidedicated/system_data_response.dart';
+export 'powerbidedicated/vcore_sku_tier.dart';

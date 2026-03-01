@@ -13,27 +13,21 @@ class InsightsConfigArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The name of the App Hub Application.
   /// Format:
   /// projects/{project}/locations/{location}/applications/{application}
   final pulumi.Input<String> appHubApplication;
-
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
   final pulumi.Input<List<InsightsConfigArtifactConfig>>? artifactConfigs;
-
   /// ID of the requesting InsightsConfig.
   final pulumi.Input<String> insightsConfigId;
-
   /// Set of labels associated with an InsightsConfig.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -54,35 +48,20 @@ class InsightsConfigArgs {
     Map<String, String>? labels,
     required String location,
     String? project,
-  }) : annotations = pulumi.Input.asOptionalInput<Map<String, String>>(
-         annotations,
-       ),
-       appHubApplication = pulumi.Input.asInput<String>(appHubApplication),
-       artifactConfigs =
-           pulumi.Input.asOptionalInput<List<InsightsConfigArtifactConfig>>(
-             artifactConfigs,
-           ),
-       insightsConfigId = pulumi.Input.asInput<String>(insightsConfigId),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      appHubApplication = pulumi.Input.asInput<String>(appHubApplication),
+      artifactConfigs = pulumi.Input.asOptionalInput<List<InsightsConfigArtifactConfig>>(artifactConfigs),
+      insightsConfigId = pulumi.Input.asInput<String>(insightsConfigId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
       'appHubApplication': appHubApplication,
-      'artifactConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InsightsConfigArtifactConfig>,
-            List<Map<String, dynamic>>
-          >(
-            artifactConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InsightsConfigArtifactConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'artifactConfigs': ?pulumi.Input.mapOptionalInputValue<List<InsightsConfigArtifactConfig>, List<Map<String, dynamic>>>(artifactConfigs, (value) => pulumi.Input.encodeList<InsightsConfigArtifactConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'insightsConfigId': insightsConfigId,
       'labels': ?labels,
       'location': location,
@@ -92,24 +71,14 @@ class InsightsConfigArgs {
 
   factory InsightsConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
       appHubApplication: map['appHubApplication'] as String,
-      artifactConfigs: map['artifactConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<InsightsConfigArtifactConfig>(
-              map['artifactConfigs'],
-              (value) => InsightsConfigArtifactConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      artifactConfigs: map['artifactConfigs'] == null ? null : pulumi.Input.decodeList<InsightsConfigArtifactConfig>(map['artifactConfigs'], (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>())),
       insightsConfigId: map['insightsConfigId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

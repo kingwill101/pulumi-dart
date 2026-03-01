@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
   /// The map of Kubernetes labels (key/value pairs) to be applied to
   /// each node. These will added in addition to any default label(s)
@@ -12,7 +13,6 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final Map<String, String>? labels;
-
   /// The default IPv4 address for SSH access and Kubernetes node.
   /// Example: 192.168.0.1
   final String? nodeIp;
@@ -26,17 +26,17 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels, 'nodeIp': ?nodeIp};
+    return <String, dynamic>{
+      'labels': ?labels,
+      'nodeIp': ?nodeIp,
+    };
   }
 
-  factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       nodeIp: map['nodeIp'] == null ? null : map['nodeIp'] as String,
     );
   }
 }
+

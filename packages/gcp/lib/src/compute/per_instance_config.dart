@@ -548,7 +548,6 @@ import 'per_instance_config_preserved_state.dart';
 class PerInstanceConfig extends pulumi.CustomResource {
   /// The instance group manager this instance config is part of.
   late final pulumi.Output<String> instanceGroupManager;
-
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
   /// * REPLACE
@@ -556,7 +555,6 @@ class PerInstanceConfig extends pulumi.CustomResource {
   /// * REFRESH
   /// * NONE
   late final pulumi.Output<String?> minimalAction;
-
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
   /// * REPLACE
@@ -564,27 +562,21 @@ class PerInstanceConfig extends pulumi.CustomResource {
   /// * REFRESH
   /// * NONE
   late final pulumi.Output<String?> mostDisruptiveAllowedAction;
-
   /// The name for this per-instance config and its corresponding instance.
   late final pulumi.Output<String> name;
-
   /// The preserved state for this instance.
   /// Structure is documented below.
   late final pulumi.Output<PerInstanceConfigPreservedState?> preservedState;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
   late final pulumi.Output<bool?> removeInstanceOnDestroy;
-
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
   late final pulumi.Output<bool?> removeInstanceStateOnDestroy;
-
   /// Zone where the containing instance group manager is located
   late final pulumi.Output<String> zone;
 
@@ -597,27 +589,19 @@ class PerInstanceConfig extends pulumi.CustomResource {
     PerInstanceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/perInstanceConfig:PerInstanceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/perInstanceConfig:PerInstanceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.minimalAction = registerOutput<String?>('minimalAction');
-    this.mostDisruptiveAllowedAction = registerOutput<String?>(
-      'mostDisruptiveAllowedAction',
-    );
+    this.mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
     this.name = registerOutput<String>('name');
-    this.preservedState = registerOutput<PerInstanceConfigPreservedState?>(
-      'preservedState',
-    );
+    this.preservedState = registerOutput<PerInstanceConfigPreservedState?>('preservedState');
     this.project = registerOutput<String>('project');
-    this.removeInstanceOnDestroy = registerOutput<bool?>(
-      'removeInstanceOnDestroy',
-    );
-    this.removeInstanceStateOnDestroy = registerOutput<bool?>(
-      'removeInstanceStateOnDestroy',
-    );
+    this.removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
+    this.removeInstanceStateOnDestroy = registerOutput<bool?>('removeInstanceStateOnDestroy');
     this.zone = registerOutput<String>('zone');
   }
 }

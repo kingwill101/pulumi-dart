@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationSsmlMessage {
   /// SSML text that defines the prompt.
   final String value;
@@ -11,14 +12,15 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationSsmlMessage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationSsmlMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationSsmlMessage(
       value: map['value'] as String,
     );
   }
 }
+

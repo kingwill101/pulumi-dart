@@ -6,10 +6,8 @@ import 'get_worker_pool_template_container_env_value_source.dart';
 class GetWorkerPoolTemplateContainerEnv {
   /// The name of the Cloud Run v2 Worker Pool.
   final String name;
-
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   final String value;
-
   /// Source for the environment variable's value.
   final List<GetWorkerPoolTemplateContainerEnvValueSource> valueSources;
 
@@ -27,11 +25,7 @@ class GetWorkerPoolTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueSources':
-          pulumi.Input.encodeList<
-            GetWorkerPoolTemplateContainerEnvValueSource,
-            Map<String, dynamic>
-          >(valueSources, (value) => value.toMap()),
+      'valueSources': pulumi.Input.encodeList<GetWorkerPoolTemplateContainerEnvValueSource, Map<String, dynamic>>(valueSources, (value) => value.toMap()),
     };
   }
 
@@ -39,13 +33,8 @@ class GetWorkerPoolTemplateContainerEnv {
     return GetWorkerPoolTemplateContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueSources:
-          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(
-            map['valueSources'],
-            (value) => GetWorkerPoolTemplateContainerEnvValueSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      valueSources: pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(map['valueSources'], (value) => GetWorkerPoolTemplateContainerEnvValueSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

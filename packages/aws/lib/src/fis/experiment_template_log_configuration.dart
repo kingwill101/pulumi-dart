@@ -5,12 +5,9 @@ import 'experiment_template_log_configuration_s3_configuration.dart';
 
 class ExperimentTemplateLogConfiguration {
   /// The configuration for experiment logging to Amazon CloudWatch Logs. See below.
-  final ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration?
-  cloudwatchLogsConfiguration;
-
+  final ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration? cloudwatchLogsConfiguration;
   /// The schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
   final int logSchemaVersion;
-
   /// The configuration for experiment logging to Amazon S3. See below.
   final ExperimentTemplateLogConfigurationS3Configuration? s3Configuration;
 
@@ -26,30 +23,18 @@ class ExperimentTemplateLogConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchLogsConfiguration': ?cloudwatchLogsConfiguration == null
-          ? null
-          : cloudwatchLogsConfiguration!.toMap(),
+      'cloudwatchLogsConfiguration': ?cloudwatchLogsConfiguration == null ? null : cloudwatchLogsConfiguration!.toMap(),
       'logSchemaVersion': logSchemaVersion,
-      's3Configuration': ?s3Configuration == null
-          ? null
-          : s3Configuration!.toMap(),
+      's3Configuration': ?s3Configuration == null ? null : s3Configuration!.toMap(),
     };
   }
 
   factory ExperimentTemplateLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfiguration(
-      cloudwatchLogsConfiguration: map['cloudwatchLogsConfiguration'] == null
-          ? null
-          : ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap(
-              (map['cloudwatchLogsConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
+      cloudwatchLogsConfiguration: map['cloudwatchLogsConfiguration'] == null ? null : ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap((map['cloudwatchLogsConfiguration'] as Map).cast<String, dynamic>()),
       logSchemaVersion: map['logSchemaVersion'] as int,
-      s3Configuration: map['s3Configuration'] == null
-          ? null
-          : ExperimentTemplateLogConfigurationS3Configuration.fromMap(
-              (map['s3Configuration'] as Map).cast<String, dynamic>(),
-            ),
+      s3Configuration: map['s3Configuration'] == null ? null : ExperimentTemplateLogConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

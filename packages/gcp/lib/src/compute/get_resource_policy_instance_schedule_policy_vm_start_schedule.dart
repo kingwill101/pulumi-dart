@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
   /// Specifies the frequency for the operation, using the unix-cron format.
   final String schedule;
@@ -11,14 +12,15 @@ class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schedule': schedule};
+    return <String, dynamic>{
+      'schedule': schedule,
+    };
   }
 
-  factory GetResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyInstanceSchedulePolicyVmStartSchedule(
       schedule: map['schedule'] as String,
     );
   }
 }
+

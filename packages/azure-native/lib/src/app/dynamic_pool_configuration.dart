@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'lifecycle_configuration.dart';
+
+/// Dynamic pool configuration.
+class DynamicPoolConfiguration {
+  /// The lifecycle configuration of a session in the dynamic session pool
+  final LifecycleConfiguration? lifecycleConfiguration;
+
+  /// Creates a new [DynamicPoolConfiguration].
+  /// [lifecycleConfiguration] The lifecycle configuration of a session in the dynamic session pool
+  DynamicPoolConfiguration({
+    this.lifecycleConfiguration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'lifecycleConfiguration': ?lifecycleConfiguration == null ? null : lifecycleConfiguration!.toMap(),
+    };
+  }
+
+  factory DynamicPoolConfiguration.fromMap(Map<String, dynamic> map) {
+    return DynamicPoolConfiguration(
+      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : LifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

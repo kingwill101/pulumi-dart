@@ -12,48 +12,34 @@ import 'ai_endpoint_private_service_connect_config.dart';
 class AiEndpointArgs {
   /// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
   final pulumi.Input<bool>? dedicatedEndpointEnabled;
-
   /// The description of the Endpoint.
   final pulumi.Input<String>? description;
-
   /// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
-
   /// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiEndpointEncryptionSpec>? encryptionSpec;
-
   /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
   final pulumi.Input<String>? name;
-
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
   final pulumi.Input<String>? network;
-
   /// Configures the request-response logging for online prediction.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointPredictRequestResponseLoggingConfig>?
-  predictRequestResponseLoggingConfig;
-
+  final pulumi.Input<AiEndpointPredictRequestResponseLoggingConfig>? predictRequestResponseLoggingConfig;
   /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointPrivateServiceConnectConfig>?
-  privateServiceConnectConfig;
-
+  final pulumi.Input<AiEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region for the resource
   final pulumi.Input<String>? region;
-
   /// A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
   /// If a DeployedModel's id is not listed in this map, then it receives no traffic.
   /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See
@@ -85,60 +71,38 @@ class AiEndpointArgs {
     required String location,
     String? name,
     String? network,
-    AiEndpointPredictRequestResponseLoggingConfig?
-    predictRequestResponseLoggingConfig,
+    AiEndpointPredictRequestResponseLoggingConfig? predictRequestResponseLoggingConfig,
     AiEndpointPrivateServiceConnectConfig? privateServiceConnectConfig,
     String? project,
     String? region,
     String? trafficSplit,
-  }) : dedicatedEndpointEnabled = pulumi.Input.asOptionalInput<bool>(
-         dedicatedEndpointEnabled,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       displayName = pulumi.Input.asInput<String>(displayName),
-       encryptionSpec = pulumi.Input.asOptionalInput<AiEndpointEncryptionSpec>(
-         encryptionSpec,
-       ),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       network = pulumi.Input.asOptionalInput<String>(network),
-       predictRequestResponseLoggingConfig =
-           pulumi.Input.asOptionalInput<
-             AiEndpointPredictRequestResponseLoggingConfig
-           >(predictRequestResponseLoggingConfig),
-       privateServiceConnectConfig =
-           pulumi.Input.asOptionalInput<AiEndpointPrivateServiceConnectConfig>(
-             privateServiceConnectConfig,
-           ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       trafficSplit = pulumi.Input.asOptionalInput<String>(trafficSplit);
+  }) :
+      dedicatedEndpointEnabled = pulumi.Input.asOptionalInput<bool>(dedicatedEndpointEnabled),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      encryptionSpec = pulumi.Input.asOptionalInput<AiEndpointEncryptionSpec>(encryptionSpec),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      network = pulumi.Input.asOptionalInput<String>(network),
+      predictRequestResponseLoggingConfig = pulumi.Input.asOptionalInput<AiEndpointPredictRequestResponseLoggingConfig>(predictRequestResponseLoggingConfig),
+      privateServiceConnectConfig = pulumi.Input.asOptionalInput<AiEndpointPrivateServiceConnectConfig>(privateServiceConnectConfig),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      trafficSplit = pulumi.Input.asOptionalInput<String>(trafficSplit);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dedicatedEndpointEnabled': ?dedicatedEndpointEnabled,
       'description': ?description,
       'displayName': displayName,
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointEncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiEndpointEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
       'name': ?name,
       'network': ?network,
-      'predictRequestResponseLoggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointPredictRequestResponseLoggingConfig,
-            Map<String, dynamic>
-          >(predictRequestResponseLoggingConfig, (value) => value.toMap()),
-      'privateServiceConnectConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointPrivateServiceConnectConfig,
-            Map<String, dynamic>
-          >(privateServiceConnectConfig, (value) => value.toMap()),
+      'predictRequestResponseLoggingConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointPredictRequestResponseLoggingConfig, Map<String, dynamic>>(predictRequestResponseLoggingConfig, (value) => value.toMap()),
+      'privateServiceConnectConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointPrivateServiceConnectConfig, Map<String, dynamic>>(privateServiceConnectConfig, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
       'trafficSplit': ?trafficSplit,
@@ -147,42 +111,20 @@ class AiEndpointArgs {
 
   factory AiEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointArgs(
-      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null
-          ? null
-          : map['dedicatedEndpointEnabled'] as bool,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : map['dedicatedEndpointEnabled'] as bool,
+      description: map['description'] == null ? null : map['description'] as String,
       displayName: map['displayName'] as String,
-      encryptionSpec: map['encryptionSpec'] == null
-          ? null
-          : AiEndpointEncryptionSpec.fromMap(
-              (map['encryptionSpec'] as Map).cast<String, dynamic>(),
-            ),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : AiEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       network: map['network'] == null ? null : map['network'] as String,
-      predictRequestResponseLoggingConfig:
-          map['predictRequestResponseLoggingConfig'] == null
-          ? null
-          : AiEndpointPredictRequestResponseLoggingConfig.fromMap(
-              (map['predictRequestResponseLoggingConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null
-          ? null
-          : AiEndpointPrivateServiceConnectConfig.fromMap(
-              (map['privateServiceConnectConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
+      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : AiEndpointPredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>()),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : AiEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      trafficSplit: map['trafficSplit'] == null
-          ? null
-          : map['trafficSplit'] as String,
+      trafficSplit: map['trafficSplit'] == null ? null : map['trafficSplit'] as String,
     );
   }
 }
+

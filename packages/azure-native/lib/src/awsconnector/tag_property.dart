@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of TagProperty
+class TagProperty {
+  /// The tag key.
+  final String? key;
+  /// Set to ``true`` if you want CloudFormation to copy the tag to EC2 instances that are launched as part of the Auto Scaling group. Set to ``false`` if you want the tag attached only to the Auto Scaling group and not copied to any instances launched as part of the Auto Scaling group.
+  final bool? propagateAtLaunch;
+  /// The tag value.
+  final String? value;
+
+  /// Creates a new [TagProperty].
+  /// [key] The tag key.
+  /// [propagateAtLaunch] Set to ``true`` if you want CloudFormation to copy the tag to EC2 instances that are launched as part of the Auto Scaling group. Set to ``false`` if you want the tag attached only to the Auto Scaling group and not copied to any instances launched as part of the Auto Scaling group.
+  /// [value] The tag value.
+  TagProperty({
+    this.key,
+    this.propagateAtLaunch,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'key': ?key,
+      'propagateAtLaunch': ?propagateAtLaunch,
+      'value': ?value,
+    };
+  }
+
+  factory TagProperty.fromMap(Map<String, dynamic> map) {
+    return TagProperty(
+      key: map['key'] == null ? null : map['key'] as String,
+      propagateAtLaunch: map['propagateAtLaunch'] == null ? null : map['propagateAtLaunch'] as bool,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

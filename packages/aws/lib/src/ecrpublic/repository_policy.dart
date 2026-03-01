@@ -319,13 +319,10 @@ import 'repository_policy_args.dart';
 class RepositoryPolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The registry ID where the repository was created.
   late final pulumi.Output<String> registryId;
-
   /// Name of the repository to apply the policy.
   late final pulumi.Output<String> repositoryName;
 
@@ -338,11 +335,11 @@ class RepositoryPolicy extends pulumi.CustomResource {
     RepositoryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');
     this.registryId = registerOutput<String>('registryId');

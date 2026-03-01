@@ -10,7 +10,10 @@ class EnvironmentStorageConfiguration {
   /// Creates a new [EnvironmentStorageConfiguration].
   /// [efs] Optional.
   /// [fsx] Optional.
-  EnvironmentStorageConfiguration({this.efs, this.fsx});
+  EnvironmentStorageConfiguration({
+    this.efs,
+    this.fsx,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,16 +24,9 @@ class EnvironmentStorageConfiguration {
 
   factory EnvironmentStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfiguration(
-      efs: map['efs'] == null
-          ? null
-          : EnvironmentStorageConfigurationEfs.fromMap(
-              (map['efs'] as Map).cast<String, dynamic>(),
-            ),
-      fsx: map['fsx'] == null
-          ? null
-          : EnvironmentStorageConfigurationFsx.fromMap(
-              (map['fsx'] as Map).cast<String, dynamic>(),
-            ),
+      efs: map['efs'] == null ? null : EnvironmentStorageConfigurationEfs.fromMap((map['efs'] as Map).cast<String, dynamic>()),
+      fsx: map['fsx'] == null ? null : EnvironmentStorageConfigurationFsx.fromMap((map['fsx'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

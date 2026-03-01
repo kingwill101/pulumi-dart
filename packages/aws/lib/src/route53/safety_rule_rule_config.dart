@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SafetyRuleRuleConfig {
   /// Logical negation of the rule.
   final bool inverted;
-
   /// Number of controls that must be set when you specify an `ATLEAST` type rule.
   final int threshold;
-
   /// Rule type. Valid values are `ATLEAST`, `AND`, and `OR`.
   final String type;
 
@@ -36,3 +35,4 @@ class SafetyRuleRuleConfig {
     );
   }
 }
+

@@ -221,7 +221,6 @@ import 'user_policies_exclusive_args.dart';
 class UserPoliciesExclusive extends pulumi.CustomResource {
   /// A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyNames;
-
   /// IAM user name.
   late final pulumi.Output<String> userName;
 
@@ -234,11 +233,11 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
     UserPoliciesExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.policyNames = registerOutput<List<String>>('policyNames');
     this.userName = registerOutput<String>('userName');
   }

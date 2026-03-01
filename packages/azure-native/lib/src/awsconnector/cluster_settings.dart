@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of ClusterSettings
+class ClusterSettings {
+  /// The name of the cluster setting. The value is ``containerInsights`` .
+  final String? name;
+  /// The value to set for the cluster setting. The supported values are ``enabled`` and ``disabled``.  If you set ``name`` to ``containerInsights`` and ``value`` to ``enabled``, CloudWatch Container Insights will be on for the cluster, otherwise it will be off unless the ``containerInsights`` account setting is turned on. If a cluster value is specified, it will override the ``containerInsights`` value set with [PutAccountSetting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSetting.html) or [PutAccountSettingDefault](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSettingDefault.html).
+  final String? value;
+
+  /// Creates a new [ClusterSettings].
+  /// [name] The name of the cluster setting. The value is ``containerInsights`` .
+  /// [value] The value to set for the cluster setting. The supported values are ``enabled`` and ``disabled``.  If you set ``name`` to ``containerInsights`` and ``value`` to ``enabled``, CloudWatch Container Insights will be on for the cluster, otherwise it will be off unless the ``containerInsights`` account setting is turned on. If a cluster value is specified, it will override the ``containerInsights`` value set with [PutAccountSetting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSetting.html) or [PutAccountSettingDefault](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSettingDefault.html).
+  ClusterSettings({
+    this.name,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
+  }
+
+  factory ClusterSettings.fromMap(Map<String, dynamic> map) {
+    return ClusterSettings(
+      name: map['name'] == null ? null : map['name'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

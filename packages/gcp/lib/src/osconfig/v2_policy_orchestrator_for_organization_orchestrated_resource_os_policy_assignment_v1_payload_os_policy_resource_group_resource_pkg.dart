@@ -13,51 +13,37 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// - install: `apt-get update && apt-get -y install [name]`
   /// - remove: `apt-get -y remove [name]`
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt?
-  apt;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt? apt;
   /// A deb package file. dpkg packages only support INSTALLED state.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb?
-  deb;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb? deb;
   /// Required. The desired state the agent should maintain for this package.
   /// Possible values:
   /// DESIRED_STATE_UNSPECIFIED
   /// INSTALLED
   /// REMOVED
   final String desiredState;
-
   /// A package managed by GooGet.
   /// - install: `googet -noconfirm install package`
   /// - remove: `googet -noconfirm remove package`
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget?
-  googet;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget? googet;
   /// An MSI package. MSI packages only support INSTALLED state.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi?
-  msi;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi? msi;
   /// An RPM package file. RPM packages only support INSTALLED state.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm?
-  rpm;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm? rpm;
   /// A package managed by YUM.
   /// - install: `yum -y install package`
   /// - remove: `yum -y remove package`
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum?
-  yum;
-
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum? yum;
   /// A package managed by Zypper.
   /// - install: `zypper -y install package`
   /// - remove: `zypper -y rm package`
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper?
-  zypper;
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper? zypper;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg].
   /// [apt] A package managed by APT.
@@ -92,46 +78,17 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg(
-      apt: map['apt'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt.fromMap(
-              (map['apt'] as Map).cast<String, dynamic>(),
-            ),
-      deb: map['deb'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(
-              (map['deb'] as Map).cast<String, dynamic>(),
-            ),
+      apt: map['apt'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      deb: map['deb'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap((map['deb'] as Map).cast<String, dynamic>()),
       desiredState: map['desiredState'] as String,
-      googet: map['googet'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget.fromMap(
-              (map['googet'] as Map).cast<String, dynamic>(),
-            ),
-      msi: map['msi'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi.fromMap(
-              (map['msi'] as Map).cast<String, dynamic>(),
-            ),
-      rpm: map['rpm'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm.fromMap(
-              (map['rpm'] as Map).cast<String, dynamic>(),
-            ),
-      yum: map['yum'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum.fromMap(
-              (map['yum'] as Map).cast<String, dynamic>(),
-            ),
-      zypper: map['zypper'] == null
-          ? null
-          : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper.fromMap(
-              (map['zypper'] as Map).cast<String, dynamic>(),
-            ),
+      googet: map['googet'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget.fromMap((map['googet'] as Map).cast<String, dynamic>()),
+      msi: map['msi'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi.fromMap((map['msi'] as Map).cast<String, dynamic>()),
+      rpm: map['rpm'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm.fromMap((map['rpm'] as Map).cast<String, dynamic>()),
+      yum: map['yum'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: map['zypper'] == null ? null : V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

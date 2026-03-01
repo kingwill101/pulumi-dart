@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayArgs {
   /// The ASN to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
   final pulumi.Input<String> amazonSideAsn;
-
   /// The name of the connection.
   final pulumi.Input<String>? name;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,9 +22,10 @@ class GatewayArgs {
     required String amazonSideAsn,
     String? name,
     Map<String, String>? tags,
-  }) : amazonSideAsn = pulumi.Input.asInput<String>(amazonSideAsn),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      amazonSideAsn = pulumi.Input.asInput<String>(amazonSideAsn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +39,8 @@ class GatewayArgs {
     return GatewayArgs(
       amazonSideAsn: map['amazonSideAsn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

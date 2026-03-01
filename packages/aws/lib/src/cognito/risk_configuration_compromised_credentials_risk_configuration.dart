@@ -5,7 +5,6 @@ import 'risk_configuration_compromised_credentials_risk_configuration_actions.da
 class RiskConfigurationCompromisedCredentialsRiskConfiguration {
   /// The compromised credentials risk configuration actions. See details below.
   final RiskConfigurationCompromisedCredentialsRiskConfigurationActions actions;
-
   /// Perform the action for these events. The default is to perform all events if no event filter is specified. Valid values are `SIGN_IN`, `PASSWORD_CHANGE`, and `SIGN_UP`.
   final List<String>? eventFilters;
 
@@ -24,17 +23,11 @@ class RiskConfigurationCompromisedCredentialsRiskConfiguration {
     };
   }
 
-  factory RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationCompromisedCredentialsRiskConfiguration(
-      actions:
-          RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(
-            (map['actions'] as Map).cast<String, dynamic>(),
-          ),
-      eventFilters: map['eventFilters'] == null
-          ? null
-          : (map['eventFilters'] as List).cast<String>(),
+      actions: RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
+      eventFilters: map['eventFilters'] == null ? null : (map['eventFilters'] as List).cast<String>(),
     );
   }
 }
+

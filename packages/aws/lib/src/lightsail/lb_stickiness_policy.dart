@@ -172,15 +172,12 @@ import 'lb_stickiness_policy_args.dart';
 class LbStickinessPolicy extends pulumi.CustomResource {
   /// Cookie duration in seconds. This determines the length of the session stickiness.
   late final pulumi.Output<int> cookieDuration;
-
   /// Whether to enable session stickiness for the load balancer.
   late final pulumi.Output<bool> enabled;
-
   /// Name of the load balancer to which you want to enable session stickiness.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> lbName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -193,11 +190,11 @@ class LbStickinessPolicy extends pulumi.CustomResource {
     LbStickinessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.cookieDuration = registerOutput<int>('cookieDuration');
     this.enabled = registerOutput<bool>('enabled');
     this.lbName = registerOutput<String>('lbName');

@@ -10,10 +10,8 @@ import 'get_regions_filter.dart';
 class GetRegionsArgs {
   /// If true the source will query all regions regardless of availability.
   final pulumi.Input<bool>? allRegions;
-
   /// Configuration block(s) to use as filters. Detailed below.
   final pulumi.Input<List<GetRegionsFilter>>? filters;
-
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final pulumi.Input<String>? id;
 
@@ -25,25 +23,15 @@ class GetRegionsArgs {
     bool? allRegions,
     List<GetRegionsFilter>? filters,
     String? id,
-  }) : allRegions = pulumi.Input.asOptionalInput<bool>(allRegions),
-       filters = pulumi.Input.asOptionalInput<List<GetRegionsFilter>>(filters),
-       id = pulumi.Input.asOptionalInput<String>(id);
+  }) :
+      allRegions = pulumi.Input.asOptionalInput<bool>(allRegions),
+      filters = pulumi.Input.asOptionalInput<List<GetRegionsFilter>>(filters),
+      id = pulumi.Input.asOptionalInput<String>(id);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allRegions': ?allRegions,
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetRegionsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetRegionsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
     };
   }
@@ -51,15 +39,9 @@ class GetRegionsArgs {
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
       allRegions: map['allRegions'] == null ? null : map['allRegions'] as bool,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetRegionsFilter>(
-              map['filters'],
-              (value) => GetRegionsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
     );
   }
 }
+

@@ -9,26 +9,20 @@ class GetInstanceStateInfo {
 
   /// Creates a new [GetInstanceStateInfo].
   /// [updateInfos] Represents information about instance with state UPDATING.
-  GetInstanceStateInfo({required this.updateInfos});
+  GetInstanceStateInfo({
+    required this.updateInfos,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfos':
-          pulumi.Input.encodeList<
-            GetInstanceStateInfoUpdateInfo,
-            Map<String, dynamic>
-          >(updateInfos, (value) => value.toMap()),
+      'updateInfos': pulumi.Input.encodeList<GetInstanceStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos, (value) => value.toMap()),
     };
   }
 
   factory GetInstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return GetInstanceStateInfo(
-      updateInfos: pulumi.Input.decodeList<GetInstanceStateInfoUpdateInfo>(
-        map['updateInfos'],
-        (value) => GetInstanceStateInfoUpdateInfo.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      updateInfos: pulumi.Input.decodeList<GetInstanceStateInfoUpdateInfo>(map['updateInfos'], (value) => GetInstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

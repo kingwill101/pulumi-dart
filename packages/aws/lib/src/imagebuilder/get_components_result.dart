@@ -8,10 +8,8 @@ class GetComponentsResult {
   /// Set of ARNs of the matched Image Builder Components.
   final List<String> arns;
   final List<GetComponentsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of names of the matched Image Builder Components.
   final List<String> names;
   final String? owner;
@@ -36,12 +34,7 @@ class GetComponentsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arns': arns,
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<GetComponentsFilter, Map<String, dynamic>>(
-              filters!,
-              (value) => value.toMap(),
-            ),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetComponentsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'names': names,
       'owner': ?owner,
@@ -52,14 +45,7 @@ class GetComponentsResult {
   factory GetComponentsResult.fromMap(Map<String, dynamic> map) {
     return GetComponentsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetComponentsFilter>(
-              map['filters'],
-              (value) => GetComponentsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetComponentsFilter>(map['filters'], (value) => GetComponentsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       owner: map['owner'] == null ? null : map['owner'] as String,
@@ -67,3 +53,4 @@ class GetComponentsResult {
     );
   }
 }
+

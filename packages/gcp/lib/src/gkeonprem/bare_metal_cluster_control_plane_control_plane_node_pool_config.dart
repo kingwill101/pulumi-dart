@@ -5,8 +5,7 @@ import 'bare_metal_cluster_control_plane_control_plane_node_pool_config_node_poo
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfig {
   /// The generic configuration for a node pool running the control plane.
   /// Structure is documented below.
-  final BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig
-  nodePoolConfig;
+  final BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig nodePoolConfig;
 
   /// Creates a new [BareMetalClusterControlPlaneControlPlaneNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running the control plane.
@@ -15,17 +14,15 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodePoolConfig': nodePoolConfig.toMap()};
+    return <String, dynamic>{
+      'nodePoolConfig': nodePoolConfig.toMap(),
+    };
   }
 
-  factory BareMetalClusterControlPlaneControlPlaneNodePoolConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterControlPlaneControlPlaneNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterControlPlaneControlPlaneNodePoolConfig(
-      nodePoolConfig:
-          BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.fromMap(
-            (map['nodePoolConfig'] as Map).cast<String, dynamic>(),
-          ),
+      nodePoolConfig: BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

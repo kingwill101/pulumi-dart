@@ -7,7 +7,6 @@ import 'get_access_keys_access_key.dart';
 class GetAccessKeysResult {
   /// List of the IAM access keys associated with the specified user. See below.
   final List<GetAccessKeysAccessKey> accessKeys;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String user;
@@ -24,11 +23,7 @@ class GetAccessKeysResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessKeys':
-          pulumi.Input.encodeList<GetAccessKeysAccessKey, Map<String, dynamic>>(
-            accessKeys,
-            (value) => value.toMap(),
-          ),
+      'accessKeys': pulumi.Input.encodeList<GetAccessKeysAccessKey, Map<String, dynamic>>(accessKeys, (value) => value.toMap()),
       'id': id,
       'user': user,
     };
@@ -36,14 +31,10 @@ class GetAccessKeysResult {
 
   factory GetAccessKeysResult.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysResult(
-      accessKeys: pulumi.Input.decodeList<GetAccessKeysAccessKey>(
-        map['accessKeys'],
-        (value) => GetAccessKeysAccessKey.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accessKeys: pulumi.Input.decodeList<GetAccessKeysAccessKey>(map['accessKeys'], (value) => GetAccessKeysAccessKey.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       user: map['user'] as String,
     );
   }
 }
+

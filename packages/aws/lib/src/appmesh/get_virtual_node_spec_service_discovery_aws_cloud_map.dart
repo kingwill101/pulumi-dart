@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
   final Map<String, String> attributes;
   final String namespaceName;
@@ -23,9 +24,7 @@ class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
     };
   }
 
-  factory GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscoveryAwsCloudMap(
       attributes: (map['attributes'] as Map).cast<String, String>(),
       namespaceName: map['namespaceName'] as String,
@@ -33,3 +32,4 @@ class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
     );
   }
 }
+

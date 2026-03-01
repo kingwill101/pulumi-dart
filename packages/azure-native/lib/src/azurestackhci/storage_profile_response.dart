@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// StorageProfile of edge machine.
+class StorageProfileResponse {
+  /// Number of storage disks in the device with $CanPool as true.
+  final double poolableDisksCount;
+
+  /// Creates a new [StorageProfileResponse].
+  /// [poolableDisksCount] Number of storage disks in the device with $CanPool as true.
+  StorageProfileResponse({
+    required this.poolableDisksCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'poolableDisksCount': poolableDisksCount,
+    };
+  }
+
+  factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
+    return StorageProfileResponse(
+      poolableDisksCount: map['poolableDisksCount'] as double,
+    );
+  }
+}
+

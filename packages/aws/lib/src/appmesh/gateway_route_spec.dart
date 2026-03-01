@@ -7,13 +7,10 @@ import 'gateway_route_spec_http_route.dart';
 class GatewayRouteSpec {
   /// Specification of a gRPC gateway route.
   final GatewayRouteSpecGrpcRoute? grpcRoute;
-
   /// Specification of an HTTP/2 gateway route.
   final GatewayRouteSpecHttp2Route? http2Route;
-
   /// Specification of an HTTP gateway route.
   final GatewayRouteSpecHttpRoute? httpRoute;
-
   /// Priority for the gateway route, between `0` and `1000`.
   final int? priority;
 
@@ -40,22 +37,11 @@ class GatewayRouteSpec {
 
   factory GatewayRouteSpec.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpec(
-      grpcRoute: map['grpcRoute'] == null
-          ? null
-          : GatewayRouteSpecGrpcRoute.fromMap(
-              (map['grpcRoute'] as Map).cast<String, dynamic>(),
-            ),
-      http2Route: map['http2Route'] == null
-          ? null
-          : GatewayRouteSpecHttp2Route.fromMap(
-              (map['http2Route'] as Map).cast<String, dynamic>(),
-            ),
-      httpRoute: map['httpRoute'] == null
-          ? null
-          : GatewayRouteSpecHttpRoute.fromMap(
-              (map['httpRoute'] as Map).cast<String, dynamic>(),
-            ),
+      grpcRoute: map['grpcRoute'] == null ? null : GatewayRouteSpecGrpcRoute.fromMap((map['grpcRoute'] as Map).cast<String, dynamic>()),
+      http2Route: map['http2Route'] == null ? null : GatewayRouteSpecHttp2Route.fromMap((map['http2Route'] as Map).cast<String, dynamic>()),
+      httpRoute: map['httpRoute'] == null ? null : GatewayRouteSpecHttpRoute.fromMap((map['httpRoute'] as Map).cast<String, dynamic>()),
       priority: map['priority'] == null ? null : map['priority'] as int,
     );
   }
 }
+

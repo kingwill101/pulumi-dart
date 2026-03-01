@@ -239,20 +239,15 @@ import 'region_network_firewall_policy_association_args.dart';
 class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResource {
   /// The target that the firewall policy is attached to.
   late final pulumi.Output<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   late final pulumi.Output<String> firewallPolicy;
-
   /// The name for an association.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The location of this resource.
   late final pulumi.Output<String> region;
-
   /// The short name of the firewall policy of the association.
   late final pulumi.Output<String> shortName;
 
@@ -265,11 +260,11 @@ class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResource {
     RegionNetworkFirewallPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.attachmentTarget = registerOutput<String>('attachmentTarget');
     this.firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');

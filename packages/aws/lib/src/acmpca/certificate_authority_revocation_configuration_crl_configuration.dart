@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CertificateAuthorityRevocationConfigurationCrlConfiguration {
   /// Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point. Use this value if you don't want the name of your S3 bucket to be public. Must be less than or equal to 253 characters in length.
   final String? customCname;
-
   /// Configures a custom path for the CRL in S3. If specified, the CRL will be written to `s3://<s3_bucket_name>/<custom_path>/<crl_file>`. Must conform to the pattern `[-a-zA-Z0-9;?:@&=+$,%_.!~*()']+(/[-a-zA-Z0-9;?:@&=+$,%_.!~*()']+)*` and be between 0 and 253 characters in length.
   final String? customPath;
-
   /// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
   final bool? enabled;
-
   /// Number of days until a certificate expires. Must be between 1 and 5000.
   final int? expirationInDays;
-
   /// Name of the S3 bucket that contains the CRL. If you do not provide a value for the `custom_cname` argument, the name of your S3 bucket is placed into the CRL Distribution Points extension of the issued certificate. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket. Must be between 3 and 255 characters in length.
   final String? s3BucketName;
-
   /// Determines whether the CRL will be publicly readable or privately held in the CRL Amazon S3 bucket. Defaults to `PUBLIC_READ`.
   final String? s3ObjectAcl;
 
@@ -46,26 +42,15 @@ class CertificateAuthorityRevocationConfigurationCrlConfiguration {
     };
   }
 
-  factory CertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityRevocationConfigurationCrlConfiguration(
-      customCname: map['customCname'] == null
-          ? null
-          : map['customCname'] as String,
-      customPath: map['customPath'] == null
-          ? null
-          : map['customPath'] as String,
+      customCname: map['customCname'] == null ? null : map['customCname'] as String,
+      customPath: map['customPath'] == null ? null : map['customPath'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      expirationInDays: map['expirationInDays'] == null
-          ? null
-          : map['expirationInDays'] as int,
-      s3BucketName: map['s3BucketName'] == null
-          ? null
-          : map['s3BucketName'] as String,
-      s3ObjectAcl: map['s3ObjectAcl'] == null
-          ? null
-          : map['s3ObjectAcl'] as String,
+      expirationInDays: map['expirationInDays'] == null ? null : map['expirationInDays'] as int,
+      s3BucketName: map['s3BucketName'] == null ? null : map['s3BucketName'] as String,
+      s3ObjectAcl: map['s3ObjectAcl'] == null ? null : map['s3ObjectAcl'] as String,
     );
   }
 }
+

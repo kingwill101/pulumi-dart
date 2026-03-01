@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeNeuronDevice {
   final int coreCount;
   final int coreVersion;
   final int count;
-
   /// Size of the instance memory, in MiB.
   final int memorySize;
   final String name;
@@ -43,3 +43,4 @@ class GetInstanceTypeNeuronDevice {
     );
   }
 }
+

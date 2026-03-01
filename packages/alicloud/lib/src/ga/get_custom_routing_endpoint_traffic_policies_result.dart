@@ -1,0 +1,85 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_custom_routing_endpoint_traffic_policies_custom_routing_endpoint_traffic_policy.dart';
+
+/// Result data returned by getCustomRoutingEndpointTrafficPolicies.
+class GetCustomRoutingEndpointTrafficPoliciesResult {
+  /// The ID of the GA instance to which the endpoint belongs.
+  final String acceleratorId;
+  /// The IP address of the traffic policy.
+  final String? address;
+  /// A list of Custom Routing Endpoint Traffic Policies. Each element contains the following attributes:
+  final List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy> customRoutingEndpointTrafficPolicies;
+  /// The ID of the Custom Routing Endpoint Group.
+  final String? endpointGroupId;
+  /// The ID of the Custom Routing Endpoint.
+  final String? endpointId;
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final List<String> ids;
+  /// The ID of the custom routing listener to which the endpoint belongs.
+  final String? listenerId;
+  final String? outputFile;
+  final int? pageNumber;
+  final int? pageSize;
+
+  /// Creates a new [GetCustomRoutingEndpointTrafficPoliciesResult].
+  /// [acceleratorId] The ID of the GA instance to which the endpoint belongs.
+  /// [address] The IP address of the traffic policy.
+  /// [customRoutingEndpointTrafficPolicies] A list of Custom Routing Endpoint Traffic Policies. Each element contains the following attributes:
+  /// [endpointGroupId] The ID of the Custom Routing Endpoint Group.
+  /// [endpointId] The ID of the Custom Routing Endpoint.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ids] Required.
+  /// [listenerId] The ID of the custom routing listener to which the endpoint belongs.
+  /// [outputFile] Optional.
+  /// [pageNumber] Optional.
+  /// [pageSize] Optional.
+  GetCustomRoutingEndpointTrafficPoliciesResult({
+    required this.acceleratorId,
+    this.address,
+    required this.customRoutingEndpointTrafficPolicies,
+    this.endpointGroupId,
+    this.endpointId,
+    required this.id,
+    required this.ids,
+    this.listenerId,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'acceleratorId': acceleratorId,
+      'address': ?address,
+      'customRoutingEndpointTrafficPolicies': pulumi.Input.encodeList<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy, Map<String, dynamic>>(customRoutingEndpointTrafficPolicies, (value) => value.toMap()),
+      'endpointGroupId': ?endpointGroupId,
+      'endpointId': ?endpointId,
+      'id': id,
+      'ids': ids,
+      'listenerId': ?listenerId,
+      'outputFile': ?outputFile,
+      'pageNumber': ?pageNumber,
+      'pageSize': ?pageSize,
+    };
+  }
+
+  factory GetCustomRoutingEndpointTrafficPoliciesResult.fromMap(Map<String, dynamic> map) {
+    return GetCustomRoutingEndpointTrafficPoliciesResult(
+      acceleratorId: map['acceleratorId'] as String,
+      address: map['address'] == null ? null : map['address'] as String,
+      customRoutingEndpointTrafficPolicies: pulumi.Input.decodeList<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy>(map['customRoutingEndpointTrafficPolicies'], (value) => GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      endpointGroupId: map['endpointGroupId'] == null ? null : map['endpointGroupId'] as String,
+      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      listenerId: map['listenerId'] == null ? null : map['listenerId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+    );
+  }
+}
+

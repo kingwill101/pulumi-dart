@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStateMachineVersions.
 class GetStateMachineVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
   final String statemachineArn;
-
   /// ARN List identifying the statemachine versions.
   final List<String> statemachineVersions;
 
@@ -36,8 +36,8 @@ class GetStateMachineVersionsResult {
       id: map['id'] as String,
       region: map['region'] as String,
       statemachineArn: map['statemachineArn'] as String,
-      statemachineVersions: (map['statemachineVersions'] as List)
-          .cast<String>(),
+      statemachineVersions: (map['statemachineVersions'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GlobalSecondaryIndexOnDemandThroughput {
   /// Maximum number of read request units for this index.
   final int? maxReadRequestUnits;
-
   /// Maximum number of write request units for this index.
   final int? maxWriteRequestUnits;
 
@@ -22,16 +22,11 @@ class GlobalSecondaryIndexOnDemandThroughput {
     };
   }
 
-  factory GlobalSecondaryIndexOnDemandThroughput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: map['maxReadRequestUnits'] == null
-          ? null
-          : map['maxReadRequestUnits'] as int,
-      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null
-          ? null
-          : map['maxWriteRequestUnits'] as int,
+      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : map['maxReadRequestUnits'] as int,
+      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : map['maxWriteRequestUnits'] as int,
     );
   }
 }
+

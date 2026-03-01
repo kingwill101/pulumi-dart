@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Delegated resource properties - internal use only.
+class DelegatedResourceResponse {
+  /// The source resource location - internal use only.
+  final String? location;
+  /// The delegation id of the referral delegation (optional) - internal use only.
+  final String? referralResource;
+  /// The ARM resource id of the delegated resource - internal use only.
+  final String? resourceId;
+  /// The tenant id of the delegated resource - internal use only.
+  final String? tenantId;
+
+  /// Creates a new [DelegatedResourceResponse].
+  /// [location] The source resource location - internal use only.
+  /// [referralResource] The delegation id of the referral delegation (optional) - internal use only.
+  /// [resourceId] The ARM resource id of the delegated resource - internal use only.
+  /// [tenantId] The tenant id of the delegated resource - internal use only.
+  DelegatedResourceResponse({
+    this.location,
+    this.referralResource,
+    this.resourceId,
+    this.tenantId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': ?location,
+      'referralResource': ?referralResource,
+      'resourceId': ?resourceId,
+      'tenantId': ?tenantId,
+    };
+  }
+
+  factory DelegatedResourceResponse.fromMap(Map<String, dynamic> map) {
+    return DelegatedResourceResponse(
+      location: map['location'] == null ? null : map['location'] as String,
+      referralResource: map['referralResource'] == null ? null : map['referralResource'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+    );
+  }
+}
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ContainerRecipeTargetRepository {
   /// The name of the container repository where the output container image is stored. This name is prefixed by the repository location.
   final String repositoryName;
-
   /// The service in which this image is registered. Valid values: `ECR`.
   final String service;
 
@@ -29,3 +29,4 @@ class ContainerRecipeTargetRepository {
     );
   }
 }
+

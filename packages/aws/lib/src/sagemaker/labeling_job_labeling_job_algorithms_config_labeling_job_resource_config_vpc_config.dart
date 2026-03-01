@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig {
   /// VPC security group IDs.
   final List<String> securityGroupIds;
-
   /// IDs of the subnets in the VPC to which to connect the training job. Fields are documented below.
   final List<String> subnets;
 
@@ -22,12 +22,11 @@ class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig {
     };
   }
 
-  factory LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig(
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
       subnets: (map['subnets'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,0 +1,19 @@
+library module_changeanalysis;
+
+export 'changeanalysis/azure_monitor_workspace_properties.dart';
+export 'changeanalysis/azure_monitor_workspace_properties_response.dart';
+export 'changeanalysis/change_details_mode.dart';
+export 'changeanalysis/configuration_profile.dart';
+export 'changeanalysis/configuration_profile_args.dart';
+export 'changeanalysis/configuration_profile_resource_properties.dart';
+export 'changeanalysis/configuration_profile_resource_properties_response.dart';
+export 'changeanalysis/functions.dart';
+export 'changeanalysis/get_configuration_profile_args.dart';
+export 'changeanalysis/get_configuration_profile_result.dart';
+export 'changeanalysis/managed_identity_types.dart';
+export 'changeanalysis/notification_settings.dart';
+export 'changeanalysis/notification_settings_response.dart';
+export 'changeanalysis/notifications_state.dart';
+export 'changeanalysis/resource_identity.dart';
+export 'changeanalysis/resource_identity_response.dart';
+export 'changeanalysis/system_data_response.dart';

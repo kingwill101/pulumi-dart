@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolNodeConfigEphemeralStorageConfig {
   /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
   final int localSsdCount;
@@ -11,14 +12,15 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'localSsdCount': localSsdCount};
+    return <String, dynamic>{
+      'localSsdCount': localSsdCount,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigEphemeralStorageConfig(
       localSsdCount: map['localSsdCount'] as int,
     );
   }
 }
+

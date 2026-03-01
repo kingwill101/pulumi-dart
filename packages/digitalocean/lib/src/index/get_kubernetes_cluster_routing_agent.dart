@@ -1,0 +1,25 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetKubernetesClusterRoutingAgent {
+  final bool enabled;
+
+  /// Creates a new [GetKubernetesClusterRoutingAgent].
+  /// [enabled] Required.
+  GetKubernetesClusterRoutingAgent({
+    required this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
+  }
+
+  factory GetKubernetesClusterRoutingAgent.fromMap(Map<String, dynamic> map) {
+    return GetKubernetesClusterRoutingAgent(
+      enabled: map['enabled'] as bool,
+    );
+  }
+}
+

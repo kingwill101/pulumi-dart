@@ -8,7 +8,9 @@ class RemediationConfigurationExecutionControls {
 
   /// Creates a new [RemediationConfigurationExecutionControls].
   /// [ssmControls] Configuration block for SSM controls. See below.
-  RemediationConfigurationExecutionControls({this.ssmControls});
+  RemediationConfigurationExecutionControls({
+    this.ssmControls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class RemediationConfigurationExecutionControls {
     };
   }
 
-  factory RemediationConfigurationExecutionControls.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RemediationConfigurationExecutionControls.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationExecutionControls(
-      ssmControls: map['ssmControls'] == null
-          ? null
-          : RemediationConfigurationExecutionControlsSsmControls.fromMap(
-              (map['ssmControls'] as Map).cast<String, dynamic>(),
-            ),
+      ssmControls: map['ssmControls'] == null ? null : RemediationConfigurationExecutionControlsSsmControls.fromMap((map['ssmControls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

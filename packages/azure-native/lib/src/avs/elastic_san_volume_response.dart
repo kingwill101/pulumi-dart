@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// An Elastic SAN volume from Microsoft.ElasticSan provider
+class ElasticSanVolumeResponse {
+  /// Azure resource ID of the Elastic SAN Volume
+  final String targetId;
+
+  /// Creates a new [ElasticSanVolumeResponse].
+  /// [targetId] Azure resource ID of the Elastic SAN Volume
+  ElasticSanVolumeResponse({
+    required this.targetId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'targetId': targetId,
+    };
+  }
+
+  factory ElasticSanVolumeResponse.fromMap(Map<String, dynamic> map) {
+    return ElasticSanVolumeResponse(
+      targetId: map['targetId'] as String,
+    );
+  }
+}
+

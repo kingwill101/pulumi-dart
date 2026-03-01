@@ -18,30 +18,22 @@ class OrganizationsAccessArgs {
   OrganizationsAccessArgs({
     required bool enabled,
     OrganizationsAccessTimeouts? timeouts,
-  }) : enabled = pulumi.Input.asInput<bool>(enabled),
-       timeouts = pulumi.Input.asOptionalInput<OrganizationsAccessTimeouts>(
-         timeouts,
-       );
+  }) :
+      enabled = pulumi.Input.asInput<bool>(enabled),
+      timeouts = pulumi.Input.asOptionalInput<OrganizationsAccessTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationsAccessTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<OrganizationsAccessTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory OrganizationsAccessArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsAccessArgs(
       enabled: map['enabled'] as bool,
-      timeouts: map['timeouts'] == null
-          ? null
-          : OrganizationsAccessTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : OrganizationsAccessTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

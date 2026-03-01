@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStreamConsumerArgs {
   /// ARN of the stream consumer.
   final pulumi.Input<String>? arn;
-
   /// Name of the stream consumer.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the data stream the consumer is registered with.
   final pulumi.Input<String> streamArn;
   final pulumi.Input<Map<String, String>>? tags;
@@ -32,11 +29,12 @@ class GetStreamConsumerArgs {
     String? region,
     required String streamArn,
     Map<String, String>? tags,
-  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       streamArn = pulumi.Input.asInput<String>(streamArn),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      streamArn = pulumi.Input.asInput<String>(streamArn),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,9 +52,8 @@ class GetStreamConsumerArgs {
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       streamArn: map['streamArn'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

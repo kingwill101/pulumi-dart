@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
   final bool dryRun;
-
   /// Name of a custom utilization signal. The name must be 1-64 characters
   /// long and match the regular expression a-z? which
   /// means the first character must be a lowercase letter, and all following
@@ -18,10 +18,16 @@ class BackendServiceCustomMetric {
   /// Creates a new [BackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] Name of a custom utilization signal. The name must be 1-64 characters
-  BackendServiceCustomMetric({required this.dryRun, required this.name});
+  BackendServiceCustomMetric({
+    required this.dryRun,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dryRun': dryRun, 'name': name};
+    return <String, dynamic>{
+      'dryRun': dryRun,
+      'name': name,
+    };
   }
 
   factory BackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
@@ -31,3 +37,4 @@ class BackendServiceCustomMetric {
     );
   }
 }
+

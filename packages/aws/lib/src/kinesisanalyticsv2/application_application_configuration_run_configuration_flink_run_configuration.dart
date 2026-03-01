@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
   /// When restoring from a snapshot, specifies whether the runtime is allowed to skip a state that cannot be mapped to the new program. Default is `false`.
   final bool? allowNonRestoredState;
@@ -11,16 +12,15 @@ class ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowNonRestoredState': ?allowNonRestoredState};
+    return <String, dynamic>{
+      'allowNonRestoredState': ?allowNonRestoredState,
+    };
   }
 
-  factory ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration(
-      allowNonRestoredState: map['allowNonRestoredState'] == null
-          ? null
-          : map['allowNonRestoredState'] as bool,
+      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : map['allowNonRestoredState'] as bool,
     );
   }
 }
+

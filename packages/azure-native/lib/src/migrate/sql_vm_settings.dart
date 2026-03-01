@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// SQL VM assessment settings.
+class SqlVmSettings {
+  /// Gets or sets the Azure VM families (calling instance series to keep it
+  /// consistent with other targets).
+  final List<String>? instanceSeries;
+
+  /// Creates a new [SqlVmSettings].
+  /// [instanceSeries] Gets or sets the Azure VM families (calling instance series to keep it
+  SqlVmSettings({
+    this.instanceSeries,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'instanceSeries': ?instanceSeries,
+    };
+  }
+
+  factory SqlVmSettings.fromMap(Map<String, dynamic> map) {
+    return SqlVmSettings(
+      instanceSeries: map['instanceSeries'] == null ? null : (map['instanceSeries'] as List).cast<String>(),
+    );
+  }
+}
+

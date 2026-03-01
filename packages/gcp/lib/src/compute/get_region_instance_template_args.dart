@@ -11,17 +11,13 @@ class GetRegionInstanceTemplateArgs {
   /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
   /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
   final pulumi.Input<String>? filter;
-
   /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
   final pulumi.Input<bool>? mostRecent;
-
   /// The name of the instance template. One of `name` or `filter` must be provided.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If `project` is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Region in which the resource belongs.
   /// If `region` is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -38,11 +34,12 @@ class GetRegionInstanceTemplateArgs {
     String? name,
     String? project,
     String? region,
-  }) : filter = pulumi.Input.asOptionalInput<String>(filter),
-       mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,3 +61,4 @@ class GetRegionInstanceTemplateArgs {
     );
   }
 }
+

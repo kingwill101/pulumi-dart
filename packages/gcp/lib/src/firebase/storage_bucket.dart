@@ -175,10 +175,8 @@ import 'storage_bucket_args.dart';
 class StorageBucket extends pulumi.CustomResource {
   /// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   late final pulumi.Output<String?> bucketId;
-
   /// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -192,11 +190,11 @@ class StorageBucket extends pulumi.CustomResource {
     StorageBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/storageBucket:StorageBucket',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/storageBucket:StorageBucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucketId = registerOutput<String?>('bucketId');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

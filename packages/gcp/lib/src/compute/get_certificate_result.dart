@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   final String certificate;
@@ -7,7 +8,6 @@ class GetCertificateResult {
   final String creationTimestamp;
   final String description;
   final String expireTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -74,3 +74,4 @@ class GetCertificateResult {
     );
   }
 }
+

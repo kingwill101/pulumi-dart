@@ -1,0 +1,3 @@
+library pulumi_kubernetes_admissionregistration_k8s_io;
+
+export 'package:pulumi_kubernetes/src/admissionregistration_k8s_io.dart';

@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'deployment_settings_git_source_git_auth.dart';
+
+/// Git source settings for a deployment.
+class DeploymentSettingsGitSource {
+  /// The branch to deploy. One of either `branch` or `commit` must be specified.
+  final String? branch;
+  /// The commit to deploy. One of either `branch` or `commit` must be specified.
+  final String? commit;
+  /// Git authentication configuration for this deployment. Should not be specified if there are `gitHub` settings for this deployment.
+  final DeploymentSettingsGitSourceGitAuth? gitAuth;
+  /// The directory within the repository where the Pulumi.yaml is located.
+  final String? repoDir;
+  /// The repository URL to use for git settings. Should not be specified if there are `gitHub` settings for this deployment.
+  final String? repoUrl;
+
+  /// Creates a new [DeploymentSettingsGitSource].
+  /// [branch] The branch to deploy. One of either `branch` or `commit` must be specified.
+  /// [commit] The commit to deploy. One of either `branch` or `commit` must be specified.
+  /// [gitAuth] Git authentication configuration for this deployment. Should not be specified if there are `gitHub` settings for this deployment.
+  /// [repoDir] The directory within the repository where the Pulumi.yaml is located.
+  /// [repoUrl] The repository URL to use for git settings. Should not be specified if there are `gitHub` settings for this deployment.
+  DeploymentSettingsGitSource({
+    this.branch,
+    this.commit,
+    this.gitAuth,
+    this.repoDir,
+    this.repoUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'branch': ?branch,
+      'commit': ?commit,
+      'gitAuth': ?gitAuth == null ? null : gitAuth!.toMap(),
+      'repoDir': ?repoDir,
+      'repoUrl': ?repoUrl,
+    };
+  }
+
+  factory DeploymentSettingsGitSource.fromMap(Map<String, dynamic> map) {
+    return DeploymentSettingsGitSource(
+      branch: map['branch'] == null ? null : map['branch'] as String,
+      commit: map['commit'] == null ? null : map['commit'] as String,
+      gitAuth: map['gitAuth'] == null ? null : DeploymentSettingsGitSourceGitAuth.fromMap((map['gitAuth'] as Map).cast<String, dynamic>()),
+      repoDir: map['repoDir'] == null ? null : map['repoDir'] as String,
+      repoUrl: map['repoUrl'] == null ? null : map['repoUrl'] as String,
+    );
+  }
+}
+

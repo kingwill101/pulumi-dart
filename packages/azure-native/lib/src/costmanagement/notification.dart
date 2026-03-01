@@ -1,0 +1,106 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The notification associated with a budget.
+///
+/// Supported for CategoryType(s): Cost, ReservationUtilization.
+class Notification {
+  /// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+  ///
+  /// Supported for CategoryType(s): Cost, ReservationUtilization.
+  final List<String> contactEmails;
+  /// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+  ///
+  /// Supported for CategoryType(s): Cost.
+  final List<String>? contactGroups;
+  /// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+  ///
+  /// Supported for CategoryType(s): Cost.
+  final List<String>? contactRoles;
+  /// The notification is enabled or not.
+  ///
+  /// Supported for CategoryType(s): Cost, ReservationUtilization.
+  final bool enabled;
+  /// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+  ///
+  /// Supported for CategoryType(s): ReservationUtilization.
+  final String? frequency;
+  /// Language in which the recipient will receive the notification,
+  ///
+  /// Supported for CategoryType(s): Cost, ReservationUtilization.
+  final String? locale;
+  /// The comparison operator.
+  ///
+  /// Supported for CategoryType(s): Cost, ReservationUtilization.
+  ///
+  /// Supported operators for **CategoryType: Cost**
+  /// - GreaterThan
+  /// - GreaterThanOrEqualTo
+  ///
+  /// Supported operators for **CategoryType: ReservationUtilization**
+  /// - LessThan
+  final String operator;
+  /// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+  ///
+  /// Supported for CategoryType(s): Cost, ReservationUtilization.
+  ///
+  /// **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+  ///
+  /// **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+  final double threshold;
+  /// The type of threshold.
+  ///
+  /// Supported for CategoryType(s): Cost.
+  final String? thresholdType;
+
+  /// Creates a new [Notification].
+  /// [contactEmails] Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+  /// [contactGroups] Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+  /// [contactRoles] Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+  /// [enabled] The notification is enabled or not.
+  /// [frequency] Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+  /// [locale] Language in which the recipient will receive the notification,
+  /// [operator] The comparison operator.
+  /// [threshold] Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+  /// [thresholdType] The type of threshold.
+  Notification({
+    required this.contactEmails,
+    this.contactGroups,
+    this.contactRoles,
+    required this.enabled,
+    this.frequency,
+    this.locale,
+    required this.operator,
+    required this.threshold,
+    this.thresholdType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'contactEmails': contactEmails,
+      'contactGroups': ?contactGroups,
+      'contactRoles': ?contactRoles,
+      'enabled': enabled,
+      'frequency': ?frequency,
+      'locale': ?locale,
+      'operator': operator,
+      'threshold': threshold,
+      'thresholdType': ?thresholdType,
+    };
+  }
+
+  factory Notification.fromMap(Map<String, dynamic> map) {
+    return Notification(
+      contactEmails: (map['contactEmails'] as List).cast<String>(),
+      contactGroups: map['contactGroups'] == null ? null : (map['contactGroups'] as List).cast<String>(),
+      contactRoles: map['contactRoles'] == null ? null : (map['contactRoles'] as List).cast<String>(),
+      enabled: map['enabled'] as bool,
+      frequency: map['frequency'] == null ? null : map['frequency'] as String,
+      locale: map['locale'] == null ? null : map['locale'] as String,
+      operator: map['operator'] as String,
+      threshold: map['threshold'] as double,
+      thresholdType: map['thresholdType'] == null ? null : map['thresholdType'] as String,
+    );
+  }
+}
+

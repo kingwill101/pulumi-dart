@@ -1,0 +1,105 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Storage task execution report for a run instance.
+class StorageTaskReportPropertiesResponse {
+  /// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String finishTime;
+  /// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String objectFailedCount;
+  /// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String objectsOperatedOnCount;
+  /// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String objectsSucceededCount;
+  /// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String objectsTargetedCount;
+  /// Represents the overall result of the execution for the run instance
+  final String runResult;
+  /// Represents the status of the execution.
+  final String runStatusEnum;
+  /// Well known Azure Storage error code that represents the error encountered during execution of the run instance.
+  final String runStatusError;
+  /// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  final String startTime;
+  /// Represents the Storage Account Id where the storage task definition was applied and executed.
+  final String storageAccountId;
+  /// Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.
+  final String summaryReportPath;
+  /// Represents the Storage Task Assignment Id associated with the storage task that provided an execution context.
+  final String taskAssignmentId;
+  /// Storage Task Arm Id.
+  final String taskId;
+  /// Storage Task Version
+  final String taskVersion;
+
+  /// Creates a new [StorageTaskReportPropertiesResponse].
+  /// [finishTime] End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [objectFailedCount] Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [objectsOperatedOnCount] Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [objectsSucceededCount] Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [objectsTargetedCount] Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [runResult] Represents the overall result of the execution for the run instance
+  /// [runStatusEnum] Represents the status of the execution.
+  /// [runStatusError] Well known Azure Storage error code that represents the error encountered during execution of the run instance.
+  /// [startTime] Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+  /// [storageAccountId] Represents the Storage Account Id where the storage task definition was applied and executed.
+  /// [summaryReportPath] Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.
+  /// [taskAssignmentId] Represents the Storage Task Assignment Id associated with the storage task that provided an execution context.
+  /// [taskId] Storage Task Arm Id.
+  /// [taskVersion] Storage Task Version
+  StorageTaskReportPropertiesResponse({
+    required this.finishTime,
+    required this.objectFailedCount,
+    required this.objectsOperatedOnCount,
+    required this.objectsSucceededCount,
+    required this.objectsTargetedCount,
+    required this.runResult,
+    required this.runStatusEnum,
+    required this.runStatusError,
+    required this.startTime,
+    required this.storageAccountId,
+    required this.summaryReportPath,
+    required this.taskAssignmentId,
+    required this.taskId,
+    required this.taskVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'finishTime': finishTime,
+      'objectFailedCount': objectFailedCount,
+      'objectsOperatedOnCount': objectsOperatedOnCount,
+      'objectsSucceededCount': objectsSucceededCount,
+      'objectsTargetedCount': objectsTargetedCount,
+      'runResult': runResult,
+      'runStatusEnum': runStatusEnum,
+      'runStatusError': runStatusError,
+      'startTime': startTime,
+      'storageAccountId': storageAccountId,
+      'summaryReportPath': summaryReportPath,
+      'taskAssignmentId': taskAssignmentId,
+      'taskId': taskId,
+      'taskVersion': taskVersion,
+    };
+  }
+
+  factory StorageTaskReportPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return StorageTaskReportPropertiesResponse(
+      finishTime: map['finishTime'] as String,
+      objectFailedCount: map['objectFailedCount'] as String,
+      objectsOperatedOnCount: map['objectsOperatedOnCount'] as String,
+      objectsSucceededCount: map['objectsSucceededCount'] as String,
+      objectsTargetedCount: map['objectsTargetedCount'] as String,
+      runResult: map['runResult'] as String,
+      runStatusEnum: map['runStatusEnum'] as String,
+      runStatusError: map['runStatusError'] as String,
+      startTime: map['startTime'] as String,
+      storageAccountId: map['storageAccountId'] as String,
+      summaryReportPath: map['summaryReportPath'] as String,
+      taskAssignmentId: map['taskAssignmentId'] as String,
+      taskId: map['taskId'] as String,
+      taskVersion: map['taskVersion'] as String,
+    );
+  }
+}
+

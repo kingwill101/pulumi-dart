@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The properties related to Fabric
+class FabricProfile {
+  /// Azure Key Vault Uri
+  final String keyUri;
+  /// One Lake Path
+  final String oneLakePath;
+  /// URI of One Lake
+  final String oneLakeUri;
+
+  /// Creates a new [FabricProfile].
+  /// [keyUri] Azure Key Vault Uri
+  /// [oneLakePath] One Lake Path
+  /// [oneLakeUri] URI of One Lake
+  FabricProfile({
+    required this.keyUri,
+    required this.oneLakePath,
+    required this.oneLakeUri,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'keyUri': keyUri,
+      'oneLakePath': oneLakePath,
+      'oneLakeUri': oneLakeUri,
+    };
+  }
+
+  factory FabricProfile.fromMap(Map<String, dynamic> map) {
+    return FabricProfile(
+      keyUri: map['keyUri'] as String,
+      oneLakePath: map['oneLakePath'] as String,
+      oneLakeUri: map['oneLakeUri'] as String,
+    );
+  }
+}
+

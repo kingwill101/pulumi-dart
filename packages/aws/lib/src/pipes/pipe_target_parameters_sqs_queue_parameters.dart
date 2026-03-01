@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeTargetParametersSqsQueueParameters {
   /// This parameter applies only to FIFO (first-in-first-out) queues. The token used for deduplication of sent messages.
   final String? messageDeduplicationId;
-
   /// The FIFO message group ID to use as the target.
   final String? messageGroupId;
 
@@ -22,16 +22,11 @@ class PipeTargetParametersSqsQueueParameters {
     };
   }
 
-  factory PipeTargetParametersSqsQueueParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersSqsQueueParameters(
-      messageDeduplicationId: map['messageDeduplicationId'] == null
-          ? null
-          : map['messageDeduplicationId'] as String,
-      messageGroupId: map['messageGroupId'] == null
-          ? null
-          : map['messageGroupId'] as String,
+      messageDeduplicationId: map['messageDeduplicationId'] == null ? null : map['messageDeduplicationId'] as String,
+      messageGroupId: map['messageGroupId'] == null ? null : map['messageGroupId'] as String,
     );
   }
 }
+

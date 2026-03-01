@@ -10,13 +10,10 @@ import 'access_boundary_policy_rule.dart';
 class AccessBoundaryPolicyArgs {
   /// The display name of the rule.
   final pulumi.Input<String>? displayName;
-
   /// The name of the policy.
   final pulumi.Input<String>? name;
-
   /// The attachment point is identified by its URL-encoded full resource name.
   final pulumi.Input<String> parent;
-
   /// Rules to be applied.
   /// Structure is documented below.
   final pulumi.Input<List<AccessBoundaryPolicyRule>> rules;
@@ -31,44 +28,28 @@ class AccessBoundaryPolicyArgs {
     String? name,
     required String parent,
     required List<AccessBoundaryPolicyRule> rules,
-  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       parent = pulumi.Input.asInput<String>(parent),
-       rules = pulumi.Input.asInput<List<AccessBoundaryPolicyRule>>(rules);
+  }) :
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parent = pulumi.Input.asInput<String>(parent),
+      rules = pulumi.Input.asInput<List<AccessBoundaryPolicyRule>>(rules);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
       'name': ?name,
       'parent': parent,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<AccessBoundaryPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessBoundaryPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<AccessBoundaryPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AccessBoundaryPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyArgs(
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       parent: map['parent'] as String,
-      rules: pulumi.Input.decodeList<AccessBoundaryPolicyRule>(
-        map['rules'],
-        (value) => AccessBoundaryPolicyRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      rules: pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules'], (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

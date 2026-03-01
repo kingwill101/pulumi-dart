@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'rai_blocklist_properties_response.dart';
+import 'system_data_response.dart';
+
+/// Result data returned by getConnectionRaiBlocklist.
+class GetConnectionRaiBlocklistResult {
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  final String id;
+  /// The name of the resource
+  final String name;
+  /// RAI Custom Blocklist properties.
+  final RaiBlocklistPropertiesResponse properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String type;
+
+  /// Creates a new [GetConnectionRaiBlocklistResult].
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
+  /// [properties] RAI Custom Blocklist properties.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  GetConnectionRaiBlocklistResult({
+    required this.azureApiVersion,
+    required this.id,
+    required this.name,
+    required this.properties,
+    required this.systemData,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureApiVersion': azureApiVersion,
+      'id': id,
+      'name': name,
+      'properties': properties.toMap(),
+      'systemData': systemData.toMap(),
+      'type': type,
+    };
+  }
+
+  factory GetConnectionRaiBlocklistResult.fromMap(Map<String, dynamic> map) {
+    return GetConnectionRaiBlocklistResult(
+      azureApiVersion: map['azureApiVersion'] as String,
+      id: map['id'] as String,
+      name: map['name'] as String,
+      properties: RaiBlocklistPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+    );
+  }
+}
+

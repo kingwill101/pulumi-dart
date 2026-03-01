@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetThemeArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
@@ -31,10 +28,11 @@ class GetThemeArgs {
     String? region,
     Map<String, String>? tags,
     required String themeId,
-  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       themeId = pulumi.Input.asInput<String>(themeId);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      themeId = pulumi.Input.asInput<String>(themeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,14 +45,11 @@ class GetThemeArgs {
 
   factory GetThemeArgs.fromMap(Map<String, dynamic> map) {
     return GetThemeArgs(
-      awsAccountId: map['awsAccountId'] == null
-          ? null
-          : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       themeId: map['themeId'] as String,
     );
   }
 }
+

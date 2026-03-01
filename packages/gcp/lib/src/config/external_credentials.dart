@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExternalCredentials {
   final String audience;
   final String identityToken;
@@ -31,3 +32,4 @@ class ExternalCredentials {
     );
   }
 }
+

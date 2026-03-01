@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouteSpecHttp2RouteMatchPath {
   /// The exact path to match on.
   final String? exact;
-
   /// The regex used to match the path.
   final String? regex;
 
   /// Creates a new [RouteSpecHttp2RouteMatchPath].
   /// [exact] The exact path to match on.
   /// [regex] The regex used to match the path.
-  RouteSpecHttp2RouteMatchPath({this.exact, this.regex});
+  RouteSpecHttp2RouteMatchPath({
+    this.exact,
+    this.regex,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': ?exact, 'regex': ?regex};
+    return <String, dynamic>{
+      'exact': ?exact,
+      'regex': ?regex,
+    };
   }
 
   factory RouteSpecHttp2RouteMatchPath.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class RouteSpecHttp2RouteMatchPath {
     );
   }
 }
+

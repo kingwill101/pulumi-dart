@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceManagedServerCaCaCert {
   /// (Output)
   /// The certificates that form the CA chain, from leaf to root order
@@ -7,17 +8,20 @@ class InstanceManagedServerCaCaCert {
 
   /// Creates a new [InstanceManagedServerCaCaCert].
   /// [certificates] (Output)
-  InstanceManagedServerCaCaCert({this.certificates});
+  InstanceManagedServerCaCaCert({
+    this.certificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificates': ?certificates};
+    return <String, dynamic>{
+      'certificates': ?certificates,
+    };
   }
 
   factory InstanceManagedServerCaCaCert.fromMap(Map<String, dynamic> map) {
     return InstanceManagedServerCaCaCert(
-      certificates: map['certificates'] == null
-          ? null
-          : (map['certificates'] as List).cast<String>(),
+      certificates: map['certificates'] == null ? null : (map['certificates'] as List).cast<String>(),
     );
   }
 }
+

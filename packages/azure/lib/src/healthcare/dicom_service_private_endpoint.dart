@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DicomServicePrivateEndpoint {
+  /// The ID of the Healthcare DICOM Service.
+  final String? id;
+  /// Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
+  final String? name;
+
+  /// Creates a new [DicomServicePrivateEndpoint].
+  /// [id] The ID of the Healthcare DICOM Service.
+  /// [name] Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
+  DicomServicePrivateEndpoint({
+    this.id,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+    };
+  }
+
+  factory DicomServicePrivateEndpoint.fromMap(Map<String, dynamic> map) {
+    return DicomServicePrivateEndpoint(
+      id: map['id'] == null ? null : map['id'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

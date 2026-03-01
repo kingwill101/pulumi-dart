@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class SpringCloudAppPersistentDisk {
+  /// Specifies the mount path of the persistent disk. Defaults to `/persistent`.
+  final String? mountPath;
+  /// Specifies the size of the persistent disk in GB. Possible values are between `0` and `50`.
+  final int sizeInGb;
+
+  /// Creates a new [SpringCloudAppPersistentDisk].
+  /// [mountPath] Specifies the mount path of the persistent disk. Defaults to `/persistent`.
+  /// [sizeInGb] Specifies the size of the persistent disk in GB. Possible values are between `0` and `50`.
+  SpringCloudAppPersistentDisk({
+    this.mountPath,
+    required this.sizeInGb,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mountPath': ?mountPath,
+      'sizeInGb': sizeInGb,
+    };
+  }
+
+  factory SpringCloudAppPersistentDisk.fromMap(Map<String, dynamic> map) {
+    return SpringCloudAppPersistentDisk(
+      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
+      sizeInGb: map['sizeInGb'] as int,
+    );
+  }
+}
+

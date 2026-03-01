@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainMatchingAutoMergingConsolidation {
   /// A list of matching criteria.
   final List<List<String>> matchingAttributesLists;
@@ -16,12 +17,10 @@ class DomainMatchingAutoMergingConsolidation {
     };
   }
 
-  factory DomainMatchingAutoMergingConsolidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainMatchingAutoMergingConsolidation.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMergingConsolidation(
-      matchingAttributesLists: (map['matchingAttributesLists'] as List)
-          .cast<List<String>>(),
+      matchingAttributesLists: (map['matchingAttributesLists'] as List).cast<List<String>>(),
     );
   }
 }
+

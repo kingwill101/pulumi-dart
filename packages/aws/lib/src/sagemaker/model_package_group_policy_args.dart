@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelPackageGroupPolicyArgs {
   /// The name of the model package group.
   final pulumi.Input<String> modelPackageGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<String> resourcePolicy;
@@ -22,11 +21,10 @@ class ModelPackageGroupPolicyArgs {
     required String modelPackageGroupName,
     String? region,
     required String resourcePolicy,
-  }) : modelPackageGroupName = pulumi.Input.asInput<String>(
-         modelPackageGroupName,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
+  }) :
+      modelPackageGroupName = pulumi.Input.asInput<String>(modelPackageGroupName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +42,4 @@ class ModelPackageGroupPolicyArgs {
     );
   }
 }
+

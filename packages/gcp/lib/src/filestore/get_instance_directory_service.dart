@@ -9,26 +9,20 @@ class GetInstanceDirectoryService {
 
   /// Creates a new [GetInstanceDirectoryService].
   /// [ldaps] Configuration for LDAP servers.
-  GetInstanceDirectoryService({required this.ldaps});
+  GetInstanceDirectoryService({
+    required this.ldaps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ldaps':
-          pulumi.Input.encodeList<
-            GetInstanceDirectoryServiceLdap,
-            Map<String, dynamic>
-          >(ldaps, (value) => value.toMap()),
+      'ldaps': pulumi.Input.encodeList<GetInstanceDirectoryServiceLdap, Map<String, dynamic>>(ldaps, (value) => value.toMap()),
     };
   }
 
   factory GetInstanceDirectoryService.fromMap(Map<String, dynamic> map) {
     return GetInstanceDirectoryService(
-      ldaps: pulumi.Input.decodeList<GetInstanceDirectoryServiceLdap>(
-        map['ldaps'],
-        (value) => GetInstanceDirectoryServiceLdap.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ldaps: pulumi.Input.decodeList<GetInstanceDirectoryServiceLdap>(map['ldaps'], (value) => GetInstanceDirectoryServiceLdap.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

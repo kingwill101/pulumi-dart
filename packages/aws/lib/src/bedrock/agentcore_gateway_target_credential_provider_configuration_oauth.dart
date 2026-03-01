@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
   final Map<String, String>? customParameters;
-
   /// ARN of the OIDC provider for OAuth authentication.
   final String providerArn;
-
   /// Set of OAuth scopes to request.
   final List<String> scopes;
 
@@ -28,15 +27,12 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
     };
   }
 
-  factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationOauth(
-      customParameters: map['customParameters'] == null
-          ? null
-          : (map['customParameters'] as Map).cast<String, String>(),
+      customParameters: map['customParameters'] == null ? null : (map['customParameters'] as Map).cast<String, String>(),
       providerArn: map['providerArn'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
     );
   }
 }
+

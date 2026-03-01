@@ -20,11 +20,11 @@ class RepositoryIamMember extends pulumi.CustomResource {
     RepositoryIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataform/repositoryIamMember:RepositoryIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataform/repositoryIamMember:RepositoryIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<RepositoryIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.member = registerOutput<String>('member');

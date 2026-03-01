@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// configuration for Vulnerability Assessment autoprovisioning
+class DefenderForServersAwsOfferingConfiguration {
+  /// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+  final String? type;
+
+  /// Creates a new [DefenderForServersAwsOfferingConfiguration].
+  /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+  DefenderForServersAwsOfferingConfiguration({
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': ?type,
+    };
+  }
+
+  factory DefenderForServersAwsOfferingConfiguration.fromMap(Map<String, dynamic> map) {
+    return DefenderForServersAwsOfferingConfiguration(
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

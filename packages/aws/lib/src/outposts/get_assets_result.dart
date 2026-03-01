@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAssets.
 class GetAssetsResult {
   final String arn;
-
   /// List of all the asset ids found. This data source will fail if none are found.
   final List<String> assetIds;
   final List<String>? hostIdFilters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -44,14 +43,11 @@ class GetAssetsResult {
     return GetAssetsResult(
       arn: map['arn'] as String,
       assetIds: (map['assetIds'] as List).cast<String>(),
-      hostIdFilters: map['hostIdFilters'] == null
-          ? null
-          : (map['hostIdFilters'] as List).cast<String>(),
+      hostIdFilters: map['hostIdFilters'] == null ? null : (map['hostIdFilters'] as List).cast<String>(),
       id: map['id'] as String,
       region: map['region'] as String,
-      statusIdFilters: map['statusIdFilters'] == null
-          ? null
-          : (map['statusIdFilters'] as List).cast<String>(),
+      statusIdFilters: map['statusIdFilters'] == null ? null : (map['statusIdFilters'] as List).cast<String>(),
     );
   }
 }
+

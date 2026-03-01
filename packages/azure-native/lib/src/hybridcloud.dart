@@ -1,0 +1,15 @@
+library module_hybridcloud;
+
+export 'hybridcloud/cloud_connection.dart';
+export 'hybridcloud/cloud_connection_args.dart';
+export 'hybridcloud/cloud_connector.dart';
+export 'hybridcloud/cloud_connector_args.dart';
+export 'hybridcloud/cloud_type.dart';
+export 'hybridcloud/functions.dart';
+export 'hybridcloud/get_cloud_connection_args.dart';
+export 'hybridcloud/get_cloud_connection_result.dart';
+export 'hybridcloud/get_cloud_connector_args.dart';
+export 'hybridcloud/get_cloud_connector_result.dart';
+export 'hybridcloud/resource_reference.dart';
+export 'hybridcloud/resource_reference_response.dart';
+export 'hybridcloud/system_data_response.dart';

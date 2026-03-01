@@ -7,7 +7,9 @@ class FlowTriggerConfigTriggerProperties {
 
   /// Creates a new [FlowTriggerConfigTriggerProperties].
   /// [scheduled] Optional.
-  FlowTriggerConfigTriggerProperties({this.scheduled});
+  FlowTriggerConfigTriggerProperties({
+    this.scheduled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,11 +19,8 @@ class FlowTriggerConfigTriggerProperties {
 
   factory FlowTriggerConfigTriggerProperties.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfigTriggerProperties(
-      scheduled: map['scheduled'] == null
-          ? null
-          : FlowTriggerConfigTriggerPropertiesScheduled.fromMap(
-              (map['scheduled'] as Map).cast<String, dynamic>(),
-            ),
+      scheduled: map['scheduled'] == null ? null : FlowTriggerConfigTriggerPropertiesScheduled.fromMap((map['scheduled'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

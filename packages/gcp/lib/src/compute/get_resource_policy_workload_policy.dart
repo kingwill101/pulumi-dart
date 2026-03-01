@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResourcePolicyWorkloadPolicy {
   /// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if max topology distance is set.
   final String acceleratorTopology;
-
   /// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
   final String maxTopologyDistance;
-
   /// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
   final String type;
 
@@ -38,3 +37,4 @@ class GetResourcePolicyWorkloadPolicy {
     );
   }
 }
+

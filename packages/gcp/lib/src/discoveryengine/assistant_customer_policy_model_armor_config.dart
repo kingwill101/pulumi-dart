@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssistantCustomerPolicyModelArmorConfig {
   /// Defines the failure mode for Model Armor sanitization.
   /// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
   final String? failureMode;
-
   /// The resource name of the Model Armor template for sanitizing assistant
   /// responses. Format:
   /// `projects/{project}/locations/{location}/templates/{template_id}`
   /// If not specified, no sanitization will be applied to the assistant
   /// response.
   final String responseTemplate;
-
   /// The resource name of the Model Armor template for sanitizing user
   /// prompts. Format:
   /// `projects/{project}/locations/{location}/templates/{template_id}`
@@ -36,15 +35,12 @@ class AssistantCustomerPolicyModelArmorConfig {
     };
   }
 
-  factory AssistantCustomerPolicyModelArmorConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssistantCustomerPolicyModelArmorConfig.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicyModelArmorConfig(
-      failureMode: map['failureMode'] == null
-          ? null
-          : map['failureMode'] as String,
+      failureMode: map['failureMode'] == null ? null : map['failureMode'] as String,
       responseTemplate: map['responseTemplate'] as String,
       userPromptTemplate: map['userPromptTemplate'] as String,
     );
   }
 }
+

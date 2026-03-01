@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// The name of the instance.
   final pulumi.Input<String> instance;
-
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
   final pulumi.Input<String>? sourceInstanceDeletionTime;
@@ -22,11 +21,10 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
     required String instance,
     String? project,
     String? sourceInstanceDeletionTime,
-  }) : instance = pulumi.Input.asInput<String>(instance),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       sourceInstanceDeletionTime = pulumi.Input.asOptionalInput<String>(
-         sourceInstanceDeletionTime,
-       );
+  }) :
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceInstanceDeletionTime = pulumi.Input.asOptionalInput<String>(sourceInstanceDeletionTime);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,15 +34,12 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
     };
   }
 
-  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceLatestRecoveryTimeArgs(
       instance: map['instance'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null
-          ? null
-          : map['sourceInstanceDeletionTime'] as String,
+      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : map['sourceInstanceDeletionTime'] as String,
     );
   }
 }
+

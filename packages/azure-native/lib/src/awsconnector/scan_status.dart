@@ -1,0 +1,24 @@
+/// Property value
+enum ScanStatus {
+  aCTIVE("ACTIVE"),
+  cOMPLETE("COMPLETE"),
+  fAILED("FAILED"),
+  fINDINGSUNAVAILABLE("FINDINGS_UNAVAILABLE"),
+  iNPROGRESS("IN_PROGRESS"),
+  pENDING("PENDING"),
+  sCANELIGIBILITYEXPIRED("SCAN_ELIGIBILITY_EXPIRED"),
+  uNSUPPORTEDIMAGE("UNSUPPORTED_IMAGE");
+
+  const ScanStatus(this.value);
+  final String value;
+
+  static ScanStatus fromValue(String value) {
+    for (final item in ScanStatus.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown ScanStatus value: $value');
+  }
+}
+

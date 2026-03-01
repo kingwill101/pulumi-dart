@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataQualityRulesRuleTableConditionExpectation {
   /// The SQL expression.
   final String sqlExpression;
@@ -11,14 +12,15 @@ class GetDataQualityRulesRuleTableConditionExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sqlExpression': sqlExpression};
+    return <String, dynamic>{
+      'sqlExpression': sqlExpression,
+    };
   }
 
-  factory GetDataQualityRulesRuleTableConditionExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataQualityRulesRuleTableConditionExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleTableConditionExpectation(
       sqlExpression: map['sqlExpression'] as String,
     );
   }
 }
+

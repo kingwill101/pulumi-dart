@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerDefaultActionJwtValidationAdditionalClaim {
   /// Format of the claim value. Valid values are `single-string`, `string-array` and `space-separated-values`.
   final String format;
-
   /// Name of the claim to validate. `exp`, `iss`, `nbf`, or `iat` cannot be specified because they are validated by default.
   final String name;
-
   /// List of expected values of the claim.
   final List<String> values;
 
@@ -21,12 +20,14 @@ class ListenerDefaultActionJwtValidationAdditionalClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'format': format, 'name': name, 'values': values};
+    return <String, dynamic>{
+      'format': format,
+      'name': name,
+      'values': values,
+    };
   }
 
-  factory ListenerDefaultActionJwtValidationAdditionalClaim.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerDefaultActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionJwtValidationAdditionalClaim(
       format: map['format'] as String,
       name: map['name'] as String,
@@ -34,3 +35,4 @@ class ListenerDefaultActionJwtValidationAdditionalClaim {
     );
   }
 }
+

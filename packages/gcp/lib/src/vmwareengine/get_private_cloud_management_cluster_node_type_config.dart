@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPrivateCloudManagementClusterNodeTypeConfig {
   /// Customized number of cores available to each node of the type.
   /// This number must always be one of 'nodeType.availableCustomCoreCounts'.
   /// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
   /// This cannot be changed once the PrivateCloud is created.
   final int customCoreCount;
-
   /// The number of nodes of this type in the cluster.
   final int nodeCount;
   final String nodeTypeId;
@@ -29,9 +29,7 @@ class GetPrivateCloudManagementClusterNodeTypeConfig {
     };
   }
 
-  factory GetPrivateCloudManagementClusterNodeTypeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateCloudManagementClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterNodeTypeConfig(
       customCoreCount: map['customCoreCount'] as int,
       nodeCount: map['nodeCount'] as int,
@@ -39,3 +37,4 @@ class GetPrivateCloudManagementClusterNodeTypeConfig {
     );
   }
 }
+

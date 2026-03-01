@@ -6,13 +6,10 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
   /// Key of the map entry.
   /// Structure is documented below.
-  final AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey?
-  key;
-
+  final AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey? key;
   /// Value of the map entry.
   /// Structure is documented below.
-  final AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue?
-  value;
+  final AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue? value;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry].
   /// [key] Key of the map entry.
@@ -29,20 +26,11 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
     };
   }
 
-  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry(
-      key: map['key'] == null
-          ? null
-          : AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap(
-              (map['key'] as Map).cast<String, dynamic>(),
-            ),
-      value: map['value'] == null
-          ? null
-          : AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap(
-              (map['value'] as Map).cast<String, dynamic>(),
-            ),
+      key: map['key'] == null ? null : AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

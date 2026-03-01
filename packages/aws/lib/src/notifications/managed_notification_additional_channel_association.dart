@@ -141,11 +141,9 @@ import 'managed_notification_additional_channel_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation example arn:aws:notifications::123456789012:managed-notification-configuration/category/AWS-Health/sub-category/Security,arn:aws:notificationscontacts:us-west-2:123456789012:emailcontact:example-contact
 /// ```
-class ManagedNotificationAdditionalChannelAssociation
-    extends pulumi.CustomResource {
+class ManagedNotificationAdditionalChannelAssociation extends pulumi.CustomResource {
   /// ARN of the channel to associate with the managed notification.
   late final pulumi.Output<String> channelArn;
-
   /// ARN of the managed notification to associate the channel with.
   late final pulumi.Output<String> managedNotificationArn;
 
@@ -158,14 +156,12 @@ class ManagedNotificationAdditionalChannelAssociation
     ManagedNotificationAdditionalChannelAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.channelArn = registerOutput<String>('channelArn');
-    this.managedNotificationArn = registerOutput<String>(
-      'managedNotificationArn',
-    );
+    this.managedNotificationArn = registerOutput<String>('managedNotificationArn');
   }
 }

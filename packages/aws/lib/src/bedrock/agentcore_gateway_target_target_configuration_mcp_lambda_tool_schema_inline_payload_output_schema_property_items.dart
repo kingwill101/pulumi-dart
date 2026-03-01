@@ -7,17 +7,10 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems {
   /// Description of the array items.
   final String? description;
-
   /// Nested items definition for arrays of arrays.
-  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems?
-  items;
-
+  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems? items;
   /// Set of property definitions for arrays of objects. See `property` below.
-  final List<
-    AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty
-  >?
-  properties;
-
+  final List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty>? properties;
   /// Data type of the array items.
   final String type;
 
@@ -37,40 +30,18 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
     return <String, dynamic>{
       'description': ?description,
       'items': ?items == null ? null : items!.toMap(),
-      'properties': ?properties == null
-          ? null
-          : pulumi.Input.encodeList<
-              AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty,
-              Map<String, dynamic>
-            >(properties!, (value) => value.toMap()),
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      items: map['items'] == null
-          ? null
-          : AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems.fromMap(
-              (map['items'] as Map).cast<String, dynamic>(),
-            ),
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty
-            >(
-              map['properties'],
-              (value) =>
-                  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      description: map['description'] == null ? null : map['description'] as String,
+      items: map['items'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems.fromMap((map['items'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty>(map['properties'], (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

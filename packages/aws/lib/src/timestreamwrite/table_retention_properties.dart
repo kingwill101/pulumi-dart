@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableRetentionProperties {
   /// The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.
   final int magneticStoreRetentionPeriodInDays;
-
   /// The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.
   final int memoryStoreRetentionPeriodInHours;
 
@@ -24,10 +24,9 @@ class TableRetentionProperties {
 
   factory TableRetentionProperties.fromMap(Map<String, dynamic> map) {
     return TableRetentionProperties(
-      magneticStoreRetentionPeriodInDays:
-          map['magneticStoreRetentionPeriodInDays'] as int,
-      memoryStoreRetentionPeriodInHours:
-          map['memoryStoreRetentionPeriodInHours'] as int,
+      magneticStoreRetentionPeriodInDays: map['magneticStoreRetentionPeriodInDays'] as int,
+      memoryStoreRetentionPeriodInHours: map['memoryStoreRetentionPeriodInHours'] as int,
     );
   }
 }
+

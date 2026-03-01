@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
   final double? bitDepth;
   final String? codingMode;
-
   /// Sample rate in Hz.
   final double? sampleRate;
 
@@ -25,17 +25,12 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
     };
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings(
       bitDepth: map['bitDepth'] == null ? null : map['bitDepth'] as double,
-      codingMode: map['codingMode'] == null
-          ? null
-          : map['codingMode'] as String,
-      sampleRate: map['sampleRate'] == null
-          ? null
-          : map['sampleRate'] as double,
+      codingMode: map['codingMode'] == null ? null : map['codingMode'] as String,
+      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
     );
   }
 }
+

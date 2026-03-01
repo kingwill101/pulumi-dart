@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkerConfiguration.
 class GetWorkerConfigurationResult {
   /// the ARN of the worker configuration.
   final String arn;
-
   /// a summary description of the worker configuration.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// an ID of the latest successfully created revision of the worker configuration.
   final int latestRevision;
   final String name;
-
   /// contents of connect-distributed.properties file.
   final String propertiesFileContent;
   final String region;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -68,3 +64,4 @@ class GetWorkerConfigurationResult {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EntryGroupIamBindingCondition {
   final String? description;
   final String expression;
@@ -25,11 +26,10 @@ class EntryGroupIamBindingCondition {
 
   factory EntryGroupIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return EntryGroupIamBindingCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

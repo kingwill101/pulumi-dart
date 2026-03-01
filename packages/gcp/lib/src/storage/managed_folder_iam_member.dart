@@ -1782,17 +1782,13 @@ import 'managed_folder_iam_member_condition.dart';
 class ManagedFolderIamMember extends pulumi.CustomResource {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> bucket;
-
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<ManagedFolderIamMemberCondition?> condition;
-
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
-
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> managedFolder;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -1805,7 +1801,6 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   late final pulumi.Output<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -1820,15 +1815,13 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
     ManagedFolderIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
-    this.condition = registerOutput<ManagedFolderIamMemberCondition?>(
-      'condition',
-    );
+    this.condition = registerOutput<ManagedFolderIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.managedFolder = registerOutput<String>('managedFolder');
     this.member = registerOutput<String>('member');

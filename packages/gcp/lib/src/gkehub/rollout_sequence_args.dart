@@ -10,20 +10,16 @@ import 'rollout_sequence_stage.dart';
 class RolloutSequenceArgs {
   /// Human readable display name of the Rollout Sequence.
   final pulumi.Input<String>? displayName;
-
   /// Labels for this Rollout Sequence.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The user-provided identifier of the RolloutSequence.
   final pulumi.Input<String> rolloutSequenceId;
-
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
   final pulumi.Input<List<RolloutSequenceStage>> stages;
@@ -40,11 +36,12 @@ class RolloutSequenceArgs {
     String? project,
     required String rolloutSequenceId,
     required List<RolloutSequenceStage> stages,
-  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       rolloutSequenceId = pulumi.Input.asInput<String>(rolloutSequenceId),
-       stages = pulumi.Input.asInput<List<RolloutSequenceStage>>(stages);
+  }) :
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      rolloutSequenceId = pulumi.Input.asInput<String>(rolloutSequenceId),
+      stages = pulumi.Input.asInput<List<RolloutSequenceStage>>(stages);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,37 +49,18 @@ class RolloutSequenceArgs {
       'labels': ?labels,
       'project': ?project,
       'rolloutSequenceId': rolloutSequenceId,
-      'stages':
-          pulumi.Input.mapInputValue<
-            List<RolloutSequenceStage>,
-            List<Map<String, dynamic>>
-          >(
-            stages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RolloutSequenceStage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'stages': pulumi.Input.mapInputValue<List<RolloutSequenceStage>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<RolloutSequenceStage, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RolloutSequenceArgs.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceArgs(
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
       rolloutSequenceId: map['rolloutSequenceId'] as String,
-      stages: pulumi.Input.decodeList<RolloutSequenceStage>(
-        map['stages'],
-        (value) => RolloutSequenceStage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      stages: pulumi.Input.decodeList<RolloutSequenceStage>(map['stages'], (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

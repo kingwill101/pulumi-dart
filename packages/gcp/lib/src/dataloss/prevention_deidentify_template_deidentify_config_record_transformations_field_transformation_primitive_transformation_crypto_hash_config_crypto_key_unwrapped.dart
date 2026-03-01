@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped {
   /// A 128/192/256 bit key.
   /// A base64-encoded string.
@@ -13,14 +14,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key};
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(
       key: map['key'] as String,
     );
   }
 }
+

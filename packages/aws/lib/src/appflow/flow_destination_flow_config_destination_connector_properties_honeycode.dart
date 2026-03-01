@@ -3,8 +3,7 @@
 import 'flow_destination_flow_config_destination_connector_properties_honeycode_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode {
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig?
-  errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig? errorHandlingConfig;
   final String object;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode].
@@ -17,23 +16,16 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorHandlingConfig': ?errorHandlingConfig == null
-          ? null
-          : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
       'object': object,
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode(
-      errorHandlingConfig: map['errorHandlingConfig'] == null
-          ? null
-          : FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig.fromMap(
-              (map['errorHandlingConfig'] as Map).cast<String, dynamic>(),
-            ),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
       object: map['object'] as String,
     );
   }
 }
+

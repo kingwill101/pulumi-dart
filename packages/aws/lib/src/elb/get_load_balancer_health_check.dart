@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerHealthCheck {
   final int healthyThreshold;
   final int interval;
@@ -41,3 +42,4 @@ class GetLoadBalancerHealthCheck {
     );
   }
 }
+

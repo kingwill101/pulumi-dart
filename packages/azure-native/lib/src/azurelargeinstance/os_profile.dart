@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Specifies the operating system settings for the Azure Large Instance.
+class OsProfile {
+  /// Specifies the host OS name of the Azure Large Instance.
+  final String? computerName;
+  /// This property allows you to specify the type of the OS.
+  final String? osType;
+  /// Specifies the SSH public key used to access the operating system.
+  final String? sshPublicKey;
+  /// Specifies version of operating system.
+  final String? version;
+
+  /// Creates a new [OsProfile].
+  /// [computerName] Specifies the host OS name of the Azure Large Instance.
+  /// [osType] This property allows you to specify the type of the OS.
+  /// [sshPublicKey] Specifies the SSH public key used to access the operating system.
+  /// [version] Specifies version of operating system.
+  OsProfile({
+    this.computerName,
+    this.osType,
+    this.sshPublicKey,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'computerName': ?computerName,
+      'osType': ?osType,
+      'sshPublicKey': ?sshPublicKey,
+      'version': ?version,
+    };
+  }
+
+  factory OsProfile.fromMap(Map<String, dynamic> map) {
+    return OsProfile(
+      computerName: map['computerName'] == null ? null : map['computerName'] as String,
+      osType: map['osType'] == null ? null : map['osType'] as String,
+      sshPublicKey: map['sshPublicKey'] == null ? null : map['sshPublicKey'] as String,
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}
+

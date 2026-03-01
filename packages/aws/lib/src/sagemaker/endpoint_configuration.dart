@@ -167,41 +167,26 @@ import 'endpoint_configuration_shadow_production_variant.dart';
 class EndpointConfiguration extends pulumi.CustomResource {
   /// ARN assigned by AWS to this endpoint configuration.
   late final pulumi.Output<String> arn;
-
   /// How an endpoint performs asynchronous inference.
-  late final pulumi.Output<EndpointConfigurationAsyncInferenceConfig?>
-  asyncInferenceConfig;
-
+  late final pulumi.Output<EndpointConfigurationAsyncInferenceConfig?> asyncInferenceConfig;
   /// Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
-  late final pulumi.Output<EndpointConfigurationDataCaptureConfig?>
-  dataCaptureConfig;
-
+  late final pulumi.Output<EndpointConfigurationDataCaptureConfig?> dataCaptureConfig;
   /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
   late final pulumi.Output<String?> executionRoleArn;
-
   /// ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// List each model that you want to host at this endpoint. See below.
-  late final pulumi.Output<List<EndpointConfigurationProductionVariant>>
-  productionVariants;
-
+  late final pulumi.Output<List<EndpointConfigurationProductionVariant>> productionVariants;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
-  late final pulumi.Output<List<EndpointConfigurationShadowProductionVariant>?>
-  shadowProductionVariants;
-
+  late final pulumi.Output<List<EndpointConfigurationShadowProductionVariant>?> shadowProductionVariants;
   /// Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -214,33 +199,21 @@ class EndpointConfiguration extends pulumi.CustomResource {
     EndpointConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/endpointConfiguration:EndpointConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/endpointConfiguration:EndpointConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
-    this.asyncInferenceConfig =
-        registerOutput<EndpointConfigurationAsyncInferenceConfig?>(
-          'asyncInferenceConfig',
-        );
-    this.dataCaptureConfig =
-        registerOutput<EndpointConfigurationDataCaptureConfig?>(
-          'dataCaptureConfig',
-        );
+    this.asyncInferenceConfig = registerOutput<EndpointConfigurationAsyncInferenceConfig?>('asyncInferenceConfig');
+    this.dataCaptureConfig = registerOutput<EndpointConfigurationDataCaptureConfig?>('dataCaptureConfig');
     this.executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     this.namePrefix = registerOutput<String>('namePrefix');
-    this.productionVariants =
-        registerOutput<List<EndpointConfigurationProductionVariant>>(
-          'productionVariants',
-        );
+    this.productionVariants = registerOutput<List<EndpointConfigurationProductionVariant>>('productionVariants');
     this.region = registerOutput<String>('region');
-    this.shadowProductionVariants =
-        registerOutput<List<EndpointConfigurationShadowProductionVariant>?>(
-          'shadowProductionVariants',
-        );
+    this.shadowProductionVariants = registerOutput<List<EndpointConfigurationShadowProductionVariant>?>('shadowProductionVariants');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

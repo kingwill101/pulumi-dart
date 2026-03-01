@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
+  /// The number of Slow Requests in the time `interval` to trigger this rule.
+  final int count;
+  /// The time interval in the form `hh:mm:ss`.
+  final String interval;
+  /// The path for which this slow request rule applies.
+  final String? path;
+  /// The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
+  final String timeTaken;
+
+  /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath].
+  /// [count] The number of Slow Requests in the time `interval` to trigger this rule.
+  /// [interval] The time interval in the form `hh:mm:ss`.
+  /// [path] The path for which this slow request rule applies.
+  /// [timeTaken] The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
+  WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath({
+    required this.count,
+    required this.interval,
+    this.path,
+    required this.timeTaken,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': count,
+      'interval': interval,
+      'path': ?path,
+      'timeTaken': timeTaken,
+    };
+  }
+
+  factory WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(Map<String, dynamic> map) {
+    return WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
+      count: map['count'] as int,
+      interval: map['interval'] as String,
+      path: map['path'] == null ? null : map['path'] as String,
+      timeTaken: map['timeTaken'] as String,
+    );
+  }
+}
+

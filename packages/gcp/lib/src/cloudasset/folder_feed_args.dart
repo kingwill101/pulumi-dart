@@ -14,19 +14,16 @@ class FolderFeedArgs {
   /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
   /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
   final pulumi.Input<List<String>>? assetNames;
-
   /// A list of types of the assets to receive updates. You must specify either or both of assetNames
   /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
   /// the feed. For example: "compute.googleapis.com/Disk"
   /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
   /// supported asset types.
   final pulumi.Input<List<String>>? assetTypes;
-
   /// The project whose identity will be used when sending messages to the
   /// destination pubsub topic. It also specifies the project for API
   /// enablement check, quota, and billing.
   final pulumi.Input<String> billingProject;
-
   /// A condition which determines whether an asset update should be published. If specified, an asset
   /// will be returned only when the expression evaluates to true. When set, expression field
   /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
@@ -34,18 +31,14 @@ class FolderFeedArgs {
   /// condition are optional.
   /// Structure is documented below.
   final pulumi.Input<FolderFeedCondition>? condition;
-
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
   final pulumi.Input<String>? contentType;
-
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   final pulumi.Input<String> feedId;
-
   /// Output configuration for asset feed destination.
   /// Structure is documented below.
   final pulumi.Input<FolderFeedFeedOutputConfig> feedOutputConfig;
-
   /// The folder this feed should be created in.
   final pulumi.Input<String> folder;
 
@@ -67,60 +60,40 @@ class FolderFeedArgs {
     required String feedId,
     required FolderFeedFeedOutputConfig feedOutputConfig,
     required String folder,
-  }) : assetNames = pulumi.Input.asOptionalInput<List<String>>(assetNames),
-       assetTypes = pulumi.Input.asOptionalInput<List<String>>(assetTypes),
-       billingProject = pulumi.Input.asInput<String>(billingProject),
-       condition = pulumi.Input.asOptionalInput<FolderFeedCondition>(condition),
-       contentType = pulumi.Input.asOptionalInput<String>(contentType),
-       feedId = pulumi.Input.asInput<String>(feedId),
-       feedOutputConfig = pulumi.Input.asInput<FolderFeedFeedOutputConfig>(
-         feedOutputConfig,
-       ),
-       folder = pulumi.Input.asInput<String>(folder);
+  }) :
+      assetNames = pulumi.Input.asOptionalInput<List<String>>(assetNames),
+      assetTypes = pulumi.Input.asOptionalInput<List<String>>(assetTypes),
+      billingProject = pulumi.Input.asInput<String>(billingProject),
+      condition = pulumi.Input.asOptionalInput<FolderFeedCondition>(condition),
+      contentType = pulumi.Input.asOptionalInput<String>(contentType),
+      feedId = pulumi.Input.asInput<String>(feedId),
+      feedOutputConfig = pulumi.Input.asInput<FolderFeedFeedOutputConfig>(feedOutputConfig),
+      folder = pulumi.Input.asInput<String>(folder);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assetNames': ?assetNames,
       'assetTypes': ?assetTypes,
       'billingProject': billingProject,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            FolderFeedCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<FolderFeedCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'contentType': ?contentType,
       'feedId': feedId,
-      'feedOutputConfig':
-          pulumi.Input.mapInputValue<
-            FolderFeedFeedOutputConfig,
-            Map<String, dynamic>
-          >(feedOutputConfig, (value) => value.toMap()),
+      'feedOutputConfig': pulumi.Input.mapInputValue<FolderFeedFeedOutputConfig, Map<String, dynamic>>(feedOutputConfig, (value) => value.toMap()),
       'folder': folder,
     };
   }
 
   factory FolderFeedArgs.fromMap(Map<String, dynamic> map) {
     return FolderFeedArgs(
-      assetNames: map['assetNames'] == null
-          ? null
-          : (map['assetNames'] as List).cast<String>(),
-      assetTypes: map['assetTypes'] == null
-          ? null
-          : (map['assetTypes'] as List).cast<String>(),
+      assetNames: map['assetNames'] == null ? null : (map['assetNames'] as List).cast<String>(),
+      assetTypes: map['assetTypes'] == null ? null : (map['assetTypes'] as List).cast<String>(),
       billingProject: map['billingProject'] as String,
-      condition: map['condition'] == null
-          ? null
-          : FolderFeedCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
-      contentType: map['contentType'] == null
-          ? null
-          : map['contentType'] as String,
+      condition: map['condition'] == null ? null : FolderFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      contentType: map['contentType'] == null ? null : map['contentType'] as String,
       feedId: map['feedId'] as String,
-      feedOutputConfig: FolderFeedFeedOutputConfig.fromMap(
-        (map['feedOutputConfig'] as Map).cast<String, dynamic>(),
-      ),
+      feedOutputConfig: FolderFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>()),
       folder: map['folder'] as String,
     );
   }
 }
+

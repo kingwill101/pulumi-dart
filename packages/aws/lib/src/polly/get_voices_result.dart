@@ -6,15 +6,12 @@ import 'get_voices_voice.dart';
 /// Result data returned by getVoices.
 class GetVoicesResult {
   final String? engine;
-
   /// Amazon Polly assigned voice ID.
   final String id;
   final bool? includeAdditionalLanguageCodes;
-
   /// Language code of the voice.
   final String? languageCode;
   final String region;
-
   /// List of voices with their properties. See `voices` Attribute Reference below.
   final List<GetVoicesVoice>? voices;
 
@@ -41,12 +38,7 @@ class GetVoicesResult {
       'includeAdditionalLanguageCodes': ?includeAdditionalLanguageCodes,
       'languageCode': ?languageCode,
       'region': region,
-      'voices': ?voices == null
-          ? null
-          : pulumi.Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(
-              voices!,
-              (value) => value.toMap(),
-            ),
+      'voices': ?voices == null ? null : pulumi.Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(voices!, (value) => value.toMap()),
     };
   }
 
@@ -54,22 +46,11 @@ class GetVoicesResult {
     return GetVoicesResult(
       engine: map['engine'] == null ? null : map['engine'] as String,
       id: map['id'] as String,
-      includeAdditionalLanguageCodes:
-          map['includeAdditionalLanguageCodes'] == null
-          ? null
-          : map['includeAdditionalLanguageCodes'] as bool,
-      languageCode: map['languageCode'] == null
-          ? null
-          : map['languageCode'] as String,
+      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : map['includeAdditionalLanguageCodes'] as bool,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
       region: map['region'] as String,
-      voices: map['voices'] == null
-          ? null
-          : pulumi.Input.decodeList<GetVoicesVoice>(
-              map['voices'],
-              (value) => GetVoicesVoice.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      voices: map['voices'] == null ? null : pulumi.Input.decodeList<GetVoicesVoice>(map['voices'], (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

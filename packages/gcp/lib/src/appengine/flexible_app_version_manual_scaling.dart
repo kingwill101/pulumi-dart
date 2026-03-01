@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionManualScaling {
   /// Number of instances to assign to the service at the start.
   /// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
@@ -8,13 +9,20 @@ class FlexibleAppVersionManualScaling {
 
   /// Creates a new [FlexibleAppVersionManualScaling].
   /// [instances] Number of instances to assign to the service at the start.
-  FlexibleAppVersionManualScaling({required this.instances});
+  FlexibleAppVersionManualScaling({
+    required this.instances,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instances': instances};
+    return <String, dynamic>{
+      'instances': instances,
+    };
   }
 
   factory FlexibleAppVersionManualScaling.fromMap(Map<String, dynamic> map) {
-    return FlexibleAppVersionManualScaling(instances: map['instances'] as int);
+    return FlexibleAppVersionManualScaling(
+      instances: map['instances'] as int,
+    );
   }
 }
+

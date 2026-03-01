@@ -212,7 +212,6 @@ class CustomRoutingListener extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of a custom routing accelerator.
   late final pulumi.Output<String> acceleratorArn;
   late final pulumi.Output<String> arn;
-
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   late final pulumi.Output<List<CustomRoutingListenerPortRange>> portRanges;
 
@@ -225,15 +224,13 @@ class CustomRoutingListener extends pulumi.CustomResource {
     CustomRoutingListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.acceleratorArn = registerOutput<String>('acceleratorArn');
     this.arn = registerOutput<String>('arn');
-    this.portRanges = registerOutput<List<CustomRoutingListenerPortRange>>(
-      'portRanges',
-    );
+    this.portRanges = registerOutput<List<CustomRoutingListenerPortRange>>('portRanges');
   }
 }

@@ -345,49 +345,37 @@ class ExtensionsInstance extends pulumi.CustomResource {
   /// The current Config of the Extension Instance.
   /// Structure is documented below.
   late final pulumi.Output<ExtensionsInstanceConfig> config;
-
   /// The time at which the Extension Instance was created.
   late final pulumi.Output<String> createTime;
-
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
   late final pulumi.Output<List<ExtensionsInstanceErrorStatus>> errorStatuses;
-
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the last operation that acted on this Extension
   /// Instance
   late final pulumi.Output<String> lastOperationName;
-
   /// The type of the last operation that acted on the Extension Instance.
   late final pulumi.Output<String> lastOperationType;
-
   /// The fully-qualified resource name of the Extension Instance.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
   late final pulumi.Output<List<ExtensionsInstanceRuntimeData>> runtimeDatas;
-
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
   late final pulumi.Output<String> serviceAccountEmail;
-
   /// The processing state of the extension instance.
   late final pulumi.Output<String> state;
-
   /// The time at which the Extension Instance was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -400,25 +388,21 @@ class ExtensionsInstance extends pulumi.CustomResource {
     ExtensionsInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/extensionsInstance:ExtensionsInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/extensionsInstance:ExtensionsInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.config = registerOutput<ExtensionsInstanceConfig>('config');
     this.createTime = registerOutput<String>('createTime');
-    this.errorStatuses = registerOutput<List<ExtensionsInstanceErrorStatus>>(
-      'errorStatuses',
-    );
+    this.errorStatuses = registerOutput<List<ExtensionsInstanceErrorStatus>>('errorStatuses');
     this.etag = registerOutput<String>('etag');
     this.instanceId = registerOutput<String>('instanceId');
     this.lastOperationName = registerOutput<String>('lastOperationName');
     this.lastOperationType = registerOutput<String>('lastOperationType');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.runtimeDatas = registerOutput<List<ExtensionsInstanceRuntimeData>>(
-      'runtimeDatas',
-    );
+    this.runtimeDatas = registerOutput<List<ExtensionsInstanceRuntimeData>>('runtimeDatas');
     this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     this.state = registerOutput<String>('state');
     this.updateTime = registerOutput<String>('updateTime');

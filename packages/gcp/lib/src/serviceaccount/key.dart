@@ -523,32 +523,24 @@ import 'key_args.dart';
 class Key extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
   late final pulumi.Output<Map<String, String>?> keepers;
-
   /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
   /// Valid values are listed at
   /// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
   /// (only used on create)
   late final pulumi.Output<String?> keyAlgorithm;
-
   /// The name used for this key pair
   late final pulumi.Output<String> name;
-
   /// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
   /// service account keys through the CLI or web console. This is only populated when creating a new key.
   late final pulumi.Output<String> privateKey;
-
   /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
   late final pulumi.Output<String?> privateKeyType;
-
   /// The public key, base64 encoded
   late final pulumi.Output<String> publicKey;
-
   /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
   late final pulumi.Output<String?> publicKeyData;
-
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   late final pulumi.Output<String?> publicKeyType;
-
   /// The Service account id of the Key. This can be a string in the format
   /// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
   /// the **full** email address of the service account or its name can be specified as a value, in which case the project will
@@ -556,10 +548,8 @@ class Key extends pulumi.CustomResource {
   /// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
   /// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
   late final pulumi.Output<String> serviceAccountId;
-
   /// The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> validAfter;
-
   /// The key can be used before this timestamp.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> validBefore;
@@ -568,13 +558,16 @@ class Key extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Key]. {@macro pulumi_serviceaccount_key_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Key(String name, {KeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:serviceaccount/key:Key',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Key(
+    String name, {
+    KeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:serviceaccount/key:Key',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.keyAlgorithm = registerOutput<String?>('keyAlgorithm');
     this.name = registerOutput<String>('name');

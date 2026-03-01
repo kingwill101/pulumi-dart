@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../meta/object_meta_patch.dart';
+import 'subject_access_review_spec_patch.dart';
+import 'subject_access_review_status_patch.dart';
+
+/// LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.
+class LocalSubjectAccessReviewPatch {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  final String? apiVersion;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  final String? kind;
+  /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final ObjectMetaPatch? metadata;
+  /// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
+  final SubjectAccessReviewSpecPatch? spec;
+  /// Status is filled in by the server and indicates whether the request is allowed or not
+  final SubjectAccessReviewStatusPatch? status;
+
+  /// Creates a new [LocalSubjectAccessReviewPatch].
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
+  /// [status] Status is filled in by the server and indicates whether the request is allowed or not
+  LocalSubjectAccessReviewPatch({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'spec': ?spec == null ? null : spec!.toMap(),
+      'status': ?status == null ? null : status!.toMap(),
+    };
+  }
+
+  factory LocalSubjectAccessReviewPatch.fromMap(Map<String, dynamic> map) {
+    return LocalSubjectAccessReviewPatch(
+      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : SubjectAccessReviewSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : SubjectAccessReviewStatusPatch.fromMap((map['status'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

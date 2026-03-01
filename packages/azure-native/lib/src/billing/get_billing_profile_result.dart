@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'billing_profile_properties_response.dart';
+import 'system_data_response.dart';
+
+/// Result data returned by getBillingProfile.
+class GetBillingProfileResult {
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  final String id;
+  /// The name of the resource
+  final String name;
+  /// A billing profile.
+  final BillingProfilePropertiesResponse properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+  final Map<String, String>? tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String type;
+
+  /// Creates a new [GetBillingProfileResult].
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
+  /// [properties] A billing profile.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  GetBillingProfileResult({
+    required this.azureApiVersion,
+    required this.id,
+    required this.name,
+    required this.properties,
+    required this.systemData,
+    this.tags,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureApiVersion': azureApiVersion,
+      'id': id,
+      'name': name,
+      'properties': properties.toMap(),
+      'systemData': systemData.toMap(),
+      'tags': ?tags,
+      'type': type,
+    };
+  }
+
+  factory GetBillingProfileResult.fromMap(Map<String, dynamic> map) {
+    return GetBillingProfileResult(
+      azureApiVersion: map['azureApiVersion'] as String,
+      id: map['id'] as String,
+      name: map['name'] as String,
+      properties: BillingProfilePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      type: map['type'] as String,
+    );
+  }
+}
+

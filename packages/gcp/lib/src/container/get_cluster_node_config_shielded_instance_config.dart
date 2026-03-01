@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   final bool enableIntegrityMonitoring;
-
   /// Defines whether the instance has Secure Boot enabled.
   final bool enableSecureBoot;
 
@@ -22,12 +22,11 @@ class GetClusterNodeConfigShieldedInstanceConfig {
     };
   }
 
-  factory GetClusterNodeConfigShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigShieldedInstanceConfig(
       enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
       enableSecureBoot: map['enableSecureBoot'] as bool,
     );
   }
 }
+

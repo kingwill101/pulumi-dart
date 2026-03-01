@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint {
   /// The match status to assign to the web request if the request doesn't have a JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
   final String fallbackBehavior;
@@ -11,14 +12,15 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': fallbackBehavior,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint(
       fallbackBehavior: map['fallbackBehavior'] as String,
     );
   }
 }
+

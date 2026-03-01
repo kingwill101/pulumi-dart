@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceEvent {
   /// Time when task set was created (RFC3339 format)
   final String createdAt;
-
   /// Task set ID
   final String id;
-
   /// Event message
   final String message;
 
@@ -36,3 +35,4 @@ class GetServiceEvent {
     );
   }
 }
+

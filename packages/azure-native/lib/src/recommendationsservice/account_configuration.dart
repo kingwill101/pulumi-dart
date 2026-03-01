@@ -1,0 +1,18 @@
+/// Account configuration. This can only be set at RecommendationsService Account creation.
+enum AccountConfiguration {
+  valueFree("Free"),
+  valueCapacity("Capacity");
+
+  const AccountConfiguration(this.value);
+  final String value;
+
+  static AccountConfiguration fromValue(String value) {
+    for (final item in AccountConfiguration.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown AccountConfiguration value: $value');
+  }
+}
+

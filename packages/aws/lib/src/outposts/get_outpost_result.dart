@@ -1,34 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutpost.
 class GetOutpostResult {
   final String arn;
-
   /// Availability Zone name.
   final String availabilityZone;
-
   /// Availability Zone identifier.
   final String availabilityZoneId;
-
   /// The description of the Outpost.
   final String description;
   final String id;
-
   /// The life cycle status.
   final String lifecycleStatus;
   final String name;
   final String? ownerId;
   final String region;
-
   /// The Amazon Resource Name (ARN) of the site.
   final String siteArn;
-
   /// The ID of the site.
   final String siteId;
-
   /// The hardware type.
   final String supportedHardwareType;
-
   /// The Outpost tags.
   final Map<String, String> tags;
 
@@ -98,3 +91,4 @@ class GetOutpostResult {
     );
   }
 }
+

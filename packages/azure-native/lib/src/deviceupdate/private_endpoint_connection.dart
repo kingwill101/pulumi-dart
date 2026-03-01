@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'private_link_service_connection_state.dart';
+
+/// The Private Endpoint Connection resource.
+class PrivateEndpointConnection {
+  /// Array of group IDs.
+  final List<String>? groupIds;
+  /// A collection of information about the state of the connection between service consumer and provider.
+  final PrivateLinkServiceConnectionState privateLinkServiceConnectionState;
+
+  /// Creates a new [PrivateEndpointConnection].
+  /// [groupIds] Array of group IDs.
+  /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
+  PrivateEndpointConnection({
+    this.groupIds,
+    required this.privateLinkServiceConnectionState,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'groupIds': ?groupIds,
+      'privateLinkServiceConnectionState': privateLinkServiceConnectionState.toMap(),
+    };
+  }
+
+  factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
+    return PrivateEndpointConnection(
+      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

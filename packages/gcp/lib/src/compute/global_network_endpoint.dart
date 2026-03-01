@@ -182,16 +182,12 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   late final pulumi.Output<String?> fqdn;
-
   /// The global network endpoint group this endpoint is part of.
   late final pulumi.Output<String> globalNetworkEndpointGroup;
-
   /// IPv4 address external endpoint.
   late final pulumi.Output<String?> ipAddress;
-
   /// Port number of the external endpoint.
   late final pulumi.Output<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -205,15 +201,13 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
     GlobalNetworkEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.fqdn = registerOutput<String?>('fqdn');
-    this.globalNetworkEndpointGroup = registerOutput<String>(
-      'globalNetworkEndpointGroup',
-    );
+    this.globalNetworkEndpointGroup = registerOutput<String>('globalNetworkEndpointGroup');
     this.ipAddress = registerOutput<String?>('ipAddress');
     this.port = registerOutput<int>('port');
     this.project = registerOutput<String>('project');

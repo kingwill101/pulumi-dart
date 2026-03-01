@@ -8,26 +8,20 @@ class GetVirtualRouterSpec {
 
   /// Creates a new [GetVirtualRouterSpec].
   /// [listeners] Required.
-  GetVirtualRouterSpec({required this.listeners});
+  GetVirtualRouterSpec({
+    required this.listeners,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listeners':
-          pulumi.Input.encodeList<
-            GetVirtualRouterSpecListener,
-            Map<String, dynamic>
-          >(listeners, (value) => value.toMap()),
+      'listeners': pulumi.Input.encodeList<GetVirtualRouterSpecListener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
     };
   }
 
   factory GetVirtualRouterSpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterSpec(
-      listeners: pulumi.Input.decodeList<GetVirtualRouterSpecListener>(
-        map['listeners'],
-        (value) => GetVirtualRouterSpecListener.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      listeners: pulumi.Input.decodeList<GetVirtualRouterSpecListener>(map['listeners'], (value) => GetVirtualRouterSpecListener.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentArgs {
   /// The group the policy should be applied to
   final pulumi.Input<String> group;
-
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
 
   /// Creates a new [GroupPolicyAttachmentArgs].
   /// [group] The group the policy should be applied to
   /// [policyArn] The ARN of the policy you want to apply
-  GroupPolicyAttachmentArgs({required String group, required String policyArn})
-    : group = pulumi.Input.asInput<String>(group),
+  GroupPolicyAttachmentArgs({
+    required String group,
+    required String policyArn,
+  }) :
+      group = pulumi.Input.asInput<String>(group),
       policyArn = pulumi.Input.asInput<String>(policyArn);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group, 'policyArn': policyArn};
+    return <String, dynamic>{
+      'group': group,
+      'policyArn': policyArn,
+    };
   }
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GroupPolicyAttachmentArgs {
     );
   }
 }
+

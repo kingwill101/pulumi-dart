@@ -1,0 +1,120 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class EventSourceV2SourceRocketmqParameters {
+  /// ACL or not.
+  final String? authType;
+  /// The Group ID of the RocketMQ version of message queue.
+  final String? groupId;
+  /// Instance access point.
+  final String? instanceEndpoint;
+  /// The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+  final String? instanceId;
+  /// Instance network.
+  final String? instanceNetwork;
+  /// The instance password.
+  final String? instancePassword;
+  /// The ID of the security group.
+  final String? instanceSecurityGroupId;
+  /// The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+  final String? instanceType;
+  /// The instance user name.
+  final String? instanceUsername;
+  /// The ID of the VPC.
+  final String? instanceVpcId;
+  /// The vSwitch ID.
+  final String? instanceVswitchIds;
+  /// The consumption point of the message. The value description is as follows:
+  /// - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+  /// - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+  /// - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+  /// Default value: `CONSUME_FROM_LAST_OFFSET`.
+  final String? offset;
+  /// The region of the RocketMQ instance.
+  final String? regionId;
+  /// The filter label of the message.
+  final String? tag;
+  /// The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+  final double? timestamp;
+  /// The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+  final String? topic;
+
+  /// Creates a new [EventSourceV2SourceRocketmqParameters].
+  /// [authType] ACL or not.
+  /// [groupId] The Group ID of the RocketMQ version of message queue.
+  /// [instanceEndpoint] Instance access point.
+  /// [instanceId] The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+  /// [instanceNetwork] Instance network.
+  /// [instancePassword] The instance password.
+  /// [instanceSecurityGroupId] The ID of the security group.
+  /// [instanceType] The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+  /// [instanceUsername] The instance user name.
+  /// [instanceVpcId] The ID of the VPC.
+  /// [instanceVswitchIds] The vSwitch ID.
+  /// [offset] The consumption point of the message. The value description is as follows:
+  /// [regionId] The region of the RocketMQ instance.
+  /// [tag] The filter label of the message.
+  /// [timestamp] The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+  /// [topic] The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+  EventSourceV2SourceRocketmqParameters({
+    this.authType,
+    this.groupId,
+    this.instanceEndpoint,
+    this.instanceId,
+    this.instanceNetwork,
+    this.instancePassword,
+    this.instanceSecurityGroupId,
+    this.instanceType,
+    this.instanceUsername,
+    this.instanceVpcId,
+    this.instanceVswitchIds,
+    this.offset,
+    this.regionId,
+    this.tag,
+    this.timestamp,
+    this.topic,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authType': ?authType,
+      'groupId': ?groupId,
+      'instanceEndpoint': ?instanceEndpoint,
+      'instanceId': ?instanceId,
+      'instanceNetwork': ?instanceNetwork,
+      'instancePassword': ?instancePassword,
+      'instanceSecurityGroupId': ?instanceSecurityGroupId,
+      'instanceType': ?instanceType,
+      'instanceUsername': ?instanceUsername,
+      'instanceVpcId': ?instanceVpcId,
+      'instanceVswitchIds': ?instanceVswitchIds,
+      'offset': ?offset,
+      'regionId': ?regionId,
+      'tag': ?tag,
+      'timestamp': ?timestamp,
+      'topic': ?topic,
+    };
+  }
+
+  factory EventSourceV2SourceRocketmqParameters.fromMap(Map<String, dynamic> map) {
+    return EventSourceV2SourceRocketmqParameters(
+      authType: map['authType'] == null ? null : map['authType'] as String,
+      groupId: map['groupId'] == null ? null : map['groupId'] as String,
+      instanceEndpoint: map['instanceEndpoint'] == null ? null : map['instanceEndpoint'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
+      instanceNetwork: map['instanceNetwork'] == null ? null : map['instanceNetwork'] as String,
+      instancePassword: map['instancePassword'] == null ? null : map['instancePassword'] as String,
+      instanceSecurityGroupId: map['instanceSecurityGroupId'] == null ? null : map['instanceSecurityGroupId'] as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      instanceUsername: map['instanceUsername'] == null ? null : map['instanceUsername'] as String,
+      instanceVpcId: map['instanceVpcId'] == null ? null : map['instanceVpcId'] as String,
+      instanceVswitchIds: map['instanceVswitchIds'] == null ? null : map['instanceVswitchIds'] as String,
+      offset: map['offset'] == null ? null : map['offset'] as String,
+      regionId: map['regionId'] == null ? null : map['regionId'] as String,
+      tag: map['tag'] == null ? null : map['tag'] as String,
+      timestamp: map['timestamp'] == null ? null : map['timestamp'] as double,
+      topic: map['topic'] == null ? null : map['topic'] as String,
+    );
+  }
+}
+

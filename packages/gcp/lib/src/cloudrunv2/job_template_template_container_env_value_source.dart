@@ -9,7 +9,9 @@ class JobTemplateTemplateContainerEnvValueSource {
 
   /// Creates a new [JobTemplateTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  JobTemplateTemplateContainerEnvValueSource({this.secretKeyRef});
+  JobTemplateTemplateContainerEnvValueSource({
+    this.secretKeyRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,15 +19,10 @@ class JobTemplateTemplateContainerEnvValueSource {
     };
   }
 
-  factory JobTemplateTemplateContainerEnvValueSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null
-          ? null
-          : JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>(),
-            ),
+      secretKeyRef: map['secretKeyRef'] == null ? null : JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

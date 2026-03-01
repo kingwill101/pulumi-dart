@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification {
   final String deletionCharacter;
   final String endCharacter;
@@ -27,9 +28,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
       deletionCharacter: map['deletionCharacter'] as String,
       endCharacter: map['endCharacter'] as String,
@@ -38,3 +37,4 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     );
   }
 }
+

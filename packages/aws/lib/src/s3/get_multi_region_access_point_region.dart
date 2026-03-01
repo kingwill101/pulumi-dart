@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMultiRegionAccessPointRegion {
   /// The name of the bucket.
   final String bucket;
-
   /// The AWS account ID that owns the bucket.
   final String bucketAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
 
@@ -36,3 +35,4 @@ class GetMultiRegionAccessPointRegion {
     );
   }
 }
+

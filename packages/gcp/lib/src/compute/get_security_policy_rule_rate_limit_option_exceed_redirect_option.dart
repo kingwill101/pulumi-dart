@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
   /// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
   final String target;
-
   /// Type of the redirect action.
   final String type;
 
@@ -16,15 +16,17 @@ class GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'target': target, 'type': type};
+    return <String, dynamic>{
+      'target': target,
+      'type': type,
+    };
   }
 
-  factory GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption(
       target: map['target'] as String,
       type: map['type'] as String,
     );
   }
 }
+

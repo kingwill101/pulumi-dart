@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionForwardStickiness {
   final int duration;
   final bool enabled;
@@ -13,15 +14,17 @@ class GetListenerDefaultActionForwardStickiness {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': duration, 'enabled': enabled};
+    return <String, dynamic>{
+      'duration': duration,
+      'enabled': enabled,
+    };
   }
 
-  factory GetListenerDefaultActionForwardStickiness.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerDefaultActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForwardStickiness(
       duration: map['duration'] as int,
       enabled: map['enabled'] as bool,
     );
   }
 }
+

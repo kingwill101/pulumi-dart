@@ -6,9 +6,7 @@ import 'get_cloud_exadata_infrastructures_cloud_exadata_infrastructure.dart';
 /// Result data returned by getCloudExadataInfrastructures.
 class GetCloudExadataInfrastructuresResult {
   /// List of Cloud Exadata Infrastructures. Returns basic information about the Cloud Exadata Infrastructures.
-  final List<GetCloudExadataInfrastructuresCloudExadataInfrastructure>
-  cloudExadataInfrastructures;
-
+  final List<GetCloudExadataInfrastructuresCloudExadataInfrastructure> cloudExadataInfrastructures;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -25,32 +23,18 @@ class GetCloudExadataInfrastructuresResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudExadataInfrastructures':
-          pulumi.Input.encodeList<
-            GetCloudExadataInfrastructuresCloudExadataInfrastructure,
-            Map<String, dynamic>
-          >(cloudExadataInfrastructures, (value) => value.toMap()),
+      'cloudExadataInfrastructures': pulumi.Input.encodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure, Map<String, dynamic>>(cloudExadataInfrastructures, (value) => value.toMap()),
       'id': id,
       'region': region,
     };
   }
 
-  factory GetCloudExadataInfrastructuresResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructuresResult.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresResult(
-      cloudExadataInfrastructures:
-          pulumi.Input.decodeList<
-            GetCloudExadataInfrastructuresCloudExadataInfrastructure
-          >(
-            map['cloudExadataInfrastructures'],
-            (value) =>
-                GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      cloudExadataInfrastructures: pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure>(map['cloudExadataInfrastructures'], (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

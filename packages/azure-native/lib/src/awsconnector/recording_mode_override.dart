@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'recording_frequency_enum_value.dart';
+
+/// Definition of RecordingModeOverride
+class RecordingModeOverride {
+  /// <p>A description that you provide for the override.</p>
+  final String? description;
+  /// <p>The recording frequency that will be applied to all the resource types specified in the override.</p> <ul> <li> <p>Continuous recording allows you to record configuration changes continuously whenever a change occurs.</p> </li> <li> <p>Daily recording allows you to receive a configuration item (CI) representing the most recent state of your resources over the last 24-hour period, only if it’s different from the previous CI recorded. </p> </li> </ul> <note> <p>Firewall Manager depends on continuous recording to monitor your resources. If you are using Firewall Manager, it is recommended that you set the recording frequency to Continuous.</p> </note>
+  final RecordingFrequencyEnumValue? recordingFrequency;
+  /// <p>A comma-separated list that specifies which resource types Config includes in the override.</p> <important> <p>Daily recording is not supported for the following resource types:</p> <ul> <li> <p> <code>AWS::Config::ResourceCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConformancePackCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConfigurationRecorder</code> </p> </li> </ul> </important>
+  final List<String>? resourceTypes;
+
+  /// Creates a new [RecordingModeOverride].
+  /// [description] <p>A description that you provide for the override.</p>
+  /// [recordingFrequency] <p>The recording frequency that will be applied to all the resource types specified in the override.</p> <ul> <li> <p>Continuous recording allows you to record configuration changes continuously whenever a change occurs.</p> </li> <li> <p>Daily recording allows you to receive a configuration item (CI) representing the most recent state of your resources over the last 24-hour period, only if it’s different from the previous CI recorded. </p> </li> </ul> <note> <p>Firewall Manager depends on continuous recording to monitor your resources. If you are using Firewall Manager, it is recommended that you set the recording frequency to Continuous.</p> </note>
+  /// [resourceTypes] <p>A comma-separated list that specifies which resource types Config includes in the override.</p> <important> <p>Daily recording is not supported for the following resource types:</p> <ul> <li> <p> <code>AWS::Config::ResourceCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConformancePackCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConfigurationRecorder</code> </p> </li> </ul> </important>
+  RecordingModeOverride({
+    this.description,
+    this.recordingFrequency,
+    this.resourceTypes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'recordingFrequency': ?recordingFrequency == null ? null : recordingFrequency!.toMap(),
+      'resourceTypes': ?resourceTypes,
+    };
+  }
+
+  factory RecordingModeOverride.fromMap(Map<String, dynamic> map) {
+    return RecordingModeOverride(
+      description: map['description'] == null ? null : map['description'] as String,
+      recordingFrequency: map['recordingFrequency'] == null ? null : RecordingFrequencyEnumValue.fromMap((map['recordingFrequency'] as Map).cast<String, dynamic>()),
+      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+    );
+  }
+}
+

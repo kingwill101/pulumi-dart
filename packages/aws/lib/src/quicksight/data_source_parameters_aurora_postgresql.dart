@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersAuroraPostgresql {
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String host;
-
   /// The port to which to connect.
   final int port;
 
@@ -21,12 +20,14 @@ class DataSourceParametersAuroraPostgresql {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'database': database, 'host': host, 'port': port};
+    return <String, dynamic>{
+      'database': database,
+      'host': host,
+      'port': port,
+    };
   }
 
-  factory DataSourceParametersAuroraPostgresql.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSourceParametersAuroraPostgresql.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAuroraPostgresql(
       database: map['database'] as String,
       host: map['host'] as String,
@@ -34,3 +35,4 @@ class DataSourceParametersAuroraPostgresql {
     );
   }
 }
+

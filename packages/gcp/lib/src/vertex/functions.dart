@@ -340,8 +340,7 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vertex_get_ai_feature_online_store_featureview_iam_policy_get_ai_feature_online_store_featureview_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult>
-getAiFeatureOnlineStoreFeatureviewIamPolicy(
+Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicy(
   GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -559,8 +558,7 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vertex_get_ai_featurestore_entitytype_iam_policy_get_ai_featurestore_entitytype_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAiFeaturestoreEntitytypeIamPolicyResult>
-getAiFeaturestoreEntitytypeIamPolicy(
+Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicy(
   GetAiFeaturestoreEntitytypeIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

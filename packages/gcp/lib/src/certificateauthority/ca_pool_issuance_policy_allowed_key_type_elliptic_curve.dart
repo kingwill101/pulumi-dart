@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
   /// The algorithm used.
   /// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
@@ -12,14 +13,15 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'signatureAlgorithm': signatureAlgorithm};
+    return <String, dynamic>{
+      'signatureAlgorithm': signatureAlgorithm,
+    };
   }
 
-  factory CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(
       signatureAlgorithm: map['signatureAlgorithm'] as String,
     );
   }
 }
+

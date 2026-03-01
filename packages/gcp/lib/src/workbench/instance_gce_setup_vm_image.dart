@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGceSetupVmImage {
   /// Optional. Use this VM image family to find the image; the newest
   /// image in this family will be used.
   final String? family;
-
   /// Optional. Use VM image name to find the image.
   final String? name;
-
   /// The name of the Google Cloud project that this VM image belongs to.
   /// Format: {project_id}
   final String? project;
@@ -16,7 +15,11 @@ class InstanceGceSetupVmImage {
   /// [family] Optional. Use this VM image family to find the image; the newest
   /// [name] Optional. Use VM image name to find the image.
   /// [project] The name of the Google Cloud project that this VM image belongs to.
-  InstanceGceSetupVmImage({this.family, this.name, this.project});
+  InstanceGceSetupVmImage({
+    this.family,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,3 +37,4 @@ class InstanceGceSetupVmImage {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds {
   /// Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
   final String secretName;
@@ -11,14 +12,15 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretName': secretName};
+    return <String, dynamic>{
+      'secretName': secretName,
+    };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds(
       secretName: map['secretName'] as String,
     );
   }
 }
+

@@ -8,19 +8,20 @@ class MultitenantDistributionRestrictions {
 
   /// Creates a new [MultitenantDistributionRestrictions].
   /// [geoRestriction] Geographic restriction configuration. See Geo Restriction below.
-  MultitenantDistributionRestrictions({required this.geoRestriction});
+  MultitenantDistributionRestrictions({
+    required this.geoRestriction,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'geoRestriction': geoRestriction.toMap()};
+    return <String, dynamic>{
+      'geoRestriction': geoRestriction.toMap(),
+    };
   }
 
-  factory MultitenantDistributionRestrictions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionRestrictions(
-      geoRestriction: MultitenantDistributionRestrictionsGeoRestriction.fromMap(
-        (map['geoRestriction'] as Map).cast<String, dynamic>(),
-      ),
+      geoRestriction: MultitenantDistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

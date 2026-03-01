@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Provides details about resource creation and update time
+class SystemDataResponse {
+  /// The timestamp of resource creation (UTC)
+  final String createdAt;
+  /// A string identifier for the identity that created the resource
+  final String createdBy;
+  /// The type of identity that created the resource: user, application, managedIdentity
+  final String createdByType;
+  /// The timestamp of resource last modification (UTC)
+  final String lastModifiedAt;
+  /// A string identifier for the identity that last modified the resource
+  final String lastModifiedBy;
+  /// The type of identity that last modified the resource: user, application, managedIdentity
+  final String lastModifiedByType;
+
+  /// Creates a new [SystemDataResponse].
+  /// [createdAt] The timestamp of resource creation (UTC)
+  /// [createdBy] A string identifier for the identity that created the resource
+  /// [createdByType] The type of identity that created the resource: user, application, managedIdentity
+  /// [lastModifiedAt] The timestamp of resource last modification (UTC)
+  /// [lastModifiedBy] A string identifier for the identity that last modified the resource
+  /// [lastModifiedByType] The type of identity that last modified the resource: user, application, managedIdentity
+  SystemDataResponse({
+    required this.createdAt,
+    required this.createdBy,
+    required this.createdByType,
+    required this.lastModifiedAt,
+    required this.lastModifiedBy,
+    required this.lastModifiedByType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'createdByType': createdByType,
+      'lastModifiedAt': lastModifiedAt,
+      'lastModifiedBy': lastModifiedBy,
+      'lastModifiedByType': lastModifiedByType,
+    };
+  }
+
+  factory SystemDataResponse.fromMap(Map<String, dynamic> map) {
+    return SystemDataResponse(
+      createdAt: map['createdAt'] as String,
+      createdBy: map['createdBy'] as String,
+      createdByType: map['createdByType'] as String,
+      lastModifiedAt: map['lastModifiedAt'] as String,
+      lastModifiedBy: map['lastModifiedBy'] as String,
+      lastModifiedByType: map['lastModifiedByType'] as String,
+    );
+  }
+}
+

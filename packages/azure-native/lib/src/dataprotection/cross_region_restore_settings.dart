@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class CrossRegionRestoreSettings {
+  /// CrossRegionRestore state
+  final String? state;
+
+  /// Creates a new [CrossRegionRestoreSettings].
+  /// [state] CrossRegionRestore state
+  CrossRegionRestoreSettings({
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': ?state,
+    };
+  }
+
+  factory CrossRegionRestoreSettings.fromMap(Map<String, dynamic> map) {
+    return CrossRegionRestoreSettings(
+      state: map['state'] == null ? null : map['state'] as String,
+    );
+  }
+}
+

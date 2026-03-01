@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiProductAttribute {
   /// Key of the attribute.
   final String? name;
-
   /// Value of the attribute.
   final String? value;
 
   /// Creates a new [ApiProductAttribute].
   /// [name] Key of the attribute.
   /// [value] Value of the attribute.
-  ApiProductAttribute({this.name, this.value});
+  ApiProductAttribute({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory ApiProductAttribute.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class ApiProductAttribute {
     );
   }
 }
+

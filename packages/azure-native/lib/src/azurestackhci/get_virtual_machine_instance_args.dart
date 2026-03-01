@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_azurestackhci_get_virtual_machine_instance_args_doc}
+/// Arguments for getVirtualMachineInstance.
+/// {@endtemplate}
+/// {@macro pulumi_azurestackhci_get_virtual_machine_instance_args_doc}
+class GetVirtualMachineInstanceArgs {
+  /// The fully qualified Azure Resource manager identifier of the resource.
+  final pulumi.Input<String> resourceUri;
+
+  /// Creates a new [GetVirtualMachineInstanceArgs].
+  /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
+  GetVirtualMachineInstanceArgs({
+    required String resourceUri,
+  }) :
+      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
+  }
+
+  factory GetVirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
+    return GetVirtualMachineInstanceArgs(
+      resourceUri: map['resourceUri'] as String,
+    );
+  }
+}
+

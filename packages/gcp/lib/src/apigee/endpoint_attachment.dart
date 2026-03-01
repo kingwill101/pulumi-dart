@@ -30,24 +30,18 @@ import 'endpoint_attachment_args.dart';
 class EndpointAttachment extends pulumi.CustomResource {
   /// State of the endpoint attachment connection to the service attachment.
   late final pulumi.Output<String> connectionState;
-
   /// ID of the endpoint attachment.
   late final pulumi.Output<String> endpointAttachmentId;
-
   /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
   late final pulumi.Output<String> host;
-
   /// Location of the endpoint attachment.
   late final pulumi.Output<String> location;
-
   /// Name of the Endpoint Attachment in the following format:
   /// organizations/{organization}/endpointAttachments/{endpointAttachment}.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// Format: projects/*/regions/*/serviceAttachments/*
   late final pulumi.Output<String> serviceAttachment;
 
@@ -60,11 +54,11 @@ class EndpointAttachment extends pulumi.CustomResource {
     EndpointAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/endpointAttachment:EndpointAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/endpointAttachment:EndpointAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.connectionState = registerOutput<String>('connectionState');
     this.endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
     this.host = registerOutput<String>('host');

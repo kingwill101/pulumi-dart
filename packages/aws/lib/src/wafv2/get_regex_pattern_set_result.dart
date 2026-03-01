@@ -7,15 +7,12 @@ import 'get_regex_pattern_set_regular_expression.dart';
 class GetRegexPatternSetResult {
   /// ARN of the entity.
   final String arn;
-
   /// Description of the set that helps with identification.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// One or more blocks of regular expression patterns that AWS WAF is searching for. See Regular Expression below for details.
   final List<GetRegexPatternSetRegularExpression> regularExpressions;
   final String scope;
@@ -45,11 +42,7 @@ class GetRegexPatternSetResult {
       'id': id,
       'name': name,
       'region': region,
-      'regularExpressions':
-          pulumi.Input.encodeList<
-            GetRegexPatternSetRegularExpression,
-            Map<String, dynamic>
-          >(regularExpressions, (value) => value.toMap()),
+      'regularExpressions': pulumi.Input.encodeList<GetRegexPatternSetRegularExpression, Map<String, dynamic>>(regularExpressions, (value) => value.toMap()),
       'scope': scope,
     };
   }
@@ -61,14 +54,9 @@ class GetRegexPatternSetResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      regularExpressions:
-          pulumi.Input.decodeList<GetRegexPatternSetRegularExpression>(
-            map['regularExpressions'],
-            (value) => GetRegexPatternSetRegularExpression.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      regularExpressions: pulumi.Input.decodeList<GetRegexPatternSetRegularExpression>(map['regularExpressions'], (value) => GetRegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
     );
   }
 }
+

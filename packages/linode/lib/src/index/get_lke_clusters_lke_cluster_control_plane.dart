@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetLkeClustersLkeClusterControlPlane {
+  /// Enables audit logs on the cluster's control plane.
+  final bool auditLogsEnabled;
+  /// Whether High Availability is enabled for the cluster Control Plane.
+  final bool highAvailability;
+
+  /// Creates a new [GetLkeClustersLkeClusterControlPlane].
+  /// [auditLogsEnabled] Enables audit logs on the cluster's control plane.
+  /// [highAvailability] Whether High Availability is enabled for the cluster Control Plane.
+  GetLkeClustersLkeClusterControlPlane({
+    required this.auditLogsEnabled,
+    required this.highAvailability,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'auditLogsEnabled': auditLogsEnabled,
+      'highAvailability': highAvailability,
+    };
+  }
+
+  factory GetLkeClustersLkeClusterControlPlane.fromMap(Map<String, dynamic> map) {
+    return GetLkeClustersLkeClusterControlPlane(
+      auditLogsEnabled: map['auditLogsEnabled'] as bool,
+      highAvailability: map['highAvailability'] as bool,
+    );
+  }
+}
+

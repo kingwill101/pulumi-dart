@@ -6,7 +6,6 @@ class PluginInstanceAuthConfigUserPasswordConfig {
   /// Secret provides a reference to entries in Secret Manager.
   /// Structure is documented below.
   final PluginInstanceAuthConfigUserPasswordConfigPassword password;
-
   /// Username.
   final String username;
 
@@ -25,14 +24,11 @@ class PluginInstanceAuthConfigUserPasswordConfig {
     };
   }
 
-  factory PluginInstanceAuthConfigUserPasswordConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PluginInstanceAuthConfigUserPasswordConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigUserPasswordConfig(
-      password: PluginInstanceAuthConfigUserPasswordConfigPassword.fromMap(
-        (map['password'] as Map).cast<String, dynamic>(),
-      ),
+      password: PluginInstanceAuthConfigUserPasswordConfigPassword.fromMap((map['password'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );
   }
 }
+

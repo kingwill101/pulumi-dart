@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionBackendServiceParams {
   /// Resource manager tags to be bound to the region backend service. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -8,17 +9,20 @@ class RegionBackendServiceParams {
 
   /// Creates a new [RegionBackendServiceParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the region backend service. Tag keys and values have the
-  RegionBackendServiceParams({this.resourceManagerTags});
+  RegionBackendServiceParams({
+    this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory RegionBackendServiceParams.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceParams(
-      resourceManagerTags: map['resourceManagerTags'] == null
-          ? null
-          : (map['resourceManagerTags'] as Map).cast<String, String>(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (map['resourceManagerTags'] as Map).cast<String, String>(),
     );
   }
 }
+

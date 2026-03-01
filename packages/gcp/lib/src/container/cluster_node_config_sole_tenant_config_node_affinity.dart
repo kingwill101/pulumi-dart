@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigSoleTenantConfigNodeAffinity {
   /// The default or custom node affinity label key name.
   final String key;
-
   /// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
   final String operator;
-
   /// List of node affinity label values as strings.
   final List<String> values;
 
@@ -28,9 +27,7 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinity {
     };
   }
 
-  factory ClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigSoleTenantConfigNodeAffinity(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -38,3 +35,4 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinity {
     );
   }
 }
+

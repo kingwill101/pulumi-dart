@@ -17,25 +17,16 @@ class GetApplicationPortalOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signInOptions':
-          pulumi.Input.encodeList<
-            GetApplicationPortalOptionSignInOption,
-            Map<String, dynamic>
-          >(signInOptions, (value) => value.toMap()),
+      'signInOptions': pulumi.Input.encodeList<GetApplicationPortalOptionSignInOption, Map<String, dynamic>>(signInOptions, (value) => value.toMap()),
       'visibility': visibility,
     };
   }
 
   factory GetApplicationPortalOption.fromMap(Map<String, dynamic> map) {
     return GetApplicationPortalOption(
-      signInOptions:
-          pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(
-            map['signInOptions'],
-            (value) => GetApplicationPortalOptionSignInOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      signInOptions: pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(map['signInOptions'], (value) => GetApplicationPortalOptionSignInOption.fromMap((value as Map).cast<String, dynamic>())),
       visibility: map['visibility'] as String,
     );
   }
 }
+

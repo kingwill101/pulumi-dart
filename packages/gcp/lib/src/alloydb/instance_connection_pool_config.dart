@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceConnectionPoolConfig {
   /// Whether to enabled Managed Connection Pool.
   final bool enabled;
   final Map<String, String>? flags;
-
   /// (Output)
   /// The number of running poolers per instance.
   final int? poolerCount;
@@ -30,12 +30,9 @@ class InstanceConnectionPoolConfig {
   factory InstanceConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConnectionPoolConfig(
       enabled: map['enabled'] as bool,
-      flags: map['flags'] == null
-          ? null
-          : (map['flags'] as Map).cast<String, String>(),
-      poolerCount: map['poolerCount'] == null
-          ? null
-          : map['poolerCount'] as int,
+      flags: map['flags'] == null ? null : (map['flags'] as Map).cast<String, String>(),
+      poolerCount: map['poolerCount'] == null ? null : map['poolerCount'] as int,
     );
   }
 }
+

@@ -1,0 +1,134 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom_image_properties_custom_response.dart';
+import 'custom_image_properties_from_plan_response.dart';
+import 'custom_image_properties_from_vm_response.dart';
+import 'data_disk_storage_type_info_response.dart';
+
+/// Result data returned by getCustomImage.
+class GetCustomImageResult {
+  /// The author of the custom image.
+  final String? author;
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// The creation date of the custom image.
+  final String creationDate;
+  /// Storage information about the plan related to this custom image
+  final CustomImagePropertiesFromPlanResponse? customImagePlan;
+  /// Storage information about the data disks present in the custom image
+  final List<DataDiskStorageTypeInfoResponse>? dataDiskStorageInfo;
+  /// The description of the custom image.
+  final String? description;
+  /// The identifier of the resource.
+  final String id;
+  /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
+  final bool? isPlanAuthorized;
+  /// The location of the resource.
+  final String? location;
+  /// The Managed Image Id backing the custom image.
+  final String? managedImageId;
+  /// The Managed Snapshot Id backing the custom image.
+  final String? managedSnapshotId;
+  /// The name of the resource.
+  final String name;
+  /// The provisioning status of the resource.
+  final String provisioningState;
+  /// The tags of the resource.
+  final Map<String, String>? tags;
+  /// The type of the resource.
+  final String type;
+  /// The unique immutable identifier of a resource (Guid).
+  final String uniqueIdentifier;
+  /// The VHD from which the image is to be created.
+  final CustomImagePropertiesCustomResponse? vhd;
+  /// The virtual machine from which the image is to be created.
+  final CustomImagePropertiesFromVmResponse? vm;
+
+  /// Creates a new [GetCustomImageResult].
+  /// [author] The author of the custom image.
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [creationDate] The creation date of the custom image.
+  /// [customImagePlan] Storage information about the plan related to this custom image
+  /// [dataDiskStorageInfo] Storage information about the data disks present in the custom image
+  /// [description] The description of the custom image.
+  /// [id] The identifier of the resource.
+  /// [isPlanAuthorized] Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
+  /// [location] The location of the resource.
+  /// [managedImageId] The Managed Image Id backing the custom image.
+  /// [managedSnapshotId] The Managed Snapshot Id backing the custom image.
+  /// [name] The name of the resource.
+  /// [provisioningState] The provisioning status of the resource.
+  /// [tags] The tags of the resource.
+  /// [type] The type of the resource.
+  /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
+  /// [vhd] The VHD from which the image is to be created.
+  /// [vm] The virtual machine from which the image is to be created.
+  GetCustomImageResult({
+    this.author,
+    required this.azureApiVersion,
+    required this.creationDate,
+    this.customImagePlan,
+    this.dataDiskStorageInfo,
+    this.description,
+    required this.id,
+    this.isPlanAuthorized,
+    this.location,
+    this.managedImageId,
+    this.managedSnapshotId,
+    required this.name,
+    required this.provisioningState,
+    this.tags,
+    required this.type,
+    required this.uniqueIdentifier,
+    this.vhd,
+    this.vm,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'author': ?author,
+      'azureApiVersion': azureApiVersion,
+      'creationDate': creationDate,
+      'customImagePlan': ?customImagePlan == null ? null : customImagePlan!.toMap(),
+      'dataDiskStorageInfo': ?dataDiskStorageInfo == null ? null : pulumi.Input.encodeList<DataDiskStorageTypeInfoResponse, Map<String, dynamic>>(dataDiskStorageInfo!, (value) => value.toMap()),
+      'description': ?description,
+      'id': id,
+      'isPlanAuthorized': ?isPlanAuthorized,
+      'location': ?location,
+      'managedImageId': ?managedImageId,
+      'managedSnapshotId': ?managedSnapshotId,
+      'name': name,
+      'provisioningState': provisioningState,
+      'tags': ?tags,
+      'type': type,
+      'uniqueIdentifier': uniqueIdentifier,
+      'vhd': ?vhd == null ? null : vhd!.toMap(),
+      'vm': ?vm == null ? null : vm!.toMap(),
+    };
+  }
+
+  factory GetCustomImageResult.fromMap(Map<String, dynamic> map) {
+    return GetCustomImageResult(
+      author: map['author'] == null ? null : map['author'] as String,
+      azureApiVersion: map['azureApiVersion'] as String,
+      creationDate: map['creationDate'] as String,
+      customImagePlan: map['customImagePlan'] == null ? null : CustomImagePropertiesFromPlanResponse.fromMap((map['customImagePlan'] as Map).cast<String, dynamic>()),
+      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(map['dataDiskStorageInfo'], (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
+      id: map['id'] as String,
+      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : map['isPlanAuthorized'] as bool,
+      location: map['location'] == null ? null : map['location'] as String,
+      managedImageId: map['managedImageId'] == null ? null : map['managedImageId'] as String,
+      managedSnapshotId: map['managedSnapshotId'] == null ? null : map['managedSnapshotId'] as String,
+      name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      type: map['type'] as String,
+      uniqueIdentifier: map['uniqueIdentifier'] as String,
+      vhd: map['vhd'] == null ? null : CustomImagePropertiesCustomResponse.fromMap((map['vhd'] as Map).cast<String, dynamic>()),
+      vm: map['vm'] == null ? null : CustomImagePropertiesFromVmResponse.fromMap((map['vm'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionAuthenticateOidc {
   final Map<String, String> authenticationRequestExtraParams;
   final String authorizationEndpoint;
@@ -55,13 +56,9 @@ class GetListenerDefaultActionAuthenticateOidc {
     };
   }
 
-  factory GetListenerDefaultActionAuthenticateOidc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerDefaultActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionAuthenticateOidc(
-      authenticationRequestExtraParams:
-          (map['authenticationRequestExtraParams'] as Map)
-              .cast<String, String>(),
+      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
       authorizationEndpoint: map['authorizationEndpoint'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
@@ -75,3 +72,4 @@ class GetListenerDefaultActionAuthenticateOidc {
     );
   }
 }
+

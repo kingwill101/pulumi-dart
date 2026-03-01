@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGatewayRouteSpecGrpcRouteMatch {
   final int port;
   final String serviceName;
@@ -13,7 +14,10 @@ class GetGatewayRouteSpecGrpcRouteMatch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'serviceName': serviceName};
+    return <String, dynamic>{
+      'port': port,
+      'serviceName': serviceName,
+    };
   }
 
   factory GetGatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGatewayRouteSpecGrpcRouteMatch {
     );
   }
 }
+

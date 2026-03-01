@@ -10,16 +10,12 @@ class BareMetalClusterNetworkConfig {
   /// Setting configuration for advanced networking features will automatically
   /// set this flag.
   final bool? advancedNetworking;
-
   /// A nested object resource.
   /// Structure is documented below.
   final BareMetalClusterNetworkConfigIslandModeCidr? islandModeCidr;
-
   /// Configuration for multiple network interfaces.
   /// Structure is documented below.
-  final BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig?
-  multipleNetworkInterfacesConfig;
-
+  final BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig? multipleNetworkInterfacesConfig;
   /// Configuration for SR-IOV.
   /// Structure is documented below.
   final BareMetalClusterNetworkConfigSrIovConfig? srIovConfig;
@@ -39,39 +35,19 @@ class BareMetalClusterNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedNetworking': ?advancedNetworking,
-      'islandModeCidr': ?islandModeCidr == null
-          ? null
-          : islandModeCidr!.toMap(),
-      'multipleNetworkInterfacesConfig':
-          ?multipleNetworkInterfacesConfig == null
-          ? null
-          : multipleNetworkInterfacesConfig!.toMap(),
+      'islandModeCidr': ?islandModeCidr == null ? null : islandModeCidr!.toMap(),
+      'multipleNetworkInterfacesConfig': ?multipleNetworkInterfacesConfig == null ? null : multipleNetworkInterfacesConfig!.toMap(),
       'srIovConfig': ?srIovConfig == null ? null : srIovConfig!.toMap(),
     };
   }
 
   factory BareMetalClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null
-          ? null
-          : map['advancedNetworking'] as bool,
-      islandModeCidr: map['islandModeCidr'] == null
-          ? null
-          : BareMetalClusterNetworkConfigIslandModeCidr.fromMap(
-              (map['islandModeCidr'] as Map).cast<String, dynamic>(),
-            ),
-      multipleNetworkInterfacesConfig:
-          map['multipleNetworkInterfacesConfig'] == null
-          ? null
-          : BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(
-              (map['multipleNetworkInterfacesConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      srIovConfig: map['srIovConfig'] == null
-          ? null
-          : BareMetalClusterNetworkConfigSrIovConfig.fromMap(
-              (map['srIovConfig'] as Map).cast<String, dynamic>(),
-            ),
+      advancedNetworking: map['advancedNetworking'] == null ? null : map['advancedNetworking'] as bool,
+      islandModeCidr: map['islandModeCidr'] == null ? null : BareMetalClusterNetworkConfigIslandModeCidr.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>()),
+      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig'] as Map).cast<String, dynamic>()),
+      srIovConfig: map['srIovConfig'] == null ? null : BareMetalClusterNetworkConfigSrIovConfig.fromMap((map['srIovConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

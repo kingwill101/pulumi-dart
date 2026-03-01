@@ -171,10 +171,8 @@ import 'tag_args.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
-
   /// Id of the Organizations resource to tag.
   late final pulumi.Output<String> resourceId;
-
   /// Tag value.
   late final pulumi.Output<String> value;
 
@@ -182,13 +180,16 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_organizations_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:organizations/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:organizations/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.key = registerOutput<String>('key');
     this.resourceId = registerOutput<String>('resourceId');
     this.value = registerOutput<String>('value');

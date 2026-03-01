@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScopeTargetTargetIdentifierTargetId {
   /// AWS account ID.
   final String accountId;
 
   /// Creates a new [ScopeTargetTargetIdentifierTargetId].
   /// [accountId] AWS account ID.
-  ScopeTargetTargetIdentifierTargetId({required this.accountId});
+  ScopeTargetTargetIdentifierTargetId({
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId};
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
-  factory ScopeTargetTargetIdentifierTargetId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScopeTargetTargetIdentifierTargetId.fromMap(Map<String, dynamic> map) {
     return ScopeTargetTargetIdentifierTargetId(
       accountId: map['accountId'] as String,
     );
   }
 }
+

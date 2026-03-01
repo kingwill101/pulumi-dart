@@ -8,19 +8,20 @@ class RouteSpecTcpRouteTimeout {
 
   /// Creates a new [RouteSpecTcpRouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  RouteSpecTcpRouteTimeout({this.idle});
+  RouteSpecTcpRouteTimeout({
+    this.idle,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idle': ?idle == null ? null : idle!.toMap()};
+    return <String, dynamic>{
+      'idle': ?idle == null ? null : idle!.toMap(),
+    };
   }
 
   factory RouteSpecTcpRouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteTimeout(
-      idle: map['idle'] == null
-          ? null
-          : RouteSpecTcpRouteTimeoutIdle.fromMap(
-              (map['idle'] as Map).cast<String, dynamic>(),
-            ),
+      idle: map['idle'] == null ? null : RouteSpecTcpRouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

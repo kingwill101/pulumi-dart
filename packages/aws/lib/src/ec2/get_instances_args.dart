@@ -13,14 +13,11 @@ class GetInstancesArgs {
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
   /// See `filter` Block below.
   final pulumi.Input<List<GetInstancesFilter>>? filters;
-
   /// List of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
   final pulumi.Input<List<String>>? instanceStateNames;
-
   /// Map of tags, each pair of which must
   /// exactly match a pair on desired instances.
   final pulumi.Input<Map<String, String>>? instanceTags;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,31 +31,15 @@ class GetInstancesArgs {
     List<String>? instanceStateNames,
     Map<String, String>? instanceTags,
     String? region,
-  }) : filters = pulumi.Input.asOptionalInput<List<GetInstancesFilter>>(
-         filters,
-       ),
-       instanceStateNames = pulumi.Input.asOptionalInput<List<String>>(
-         instanceStateNames,
-       ),
-       instanceTags = pulumi.Input.asOptionalInput<Map<String, String>>(
-         instanceTags,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetInstancesFilter>>(filters),
+      instanceStateNames = pulumi.Input.asOptionalInput<List<String>>(instanceStateNames),
+      instanceTags = pulumi.Input.asOptionalInput<Map<String, String>>(instanceTags),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetInstancesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetInstancesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetInstancesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceStateNames': ?instanceStateNames,
       'instanceTags': ?instanceTags,
       'region': ?region,
@@ -67,21 +48,11 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetInstancesFilter>(
-              map['filters'],
-              (value) => GetInstancesFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      instanceStateNames: map['instanceStateNames'] == null
-          ? null
-          : (map['instanceStateNames'] as List).cast<String>(),
-      instanceTags: map['instanceTags'] == null
-          ? null
-          : (map['instanceTags'] as Map).cast<String, String>(),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      instanceStateNames: map['instanceStateNames'] == null ? null : (map['instanceStateNames'] as List).cast<String>(),
+      instanceTags: map['instanceTags'] == null ? null : (map['instanceTags'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

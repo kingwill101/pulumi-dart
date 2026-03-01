@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetReplicationVaultRegionsRegion {
+  /// The ID of the replication region.
+  final String replicationRegionId;
+
+  /// Creates a new [GetReplicationVaultRegionsRegion].
+  /// [replicationRegionId] The ID of the replication region.
+  GetReplicationVaultRegionsRegion({
+    required this.replicationRegionId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'replicationRegionId': replicationRegionId,
+    };
+  }
+
+  factory GetReplicationVaultRegionsRegion.fromMap(Map<String, dynamic> map) {
+    return GetReplicationVaultRegionsRegion(
+      replicationRegionId: map['replicationRegionId'] as String,
+    );
+  }
+}
+

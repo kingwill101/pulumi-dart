@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAccessPointPublicAccessBlockConfiguration {
   /// Whether Amazon S3 blocks public ACLs for buckets in this account.
   final bool blockPublicAcls;
-
   /// Whether Amazon S3 blocks public bucket policies for buckets in this account.
   final bool blockPublicPolicy;
-
   /// Whether Amazon S3 ignores public ACLs for buckets in this account.
   final bool ignorePublicAcls;
-
   /// Whether Amazon S3 restricts public bucket policies for buckets in this account.
   final bool restrictPublicBuckets;
 
@@ -34,9 +32,7 @@ class GetAccessPointPublicAccessBlockConfiguration {
     };
   }
 
-  factory GetAccessPointPublicAccessBlockConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccessPointPublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAccessPointPublicAccessBlockConfiguration(
       blockPublicAcls: map['blockPublicAcls'] as bool,
       blockPublicPolicy: map['blockPublicPolicy'] as bool,
@@ -45,3 +41,4 @@ class GetAccessPointPublicAccessBlockConfiguration {
     );
   }
 }
+

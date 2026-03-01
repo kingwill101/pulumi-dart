@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class PoolSourceProduct {
+  /// Configures the name attribute of the product related to the storage source.
+  final String name;
+
+  /// Creates a new [PoolSourceProduct].
+  /// [name] Configures the name attribute of the product related to the storage source.
+  PoolSourceProduct({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory PoolSourceProduct.fromMap(Map<String, dynamic> map) {
+    return PoolSourceProduct(
+      name: map['name'] as String,
+    );
+  }
+}
+

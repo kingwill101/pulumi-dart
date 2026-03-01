@@ -8,7 +8,6 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
   final List<GetLocalGatewayVirtualInterfaceGroupFilter>? filters;
   final String id;
   final String localGatewayId;
-
   /// Set of EC2 Local Gateway Virtual Interface identifiers.
   final List<String> localGatewayVirtualInterfaceIds;
   final String region;
@@ -32,12 +31,7 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              GetLocalGatewayVirtualInterfaceGroupFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLocalGatewayVirtualInterfaceGroupFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'localGatewayId': localGatewayId,
       'localGatewayVirtualInterfaceIds': localGatewayVirtualInterfaceIds,
@@ -46,24 +40,15 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
     };
   }
 
-  factory GetLocalGatewayVirtualInterfaceGroupResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLocalGatewayVirtualInterfaceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayVirtualInterfaceGroupResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(
-              map['filters'],
-              (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       localGatewayId: map['localGatewayId'] as String,
-      localGatewayVirtualInterfaceIds:
-          (map['localGatewayVirtualInterfaceIds'] as List).cast<String>(),
+      localGatewayVirtualInterfaceIds: (map['localGatewayVirtualInterfaceIds'] as List).cast<String>(),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

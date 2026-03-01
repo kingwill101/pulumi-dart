@@ -806,76 +806,53 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 class TargetGroup {
   /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is `false`.
   final bool? connectionTermination;
-
   /// Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
   final int? deregistrationDelay;
-
   /// Health Check configuration block. Detailed below.
   final pulumi_aws_lb.TargetGroupHealthCheck? healthCheck;
-
   /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
   final String? ipAddressType;
-
   /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
   final bool? lambdaMultiValueHeadersEnabled;
-
   /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
   final String? loadBalancingAlgorithmType;
-
   /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
   final String? loadBalancingAnomalyMitigation;
-
   /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
   final String? loadBalancingCrossZoneEnabled;
-
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   final String? name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   final String? namePrefix;
-
   /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final int? port;
-
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
   final String? preserveClientIp;
-
   /// Protocol to use for routing traffic to the targets.
   /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, or `UDP`.
   /// Required when `target_type` is `instance`, `ip`, or `alb`.
   /// Does not apply when `target_type` is `lambda`.
   final String? protocol;
-
   /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
   final String? protocolVersion;
-
   /// Whether to enable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information. Default is `false`.
   final bool? proxyProtocolV2;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String? region;
-
   /// Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
   final int? slowStart;
-
   /// Stickiness configuration block. Detailed below.
   final pulumi_aws_lb.TargetGroupStickiness? stickiness;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String>? tags;
-
   /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
   final int? targetControlPort;
-
   /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
   final List<pulumi_aws_lb.TargetGroupTargetFailover>? targetFailovers;
-
   /// Target health requirements block. See target_group_health for more information.
   final pulumi_aws_lb.TargetGroupTargetGroupHealth? targetGroupHealth;
-
   /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
   final List<pulumi_aws_lb.TargetGroupTargetHealthState>? targetHealthStates;
-
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
   /// The default is `instance`.
@@ -888,7 +865,6 @@ class TargetGroup {
   ///
   /// Application Load Balancers do not support the `alb` target type.
   final String? targetType;
-
   /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final String? vpcId;
 
@@ -968,21 +944,9 @@ class TargetGroup {
       'stickiness': ?stickiness == null ? null : stickiness!.toMap(),
       'tags': ?tags,
       'targetControlPort': ?targetControlPort,
-      'targetFailovers': ?targetFailovers == null
-          ? null
-          : pulumi.Input.encodeList<
-              pulumi_aws_lb.TargetGroupTargetFailover,
-              Map<String, dynamic>
-            >(targetFailovers!, (value) => value.toMap()),
-      'targetGroupHealth': ?targetGroupHealth == null
-          ? null
-          : targetGroupHealth!.toMap(),
-      'targetHealthStates': ?targetHealthStates == null
-          ? null
-          : pulumi.Input.encodeList<
-              pulumi_aws_lb.TargetGroupTargetHealthState,
-              Map<String, dynamic>
-            >(targetHealthStates!, (value) => value.toMap()),
+      'targetFailovers': ?targetFailovers == null ? null : pulumi.Input.encodeList<pulumi_aws_lb.TargetGroupTargetFailover, Map<String, dynamic>>(targetFailovers!, (value) => value.toMap()),
+      'targetGroupHealth': ?targetGroupHealth == null ? null : targetGroupHealth!.toMap(),
+      'targetHealthStates': ?targetHealthStates == null ? null : pulumi.Input.encodeList<pulumi_aws_lb.TargetGroupTargetHealthState, Map<String, dynamic>>(targetHealthStates!, (value) => value.toMap()),
       'targetType': ?targetType,
       'vpcId': ?vpcId,
     };
@@ -990,88 +954,32 @@ class TargetGroup {
 
   factory TargetGroup.fromMap(Map<String, dynamic> map) {
     return TargetGroup(
-      connectionTermination: map['connectionTermination'] == null
-          ? null
-          : map['connectionTermination'] as bool,
-      deregistrationDelay: map['deregistrationDelay'] == null
-          ? null
-          : map['deregistrationDelay'] as int,
-      healthCheck: map['healthCheck'] == null
-          ? null
-          : pulumi_aws_lb.TargetGroupHealthCheck.fromMap(
-              (map['healthCheck'] as Map).cast<String, dynamic>(),
-            ),
-      ipAddressType: map['ipAddressType'] == null
-          ? null
-          : map['ipAddressType'] as String,
-      lambdaMultiValueHeadersEnabled:
-          map['lambdaMultiValueHeadersEnabled'] == null
-          ? null
-          : map['lambdaMultiValueHeadersEnabled'] as bool,
-      loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] == null
-          ? null
-          : map['loadBalancingAlgorithmType'] as String,
-      loadBalancingAnomalyMitigation:
-          map['loadBalancingAnomalyMitigation'] == null
-          ? null
-          : map['loadBalancingAnomalyMitigation'] as String,
-      loadBalancingCrossZoneEnabled:
-          map['loadBalancingCrossZoneEnabled'] == null
-          ? null
-          : map['loadBalancingCrossZoneEnabled'] as String,
+      connectionTermination: map['connectionTermination'] == null ? null : map['connectionTermination'] as bool,
+      deregistrationDelay: map['deregistrationDelay'] == null ? null : map['deregistrationDelay'] as int,
+      healthCheck: map['healthCheck'] == null ? null : pulumi_aws_lb.TargetGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
+      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
+      lambdaMultiValueHeadersEnabled: map['lambdaMultiValueHeadersEnabled'] == null ? null : map['lambdaMultiValueHeadersEnabled'] as bool,
+      loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] == null ? null : map['loadBalancingAlgorithmType'] as String,
+      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] == null ? null : map['loadBalancingAnomalyMitigation'] as String,
+      loadBalancingCrossZoneEnabled: map['loadBalancingCrossZoneEnabled'] == null ? null : map['loadBalancingCrossZoneEnabled'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      namePrefix: map['namePrefix'] == null
-          ? null
-          : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      preserveClientIp: map['preserveClientIp'] == null
-          ? null
-          : map['preserveClientIp'] as String,
+      preserveClientIp: map['preserveClientIp'] == null ? null : map['preserveClientIp'] as String,
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      protocolVersion: map['protocolVersion'] == null
-          ? null
-          : map['protocolVersion'] as String,
-      proxyProtocolV2: map['proxyProtocolV2'] == null
-          ? null
-          : map['proxyProtocolV2'] as bool,
+      protocolVersion: map['protocolVersion'] == null ? null : map['protocolVersion'] as String,
+      proxyProtocolV2: map['proxyProtocolV2'] == null ? null : map['proxyProtocolV2'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       slowStart: map['slowStart'] == null ? null : map['slowStart'] as int,
-      stickiness: map['stickiness'] == null
-          ? null
-          : pulumi_aws_lb.TargetGroupStickiness.fromMap(
-              (map['stickiness'] as Map).cast<String, dynamic>(),
-            ),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      targetControlPort: map['targetControlPort'] == null
-          ? null
-          : map['targetControlPort'] as int,
-      targetFailovers: map['targetFailovers'] == null
-          ? null
-          : pulumi.Input.decodeList<pulumi_aws_lb.TargetGroupTargetFailover>(
-              map['targetFailovers'],
-              (value) => pulumi_aws_lb.TargetGroupTargetFailover.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      targetGroupHealth: map['targetGroupHealth'] == null
-          ? null
-          : pulumi_aws_lb.TargetGroupTargetGroupHealth.fromMap(
-              (map['targetGroupHealth'] as Map).cast<String, dynamic>(),
-            ),
-      targetHealthStates: map['targetHealthStates'] == null
-          ? null
-          : pulumi.Input.decodeList<pulumi_aws_lb.TargetGroupTargetHealthState>(
-              map['targetHealthStates'],
-              (value) => pulumi_aws_lb.TargetGroupTargetHealthState.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      targetType: map['targetType'] == null
-          ? null
-          : map['targetType'] as String,
+      stickiness: map['stickiness'] == null ? null : pulumi_aws_lb.TargetGroupStickiness.fromMap((map['stickiness'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      targetControlPort: map['targetControlPort'] == null ? null : map['targetControlPort'] as int,
+      targetFailovers: map['targetFailovers'] == null ? null : pulumi.Input.decodeList<pulumi_aws_lb.TargetGroupTargetFailover>(map['targetFailovers'], (value) => pulumi_aws_lb.TargetGroupTargetFailover.fromMap((value as Map).cast<String, dynamic>())),
+      targetGroupHealth: map['targetGroupHealth'] == null ? null : pulumi_aws_lb.TargetGroupTargetGroupHealth.fromMap((map['targetGroupHealth'] as Map).cast<String, dynamic>()),
+      targetHealthStates: map['targetHealthStates'] == null ? null : pulumi.Input.decodeList<pulumi_aws_lb.TargetGroupTargetHealthState>(map['targetHealthStates'], (value) => pulumi_aws_lb.TargetGroupTargetHealthState.fromMap((value as Map).cast<String, dynamic>())),
+      targetType: map['targetType'] == null ? null : map['targetType'] as String,
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
+

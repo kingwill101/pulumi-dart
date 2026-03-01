@@ -12,14 +12,21 @@ class GetWebAclArgs {
 
   /// Creates a new [GetWebAclArgs].
   /// [name] Name of the WAF Web ACL.
-  GetWebAclArgs({required String name})
-    : name = pulumi.Input.asInput<String>(name);
+  GetWebAclArgs({
+    required String name,
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetWebAclArgs.fromMap(Map<String, dynamic> map) {
-    return GetWebAclArgs(name: map['name'] as String);
+    return GetWebAclArgs(
+      name: map['name'] as String,
+    );
   }
 }
+

@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAccountPolicyArgs {
   /// Text of the account policy. Refer to the [AWS docs](https://docs.aws.amazon.com/cli/latest/reference/logs/put-account-policy.html) for more information.
   final pulumi.Input<String> policyDocument;
-
   /// Name of the account policy.
   final pulumi.Input<String> policyName;
-
   /// Type of account policy. One of `DATA_PROTECTION_POLICY`, `SUBSCRIPTION_FILTER_POLICY`, `FIELD_INDEX_POLICY` or `TRANSFORMER_POLICY`. You can have one account policy per type in an account.
   final pulumi.Input<String> policyType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Currently defaults to and only accepts the value: `ALL`.
   final pulumi.Input<String>? scope;
-
   /// Criteria for applying a subscription filter policy to a selection of log groups. The only allowable criteria selector is `LogGroupName NOT IN []`.
   final pulumi.Input<String>? selectionCriteria;
 
@@ -39,14 +34,13 @@ class LogAccountPolicyArgs {
     String? region,
     String? scope,
     String? selectionCriteria,
-  }) : policyDocument = pulumi.Input.asInput<String>(policyDocument),
-       policyName = pulumi.Input.asInput<String>(policyName),
-       policyType = pulumi.Input.asInput<String>(policyType),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       scope = pulumi.Input.asOptionalInput<String>(scope),
-       selectionCriteria = pulumi.Input.asOptionalInput<String>(
-         selectionCriteria,
-       );
+  }) :
+      policyDocument = pulumi.Input.asInput<String>(policyDocument),
+      policyName = pulumi.Input.asInput<String>(policyName),
+      policyType = pulumi.Input.asInput<String>(policyType),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scope = pulumi.Input.asOptionalInput<String>(scope),
+      selectionCriteria = pulumi.Input.asOptionalInput<String>(selectionCriteria);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,9 +60,8 @@ class LogAccountPolicyArgs {
       policyType: map['policyType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       scope: map['scope'] == null ? null : map['scope'] as String,
-      selectionCriteria: map['selectionCriteria'] == null
-          ? null
-          : map['selectionCriteria'] as String,
+      selectionCriteria: map['selectionCriteria'] == null ? null : map['selectionCriteria'] as String,
     );
   }
 }
+

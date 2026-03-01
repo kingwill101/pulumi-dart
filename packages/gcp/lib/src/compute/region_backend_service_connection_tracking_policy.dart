@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionBackendServiceConnectionTrackingPolicy {
   /// Specifies connection persistence when backends are unhealthy.
   /// If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
@@ -17,16 +18,13 @@ class RegionBackendServiceConnectionTrackingPolicy {
   /// Default value is `DEFAULT_FOR_PROTOCOL`.
   /// Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
   final String? connectionPersistenceOnUnhealthyBackends;
-
   /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
   final bool? enableStrongAffinity;
-
   /// Specifies how long to keep a Connection Tracking entry while there is
   /// no matching traffic (in seconds).
   /// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
   /// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
   final int? idleTimeoutSec;
-
   /// Specifies the key used for connection tracking. There are two options:
   /// `PER_CONNECTION`: The Connection Tracking is performed as per the
   /// Connection Key (default Hash Method) for the specific protocol.
@@ -50,31 +48,20 @@ class RegionBackendServiceConnectionTrackingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPersistenceOnUnhealthyBackends':
-          ?connectionPersistenceOnUnhealthyBackends,
+      'connectionPersistenceOnUnhealthyBackends': ?connectionPersistenceOnUnhealthyBackends,
       'enableStrongAffinity': ?enableStrongAffinity,
       'idleTimeoutSec': ?idleTimeoutSec,
       'trackingMode': ?trackingMode,
     };
   }
 
-  factory RegionBackendServiceConnectionTrackingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceConnectionTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceConnectionTrackingPolicy(
-      connectionPersistenceOnUnhealthyBackends:
-          map['connectionPersistenceOnUnhealthyBackends'] == null
-          ? null
-          : map['connectionPersistenceOnUnhealthyBackends'] as String,
-      enableStrongAffinity: map['enableStrongAffinity'] == null
-          ? null
-          : map['enableStrongAffinity'] as bool,
-      idleTimeoutSec: map['idleTimeoutSec'] == null
-          ? null
-          : map['idleTimeoutSec'] as int,
-      trackingMode: map['trackingMode'] == null
-          ? null
-          : map['trackingMode'] as String,
+      connectionPersistenceOnUnhealthyBackends: map['connectionPersistenceOnUnhealthyBackends'] == null ? null : map['connectionPersistenceOnUnhealthyBackends'] as String,
+      enableStrongAffinity: map['enableStrongAffinity'] == null ? null : map['enableStrongAffinity'] as bool,
+      idleTimeoutSec: map['idleTimeoutSec'] == null ? null : map['idleTimeoutSec'] as int,
+      trackingMode: map['trackingMode'] == null ? null : map['trackingMode'] as String,
     );
   }
 }
+

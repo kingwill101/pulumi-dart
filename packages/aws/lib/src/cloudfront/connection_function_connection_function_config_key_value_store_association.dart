@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
   /// ARN of the key value store.
   final String keyValueStoreArn;
@@ -11,14 +12,15 @@ class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyValueStoreArn': keyValueStoreArn};
+    return <String, dynamic>{
+      'keyValueStoreArn': keyValueStoreArn,
+    };
   }
 
-  factory ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation(
       keyValueStoreArn: map['keyValueStoreArn'] as String,
     );
   }
 }
+

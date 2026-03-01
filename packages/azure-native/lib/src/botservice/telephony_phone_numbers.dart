@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A telephone number for the Telephony channel
+class TelephonyPhoneNumbers {
+  /// The endpoint of ACS.
+  final String? acsEndpoint;
+  /// The resource id of ACS.
+  final String? acsResourceId;
+  /// The secret of ACS.
+  final String? acsSecret;
+  /// The service region of cognitive service.
+  final String? cognitiveServiceRegion;
+  /// The resource id of cognitive service.
+  final String? cognitiveServiceResourceId;
+  /// The subscription key of cognitive service.
+  final String? cognitiveServiceSubscriptionKey;
+  /// The default locale of the phone number.
+  final String? defaultLocale;
+  /// The element id.
+  final String? id;
+  /// Optional Property that will determine the offering type of the phone.
+  final String? offerType;
+  /// The phone number.
+  final String? phoneNumber;
+
+  /// Creates a new [TelephonyPhoneNumbers].
+  /// [acsEndpoint] The endpoint of ACS.
+  /// [acsResourceId] The resource id of ACS.
+  /// [acsSecret] The secret of ACS.
+  /// [cognitiveServiceRegion] The service region of cognitive service.
+  /// [cognitiveServiceResourceId] The resource id of cognitive service.
+  /// [cognitiveServiceSubscriptionKey] The subscription key of cognitive service.
+  /// [defaultLocale] The default locale of the phone number.
+  /// [id] The element id.
+  /// [offerType] Optional Property that will determine the offering type of the phone.
+  /// [phoneNumber] The phone number.
+  TelephonyPhoneNumbers({
+    this.acsEndpoint,
+    this.acsResourceId,
+    this.acsSecret,
+    this.cognitiveServiceRegion,
+    this.cognitiveServiceResourceId,
+    this.cognitiveServiceSubscriptionKey,
+    this.defaultLocale,
+    this.id,
+    this.offerType,
+    this.phoneNumber,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'acsEndpoint': ?acsEndpoint,
+      'acsResourceId': ?acsResourceId,
+      'acsSecret': ?acsSecret,
+      'cognitiveServiceRegion': ?cognitiveServiceRegion,
+      'cognitiveServiceResourceId': ?cognitiveServiceResourceId,
+      'cognitiveServiceSubscriptionKey': ?cognitiveServiceSubscriptionKey,
+      'defaultLocale': ?defaultLocale,
+      'id': ?id,
+      'offerType': ?offerType,
+      'phoneNumber': ?phoneNumber,
+    };
+  }
+
+  factory TelephonyPhoneNumbers.fromMap(Map<String, dynamic> map) {
+    return TelephonyPhoneNumbers(
+      acsEndpoint: map['acsEndpoint'] == null ? null : map['acsEndpoint'] as String,
+      acsResourceId: map['acsResourceId'] == null ? null : map['acsResourceId'] as String,
+      acsSecret: map['acsSecret'] == null ? null : map['acsSecret'] as String,
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : map['cognitiveServiceRegion'] as String,
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : map['cognitiveServiceResourceId'] as String,
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : map['cognitiveServiceSubscriptionKey'] as String,
+      defaultLocale: map['defaultLocale'] == null ? null : map['defaultLocale'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+      offerType: map['offerType'] == null ? null : map['offerType'] as String,
+      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
+    );
+  }
+}
+

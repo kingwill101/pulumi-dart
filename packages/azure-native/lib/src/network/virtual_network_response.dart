@@ -1,0 +1,169 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'address_space_response.dart';
+import 'dhcp_options_response.dart';
+import 'extended_location_response.dart';
+import 'flow_log_response.dart';
+import 'sub_resource_response.dart';
+import 'subnet_response.dart';
+import 'virtual_network_bgp_communities_response.dart';
+import 'virtual_network_encryption_response.dart';
+import 'virtual_network_peering_response.dart';
+
+/// Virtual Network resource.
+class VirtualNetworkResponse {
+  /// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+  final AddressSpaceResponse? addressSpace;
+  /// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+  final VirtualNetworkBgpCommunitiesResponse? bgpCommunities;
+  /// The DDoS protection plan associated with the virtual network.
+  final SubResourceResponse? ddosProtectionPlan;
+  /// A reference to the default public nat gateway being used by this virtual network resource.
+  final SubResourceResponse defaultPublicNatGateway;
+  /// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+  final DhcpOptionsResponse? dhcpOptions;
+  /// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+  final bool? enableDdosProtection;
+  /// Indicates if VM protection is enabled for all the subnets in the virtual network.
+  final bool? enableVmProtection;
+  /// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+  final VirtualNetworkEncryptionResponse? encryption;
+  /// A unique read-only string that changes whenever the resource is updated.
+  final String etag;
+  /// The extended location of the virtual network.
+  final ExtendedLocationResponse? extendedLocation;
+  /// A collection of references to flow log resources.
+  final List<FlowLogResponse> flowLogs;
+  /// The FlowTimeout value (in minutes) for the Virtual Network
+  final int? flowTimeoutInMinutes;
+  /// Resource ID.
+  final String? id;
+  /// Array of IpAllocation which reference this VNET.
+  final List<SubResourceResponse>? ipAllocations;
+  /// Resource location.
+  final String? location;
+  /// Resource name.
+  final String name;
+  /// Private Endpoint VNet Policies.
+  final String? privateEndpointVNetPolicies;
+  /// The provisioning state of the virtual network resource.
+  final String provisioningState;
+  /// The resourceGuid property of the Virtual Network resource.
+  final String resourceGuid;
+  /// A list of subnets in a Virtual Network.
+  final List<SubnetResponse>? subnets;
+  /// Resource tags.
+  final Map<String, String>? tags;
+  /// Resource type.
+  final String type;
+  /// A list of peerings in a Virtual Network.
+  final List<VirtualNetworkPeeringResponse>? virtualNetworkPeerings;
+
+  /// Creates a new [VirtualNetworkResponse].
+  /// [addressSpace] The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+  /// [bgpCommunities] Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+  /// [ddosProtectionPlan] The DDoS protection plan associated with the virtual network.
+  /// [defaultPublicNatGateway] A reference to the default public nat gateway being used by this virtual network resource.
+  /// [dhcpOptions] The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+  /// [enableDdosProtection] Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+  /// [enableVmProtection] Indicates if VM protection is enabled for all the subnets in the virtual network.
+  /// [encryption] Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+  /// [etag] A unique read-only string that changes whenever the resource is updated.
+  /// [extendedLocation] The extended location of the virtual network.
+  /// [flowLogs] A collection of references to flow log resources.
+  /// [flowTimeoutInMinutes] The FlowTimeout value (in minutes) for the Virtual Network
+  /// [id] Resource ID.
+  /// [ipAllocations] Array of IpAllocation which reference this VNET.
+  /// [location] Resource location.
+  /// [name] Resource name.
+  /// [privateEndpointVNetPolicies] Private Endpoint VNet Policies.
+  /// [provisioningState] The provisioning state of the virtual network resource.
+  /// [resourceGuid] The resourceGuid property of the Virtual Network resource.
+  /// [subnets] A list of subnets in a Virtual Network.
+  /// [tags] Resource tags.
+  /// [type] Resource type.
+  /// [virtualNetworkPeerings] A list of peerings in a Virtual Network.
+  VirtualNetworkResponse({
+    this.addressSpace,
+    this.bgpCommunities,
+    this.ddosProtectionPlan,
+    required this.defaultPublicNatGateway,
+    this.dhcpOptions,
+    this.enableDdosProtection,
+    this.enableVmProtection,
+    this.encryption,
+    required this.etag,
+    this.extendedLocation,
+    required this.flowLogs,
+    this.flowTimeoutInMinutes,
+    this.id,
+    this.ipAllocations,
+    this.location,
+    required this.name,
+    this.privateEndpointVNetPolicies,
+    required this.provisioningState,
+    required this.resourceGuid,
+    this.subnets,
+    this.tags,
+    required this.type,
+    this.virtualNetworkPeerings,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'addressSpace': ?addressSpace == null ? null : addressSpace!.toMap(),
+      'bgpCommunities': ?bgpCommunities == null ? null : bgpCommunities!.toMap(),
+      'ddosProtectionPlan': ?ddosProtectionPlan == null ? null : ddosProtectionPlan!.toMap(),
+      'defaultPublicNatGateway': defaultPublicNatGateway.toMap(),
+      'dhcpOptions': ?dhcpOptions == null ? null : dhcpOptions!.toMap(),
+      'enableDdosProtection': ?enableDdosProtection,
+      'enableVmProtection': ?enableVmProtection,
+      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'etag': etag,
+      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'flowLogs': pulumi.Input.encodeList<FlowLogResponse, Map<String, dynamic>>(flowLogs, (value) => value.toMap()),
+      'flowTimeoutInMinutes': ?flowTimeoutInMinutes,
+      'id': ?id,
+      'ipAllocations': ?ipAllocations == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(ipAllocations!, (value) => value.toMap()),
+      'location': ?location,
+      'name': name,
+      'privateEndpointVNetPolicies': ?privateEndpointVNetPolicies,
+      'provisioningState': provisioningState,
+      'resourceGuid': resourceGuid,
+      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
+      'tags': ?tags,
+      'type': type,
+      'virtualNetworkPeerings': ?virtualNetworkPeerings == null ? null : pulumi.Input.encodeList<VirtualNetworkPeeringResponse, Map<String, dynamic>>(virtualNetworkPeerings!, (value) => value.toMap()),
+    };
+  }
+
+  factory VirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
+    return VirtualNetworkResponse(
+      addressSpace: map['addressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['addressSpace'] as Map).cast<String, dynamic>()),
+      bgpCommunities: map['bgpCommunities'] == null ? null : VirtualNetworkBgpCommunitiesResponse.fromMap((map['bgpCommunities'] as Map).cast<String, dynamic>()),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : SubResourceResponse.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>()),
+      defaultPublicNatGateway: SubResourceResponse.fromMap((map['defaultPublicNatGateway'] as Map).cast<String, dynamic>()),
+      dhcpOptions: map['dhcpOptions'] == null ? null : DhcpOptionsResponse.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>()),
+      enableDdosProtection: map['enableDdosProtection'] == null ? null : map['enableDdosProtection'] as bool,
+      enableVmProtection: map['enableVmProtection'] == null ? null : map['enableVmProtection'] as bool,
+      encryption: map['encryption'] == null ? null : VirtualNetworkEncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      etag: map['etag'] as String,
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      flowLogs: pulumi.Input.decodeList<FlowLogResponse>(map['flowLogs'], (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())),
+      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : map['flowTimeoutInMinutes'] as int,
+      id: map['id'] == null ? null : map['id'] as String,
+      ipAllocations: map['ipAllocations'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['ipAllocations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] as String,
+      privateEndpointVNetPolicies: map['privateEndpointVNetPolicies'] == null ? null : map['privateEndpointVNetPolicies'] as String,
+      provisioningState: map['provisioningState'] as String,
+      resourceGuid: map['resourceGuid'] as String,
+      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      type: map['type'] as String,
+      virtualNetworkPeerings: map['virtualNetworkPeerings'] == null ? null : pulumi.Input.decodeList<VirtualNetworkPeeringResponse>(map['virtualNetworkPeerings'], (value) => VirtualNetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

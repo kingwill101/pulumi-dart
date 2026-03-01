@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainLogPublishingOption {
   /// The CloudWatch Log Group where the logs are published.
   final String cloudwatchLogGroupArn;
-
   /// Whether node to node encryption is enabled.
   final bool enabled;
-
   /// The type of Elasticsearch log being published.
   final String logType;
 
@@ -36,3 +35,4 @@ class GetDomainLogPublishingOption {
     );
   }
 }
+

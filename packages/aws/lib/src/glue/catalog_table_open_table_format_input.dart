@@ -8,17 +8,20 @@ class CatalogTableOpenTableFormatInput {
 
   /// Creates a new [CatalogTableOpenTableFormatInput].
   /// [icebergInput] Configuration block for iceberg table config. See `iceberg_input` below.
-  CatalogTableOpenTableFormatInput({required this.icebergInput});
+  CatalogTableOpenTableFormatInput({
+    required this.icebergInput,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'icebergInput': icebergInput.toMap()};
+    return <String, dynamic>{
+      'icebergInput': icebergInput.toMap(),
+    };
   }
 
   factory CatalogTableOpenTableFormatInput.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInput(
-      icebergInput: CatalogTableOpenTableFormatInputIcebergInput.fromMap(
-        (map['icebergInput'] as Map).cast<String, dynamic>(),
-      ),
+      icebergInput: CatalogTableOpenTableFormatInputIcebergInput.fromMap((map['icebergInput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

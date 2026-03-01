@@ -12,30 +12,20 @@ class SecurityProfileUrlFilteringProfile {
 
   /// Creates a new [SecurityProfileUrlFilteringProfile].
   /// [urlFilters] The configuration for action to take based on domain name match.
-  SecurityProfileUrlFilteringProfile({this.urlFilters});
+  SecurityProfileUrlFilteringProfile({
+    this.urlFilters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'urlFilters': ?urlFilters == null
-          ? null
-          : pulumi.Input.encodeList<
-              SecurityProfileUrlFilteringProfileUrlFilter,
-              Map<String, dynamic>
-            >(urlFilters!, (value) => value.toMap()),
+      'urlFilters': ?urlFilters == null ? null : pulumi.Input.encodeList<SecurityProfileUrlFilteringProfileUrlFilter, Map<String, dynamic>>(urlFilters!, (value) => value.toMap()),
     };
   }
 
   factory SecurityProfileUrlFilteringProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfileUrlFilteringProfile(
-      urlFilters: map['urlFilters'] == null
-          ? null
-          : pulumi
-                .Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(
-              map['urlFilters'],
-              (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      urlFilters: map['urlFilters'] == null ? null : pulumi.Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(map['urlFilters'], (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

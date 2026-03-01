@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes the cloud service role sku.
+class CloudServiceRoleSku {
+  /// Specifies the number of role instances in the cloud service.
+  final double? capacity;
+  /// The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
+  final String? name;
+  /// Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
+  final String? tier;
+
+  /// Creates a new [CloudServiceRoleSku].
+  /// [capacity] Specifies the number of role instances in the cloud service.
+  /// [name] The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
+  /// [tier] Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
+  CloudServiceRoleSku({
+    this.capacity,
+    this.name,
+    this.tier,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': ?name,
+      'tier': ?tier,
+    };
+  }
+
+  factory CloudServiceRoleSku.fromMap(Map<String, dynamic> map) {
+    return CloudServiceRoleSku(
+      capacity: map['capacity'] == null ? null : map['capacity'] as double,
+      name: map['name'] == null ? null : map['name'] as String,
+      tier: map['tier'] == null ? null : map['tier'] as String,
+    );
+  }
+}
+

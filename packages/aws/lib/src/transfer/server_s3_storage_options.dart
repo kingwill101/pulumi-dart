@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServerS3StorageOptions {
   /// Specifies whether or not performance for your Amazon S3 directories is optimized. Valid values are `DISABLED`, `ENABLED`.
   ///
@@ -8,7 +9,9 @@ class ServerS3StorageOptions {
 
   /// Creates a new [ServerS3StorageOptions].
   /// [directoryListingOptimization] Specifies whether or not performance for your Amazon S3 directories is optimized. Valid values are `DISABLED`, `ENABLED`.
-  ServerS3StorageOptions({this.directoryListingOptimization});
+  ServerS3StorageOptions({
+    this.directoryListingOptimization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +21,8 @@ class ServerS3StorageOptions {
 
   factory ServerS3StorageOptions.fromMap(Map<String, dynamic> map) {
     return ServerS3StorageOptions(
-      directoryListingOptimization: map['directoryListingOptimization'] == null
-          ? null
-          : map['directoryListingOptimization'] as String,
+      directoryListingOptimization: map['directoryListingOptimization'] == null ? null : map['directoryListingOptimization'] as String,
     );
   }
 }
+

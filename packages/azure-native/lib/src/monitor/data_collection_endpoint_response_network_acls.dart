@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Network access control rules for the endpoints.
+class DataCollectionEndpointResponseNetworkAcls {
+  /// The configuration to set whether network access from public internet to the endpoints are allowed.
+  final String? publicNetworkAccess;
+
+  /// Creates a new [DataCollectionEndpointResponseNetworkAcls].
+  /// [publicNetworkAccess] The configuration to set whether network access from public internet to the endpoints are allowed.
+  DataCollectionEndpointResponseNetworkAcls({
+    this.publicNetworkAccess,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'publicNetworkAccess': ?publicNetworkAccess,
+    };
+  }
+
+  factory DataCollectionEndpointResponseNetworkAcls.fromMap(Map<String, dynamic> map) {
+    return DataCollectionEndpointResponseNetworkAcls(
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+    );
+  }
+}
+

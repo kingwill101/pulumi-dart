@@ -11,15 +11,17 @@ class HostedZoneDnsSecArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> hostedZoneId;
-
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
   final pulumi.Input<String>? signingStatus;
 
   /// Creates a new [HostedZoneDnsSecArgs].
   /// [hostedZoneId] Identifier of the Route 53 Hosted Zone.
   /// [signingStatus] Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  HostedZoneDnsSecArgs({required String hostedZoneId, String? signingStatus})
-    : hostedZoneId = pulumi.Input.asInput<String>(hostedZoneId),
+  HostedZoneDnsSecArgs({
+    required String hostedZoneId,
+    String? signingStatus,
+  }) :
+      hostedZoneId = pulumi.Input.asInput<String>(hostedZoneId),
       signingStatus = pulumi.Input.asOptionalInput<String>(signingStatus);
 
   Map<String, dynamic> toMap() {
@@ -32,9 +34,8 @@ class HostedZoneDnsSecArgs {
   factory HostedZoneDnsSecArgs.fromMap(Map<String, dynamic> map) {
     return HostedZoneDnsSecArgs(
       hostedZoneId: map['hostedZoneId'] as String,
-      signingStatus: map['signingStatus'] == null
-          ? null
-          : map['signingStatus'] as String,
+      signingStatus: map['signingStatus'] == null ? null : map['signingStatus'] as String,
     );
   }
 }
+

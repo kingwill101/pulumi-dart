@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'edge_profile_subscription_response.dart';
+
+/// Details about Edge Profile for the resource
+class EdgeProfileResponse {
+  /// Edge Profile Subscription
+  final EdgeProfileSubscriptionResponse? subscription;
+
+  /// Creates a new [EdgeProfileResponse].
+  /// [subscription] Edge Profile Subscription
+  EdgeProfileResponse({
+    this.subscription,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'subscription': ?subscription == null ? null : subscription!.toMap(),
+    };
+  }
+
+  factory EdgeProfileResponse.fromMap(Map<String, dynamic> map) {
+    return EdgeProfileResponse(
+      subscription: map['subscription'] == null ? null : EdgeProfileSubscriptionResponse.fromMap((map['subscription'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

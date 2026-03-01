@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'domain_devices_disk_backing_store_source_vhost_user_pipe_sec_label.dart';
+
+class DomainDevicesDiskBackingStoreSourceVhostUserPipe {
+  /// Sets the path for the pipe source in the EGD backend.
+  final String path;
+  /// Configures security label settings for the pipe source in the EGD backend.
+  final List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>? secLabels;
+
+  /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostUserPipe].
+  /// [path] Sets the path for the pipe source in the EGD backend.
+  /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
+  DomainDevicesDiskBackingStoreSourceVhostUserPipe({
+    required this.path,
+    this.secLabels,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'path': path,
+      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+    };
+  }
+
+  factory DomainDevicesDiskBackingStoreSourceVhostUserPipe.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesDiskBackingStoreSourceVhostUserPipe(
+      path: map['path'] as String,
+      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

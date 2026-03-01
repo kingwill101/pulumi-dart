@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Properties of an hourly schedule.
+class HourDetailsResponse {
+  /// Minutes of the hour the schedule will run.
+  final int? minute;
+
+  /// Creates a new [HourDetailsResponse].
+  /// [minute] Minutes of the hour the schedule will run.
+  HourDetailsResponse({
+    this.minute,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'minute': ?minute,
+    };
+  }
+
+  factory HourDetailsResponse.fromMap(Map<String, dynamic> map) {
+    return HourDetailsResponse(
+      minute: map['minute'] == null ? null : map['minute'] as int,
+    );
+  }
+}
+

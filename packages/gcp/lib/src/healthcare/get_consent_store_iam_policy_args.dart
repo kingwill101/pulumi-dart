@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsentStoreIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> consentStoreId;
-
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   /// Used to find the parent resource to bind the IAM policy to
@@ -21,8 +20,9 @@ class GetConsentStoreIamPolicyArgs {
   GetConsentStoreIamPolicyArgs({
     required String consentStoreId,
     required String dataset,
-  }) : consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-       dataset = pulumi.Input.asInput<String>(dataset);
+  }) :
+      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+      dataset = pulumi.Input.asInput<String>(dataset);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,3 +38,4 @@ class GetConsentStoreIamPolicyArgs {
     );
   }
 }
+

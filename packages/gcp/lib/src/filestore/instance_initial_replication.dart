@@ -7,7 +7,6 @@ class InstanceInitialReplication {
   /// The replication role.
   /// Structure is documented below.
   final List<InstanceInitialReplicationReplica>? replicas;
-
   /// The replication role.
   /// Default value is `STANDBY`.
   /// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
@@ -16,31 +15,23 @@ class InstanceInitialReplication {
   /// Creates a new [InstanceInitialReplication].
   /// [replicas] The replication role.
   /// [role] The replication role.
-  InstanceInitialReplication({this.replicas, this.role});
+  InstanceInitialReplication({
+    this.replicas,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas': ?replicas == null
-          ? null
-          : pulumi.Input.encodeList<
-              InstanceInitialReplicationReplica,
-              Map<String, dynamic>
-            >(replicas!, (value) => value.toMap()),
+      'replicas': ?replicas == null ? null : pulumi.Input.encodeList<InstanceInitialReplicationReplica, Map<String, dynamic>>(replicas!, (value) => value.toMap()),
       'role': ?role,
     };
   }
 
   factory InstanceInitialReplication.fromMap(Map<String, dynamic> map) {
     return InstanceInitialReplication(
-      replicas: map['replicas'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceInitialReplicationReplica>(
-              map['replicas'],
-              (value) => InstanceInitialReplicationReplica.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      replicas: map['replicas'] == null ? null : pulumi.Input.decodeList<InstanceInitialReplicationReplica>(map['replicas'], (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>())),
       role: map['role'] == null ? null : map['role'] as String,
     );
   }
 }
+

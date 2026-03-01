@@ -6,11 +6,8 @@ import 'agent_agent_memory_configuration_session_summary_configuration.dart';
 class AgentAgentMemoryConfiguration {
   /// The type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
   final List<String> enabledMemoryTypes;
-
   /// Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See `session_summary_configuration` Block for details.
-  final List<AgentAgentMemoryConfigurationSessionSummaryConfiguration>
-  sessionSummaryConfigurations;
-
+  final List<AgentAgentMemoryConfigurationSessionSummaryConfiguration> sessionSummaryConfigurations;
   /// The number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
   final int storageDays;
 
@@ -27,11 +24,7 @@ class AgentAgentMemoryConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabledMemoryTypes': enabledMemoryTypes,
-      'sessionSummaryConfigurations':
-          pulumi.Input.encodeList<
-            AgentAgentMemoryConfigurationSessionSummaryConfiguration,
-            Map<String, dynamic>
-          >(sessionSummaryConfigurations, (value) => value.toMap()),
+      'sessionSummaryConfigurations': pulumi.Input.encodeList<AgentAgentMemoryConfigurationSessionSummaryConfiguration, Map<String, dynamic>>(sessionSummaryConfigurations, (value) => value.toMap()),
       'storageDays': storageDays,
     };
   }
@@ -39,17 +32,9 @@ class AgentAgentMemoryConfiguration {
   factory AgentAgentMemoryConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentMemoryConfiguration(
       enabledMemoryTypes: (map['enabledMemoryTypes'] as List).cast<String>(),
-      sessionSummaryConfigurations:
-          pulumi.Input.decodeList<
-            AgentAgentMemoryConfigurationSessionSummaryConfiguration
-          >(
-            map['sessionSummaryConfigurations'],
-            (value) =>
-                AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      sessionSummaryConfigurations: pulumi.Input.decodeList<AgentAgentMemoryConfigurationSessionSummaryConfiguration>(map['sessionSummaryConfigurations'], (value) => AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       storageDays: map['storageDays'] as int,
     );
   }
 }
+

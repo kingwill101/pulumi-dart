@@ -22,12 +22,7 @@ class TaskDefinitionLogConfiguration {
     return <String, dynamic>{
       'logDriver': logDriver,
       'options': ?options,
-      'secretOptions': ?secretOptions == null
-          ? null
-          : pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(
-              secretOptions!,
-              (value) => value.toMap(),
-            ),
+      'secretOptions': ?secretOptions == null ? null : pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(secretOptions!, (value) => value.toMap()),
     };
   }
 
@@ -35,14 +30,8 @@ class TaskDefinitionLogConfiguration {
     return TaskDefinitionLogConfiguration(
       logDriver: map['logDriver'] as String,
       options: map['options'] == null ? null : map['options'],
-      secretOptions: map['secretOptions'] == null
-          ? null
-          : pulumi.Input.decodeList<TaskDefinitionSecret>(
-              map['secretOptions'],
-              (value) => TaskDefinitionSecret.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      secretOptions: map['secretOptions'] == null ? null : pulumi.Input.decodeList<TaskDefinitionSecret>(map['secretOptions'], (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

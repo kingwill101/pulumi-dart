@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionFixedResponse {
   final String contentType;
   final String messageBody;
@@ -23,9 +24,7 @@ class GetListenerDefaultActionFixedResponse {
     };
   }
 
-  factory GetListenerDefaultActionFixedResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionFixedResponse(
       contentType: map['contentType'] as String,
       messageBody: map['messageBody'] as String,
@@ -33,3 +32,4 @@ class GetListenerDefaultActionFixedResponse {
     );
   }
 }
+

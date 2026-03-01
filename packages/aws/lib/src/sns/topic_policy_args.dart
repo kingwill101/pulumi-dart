@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicPolicyArgs {
   /// The ARN of the SNS topic
   final pulumi.Input<String> arn;
-
   /// The fully-formed AWS policy as JSON.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,13 +18,21 @@ class TopicPolicyArgs {
   /// [arn] The ARN of the SNS topic
   /// [policy] The fully-formed AWS policy as JSON.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  TopicPolicyArgs({required String arn, required String policy, String? region})
-    : arn = pulumi.Input.asInput<String>(arn),
+  TopicPolicyArgs({
+    required String arn,
+    required String policy,
+    String? region,
+  }) :
+      arn = pulumi.Input.asInput<String>(arn),
       policy = pulumi.Input.asInput<String>(policy),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'policy': policy, 'region': ?region};
+    return <String, dynamic>{
+      'arn': arn,
+      'policy': policy,
+      'region': ?region,
+    };
   }
 
   factory TopicPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -37,3 +43,4 @@ class TopicPolicyArgs {
     );
   }
 }
+

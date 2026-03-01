@@ -359,54 +359,40 @@ import 'node_pool_node_config.dart';
 class NodePool extends pulumi.CustomResource {
   /// The name of the target Distributed Cloud Edge Cluster.
   late final pulumi.Output<String> cluster;
-
   /// The time when the node pool was created.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Local disk encryption options. This field is only used when enabling CMEK support.
   /// Structure is documented below.
   late final pulumi.Output<NodePoolLocalDiskEncryption?> localDiskEncryption;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// Only machines matching this filter will be allowed to join the node pool.
   /// The filtering language accepts strings like "name=<name>", and is
   /// documented in more detail in [AIP-160](https://google.aip.dev/160).
   late final pulumi.Output<String> machineFilter;
-
   /// The resource name of the node pool.
   late final pulumi.Output<String> name;
-
   /// Configuration for each node in the NodePool
   /// Structure is documented below.
   late final pulumi.Output<NodePoolNodeConfig> nodeConfig;
-
   /// The number of nodes in the pool.
   late final pulumi.Output<int> nodeCount;
-
   /// Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
   late final pulumi.Output<String> nodeLocation;
-
   /// The lowest release version among all worker nodes.
   late final pulumi.Output<String> nodeVersion;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The time when the node pool was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -419,20 +405,16 @@ class NodePool extends pulumi.CustomResource {
     NodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:edgecontainer/nodePool:NodePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:edgecontainer/nodePool:NodePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.cluster = registerOutput<String>('cluster');
     this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
-    this.localDiskEncryption = registerOutput<NodePoolLocalDiskEncryption?>(
-      'localDiskEncryption',
-    );
+    this.localDiskEncryption = registerOutput<NodePoolLocalDiskEncryption?>('localDiskEncryption');
     this.location = registerOutput<String>('location');
     this.machineFilter = registerOutput<String>('machineFilter');
     this.name = registerOutput<String>('name');

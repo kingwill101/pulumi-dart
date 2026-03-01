@@ -6,7 +6,6 @@ import 'replicator_kafka_cluster_vpc_config.dart';
 class ReplicatorKafkaCluster {
   /// Details of an Amazon MSK cluster.
   final ReplicatorKafkaClusterAmazonMskCluster amazonMskCluster;
-
   /// Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.
   final ReplicatorKafkaClusterVpcConfig vpcConfig;
 
@@ -27,12 +26,9 @@ class ReplicatorKafkaCluster {
 
   factory ReplicatorKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaCluster(
-      amazonMskCluster: ReplicatorKafkaClusterAmazonMskCluster.fromMap(
-        (map['amazonMskCluster'] as Map).cast<String, dynamic>(),
-      ),
-      vpcConfig: ReplicatorKafkaClusterVpcConfig.fromMap(
-        (map['vpcConfig'] as Map).cast<String, dynamic>(),
-      ),
+      amazonMskCluster: ReplicatorKafkaClusterAmazonMskCluster.fromMap((map['amazonMskCluster'] as Map).cast<String, dynamic>()),
+      vpcConfig: ReplicatorKafkaClusterVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

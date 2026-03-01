@@ -1,0 +1,209 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'deployment_at_subscription_scope_args.dart';
+import 'deployment_properties_extended_response.dart';
+
+/// Deployment information.
+///
+/// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+///
+/// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Create a deployment that will deploy a templateSpec with the given resourceId
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var deploymentAtSubscriptionScope = new AzureNative.Resources.DeploymentAtSubscriptionScope("deploymentAtSubscriptionScope", new()
+///     {
+///         DeploymentName = "my-deployment",
+///         Location = "eastus",
+///         Properties = new AzureNative.Resources.Inputs.DeploymentPropertiesArgs
+///         {
+///             Mode = AzureNative.Resources.DeploymentMode.Incremental,
+///             Parameters = null,
+///             TemplateLink = new AzureNative.Resources.Inputs.TemplateLinkArgs
+///             {
+///                 Id = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1",
+///             },
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	resources "github.com/pulumi/pulumi-azure-native-sdk/resources/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := resources.NewDeploymentAtSubscriptionScope(ctx, "deploymentAtSubscriptionScope", &resources.DeploymentAtSubscriptionScopeArgs{
+/// 			DeploymentName: pulumi.String("my-deployment"),
+/// 			Location:       pulumi.String("eastus"),
+/// 			Properties: &resources.DeploymentPropertiesArgs{
+/// 				Mode:       resources.DeploymentModeIncremental,
+/// 				Parameters: resources.DeploymentParameterMap{},
+/// 				TemplateLink: &resources.TemplateLinkArgs{
+/// 					Id: pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.resources.DeploymentAtSubscriptionScope;
+/// import com.pulumi.azurenative.resources.DeploymentAtSubscriptionScopeArgs;
+/// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
+/// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var deploymentAtSubscriptionScope = new DeploymentAtSubscriptionScope("deploymentAtSubscriptionScope", DeploymentAtSubscriptionScopeArgs.builder()
+///             .deploymentName("my-deployment")
+///             .location("eastus")
+///             .properties(DeploymentPropertiesArgs.builder()
+///                 .mode("Incremental")
+///                 .parameters(Map.ofEntries(
+///                 ))
+///                 .templateLink(TemplateLinkArgs.builder()
+///                     .id("/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const deploymentAtSubscriptionScope = new azure_native.resources.DeploymentAtSubscriptionScope("deploymentAtSubscriptionScope", {
+///     deploymentName: "my-deployment",
+///     location: "eastus",
+///     properties: {
+///         mode: azure_native.resources.DeploymentMode.Incremental,
+///         parameters: {},
+///         templateLink: {
+///             id: "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1",
+///         },
+///     },
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// deployment_at_subscription_scope = azure_native.resources.DeploymentAtSubscriptionScope("deploymentAtSubscriptionScope",
+///     deployment_name="my-deployment",
+///     location="eastus",
+///     properties={
+///         "mode": azure_native.resources.DeploymentMode.INCREMENTAL,
+///         "parameters": {},
+///         "template_link": {
+///             "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1",
+///         },
+///     })
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   deploymentAtSubscriptionScope:
+///     type: azure-native:resources:DeploymentAtSubscriptionScope
+///     properties:
+///       deploymentName: my-deployment
+///       location: eastus
+///       properties:
+///         mode: Incremental
+///         parameters: {}
+///         templateLink:
+///           id: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:resources:DeploymentAtSubscriptionScope my-deployment /subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}
+/// ```
+class DeploymentAtSubscriptionScope extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// the location of the deployment.
+  late final pulumi.Output<String?> location;
+  /// The name of the deployment.
+  late final pulumi.Output<String> name;
+  /// Deployment properties.
+  late final pulumi.Output<DeploymentPropertiesExtendedResponse> properties;
+  /// Deployment tags
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the deployment.
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [DeploymentAtSubscriptionScope].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [DeploymentAtSubscriptionScope]. {@macro pulumi_resources_deployment_at_subscription_scope_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  DeploymentAtSubscriptionScope(
+    String name, {
+    DeploymentAtSubscriptionScopeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:resources:DeploymentAtSubscriptionScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.properties = registerOutput<DeploymentPropertiesExtendedResponse>('properties');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

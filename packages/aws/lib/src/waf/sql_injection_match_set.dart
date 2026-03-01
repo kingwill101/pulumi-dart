@@ -148,13 +148,10 @@ import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 class SqlInjectionMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the SQL injection match set.
   late final pulumi.Output<String> arn;
-
   /// The name or description of the SQL Injection Match Set.
   late final pulumi.Output<String> name;
-
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>
-  sqlInjectionMatchTuples;
+  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?> sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSet].
   /// [name] The Pulumi resource name.
@@ -165,16 +162,13 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     SqlInjectionMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.sqlInjectionMatchTuples =
-        registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>(
-          'sqlInjectionMatchTuples',
-        );
+    this.sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples');
   }
 }

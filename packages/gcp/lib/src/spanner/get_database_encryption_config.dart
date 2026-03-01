@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseEncryptionConfig {
   /// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
   /// in the same location as the Spanner Database.
   final String kmsKeyName;
-
   /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
   /// in the same locations as the Spanner Database.
   final List<String> kmsKeyNames;
@@ -31,3 +31,4 @@ class GetDatabaseEncryptionConfig {
     );
   }
 }
+

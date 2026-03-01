@@ -9,26 +9,20 @@ class GetFeatureState {
 
   /// Creates a new [GetFeatureState].
   /// [states] Output only. The "running state" of the Feature in this Hub.
-  GetFeatureState({required this.states});
+  GetFeatureState({
+    required this.states,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states':
-          pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(
-            states,
-            (value) => value.toMap(),
-          ),
+      'states': pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(states, (value) => value.toMap()),
     };
   }
 
   factory GetFeatureState.fromMap(Map<String, dynamic> map) {
     return GetFeatureState(
-      states: pulumi.Input.decodeList<GetFeatureStateState>(
-        map['states'],
-        (value) => GetFeatureStateState.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      states: pulumi.Input.decodeList<GetFeatureStateState>(map['states'], (value) => GetFeatureStateState.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

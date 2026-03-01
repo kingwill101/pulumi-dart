@@ -9,23 +9,20 @@ class ReferenceListScopeInfo {
 
   /// Creates a new [ReferenceListScopeInfo].
   /// [referenceListScope] ReferenceListScope specifies the list of scope names of the reference list.
-  ReferenceListScopeInfo({this.referenceListScope});
+  ReferenceListScopeInfo({
+    this.referenceListScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'referenceListScope': ?referenceListScope == null
-          ? null
-          : referenceListScope!.toMap(),
+      'referenceListScope': ?referenceListScope == null ? null : referenceListScope!.toMap(),
     };
   }
 
   factory ReferenceListScopeInfo.fromMap(Map<String, dynamic> map) {
     return ReferenceListScopeInfo(
-      referenceListScope: map['referenceListScope'] == null
-          ? null
-          : ReferenceListScopeInfoReferenceListScope.fromMap(
-              (map['referenceListScope'] as Map).cast<String, dynamic>(),
-            ),
+      referenceListScope: map['referenceListScope'] == null ? null : ReferenceListScopeInfoReferenceListScope.fromMap((map['referenceListScope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -12,62 +12,44 @@ class GetRegionInstanceTemplateScheduling {
   /// automatically restarted if it is terminated by Compute Engine (not
   /// terminated by a user). This defaults to true.
   final bool automaticRestart;
-
   /// Specifies the availability domain, which this instance should be scheduled on.
   final int availabilityDomain;
-
   /// Settings for the instance to perform a graceful shutdown.
-  final List<GetRegionInstanceTemplateSchedulingGracefulShutdown>
-  gracefulShutdowns;
-
+  final List<GetRegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns;
   /// Beta Time in seconds for host error detection.
   final int hostErrorTimeoutSeconds;
-
   /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
   final String instanceTerminationAction;
-
   /// Specifies the maximum amount of time a Local Ssd Vm should wait while
   /// recovery of the Local Ssd state is attempted. Its value should be in
   /// between 0 and 168 hours with hour granularity and the default value being 1
   /// hour.
-  final List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>
-  localSsdRecoveryTimeouts;
-
+  final List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
   final String maintenanceInterval;
-
   /// The timeout for new network connections to hosts.
   final List<GetRegionInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
-
   /// Minimum number of cpus for the instance.
   final int minNodeCpus;
-
   /// Specifies node affinities or anti-affinities
   /// to determine which sole-tenant nodes your instances and managed instance
   /// groups will use as host systems. Read more on sole-tenant node creation
   /// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
   /// Structure documented below.
   final List<GetRegionInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
-
   /// Defines the maintenance behavior for this
   /// instance.
   final String onHostMaintenance;
-
   /// Defines the behaviour for instances with the instance_termination_action.
-  final List<GetRegionInstanceTemplateSchedulingOnInstanceStopAction>
-  onInstanceStopActions;
-
+  final List<GetRegionInstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopActions;
   /// Allows instance to be preempted. This defaults to
   /// false. Read more on this
   /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
   final bool preemptible;
-
   /// Describe the type of preemptible VM.
   final String provisioningModel;
-
   /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   final bool skipGuestOsShutdown;
-
   /// Specifies the timestamp, when the instance will be terminated,
   /// in RFC3339 text format. If specified, the instance termination action
   /// will be performed at the termination time.
@@ -113,36 +95,16 @@ class GetRegionInstanceTemplateScheduling {
     return <String, dynamic>{
       'automaticRestart': automaticRestart,
       'availabilityDomain': availabilityDomain,
-      'gracefulShutdowns':
-          pulumi.Input.encodeList<
-            GetRegionInstanceTemplateSchedulingGracefulShutdown,
-            Map<String, dynamic>
-          >(gracefulShutdowns, (value) => value.toMap()),
+      'gracefulShutdowns': pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingGracefulShutdown, Map<String, dynamic>>(gracefulShutdowns, (value) => value.toMap()),
       'hostErrorTimeoutSeconds': hostErrorTimeoutSeconds,
       'instanceTerminationAction': instanceTerminationAction,
-      'localSsdRecoveryTimeouts':
-          pulumi.Input.encodeList<
-            GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout,
-            Map<String, dynamic>
-          >(localSsdRecoveryTimeouts, (value) => value.toMap()),
+      'localSsdRecoveryTimeouts': pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout, Map<String, dynamic>>(localSsdRecoveryTimeouts, (value) => value.toMap()),
       'maintenanceInterval': maintenanceInterval,
-      'maxRunDurations':
-          pulumi.Input.encodeList<
-            GetRegionInstanceTemplateSchedulingMaxRunDuration,
-            Map<String, dynamic>
-          >(maxRunDurations, (value) => value.toMap()),
+      'maxRunDurations': pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingMaxRunDuration, Map<String, dynamic>>(maxRunDurations, (value) => value.toMap()),
       'minNodeCpus': minNodeCpus,
-      'nodeAffinities':
-          pulumi.Input.encodeList<
-            GetRegionInstanceTemplateSchedulingNodeAffinity,
-            Map<String, dynamic>
-          >(nodeAffinities, (value) => value.toMap()),
+      'nodeAffinities': pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingNodeAffinity, Map<String, dynamic>>(nodeAffinities, (value) => value.toMap()),
       'onHostMaintenance': onHostMaintenance,
-      'onInstanceStopActions':
-          pulumi.Input.encodeList<
-            GetRegionInstanceTemplateSchedulingOnInstanceStopAction,
-            Map<String, dynamic>
-          >(onInstanceStopActions, (value) => value.toMap()),
+      'onInstanceStopActions': pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingOnInstanceStopAction, Map<String, dynamic>>(onInstanceStopActions, (value) => value.toMap()),
       'preemptible': preemptible,
       'provisioningModel': provisioningModel,
       'skipGuestOsShutdown': skipGuestOsShutdown,
@@ -150,66 +112,20 @@ class GetRegionInstanceTemplateScheduling {
     };
   }
 
-  factory GetRegionInstanceTemplateScheduling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionInstanceTemplateScheduling.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateScheduling(
       automaticRestart: map['automaticRestart'] as bool,
       availabilityDomain: map['availabilityDomain'] as int,
-      gracefulShutdowns:
-          pulumi.Input.decodeList<
-            GetRegionInstanceTemplateSchedulingGracefulShutdown
-          >(
-            map['gracefulShutdowns'],
-            (value) =>
-                GetRegionInstanceTemplateSchedulingGracefulShutdown.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      gracefulShutdowns: pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingGracefulShutdown>(map['gracefulShutdowns'], (value) => GetRegionInstanceTemplateSchedulingGracefulShutdown.fromMap((value as Map).cast<String, dynamic>())),
       hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] as int,
       instanceTerminationAction: map['instanceTerminationAction'] as String,
-      localSsdRecoveryTimeouts:
-          pulumi.Input.decodeList<
-            GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout
-          >(
-            map['localSsdRecoveryTimeouts'],
-            (value) =>
-                GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      localSsdRecoveryTimeouts: pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>(map['localSsdRecoveryTimeouts'], (value) => GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap((value as Map).cast<String, dynamic>())),
       maintenanceInterval: map['maintenanceInterval'] as String,
-      maxRunDurations:
-          pulumi.Input.decodeList<
-            GetRegionInstanceTemplateSchedulingMaxRunDuration
-          >(
-            map['maxRunDurations'],
-            (value) =>
-                GetRegionInstanceTemplateSchedulingMaxRunDuration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      maxRunDurations: pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingMaxRunDuration>(map['maxRunDurations'], (value) => GetRegionInstanceTemplateSchedulingMaxRunDuration.fromMap((value as Map).cast<String, dynamic>())),
       minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities:
-          pulumi.Input.decodeList<
-            GetRegionInstanceTemplateSchedulingNodeAffinity
-          >(
-            map['nodeAffinities'],
-            (value) => GetRegionInstanceTemplateSchedulingNodeAffinity.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      nodeAffinities: pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingNodeAffinity>(map['nodeAffinities'], (value) => GetRegionInstanceTemplateSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>())),
       onHostMaintenance: map['onHostMaintenance'] as String,
-      onInstanceStopActions:
-          pulumi.Input.decodeList<
-            GetRegionInstanceTemplateSchedulingOnInstanceStopAction
-          >(
-            map['onInstanceStopActions'],
-            (value) =>
-                GetRegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      onInstanceStopActions: pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingOnInstanceStopAction>(map['onInstanceStopActions'], (value) => GetRegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap((value as Map).cast<String, dynamic>())),
       preemptible: map['preemptible'] as bool,
       provisioningModel: map['provisioningModel'] as String,
       skipGuestOsShutdown: map['skipGuestOsShutdown'] as bool,
@@ -217,3 +133,4 @@ class GetRegionInstanceTemplateScheduling {
     );
   }
 }
+

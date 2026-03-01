@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainDefaultSpaceSettingsCustomPosixUserConfig {
   /// The POSIX group ID.
   final int gid;
-
   /// The POSIX user ID.
   final int uid;
 
@@ -16,15 +16,17 @@ class DomainDefaultSpaceSettingsCustomPosixUserConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gid': gid, 'uid': uid};
+    return <String, dynamic>{
+      'gid': gid,
+      'uid': uid,
+    };
   }
 
-  factory DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsCustomPosixUserConfig(
       gid: map['gid'] as int,
       uid: map['uid'] as int,
     );
   }
 }
+

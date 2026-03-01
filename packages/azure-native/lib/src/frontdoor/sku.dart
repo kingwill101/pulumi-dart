@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The pricing tier of the web application firewall policy.
+class Sku {
+  /// Name of the pricing tier.
+  final String? name;
+
+  /// Creates a new [Sku].
+  /// [name] Name of the pricing tier.
+  Sku({
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+    };
+  }
+
+  factory Sku.fromMap(Map<String, dynamic> map) {
+    return Sku(
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

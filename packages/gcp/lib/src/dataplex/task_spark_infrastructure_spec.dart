@@ -8,11 +8,9 @@ class TaskSparkInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecBatch? batch;
-
   /// Container Image Runtime Configuration.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecContainerImage? containerImage;
-
   /// Vpc network.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecVpcNetwork? vpcNetwork;
@@ -30,30 +28,17 @@ class TaskSparkInfrastructureSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'batch': ?batch == null ? null : batch!.toMap(),
-      'containerImage': ?containerImage == null
-          ? null
-          : containerImage!.toMap(),
+      'containerImage': ?containerImage == null ? null : containerImage!.toMap(),
       'vpcNetwork': ?vpcNetwork == null ? null : vpcNetwork!.toMap(),
     };
   }
 
   factory TaskSparkInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpec(
-      batch: map['batch'] == null
-          ? null
-          : TaskSparkInfrastructureSpecBatch.fromMap(
-              (map['batch'] as Map).cast<String, dynamic>(),
-            ),
-      containerImage: map['containerImage'] == null
-          ? null
-          : TaskSparkInfrastructureSpecContainerImage.fromMap(
-              (map['containerImage'] as Map).cast<String, dynamic>(),
-            ),
-      vpcNetwork: map['vpcNetwork'] == null
-          ? null
-          : TaskSparkInfrastructureSpecVpcNetwork.fromMap(
-              (map['vpcNetwork'] as Map).cast<String, dynamic>(),
-            ),
+      batch: map['batch'] == null ? null : TaskSparkInfrastructureSpecBatch.fromMap((map['batch'] as Map).cast<String, dynamic>()),
+      containerImage: map['containerImage'] == null ? null : TaskSparkInfrastructureSpecContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>()),
+      vpcNetwork: map['vpcNetwork'] == null ? null : TaskSparkInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

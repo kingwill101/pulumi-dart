@@ -1,30 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetStandardsControlAssociationsStandardsControlAssociation {
   /// Enablement status of a control in a specific standard.
   final String associationStatus;
-
   /// List of underlying requirements in the compliance framework related to the standard.
   final List<String> relatedRequirements;
-
   /// ARN of the security control.
   final String securityControlArn;
-
   /// The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
   final String securityControlId;
-
   /// ARN of the standard.
   final String standardsArn;
-
   /// Description of the standard.
   final String standardsControlDescription;
-
   /// Title of the standard.
   final String standardsControlTitle;
-
   /// Last time that a control's enablement status in a specified standard was updated.
   final String updatedAt;
-
   /// Reason for updating a control's enablement status in a specified standard.
   final String updatedReason;
 
@@ -64,9 +57,7 @@ class GetStandardsControlAssociationsStandardsControlAssociation {
     };
   }
 
-  factory GetStandardsControlAssociationsStandardsControlAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetStandardsControlAssociationsStandardsControlAssociation.fromMap(Map<String, dynamic> map) {
     return GetStandardsControlAssociationsStandardsControlAssociation(
       associationStatus: map['associationStatus'] as String,
       relatedRequirements: (map['relatedRequirements'] as List).cast<String>(),
@@ -80,3 +71,4 @@ class GetStandardsControlAssociationsStandardsControlAssociation {
     );
   }
 }
+

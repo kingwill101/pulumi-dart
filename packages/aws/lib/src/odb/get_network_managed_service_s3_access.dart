@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkManagedServiceS3Access {
   final String domainName;
   final List<String> ipv4Addresses;
   final String s3PolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -38,3 +38,4 @@ class GetNetworkManagedServiceS3Access {
     );
   }
 }
+

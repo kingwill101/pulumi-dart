@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'entra_authentication_response.dart';
+
+/// Authentication related configuration for the SQL Server Instance.
+class AuthenticationResponse {
+  /// Mode of authentication in SqlServer.
+  final String? mode;
+  /// Entra Authentication configuration for the SQL Server Instance.
+  final List<EntraAuthenticationResponse>? sqlServerEntraIdentity;
+
+  /// Creates a new [AuthenticationResponse].
+  /// [mode] Mode of authentication in SqlServer.
+  /// [sqlServerEntraIdentity] Entra Authentication configuration for the SQL Server Instance.
+  AuthenticationResponse({
+    this.mode,
+    this.sqlServerEntraIdentity,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mode': ?mode,
+      'sqlServerEntraIdentity': ?sqlServerEntraIdentity == null ? null : pulumi.Input.encodeList<EntraAuthenticationResponse, Map<String, dynamic>>(sqlServerEntraIdentity!, (value) => value.toMap()),
+    };
+  }
+
+  factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
+    return AuthenticationResponse(
+      mode: map['mode'] == null ? null : map['mode'] as String,
+      sqlServerEntraIdentity: map['sqlServerEntraIdentity'] == null ? null : pulumi.Input.decodeList<EntraAuthenticationResponse>(map['sqlServerEntraIdentity'], (value) => EntraAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
   /// The ID of the entity. For Google-managed entities, the id is the email address of an existing
   /// group or user. For external-identity-mapped entities, the id is a string conforming
   /// to the Identity Source's requirements.
   final String id;
-
   /// The namespace in which the entity exists.
   /// If not populated, the EntityKey represents a Google-managed entity
   /// such as a Google user or a Google Group.
@@ -21,15 +21,17 @@ class GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'namespace': namespace};
+    return <String, dynamic>{
+      'id': id,
+      'namespace': namespace,
+    };
   }
 
-  factory GetGroupTransitiveMembershipsMembershipPreferredMemberKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupTransitiveMembershipsMembershipPreferredMemberKey.fromMap(Map<String, dynamic> map) {
     return GetGroupTransitiveMembershipsMembershipPreferredMemberKey(
       id: map['id'] as String,
       namespace: map['namespace'] as String,
     );
   }
 }
+

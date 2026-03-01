@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ObjectStorageKeyRegionsDetail {
+  /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+  final String endpointType;
+  /// The ID of the region.
+  final String id;
+  /// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+  final String s3Endpoint;
+
+  /// Creates a new [ObjectStorageKeyRegionsDetail].
+  /// [endpointType] The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+  /// [id] The ID of the region.
+  /// [s3Endpoint] The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+  ObjectStorageKeyRegionsDetail({
+    required this.endpointType,
+    required this.id,
+    required this.s3Endpoint,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'endpointType': endpointType,
+      'id': id,
+      's3Endpoint': s3Endpoint,
+    };
+  }
+
+  factory ObjectStorageKeyRegionsDetail.fromMap(Map<String, dynamic> map) {
+    return ObjectStorageKeyRegionsDetail(
+      endpointType: map['endpointType'] as String,
+      id: map['id'] as String,
+      s3Endpoint: map['s3Endpoint'] as String,
+    );
+  }
+}
+

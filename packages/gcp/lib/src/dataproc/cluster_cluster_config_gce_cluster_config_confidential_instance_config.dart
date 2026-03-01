@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
   /// Defines whether the instance should have confidential compute enabled.
   final bool? enableConfidentialCompute;
@@ -16,13 +17,10 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
     };
   }
 
-  factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null
-          ? null
-          : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
     );
   }
 }
+

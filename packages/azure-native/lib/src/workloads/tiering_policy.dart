@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Tiering Policy for a target tier.
+/// If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+class TieringPolicy {
+  /// Number of days/weeks/months/years to retain backups in current tier before tiering.
+  /// Used only if TieringMode is set to TierAfter
+  final int? duration;
+  /// Retention duration type: days/weeks/months/years
+  /// Used only if TieringMode is set to TierAfter
+  final String? durationType;
+  /// Tiering Mode to control automatic tiering of recovery points. Supported values are:
+  /// 1. TierRecommended: Tier all recovery points recommended to be tiered
+  /// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+  /// 3. DoNotTier: Do not tier any recovery points
+  final String? tieringMode;
+
+  /// Creates a new [TieringPolicy].
+  /// [duration] Number of days/weeks/months/years to retain backups in current tier before tiering.
+  /// [durationType] Retention duration type: days/weeks/months/years
+  /// [tieringMode] Tiering Mode to control automatic tiering of recovery points. Supported values are:
+  TieringPolicy({
+    this.duration,
+    this.durationType,
+    this.tieringMode,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'duration': ?duration,
+      'durationType': ?durationType,
+      'tieringMode': ?tieringMode,
+    };
+  }
+
+  factory TieringPolicy.fromMap(Map<String, dynamic> map) {
+    return TieringPolicy(
+      duration: map['duration'] == null ? null : map['duration'] as int,
+      durationType: map['durationType'] == null ? null : map['durationType'] as String,
+      tieringMode: map['tieringMode'] == null ? null : map['tieringMode'] as String,
+    );
+  }
+}
+

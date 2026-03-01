@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceCustomDomain {
   /// Domain name
   final String? domain;
-
   /// (Output)
   /// Status of the custom domain.
   final String? state;
@@ -11,10 +11,16 @@ class InstanceCustomDomain {
   /// Creates a new [InstanceCustomDomain].
   /// [domain] Domain name
   /// [state] (Output)
-  InstanceCustomDomain({this.domain, this.state});
+  InstanceCustomDomain({
+    this.domain,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': ?domain, 'state': ?state};
+    return <String, dynamic>{
+      'domain': ?domain,
+      'state': ?state,
+    };
   }
 
   factory InstanceCustomDomain.fromMap(Map<String, dynamic> map) {
@@ -24,3 +30,4 @@ class InstanceCustomDomain {
     );
   }
 }
+

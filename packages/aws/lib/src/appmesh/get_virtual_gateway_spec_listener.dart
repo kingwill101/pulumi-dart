@@ -26,58 +26,20 @@ class GetVirtualGatewaySpecListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPools':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecListenerConnectionPool,
-            Map<String, dynamic>
-          >(connectionPools, (value) => value.toMap()),
-      'healthChecks':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecListenerHealthCheck,
-            Map<String, dynamic>
-          >(healthChecks, (value) => value.toMap()),
-      'portMappings':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecListenerPortMapping,
-            Map<String, dynamic>
-          >(portMappings, (value) => value.toMap()),
-      'tls':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecListenerTl,
-            Map<String, dynamic>
-          >(tls, (value) => value.toMap()),
+      'connectionPools': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerConnectionPool, Map<String, dynamic>>(connectionPools, (value) => value.toMap()),
+      'healthChecks': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerHealthCheck, Map<String, dynamic>>(healthChecks, (value) => value.toMap()),
+      'portMappings': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerPortMapping, Map<String, dynamic>>(portMappings, (value) => value.toMap()),
+      'tls': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTl, Map<String, dynamic>>(tls, (value) => value.toMap()),
     };
   }
 
   factory GetVirtualGatewaySpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListener(
-      connectionPools:
-          pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPool>(
-            map['connectionPools'],
-            (value) => GetVirtualGatewaySpecListenerConnectionPool.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      healthChecks:
-          pulumi.Input.decodeList<GetVirtualGatewaySpecListenerHealthCheck>(
-            map['healthChecks'],
-            (value) => GetVirtualGatewaySpecListenerHealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      portMappings:
-          pulumi.Input.decodeList<GetVirtualGatewaySpecListenerPortMapping>(
-            map['portMappings'],
-            (value) => GetVirtualGatewaySpecListenerPortMapping.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      tls: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTl>(
-        map['tls'],
-        (value) => GetVirtualGatewaySpecListenerTl.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connectionPools: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPool>(map['connectionPools'], (value) => GetVirtualGatewaySpecListenerConnectionPool.fromMap((value as Map).cast<String, dynamic>())),
+      healthChecks: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerHealthCheck>(map['healthChecks'], (value) => GetVirtualGatewaySpecListenerHealthCheck.fromMap((value as Map).cast<String, dynamic>())),
+      portMappings: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerPortMapping>(map['portMappings'], (value) => GetVirtualGatewaySpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>())),
+      tls: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTl>(map['tls'], (value) => GetVirtualGatewaySpecListenerTl.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

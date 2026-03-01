@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackupScheduleSpecCronSpec {
   /// Textual representation of the crontab. User can customize the
   /// backup frequency and the backup version time using the cron
@@ -16,10 +17,14 @@ class BackupScheduleSpecCronSpec {
 
   /// Creates a new [BackupScheduleSpecCronSpec].
   /// [text] Textual representation of the crontab. User can customize the
-  BackupScheduleSpecCronSpec({this.text});
+  BackupScheduleSpecCronSpec({
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': ?text};
+    return <String, dynamic>{
+      'text': ?text,
+    };
   }
 
   factory BackupScheduleSpecCronSpec.fromMap(Map<String, dynamic> map) {
@@ -28,3 +33,4 @@ class BackupScheduleSpecCronSpec {
     );
   }
 }
+

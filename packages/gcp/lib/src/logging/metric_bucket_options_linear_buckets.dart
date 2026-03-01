@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetricBucketOptionsLinearBuckets {
   /// Must be greater than 0.
   final int numFiniteBuckets;
-
   /// Lower bound of the first bucket.
   final double offset;
-
   /// Must be greater than 0.
   final double width;
 
@@ -36,3 +35,4 @@ class MetricBucketOptionsLinearBuckets {
     );
   }
 }
+

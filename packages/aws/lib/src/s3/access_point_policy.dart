@@ -287,13 +287,10 @@ import 'access_point_policy_args.dart';
 class AccessPointPolicy extends pulumi.CustomResource {
   /// The ARN of the access point that you want to associate with the specified policy.
   late final pulumi.Output<String> accessPointArn;
-
   /// Indicates whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
-
   /// The policy that you want to apply to the specified access point.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -306,11 +303,11 @@ class AccessPointPolicy extends pulumi.CustomResource {
     AccessPointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/accessPointPolicy:AccessPointPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/accessPointPolicy:AccessPointPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accessPointArn = registerOutput<String>('accessPointArn');
     this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     this.policy = registerOutput<String>('policy');

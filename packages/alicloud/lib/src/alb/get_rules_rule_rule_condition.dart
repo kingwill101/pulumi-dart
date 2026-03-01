@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_rules_rule_rule_condition_cookie_config.dart';
+import 'get_rules_rule_rule_condition_header_config.dart';
+import 'get_rules_rule_rule_condition_host_config.dart';
+import 'get_rules_rule_rule_condition_method_config.dart';
+import 'get_rules_rule_rule_condition_path_config.dart';
+import 'get_rules_rule_rule_condition_query_string_config.dart';
+import 'get_rules_rule_rule_condition_source_ip_config.dart';
+
+class GetRulesRuleRuleCondition {
+  /// The configuration of the cookie.
+  final List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs;
+  /// The configuration of the header field.
+  final List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs;
+  /// The configuration of the host.
+  final List<GetRulesRuleRuleConditionHostConfig> hostConfigs;
+  /// The configuration of the request method.
+  final List<GetRulesRuleRuleConditionMethodConfig> methodConfigs;
+  /// The configuration of the path for the request to be forwarded.
+  final List<GetRulesRuleRuleConditionPathConfig> pathConfigs;
+  /// The configuration of the query string.
+  final List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs;
+  /// The Based on source IP traffic matching.
+  final List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs;
+  /// The type of the forwarding rule.
+  final String type;
+
+  /// Creates a new [GetRulesRuleRuleCondition].
+  /// [cookieConfigs] The configuration of the cookie.
+  /// [headerConfigs] The configuration of the header field.
+  /// [hostConfigs] The configuration of the host.
+  /// [methodConfigs] The configuration of the request method.
+  /// [pathConfigs] The configuration of the path for the request to be forwarded.
+  /// [queryStringConfigs] The configuration of the query string.
+  /// [sourceIpConfigs] The Based on source IP traffic matching.
+  /// [type] The type of the forwarding rule.
+  GetRulesRuleRuleCondition({
+    required this.cookieConfigs,
+    required this.headerConfigs,
+    required this.hostConfigs,
+    required this.methodConfigs,
+    required this.pathConfigs,
+    required this.queryStringConfigs,
+    required this.sourceIpConfigs,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cookieConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionCookieConfig, Map<String, dynamic>>(cookieConfigs, (value) => value.toMap()),
+      'headerConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionHeaderConfig, Map<String, dynamic>>(headerConfigs, (value) => value.toMap()),
+      'hostConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionHostConfig, Map<String, dynamic>>(hostConfigs, (value) => value.toMap()),
+      'methodConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionMethodConfig, Map<String, dynamic>>(methodConfigs, (value) => value.toMap()),
+      'pathConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionPathConfig, Map<String, dynamic>>(pathConfigs, (value) => value.toMap()),
+      'queryStringConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionQueryStringConfig, Map<String, dynamic>>(queryStringConfigs, (value) => value.toMap()),
+      'sourceIpConfigs': pulumi.Input.encodeList<GetRulesRuleRuleConditionSourceIpConfig, Map<String, dynamic>>(sourceIpConfigs, (value) => value.toMap()),
+      'type': type,
+    };
+  }
+
+  factory GetRulesRuleRuleCondition.fromMap(Map<String, dynamic> map) {
+    return GetRulesRuleRuleCondition(
+      cookieConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionCookieConfig>(map['cookieConfigs'], (value) => GetRulesRuleRuleConditionCookieConfig.fromMap((value as Map).cast<String, dynamic>())),
+      headerConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionHeaderConfig>(map['headerConfigs'], (value) => GetRulesRuleRuleConditionHeaderConfig.fromMap((value as Map).cast<String, dynamic>())),
+      hostConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionHostConfig>(map['hostConfigs'], (value) => GetRulesRuleRuleConditionHostConfig.fromMap((value as Map).cast<String, dynamic>())),
+      methodConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionMethodConfig>(map['methodConfigs'], (value) => GetRulesRuleRuleConditionMethodConfig.fromMap((value as Map).cast<String, dynamic>())),
+      pathConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionPathConfig>(map['pathConfigs'], (value) => GetRulesRuleRuleConditionPathConfig.fromMap((value as Map).cast<String, dynamic>())),
+      queryStringConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionQueryStringConfig>(map['queryStringConfigs'], (value) => GetRulesRuleRuleConditionQueryStringConfig.fromMap((value as Map).cast<String, dynamic>())),
+      sourceIpConfigs: pulumi.Input.decodeList<GetRulesRuleRuleConditionSourceIpConfig>(map['sourceIpConfigs'], (value) => GetRulesRuleRuleConditionSourceIpConfig.fromMap((value as Map).cast<String, dynamic>())),
+      type: map['type'] as String,
+    );
+  }
+}
+

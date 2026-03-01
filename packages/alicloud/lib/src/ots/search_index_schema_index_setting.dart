@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class SearchIndexSchemaIndexSetting {
+  /// Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+  final List<String>? routingFields;
+
+  /// Creates a new [SearchIndexSchemaIndexSetting].
+  /// [routingFields] Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+  SearchIndexSchemaIndexSetting({
+    this.routingFields,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'routingFields': ?routingFields,
+    };
+  }
+
+  factory SearchIndexSchemaIndexSetting.fromMap(Map<String, dynamic> map) {
+    return SearchIndexSchemaIndexSetting(
+      routingFields: map['routingFields'] == null ? null : (map['routingFields'] as List).cast<String>(),
+    );
+  }
+}
+

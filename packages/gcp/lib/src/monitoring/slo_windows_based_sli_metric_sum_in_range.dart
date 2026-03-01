@@ -11,7 +11,6 @@ class SloWindowsBasedSliMetricSumInRange {
   /// `range.min <= X <= range.max` for a good window.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricSumInRangeRange range;
-
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// quality. The provided TimeSeries must have
@@ -30,15 +29,17 @@ class SloWindowsBasedSliMetricSumInRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range.toMap(), 'timeSeries': timeSeries};
+    return <String, dynamic>{
+      'range': range.toMap(),
+      'timeSeries': timeSeries,
+    };
   }
 
   factory SloWindowsBasedSliMetricSumInRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricSumInRange(
-      range: SloWindowsBasedSliMetricSumInRangeRange.fromMap(
-        (map['range'] as Map).cast<String, dynamic>(),
-      ),
+      range: SloWindowsBasedSliMetricSumInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
       timeSeries: map['timeSeries'] as String,
     );
   }
 }
+

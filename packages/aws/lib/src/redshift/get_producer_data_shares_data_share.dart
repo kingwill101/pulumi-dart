@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProducerDataSharesDataShare {
   /// ARN (Amazon Resource Name) of the data share.
   final String dataShareArn;
-
   /// Identifier of a datashare to show its managing entity.
   final String managedBy;
-
   /// Amazon Resource Name (ARN) of the producer namespace that returns in the list of datashares.
   ///
   /// The following arguments are optional:
@@ -38,3 +37,4 @@ class GetProducerDataSharesDataShare {
     );
   }
 }
+

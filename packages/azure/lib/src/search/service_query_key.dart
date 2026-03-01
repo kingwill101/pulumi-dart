@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ServiceQueryKey {
+  /// The value of this Query Key.
+  final String? key;
+  /// The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
+  final String? name;
+
+  /// Creates a new [ServiceQueryKey].
+  /// [key] The value of this Query Key.
+  /// [name] The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
+  ServiceQueryKey({
+    this.key,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'key': ?key,
+      'name': ?name,
+    };
+  }
+
+  factory ServiceQueryKey.fromMap(Map<String, dynamic> map) {
+    return ServiceQueryKey(
+      key: map['key'] == null ? null : map['key'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

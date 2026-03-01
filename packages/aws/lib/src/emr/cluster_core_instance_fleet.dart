@@ -7,21 +7,16 @@ import 'cluster_core_instance_fleet_launch_specifications.dart';
 class ClusterCoreInstanceFleet {
   /// ID of the cluster.
   final String? id;
-
   /// Configuration block for instance fleet.
   final List<ClusterCoreInstanceFleetInstanceTypeConfig>? instanceTypeConfigs;
-
   /// Configuration block for launch specification.
   final ClusterCoreInstanceFleetLaunchSpecifications? launchSpecifications;
-
   /// Friendly name given to the instance fleet.
   final String? name;
   final int? provisionedOnDemandCapacity;
   final int? provisionedSpotCapacity;
-
   /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
   final int? targetOnDemandCapacity;
-
   /// Target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
   final int? targetSpotCapacity;
 
@@ -48,15 +43,8 @@ class ClusterCoreInstanceFleet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'instanceTypeConfigs': ?instanceTypeConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              ClusterCoreInstanceFleetInstanceTypeConfig,
-              Map<String, dynamic>
-            >(instanceTypeConfigs!, (value) => value.toMap()),
-      'launchSpecifications': ?launchSpecifications == null
-          ? null
-          : launchSpecifications!.toMap(),
+      'instanceTypeConfigs': ?instanceTypeConfigs == null ? null : pulumi.Input.encodeList<ClusterCoreInstanceFleetInstanceTypeConfig, Map<String, dynamic>>(instanceTypeConfigs!, (value) => value.toMap()),
+      'launchSpecifications': ?launchSpecifications == null ? null : launchSpecifications!.toMap(),
       'name': ?name,
       'provisionedOnDemandCapacity': ?provisionedOnDemandCapacity,
       'provisionedSpotCapacity': ?provisionedSpotCapacity,
@@ -68,32 +56,14 @@ class ClusterCoreInstanceFleet {
   factory ClusterCoreInstanceFleet.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceFleet(
       id: map['id'] == null ? null : map['id'] as String,
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfig>(
-              map['instanceTypeConfigs'],
-              (value) => ClusterCoreInstanceFleetInstanceTypeConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      launchSpecifications: map['launchSpecifications'] == null
-          ? null
-          : ClusterCoreInstanceFleetLaunchSpecifications.fromMap(
-              (map['launchSpecifications'] as Map).cast<String, dynamic>(),
-            ),
+      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => ClusterCoreInstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
+      launchSpecifications: map['launchSpecifications'] == null ? null : ClusterCoreInstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null
-          ? null
-          : map['provisionedOnDemandCapacity'] as int,
-      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null
-          ? null
-          : map['provisionedSpotCapacity'] as int,
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null
-          ? null
-          : map['targetOnDemandCapacity'] as int,
-      targetSpotCapacity: map['targetSpotCapacity'] == null
-          ? null
-          : map['targetSpotCapacity'] as int,
+      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : map['provisionedOnDemandCapacity'] as int,
+      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : map['provisionedSpotCapacity'] as int,
+      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : map['targetOnDemandCapacity'] as int,
+      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : map['targetSpotCapacity'] as int,
     );
   }
 }
+

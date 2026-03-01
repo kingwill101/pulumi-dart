@@ -1,15 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceVpcConnectionProperties {
   /// The Amazon Resource Name (ARN) for the VPC connection.
   final String vpcConnectionArn;
 
   /// Creates a new [DataSourceVpcConnectionProperties].
   /// [vpcConnectionArn] The Amazon Resource Name (ARN) for the VPC connection.
-  DataSourceVpcConnectionProperties({required this.vpcConnectionArn});
+  DataSourceVpcConnectionProperties({
+    required this.vpcConnectionArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vpcConnectionArn': vpcConnectionArn};
+    return <String, dynamic>{
+      'vpcConnectionArn': vpcConnectionArn,
+    };
   }
 
   factory DataSourceVpcConnectionProperties.fromMap(Map<String, dynamic> map) {
@@ -18,3 +23,4 @@ class DataSourceVpcConnectionProperties {
     );
   }
 }
+

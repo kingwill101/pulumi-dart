@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'delivery_rule_cache_expiration_action.dart';
+import 'delivery_rule_client_port_condition.dart';
+
+/// A rule that specifies a set of actions and conditions
+class DeliveryRule {
+  /// A list of actions that are executed when all the conditions of a rule are satisfied.
+  final List<DeliveryRuleCacheExpirationAction> actions;
+  /// A list of conditions that must be matched for the actions to be executed
+  final List<DeliveryRuleClientPortCondition>? conditions;
+  /// Name of the rule
+  final String? name;
+  /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
+  final int order;
+
+  /// Creates a new [DeliveryRule].
+  /// [actions] A list of actions that are executed when all the conditions of a rule are satisfied.
+  /// [conditions] A list of conditions that must be matched for the actions to be executed
+  /// [name] Name of the rule
+  /// [order] The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
+  DeliveryRule({
+    required this.actions,
+    this.conditions,
+    this.name,
+    required this.order,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actions': pulumi.Input.encodeList<DeliveryRuleCacheExpirationAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<DeliveryRuleClientPortCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'name': ?name,
+      'order': order,
+    };
+  }
+
+  factory DeliveryRule.fromMap(Map<String, dynamic> map) {
+    return DeliveryRule(
+      actions: pulumi.Input.decodeList<DeliveryRuleCacheExpirationAction>(map['actions'], (value) => DeliveryRuleCacheExpirationAction.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<DeliveryRuleClientPortCondition>(map['conditions'], (value) => DeliveryRuleClientPortCondition.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : map['name'] as String,
+      order: map['order'] as int,
+    );
+  }
+}
+

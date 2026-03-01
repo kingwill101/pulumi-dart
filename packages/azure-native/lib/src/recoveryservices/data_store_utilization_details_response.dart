@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Details of the appliance resource.
+class DataStoreUtilizationDetailsResponse {
+  /// The datastore name.
+  final String dataStoreName;
+  /// The total snapshots created for server migration in the datastore.
+  final double totalSnapshotsCreated;
+  /// The total count of snapshots supported by the datastore.
+  final double totalSnapshotsSupported;
+
+  /// Creates a new [DataStoreUtilizationDetailsResponse].
+  /// [dataStoreName] The datastore name.
+  /// [totalSnapshotsCreated] The total snapshots created for server migration in the datastore.
+  /// [totalSnapshotsSupported] The total count of snapshots supported by the datastore.
+  DataStoreUtilizationDetailsResponse({
+    required this.dataStoreName,
+    required this.totalSnapshotsCreated,
+    required this.totalSnapshotsSupported,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dataStoreName': dataStoreName,
+      'totalSnapshotsCreated': totalSnapshotsCreated,
+      'totalSnapshotsSupported': totalSnapshotsSupported,
+    };
+  }
+
+  factory DataStoreUtilizationDetailsResponse.fromMap(Map<String, dynamic> map) {
+    return DataStoreUtilizationDetailsResponse(
+      dataStoreName: map['dataStoreName'] as String,
+      totalSnapshotsCreated: map['totalSnapshotsCreated'] as double,
+      totalSnapshotsSupported: map['totalSnapshotsSupported'] as double,
+    );
+  }
+}
+

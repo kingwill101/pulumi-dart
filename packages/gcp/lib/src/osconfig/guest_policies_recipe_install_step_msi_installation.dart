@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuestPoliciesRecipeInstallStepMsiInstallation {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   final List<int>? allowedExitCodes;
-
   /// The id of the relevant artifact in the recipe.
   final String artifactId;
-
   /// The flags to use when installing the MSI. Defaults to the install flag.
   final List<String>? flags;
 
@@ -28,17 +27,12 @@ class GuestPoliciesRecipeInstallStepMsiInstallation {
     };
   }
 
-  factory GuestPoliciesRecipeInstallStepMsiInstallation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuestPoliciesRecipeInstallStepMsiInstallation.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepMsiInstallation(
-      allowedExitCodes: map['allowedExitCodes'] == null
-          ? null
-          : (map['allowedExitCodes'] as List).cast<int>(),
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : (map['allowedExitCodes'] as List).cast<int>(),
       artifactId: map['artifactId'] as String,
-      flags: map['flags'] == null
-          ? null
-          : (map['flags'] as List).cast<String>(),
+      flags: map['flags'] == null ? null : (map['flags'] as List).cast<String>(),
     );
   }
 }
+

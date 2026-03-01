@@ -5,29 +5,20 @@ import 'flow_definition_human_loop_config_public_workforce_task_price.dart';
 class FlowDefinitionHumanLoopConfig {
   /// The Amazon Resource Name (ARN) of the human task user interface.
   final String humanTaskUiArn;
-
   /// Defines the amount of money paid to an Amazon Mechanical Turk worker for each task performed. See Public Workforce Task Price details below.
-  final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice?
-  publicWorkforceTaskPrice;
-
+  final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice? publicWorkforceTaskPrice;
   /// The length of time that a task remains available for review by human workers. Valid value range between `1` and `864000`.
   final int? taskAvailabilityLifetimeInSeconds;
-
   /// The number of distinct workers who will perform the same task on each object. Valid value range between `1` and `3`.
   final int taskCount;
-
   /// A description for the human worker task.
   final String taskDescription;
-
   /// An array of keywords used to describe the task so that workers can discover the task.
   final List<String>? taskKeywords;
-
   /// The amount of time that a worker has to complete a task. The default value is `3600` seconds.
   final int? taskTimeLimitInSeconds;
-
   /// A title for the human worker task.
   final String taskTitle;
-
   /// The Amazon Resource Name (ARN) of the human task user interface. Amazon Resource Name (ARN) of a team of workers. For Public workforces see [AWS Docs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html).
   final String workteamArn;
 
@@ -56,9 +47,7 @@ class FlowDefinitionHumanLoopConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'humanTaskUiArn': humanTaskUiArn,
-      'publicWorkforceTaskPrice': ?publicWorkforceTaskPrice == null
-          ? null
-          : publicWorkforceTaskPrice!.toMap(),
+      'publicWorkforceTaskPrice': ?publicWorkforceTaskPrice == null ? null : publicWorkforceTaskPrice!.toMap(),
       'taskAvailabilityLifetimeInSeconds': ?taskAvailabilityLifetimeInSeconds,
       'taskCount': taskCount,
       'taskDescription': taskDescription,
@@ -72,25 +61,15 @@ class FlowDefinitionHumanLoopConfig {
   factory FlowDefinitionHumanLoopConfig.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfig(
       humanTaskUiArn: map['humanTaskUiArn'] as String,
-      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null
-          ? null
-          : FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap(
-              (map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>(),
-            ),
-      taskAvailabilityLifetimeInSeconds:
-          map['taskAvailabilityLifetimeInSeconds'] == null
-          ? null
-          : map['taskAvailabilityLifetimeInSeconds'] as int,
+      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>()),
+      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : map['taskAvailabilityLifetimeInSeconds'] as int,
       taskCount: map['taskCount'] as int,
       taskDescription: map['taskDescription'] as String,
-      taskKeywords: map['taskKeywords'] == null
-          ? null
-          : (map['taskKeywords'] as List).cast<String>(),
-      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null
-          ? null
-          : map['taskTimeLimitInSeconds'] as int,
+      taskKeywords: map['taskKeywords'] == null ? null : (map['taskKeywords'] as List).cast<String>(),
+      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null ? null : map['taskTimeLimitInSeconds'] as int,
       taskTitle: map['taskTitle'] as String,
       workteamArn: map['workteamArn'] as String,
     );
   }
 }
+

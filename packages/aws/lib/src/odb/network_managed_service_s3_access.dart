@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceS3Access {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
   final String s3PolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -40,3 +39,4 @@ class NetworkManagedServiceS3Access {
     );
   }
 }
+

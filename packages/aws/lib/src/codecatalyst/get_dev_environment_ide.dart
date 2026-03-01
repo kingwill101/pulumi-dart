@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDevEnvironmentIde {
   final String name;
   final String runtime;
@@ -7,10 +8,16 @@ class GetDevEnvironmentIde {
   /// Creates a new [GetDevEnvironmentIde].
   /// [name] Required.
   /// [runtime] Required.
-  GetDevEnvironmentIde({required this.name, required this.runtime});
+  GetDevEnvironmentIde({
+    required this.name,
+    required this.runtime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'runtime': runtime};
+    return <String, dynamic>{
+      'name': name,
+      'runtime': runtime,
+    };
   }
 
   factory GetDevEnvironmentIde.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class GetDevEnvironmentIde {
     );
   }
 }
+

@@ -20,35 +20,27 @@ class AuthzPolicyArgs {
   /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
   /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
   final pulumi.Input<String> action;
-
   /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
   /// Structure is documented below.
   final pulumi.Input<AuthzPolicyCustomProvider>? customProvider;
-
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
-
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
   final pulumi.Input<List<AuthzPolicyHttpRule>>? httpRules;
-
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the resource.
   final pulumi.Input<String> location;
-
   /// Identifier. Name of the AuthzPolicy resource.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Specifies the set of resources to which this policy should be applied to.
   /// Structure is documented below.
   final pulumi.Input<AuthzPolicyTarget> target;
@@ -73,81 +65,43 @@ class AuthzPolicyArgs {
     String? name,
     String? project,
     required AuthzPolicyTarget target,
-  }) : action = pulumi.Input.asInput<String>(action),
-       customProvider = pulumi.Input.asOptionalInput<AuthzPolicyCustomProvider>(
-         customProvider,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       httpRules = pulumi.Input.asOptionalInput<List<AuthzPolicyHttpRule>>(
-         httpRules,
-       ),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       target = pulumi.Input.asInput<AuthzPolicyTarget>(target);
+  }) :
+      action = pulumi.Input.asInput<String>(action),
+      customProvider = pulumi.Input.asOptionalInput<AuthzPolicyCustomProvider>(customProvider),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      httpRules = pulumi.Input.asOptionalInput<List<AuthzPolicyHttpRule>>(httpRules),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      target = pulumi.Input.asInput<AuthzPolicyTarget>(target);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'customProvider':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuthzPolicyCustomProvider,
-            Map<String, dynamic>
-          >(customProvider, (value) => value.toMap()),
+      'customProvider': ?pulumi.Input.mapOptionalInputValue<AuthzPolicyCustomProvider, Map<String, dynamic>>(customProvider, (value) => value.toMap()),
       'description': ?description,
-      'httpRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AuthzPolicyHttpRule>,
-            List<Map<String, dynamic>>
-          >(
-            httpRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AuthzPolicyHttpRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'httpRules': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyHttpRule>, List<Map<String, dynamic>>>(httpRules, (value) => pulumi.Input.encodeList<AuthzPolicyHttpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labels': ?labels,
       'location': location,
       'name': ?name,
       'project': ?project,
-      'target':
-          pulumi.Input.mapInputValue<AuthzPolicyTarget, Map<String, dynamic>>(
-            target,
-            (value) => value.toMap(),
-          ),
+      'target': pulumi.Input.mapInputValue<AuthzPolicyTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory AuthzPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyArgs(
       action: map['action'] as String,
-      customProvider: map['customProvider'] == null
-          ? null
-          : AuthzPolicyCustomProvider.fromMap(
-              (map['customProvider'] as Map).cast<String, dynamic>(),
-            ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      httpRules: map['httpRules'] == null
-          ? null
-          : pulumi.Input.decodeList<AuthzPolicyHttpRule>(
-              map['httpRules'],
-              (value) => AuthzPolicyHttpRule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      customProvider: map['customProvider'] == null ? null : AuthzPolicyCustomProvider.fromMap((map['customProvider'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      httpRules: map['httpRules'] == null ? null : pulumi.Input.decodeList<AuthzPolicyHttpRule>(map['httpRules'], (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      target: AuthzPolicyTarget.fromMap(
-        (map['target'] as Map).cast<String, dynamic>(),
-      ),
+      target: AuthzPolicyTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

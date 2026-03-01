@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesFilesystemSourceBlock {
+  /// Sets the block device path for the filesystem source.
+  final String dev;
+
+  /// Creates a new [DomainDevicesFilesystemSourceBlock].
+  /// [dev] Sets the block device path for the filesystem source.
+  DomainDevicesFilesystemSourceBlock({
+    required this.dev,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dev': dev,
+    };
+  }
+
+  factory DomainDevicesFilesystemSourceBlock.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesFilesystemSourceBlock(
+      dev: map['dev'] as String,
+    );
+  }
+}
+

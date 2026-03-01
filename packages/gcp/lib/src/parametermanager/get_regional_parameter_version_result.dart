@@ -1,30 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionalParameterVersion.
 class GetRegionalParameterVersionResult {
   /// The time at which the Regional Parameter Version was created.
   final String createTime;
-
   /// The current state of the Regional Parameter Version.
   final bool disabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
   final String kmsKeyVersion;
   final String location;
-
   /// The resource name of the Regional Parameter Version. Format:
   /// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   final String name;
   final String parameter;
-
   /// The regional parameter data.
   final String parameterData;
   final String parameterVersionId;
   final String project;
-
   /// The time at which the Regional Parameter Version was last updated.
   final String updateTime;
 
@@ -86,3 +81,4 @@ class GetRegionalParameterVersionResult {
     );
   }
 }
+

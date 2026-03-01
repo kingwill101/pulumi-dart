@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGlobalAddress.
 class GetGlobalAddressResult {
   /// The IP of the created resource.
   final String address;
   final String addressType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -14,10 +14,8 @@ class GetGlobalAddressResult {
   final int prefixLength;
   final String project;
   final String purpose;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   final String status;
   final String subnetwork;
@@ -89,3 +87,4 @@ class GetGlobalAddressResult {
     );
   }
 }
+

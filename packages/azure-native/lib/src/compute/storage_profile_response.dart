@@ -1,0 +1,55 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_disk_response.dart';
+import 'image_reference_response.dart';
+import 'osdisk_response.dart';
+
+/// Specifies the storage settings for the virtual machine disks.
+class StorageProfileResponse {
+  /// Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible. Minimum api-version: 2024-11-01.
+  final bool? alignRegionalDisksToVMZone;
+  /// Specifies the parameters that are used to add a data disk to a virtual machine. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+  final List<DataDiskResponse>? dataDisks;
+  /// Specifies the disk controller type configured for the VM. **Note:** This property will be set to the default disk controller type if not specified provided virtual machine is being created with 'hyperVGeneration' set to V2 based on the capabilities of the operating system disk and VM size from the the specified minimum api version. You need to deallocate the VM before updating its disk controller type unless you are updating the VM size in the VM configuration which implicitly deallocates and reallocates the VM. Minimum api-version: 2022-08-01.
+  final String? diskControllerType;
+  /// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+  final ImageReferenceResponse? imageReference;
+  /// Specifies information about the operating system disk used by the virtual machine. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+  final OSDiskResponse? osDisk;
+
+  /// Creates a new [StorageProfileResponse].
+  /// [alignRegionalDisksToVMZone] Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible. Minimum api-version: 2024-11-01.
+  /// [dataDisks] Specifies the parameters that are used to add a data disk to a virtual machine. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+  /// [diskControllerType] Specifies the disk controller type configured for the VM. **Note:** This property will be set to the default disk controller type if not specified provided virtual machine is being created with 'hyperVGeneration' set to V2 based on the capabilities of the operating system disk and VM size from the the specified minimum api version. You need to deallocate the VM before updating its disk controller type unless you are updating the VM size in the VM configuration which implicitly deallocates and reallocates the VM. Minimum api-version: 2022-08-01.
+  /// [imageReference] Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+  /// [osDisk] Specifies information about the operating system disk used by the virtual machine. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+  StorageProfileResponse({
+    this.alignRegionalDisksToVMZone,
+    this.dataDisks,
+    this.diskControllerType,
+    this.imageReference,
+    this.osDisk,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'alignRegionalDisksToVMZone': ?alignRegionalDisksToVMZone,
+      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<DataDiskResponse, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
+      'diskControllerType': ?diskControllerType,
+      'imageReference': ?imageReference == null ? null : imageReference!.toMap(),
+      'osDisk': ?osDisk == null ? null : osDisk!.toMap(),
+    };
+  }
+
+  factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
+    return StorageProfileResponse(
+      alignRegionalDisksToVMZone: map['alignRegionalDisksToVMZone'] == null ? null : map['alignRegionalDisksToVMZone'] as bool,
+      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
+      diskControllerType: map['diskControllerType'] == null ? null : map['diskControllerType'] as String,
+      imageReference: map['imageReference'] == null ? null : ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>()),
+      osDisk: map['osDisk'] == null ? null : OSDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

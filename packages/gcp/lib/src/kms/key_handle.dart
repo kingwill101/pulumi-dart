@@ -762,18 +762,14 @@ class KeyHandle extends pulumi.CustomResource {
   /// product/project/location, for example
   /// `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
   late final pulumi.Output<String> kmsKey;
-
   /// The location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   late final pulumi.Output<String> location;
-
   /// The resource name for the KeyHandle.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Selector of the resource type where we want to protect resources.
   /// For example, `storage.googleapis.com/Bucket`.
   late final pulumi.Output<String> resourceTypeSelector;
@@ -787,11 +783,11 @@ class KeyHandle extends pulumi.CustomResource {
     KeyHandleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/keyHandle:KeyHandle',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:kms/keyHandle:KeyHandle',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.kmsKey = registerOutput<String>('kmsKey');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

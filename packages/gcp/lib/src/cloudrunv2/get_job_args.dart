@@ -11,10 +11,8 @@ class GetJobArgs {
   ///
   /// - - -
   final pulumi.Input<String>? location;
-
   /// The name of the Cloud Run v2 Job.
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,8 +21,12 @@ class GetJobArgs {
   /// [location] The location of the instance. eg us-central1
   /// [name] The name of the Cloud Run v2 Job.
   /// [project] The project in which the resource belongs. If it
-  GetJobArgs({String? location, required String name, String? project})
-    : location = pulumi.Input.asOptionalInput<String>(location),
+  GetJobArgs({
+    String? location,
+    required String name,
+    String? project,
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
       name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -44,3 +46,4 @@ class GetJobArgs {
     );
   }
 }
+

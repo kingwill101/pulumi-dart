@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class VirtualMachineSqlInstance {
+  /// Specifies if the SQL Server is optimized for adhoc workloads. Possible values are `true` and `false`. Defaults to `false`.
+  final bool? adhocWorkloadsOptimizationEnabled;
+  /// Collation of the SQL Server. Defaults to `SQL_Latin1_General_CP1_CI_AS`. Changing this forces a new resource to be created.
+  final String? collation;
+  /// Specifies if Instant File Initialization is enabled for the SQL Server. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new resource to be created.
+  final bool? instantFileInitializationEnabled;
+  /// Specifies if Lock Pages in Memory is enabled for the SQL Server. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new resource to be created.
+  final bool? lockPagesInMemoryEnabled;
+  /// Maximum Degree of Parallelism of the SQL Server. Possible values are between `0` and `32767`. Defaults to `0`.
+  final int? maxDop;
+  /// Maximum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `128` and `2147483647` Defaults to `2147483647`.
+  final int? maxServerMemoryMb;
+  /// Minimum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `0` and `2147483647` Defaults to `0`.
+  ///
+  /// > **Note:** `max_server_memory_mb` must be greater than or equal to `min_server_memory_mb`
+  final int? minServerMemoryMb;
+
+  /// Creates a new [VirtualMachineSqlInstance].
+  /// [adhocWorkloadsOptimizationEnabled] Specifies if the SQL Server is optimized for adhoc workloads. Possible values are `true` and `false`. Defaults to `false`.
+  /// [collation] Collation of the SQL Server. Defaults to `SQL_Latin1_General_CP1_CI_AS`. Changing this forces a new resource to be created.
+  /// [instantFileInitializationEnabled] Specifies if Instant File Initialization is enabled for the SQL Server. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new resource to be created.
+  /// [lockPagesInMemoryEnabled] Specifies if Lock Pages in Memory is enabled for the SQL Server. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new resource to be created.
+  /// [maxDop] Maximum Degree of Parallelism of the SQL Server. Possible values are between `0` and `32767`. Defaults to `0`.
+  /// [maxServerMemoryMb] Maximum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `128` and `2147483647` Defaults to `2147483647`.
+  /// [minServerMemoryMb] Minimum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `0` and `2147483647` Defaults to `0`.
+  VirtualMachineSqlInstance({
+    this.adhocWorkloadsOptimizationEnabled,
+    this.collation,
+    this.instantFileInitializationEnabled,
+    this.lockPagesInMemoryEnabled,
+    this.maxDop,
+    this.maxServerMemoryMb,
+    this.minServerMemoryMb,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'adhocWorkloadsOptimizationEnabled': ?adhocWorkloadsOptimizationEnabled,
+      'collation': ?collation,
+      'instantFileInitializationEnabled': ?instantFileInitializationEnabled,
+      'lockPagesInMemoryEnabled': ?lockPagesInMemoryEnabled,
+      'maxDop': ?maxDop,
+      'maxServerMemoryMb': ?maxServerMemoryMb,
+      'minServerMemoryMb': ?minServerMemoryMb,
+    };
+  }
+
+  factory VirtualMachineSqlInstance.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineSqlInstance(
+      adhocWorkloadsOptimizationEnabled: map['adhocWorkloadsOptimizationEnabled'] == null ? null : map['adhocWorkloadsOptimizationEnabled'] as bool,
+      collation: map['collation'] == null ? null : map['collation'] as String,
+      instantFileInitializationEnabled: map['instantFileInitializationEnabled'] == null ? null : map['instantFileInitializationEnabled'] as bool,
+      lockPagesInMemoryEnabled: map['lockPagesInMemoryEnabled'] == null ? null : map['lockPagesInMemoryEnabled'] as bool,
+      maxDop: map['maxDop'] == null ? null : map['maxDop'] as int,
+      maxServerMemoryMb: map['maxServerMemoryMb'] == null ? null : map['maxServerMemoryMb'] as int,
+      minServerMemoryMb: map['minServerMemoryMb'] == null ? null : map['minServerMemoryMb'] as int,
+    );
+  }
+}
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
   /// The name of a Kubernetes Resource.
   final String name;
-
   /// The namespace of a Kubernetes Resource.
   final String namespace;
 
@@ -16,15 +16,17 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'namespace': namespace};
+    return <String, dynamic>{
+      'name': name,
+      'namespace': namespace,
+    };
   }
 
-  factory RestorePlanRestoreConfigSelectedApplicationsNamespacedName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigSelectedApplicationsNamespacedName.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigSelectedApplicationsNamespacedName(
       name: map['name'] as String,
       namespace: map['namespace'] as String,
     );
   }
 }
+

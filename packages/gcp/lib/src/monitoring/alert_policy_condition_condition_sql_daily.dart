@@ -8,7 +8,6 @@ class AlertPolicyConditionConditionSqlDaily {
   /// the query at the same time each day.
   /// Structure is documented below.
   final AlertPolicyConditionConditionSqlDailyExecutionTime? executionTime;
-
   /// The number of days between runs. Must be greater than or equal
   /// to 1 day and less than or equal to 30 days.
   final int periodicity;
@@ -28,16 +27,11 @@ class AlertPolicyConditionConditionSqlDaily {
     };
   }
 
-  factory AlertPolicyConditionConditionSqlDaily.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionSqlDaily.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlDaily(
-      executionTime: map['executionTime'] == null
-          ? null
-          : AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap(
-              (map['executionTime'] as Map).cast<String, dynamic>(),
-            ),
+      executionTime: map['executionTime'] == null ? null : AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap((map['executionTime'] as Map).cast<String, dynamic>()),
       periodicity: map['periodicity'] as int,
     );
   }
 }
+

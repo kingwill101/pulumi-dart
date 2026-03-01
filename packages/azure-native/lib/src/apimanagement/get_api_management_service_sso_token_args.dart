@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apimanagement_get_api_management_service_sso_token_args_doc}
+/// Arguments for getApiManagementServiceSsoToken.
+/// {@endtemplate}
+/// {@macro pulumi_apimanagement_get_api_management_service_sso_token_args_doc}
+class GetApiManagementServiceSsoTokenArgs {
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the API Management service.
+  final pulumi.Input<String> serviceName;
+
+  /// Creates a new [GetApiManagementServiceSsoTokenArgs].
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [serviceName] The name of the API Management service.
+  GetApiManagementServiceSsoTokenArgs({
+    required String resourceGroupName,
+    required String serviceName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      serviceName = pulumi.Input.asInput<String>(serviceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'serviceName': serviceName,
+    };
+  }
+
+  factory GetApiManagementServiceSsoTokenArgs.fromMap(Map<String, dynamic> map) {
+    return GetApiManagementServiceSsoTokenArgs(
+      resourceGroupName: map['resourceGroupName'] as String,
+      serviceName: map['serviceName'] as String,
+    );
+  }
+}
+

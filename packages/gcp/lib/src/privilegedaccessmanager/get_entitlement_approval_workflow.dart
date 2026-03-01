@@ -15,27 +15,20 @@ class GetEntitlementApprovalWorkflow {
 
   /// Creates a new [GetEntitlementApprovalWorkflow].
   /// [manualApprovals] A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
-  GetEntitlementApprovalWorkflow({required this.manualApprovals});
+  GetEntitlementApprovalWorkflow({
+    required this.manualApprovals,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualApprovals':
-          pulumi.Input.encodeList<
-            GetEntitlementApprovalWorkflowManualApproval,
-            Map<String, dynamic>
-          >(manualApprovals, (value) => value.toMap()),
+      'manualApprovals': pulumi.Input.encodeList<GetEntitlementApprovalWorkflowManualApproval, Map<String, dynamic>>(manualApprovals, (value) => value.toMap()),
     };
   }
 
   factory GetEntitlementApprovalWorkflow.fromMap(Map<String, dynamic> map) {
     return GetEntitlementApprovalWorkflow(
-      manualApprovals:
-          pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApproval>(
-            map['manualApprovals'],
-            (value) => GetEntitlementApprovalWorkflowManualApproval.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      manualApprovals: pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApproval>(map['manualApprovals'], (value) => GetEntitlementApprovalWorkflowManualApproval.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

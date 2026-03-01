@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppAuthorizationConnectionTenant {
   final String tenantDisplayName;
   final String tenantIdentifier;
@@ -26,3 +27,4 @@ class AppAuthorizationConnectionTenant {
     );
   }
 }
+

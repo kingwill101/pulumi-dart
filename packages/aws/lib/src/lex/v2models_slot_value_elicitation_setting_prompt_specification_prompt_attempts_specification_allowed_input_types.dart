@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes {
   final bool allowAudioInput;
   final bool allowDtmfInput;
@@ -19,12 +20,11 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes(
       allowAudioInput: map['allowAudioInput'] as bool,
       allowDtmfInput: map['allowDtmfInput'] as bool,
     );
   }
 }
+

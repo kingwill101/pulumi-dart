@@ -9,25 +9,20 @@ class WebAclRuleStatementOrStatement {
 
   /// Creates a new [WebAclRuleStatementOrStatement].
   /// [statements] The statements to combine.
-  WebAclRuleStatementOrStatement({required this.statements});
+  WebAclRuleStatementOrStatement({
+    required this.statements,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements':
-          pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(
-            statements,
-            (value) => value.toMap(),
-          ),
+      'statements': pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleStatementOrStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementOrStatement(
-      statements: pulumi.Input.decodeList<WebAclRuleStatement>(
-        map['statements'],
-        (value) =>
-            WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      statements: pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,9 +5,7 @@ import 'region_autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_
 class RegionAutoscalerAutoscalingPolicyScaleDownControl {
   /// A nested object resource.
   /// Structure is documented below.
-  final RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas?
-  maxScaledDownReplicas;
-
+  final RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas? maxScaledDownReplicas;
   /// How long back autoscaling should look when computing recommendations
   /// to include directives regarding slower scale down, as described above.
   final int? timeWindowSec;
@@ -22,25 +20,16 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxScaledDownReplicas': ?maxScaledDownReplicas == null
-          ? null
-          : maxScaledDownReplicas!.toMap(),
+      'maxScaledDownReplicas': ?maxScaledDownReplicas == null ? null : maxScaledDownReplicas!.toMap(),
       'timeWindowSec': ?timeWindowSec,
     };
   }
 
-  factory RegionAutoscalerAutoscalingPolicyScaleDownControl.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionAutoscalerAutoscalingPolicyScaleDownControl.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScaleDownControl(
-      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null
-          ? null
-          : RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(
-              (map['maxScaledDownReplicas'] as Map).cast<String, dynamic>(),
-            ),
-      timeWindowSec: map['timeWindowSec'] == null
-          ? null
-          : map['timeWindowSec'] as int,
+      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap((map['maxScaledDownReplicas'] as Map).cast<String, dynamic>()),
+      timeWindowSec: map['timeWindowSec'] == null ? null : map['timeWindowSec'] as int,
     );
   }
 }
+

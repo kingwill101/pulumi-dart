@@ -5,9 +5,7 @@ import 'prevention_discovery_config_target_cloud_storage_target_generation_caden
 class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence {
   /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence?
-  inspectTemplateModifiedCadence;
-
+  final PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence? inspectTemplateModifiedCadence;
   /// Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
   /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
   final String? refreshFrequency;
@@ -22,27 +20,16 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inspectTemplateModifiedCadence': ?inspectTemplateModifiedCadence == null
-          ? null
-          : inspectTemplateModifiedCadence!.toMap(),
+      'inspectTemplateModifiedCadence': ?inspectTemplateModifiedCadence == null ? null : inspectTemplateModifiedCadence!.toMap(),
       'refreshFrequency': ?refreshFrequency,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence(
-      inspectTemplateModifiedCadence:
-          map['inspectTemplateModifiedCadence'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(
-              (map['inspectTemplateModifiedCadence'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      refreshFrequency: map['refreshFrequency'] == null
-          ? null
-          : map['refreshFrequency'] as String,
+      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence'] as Map).cast<String, dynamic>()),
+      refreshFrequency: map['refreshFrequency'] == null ? null : map['refreshFrequency'] as String,
     );
   }
 }
+

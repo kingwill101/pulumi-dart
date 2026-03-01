@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustProviderNativeApplicationOidcOptions {
   final String? authorizationEndpoint;
   final String? clientId;
@@ -43,26 +44,17 @@ class TrustProviderNativeApplicationOidcOptions {
     };
   }
 
-  factory TrustProviderNativeApplicationOidcOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrustProviderNativeApplicationOidcOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderNativeApplicationOidcOptions(
-      authorizationEndpoint: map['authorizationEndpoint'] == null
-          ? null
-          : map['authorizationEndpoint'] as String,
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : map['authorizationEndpoint'] as String,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
       issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null
-          ? null
-          : map['publicSigningKeyEndpoint'] as String,
+      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : map['publicSigningKeyEndpoint'] as String,
       scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null
-          ? null
-          : map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] == null
-          ? null
-          : map['userInfoEndpoint'] as String,
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
+      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : map['userInfoEndpoint'] as String,
     );
   }
 }
+

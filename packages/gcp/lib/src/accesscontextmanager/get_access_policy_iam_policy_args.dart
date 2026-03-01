@@ -12,14 +12,21 @@ class GetAccessPolicyIamPolicyArgs {
 
   /// Creates a new [GetAccessPolicyIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetAccessPolicyIamPolicyArgs({required String name})
-    : name = pulumi.Input.asInput<String>(name);
+  GetAccessPolicyIamPolicyArgs({
+    required String name,
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetAccessPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetAccessPolicyIamPolicyArgs(name: map['name'] as String);
+    return GetAccessPolicyIamPolicyArgs(
+      name: map['name'] as String,
+    );
   }
 }
+

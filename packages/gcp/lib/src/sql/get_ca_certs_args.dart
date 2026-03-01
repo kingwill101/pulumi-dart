@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCaCertsArgs {
   /// The name or self link of the instance.
   final pulumi.Input<String> instance;
-
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetCaCertsArgs].
   /// [instance] The name or self link of the instance.
   /// [project] The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  GetCaCertsArgs({required String instance, String? project})
-    : instance = pulumi.Input.asInput<String>(instance),
+  GetCaCertsArgs({
+    required String instance,
+    String? project,
+  }) :
+      instance = pulumi.Input.asInput<String>(instance),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instance': instance, 'project': ?project};
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+    };
   }
 
   factory GetCaCertsArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetCaCertsArgs {
     );
   }
 }
+

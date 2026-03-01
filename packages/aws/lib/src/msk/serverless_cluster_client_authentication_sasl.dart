@@ -8,19 +8,20 @@ class ServerlessClusterClientAuthenticationSasl {
 
   /// Creates a new [ServerlessClusterClientAuthenticationSasl].
   /// [iam] Details for client authentication using IAM. See below.
-  ServerlessClusterClientAuthenticationSasl({required this.iam});
+  ServerlessClusterClientAuthenticationSasl({
+    required this.iam,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'iam': iam.toMap()};
+    return <String, dynamic>{
+      'iam': iam.toMap(),
+    };
   }
 
-  factory ServerlessClusterClientAuthenticationSasl.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerlessClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthenticationSasl(
-      iam: ServerlessClusterClientAuthenticationSaslIam.fromMap(
-        (map['iam'] as Map).cast<String, dynamic>(),
-      ),
+      iam: ServerlessClusterClientAuthenticationSaslIam.fromMap((map['iam'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

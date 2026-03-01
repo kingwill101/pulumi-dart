@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigRenameKeyEntry {
   /// Specifies the key with the value that will be converted to a different type.
   final String key;
-
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
   final bool? overwriteIfExists;
@@ -27,15 +27,12 @@ class LogTransformerTransformerConfigRenameKeyEntry {
     };
   }
 
-  factory LogTransformerTransformerConfigRenameKeyEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigRenameKeyEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigRenameKeyEntry(
       key: map['key'] as String,
-      overwriteIfExists: map['overwriteIfExists'] == null
-          ? null
-          : map['overwriteIfExists'] as bool,
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : map['overwriteIfExists'] as bool,
       renameTo: map['renameTo'] as String,
     );
   }
 }
+

@@ -20,14 +20,12 @@ class DeliveryPipelineIamMember extends pulumi.CustomResource {
     DeliveryPipelineIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.condition = registerOutput<DeliveryPipelineIamMemberCondition?>(
-      'condition',
-    );
+          'gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.condition = registerOutput<DeliveryPipelineIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');
     this.member = registerOutput<String>('member');

@@ -9,7 +9,9 @@ class TenantClient {
 
   /// Creates a new [TenantClient].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  TenantClient({this.permissions});
+  TenantClient({
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class TenantClient {
 
   factory TenantClient.fromMap(Map<String, dynamic> map) {
     return TenantClient(
-      permissions: map['permissions'] == null
-          ? null
-          : TenantClientPermissions.fromMap(
-              (map['permissions'] as Map).cast<String, dynamic>(),
-            ),
+      permissions: map['permissions'] == null ? null : TenantClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

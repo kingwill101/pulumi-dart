@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
   /// A URL representing a file or path (no wildcards) in Cloud Storage.
   /// Example: `gs://[BUCKET_NAME]/dictionary.txt`
@@ -12,14 +13,15 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath(
       path: map['path'] as String,
     );
   }
 }
+

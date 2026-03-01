@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AliasRoutingConfiguration {
   /// The Amazon Resource Name (ARN) of the state machine version.
   final String stateMachineVersionArn;
-
   /// Percentage of traffic routed to the state machine version.
   final int weight;
 
@@ -29,3 +29,4 @@ class AliasRoutingConfiguration {
     );
   }
 }
+

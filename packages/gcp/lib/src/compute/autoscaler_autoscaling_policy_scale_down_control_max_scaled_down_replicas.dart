@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
   /// Specifies a fixed number of VM instances. This must be a positive
   /// integer.
   final int? fixed;
-
   /// Specifies a percentage of instances between 0 to 100%, inclusive.
   /// For example, specify 80 for 80%.
   final int? percent;
@@ -18,15 +18,17 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fixed': ?fixed, 'percent': ?percent};
+    return <String, dynamic>{
+      'fixed': ?fixed,
+      'percent': ?percent,
+    };
   }
 
-  factory AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(
       fixed: map['fixed'] == null ? null : map['fixed'] as int,
       percent: map['percent'] == null ? null : map['percent'] as int,
     );
   }
 }
+

@@ -1,0 +1,18 @@
+/// Enable or Disable public network access to workspace
+enum WorkspacePublicNetworkAccess {
+  valueEnabled("Enabled"),
+  valueDisabled("Disabled");
+
+  const WorkspacePublicNetworkAccess(this.value);
+  final String value;
+
+  static WorkspacePublicNetworkAccess fromValue(String value) {
+    for (final item in WorkspacePublicNetworkAccess.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown WorkspacePublicNetworkAccess value: $value');
+  }
+}
+

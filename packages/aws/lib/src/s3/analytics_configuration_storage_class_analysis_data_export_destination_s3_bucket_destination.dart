@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
   /// Account ID that owns the destination bucket.
   final String? bucketAccountId;
-
   /// ARN of the destination bucket.
   final String bucketArn;
-
   /// Output format of exported analytics data. Allowed values: `CSV`. Default value: `CSV`.
   final String? format;
-
   /// Prefix to append to exported analytics data.
   final String? prefix;
 
@@ -34,16 +32,13 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
     };
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination(
-      bucketAccountId: map['bucketAccountId'] == null
-          ? null
-          : map['bucketAccountId'] as String,
+      bucketAccountId: map['bucketAccountId'] == null ? null : map['bucketAccountId'] as String,
       bucketArn: map['bucketArn'] as String,
       format: map['format'] == null ? null : map['format'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
     );
   }
 }
+

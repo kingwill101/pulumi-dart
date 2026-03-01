@@ -1211,7 +1211,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 ///   ipList: ${ips.uptimeCheckIps}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetUptimeCheckIPsResult> getUptimeCheckIPs({
+Future<GetUptimeCheckIPsResult> getUptimeCheckIPs(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

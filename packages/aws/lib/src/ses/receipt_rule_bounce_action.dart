@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReceiptRuleBounceAction {
   /// The message to send
   final String message;
-
   /// The position of the action in the receipt rule
   final int position;
-
   /// The email address of the sender
   final String sender;
-
   /// The RFC 5321 SMTP reply code
   final String smtpReplyCode;
-
   /// The RFC 3463 SMTP enhanced status code
   final String? statusCode;
-
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -52,10 +48,9 @@ class ReceiptRuleBounceAction {
       position: map['position'] as int,
       sender: map['sender'] as String,
       smtpReplyCode: map['smtpReplyCode'] as String,
-      statusCode: map['statusCode'] == null
-          ? null
-          : map['statusCode'] as String,
+      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
       topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
     );
   }
 }
+

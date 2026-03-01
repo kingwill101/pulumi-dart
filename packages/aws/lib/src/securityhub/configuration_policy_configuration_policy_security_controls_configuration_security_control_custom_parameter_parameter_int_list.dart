@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList {
   final List<int> values;
 
@@ -10,14 +11,15 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList(
       values: (map['values'] as List).cast<int>(),
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
   /// The location of the repository directory.
   final String baseUrl;
-
   /// The display name of the repository.
   final String? displayName;
-
   /// URIs of GPG keys.
   final List<String>? gpgKeys;
-
   /// A one word, unique name for this repository. This is the
   /// `repo id` in the yum config file and also the `display_name` if
   /// `display_name` is omitted. This id is also used as the unique identifier
@@ -37,18 +35,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(
       baseUrl: map['baseUrl'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
-      gpgKeys: map['gpgKeys'] == null
-          ? null
-          : (map['gpgKeys'] as List).cast<String>(),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      gpgKeys: map['gpgKeys'] == null ? null : (map['gpgKeys'] as List).cast<String>(),
       id: map['id'] as String,
     );
   }
 }
+

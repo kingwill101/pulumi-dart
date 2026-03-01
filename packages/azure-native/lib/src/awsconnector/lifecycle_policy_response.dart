@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of LifecyclePolicy
+class LifecyclePolicyResponse {
+  /// The JSON repository policy text to apply to the repository. The JSON repository policy text to apply to the repository.
+  final String? lifecyclePolicyText;
+  /// The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+  final String? registryId;
+  /// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  final String? transitionToArchive;
+  /// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  final String? transitionToIA;
+  /// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  final String? transitionToPrimaryStorageClass;
+
+  /// Creates a new [LifecyclePolicyResponse].
+  /// [lifecyclePolicyText] The JSON repository policy text to apply to the repository. The JSON repository policy text to apply to the repository.
+  /// [registryId] The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+  /// [transitionToArchive] The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  /// [transitionToIA] The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  /// [transitionToPrimaryStorageClass] Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+  LifecyclePolicyResponse({
+    this.lifecyclePolicyText,
+    this.registryId,
+    this.transitionToArchive,
+    this.transitionToIA,
+    this.transitionToPrimaryStorageClass,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'lifecyclePolicyText': ?lifecyclePolicyText,
+      'registryId': ?registryId,
+      'transitionToArchive': ?transitionToArchive,
+      'transitionToIA': ?transitionToIA,
+      'transitionToPrimaryStorageClass': ?transitionToPrimaryStorageClass,
+    };
+  }
+
+  factory LifecyclePolicyResponse.fromMap(Map<String, dynamic> map) {
+    return LifecyclePolicyResponse(
+      lifecyclePolicyText: map['lifecyclePolicyText'] == null ? null : map['lifecyclePolicyText'] as String,
+      registryId: map['registryId'] == null ? null : map['registryId'] as String,
+      transitionToArchive: map['transitionToArchive'] == null ? null : map['transitionToArchive'] as String,
+      transitionToIA: map['transitionToIA'] == null ? null : map['transitionToIA'] as String,
+      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] == null ? null : map['transitionToPrimaryStorageClass'] as String,
+    );
+  }
+}
+

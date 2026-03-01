@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
+/// This condition must contain 'field' and either 'equals' or 'containsAny'.
+class AlertRuleLeafCondition {
+  /// The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+  final List<String>? containsAny;
+  /// The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+  final String? equals;
+  /// The name of the Activity Log event's field that this condition will examine.
+  /// The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+  final String? field;
+
+  /// Creates a new [AlertRuleLeafCondition].
+  /// [containsAny] The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+  /// [equals] The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+  /// [field] The name of the Activity Log event's field that this condition will examine.
+  AlertRuleLeafCondition({
+    this.containsAny,
+    this.equals,
+    this.field,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'containsAny': ?containsAny,
+      'equals': ?equals,
+      'field': ?field,
+    };
+  }
+
+  factory AlertRuleLeafCondition.fromMap(Map<String, dynamic> map) {
+    return AlertRuleLeafCondition(
+      containsAny: map['containsAny'] == null ? null : (map['containsAny'] as List).cast<String>(),
+      equals: map['equals'] == null ? null : map['equals'] as String,
+      field: map['field'] == null ? null : map['field'] as String,
+    );
+  }
+}
+

@@ -5,13 +5,10 @@ import 'get_application_appversion_lifecycle.dart';
 /// Result data returned by getApplication.
 class GetApplicationResult {
   final GetApplicationAppversionLifecycle appversionLifecycle;
-
   /// ARN of the application.
   final String arn;
-
   /// Short description of the application
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -46,9 +43,7 @@ class GetApplicationResult {
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      appversionLifecycle: GetApplicationAppversionLifecycle.fromMap(
-        (map['appversionLifecycle'] as Map).cast<String, dynamic>(),
-      ),
+      appversionLifecycle: GetApplicationAppversionLifecycle.fromMap((map['appversionLifecycle'] as Map).cast<String, dynamic>()),
       arn: map['arn'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
@@ -57,3 +52,4 @@ class GetApplicationResult {
     );
   }
 }
+

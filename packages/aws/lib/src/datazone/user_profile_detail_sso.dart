@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserProfileDetailSso {
   final String firstName;
   final String lastName;
@@ -31,3 +32,4 @@ class UserProfileDetailSso {
     );
   }
 }
+

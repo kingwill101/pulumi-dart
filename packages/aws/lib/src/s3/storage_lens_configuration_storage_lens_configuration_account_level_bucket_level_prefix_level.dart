@@ -4,8 +4,7 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel {
   /// Prefix-level storage metrics for S3 Storage Lens. See Prefix Level Storage Metrics below for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics
-  storageMetrics;
+  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics storageMetrics;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel].
   /// [storageMetrics] Prefix-level storage metrics for S3 Storage Lens. See Prefix Level Storage Metrics below for more details.
@@ -14,17 +13,15 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageMetrics': storageMetrics.toMap()};
+    return <String, dynamic>{
+      'storageMetrics': storageMetrics.toMap(),
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel(
-      storageMetrics:
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap(
-            (map['storageMetrics'] as Map).cast<String, dynamic>(),
-          ),
+      storageMetrics: StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap((map['storageMetrics'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

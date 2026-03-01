@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeveloperAppCredentialAttribute {
   /// Key of the attribute
   final String? name;
-
   /// Value of the attribute
   final String? value;
 
   /// Creates a new [DeveloperAppCredentialAttribute].
   /// [name] Key of the attribute
   /// [value] Value of the attribute
-  DeveloperAppCredentialAttribute({this.name, this.value});
+  DeveloperAppCredentialAttribute({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory DeveloperAppCredentialAttribute.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class DeveloperAppCredentialAttribute {
     );
   }
 }
+

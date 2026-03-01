@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
   final int instancePort;
   final int loadBalancerPort;
@@ -19,12 +20,11 @@ class GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
     };
   }
 
-  factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener(
       instancePort: map['instancePort'] as int,
       loadBalancerPort: map['loadBalancerPort'] as int,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectionRoute {
   final String destinationCidrBlock;
   final String source;
-
   /// Current state of the VPN connection.
   final String state;
 
@@ -33,3 +33,4 @@ class GetConnectionRoute {
     );
   }
 }
+

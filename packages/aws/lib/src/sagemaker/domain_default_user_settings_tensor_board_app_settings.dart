@@ -4,30 +4,24 @@ import 'domain_default_user_settings_tensor_board_app_settings_default_resource_
 
 class DomainDefaultUserSettingsTensorBoardAppSettings {
   /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
-  final DomainDefaultUserSettingsTensorBoardAppSettingsDefaultResourceSpec?
-  defaultResourceSpec;
+  final DomainDefaultUserSettingsTensorBoardAppSettingsDefaultResourceSpec? defaultResourceSpec;
 
   /// Creates a new [DomainDefaultUserSettingsTensorBoardAppSettings].
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
-  DomainDefaultUserSettingsTensorBoardAppSettings({this.defaultResourceSpec});
+  DomainDefaultUserSettingsTensorBoardAppSettings({
+    this.defaultResourceSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultResourceSpec': ?defaultResourceSpec == null
-          ? null
-          : defaultResourceSpec!.toMap(),
+      'defaultResourceSpec': ?defaultResourceSpec == null ? null : defaultResourceSpec!.toMap(),
     };
   }
 
-  factory DomainDefaultUserSettingsTensorBoardAppSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultUserSettingsTensorBoardAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsTensorBoardAppSettings(
-      defaultResourceSpec: map['defaultResourceSpec'] == null
-          ? null
-          : DomainDefaultUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap(
-              (map['defaultResourceSpec'] as Map).cast<String, dynamic>(),
-            ),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : DomainDefaultUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

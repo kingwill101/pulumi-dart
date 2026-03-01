@@ -6,15 +6,9 @@ import 'get_job_definition_node_property_node_range_property_container_volume_ho
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
   /// This parameter is specified when you're using an Amazon Elastic File System file system for job storage.
-  final List<
-    GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration
-  >
-  efsVolumeConfigurations;
-
+  final List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration> efsVolumeConfigurations;
   /// The contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored.
-  final List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>
-  hosts;
-
+  final List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost> hosts;
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final String name;
 
@@ -30,45 +24,18 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efsVolumeConfigurations':
-          pulumi.Input.encodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration,
-            Map<String, dynamic>
-          >(efsVolumeConfigurations, (value) => value.toMap()),
-      'hosts':
-          pulumi.Input.encodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost,
-            Map<String, dynamic>
-          >(hosts, (value) => value.toMap()),
+      'efsVolumeConfigurations': pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration, Map<String, dynamic>>(efsVolumeConfigurations, (value) => value.toMap()),
+      'hosts': pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost, Map<String, dynamic>>(hosts, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume(
-      efsVolumeConfigurations:
-          pulumi.Input.decodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration
-          >(
-            map['efsVolumeConfigurations'],
-            (value) =>
-                GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      hosts:
-          pulumi.Input.decodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost
-          >(
-            map['hosts'],
-            (value) =>
-                GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      efsVolumeConfigurations: pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration>(map['efsVolumeConfigurations'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      hosts: pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>(map['hosts'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }
 }
+

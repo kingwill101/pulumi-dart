@@ -7,11 +7,9 @@ class GetRouterStatusBestRoutesForRouterWarning {
   /// A warning code, if applicable. For example, Compute Engine returns
   /// NO_RESULTS_ON_PAGE if there are no results in the response.
   final String code;
-
   /// Metadata about this warning in key: value format. For example:
   /// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
   final List<GetRouterStatusBestRoutesForRouterWarningData> datas;
-
   /// A human-readable description of the warning code.
   final String message;
 
@@ -28,29 +26,17 @@ class GetRouterStatusBestRoutesForRouterWarning {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'datas':
-          pulumi.Input.encodeList<
-            GetRouterStatusBestRoutesForRouterWarningData,
-            Map<String, dynamic>
-          >(datas, (value) => value.toMap()),
+      'datas': pulumi.Input.encodeList<GetRouterStatusBestRoutesForRouterWarningData, Map<String, dynamic>>(datas, (value) => value.toMap()),
       'message': message,
     };
   }
 
-  factory GetRouterStatusBestRoutesForRouterWarning.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouterStatusBestRoutesForRouterWarning.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRoutesForRouterWarning(
       code: map['code'] as String,
-      datas:
-          pulumi
-              .Input.decodeList<GetRouterStatusBestRoutesForRouterWarningData>(
-            map['datas'],
-            (value) => GetRouterStatusBestRoutesForRouterWarningData.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      datas: pulumi.Input.decodeList<GetRouterStatusBestRoutesForRouterWarningData>(map['datas'], (value) => GetRouterStatusBestRoutesForRouterWarningData.fromMap((value as Map).cast<String, dynamic>())),
       message: map['message'] as String,
     );
   }
 }
+

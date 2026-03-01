@@ -1,0 +1,22 @@
+library module_videoindexer;
+
+export 'videoindexer/account.dart';
+export 'videoindexer/account_args.dart';
+export 'videoindexer/functions.dart';
+export 'videoindexer/get_account_args.dart';
+export 'videoindexer/get_account_result.dart';
+export 'videoindexer/get_private_endpoint_connection_args.dart';
+export 'videoindexer/get_private_endpoint_connection_result.dart';
+export 'videoindexer/managed_service_identity.dart';
+export 'videoindexer/managed_service_identity_response.dart';
+export 'videoindexer/managed_service_identity_type.dart';
+export 'videoindexer/private_endpoint_connection.dart';
+export 'videoindexer/private_endpoint_connection_args.dart';
+export 'videoindexer/private_endpoint_response.dart';
+export 'videoindexer/private_endpoint_service_connection_status.dart';
+export 'videoindexer/private_link_service_connection_state.dart';
+export 'videoindexer/private_link_service_connection_state_response.dart';
+export 'videoindexer/storage_services_for_put_request.dart';
+export 'videoindexer/storage_services_for_put_request_response.dart';
+export 'videoindexer/system_data_response.dart';
+export 'videoindexer/user_assigned_identity_response.dart';

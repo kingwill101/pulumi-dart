@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Auto-scaling properties of a Big Data pool powered by Apache Spark
+class AutoScalePropertiesResponse {
+  /// Whether automatic scaling is enabled for the Big Data pool.
+  final bool? enabled;
+  /// The maximum number of nodes the Big Data pool can support.
+  final int? maxNodeCount;
+  /// The minimum number of nodes the Big Data pool can support.
+  final int? minNodeCount;
+
+  /// Creates a new [AutoScalePropertiesResponse].
+  /// [enabled] Whether automatic scaling is enabled for the Big Data pool.
+  /// [maxNodeCount] The maximum number of nodes the Big Data pool can support.
+  /// [minNodeCount] The minimum number of nodes the Big Data pool can support.
+  AutoScalePropertiesResponse({
+    this.enabled,
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'maxNodeCount': ?maxNodeCount,
+      'minNodeCount': ?minNodeCount,
+    };
+  }
+
+  factory AutoScalePropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return AutoScalePropertiesResponse(
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      maxNodeCount: map['maxNodeCount'] == null ? null : map['maxNodeCount'] as int,
+      minNodeCount: map['minNodeCount'] == null ? null : map['minNodeCount'] as int,
+    );
+  }
+}
+

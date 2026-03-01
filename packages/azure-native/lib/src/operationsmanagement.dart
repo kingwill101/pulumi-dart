@@ -1,0 +1,25 @@
+library module_operationsmanagement;
+
+export 'operationsmanagement/arm_template_parameter.dart';
+export 'operationsmanagement/arm_template_parameter_response.dart';
+export 'operationsmanagement/functions.dart';
+export 'operationsmanagement/get_management_association_args.dart';
+export 'operationsmanagement/get_management_association_result.dart';
+export 'operationsmanagement/get_management_configuration_args.dart';
+export 'operationsmanagement/get_management_configuration_result.dart';
+export 'operationsmanagement/get_solution_args.dart';
+export 'operationsmanagement/get_solution_result.dart';
+export 'operationsmanagement/management_association.dart';
+export 'operationsmanagement/management_association_args.dart';
+export 'operationsmanagement/management_association_properties.dart';
+export 'operationsmanagement/management_association_properties_response.dart';
+export 'operationsmanagement/management_configuration.dart';
+export 'operationsmanagement/management_configuration_args.dart';
+export 'operationsmanagement/management_configuration_properties.dart';
+export 'operationsmanagement/management_configuration_properties_response.dart';
+export 'operationsmanagement/solution.dart';
+export 'operationsmanagement/solution_args.dart';
+export 'operationsmanagement/solution_plan.dart';
+export 'operationsmanagement/solution_plan_response.dart';
+export 'operationsmanagement/solution_properties.dart';
+export 'operationsmanagement/solution_properties_response.dart';

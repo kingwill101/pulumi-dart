@@ -9,23 +9,20 @@ class VmwareAdminClusterAddonNode {
 
   /// Creates a new [VmwareAdminClusterAddonNode].
   /// [autoResizeConfig] Specifies auto resize config.
-  VmwareAdminClusterAddonNode({this.autoResizeConfig});
+  VmwareAdminClusterAddonNode({
+    this.autoResizeConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoResizeConfig': ?autoResizeConfig == null
-          ? null
-          : autoResizeConfig!.toMap(),
+      'autoResizeConfig': ?autoResizeConfig == null ? null : autoResizeConfig!.toMap(),
     };
   }
 
   factory VmwareAdminClusterAddonNode.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAddonNode(
-      autoResizeConfig: map['autoResizeConfig'] == null
-          ? null
-          : VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap(
-              (map['autoResizeConfig'] as Map).cast<String, dynamic>(),
-            ),
+      autoResizeConfig: map['autoResizeConfig'] == null ? null : VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

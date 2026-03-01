@@ -8,7 +8,6 @@ class RegistrationDnsSettings {
   /// Configuration for an arbitrary DNS provider.
   /// Structure is documented below.
   final RegistrationDnsSettingsCustomDns? customDns;
-
   /// The list of glue records for this Registration. Commonly empty.
   /// Structure is documented below.
   final List<RegistrationDnsSettingsGlueRecord>? glueRecords;
@@ -16,35 +15,23 @@ class RegistrationDnsSettings {
   /// Creates a new [RegistrationDnsSettings].
   /// [customDns] Configuration for an arbitrary DNS provider.
   /// [glueRecords] The list of glue records for this Registration. Commonly empty.
-  RegistrationDnsSettings({this.customDns, this.glueRecords});
+  RegistrationDnsSettings({
+    this.customDns,
+    this.glueRecords,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customDns': ?customDns == null ? null : customDns!.toMap(),
-      'glueRecords': ?glueRecords == null
-          ? null
-          : pulumi.Input.encodeList<
-              RegistrationDnsSettingsGlueRecord,
-              Map<String, dynamic>
-            >(glueRecords!, (value) => value.toMap()),
+      'glueRecords': ?glueRecords == null ? null : pulumi.Input.encodeList<RegistrationDnsSettingsGlueRecord, Map<String, dynamic>>(glueRecords!, (value) => value.toMap()),
     };
   }
 
   factory RegistrationDnsSettings.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettings(
-      customDns: map['customDns'] == null
-          ? null
-          : RegistrationDnsSettingsCustomDns.fromMap(
-              (map['customDns'] as Map).cast<String, dynamic>(),
-            ),
-      glueRecords: map['glueRecords'] == null
-          ? null
-          : pulumi.Input.decodeList<RegistrationDnsSettingsGlueRecord>(
-              map['glueRecords'],
-              (value) => RegistrationDnsSettingsGlueRecord.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      customDns: map['customDns'] == null ? null : RegistrationDnsSettingsCustomDns.fromMap((map['customDns'] as Map).cast<String, dynamic>()),
+      glueRecords: map['glueRecords'] == null ? null : pulumi.Input.decodeList<RegistrationDnsSettingsGlueRecord>(map['glueRecords'], (value) => RegistrationDnsSettingsGlueRecord.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersRedshift {
   /// The ID of the cluster to which to connect.
   final String? clusterId;
-
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String? host;
-
   /// The port to which to connect.
   final int? port;
 
@@ -43,3 +41,4 @@ class DataSourceParametersRedshift {
     );
   }
 }
+

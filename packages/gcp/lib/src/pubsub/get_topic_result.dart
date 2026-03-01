@@ -9,7 +9,6 @@ import 'get_topic_schema_setting.dart';
 /// Result data returned by getTopic.
 class GetTopicResult {
   final Map<String, String> effectiveLabels;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings;
@@ -58,32 +57,16 @@ class GetTopicResult {
     return <String, dynamic>{
       'effectiveLabels': effectiveLabels,
       'id': id,
-      'ingestionDataSourceSettings':
-          pulumi.Input.encodeList<
-            GetTopicIngestionDataSourceSetting,
-            Map<String, dynamic>
-          >(ingestionDataSourceSettings, (value) => value.toMap()),
+      'ingestionDataSourceSettings': pulumi.Input.encodeList<GetTopicIngestionDataSourceSetting, Map<String, dynamic>>(ingestionDataSourceSettings, (value) => value.toMap()),
       'kmsKeyName': kmsKeyName,
       'labels': labels,
       'messageRetentionDuration': messageRetentionDuration,
-      'messageStoragePolicies':
-          pulumi.Input.encodeList<
-            GetTopicMessageStoragePolicy,
-            Map<String, dynamic>
-          >(messageStoragePolicies, (value) => value.toMap()),
-      'messageTransforms':
-          pulumi.Input.encodeList<
-            GetTopicMessageTransform,
-            Map<String, dynamic>
-          >(messageTransforms, (value) => value.toMap()),
+      'messageStoragePolicies': pulumi.Input.encodeList<GetTopicMessageStoragePolicy, Map<String, dynamic>>(messageStoragePolicies, (value) => value.toMap()),
+      'messageTransforms': pulumi.Input.encodeList<GetTopicMessageTransform, Map<String, dynamic>>(messageTransforms, (value) => value.toMap()),
       'name': name,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
-      'schemaSettings':
-          pulumi.Input.encodeList<GetTopicSchemaSetting, Map<String, dynamic>>(
-            schemaSettings,
-            (value) => value.toMap(),
-          ),
+      'schemaSettings': pulumi.Input.encodeList<GetTopicSchemaSetting, Map<String, dynamic>>(schemaSettings, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -92,39 +75,18 @@ class GetTopicResult {
     return GetTopicResult(
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
-      ingestionDataSourceSettings:
-          pulumi.Input.decodeList<GetTopicIngestionDataSourceSetting>(
-            map['ingestionDataSourceSettings'],
-            (value) => GetTopicIngestionDataSourceSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      ingestionDataSourceSettings: pulumi.Input.decodeList<GetTopicIngestionDataSourceSetting>(map['ingestionDataSourceSettings'], (value) => GetTopicIngestionDataSourceSetting.fromMap((value as Map).cast<String, dynamic>())),
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       messageRetentionDuration: map['messageRetentionDuration'] as String,
-      messageStoragePolicies:
-          pulumi.Input.decodeList<GetTopicMessageStoragePolicy>(
-            map['messageStoragePolicies'],
-            (value) => GetTopicMessageStoragePolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      messageTransforms: pulumi.Input.decodeList<GetTopicMessageTransform>(
-        map['messageTransforms'],
-        (value) => GetTopicMessageTransform.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      messageStoragePolicies: pulumi.Input.decodeList<GetTopicMessageStoragePolicy>(map['messageStoragePolicies'], (value) => GetTopicMessageStoragePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      messageTransforms: pulumi.Input.decodeList<GetTopicMessageTransform>(map['messageTransforms'], (value) => GetTopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      schemaSettings: pulumi.Input.decodeList<GetTopicSchemaSetting>(
-        map['schemaSettings'],
-        (value) => GetTopicSchemaSetting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      schemaSettings: pulumi.Input.decodeList<GetTopicSchemaSetting>(map['schemaSettings'], (value) => GetTopicSchemaSetting.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

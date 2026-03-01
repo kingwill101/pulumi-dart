@@ -529,14 +529,11 @@ import 'engine_split_traffic_split.dart';
 class EngineSplitTraffic extends pulumi.CustomResource {
   /// If set to true traffic will be migrated to this version.
   late final pulumi.Output<bool?> migrateTraffic;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the service these settings apply to.
   late final pulumi.Output<String> service;
-
   /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
   /// Structure is documented below.
   late final pulumi.Output<EngineSplitTrafficSplit> split;
@@ -550,11 +547,11 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     EngineSplitTrafficArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.migrateTraffic = registerOutput<bool?>('migrateTraffic');
     this.project = registerOutput<String>('project');
     this.service = registerOutput<String>('service');

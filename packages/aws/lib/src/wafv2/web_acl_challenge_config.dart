@@ -8,23 +8,20 @@ class WebAclChallengeConfig {
 
   /// Creates a new [WebAclChallengeConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See `immunity_time_property` below for details.
-  WebAclChallengeConfig({this.immunityTimeProperty});
+  WebAclChallengeConfig({
+    this.immunityTimeProperty,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'immunityTimeProperty': ?immunityTimeProperty == null
-          ? null
-          : immunityTimeProperty!.toMap(),
+      'immunityTimeProperty': ?immunityTimeProperty == null ? null : immunityTimeProperty!.toMap(),
     };
   }
 
   factory WebAclChallengeConfig.fromMap(Map<String, dynamic> map) {
     return WebAclChallengeConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null
-          ? null
-          : WebAclChallengeConfigImmunityTimeProperty.fromMap(
-              (map['immunityTimeProperty'] as Map).cast<String, dynamic>(),
-            ),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : WebAclChallengeConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

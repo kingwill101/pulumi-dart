@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   /// An optional description of this resize-request.
   final String? description;
-
   /// (Output)
   /// The URL of the link.
   final String? url;
@@ -17,17 +17,17 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description, 'url': ?url};
+    return <String, dynamic>{
+      'description': ?description,
+      'url': ?url,
+    };
   }
 
-  factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
+

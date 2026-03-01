@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoveredWorkloadArgs {
   /// The location of the discovered workload.
   final pulumi.Input<String> location;
-
   /// The host project of the discovered workload.
   final pulumi.Input<String>? project;
-
   /// The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
   final pulumi.Input<String> workloadUri;
 
@@ -24,9 +22,10 @@ class GetDiscoveredWorkloadArgs {
     required String location,
     String? project,
     required String workloadUri,
-  }) : location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       workloadUri = pulumi.Input.asInput<String>(workloadUri);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadUri = pulumi.Input.asInput<String>(workloadUri);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class GetDiscoveredWorkloadArgs {
     );
   }
 }
+

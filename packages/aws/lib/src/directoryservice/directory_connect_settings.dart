@@ -1,20 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DirectoryConnectSettings {
   final List<String>? availabilityZones;
-
   /// The IP addresses of the AD Connector servers.
   final List<String>? connectIps;
-
   /// The DNS IP addresses of the domain to connect to.
   final List<String> customerDnsIps;
-
   /// The username corresponding to the password provided.
   final String customerUsername;
-
   /// The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
   final List<String> subnetIds;
-
   /// The identifier of the VPC that the directory is in.
   final String vpcId;
 
@@ -47,12 +43,8 @@ class DirectoryConnectSettings {
 
   factory DirectoryConnectSettings.fromMap(Map<String, dynamic> map) {
     return DirectoryConnectSettings(
-      availabilityZones: map['availabilityZones'] == null
-          ? null
-          : (map['availabilityZones'] as List).cast<String>(),
-      connectIps: map['connectIps'] == null
-          ? null
-          : (map['connectIps'] as List).cast<String>(),
+      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
+      connectIps: map['connectIps'] == null ? null : (map['connectIps'] as List).cast<String>(),
       customerDnsIps: (map['customerDnsIps'] as List).cast<String>(),
       customerUsername: map['customerUsername'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
@@ -60,3 +52,4 @@ class DirectoryConnectSettings {
     );
   }
 }
+

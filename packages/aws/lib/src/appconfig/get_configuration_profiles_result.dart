@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConfigurationProfiles.
 class GetConfigurationProfilesResult {
   final String applicationId;
-
   /// Set of Configuration Profile IDs associated with the AppConfig Application.
   final List<String> configurationProfileIds;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -35,10 +34,10 @@ class GetConfigurationProfilesResult {
   factory GetConfigurationProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfilesResult(
       applicationId: map['applicationId'] as String,
-      configurationProfileIds: (map['configurationProfileIds'] as List)
-          .cast<String>(),
+      configurationProfileIds: (map['configurationProfileIds'] as List).cast<String>(),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

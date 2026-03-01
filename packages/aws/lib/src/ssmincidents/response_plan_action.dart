@@ -9,29 +9,20 @@ class ResponsePlanAction {
 
   /// Creates a new [ResponsePlanAction].
   /// [ssmAutomations] The Systems Manager automation document to start as the runbook at the beginning of the incident. The following values are supported:
-  ResponsePlanAction({this.ssmAutomations});
+  ResponsePlanAction({
+    this.ssmAutomations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ssmAutomations': ?ssmAutomations == null
-          ? null
-          : pulumi.Input.encodeList<
-              ResponsePlanActionSsmAutomation,
-              Map<String, dynamic>
-            >(ssmAutomations!, (value) => value.toMap()),
+      'ssmAutomations': ?ssmAutomations == null ? null : pulumi.Input.encodeList<ResponsePlanActionSsmAutomation, Map<String, dynamic>>(ssmAutomations!, (value) => value.toMap()),
     };
   }
 
   factory ResponsePlanAction.fromMap(Map<String, dynamic> map) {
     return ResponsePlanAction(
-      ssmAutomations: map['ssmAutomations'] == null
-          ? null
-          : pulumi.Input.decodeList<ResponsePlanActionSsmAutomation>(
-              map['ssmAutomations'],
-              (value) => ResponsePlanActionSsmAutomation.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      ssmAutomations: map['ssmAutomations'] == null ? null : pulumi.Input.decodeList<ResponsePlanActionSsmAutomation>(map['ssmAutomations'], (value) => ResponsePlanActionSsmAutomation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

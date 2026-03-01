@@ -16,10 +16,8 @@ class MulticastGroupRangeArgs {
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
   final pulumi.Input<List<String>>? consumerAcceptLists;
-
   /// An optional text description of the multicast group range.
   final pulumi.Input<String>? description;
-
   /// Multicast group range's distribution scope. Intra-zone or intra-region
   /// cross-zone is supported, with default value being intra-region. Cross
   /// region distribution is not supported.
@@ -27,38 +25,30 @@ class MulticastGroupRangeArgs {
   /// INTRA_ZONE
   /// INTRA_REGION
   final pulumi.Input<String>? distributionScope;
-
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The logging configuration.
   /// Structure is documented below.
   final pulumi.Input<MulticastGroupRangeLogConfig>? logConfig;
-
   /// The resource name of the multicast domain in which to create this
   /// multicast group range.
   /// Use the following format:
   /// `projects/*/locations/global/multicastDomains/*`.
   final pulumi.Input<String> multicastDomain;
-
   /// A unique name for the multicast group range.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
   final pulumi.Input<String> multicastGroupRangeId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Whether an empty consumer_accept_list will deny all consumer projects.
   final pulumi.Input<bool>? requireExplicitAccept;
-
   /// The resource name of the internal range reserved for this
   /// multicast group range.
   /// The internal range must be a Class D address (224.0.0.0 to 239.255.255.255)
@@ -91,29 +81,18 @@ class MulticastGroupRangeArgs {
     String? project,
     bool? requireExplicitAccept,
     required String reservedInternalRange,
-  }) : consumerAcceptLists = pulumi.Input.asOptionalInput<List<String>>(
-         consumerAcceptLists,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       distributionScope = pulumi.Input.asOptionalInput<String>(
-         distributionScope,
-       ),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       logConfig = pulumi.Input.asOptionalInput<MulticastGroupRangeLogConfig>(
-         logConfig,
-       ),
-       multicastDomain = pulumi.Input.asInput<String>(multicastDomain),
-       multicastGroupRangeId = pulumi.Input.asInput<String>(
-         multicastGroupRangeId,
-       ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       requireExplicitAccept = pulumi.Input.asOptionalInput<bool>(
-         requireExplicitAccept,
-       ),
-       reservedInternalRange = pulumi.Input.asInput<String>(
-         reservedInternalRange,
-       );
+  }) :
+      consumerAcceptLists = pulumi.Input.asOptionalInput<List<String>>(consumerAcceptLists),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      distributionScope = pulumi.Input.asOptionalInput<String>(distributionScope),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      logConfig = pulumi.Input.asOptionalInput<MulticastGroupRangeLogConfig>(logConfig),
+      multicastDomain = pulumi.Input.asInput<String>(multicastDomain),
+      multicastGroupRangeId = pulumi.Input.asInput<String>(multicastGroupRangeId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requireExplicitAccept = pulumi.Input.asOptionalInput<bool>(requireExplicitAccept),
+      reservedInternalRange = pulumi.Input.asInput<String>(reservedInternalRange);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,11 +101,7 @@ class MulticastGroupRangeArgs {
       'distributionScope': ?distributionScope,
       'labels': ?labels,
       'location': location,
-      'logConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            MulticastGroupRangeLogConfig,
-            Map<String, dynamic>
-          >(logConfig, (value) => value.toMap()),
+      'logConfig': ?pulumi.Input.mapOptionalInputValue<MulticastGroupRangeLogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
       'multicastDomain': multicastDomain,
       'multicastGroupRangeId': multicastGroupRangeId,
       'project': ?project,
@@ -137,31 +112,18 @@ class MulticastGroupRangeArgs {
 
   factory MulticastGroupRangeArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeArgs(
-      consumerAcceptLists: map['consumerAcceptLists'] == null
-          ? null
-          : (map['consumerAcceptLists'] as List).cast<String>(),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      distributionScope: map['distributionScope'] == null
-          ? null
-          : map['distributionScope'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (map['consumerAcceptLists'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      distributionScope: map['distributionScope'] == null ? null : map['distributionScope'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      logConfig: map['logConfig'] == null
-          ? null
-          : MulticastGroupRangeLogConfig.fromMap(
-              (map['logConfig'] as Map).cast<String, dynamic>(),
-            ),
+      logConfig: map['logConfig'] == null ? null : MulticastGroupRangeLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>()),
       multicastDomain: map['multicastDomain'] as String,
       multicastGroupRangeId: map['multicastGroupRangeId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      requireExplicitAccept: map['requireExplicitAccept'] == null
-          ? null
-          : map['requireExplicitAccept'] as bool,
+      requireExplicitAccept: map['requireExplicitAccept'] == null ? null : map['requireExplicitAccept'] as bool,
       reservedInternalRange: map['reservedInternalRange'] as String,
     );
   }
 }
+

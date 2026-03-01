@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// DataflowGraph DataflowGraphNode Connection Output.
+class DataflowGraphConnectionOutput {
+  /// Name of the destination node.
+  final String name;
+
+  /// Creates a new [DataflowGraphConnectionOutput].
+  /// [name] Name of the destination node.
+  DataflowGraphConnectionOutput({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory DataflowGraphConnectionOutput.fromMap(Map<String, dynamic> map) {
+    return DataflowGraphConnectionOutput(
+      name: map['name'] as String,
+    );
+  }
+}
+

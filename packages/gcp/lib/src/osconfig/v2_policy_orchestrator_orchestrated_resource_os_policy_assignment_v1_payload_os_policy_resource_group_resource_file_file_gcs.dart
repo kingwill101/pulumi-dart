@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
   /// Required. Bucket of the Cloud Storage object.
   final String bucket;
-
   /// Generation number of the Cloud Storage object.
   final String? generation;
-
   /// Required. Name of the Cloud Storage object.
   final String object;
 
@@ -28,15 +27,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs(
       bucket: map['bucket'] as String,
-      generation: map['generation'] == null
-          ? null
-          : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] as String,
     );
   }
 }
+

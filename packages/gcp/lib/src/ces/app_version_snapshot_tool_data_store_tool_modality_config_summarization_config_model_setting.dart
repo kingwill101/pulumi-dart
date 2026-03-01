@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting {
   /// (Output)
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
   final String? model;
-
   /// (Output)
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
@@ -22,17 +22,17 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelS
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'model': ?model, 'temperature': ?temperature};
+    return <String, dynamic>{
+      'model': ?model,
+      'temperature': ?temperature,
+    };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting(
       model: map['model'] == null ? null : map['model'] as String,
-      temperature: map['temperature'] == null
-          ? null
-          : map['temperature'] as double,
+      temperature: map['temperature'] == null ? null : map['temperature'] as double,
     );
   }
 }
+

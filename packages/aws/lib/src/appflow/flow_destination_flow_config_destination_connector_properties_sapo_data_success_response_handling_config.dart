@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig {
   /// Name of the Amazon S3 bucket.
   final String? bucketName;
-
   /// Amazon S3 bucket prefix.
   final String? bucketPrefix;
 
@@ -22,16 +22,11 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResp
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig(
-      bucketName: map['bucketName'] == null
-          ? null
-          : map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null
-          ? null
-          : map['bucketPrefix'] as String,
+      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
+      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
     );
   }
 }
+

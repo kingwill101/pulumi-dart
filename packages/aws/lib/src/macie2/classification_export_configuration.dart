@@ -157,10 +157,8 @@ import 'classification_export_configuration_s3_destination.dart';
 class ClassificationExportConfiguration extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for a S3 Destination. Defined below
-  late final pulumi.Output<ClassificationExportConfigurationS3Destination>
-  s3Destination;
+  late final pulumi.Output<ClassificationExportConfigurationS3Destination> s3Destination;
 
   /// Creates a new [ClassificationExportConfiguration].
   /// [name] The Pulumi resource name.
@@ -171,15 +169,12 @@ class ClassificationExportConfiguration extends pulumi.CustomResource {
     ClassificationExportConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:macie2/classificationExportConfiguration:ClassificationExportConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:macie2/classificationExportConfiguration:ClassificationExportConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
-    this.s3Destination =
-        registerOutput<ClassificationExportConfigurationS3Destination>(
-          's3Destination',
-        );
+    this.s3Destination = registerOutput<ClassificationExportConfigurationS3Destination>('s3Destination');
   }
 }

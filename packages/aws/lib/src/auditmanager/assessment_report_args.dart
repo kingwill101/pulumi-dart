@@ -11,13 +11,10 @@ class AssessmentReportArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> assessmentId;
-
   /// Description of the assessment report.
   final pulumi.Input<String>? description;
-
   /// Name of the assessment report.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,10 +28,11 @@ class AssessmentReportArgs {
     String? description,
     String? name,
     String? region,
-  }) : assessmentId = pulumi.Input.asInput<String>(assessmentId),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      assessmentId = pulumi.Input.asInput<String>(assessmentId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +46,10 @@ class AssessmentReportArgs {
   factory AssessmentReportArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentReportArgs(
       assessmentId: map['assessmentId'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

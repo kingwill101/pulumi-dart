@@ -9,43 +9,31 @@ import 'get_network_insights_path_filter_at_source.dart';
 class GetNetworkInsightsPathResult {
   /// ARN of the selected Network Insights Path.
   final String arn;
-
   /// AWS resource that is the destination of the path.
   final String destination;
-
   /// ARN of the destination.
   final String destinationArn;
-
   /// IP address of the AWS resource that is the destination of the path.
   final String destinationIp;
-
   /// Destination port.
   final int destinationPort;
-
   /// Filters of the network paths at the destination.
   final List<GetNetworkInsightsPathFilterAtDestination> filterAtDestinations;
-
   /// Filters of the network paths at the source.
   final List<GetNetworkInsightsPathFilterAtSource> filterAtSources;
   final List<GetNetworkInsightsPathFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String networkInsightsPathId;
-
   /// Protocol.
   final String protocol;
   final String region;
-
   /// AWS resource that is the source of the path.
   final String source;
-
   /// ARN of the source.
   final String sourceArn;
-
   /// IP address of the AWS resource that is the source of the path.
   final String sourceIp;
-
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -92,22 +80,9 @@ class GetNetworkInsightsPathResult {
       'destinationArn': destinationArn,
       'destinationIp': destinationIp,
       'destinationPort': destinationPort,
-      'filterAtDestinations':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsPathFilterAtDestination,
-            Map<String, dynamic>
-          >(filterAtDestinations, (value) => value.toMap()),
-      'filterAtSources':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsPathFilterAtSource,
-            Map<String, dynamic>
-          >(filterAtSources, (value) => value.toMap()),
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              GetNetworkInsightsPathFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filterAtDestinations': pulumi.Input.encodeList<GetNetworkInsightsPathFilterAtDestination, Map<String, dynamic>>(filterAtDestinations, (value) => value.toMap()),
+      'filterAtSources': pulumi.Input.encodeList<GetNetworkInsightsPathFilterAtSource, Map<String, dynamic>>(filterAtSources, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetNetworkInsightsPathFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'networkInsightsPathId': networkInsightsPathId,
       'protocol': protocol,
@@ -126,28 +101,9 @@ class GetNetworkInsightsPathResult {
       destinationArn: map['destinationArn'] as String,
       destinationIp: map['destinationIp'] as String,
       destinationPort: map['destinationPort'] as int,
-      filterAtDestinations:
-          pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestination>(
-            map['filterAtDestinations'],
-            (value) => GetNetworkInsightsPathFilterAtDestination.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      filterAtSources:
-          pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtSource>(
-            map['filterAtSources'],
-            (value) => GetNetworkInsightsPathFilterAtSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(
-              map['filters'],
-              (value) => GetNetworkInsightsPathFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filterAtDestinations: pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestination>(map['filterAtDestinations'], (value) => GetNetworkInsightsPathFilterAtDestination.fromMap((value as Map).cast<String, dynamic>())),
+      filterAtSources: pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtSource>(map['filterAtSources'], (value) => GetNetworkInsightsPathFilterAtSource.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters'], (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       networkInsightsPathId: map['networkInsightsPathId'] as String,
       protocol: map['protocol'] as String,
@@ -159,3 +115,4 @@ class GetNetworkInsightsPathResult {
     );
   }
 }
+

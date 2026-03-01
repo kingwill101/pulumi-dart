@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AuthConfigClientCertificate {
   /// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   final String encryptedPrivateKey;
-
   /// 'passphrase' should be left unset if private key is not encrypted.
   /// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
   final String? passphrase;
-
   /// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   final String sslCertificate;
 
@@ -32,10 +31,9 @@ class AuthConfigClientCertificate {
   factory AuthConfigClientCertificate.fromMap(Map<String, dynamic> map) {
     return AuthConfigClientCertificate(
       encryptedPrivateKey: map['encryptedPrivateKey'] as String,
-      passphrase: map['passphrase'] == null
-          ? null
-          : map['passphrase'] as String,
+      passphrase: map['passphrase'] == null ? null : map['passphrase'] as String,
       sslCertificate: map['sslCertificate'] as String,
     );
   }
 }
+

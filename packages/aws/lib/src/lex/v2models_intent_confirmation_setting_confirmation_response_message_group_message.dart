@@ -7,20 +7,13 @@ import 'v2models_intent_confirmation_setting_confirmation_response_message_group
 
 class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
-  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageCustomPayload?
-  customPayload;
-
+  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageCustomPayload? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
-  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageImageResponseCard?
-  imageResponseCard;
-
+  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageImageResponseCard? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plain_text_message`.
-  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage?
-  plainTextMessage;
-
+  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageSsmlMessage?
-  ssmlMessage;
+  final V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageSsmlMessage? ssmlMessage;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
@@ -37,40 +30,19 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customPayload': ?customPayload == null ? null : customPayload!.toMap(),
-      'imageResponseCard': ?imageResponseCard == null
-          ? null
-          : imageResponseCard!.toMap(),
-      'plainTextMessage': ?plainTextMessage == null
-          ? null
-          : plainTextMessage!.toMap(),
+      'imageResponseCard': ?imageResponseCard == null ? null : imageResponseCard!.toMap(),
+      'plainTextMessage': ?plainTextMessage == null ? null : plainTextMessage!.toMap(),
       'ssmlMessage': ?ssmlMessage == null ? null : ssmlMessage!.toMap(),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage(
-      customPayload: map['customPayload'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageCustomPayload.fromMap(
-              (map['customPayload'] as Map).cast<String, dynamic>(),
-            ),
-      imageResponseCard: map['imageResponseCard'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageImageResponseCard.fromMap(
-              (map['imageResponseCard'] as Map).cast<String, dynamic>(),
-            ),
-      plainTextMessage: map['plainTextMessage'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage.fromMap(
-              (map['plainTextMessage'] as Map).cast<String, dynamic>(),
-            ),
-      ssmlMessage: map['ssmlMessage'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageSsmlMessage.fromMap(
-              (map['ssmlMessage'] as Map).cast<String, dynamic>(),
-            ),
+      customPayload: map['customPayload'] == null ? null : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>()),
+      imageResponseCard: map['imageResponseCard'] == null ? null : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>()),
+      plainTextMessage: map['plainTextMessage'] == null ? null : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>()),
+      ssmlMessage: map['ssmlMessage'] == null ? null : V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

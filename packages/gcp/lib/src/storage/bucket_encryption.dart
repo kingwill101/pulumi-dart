@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketEncryption {
   /// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
   /// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -19,10 +20,14 @@ class BucketEncryption {
 
   /// Creates a new [BucketEncryption].
   /// [defaultKmsKeyName] The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-  BucketEncryption({required this.defaultKmsKeyName});
+  BucketEncryption({
+    required this.defaultKmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'defaultKmsKeyName': defaultKmsKeyName};
+    return <String, dynamic>{
+      'defaultKmsKeyName': defaultKmsKeyName,
+    };
   }
 
   factory BucketEncryption.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class BucketEncryption {
     );
   }
 }
+

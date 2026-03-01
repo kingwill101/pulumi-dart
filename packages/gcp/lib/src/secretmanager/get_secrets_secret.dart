@@ -8,57 +8,43 @@ import 'get_secrets_secret_topic.dart';
 class GetSecretsSecret {
   /// Custom metadata about the secret.
   final Map<String, String> annotations;
-
   /// The time at which the Secret was created.
   final String createTime;
   final bool deletionProtection;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
-
   /// Timestamp in UTC when the Secret is scheduled to expire.
   final String expireTime;
-
   /// The labels assigned to this Secret.
   final Map<String, String> labels;
-
   /// The resource name of the Pub/Sub topic that will be published to.
   final String name;
-
   /// The ID of the project.
   final String project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final Map<String, String> pulumiLabels;
-
   /// The replication policy of the secret data attached to the Secret.
   /// Structure is documented below.
   final List<GetSecretsSecretReplication> replications;
-
   /// The rotation time and period for a Secret.
   /// Structure is documented below.
   final List<GetSecretsSecretRotation> rotations;
-
   /// This must be unique within the project.
   final String secretId;
-
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
   final Map<String, String> tags;
-
   /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// Structure is documented below.
   final List<GetSecretsSecretTopic> topics;
-
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   /// Only one of 'ttl' or 'expire_time' can be provided.
   final String ttl;
-
   /// Mapping from version alias to version name.
   final Map<String, String> versionAliases;
-
   /// The version destroy ttl for the secret version.
   final String versionDestroyTtl;
 
@@ -114,23 +100,11 @@ class GetSecretsSecret {
       'name': name,
       'project': project,
       'pulumiLabels': pulumiLabels,
-      'replications':
-          pulumi.Input.encodeList<
-            GetSecretsSecretReplication,
-            Map<String, dynamic>
-          >(replications, (value) => value.toMap()),
-      'rotations':
-          pulumi.Input.encodeList<
-            GetSecretsSecretRotation,
-            Map<String, dynamic>
-          >(rotations, (value) => value.toMap()),
+      'replications': pulumi.Input.encodeList<GetSecretsSecretReplication, Map<String, dynamic>>(replications, (value) => value.toMap()),
+      'rotations': pulumi.Input.encodeList<GetSecretsSecretRotation, Map<String, dynamic>>(rotations, (value) => value.toMap()),
       'secretId': secretId,
       'tags': tags,
-      'topics':
-          pulumi.Input.encodeList<GetSecretsSecretTopic, Map<String, dynamic>>(
-            topics,
-            (value) => value.toMap(),
-          ),
+      'topics': pulumi.Input.encodeList<GetSecretsSecretTopic, Map<String, dynamic>>(topics, (value) => value.toMap()),
       'ttl': ttl,
       'versionAliases': versionAliases,
       'versionDestroyTtl': versionDestroyTtl,
@@ -142,37 +116,22 @@ class GetSecretsSecret {
       annotations: (map['annotations'] as Map).cast<String, String>(),
       createTime: map['createTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
-          .cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       expireTime: map['expireTime'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       project: map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      replications: pulumi.Input.decodeList<GetSecretsSecretReplication>(
-        map['replications'],
-        (value) => GetSecretsSecretReplication.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      rotations: pulumi.Input.decodeList<GetSecretsSecretRotation>(
-        map['rotations'],
-        (value) => GetSecretsSecretRotation.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      replications: pulumi.Input.decodeList<GetSecretsSecretReplication>(map['replications'], (value) => GetSecretsSecretReplication.fromMap((value as Map).cast<String, dynamic>())),
+      rotations: pulumi.Input.decodeList<GetSecretsSecretRotation>(map['rotations'], (value) => GetSecretsSecretRotation.fromMap((value as Map).cast<String, dynamic>())),
       secretId: map['secretId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      topics: pulumi.Input.decodeList<GetSecretsSecretTopic>(
-        map['topics'],
-        (value) => GetSecretsSecretTopic.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      topics: pulumi.Input.decodeList<GetSecretsSecretTopic>(map['topics'], (value) => GetSecretsSecretTopic.fromMap((value as Map).cast<String, dynamic>())),
       ttl: map['ttl'] as String,
       versionAliases: (map['versionAliases'] as Map).cast<String, String>(),
       versionDestroyTtl: map['versionDestroyTtl'] as String,
     );
   }
 }
+

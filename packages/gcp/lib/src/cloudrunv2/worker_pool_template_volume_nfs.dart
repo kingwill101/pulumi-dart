@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkerPoolTemplateVolumeNfs {
   /// Path that is exported by the NFS server.
   final String path;
-
   /// If true, mount the NFS volume as read only
   final bool? readOnly;
-
   /// Hostname or IP address of the NFS server
   final String server;
 
@@ -36,3 +35,4 @@ class WorkerPoolTemplateVolumeNfs {
     );
   }
 }
+

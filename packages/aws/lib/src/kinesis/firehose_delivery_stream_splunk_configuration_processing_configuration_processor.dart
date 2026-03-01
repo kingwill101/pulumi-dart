@@ -5,11 +5,7 @@ import 'firehose_delivery_stream_splunk_configuration_processing_configuration_p
 
 class FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor {
   /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
-  final List<
-    FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter
-  >?
-  parameters;
-
+  final List<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter>? parameters;
   /// The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
   final String type;
 
@@ -23,32 +19,16 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null
-          ? null
-          : pulumi.Input.encodeList<
-              FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter,
-              Map<String, dynamic>
-            >(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter
-            >(
-              map['parameters'],
-              (value) =>
-                  FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

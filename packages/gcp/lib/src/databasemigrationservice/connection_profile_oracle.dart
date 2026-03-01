@@ -7,38 +7,29 @@ import 'connection_profile_oracle_ssl.dart';
 class ConnectionProfileOracle {
   /// Required. Database service for the Oracle connection.
   final String databaseService;
-
   /// SSL configuration for the destination to connect to the source database.
   /// Structure is documented below.
   final ConnectionProfileOracleForwardSshConnectivity? forwardSshConnectivity;
-
   /// Required. The IP or hostname of the source Oracle database.
   final String host;
-
   /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
   /// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String password;
-
   /// (Output)
   /// Output only. Indicates If this connection profile password is stored.
   final bool? passwordSet;
-
   /// Required. The network port of the source Oracle database.
   final int port;
-
   /// Configuration for using a private network to communicate with the source database
   /// Structure is documented below.
   final ConnectionProfileOraclePrivateConnectivity? privateConnectivity;
-
   /// SSL configuration for the destination to connect to the source database.
   /// Structure is documented below.
   final ConnectionProfileOracleSsl? ssl;
-
   /// This object has no nested fields.
   /// Static IP address connectivity configured on service project.
   final Map<String, dynamic>? staticServiceIpConnectivity;
-
   /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
   final String username;
 
@@ -69,16 +60,12 @@ class ConnectionProfileOracle {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseService': databaseService,
-      'forwardSshConnectivity': ?forwardSshConnectivity == null
-          ? null
-          : forwardSshConnectivity!.toMap(),
+      'forwardSshConnectivity': ?forwardSshConnectivity == null ? null : forwardSshConnectivity!.toMap(),
       'host': host,
       'password': password,
       'passwordSet': ?passwordSet,
       'port': port,
-      'privateConnectivity': ?privateConnectivity == null
-          ? null
-          : privateConnectivity!.toMap(),
+      'privateConnectivity': ?privateConnectivity == null ? null : privateConnectivity!.toMap(),
       'ssl': ?ssl == null ? null : ssl!.toMap(),
       'staticServiceIpConnectivity': ?staticServiceIpConnectivity,
       'username': username,
@@ -88,31 +75,16 @@ class ConnectionProfileOracle {
   factory ConnectionProfileOracle.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOracle(
       databaseService: map['databaseService'] as String,
-      forwardSshConnectivity: map['forwardSshConnectivity'] == null
-          ? null
-          : ConnectionProfileOracleForwardSshConnectivity.fromMap(
-              (map['forwardSshConnectivity'] as Map).cast<String, dynamic>(),
-            ),
+      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : ConnectionProfileOracleForwardSshConnectivity.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>()),
       host: map['host'] as String,
       password: map['password'] as String,
-      passwordSet: map['passwordSet'] == null
-          ? null
-          : map['passwordSet'] as bool,
+      passwordSet: map['passwordSet'] == null ? null : map['passwordSet'] as bool,
       port: map['port'] as int,
-      privateConnectivity: map['privateConnectivity'] == null
-          ? null
-          : ConnectionProfileOraclePrivateConnectivity.fromMap(
-              (map['privateConnectivity'] as Map).cast<String, dynamic>(),
-            ),
-      ssl: map['ssl'] == null
-          ? null
-          : ConnectionProfileOracleSsl.fromMap(
-              (map['ssl'] as Map).cast<String, dynamic>(),
-            ),
-      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null
-          ? null
-          : (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),
+      privateConnectivity: map['privateConnectivity'] == null ? null : ConnectionProfileOraclePrivateConnectivity.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>()),
+      ssl: map['ssl'] == null ? null : ConnectionProfileOracleSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>()),
+      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),
       username: map['username'] as String,
     );
   }
 }
+

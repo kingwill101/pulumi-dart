@@ -5,12 +5,9 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStep?
-  nextStep;
-
+  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStep? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchResponse?
-  response;
+  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchResponse? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
@@ -27,20 +24,11 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessC
     };
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStep.fromMap(
-              (map['nextStep'] as Map).cast<String, dynamic>(),
-            ),
-      response: map['response'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchResponse.fromMap(
-              (map['response'] as Map).cast<String, dynamic>(),
-            ),
+      nextStep: map['nextStep'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
+      response: map['response'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

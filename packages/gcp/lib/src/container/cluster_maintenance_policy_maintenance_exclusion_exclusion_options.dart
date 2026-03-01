@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
   /// The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
   ///
@@ -36,7 +37,6 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
   /// }
   /// ```
   final String? endTimeBehavior;
-
   /// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
   final String scope;
 
@@ -55,14 +55,11 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
     };
   }
 
-  factory ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(
-      endTimeBehavior: map['endTimeBehavior'] == null
-          ? null
-          : map['endTimeBehavior'] as String,
+      endTimeBehavior: map['endTimeBehavior'] == null ? null : map['endTimeBehavior'] as String,
       scope: map['scope'] as String,
     );
   }
 }
+

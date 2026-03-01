@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstancePscInstanceConfigPscAutoConnection {
   /// The consumer network for the PSC service automation, example:
   /// "projects/vpc-host-project/global/networks/default".
@@ -7,18 +8,14 @@ class GetInstancePscInstanceConfigPscAutoConnection {
   /// consumer project. The API expects the consumer project specified to be
   /// the project ID (and not the project number)
   final String consumerNetwork;
-
   /// The status of the service connection policy.
   final String consumerNetworkStatus;
-
   /// The consumer project to which the PSC service automation endpoint will
   /// be created. The API expects the consumer project to be the project ID(
   /// and not the project number).
   final String consumerProject;
-
   /// The IP address of the PSC service automation endpoint.
   final String ipAddress;
-
   /// The status of the PSC service automation connection.
   final String status;
 
@@ -46,9 +43,7 @@ class GetInstancePscInstanceConfigPscAutoConnection {
     };
   }
 
-  factory GetInstancePscInstanceConfigPscAutoConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancePscInstanceConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return GetInstancePscInstanceConfigPscAutoConnection(
       consumerNetwork: map['consumerNetwork'] as String,
       consumerNetworkStatus: map['consumerNetworkStatus'] as String,
@@ -58,3 +53,4 @@ class GetInstancePscInstanceConfigPscAutoConnection {
     );
   }
 }
+

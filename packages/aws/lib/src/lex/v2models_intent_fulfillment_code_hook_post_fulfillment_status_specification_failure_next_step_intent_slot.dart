@@ -5,13 +5,10 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final String mapBlockKey;
-
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
   final String? shape;
-
   /// Configuration block for the current value of the slot. See `value`.
-  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlotValue?
-  value;
+  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlotValue? value;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
@@ -31,17 +28,12 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
     };
   }
 
-  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot(
       mapBlockKey: map['mapBlockKey'] as String,
       shape: map['shape'] == null ? null : map['shape'] as String,
-      value: map['value'] == null
-          ? null
-          : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlotValue.fromMap(
-              (map['value'] as Map).cast<String, dynamic>(),
-            ),
+      value: map['value'] == null ? null : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetOrganizationalUnitDescendantOrganizationalUnitsChildren {
   /// ARN of the organizational unit
   final String arn;
-
   /// Parent identifier of the organizational units.
   final String id;
-
   /// Name of the organizational unit
   final String name;
 
@@ -21,12 +20,14 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsChildren {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'id': id, 'name': name};
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+    };
   }
 
-  factory GetOrganizationalUnitDescendantOrganizationalUnitsChildren.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationalUnitDescendantOrganizationalUnitsChildren.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantOrganizationalUnitsChildren(
       arn: map['arn'] as String,
       id: map['id'] as String,
@@ -34,3 +35,4 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsChildren {
     );
   }
 }
+

@@ -9,26 +9,20 @@ class RuleGroupRuleStatementOrStatement {
 
   /// Creates a new [RuleGroupRuleStatementOrStatement].
   /// [statements] The statements to combine.
-  RuleGroupRuleStatementOrStatement({required this.statements});
+  RuleGroupRuleStatementOrStatement({
+    required this.statements,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements':
-          pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(
-            statements,
-            (value) => value.toMap(),
-          ),
+      'statements': pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
     };
   }
 
   factory RuleGroupRuleStatementOrStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementOrStatement(
-      statements: pulumi.Input.decodeList<RuleGroupRuleStatement>(
-        map['statements'],
-        (value) => RuleGroupRuleStatement.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      statements: pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements'], (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

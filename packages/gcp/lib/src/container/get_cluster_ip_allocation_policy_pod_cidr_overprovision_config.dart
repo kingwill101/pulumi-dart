@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
   final bool disabled;
 
@@ -10,14 +11,15 @@ class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory GetClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicyPodCidrOverprovisionConfig(
       disabled: map['disabled'] as bool,
     );
   }
 }
+

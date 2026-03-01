@@ -1,0 +1,89 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_web_web_app_vnet_connection_slot_args_doc}
+/// The set of arguments for WebAppVnetConnectionSlot.
+/// {@endtemplate}
+/// {@macro pulumi_web_web_app_vnet_connection_slot_args_doc}
+class WebAppVnetConnectionSlotArgs {
+  /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
+  /// Point-To-Site VPN connection.
+  final pulumi.Input<String>? certBlob;
+  /// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
+  final pulumi.Input<String>? dnsServers;
+  /// Flag that is used to denote if this is VNET injection
+  final pulumi.Input<bool>? isSwift;
+  /// Kind of resource.
+  final pulumi.Input<String>? kind;
+  /// Name of the app.
+  final pulumi.Input<String> name;
+  /// Name of the resource group to which the resource belongs.
+  final pulumi.Input<String> resourceGroupName;
+  /// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+  final pulumi.Input<String> slot;
+  /// Name of an existing Virtual Network.
+  final pulumi.Input<String>? vnetName;
+  /// The Virtual Network's resource ID.
+  final pulumi.Input<String>? vnetResourceId;
+
+  /// Creates a new [WebAppVnetConnectionSlotArgs].
+  /// [certBlob] A certificate file (.cer) blob containing the public key of the private key used to authenticate a
+  /// [dnsServers] DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
+  /// [isSwift] Flag that is used to denote if this is VNET injection
+  /// [kind] Kind of resource.
+  /// [name] Name of the app.
+  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+  /// [vnetName] Name of an existing Virtual Network.
+  /// [vnetResourceId] The Virtual Network's resource ID.
+  WebAppVnetConnectionSlotArgs({
+    String? certBlob,
+    String? dnsServers,
+    bool? isSwift,
+    String? kind,
+    required String name,
+    required String resourceGroupName,
+    required String slot,
+    String? vnetName,
+    String? vnetResourceId,
+  }) :
+      certBlob = pulumi.Input.asOptionalInput<String>(certBlob),
+      dnsServers = pulumi.Input.asOptionalInput<String>(dnsServers),
+      isSwift = pulumi.Input.asOptionalInput<bool>(isSwift),
+      kind = pulumi.Input.asOptionalInput<String>(kind),
+      name = pulumi.Input.asInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      slot = pulumi.Input.asInput<String>(slot),
+      vnetName = pulumi.Input.asOptionalInput<String>(vnetName),
+      vnetResourceId = pulumi.Input.asOptionalInput<String>(vnetResourceId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'certBlob': ?certBlob,
+      'dnsServers': ?dnsServers,
+      'isSwift': ?isSwift,
+      'kind': ?kind,
+      'name': name,
+      'resourceGroupName': resourceGroupName,
+      'slot': slot,
+      'vnetName': ?vnetName,
+      'vnetResourceId': ?vnetResourceId,
+    };
+  }
+
+  factory WebAppVnetConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
+    return WebAppVnetConnectionSlotArgs(
+      certBlob: map['certBlob'] == null ? null : map['certBlob'] as String,
+      dnsServers: map['dnsServers'] == null ? null : map['dnsServers'] as String,
+      isSwift: map['isSwift'] == null ? null : map['isSwift'] as bool,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      name: map['name'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      slot: map['slot'] as String,
+      vnetName: map['vnetName'] == null ? null : map['vnetName'] as String,
+      vnetResourceId: map['vnetResourceId'] == null ? null : map['vnetResourceId'] as String,
+    );
+  }
+}
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourcePolicyArgs {
   /// The name of the Resource Policy.
   final pulumi.Input<String> name;
-
   /// Project from which to list the Resource Policy. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Region where the Resource Policy resides.
   final pulumi.Input<String>? region;
 
@@ -20,8 +18,12 @@ class GetResourcePolicyArgs {
   /// [name] The name of the Resource Policy.
   /// [project] Project from which to list the Resource Policy. Defaults to project declared in the provider.
   /// [region] Region where the Resource Policy resides.
-  GetResourcePolicyArgs({required String name, String? project, String? region})
-    : name = pulumi.Input.asInput<String>(name),
+  GetResourcePolicyArgs({
+    required String name,
+    String? project,
+    String? region,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -41,3 +43,4 @@ class GetResourcePolicyArgs {
     );
   }
 }
+

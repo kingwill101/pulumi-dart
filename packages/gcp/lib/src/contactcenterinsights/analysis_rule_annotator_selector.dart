@@ -10,46 +10,34 @@ class AnalysisRuleAnnotatorSelector {
   /// is set to true. If more than one issue model is provided, only the first
   /// provided issue model will be used for inference.
   final List<String>? issueModels;
-
   /// The list of phrase matchers to run. If not provided, all active phrase
   /// matchers will be used. If inactive phrase matchers are provided, they will
   /// not be used. Phrase matchers will be run only if
   /// run_phrase_matcher_annotator is set to true. Format:
   /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
   final List<String>? phraseMatchers;
-
   /// Configuration for the QA feature.
   /// Structure is documented below.
   final AnalysisRuleAnnotatorSelectorQaConfig? qaConfig;
-
   /// Whether to run the entity annotator.
   final bool? runEntityAnnotator;
-
   /// Whether to run the intent annotator.
   final bool? runIntentAnnotator;
-
   /// Whether to run the interruption annotator.
   final bool? runInterruptionAnnotator;
-
   /// Whether to run the issue model annotator. A model should have already been
   /// deployed for this to take effect.
   final bool? runIssueModelAnnotator;
-
   /// Whether to run the active phrase matcher annotator(s).
   final bool? runPhraseMatcherAnnotator;
-
   /// Whether to run the QA annotator.
   final bool? runQaAnnotator;
-
   /// Whether to run the sentiment annotator.
   final bool? runSentimentAnnotator;
-
   /// Whether to run the silence annotator.
   final bool? runSilenceAnnotator;
-
   /// Whether to run the summarization annotator.
   final bool? runSummarizationAnnotator;
-
   /// Configuration for summarization.
   /// Structure is documented below.
   final AnalysisRuleAnnotatorSelectorSummarizationConfig? summarizationConfig;
@@ -98,57 +86,26 @@ class AnalysisRuleAnnotatorSelector {
       'runSentimentAnnotator': ?runSentimentAnnotator,
       'runSilenceAnnotator': ?runSilenceAnnotator,
       'runSummarizationAnnotator': ?runSummarizationAnnotator,
-      'summarizationConfig': ?summarizationConfig == null
-          ? null
-          : summarizationConfig!.toMap(),
+      'summarizationConfig': ?summarizationConfig == null ? null : summarizationConfig!.toMap(),
     };
   }
 
   factory AnalysisRuleAnnotatorSelector.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelector(
-      issueModels: map['issueModels'] == null
-          ? null
-          : (map['issueModels'] as List).cast<String>(),
-      phraseMatchers: map['phraseMatchers'] == null
-          ? null
-          : (map['phraseMatchers'] as List).cast<String>(),
-      qaConfig: map['qaConfig'] == null
-          ? null
-          : AnalysisRuleAnnotatorSelectorQaConfig.fromMap(
-              (map['qaConfig'] as Map).cast<String, dynamic>(),
-            ),
-      runEntityAnnotator: map['runEntityAnnotator'] == null
-          ? null
-          : map['runEntityAnnotator'] as bool,
-      runIntentAnnotator: map['runIntentAnnotator'] == null
-          ? null
-          : map['runIntentAnnotator'] as bool,
-      runInterruptionAnnotator: map['runInterruptionAnnotator'] == null
-          ? null
-          : map['runInterruptionAnnotator'] as bool,
-      runIssueModelAnnotator: map['runIssueModelAnnotator'] == null
-          ? null
-          : map['runIssueModelAnnotator'] as bool,
-      runPhraseMatcherAnnotator: map['runPhraseMatcherAnnotator'] == null
-          ? null
-          : map['runPhraseMatcherAnnotator'] as bool,
-      runQaAnnotator: map['runQaAnnotator'] == null
-          ? null
-          : map['runQaAnnotator'] as bool,
-      runSentimentAnnotator: map['runSentimentAnnotator'] == null
-          ? null
-          : map['runSentimentAnnotator'] as bool,
-      runSilenceAnnotator: map['runSilenceAnnotator'] == null
-          ? null
-          : map['runSilenceAnnotator'] as bool,
-      runSummarizationAnnotator: map['runSummarizationAnnotator'] == null
-          ? null
-          : map['runSummarizationAnnotator'] as bool,
-      summarizationConfig: map['summarizationConfig'] == null
-          ? null
-          : AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(
-              (map['summarizationConfig'] as Map).cast<String, dynamic>(),
-            ),
+      issueModels: map['issueModels'] == null ? null : (map['issueModels'] as List).cast<String>(),
+      phraseMatchers: map['phraseMatchers'] == null ? null : (map['phraseMatchers'] as List).cast<String>(),
+      qaConfig: map['qaConfig'] == null ? null : AnalysisRuleAnnotatorSelectorQaConfig.fromMap((map['qaConfig'] as Map).cast<String, dynamic>()),
+      runEntityAnnotator: map['runEntityAnnotator'] == null ? null : map['runEntityAnnotator'] as bool,
+      runIntentAnnotator: map['runIntentAnnotator'] == null ? null : map['runIntentAnnotator'] as bool,
+      runInterruptionAnnotator: map['runInterruptionAnnotator'] == null ? null : map['runInterruptionAnnotator'] as bool,
+      runIssueModelAnnotator: map['runIssueModelAnnotator'] == null ? null : map['runIssueModelAnnotator'] as bool,
+      runPhraseMatcherAnnotator: map['runPhraseMatcherAnnotator'] == null ? null : map['runPhraseMatcherAnnotator'] as bool,
+      runQaAnnotator: map['runQaAnnotator'] == null ? null : map['runQaAnnotator'] as bool,
+      runSentimentAnnotator: map['runSentimentAnnotator'] == null ? null : map['runSentimentAnnotator'] as bool,
+      runSilenceAnnotator: map['runSilenceAnnotator'] == null ? null : map['runSilenceAnnotator'] as bool,
+      runSummarizationAnnotator: map['runSummarizationAnnotator'] == null ? null : map['runSummarizationAnnotator'] as bool,
+      summarizationConfig: map['summarizationConfig'] == null ? null : AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

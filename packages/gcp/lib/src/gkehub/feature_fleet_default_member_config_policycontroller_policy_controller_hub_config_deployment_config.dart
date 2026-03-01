@@ -7,23 +7,15 @@ import 'feature_fleet_default_member_config_policycontroller_policy_controller_h
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
   /// The identifier for this object. Format specified above.
   final String component;
-
   /// Container resource requirements.
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources?
-  containerResources;
-
+  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources? containerResources;
   /// Pod affinity configuration.
   /// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
   final String? podAffinity;
-
   /// Pod tolerations of node taints.
   /// Structure is documented below.
-  final List<
-    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration
-  >?
-  podTolerations;
-
+  final List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>? podTolerations;
   /// Pod replica count.
   final int? replicaCount;
 
@@ -44,47 +36,21 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'component': component,
-      'containerResources': ?containerResources == null
-          ? null
-          : containerResources!.toMap(),
+      'containerResources': ?containerResources == null ? null : containerResources!.toMap(),
       'podAffinity': ?podAffinity,
-      'podTolerations': ?podTolerations == null
-          ? null
-          : pulumi.Input.encodeList<
-              FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration,
-              Map<String, dynamic>
-            >(podTolerations!, (value) => value.toMap()),
+      'podTolerations': ?podTolerations == null ? null : pulumi.Input.encodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration, Map<String, dynamic>>(podTolerations!, (value) => value.toMap()),
       'replicaCount': ?replicaCount,
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig(
       component: map['component'] as String,
-      containerResources: map['containerResources'] == null
-          ? null
-          : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap(
-              (map['containerResources'] as Map).cast<String, dynamic>(),
-            ),
-      podAffinity: map['podAffinity'] == null
-          ? null
-          : map['podAffinity'] as String,
-      podTolerations: map['podTolerations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration
-            >(
-              map['podTolerations'],
-              (value) =>
-                  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      replicaCount: map['replicaCount'] == null
-          ? null
-          : map['replicaCount'] as int,
+      containerResources: map['containerResources'] == null ? null : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((map['containerResources'] as Map).cast<String, dynamic>()),
+      podAffinity: map['podAffinity'] == null ? null : map['podAffinity'] as String,
+      podTolerations: map['podTolerations'] == null ? null : pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(map['podTolerations'], (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>())),
+      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
     );
   }
 }
+

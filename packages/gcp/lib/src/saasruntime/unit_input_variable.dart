@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitInputVariable {
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
@@ -7,10 +8,8 @@ class UnitInputVariable {
   /// INT
   /// BOOL
   final String? type;
-
   /// String encoded value for the variable.
   final String? value;
-
   /// Name of the variable from actuation configs.
   final String variable;
 
@@ -18,7 +17,11 @@ class UnitInputVariable {
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  UnitInputVariable({this.type, this.value, required this.variable});
+  UnitInputVariable({
+    this.type,
+    this.value,
+    required this.variable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,3 +39,4 @@ class UnitInputVariable {
     );
   }
 }
+

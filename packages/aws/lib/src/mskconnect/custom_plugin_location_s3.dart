@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomPluginLocationS3 {
   /// The Amazon Resource Name (ARN) of an S3 bucket.
   final String bucketArn;
-
   /// The file key for an object in an S3 bucket.
   final String fileKey;
-
   /// The version of an object in an S3 bucket.
   final String? objectVersion;
 
@@ -32,9 +31,8 @@ class CustomPluginLocationS3 {
     return CustomPluginLocationS3(
       bucketArn: map['bucketArn'] as String,
       fileKey: map['fileKey'] as String,
-      objectVersion: map['objectVersion'] == null
-          ? null
-          : map['objectVersion'] as String,
+      objectVersion: map['objectVersion'] == null ? null : map['objectVersion'] as String,
     );
   }
 }
+

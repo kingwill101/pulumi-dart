@@ -5,10 +5,8 @@ import 'channel_encoder_settings_motion_graphics_configuration_motion_graphics_s
 class ChannelEncoderSettingsMotionGraphicsConfiguration {
   /// Motion Graphics Insertion.
   final String? motionGraphicsInsertion;
-
   /// Motion Graphics Settings. See Motion Graphics Settings for more details.
-  final ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings
-  motionGraphicsSettings;
+  final ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings motionGraphicsSettings;
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfiguration].
   /// [motionGraphicsInsertion] Motion Graphics Insertion.
@@ -25,17 +23,11 @@ class ChannelEncoderSettingsMotionGraphicsConfiguration {
     };
   }
 
-  factory ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsMotionGraphicsConfiguration(
-      motionGraphicsInsertion: map['motionGraphicsInsertion'] == null
-          ? null
-          : map['motionGraphicsInsertion'] as String,
-      motionGraphicsSettings:
-          ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(
-            (map['motionGraphicsSettings'] as Map).cast<String, dynamic>(),
-          ),
+      motionGraphicsInsertion: map['motionGraphicsInsertion'] == null ? null : map['motionGraphicsInsertion'] as String,
+      motionGraphicsSettings: ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap((map['motionGraphicsSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

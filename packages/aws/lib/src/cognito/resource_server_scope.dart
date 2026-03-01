@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceServerScope {
   /// The scope description.
   final String scopeDescription;
-
   /// The scope name.
   final String scopeName;
 
@@ -29,3 +29,4 @@ class ResourceServerScope {
     );
   }
 }
+

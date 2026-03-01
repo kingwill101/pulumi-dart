@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueRetryConfig {
   /// Number of attempts per task.
   /// Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -9,18 +10,15 @@ class QueueRetryConfig {
   /// the default.
   /// -1 indicates unlimited attempts.
   final int? maxAttempts;
-
   /// A task will be scheduled for retry between minBackoff and
   /// maxBackoff duration after it fails, if the queue's RetryConfig
   /// specifies that the task should be retried.
   final String? maxBackoff;
-
   /// The time between retries will double maxDoublings times.
   /// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
   /// then increases linearly, and finally retries retries at intervals of maxBackoff
   /// up to maxAttempts times.
   final int? maxDoublings;
-
   /// If positive, maxRetryDuration specifies the time limit for
   /// retrying a failed task, measured from when the task was first
   /// attempted. Once maxRetryDuration time has passed and the task has
@@ -28,7 +26,6 @@ class QueueRetryConfig {
   /// made and the task will be deleted.
   /// If zero, then the task age is unlimited.
   final String? maxRetryDuration;
-
   /// A task will be scheduled for retry between minBackoff and
   /// maxBackoff duration after it fails, if the queue's RetryConfig
   /// specifies that the task should be retried.
@@ -60,21 +57,12 @@ class QueueRetryConfig {
 
   factory QueueRetryConfig.fromMap(Map<String, dynamic> map) {
     return QueueRetryConfig(
-      maxAttempts: map['maxAttempts'] == null
-          ? null
-          : map['maxAttempts'] as int,
-      maxBackoff: map['maxBackoff'] == null
-          ? null
-          : map['maxBackoff'] as String,
-      maxDoublings: map['maxDoublings'] == null
-          ? null
-          : map['maxDoublings'] as int,
-      maxRetryDuration: map['maxRetryDuration'] == null
-          ? null
-          : map['maxRetryDuration'] as String,
-      minBackoff: map['minBackoff'] == null
-          ? null
-          : map['minBackoff'] as String,
+      maxAttempts: map['maxAttempts'] == null ? null : map['maxAttempts'] as int,
+      maxBackoff: map['maxBackoff'] == null ? null : map['maxBackoff'] as String,
+      maxDoublings: map['maxDoublings'] == null ? null : map['maxDoublings'] as int,
+      maxRetryDuration: map['maxRetryDuration'] == null ? null : map['maxRetryDuration'] as String,
+      minBackoff: map['minBackoff'] == null ? null : map['minBackoff'] as String,
     );
   }
 }
+

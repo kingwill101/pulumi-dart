@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCustomRoutingAcceleratorIpSet {
   final List<String> ipAddresses;
   final String ipFamily;
@@ -13,7 +14,10 @@ class GetCustomRoutingAcceleratorIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddresses': ipAddresses, 'ipFamily': ipFamily};
+    return <String, dynamic>{
+      'ipAddresses': ipAddresses,
+      'ipFamily': ipFamily,
+    };
   }
 
   factory GetCustomRoutingAcceleratorIpSet.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetCustomRoutingAcceleratorIpSet {
     );
   }
 }
+

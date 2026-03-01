@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The cluster sku definition.
+class ClusterSkuResponse {
+  /// The capacity reservation level in Gigabytes for this cluster.
+  final double? capacity;
+  /// The SKU (tier) of a cluster.
+  final String? name;
+
+  /// Creates a new [ClusterSkuResponse].
+  /// [capacity] The capacity reservation level in Gigabytes for this cluster.
+  /// [name] The SKU (tier) of a cluster.
+  ClusterSkuResponse({
+    this.capacity,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': ?name,
+    };
+  }
+
+  factory ClusterSkuResponse.fromMap(Map<String, dynamic> map) {
+    return ClusterSkuResponse(
+      capacity: map['capacity'] == null ? null : map['capacity'] as double,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

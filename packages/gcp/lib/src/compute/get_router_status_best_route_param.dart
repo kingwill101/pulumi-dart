@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterStatusBestRouteParam {
   /// Resource manager tags to be bound to the route. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -11,16 +12,20 @@ class GetRouterStatusBestRouteParam {
 
   /// Creates a new [GetRouterStatusBestRouteParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
-  GetRouterStatusBestRouteParam({required this.resourceManagerTags});
+  GetRouterStatusBestRouteParam({
+    required this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetRouterStatusBestRouteParam.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRouteParam(
-      resourceManagerTags: (map['resourceManagerTags'] as Map)
-          .cast<String, String>(),
+      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
     );
   }
 }
+

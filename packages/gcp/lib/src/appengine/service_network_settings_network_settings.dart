@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceNetworkSettingsNetworkSettings {
   /// The ingress settings for version or service.
   /// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
@@ -8,19 +9,20 @@ class ServiceNetworkSettingsNetworkSettings {
 
   /// Creates a new [ServiceNetworkSettingsNetworkSettings].
   /// [ingressTrafficAllowed] The ingress settings for version or service.
-  ServiceNetworkSettingsNetworkSettings({this.ingressTrafficAllowed});
+  ServiceNetworkSettingsNetworkSettings({
+    this.ingressTrafficAllowed,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ingressTrafficAllowed': ?ingressTrafficAllowed};
+    return <String, dynamic>{
+      'ingressTrafficAllowed': ?ingressTrafficAllowed,
+    };
   }
 
-  factory ServiceNetworkSettingsNetworkSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceNetworkSettingsNetworkSettings.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsNetworkSettings(
-      ingressTrafficAllowed: map['ingressTrafficAllowed'] == null
-          ? null
-          : map['ingressTrafficAllowed'] as String,
+      ingressTrafficAllowed: map['ingressTrafficAllowed'] == null ? null : map['ingressTrafficAllowed'] as String,
     );
   }
 }
+

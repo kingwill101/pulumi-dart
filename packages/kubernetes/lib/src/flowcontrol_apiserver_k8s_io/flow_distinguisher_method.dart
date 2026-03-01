@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// FlowDistinguisherMethod specifies the method of a flow distinguisher.
+class FlowDistinguisherMethod {
+  /// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
+  final String type;
+
+  /// Creates a new [FlowDistinguisherMethod].
+  /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
+  FlowDistinguisherMethod({
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': type,
+    };
+  }
+
+  factory FlowDistinguisherMethod.fromMap(Map<String, dynamic> map) {
+    return FlowDistinguisherMethod(
+      type: map['type'] as String,
+    );
+  }
+}
+

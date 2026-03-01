@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersPostgresql {
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String host;
-
   /// The port to which to connect.
   final int port;
 
@@ -21,7 +20,11 @@ class DataSourceParametersPostgresql {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'database': database, 'host': host, 'port': port};
+    return <String, dynamic>{
+      'database': database,
+      'host': host,
+      'port': port,
+    };
   }
 
   factory DataSourceParametersPostgresql.fromMap(Map<String, dynamic> map) {
@@ -32,3 +35,4 @@ class DataSourceParametersPostgresql {
     );
   }
 }
+

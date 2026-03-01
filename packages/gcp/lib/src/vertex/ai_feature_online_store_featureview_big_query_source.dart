@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiFeatureOnlineStoreFeatureviewBigQuerySource {
   /// Columns to construct entityId / row keys. Start by supporting 1 only.
   final List<String> entityIdColumns;
-
   /// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
   final String uri;
 
@@ -16,15 +16,17 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entityIdColumns': entityIdColumns, 'uri': uri};
+    return <String, dynamic>{
+      'entityIdColumns': entityIdColumns,
+      'uri': uri,
+    };
   }
 
-  factory AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewBigQuerySource(
       entityIdColumns: (map['entityIdColumns'] as List).cast<String>(),
       uri: map['uri'] as String,
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The current amount of cost which is being tracked for a budget.
+class CurrentSpendResponse {
+  /// The total amount of cost which is being tracked by the budget.
+  final double amount;
+  /// The unit of measure for the budget amount.
+  final String unit;
+
+  /// Creates a new [CurrentSpendResponse].
+  /// [amount] The total amount of cost which is being tracked by the budget.
+  /// [unit] The unit of measure for the budget amount.
+  CurrentSpendResponse({
+    required this.amount,
+    required this.unit,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'amount': amount,
+      'unit': unit,
+    };
+  }
+
+  factory CurrentSpendResponse.fromMap(Map<String, dynamic> map) {
+    return CurrentSpendResponse(
+      amount: map['amount'] as double,
+      unit: map['unit'] as String,
+    );
+  }
+}
+

@@ -6,13 +6,10 @@ import 'slo_windows_based_sli_good_total_ratio_threshold_performance.dart';
 class SloWindowsBasedSliGoodTotalRatioThreshold {
   /// Basic SLI to evaluate to judge window quality.
   /// Structure is documented below.
-  final SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance?
-  basicSliPerformance;
-
+  final SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance? basicSliPerformance;
   /// Request-based SLI to evaluate to judge window quality.
   /// Structure is documented below.
   final SloWindowsBasedSliGoodTotalRatioThresholdPerformance? performance;
-
   /// If window performance >= threshold, the window is counted
   /// as good.
   final double? threshold;
@@ -29,29 +26,18 @@ class SloWindowsBasedSliGoodTotalRatioThreshold {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSliPerformance': ?basicSliPerformance == null
-          ? null
-          : basicSliPerformance!.toMap(),
+      'basicSliPerformance': ?basicSliPerformance == null ? null : basicSliPerformance!.toMap(),
       'performance': ?performance == null ? null : performance!.toMap(),
       'threshold': ?threshold,
     };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThreshold.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SloWindowsBasedSliGoodTotalRatioThreshold.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliGoodTotalRatioThreshold(
-      basicSliPerformance: map['basicSliPerformance'] == null
-          ? null
-          : SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance.fromMap(
-              (map['basicSliPerformance'] as Map).cast<String, dynamic>(),
-            ),
-      performance: map['performance'] == null
-          ? null
-          : SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap(
-              (map['performance'] as Map).cast<String, dynamic>(),
-            ),
+      basicSliPerformance: map['basicSliPerformance'] == null ? null : SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>()),
+      performance: map['performance'] == null ? null : SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap((map['performance'] as Map).cast<String, dynamic>()),
       threshold: map['threshold'] == null ? null : map['threshold'] as double,
     );
   }
 }
+

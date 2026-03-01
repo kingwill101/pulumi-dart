@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceAttachmentTunnelingConfig {
   /// The encapsulation profile for tunneling traffic.
   final String? encapsulationProfile;
-
   /// The routing mode for tunneling traffic.
   final String? routingMode;
 
@@ -24,12 +24,9 @@ class ServiceAttachmentTunnelingConfig {
 
   factory ServiceAttachmentTunnelingConfig.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentTunnelingConfig(
-      encapsulationProfile: map['encapsulationProfile'] == null
-          ? null
-          : map['encapsulationProfile'] as String,
-      routingMode: map['routingMode'] == null
-          ? null
-          : map['routingMode'] as String,
+      encapsulationProfile: map['encapsulationProfile'] == null ? null : map['encapsulationProfile'] as String,
+      routingMode: map['routingMode'] == null ? null : map['routingMode'] as String,
     );
   }
 }
+

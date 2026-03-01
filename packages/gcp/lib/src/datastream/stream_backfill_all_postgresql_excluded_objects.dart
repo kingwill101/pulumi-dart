@@ -6,37 +6,24 @@ import 'stream_backfill_all_postgresql_excluded_objects_postgresql_schema.dart';
 class StreamBackfillAllPostgresqlExcludedObjects {
   /// PostgreSQL schemas on the server
   /// Structure is documented below.
-  final List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema>
-  postgresqlSchemas;
+  final List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema> postgresqlSchemas;
 
   /// Creates a new [StreamBackfillAllPostgresqlExcludedObjects].
   /// [postgresqlSchemas] PostgreSQL schemas on the server
-  StreamBackfillAllPostgresqlExcludedObjects({required this.postgresqlSchemas});
+  StreamBackfillAllPostgresqlExcludedObjects({
+    required this.postgresqlSchemas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlSchemas':
-          pulumi.Input.encodeList<
-            StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema,
-            Map<String, dynamic>
-          >(postgresqlSchemas, (value) => value.toMap()),
+      'postgresqlSchemas': pulumi.Input.encodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema, Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap()),
     };
   }
 
-  factory StreamBackfillAllPostgresqlExcludedObjects.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamBackfillAllPostgresqlExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllPostgresqlExcludedObjects(
-      postgresqlSchemas:
-          pulumi.Input.decodeList<
-            StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema
-          >(
-            map['postgresqlSchemas'],
-            (value) =>
-                StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      postgresqlSchemas: pulumi.Input.decodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema>(map['postgresqlSchemas'], (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

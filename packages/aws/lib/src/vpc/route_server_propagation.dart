@@ -112,10 +112,8 @@ import 'route_server_propagation_timeouts.dart';
 class RouteServerPropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The unique identifier for the route server to be associated.
   late final pulumi.Output<String> routeServerId;
-
   /// The ID of the route table to which route server will propagate routes.
   ///
   /// The following arguments are optional:
@@ -131,11 +129,11 @@ class RouteServerPropagation extends pulumi.CustomResource {
     RouteServerPropagationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/routeServerPropagation:RouteServerPropagation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/routeServerPropagation:RouteServerPropagation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.routeServerId = registerOutput<String>('routeServerId');
     this.routeTableId = registerOutput<String>('routeTableId');

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointRedisSetting {
   final String authPassword;
   final String authType;
@@ -51,3 +52,4 @@ class GetEndpointRedisSetting {
     );
   }
 }
+

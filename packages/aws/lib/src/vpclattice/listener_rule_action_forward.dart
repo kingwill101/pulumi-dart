@@ -11,27 +11,20 @@ class ListenerRuleActionForward {
 
   /// Creates a new [ListenerRuleActionForward].
   /// [targetGroups] The target groups. Traffic matching the rule is forwarded to the specified target groups. With forward actions, you can assign a weight that controls the prioritization and selection of each target group. This means that requests are distributed to individual target groups based on their weights. For example, if two target groups have the same weight, each target group receives half of the traffic.
-  ListenerRuleActionForward({required this.targetGroups});
+  ListenerRuleActionForward({
+    required this.targetGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetGroups':
-          pulumi.Input.encodeList<
-            ListenerRuleActionForwardTargetGroup,
-            Map<String, dynamic>
-          >(targetGroups, (value) => value.toMap()),
+      'targetGroups': pulumi.Input.encodeList<ListenerRuleActionForwardTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
     };
   }
 
   factory ListenerRuleActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForward(
-      targetGroups:
-          pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(
-            map['targetGroups'],
-            (value) => ListenerRuleActionForwardTargetGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      targetGroups: pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

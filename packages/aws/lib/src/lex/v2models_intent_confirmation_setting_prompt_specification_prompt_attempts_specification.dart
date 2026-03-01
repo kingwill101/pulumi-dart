@@ -7,21 +7,14 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification {
   /// Whether the user can interrupt a speech prompt attempt from the bot.
   final bool? allowInterrupt;
-
   /// Configuration block for the allowed input types of the prompt attempt. See `allowed_input_types`.
-  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes?
-  allowedInputTypes;
-
+  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes? allowedInputTypes;
   /// Configuration block for settings on audio and DTMF input. See `audio_and_dtmf_input_specification`.
-  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification?
-  audioAndDtmfInputSpecification;
-
+  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification? audioAndDtmfInputSpecification;
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final String mapBlockKey;
-
   /// Configuration block for the settings on text input. See `text_input_specification`.
-  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification?
-  textInputSpecification;
+  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification? textInputSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Whether the user can interrupt a speech prompt attempt from the bot.
@@ -40,44 +33,21 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'allowedInputTypes': ?allowedInputTypes == null
-          ? null
-          : allowedInputTypes!.toMap(),
-      'audioAndDtmfInputSpecification': ?audioAndDtmfInputSpecification == null
-          ? null
-          : audioAndDtmfInputSpecification!.toMap(),
+      'allowedInputTypes': ?allowedInputTypes == null ? null : allowedInputTypes!.toMap(),
+      'audioAndDtmfInputSpecification': ?audioAndDtmfInputSpecification == null ? null : audioAndDtmfInputSpecification!.toMap(),
       'mapBlockKey': mapBlockKey,
-      'textInputSpecification': ?textInputSpecification == null
-          ? null
-          : textInputSpecification!.toMap(),
+      'textInputSpecification': ?textInputSpecification == null ? null : textInputSpecification!.toMap(),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null
-          ? null
-          : map['allowInterrupt'] as bool,
-      allowedInputTypes: map['allowedInputTypes'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
-              (map['allowedInputTypes'] as Map).cast<String, dynamic>(),
-            ),
-      audioAndDtmfInputSpecification:
-          map['audioAndDtmfInputSpecification'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
-              (map['audioAndDtmfInputSpecification'] as Map)
-                  .cast<String, dynamic>(),
-            ),
+      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
+      allowedInputTypes: map['allowedInputTypes'] == null ? null : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes'] as Map).cast<String, dynamic>()),
+      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification'] as Map).cast<String, dynamic>()),
       mapBlockKey: map['mapBlockKey'] as String,
-      textInputSpecification: map['textInputSpecification'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
-              (map['textInputSpecification'] as Map).cast<String, dynamic>(),
-            ),
+      textInputSpecification: map['textInputSpecification'] == null ? null : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The auto-approval list of the private link service.
+class PrivateLinkServicePropertiesResponseAutoApproval {
+  /// The list of subscriptions.
+  final List<String>? subscriptions;
+
+  /// Creates a new [PrivateLinkServicePropertiesResponseAutoApproval].
+  /// [subscriptions] The list of subscriptions.
+  PrivateLinkServicePropertiesResponseAutoApproval({
+    this.subscriptions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'subscriptions': ?subscriptions,
+    };
+  }
+
+  factory PrivateLinkServicePropertiesResponseAutoApproval.fromMap(Map<String, dynamic> map) {
+    return PrivateLinkServicePropertiesResponseAutoApproval(
+      subscriptions: map['subscriptions'] == null ? null : (map['subscriptions'] as List).cast<String>(),
+    );
+  }
+}
+

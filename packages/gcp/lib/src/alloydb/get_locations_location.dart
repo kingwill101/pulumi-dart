@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLocationsLocation {
   /// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
   final String displayName;
-
   /// Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
   final Map<String, String> labels;
-
   /// The canonical id for this location. For example: "us-east1"..
   final String locationId;
-
   /// Service-specific metadata. For example the available capacity at the given location.
   final Map<String, String> metadata;
-
   /// Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
   final String name;
 
@@ -50,3 +47,4 @@ class GetLocationsLocation {
     );
   }
 }
+

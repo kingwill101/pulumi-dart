@@ -1,0 +1,296 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'queue_args.dart';
+
+/// Manages a ServiceBus Queue.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = new azure.core.ResourceGroup("example", {
+///     name: "my-servicebus",
+///     location: "West Europe",
+/// });
+/// const exampleNamespace = new azure.servicebus.Namespace("example", {
+///     name: "tfex-servicebus-namespace",
+///     location: example.location,
+///     resourceGroupName: example.name,
+///     sku: "Standard",
+///     tags: {
+///         source: "example",
+///     },
+/// });
+/// const exampleQueue = new azure.servicebus.Queue("example", {
+///     name: "tfex_servicebus_queue",
+///     namespaceId: exampleNamespace.id,
+///     partitioningEnabled: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.core.ResourceGroup("example",
+///     name="my-servicebus",
+///     location="West Europe")
+/// example_namespace = azure.servicebus.Namespace("example",
+///     name="tfex-servicebus-namespace",
+///     location=example.location,
+///     resource_group_name=example.name,
+///     sku="Standard",
+///     tags={
+///         "source": "example",
+///     })
+/// example_queue = azure.servicebus.Queue("example",
+///     name="tfex_servicebus_queue",
+///     namespace_id=example_namespace.id,
+///     partitioning_enabled=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Azure.Core.ResourceGroup("example", new()
+///     {
+///         Name = "my-servicebus",
+///         Location = "West Europe",
+///     });
+///
+///     var exampleNamespace = new Azure.ServiceBus.Namespace("example", new()
+///     {
+///         Name = "tfex-servicebus-namespace",
+///         Location = example.Location,
+///         ResourceGroupName = example.Name,
+///         Sku = "Standard",
+///         Tags =
+///         {
+///             { "source", "example" },
+///         },
+///     });
+///
+///     var exampleQueue = new Azure.ServiceBus.Queue("example", new()
+///     {
+///         Name = "tfex_servicebus_queue",
+///         NamespaceId = exampleNamespace.Id,
+///         PartitioningEnabled = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/servicebus"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("my-servicebus"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNamespace, err := servicebus.NewNamespace(ctx, "example", &servicebus.NamespaceArgs{
+/// 			Name:              pulumi.String("tfex-servicebus-namespace"),
+/// 			Location:          example.Location,
+/// 			ResourceGroupName: example.Name,
+/// 			Sku:               pulumi.String("Standard"),
+/// 			Tags: pulumi.StringMap{
+/// 				"source": pulumi.String("example"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = servicebus.NewQueue(ctx, "example", &servicebus.QueueArgs{
+/// 			Name:                pulumi.String("tfex_servicebus_queue"),
+/// 			NamespaceId:         exampleNamespace.ID(),
+/// 			PartitioningEnabled: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.core.ResourceGroup;
+/// import com.pulumi.azure.core.ResourceGroupArgs;
+/// import com.pulumi.azure.servicebus.Namespace;
+/// import com.pulumi.azure.servicebus.NamespaceArgs;
+/// import com.pulumi.azure.servicebus.Queue;
+/// import com.pulumi.azure.servicebus.QueueArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ResourceGroup("example", ResourceGroupArgs.builder()
+///             .name("my-servicebus")
+///             .location("West Europe")
+///             .build());
+///
+///         var exampleNamespace = new Namespace("exampleNamespace", NamespaceArgs.builder()
+///             .name("tfex-servicebus-namespace")
+///             .location(example.location())
+///             .resourceGroupName(example.name())
+///             .sku("Standard")
+///             .tags(Map.of("source", "example"))
+///             .build());
+///
+///         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
+///             .name("tfex_servicebus_queue")
+///             .namespaceId(exampleNamespace.id())
+///             .partitioningEnabled(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: azure:core:ResourceGroup
+///     properties:
+///       name: my-servicebus
+///       location: West Europe
+///   exampleNamespace:
+///     type: azure:servicebus:Namespace
+///     name: example
+///     properties:
+///       name: tfex-servicebus-namespace
+///       location: ${example.location}
+///       resourceGroupName: ${example.name}
+///       sku: Standard
+///       tags:
+///         source: example
+///   exampleQueue:
+///     type: azure:servicebus:Queue
+///     name: example
+///     properties:
+///       name: tfex_servicebus_queue
+///       namespaceId: ${exampleNamespace.id}
+///       partitioningEnabled: true
+/// ```
+///
+///
+/// ## API Providers
+///
+/// <!-- This section is generated, changes will be overwritten -->
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.ServiceBus` - 2024-01-01
+///
+/// ## Import
+///
+/// Service Bus Queue can be imported using the `resource id`, e.g.
+///
+/// ```sh
+/// $ pulumi import azure:servicebus/queue:Queue example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.ServiceBus/namespaces/sbns1/queues/snqueue1
+/// ```
+class Queue extends pulumi.CustomResource {
+  /// The ISO 8601 timespan duration of the idle interval after which the Queue is automatically deleted, minimum of 5 minutes.
+  late final pulumi.Output<String> autoDeleteOnIdle;
+  /// Boolean flag which controls whether server-side batched operations are enabled. Defaults to `true`.
+  late final pulumi.Output<bool?> batchedOperationsEnabled;
+  /// Boolean flag which controls whether the Queue has dead letter support when a message expires. Defaults to `false`.
+  late final pulumi.Output<bool?> deadLetteringOnMessageExpiration;
+  /// The ISO 8601 timespan duration of the TTL of messages sent to this queue. This is the default value used when TTL is not set on message itself.
+  late final pulumi.Output<String> defaultMessageTtl;
+  /// The ISO 8601 timespan duration during which duplicates can be detected. Defaults to `PT10M` (10 Minutes).
+  late final pulumi.Output<String?> duplicateDetectionHistoryTimeWindow;
+  /// Boolean flag which controls whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage. Defaults to `false` for Basic and Standard. For Premium, it MUST be set to `false`.
+  ///
+  /// > **Note:** Service Bus Premium namespaces do not support Express Entities, so `express_enabled` MUST be set to `false`.
+  late final pulumi.Output<bool?> expressEnabled;
+  /// The name of a Queue or Topic to automatically forward dead lettered messages to.
+  late final pulumi.Output<String?> forwardDeadLetteredMessagesTo;
+  /// The name of a Queue or Topic to automatically forward messages to. Please [see the documentation](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-auto-forwarding) for more information.
+  late final pulumi.Output<String?> forwardTo;
+  /// The ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers. Maximum value is 5 minutes. Defaults to `PT1M` (1 Minute).
+  late final pulumi.Output<String?> lockDuration;
+  /// Integer value which controls when a message is automatically dead lettered. Defaults to `10`.
+  late final pulumi.Output<int?> maxDeliveryCount;
+  /// Integer value which controls the maximum size of a message allowed on the queue for Premium SKU. For supported values see the "Large messages support" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging#large-messages-support-preview).
+  late final pulumi.Output<int> maxMessageSizeInKilobytes;
+  /// Integer value which controls the size of memory allocated for the queue. For supported values see the "Queue or topic size" section of [Service Bus Quotas](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas).
+  late final pulumi.Output<int> maxSizeInMegabytes;
+  /// Specifies the name of the ServiceBus Queue resource. Changing this forces a new resource to be created.
+  late final pulumi.Output<String> name;
+  /// The ID of the ServiceBus Namespace to create this queue in. Changing this forces a new resource to be created.
+  late final pulumi.Output<String> namespaceId;
+  late final pulumi.Output<String> namespaceName;
+  /// Boolean flag which controls whether to enable the queue to be partitioned across multiple message brokers. Changing this forces a new resource to be created. Defaults to `false` for Basic and Standard.
+  ///
+  /// > **Note:** Partitioning is available at entity creation for all queues and topics in Basic or Standard SKUs. For premium namespace, partitioning is available at namespace creation, and all queues and topics in the partitioned namespace will be partitioned, for the premium namespace that has `premium_messaging_partitions` sets to `1`, the namespace is not partitioned.
+  late final pulumi.Output<bool?> partitioningEnabled;
+  /// Boolean flag which controls whether the Queue requires duplicate detection. Changing this forces a new resource to be created. Defaults to `false`.
+  late final pulumi.Output<bool?> requiresDuplicateDetection;
+  /// Boolean flag which controls whether the Queue requires sessions. This will allow ordered handling of unbounded sequences of related messages. With sessions enabled a queue can guarantee first-in-first-out delivery of messages. Changing this forces a new resource to be created. Defaults to `false`.
+  late final pulumi.Output<bool?> requiresSession;
+  late final pulumi.Output<String> resourceGroupName;
+  /// The status of the Queue. Possible values are `Active`, `Creating`, `Deleting`, `Disabled`, `ReceiveDisabled`, `Renaming`, `SendDisabled`, `Unknown`. Note that `Restoring` is not accepted. Defaults to `Active`.
+  late final pulumi.Output<String?> status;
+
+  /// Creates a new [Queue].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Queue]. {@macro pulumi_servicebus_queue_queue_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:servicebus/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
+    this.batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    this.deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
+    this.defaultMessageTtl = registerOutput<String>('defaultMessageTtl');
+    this.duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
+    this.expressEnabled = registerOutput<bool?>('expressEnabled');
+    this.forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
+    this.forwardTo = registerOutput<String?>('forwardTo');
+    this.lockDuration = registerOutput<String?>('lockDuration');
+    this.maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
+    this.maxMessageSizeInKilobytes = registerOutput<int>('maxMessageSizeInKilobytes');
+    this.maxSizeInMegabytes = registerOutput<int>('maxSizeInMegabytes');
+    this.name = registerOutput<String>('name');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.namespaceName = registerOutput<String>('namespaceName');
+    this.partitioningEnabled = registerOutput<bool?>('partitioningEnabled');
+    this.requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
+    this.requiresSession = registerOutput<bool?>('requiresSession');
+    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    this.status = registerOutput<String?>('status');
+  }
+}

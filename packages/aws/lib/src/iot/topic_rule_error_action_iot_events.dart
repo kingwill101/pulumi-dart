@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionIotEvents {
   /// The payload that contains a JSON array of records will be sent to IoT Events via a batch call.
   final bool? batchMode;
-
   /// The name of the AWS IoT Events input.
   final String inputName;
-
   /// Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
   final String? messageId;
-
   /// The ARN of the IAM role that grants access.
   final String roleArn;
 
@@ -43,3 +41,4 @@ class TopicRuleErrorActionIotEvents {
     );
   }
 }
+

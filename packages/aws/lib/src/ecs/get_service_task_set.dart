@@ -1,30 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTaskSet {
   /// ARN of the task set
   final String arn;
-
   /// Time when task set was created (RFC3339 format)
   final String createdAt;
-
   /// Task set ID
   final String id;
-
   /// Number of pending tasks
   final int pendingCount;
-
   /// Number of running tasks
   final int runningCount;
-
   /// Stability status of the task set
   final String stabilityStatus;
-
   /// Task set status
   final String status;
-
   /// Task definition ARN
   final String taskDefinition;
-
   /// Time when task set was last updated (RFC3339 format)
   final String updatedAt;
 
@@ -78,3 +71,4 @@ class GetServiceTaskSet {
     );
   }
 }
+

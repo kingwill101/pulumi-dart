@@ -1,0 +1,15 @@
+library module_authorization;
+
+export 'authorization/assignment.dart';
+export 'authorization/assignment_args.dart';
+export 'authorization/functions.dart';
+export 'authorization/get_role_definition_args.dart';
+export 'authorization/get_role_definition_permission.dart';
+export 'authorization/get_role_definition_result.dart';
+export 'authorization/get_user_assigned_identity_args.dart';
+export 'authorization/get_user_assigned_identity_result.dart';
+export 'authorization/role_definition.dart';
+export 'authorization/role_definition_args.dart';
+export 'authorization/role_definition_permission.dart';
+export 'authorization/user_assigned_identity.dart';
+export 'authorization/user_assigned_identity_args.dart';

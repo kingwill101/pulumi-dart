@@ -212,49 +212,34 @@ import 'receipt_rule_workmail_action.dart';
 class ReceiptRule extends pulumi.CustomResource {
   /// A list of Add Header Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleAddHeaderAction>?> addHeaderActions;
-
   /// The name of the rule to place this rule after
   late final pulumi.Output<String?> after;
-
   /// The SES receipt rule ARN.
   late final pulumi.Output<String> arn;
-
   /// A list of Bounce Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleBounceAction>?> bounceActions;
-
   /// If true, the rule will be enabled
   late final pulumi.Output<bool?> enabled;
-
   /// A list of Lambda Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleLambdaAction>?> lambdaActions;
-
   /// The name of the rule
   late final pulumi.Output<String> name;
-
   /// A list of email addresses
   late final pulumi.Output<List<String>?> recipients;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the rule set
   late final pulumi.Output<String> ruleSetName;
-
   /// A list of S3 Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleS3Action>?> s3Actions;
-
   /// If true, incoming emails will be scanned for spam and viruses
   late final pulumi.Output<bool?> scanEnabled;
-
   /// A list of SNS Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleSnsAction>?> snsActions;
-
   /// A list of Stop Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleStopAction>?> stopActions;
-
   /// `Require` or `Optional`
   late final pulumi.Output<String> tlsPolicy;
-
   /// A list of WorkMail Action blocks. Documented below.
   late final pulumi.Output<List<ReceiptRuleWorkmailAction>?> workmailActions;
 
@@ -267,23 +252,17 @@ class ReceiptRule extends pulumi.CustomResource {
     ReceiptRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/receiptRule:ReceiptRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>(
-      'addHeaderActions',
-    );
+          'aws:ses/receiptRule:ReceiptRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions');
     this.after = registerOutput<String?>('after');
     this.arn = registerOutput<String>('arn');
-    this.bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>(
-      'bounceActions',
-    );
+    this.bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions');
     this.enabled = registerOutput<bool?>('enabled');
-    this.lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>(
-      'lambdaActions',
-    );
+    this.lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions');
     this.name = registerOutput<String>('name');
     this.recipients = registerOutput<List<String>?>('recipients');
     this.region = registerOutput<String>('region');
@@ -291,12 +270,8 @@ class ReceiptRule extends pulumi.CustomResource {
     this.s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions');
     this.scanEnabled = registerOutput<bool?>('scanEnabled');
     this.snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions');
-    this.stopActions = registerOutput<List<ReceiptRuleStopAction>?>(
-      'stopActions',
-    );
+    this.stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions');
     this.tlsPolicy = registerOutput<String>('tlsPolicy');
-    this.workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>(
-      'workmailActions',
-    );
+    this.workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions');
   }
 }

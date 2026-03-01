@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
   /// A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use `s3_prefix` to include only the desired metadata files.
   final String? s3Prefix;
@@ -11,14 +12,15 @@ class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Prefix': ?s3Prefix};
+    return <String, dynamic>{
+      's3Prefix': ?s3Prefix,
+    };
   }
 
-  factory DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration(
       s3Prefix: map['s3Prefix'] == null ? null : map['s3Prefix'] as String,
     );
   }
 }
+

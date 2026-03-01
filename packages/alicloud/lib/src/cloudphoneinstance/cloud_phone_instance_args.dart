@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudphoneinstance_cloud_phone_instance_cloud_phone_instance_args_doc}
+/// The set of arguments for CloudPhoneInstance.
+/// {@endtemplate}
+/// {@macro pulumi_cloudphoneinstance_cloud_phone_instance_cloud_phone_instance_args_doc}
+class CloudPhoneInstanceArgs {
+  /// The ID of the instance group to which the instance belongs
+  final pulumi.Input<String>? androidInstanceGroupId;
+  /// The instance name
+  final pulumi.Input<String>? androidInstanceName;
+
+  /// Creates a new [CloudPhoneInstanceArgs].
+  /// [androidInstanceGroupId] The ID of the instance group to which the instance belongs
+  /// [androidInstanceName] The instance name
+  CloudPhoneInstanceArgs({
+    String? androidInstanceGroupId,
+    String? androidInstanceName,
+  }) :
+      androidInstanceGroupId = pulumi.Input.asOptionalInput<String>(androidInstanceGroupId),
+      androidInstanceName = pulumi.Input.asOptionalInput<String>(androidInstanceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'androidInstanceGroupId': ?androidInstanceGroupId,
+      'androidInstanceName': ?androidInstanceName,
+    };
+  }
+
+  factory CloudPhoneInstanceArgs.fromMap(Map<String, dynamic> map) {
+    return CloudPhoneInstanceArgs(
+      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : map['androidInstanceGroupId'] as String,
+      androidInstanceName: map['androidInstanceName'] == null ? null : map['androidInstanceName'] as String,
+    );
+  }
+}
+

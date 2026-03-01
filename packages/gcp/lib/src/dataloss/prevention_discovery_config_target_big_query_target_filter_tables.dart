@@ -5,8 +5,7 @@ import 'prevention_discovery_config_target_big_query_target_filter_tables_includ
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
   /// A collection of regular expressions to match a BQ table against.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes?
-  includeRegexes;
+  final PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes? includeRegexes;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTables].
   /// [includeRegexes] A collection of regular expressions to match a BQ table against.
@@ -16,21 +15,14 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': ?includeRegexes == null
-          ? null
-          : includeRegexes!.toMap(),
+      'includeRegexes': ?includeRegexes == null ? null : includeRegexes!.toMap(),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTables(
-      includeRegexes: map['includeRegexes'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap(
-              (map['includeRegexes'] as Map).cast<String, dynamic>(),
-            ),
+      includeRegexes: map['includeRegexes'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

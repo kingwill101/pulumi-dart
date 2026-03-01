@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobQueueJobStateTimeLimitAction {
   /// The action to take when a job is at the head of the job queue in the specified state for the specified period of time. Valid values include `"CANCEL"`
   final String action;
-
   /// The approximate amount of time, in seconds, that must pass with the job in the specified state before the action is taken. Valid values include integers between `600` & `86400`
   final int maxTimeSeconds;
-
   /// The reason to log for the action being taken.
   final String reason;
-
   /// The state of the job needed to trigger the action. Valid values include `"RUNNABLE"`.
   final String state;
 
@@ -43,3 +41,4 @@ class JobQueueJobStateTimeLimitAction {
     );
   }
 }
+

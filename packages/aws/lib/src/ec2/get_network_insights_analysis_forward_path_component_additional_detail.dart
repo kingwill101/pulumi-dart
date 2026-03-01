@@ -5,10 +5,7 @@ import 'get_network_insights_analysis_forward_path_component_additional_detail_c
 
 class GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail {
   final String additionalDetailType;
-  final List<
-    GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent
-  >
-  components;
+  final List<GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent> components;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail].
   /// [additionalDetailType] Required.
@@ -21,29 +18,15 @@ class GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalDetailType': additionalDetailType,
-      'components':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent,
-            Map<String, dynamic>
-          >(components, (value) => value.toMap()),
+      'components': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent, Map<String, dynamic>>(components, (value) => value.toMap()),
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetail(
       additionalDetailType: map['additionalDetailType'] as String,
-      components:
-          pulumi.Input.decodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent
-          >(
-            map['components'],
-            (value) =>
-                GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      components: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent>(map['components'], (value) => GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

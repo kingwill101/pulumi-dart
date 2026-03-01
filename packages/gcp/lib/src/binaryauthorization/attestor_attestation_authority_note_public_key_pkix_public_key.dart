@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
   /// A PEM-encoded public key, as described in
   /// `https://tools.ietf.org/html/rfc7468#section-13`
   final String? publicKeyPem;
-
   /// The signature algorithm used to verify a message against
   /// a signature using this key. These signature algorithm must
   /// match the structure and any object identifiers encoded in
@@ -27,16 +27,11 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
     };
   }
 
-  factory AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(
-      publicKeyPem: map['publicKeyPem'] == null
-          ? null
-          : map['publicKeyPem'] as String,
-      signatureAlgorithm: map['signatureAlgorithm'] == null
-          ? null
-          : map['signatureAlgorithm'] as String,
+      publicKeyPem: map['publicKeyPem'] == null ? null : map['publicKeyPem'] as String,
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : map['signatureAlgorithm'] as String,
     );
   }
 }
+

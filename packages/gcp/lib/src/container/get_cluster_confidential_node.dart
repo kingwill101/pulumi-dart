@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterConfidentialNode {
   /// Defines the type of technology used by the confidential node.
   final String confidentialInstanceType;
-
   /// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
   final bool enabled;
 
@@ -29,3 +29,4 @@ class GetClusterConfidentialNode {
     );
   }
 }
+

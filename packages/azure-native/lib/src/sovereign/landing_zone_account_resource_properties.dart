@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The properties of landing zone account resource type.
+class LandingZoneAccountResourceProperties {
+  /// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
+  final String storageAccount;
+
+  /// Creates a new [LandingZoneAccountResourceProperties].
+  /// [storageAccount] The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
+  LandingZoneAccountResourceProperties({
+    required this.storageAccount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'storageAccount': storageAccount,
+    };
+  }
+
+  factory LandingZoneAccountResourceProperties.fromMap(Map<String, dynamic> map) {
+    return LandingZoneAccountResourceProperties(
+      storageAccount: map['storageAccount'] as String,
+    );
+  }
+}
+

@@ -5,10 +5,7 @@ import 'get_insights_dataset_config_include_cloud_storage_bucket_cloud_storage_b
 
 class GetInsightsDatasetConfigIncludeCloudStorageBucket {
   /// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
-  final List<
-    GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket
-  >
-  cloudStorageBuckets;
+  final List<GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket> cloudStorageBuckets;
 
   /// Creates a new [GetInsightsDatasetConfigIncludeCloudStorageBucket].
   /// [cloudStorageBuckets] The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
@@ -18,28 +15,14 @@ class GetInsightsDatasetConfigIncludeCloudStorageBucket {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStorageBuckets':
-          pulumi.Input.encodeList<
-            GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket,
-            Map<String, dynamic>
-          >(cloudStorageBuckets, (value) => value.toMap()),
+      'cloudStorageBuckets': pulumi.Input.encodeList<GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket, Map<String, dynamic>>(cloudStorageBuckets, (value) => value.toMap()),
     };
   }
 
-  factory GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigIncludeCloudStorageBucket(
-      cloudStorageBuckets:
-          pulumi.Input.decodeList<
-            GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket
-          >(
-            map['cloudStorageBuckets'],
-            (value) =>
-                GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      cloudStorageBuckets: pulumi.Input.decodeList<GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket>(map['cloudStorageBuckets'], (value) => GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
   /// The partitioning column.
   final String column;
-
   /// The ending value for range partitioning (exclusive).
   final int end;
-
   /// The interval of each range within the partition.
   final int interval;
-
   /// The starting value for range partitioning (inclusive).
   final int start;
 
@@ -34,9 +32,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
     };
   }
 
-  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition(
       column: map['column'] as String,
       end: map['end'] as int,
@@ -45,3 +41,4 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
     );
   }
 }
+

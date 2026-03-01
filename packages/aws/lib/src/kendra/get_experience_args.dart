@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperienceArgs {
   /// Identifier of the Experience.
   final pulumi.Input<String> experienceId;
-
   /// Identifier of the index that contains the Experience.
   final pulumi.Input<String> indexId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class GetExperienceArgs {
     required String experienceId,
     required String indexId,
     String? region,
-  }) : experienceId = pulumi.Input.asInput<String>(experienceId),
-       indexId = pulumi.Input.asInput<String>(indexId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      experienceId = pulumi.Input.asInput<String>(experienceId),
+      indexId = pulumi.Input.asInput<String>(indexId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class GetExperienceArgs {
     );
   }
 }
+

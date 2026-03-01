@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties {
   /// The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
   final String authCodeUrl;
-
   /// The OAuth scopes required for OAuth type authentication.
   final List<String> oauthScopes;
   final String tokenUrl;
@@ -26,9 +26,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties(
       authCodeUrl: map['authCodeUrl'] as String,
       oauthScopes: (map['oauthScopes'] as List).cast<String>(),
@@ -36,3 +34,4 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
     );
   }
 }
+

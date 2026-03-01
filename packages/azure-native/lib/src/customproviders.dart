@@ -1,0 +1,20 @@
+library module_customproviders;
+
+export 'customproviders/action_routing.dart';
+export 'customproviders/association.dart';
+export 'customproviders/association_args.dart';
+export 'customproviders/custom_resource_provider.dart';
+export 'customproviders/custom_resource_provider_args.dart';
+export 'customproviders/custom_rpaction_route_definition.dart';
+export 'customproviders/custom_rpaction_route_definition_response.dart';
+export 'customproviders/custom_rpresource_type_route_definition.dart';
+export 'customproviders/custom_rpresource_type_route_definition_response.dart';
+export 'customproviders/custom_rpvalidations.dart';
+export 'customproviders/custom_rpvalidations_response.dart';
+export 'customproviders/functions.dart';
+export 'customproviders/get_association_args.dart';
+export 'customproviders/get_association_result.dart';
+export 'customproviders/get_custom_resource_provider_args.dart';
+export 'customproviders/get_custom_resource_provider_result.dart';
+export 'customproviders/resource_type_routing.dart';
+export 'customproviders/validation_type.dart';

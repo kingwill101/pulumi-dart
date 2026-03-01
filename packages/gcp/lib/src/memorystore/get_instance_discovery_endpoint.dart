@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceDiscoveryEndpoint {
   /// Output only. IP address of the exposed endpoint clients connect to.
   final String address;
-
   /// Output only. The network where the IP address of the discovery endpoint will be
   /// reserved, in the form of
   /// projects/{network_project}/global/networks/{network_id}.
   final String network;
-
   /// Output only. The port number of the exposed endpoint.
   final int port;
 
@@ -38,3 +37,4 @@ class GetInstanceDiscoveryEndpoint {
     );
   }
 }
+

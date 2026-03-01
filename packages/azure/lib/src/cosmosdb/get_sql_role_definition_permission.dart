@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetSqlRoleDefinitionPermission {
+  /// A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
+  final List<String> dataActions;
+
+  /// Creates a new [GetSqlRoleDefinitionPermission].
+  /// [dataActions] A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
+  GetSqlRoleDefinitionPermission({
+    required this.dataActions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dataActions': dataActions,
+    };
+  }
+
+  factory GetSqlRoleDefinitionPermission.fromMap(Map<String, dynamic> map) {
+    return GetSqlRoleDefinitionPermission(
+      dataActions: (map['dataActions'] as List).cast<String>(),
+    );
+  }
+}
+

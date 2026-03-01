@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes properties of an assessment as related to the standard
+class PartialAssessmentProperties {
+  /// The assessment key
+  final String? assessmentKey;
+
+  /// Creates a new [PartialAssessmentProperties].
+  /// [assessmentKey] The assessment key
+  PartialAssessmentProperties({
+    this.assessmentKey,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'assessmentKey': ?assessmentKey,
+    };
+  }
+
+  factory PartialAssessmentProperties.fromMap(Map<String, dynamic> map) {
+    return PartialAssessmentProperties(
+      assessmentKey: map['assessmentKey'] == null ? null : map['assessmentKey'] as String,
+    );
+  }
+}
+

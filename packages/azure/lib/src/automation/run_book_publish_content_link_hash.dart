@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class RunBookPublishContentLinkHash {
+  /// Specifies the hash algorithm used to hash the content.
+  final String algorithm;
+  /// Specifies the expected hash value of the content.
+  final String value;
+
+  /// Creates a new [RunBookPublishContentLinkHash].
+  /// [algorithm] Specifies the hash algorithm used to hash the content.
+  /// [value] Specifies the expected hash value of the content.
+  RunBookPublishContentLinkHash({
+    required this.algorithm,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'value': value,
+    };
+  }
+
+  factory RunBookPublishContentLinkHash.fromMap(Map<String, dynamic> map) {
+    return RunBookPublishContentLinkHash(
+      algorithm: map['algorithm'] as String,
+      value: map['value'] as String,
+    );
+  }
+}
+

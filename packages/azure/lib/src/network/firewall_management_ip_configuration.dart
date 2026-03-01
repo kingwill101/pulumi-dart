@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class FirewallManagementIpConfiguration {
+  /// Specifies the name of the IP Configuration.
+  final String name;
+  /// The private IP address associated with the Firewall.
+  final String? privateIpAddress;
+  /// The ID of the Public IP Address associated with the firewall.
+  ///
+  /// > **Note:** The Public IP must have a `Static` allocation and `Standard` SKU.
+  final String publicIpAddressId;
+  /// Reference to the subnet associated with the IP Configuration. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** The Management Subnet used for the Firewall must have the name `AzureFirewallManagementSubnet` and the subnet mask must be at least a `/26`.
+  final String subnetId;
+
+  /// Creates a new [FirewallManagementIpConfiguration].
+  /// [name] Specifies the name of the IP Configuration.
+  /// [privateIpAddress] The private IP address associated with the Firewall.
+  /// [publicIpAddressId] The ID of the Public IP Address associated with the firewall.
+  /// [subnetId] Reference to the subnet associated with the IP Configuration. Changing this forces a new resource to be created.
+  FirewallManagementIpConfiguration({
+    required this.name,
+    this.privateIpAddress,
+    required this.publicIpAddressId,
+    required this.subnetId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'privateIpAddress': ?privateIpAddress,
+      'publicIpAddressId': publicIpAddressId,
+      'subnetId': subnetId,
+    };
+  }
+
+  factory FirewallManagementIpConfiguration.fromMap(Map<String, dynamic> map) {
+    return FirewallManagementIpConfiguration(
+      name: map['name'] as String,
+      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
+      publicIpAddressId: map['publicIpAddressId'] as String,
+      subnetId: map['subnetId'] as String,
+    );
+  }
+}
+

@@ -401,22 +401,16 @@ class ReplicationConfiguration extends pulumi.CustomResource {
   /// * `destination[0].file_system_id` - The fs ID of the replica.
   /// * `destination[0].status` - The status of the replication.
   late final pulumi.Output<String> creationTime;
-
   /// A destination configuration block (documented below).
   late final pulumi.Output<ReplicationConfigurationDestination> destination;
-
   /// The Amazon Resource Name (ARN) of the original source Amazon EFS file system in the replication configuration.
   late final pulumi.Output<String> originalSourceFileSystemArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
   late final pulumi.Output<String> sourceFileSystemArn;
-
   /// The ID of the file system that is to be replicated.
   late final pulumi.Output<String> sourceFileSystemId;
-
   /// The AWS Region in which the source Amazon EFS file system is located.
   late final pulumi.Output<String> sourceFileSystemRegion;
 
@@ -429,23 +423,17 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     ReplicationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:efs/replicationConfiguration:ReplicationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:efs/replicationConfiguration:ReplicationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.creationTime = registerOutput<String>('creationTime');
-    this.destination = registerOutput<ReplicationConfigurationDestination>(
-      'destination',
-    );
-    this.originalSourceFileSystemArn = registerOutput<String>(
-      'originalSourceFileSystemArn',
-    );
+    this.destination = registerOutput<ReplicationConfigurationDestination>('destination');
+    this.originalSourceFileSystemArn = registerOutput<String>('originalSourceFileSystemArn');
     this.region = registerOutput<String>('region');
     this.sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
     this.sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
-    this.sourceFileSystemRegion = registerOutput<String>(
-      'sourceFileSystemRegion',
-    );
+    this.sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
   }
 }

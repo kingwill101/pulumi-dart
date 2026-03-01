@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl {
   /// ARN of the routing control.
   final String routingControlArn;
-
   /// State of the routing control. Valid values: `On`, `Off`.
   final String state;
 
@@ -22,12 +22,11 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingContr
     };
   }
 
-  factory PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl(
       routingControlArn: map['routingControlArn'] as String,
       state: map['state'] as String,
     );
   }
 }
+

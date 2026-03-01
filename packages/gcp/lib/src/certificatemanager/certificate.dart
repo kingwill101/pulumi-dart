@@ -2321,40 +2321,31 @@ import 'certificate_self_managed.dart';
 class Certificate extends pulumi.CustomResource {
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Set of label tags associated with the Certificate resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The Certificate Manager location. If not specified, "global" is used.
   late final pulumi.Output<String?> location;
-
   /// Configuration and state of a Managed Certificate.
   /// Certificate Manager provisions and renews Managed Certificates
   /// automatically, for as long as it's authorized to do so.
   /// Structure is documented below.
   late final pulumi.Output<CertificateManaged?> managed;
-
   /// A user-defined name of the certificate. Certificate names must be unique
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
   late final pulumi.Output<List<String>> sanDnsnames;
-
   /// The scope of the certificate.
   /// DEFAULT: Certificates with default scope are served from core Google data centers.
   /// If unsure, choose this option.
@@ -2365,7 +2356,6 @@ class Certificate extends pulumi.CustomResource {
   /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
   /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
   late final pulumi.Output<String?> scope;
-
   /// Certificate data for a SelfManaged Certificate.
   /// SelfManaged Certificates are uploaded by the user. Updating such
   /// certificates before they expire remains the user's responsibility.
@@ -2381,15 +2371,13 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificatemanager/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificatemanager/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String?>('location');
     this.managed = registerOutput<CertificateManaged?>('managed');

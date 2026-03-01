@@ -1,20 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAnonymousAuthenticationConfig {
   /// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
   final String mode;
 
   /// Creates a new [ClusterAnonymousAuthenticationConfig].
   /// [mode] Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
-  ClusterAnonymousAuthenticationConfig({required this.mode});
+  ClusterAnonymousAuthenticationConfig({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory ClusterAnonymousAuthenticationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
-    return ClusterAnonymousAuthenticationConfig(mode: map['mode'] as String);
+  factory ClusterAnonymousAuthenticationConfig.fromMap(Map<String, dynamic> map) {
+    return ClusterAnonymousAuthenticationConfig(
+      mode: map['mode'] as String,
+    );
   }
 }
+

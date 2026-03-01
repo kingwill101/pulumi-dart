@@ -1,15 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMeshCertificate {
   /// When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
   final bool enableCertificates;
 
   /// Creates a new [GetClusterMeshCertificate].
   /// [enableCertificates] When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
-  GetClusterMeshCertificate({required this.enableCertificates});
+  GetClusterMeshCertificate({
+    required this.enableCertificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableCertificates': enableCertificates};
+    return <String, dynamic>{
+      'enableCertificates': enableCertificates,
+    };
   }
 
   factory GetClusterMeshCertificate.fromMap(Map<String, dynamic> map) {
@@ -18,3 +23,4 @@ class GetClusterMeshCertificate {
     );
   }
 }
+

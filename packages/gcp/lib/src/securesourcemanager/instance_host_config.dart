@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceHostConfig {
   /// (Output)
   /// API hostname.
   final String? api;
-
   /// (Output)
   /// Git HTTP hostname.
   final String? gitHttp;
-
   /// (Output)
   /// Git SSH hostname.
   final String? gitSsh;
-
   /// (Output)
   /// HTML hostname.
   final String? html;
@@ -22,7 +20,12 @@ class InstanceHostConfig {
   /// [gitHttp] (Output)
   /// [gitSsh] (Output)
   /// [html] (Output)
-  InstanceHostConfig({this.api, this.gitHttp, this.gitSsh, this.html});
+  InstanceHostConfig({
+    this.api,
+    this.gitHttp,
+    this.gitSsh,
+    this.html,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,3 +45,4 @@ class InstanceHostConfig {
     );
   }
 }
+

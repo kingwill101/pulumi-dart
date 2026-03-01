@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
   /// Metric type.
   final String predefinedMetricType;
-
   /// Identifies the resource associated with the metric type.
   final String? resourceLabel;
 
@@ -22,14 +22,11 @@ class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
     };
   }
 
-  factory PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationPredefinedMetricSpecification(
       predefinedMetricType: map['predefinedMetricType'] as String,
-      resourceLabel: map['resourceLabel'] == null
-          ? null
-          : map['resourceLabel'] as String,
+      resourceLabel: map['resourceLabel'] == null ? null : map['resourceLabel'] as String,
     );
   }
 }
+

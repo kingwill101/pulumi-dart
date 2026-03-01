@@ -14,9 +14,7 @@ class OsPolicyAssignmentOsPolicyResourceGroup {
   /// inventory_filters[1].os_short_name='centos' If the list is empty, this
   /// resource group will be applied to the target VM unconditionally. Structure
   /// is documented below.
-  final List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter>?
-  inventoryFilters;
-
+  final List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter>? inventoryFilters;
   /// List of resources configured for this resource
   /// group. The resources are executed in the exact order specified here.
   /// Structure is documented below.
@@ -32,44 +30,16 @@ class OsPolicyAssignmentOsPolicyResourceGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inventoryFilters': ?inventoryFilters == null
-          ? null
-          : pulumi.Input.encodeList<
-              OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter,
-              Map<String, dynamic>
-            >(inventoryFilters!, (value) => value.toMap()),
-      'resources':
-          pulumi.Input.encodeList<
-            OsPolicyAssignmentOsPolicyResourceGroupResource,
-            Map<String, dynamic>
-          >(resources, (value) => value.toMap()),
+      'inventoryFilters': ?inventoryFilters == null ? null : pulumi.Input.encodeList<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter, Map<String, dynamic>>(inventoryFilters!, (value) => value.toMap()),
+      'resources': pulumi.Input.encodeList<OsPolicyAssignmentOsPolicyResourceGroupResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroup.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroup(
-      inventoryFilters: map['inventoryFilters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter
-            >(
-              map['inventoryFilters'],
-              (value) =>
-                  OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      resources:
-          pulumi.Input.decodeList<
-            OsPolicyAssignmentOsPolicyResourceGroupResource
-          >(
-            map['resources'],
-            (value) => OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      inventoryFilters: map['inventoryFilters'] == null ? null : pulumi.Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter>(map['inventoryFilters'], (value) => OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter.fromMap((value as Map).cast<String, dynamic>())),
+      resources: pulumi.Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroupResource>(map['resources'], (value) => OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

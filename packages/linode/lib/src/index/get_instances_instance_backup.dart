@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_instances_instance_backup_schedule.dart';
+
+class GetInstancesInstanceBackup {
+  /// Whether this Backup is available for restoration.
+  final bool available;
+  /// If this Linode has the Backup service enabled.
+  final bool enabled;
+  final List<GetInstancesInstanceBackupSchedule> schedules;
+
+  /// Creates a new [GetInstancesInstanceBackup].
+  /// [available] Whether this Backup is available for restoration.
+  /// [enabled] If this Linode has the Backup service enabled.
+  /// [schedules] Required.
+  GetInstancesInstanceBackup({
+    required this.available,
+    required this.enabled,
+    required this.schedules,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'available': available,
+      'enabled': enabled,
+      'schedules': pulumi.Input.encodeList<GetInstancesInstanceBackupSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+    };
+  }
+
+  factory GetInstancesInstanceBackup.fromMap(Map<String, dynamic> map) {
+    return GetInstancesInstanceBackup(
+      available: map['available'] as bool,
+      enabled: map['enabled'] as bool,
+      schedules: pulumi.Input.decodeList<GetInstancesInstanceBackupSchedule>(map['schedules'], (value) => GetInstancesInstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

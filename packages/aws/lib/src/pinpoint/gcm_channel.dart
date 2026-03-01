@@ -14,14 +14,11 @@ import 'gcm_channel_args.dart';
 class GcmChannel extends pulumi.CustomResource {
   /// Platform credential API key from Google.
   late final pulumi.Output<String?> apiKey;
-
   /// The application ID.
   late final pulumi.Output<String> applicationId;
   late final pulumi.Output<String?> defaultAuthenticationMethod;
-
   /// Whether the channel is enabled or disabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String?> serviceJson;
@@ -35,16 +32,14 @@ class GcmChannel extends pulumi.CustomResource {
     GcmChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/gcmChannel:GcmChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/gcmChannel:GcmChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.apiKey = registerOutput<String?>('apiKey');
     this.applicationId = registerOutput<String>('applicationId');
-    this.defaultAuthenticationMethod = registerOutput<String?>(
-      'defaultAuthenticationMethod',
-    );
+    this.defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     this.enabled = registerOutput<bool?>('enabled');
     this.region = registerOutput<String>('region');
     this.serviceJson = registerOutput<String?>('serviceJson');

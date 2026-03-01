@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertManagerDefinitionArgs {
   /// the alert manager definition that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-alert-manager.html).
   final pulumi.Input<String> definition;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the prometheus workspace the alert manager definition should be linked to
   final pulumi.Input<String> workspaceId;
 
@@ -24,9 +22,10 @@ class AlertManagerDefinitionArgs {
     required String definition,
     String? region,
     required String workspaceId,
-  }) : definition = pulumi.Input.asInput<String>(definition),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) :
+      definition = pulumi.Input.asInput<String>(definition),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class AlertManagerDefinitionArgs {
     );
   }
 }
+

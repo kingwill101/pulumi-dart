@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepEksResourceScalingConfigEksCluster {
   /// ARN of the EKS cluster.
   final String clusterArn;
-
   /// ARN of the cross-account role to assume.
   final String? crossAccountRole;
-
   /// External ID for cross-account role assumption.
   final String? externalId;
 
@@ -28,17 +27,12 @@ class PlanWorkflowStepEksResourceScalingConfigEksCluster {
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfigEksCluster(
       clusterArn: map['clusterArn'] as String,
-      crossAccountRole: map['crossAccountRole'] == null
-          ? null
-          : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null
-          ? null
-          : map['externalId'] as String,
+      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
+      externalId: map['externalId'] == null ? null : map['externalId'] as String,
     );
   }
 }
+

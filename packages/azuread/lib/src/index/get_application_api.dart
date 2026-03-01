@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_application_api_oauth2_permission_scope.dart';
+
+class GetApplicationApi {
+  /// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+  final List<String> knownClientApplications;
+  /// Allows an application to use claims mapping without specifying a custom signing key.
+  final bool mappedClaimsEnabled;
+  /// One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  final List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
+  /// The access token version expected by this resource. Possible values are `1` or `2`.
+  final int requestedAccessTokenVersion;
+
+  /// Creates a new [GetApplicationApi].
+  /// [knownClientApplications] A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+  /// [mappedClaimsEnabled] Allows an application to use claims mapping without specifying a custom signing key.
+  /// [oauth2PermissionScopes] One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  /// [requestedAccessTokenVersion] The access token version expected by this resource. Possible values are `1` or `2`.
+  GetApplicationApi({
+    required this.knownClientApplications,
+    required this.mappedClaimsEnabled,
+    required this.oauth2PermissionScopes,
+    required this.requestedAccessTokenVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'knownClientApplications': knownClientApplications,
+      'mappedClaimsEnabled': mappedClaimsEnabled,
+      'oauth2PermissionScopes': pulumi.Input.encodeList<GetApplicationApiOauth2PermissionScope, Map<String, dynamic>>(oauth2PermissionScopes, (value) => value.toMap()),
+      'requestedAccessTokenVersion': requestedAccessTokenVersion,
+    };
+  }
+
+  factory GetApplicationApi.fromMap(Map<String, dynamic> map) {
+    return GetApplicationApi(
+      knownClientApplications: (map['knownClientApplications'] as List).cast<String>(),
+      mappedClaimsEnabled: map['mappedClaimsEnabled'] as bool,
+      oauth2PermissionScopes: pulumi.Input.decodeList<GetApplicationApiOauth2PermissionScope>(map['oauth2PermissionScopes'], (value) => GetApplicationApiOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>())),
+      requestedAccessTokenVersion: map['requestedAccessTokenVersion'] as int,
+    );
+  }
+}
+

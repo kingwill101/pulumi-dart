@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceServerCaCert {
   /// The certificate data in PEM format.
   final String cert;
-
   /// The time when the certificate was created.
   final String createTime;
-
   /// The time when the certificate expires.
   final String expireTime;
-
   /// Serial number, as extracted from the certificate.
   final String serialNumber;
-
   /// Sha1 Fingerprint of the certificate.
   final String sha1Fingerprint;
 
@@ -50,3 +47,4 @@ class GetInstanceServerCaCert {
     );
   }
 }
+

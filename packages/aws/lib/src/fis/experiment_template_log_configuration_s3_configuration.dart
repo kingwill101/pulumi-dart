@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExperimentTemplateLogConfigurationS3Configuration {
   /// The name of the destination bucket.
   final String bucketName;
-
   /// The bucket prefix.
   final String? prefix;
 
@@ -16,15 +16,17 @@ class ExperimentTemplateLogConfigurationS3Configuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketName': bucketName, 'prefix': ?prefix};
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'prefix': ?prefix,
+    };
   }
 
-  factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfigurationS3Configuration(
       bucketName: map['bucketName'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
     );
   }
 }
+

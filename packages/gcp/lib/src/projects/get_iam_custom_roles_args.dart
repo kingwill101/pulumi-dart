@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIamCustomRolesArgs {
   /// The project were the custom role has been created in. Defaults to the provider project configuration.
   final pulumi.Input<String>? project;
-
   /// Include Roles that have been deleted. Defaults to `false`.
   final pulumi.Input<bool>? showDeleted;
-
   /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
   final pulumi.Input<String>? view;
 
@@ -20,8 +18,12 @@ class GetIamCustomRolesArgs {
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.
   /// [showDeleted] Include Roles that have been deleted. Defaults to `false`.
   /// [view] When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
-  GetIamCustomRolesArgs({String? project, bool? showDeleted, String? view})
-    : project = pulumi.Input.asOptionalInput<String>(project),
+  GetIamCustomRolesArgs({
+    String? project,
+    bool? showDeleted,
+    String? view,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
       showDeleted = pulumi.Input.asOptionalInput<bool>(showDeleted),
       view = pulumi.Input.asOptionalInput<String>(view);
 
@@ -36,10 +38,9 @@ class GetIamCustomRolesArgs {
   factory GetIamCustomRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesArgs(
       project: map['project'] == null ? null : map['project'] as String,
-      showDeleted: map['showDeleted'] == null
-          ? null
-          : map['showDeleted'] as bool,
+      showDeleted: map['showDeleted'] == null ? null : map['showDeleted'] as bool,
       view: map['view'] == null ? null : map['view'] as String,
     );
   }
 }
+

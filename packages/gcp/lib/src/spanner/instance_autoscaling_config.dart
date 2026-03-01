@@ -8,9 +8,7 @@ import 'instance_autoscaling_config_autoscaling_targets.dart';
 class InstanceAutoscalingConfig {
   /// Asymmetric autoscaling options for specific replicas.
   /// Structure is documented below.
-  final List<InstanceAutoscalingConfigAsymmetricAutoscalingOption>?
-  asymmetricAutoscalingOptions;
-
+  final List<InstanceAutoscalingConfigAsymmetricAutoscalingOption>? asymmetricAutoscalingOptions;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events. Users can define the minimum and
   /// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -19,7 +17,6 @@ class InstanceAutoscalingConfig {
   /// min_limit and max_limit.
   /// Structure is documented below.
   final InstanceAutoscalingConfigAutoscalingLimits? autoscalingLimits;
-
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
@@ -37,44 +34,18 @@ class InstanceAutoscalingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asymmetricAutoscalingOptions': ?asymmetricAutoscalingOptions == null
-          ? null
-          : pulumi.Input.encodeList<
-              InstanceAutoscalingConfigAsymmetricAutoscalingOption,
-              Map<String, dynamic>
-            >(asymmetricAutoscalingOptions!, (value) => value.toMap()),
-      'autoscalingLimits': ?autoscalingLimits == null
-          ? null
-          : autoscalingLimits!.toMap(),
-      'autoscalingTargets': ?autoscalingTargets == null
-          ? null
-          : autoscalingTargets!.toMap(),
+      'asymmetricAutoscalingOptions': ?asymmetricAutoscalingOptions == null ? null : pulumi.Input.encodeList<InstanceAutoscalingConfigAsymmetricAutoscalingOption, Map<String, dynamic>>(asymmetricAutoscalingOptions!, (value) => value.toMap()),
+      'autoscalingLimits': ?autoscalingLimits == null ? null : autoscalingLimits!.toMap(),
+      'autoscalingTargets': ?autoscalingTargets == null ? null : autoscalingTargets!.toMap(),
     };
   }
 
   factory InstanceAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfig(
-      asymmetricAutoscalingOptions: map['asymmetricAutoscalingOptions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              InstanceAutoscalingConfigAsymmetricAutoscalingOption
-            >(
-              map['asymmetricAutoscalingOptions'],
-              (value) =>
-                  InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      autoscalingLimits: map['autoscalingLimits'] == null
-          ? null
-          : InstanceAutoscalingConfigAutoscalingLimits.fromMap(
-              (map['autoscalingLimits'] as Map).cast<String, dynamic>(),
-            ),
-      autoscalingTargets: map['autoscalingTargets'] == null
-          ? null
-          : InstanceAutoscalingConfigAutoscalingTargets.fromMap(
-              (map['autoscalingTargets'] as Map).cast<String, dynamic>(),
-            ),
+      asymmetricAutoscalingOptions: map['asymmetricAutoscalingOptions'] == null ? null : pulumi.Input.decodeList<InstanceAutoscalingConfigAsymmetricAutoscalingOption>(map['asymmetricAutoscalingOptions'], (value) => InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap((value as Map).cast<String, dynamic>())),
+      autoscalingLimits: map['autoscalingLimits'] == null ? null : InstanceAutoscalingConfigAutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>()),
+      autoscalingTargets: map['autoscalingTargets'] == null ? null : InstanceAutoscalingConfigAutoscalingTargets.fromMap((map['autoscalingTargets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,0 +1,79 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_app_groups_group.dart';
+
+/// Result data returned by getAppGroups.
+class GetAppGroupsResult {
+  final bool? enableDetails;
+  final List<GetAppGroupsGroup> groups;
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final List<String> ids;
+  final String? instanceId;
+  final String? name;
+  final String? nameRegex;
+  final List<String> names;
+  final String? outputFile;
+  final String? resourceGroupId;
+  final String? type;
+
+  /// Creates a new [GetAppGroupsResult].
+  /// [enableDetails] Optional.
+  /// [groups] Required.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ids] Required.
+  /// [instanceId] Optional.
+  /// [name] Optional.
+  /// [nameRegex] Optional.
+  /// [names] Required.
+  /// [outputFile] Optional.
+  /// [resourceGroupId] Optional.
+  /// [type] Optional.
+  GetAppGroupsResult({
+    this.enableDetails,
+    required this.groups,
+    required this.id,
+    required this.ids,
+    this.instanceId,
+    this.name,
+    this.nameRegex,
+    required this.names,
+    this.outputFile,
+    this.resourceGroupId,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enableDetails': ?enableDetails,
+      'groups': pulumi.Input.encodeList<GetAppGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'id': id,
+      'ids': ids,
+      'instanceId': ?instanceId,
+      'name': ?name,
+      'nameRegex': ?nameRegex,
+      'names': names,
+      'outputFile': ?outputFile,
+      'resourceGroupId': ?resourceGroupId,
+      'type': ?type,
+    };
+  }
+
+  factory GetAppGroupsResult.fromMap(Map<String, dynamic> map) {
+    return GetAppGroupsResult(
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      groups: pulumi.Input.decodeList<GetAppGroupsGroup>(map['groups'], (value) => GetAppGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      names: (map['names'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

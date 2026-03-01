@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMembershipsArgs {
   /// The identifier for a group in the Identity Store.
   final pulumi.Input<String> groupId;
-
   /// Identity Store ID associated with the Single Sign-On Instance.
   final pulumi.Input<String> identityStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class GetGroupMembershipsArgs {
     required String groupId,
     required String identityStoreId,
     String? region,
-  }) : groupId = pulumi.Input.asInput<String>(groupId),
-       identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      groupId = pulumi.Input.asInput<String>(groupId),
+      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class GetGroupMembershipsArgs {
     );
   }
 }
+

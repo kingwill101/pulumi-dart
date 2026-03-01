@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CurationPluginInstanceAction {
   /// (Output)
   /// The action ID that is using the curation.
   /// This should map to one of the action IDs specified
   /// in action configs in the plugin.
   final String? actionId;
-
   /// (Output)
   /// Plugin instance that is using the curation.
   /// Format is
@@ -16,7 +16,10 @@ class CurationPluginInstanceAction {
   /// Creates a new [CurationPluginInstanceAction].
   /// [actionId] (Output)
   /// [pluginInstance] (Output)
-  CurationPluginInstanceAction({this.actionId, this.pluginInstance});
+  CurationPluginInstanceAction({
+    this.actionId,
+    this.pluginInstance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +31,8 @@ class CurationPluginInstanceAction {
   factory CurationPluginInstanceAction.fromMap(Map<String, dynamic> map) {
     return CurationPluginInstanceAction(
       actionId: map['actionId'] == null ? null : map['actionId'] as String,
-      pluginInstance: map['pluginInstance'] == null
-          ? null
-          : map['pluginInstance'] as String,
+      pluginInstance: map['pluginInstance'] == null ? null : map['pluginInstance'] as String,
     );
   }
 }
+

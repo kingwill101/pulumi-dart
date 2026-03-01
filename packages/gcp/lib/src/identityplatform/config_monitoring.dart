@@ -9,23 +9,20 @@ class ConfigMonitoring {
 
   /// Creates a new [ConfigMonitoring].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging
-  ConfigMonitoring({this.requestLogging});
+  ConfigMonitoring({
+    this.requestLogging,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestLogging': ?requestLogging == null
-          ? null
-          : requestLogging!.toMap(),
+      'requestLogging': ?requestLogging == null ? null : requestLogging!.toMap(),
     };
   }
 
   factory ConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigMonitoring(
-      requestLogging: map['requestLogging'] == null
-          ? null
-          : ConfigMonitoringRequestLogging.fromMap(
-              (map['requestLogging'] as Map).cast<String, dynamic>(),
-            ),
+      requestLogging: map['requestLogging'] == null ? null : ConfigMonitoringRequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

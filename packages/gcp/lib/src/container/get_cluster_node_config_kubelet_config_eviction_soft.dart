@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available.
   final String imagefsAvailable;
-
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree.
   final String imagefsInodesFree;
-
   /// Defines quantity of soft eviction threshold for memory.available.
   final String memoryAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.available.
   final String nodefsAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree.
   final String nodefsInodesFree;
-
   /// Defines percentage of soft eviction threshold for pid.available.
   final String pidAvailable;
 
@@ -46,9 +42,7 @@ class GetClusterNodeConfigKubeletConfigEvictionSoft {
     };
   }
 
-  factory GetClusterNodeConfigKubeletConfigEvictionSoft.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigKubeletConfigEvictionSoft.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigKubeletConfigEvictionSoft(
       imagefsAvailable: map['imagefsAvailable'] as String,
       imagefsInodesFree: map['imagefsInodesFree'] as String,
@@ -59,3 +53,4 @@ class GetClusterNodeConfigKubeletConfigEvictionSoft {
     );
   }
 }
+

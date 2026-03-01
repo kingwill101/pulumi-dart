@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes an image source that is an image version in an Azure Compute Gallery or a Direct Shared Gallery.
+class ImageTemplateSharedImageVersionSource {
+  /// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
+  final String imageVersionId;
+  /// Specifies the type of source image you want to start with.
+  /// Expected value is 'SharedImageVersion'.
+  final String type;
+
+  /// Creates a new [ImageTemplateSharedImageVersionSource].
+  /// [imageVersionId] ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
+  /// [type] Specifies the type of source image you want to start with.
+  ImageTemplateSharedImageVersionSource({
+    required this.imageVersionId,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'imageVersionId': imageVersionId,
+      'type': type,
+    };
+  }
+
+  factory ImageTemplateSharedImageVersionSource.fromMap(Map<String, dynamic> map) {
+    return ImageTemplateSharedImageVersionSource(
+      imageVersionId: map['imageVersionId'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

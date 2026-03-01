@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DatasetBinaryCompression {
+  /// The level of compression. Possible values are `Fastest` and `Optimal`.
+  final String? level;
+  /// The type of compression used during transport. Possible values are `BZip2`, `Deflate`, `GZip`, `Tar`, `TarGZip` and `ZipDeflate`.
+  final String type;
+
+  /// Creates a new [DatasetBinaryCompression].
+  /// [level] The level of compression. Possible values are `Fastest` and `Optimal`.
+  /// [type] The type of compression used during transport. Possible values are `BZip2`, `Deflate`, `GZip`, `Tar`, `TarGZip` and `ZipDeflate`.
+  DatasetBinaryCompression({
+    this.level,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'level': ?level,
+      'type': type,
+    };
+  }
+
+  factory DatasetBinaryCompression.fromMap(Map<String, dynamic> map) {
+    return DatasetBinaryCompression(
+      level: map['level'] == null ? null : map['level'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

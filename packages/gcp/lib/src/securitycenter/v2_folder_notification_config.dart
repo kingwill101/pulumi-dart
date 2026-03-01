@@ -226,32 +226,24 @@ import 'v2_folder_notification_config_streaming_config.dart';
 class V2FolderNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// Numerical ID of the parent folder.
   late final pulumi.Output<String> folder;
-
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   late final pulumi.Output<String?> location;
-
   /// The resource name of this notification config, in the format
   /// `folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   late final pulumi.Output<String> serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final pulumi.Output<V2FolderNotificationConfigStreamingConfig>
-  streamingConfig;
+  late final pulumi.Output<V2FolderNotificationConfigStreamingConfig> streamingConfig;
 
   /// Creates a new [V2FolderNotificationConfig].
   /// [name] The Pulumi resource name.
@@ -262,11 +254,11 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
     V2FolderNotificationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.configId = registerOutput<String>('configId');
     this.description = registerOutput<String?>('description');
     this.folder = registerOutput<String>('folder');
@@ -274,9 +266,6 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.pubsubTopic = registerOutput<String>('pubsubTopic');
     this.serviceAccount = registerOutput<String>('serviceAccount');
-    this.streamingConfig =
-        registerOutput<V2FolderNotificationConfigStreamingConfig>(
-          'streamingConfig',
-        );
+    this.streamingConfig = registerOutput<V2FolderNotificationConfigStreamingConfig>('streamingConfig');
   }
 }

@@ -8,24 +8,15 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse {
   /// Allow the request. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow?
-  allow;
-
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow? allow;
   /// Block the request. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock?
-  block;
-
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock? block;
   /// Require CAPTCHA verification. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha?
-  captcha;
-
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha? captcha;
   /// Require challenge verification. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge?
-  challenge;
-
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge? challenge;
   /// Count the request without taking action. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount?
-  count;
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount? count;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse].
   /// [allow] Allow the request. See below.
@@ -51,35 +42,14 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse {
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse(
-      allow: map['allow'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow.fromMap(
-              (map['allow'] as Map).cast<String, dynamic>(),
-            ),
-      block: map['block'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock.fromMap(
-              (map['block'] as Map).cast<String, dynamic>(),
-            ),
-      captcha: map['captcha'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha.fromMap(
-              (map['captcha'] as Map).cast<String, dynamic>(),
-            ),
-      challenge: map['challenge'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge.fromMap(
-              (map['challenge'] as Map).cast<String, dynamic>(),
-            ),
-      count: map['count'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount.fromMap(
-              (map['count'] as Map).cast<String, dynamic>(),
-            ),
+      allow: map['allow'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
+      block: map['block'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock.fromMap((map['block'] as Map).cast<String, dynamic>()),
+      captcha: map['captcha'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>()),
+      challenge: map['challenge'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>()),
+      count: map['count'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount.fromMap((map['count'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

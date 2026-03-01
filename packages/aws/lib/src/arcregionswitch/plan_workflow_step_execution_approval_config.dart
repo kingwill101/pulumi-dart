@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepExecutionApprovalConfig {
   /// ARN of the IAM role for approval.
   final String approvalRole;
-
   /// Timeout in minutes for the approval.
   final int? timeoutMinutes;
 
@@ -22,14 +22,11 @@ class PlanWorkflowStepExecutionApprovalConfig {
     };
   }
 
-  factory PlanWorkflowStepExecutionApprovalConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepExecutionApprovalConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepExecutionApprovalConfig(
       approvalRole: map['approvalRole'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null
-          ? null
-          : map['timeoutMinutes'] as int,
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
     );
   }
 }
+

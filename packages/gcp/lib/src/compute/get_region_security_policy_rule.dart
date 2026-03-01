@@ -19,14 +19,11 @@ class GetRegionSecurityPolicyRule {
   ///
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   final String action;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
-
   /// A match condition that incoming traffic is evaluated against.
   /// If it evaluates to true, the corresponding 'action' is enforced.
   final List<GetRegionSecurityPolicyRuleMatch> matches;
-
   /// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
   /// The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
   /// Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
@@ -36,20 +33,15 @@ class GetRegionSecurityPolicyRule {
   /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
   /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
   final List<GetRegionSecurityPolicyRuleNetworkMatch> networkMatches;
-
   /// Preconfigured WAF configuration to be applied for the rule.
   /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
-  final List<GetRegionSecurityPolicyRulePreconfiguredWafConfig>
-  preconfiguredWafConfigs;
-
+  final List<GetRegionSecurityPolicyRulePreconfiguredWafConfig> preconfiguredWafConfigs;
   /// If set to true, the specified action is not enforced.
   final bool preview;
-
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   final int priority;
-
   /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   final List<GetRegionSecurityPolicyRuleRateLimitOption> rateLimitOptions;
 
@@ -77,28 +69,12 @@ class GetRegionSecurityPolicyRule {
     return <String, dynamic>{
       'action': action,
       'description': description,
-      'matches':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRuleMatch,
-            Map<String, dynamic>
-          >(matches, (value) => value.toMap()),
-      'networkMatches':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRuleNetworkMatch,
-            Map<String, dynamic>
-          >(networkMatches, (value) => value.toMap()),
-      'preconfiguredWafConfigs':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRulePreconfiguredWafConfig,
-            Map<String, dynamic>
-          >(preconfiguredWafConfigs, (value) => value.toMap()),
+      'matches': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'networkMatches': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleNetworkMatch, Map<String, dynamic>>(networkMatches, (value) => value.toMap()),
+      'preconfiguredWafConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfig, Map<String, dynamic>>(preconfiguredWafConfigs, (value) => value.toMap()),
       'preview': preview,
       'priority': priority,
-      'rateLimitOptions':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRuleRateLimitOption,
-            Map<String, dynamic>
-          >(rateLimitOptions, (value) => value.toMap()),
+      'rateLimitOptions': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOption, Map<String, dynamic>>(rateLimitOptions, (value) => value.toMap()),
     };
   }
 
@@ -106,38 +82,13 @@ class GetRegionSecurityPolicyRule {
     return GetRegionSecurityPolicyRule(
       action: map['action'] as String,
       description: map['description'] as String,
-      matches: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatch>(
-        map['matches'],
-        (value) => GetRegionSecurityPolicyRuleMatch.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      networkMatches:
-          pulumi.Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatch>(
-            map['networkMatches'],
-            (value) => GetRegionSecurityPolicyRuleNetworkMatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      preconfiguredWafConfigs:
-          pulumi.Input.decodeList<
-            GetRegionSecurityPolicyRulePreconfiguredWafConfig
-          >(
-            map['preconfiguredWafConfigs'],
-            (value) =>
-                GetRegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      matches: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatch>(map['matches'], (value) => GetRegionSecurityPolicyRuleMatch.fromMap((value as Map).cast<String, dynamic>())),
+      networkMatches: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatch>(map['networkMatches'], (value) => GetRegionSecurityPolicyRuleNetworkMatch.fromMap((value as Map).cast<String, dynamic>())),
+      preconfiguredWafConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfig>(map['preconfiguredWafConfigs'], (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((value as Map).cast<String, dynamic>())),
       preview: map['preview'] as bool,
       priority: map['priority'] as int,
-      rateLimitOptions:
-          pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOption>(
-            map['rateLimitOptions'],
-            (value) => GetRegionSecurityPolicyRuleRateLimitOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      rateLimitOptions: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOption>(map['rateLimitOptions'], (value) => GetRegionSecurityPolicyRuleRateLimitOption.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

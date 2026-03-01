@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionResourcesVolume {
   /// Unique name for the volume.
   final String name;
-
   /// Volume size in gigabytes.
   final int sizeGb;
-
   /// Underlying volume type, e.g. 'tmpfs'.
   final String volumeType;
 
@@ -36,3 +35,4 @@ class FlexibleAppVersionResourcesVolume {
     );
   }
 }
+

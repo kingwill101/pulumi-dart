@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetSnapshotPolicyMonthlySchedule {
+  final List<int> daysOfMonths;
+  /// Hour of the day that the snapshots will be created.
+  final int hour;
+  /// Minute of the hour that the snapshots will be created.
+  final int minute;
+  /// How many hourly snapshots to keep.
+  final int snapshotsToKeep;
+
+  /// Creates a new [GetSnapshotPolicyMonthlySchedule].
+  /// [daysOfMonths] Required.
+  /// [hour] Hour of the day that the snapshots will be created.
+  /// [minute] Minute of the hour that the snapshots will be created.
+  /// [snapshotsToKeep] How many hourly snapshots to keep.
+  GetSnapshotPolicyMonthlySchedule({
+    required this.daysOfMonths,
+    required this.hour,
+    required this.minute,
+    required this.snapshotsToKeep,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'daysOfMonths': daysOfMonths,
+      'hour': hour,
+      'minute': minute,
+      'snapshotsToKeep': snapshotsToKeep,
+    };
+  }
+
+  factory GetSnapshotPolicyMonthlySchedule.fromMap(Map<String, dynamic> map) {
+    return GetSnapshotPolicyMonthlySchedule(
+      daysOfMonths: (map['daysOfMonths'] as List).cast<int>(),
+      hour: map['hour'] as int,
+      minute: map['minute'] as int,
+      snapshotsToKeep: map['snapshotsToKeep'] as int,
+    );
+  }
+}
+

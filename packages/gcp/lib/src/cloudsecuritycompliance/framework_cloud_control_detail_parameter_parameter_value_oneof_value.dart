@@ -5,11 +5,9 @@ import 'framework_cloud_control_detail_parameter_parameter_value_oneof_value_par
 class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   /// The name of the parameter.
   final String? name;
-
   /// The value of the parameter.
   /// Structure is documented below.
-  final FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue?
-  parameterValue;
+  final FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue? parameterValue;
 
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValueOneofValue].
   /// [name] The name of the parameter.
@@ -22,22 +20,15 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'parameterValue': ?parameterValue == null
-          ? null
-          : parameterValue!.toMap(),
+      'parameterValue': ?parameterValue == null ? null : parameterValue!.toMap(),
     };
   }
 
-  factory FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameterParameterValueOneofValue(
       name: map['name'] == null ? null : map['name'] as String,
-      parameterValue: map['parameterValue'] == null
-          ? null
-          : FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap(
-              (map['parameterValue'] as Map).cast<String, dynamic>(),
-            ),
+      parameterValue: map['parameterValue'] == null ? null : FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FileSystemAssociationCacheAttributes {
   /// Refreshes a file share's cache by using Time To Live (TTL).
   /// TTL is the length of time since the last refresh after which access to the directory would cause the file gateway
@@ -8,7 +9,9 @@ class FileSystemAssociationCacheAttributes {
 
   /// Creates a new [FileSystemAssociationCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  FileSystemAssociationCacheAttributes({this.cacheStaleTimeoutInSeconds});
+  FileSystemAssociationCacheAttributes({
+    this.cacheStaleTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,13 +19,10 @@ class FileSystemAssociationCacheAttributes {
     };
   }
 
-  factory FileSystemAssociationCacheAttributes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FileSystemAssociationCacheAttributes.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null
-          ? null
-          : map['cacheStaleTimeoutInSeconds'] as int,
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : map['cacheStaleTimeoutInSeconds'] as int,
     );
   }
 }
+

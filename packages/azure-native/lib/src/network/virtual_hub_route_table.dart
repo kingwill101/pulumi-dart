@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'virtual_hub_route.dart';
+
+/// VirtualHub route table.
+class VirtualHubRouteTable {
+  /// List of all routes.
+  final List<VirtualHubRoute>? routes;
+
+  /// Creates a new [VirtualHubRouteTable].
+  /// [routes] List of all routes.
+  VirtualHubRouteTable({
+    this.routes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'routes': ?routes == null ? null : pulumi.Input.encodeList<VirtualHubRoute, Map<String, dynamic>>(routes!, (value) => value.toMap()),
+    };
+  }
+
+  factory VirtualHubRouteTable.fromMap(Map<String, dynamic> map) {
+    return VirtualHubRouteTable(
+      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualHubRoute>(map['routes'], (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

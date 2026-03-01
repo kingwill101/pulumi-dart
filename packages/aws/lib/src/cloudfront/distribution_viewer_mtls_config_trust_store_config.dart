@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionViewerMtlsConfigTrustStoreConfig {
   /// Whether to advertise the trust store CA names to clients. Defaults to `false`.
   final bool? advertiseTrustStoreCaNames;
-
   /// Whether to ignore certificate expiry for viewer mTLS. Defaults to `false`.
   final bool? ignoreCertificateExpiry;
-
   /// Identifier of the trust store to use for viewer mTLS.
   final String trustStoreId;
 
@@ -28,17 +27,12 @@ class DistributionViewerMtlsConfigTrustStoreConfig {
     };
   }
 
-  factory DistributionViewerMtlsConfigTrustStoreConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionViewerMtlsConfigTrustStoreConfig.fromMap(Map<String, dynamic> map) {
     return DistributionViewerMtlsConfigTrustStoreConfig(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null
-          ? null
-          : map['advertiseTrustStoreCaNames'] as bool,
-      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null
-          ? null
-          : map['ignoreCertificateExpiry'] as bool,
+      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : map['advertiseTrustStoreCaNames'] as bool,
+      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null ? null : map['ignoreCertificateExpiry'] as bool,
       trustStoreId: map['trustStoreId'] as String,
     );
   }
 }
+

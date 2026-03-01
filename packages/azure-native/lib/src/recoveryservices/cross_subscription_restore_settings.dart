@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Settings for Cross Subscription Restore Settings
+class CrossSubscriptionRestoreSettings {
+  final String? crossSubscriptionRestoreState;
+
+  /// Creates a new [CrossSubscriptionRestoreSettings].
+  /// [crossSubscriptionRestoreState] Optional.
+  CrossSubscriptionRestoreSettings({
+    this.crossSubscriptionRestoreState,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'crossSubscriptionRestoreState': ?crossSubscriptionRestoreState,
+    };
+  }
+
+  factory CrossSubscriptionRestoreSettings.fromMap(Map<String, dynamic> map) {
+    return CrossSubscriptionRestoreSettings(
+      crossSubscriptionRestoreState: map['crossSubscriptionRestoreState'] == null ? null : map['crossSubscriptionRestoreState'] as String,
+    );
+  }
+}
+

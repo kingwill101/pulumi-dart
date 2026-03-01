@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Profile for Windows VMs in the container service cluster.
+class WindowsProfileResponseResponse {
+  /// AdminUsername - Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
+  final String? adminUsername;
+  /// EnableCSIProxy - Whether to enable CSI proxy.
+  final bool? enableCsiProxy;
+  /// LicenseType - The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs. Possible values include: 'None', 'Windows_Server'
+  final String? licenseType;
+
+  /// Creates a new [WindowsProfileResponseResponse].
+  /// [adminUsername] AdminUsername - Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
+  /// [enableCsiProxy] EnableCSIProxy - Whether to enable CSI proxy.
+  /// [licenseType] LicenseType - The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs. Possible values include: 'None', 'Windows_Server'
+  WindowsProfileResponseResponse({
+    this.adminUsername,
+    this.enableCsiProxy,
+    this.licenseType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'adminUsername': ?adminUsername,
+      'enableCsiProxy': ?enableCsiProxy,
+      'licenseType': ?licenseType,
+    };
+  }
+
+  factory WindowsProfileResponseResponse.fromMap(Map<String, dynamic> map) {
+    return WindowsProfileResponseResponse(
+      adminUsername: map['adminUsername'] == null ? null : map['adminUsername'] as String,
+      enableCsiProxy: map['enableCsiProxy'] == null ? null : map['enableCsiProxy'] as bool,
+      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
+    );
+  }
+}
+

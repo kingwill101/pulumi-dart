@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrackerAssociationArgs {
   /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.
   final pulumi.Input<String> consumerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The name of the tracker resource to be associated with a geofence collection.
   final pulumi.Input<String> trackerName;
 
@@ -24,9 +22,10 @@ class TrackerAssociationArgs {
     required String consumerArn,
     String? region,
     required String trackerName,
-  }) : consumerArn = pulumi.Input.asInput<String>(consumerArn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       trackerName = pulumi.Input.asInput<String>(trackerName);
+  }) :
+      consumerArn = pulumi.Input.asInput<String>(consumerArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      trackerName = pulumi.Input.asInput<String>(trackerName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class TrackerAssociationArgs {
     );
   }
 }
+

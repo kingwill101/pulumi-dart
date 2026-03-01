@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EfsLocationEc2Config {
   /// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
   final List<String> securityGroupArns;
-
   /// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
   final String subnetArn;
 
@@ -29,3 +29,4 @@ class EfsLocationEc2Config {
     );
   }
 }
+

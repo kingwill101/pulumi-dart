@@ -10,14 +10,11 @@ class GetRegionalParameterVersionRenderArgs {
   /// Location of Parameter Manager regional Parameter resource.
   /// It must be provided when the `parameter` field provided consists of only the name of the regional parameter.
   final pulumi.Input<String>? location;
-
   /// The Parameter for obtaining the Regional Parameter Version.
   /// This can be either the reference of the parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the parameter as in `{{parameter_id}}`.
   final pulumi.Input<String> parameter;
-
   /// The version of the regional parameter to get.
   final pulumi.Input<String> parameterVersionId;
-
   /// The project for retrieving the Regional Parameter Version. If it's not
   /// specified, the provider project will be used.
   final pulumi.Input<String>? project;
@@ -32,10 +29,11 @@ class GetRegionalParameterVersionRenderArgs {
     required String parameter,
     required String parameterVersionId,
     String? project,
-  }) : location = pulumi.Input.asOptionalInput<String>(location),
-       parameter = pulumi.Input.asInput<String>(parameter),
-       parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      parameter = pulumi.Input.asInput<String>(parameter),
+      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,9 +44,7 @@ class GetRegionalParameterVersionRenderArgs {
     };
   }
 
-  factory GetRegionalParameterVersionRenderArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionalParameterVersionRenderArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterVersionRenderArgs(
       location: map['location'] == null ? null : map['location'] as String,
       parameter: map['parameter'] as String,
@@ -57,3 +53,4 @@ class GetRegionalParameterVersionRenderArgs {
     );
   }
 }
+

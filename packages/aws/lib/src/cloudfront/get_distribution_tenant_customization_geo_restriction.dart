@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDistributionTenantCustomizationGeoRestriction {
   final List<String> locations;
   final String restrictionType;
@@ -19,12 +20,11 @@ class GetDistributionTenantCustomizationGeoRestriction {
     };
   }
 
-  factory GetDistributionTenantCustomizationGeoRestriction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionTenantCustomizationGeoRestriction.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomizationGeoRestriction(
       locations: (map['locations'] as List).cast<String>(),
       restrictionType: map['restrictionType'] as String,
     );
   }
 }
+

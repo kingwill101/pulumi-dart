@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// (Output)
   /// The email address of the service account used for authenticatation. CES
@@ -18,16 +19,15 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceAccount': ?serviceAccount};
+    return <String, dynamic>{
+      'serviceAccount': ?serviceAccount,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolsetOpenApiToolsetTlsConfigCaCert {
   /// The allowed custom CA certificates (in DER format) for
   /// HTTPS verification. This overrides the default SSL trust store. If this
@@ -12,7 +13,6 @@ class ToolsetOpenApiToolsetTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
   final String cert;
-
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
   final String displayName;
@@ -26,15 +26,17 @@ class ToolsetOpenApiToolsetTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': cert, 'displayName': displayName};
+    return <String, dynamic>{
+      'cert': cert,
+      'displayName': displayName,
+    };
   }
 
-  factory ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetTlsConfigCaCert(
       cert: map['cert'] as String,
       displayName: map['displayName'] as String,
     );
   }
 }
+

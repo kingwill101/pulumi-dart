@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetOntapStorageVirtualMachineEndpointIscsi {
   final String dnsName;
   final List<String> ipAddresses;
@@ -13,15 +14,17 @@ class GetOntapStorageVirtualMachineEndpointIscsi {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dnsName': dnsName, 'ipAddresses': ipAddresses};
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'ipAddresses': ipAddresses,
+    };
   }
 
-  factory GetOntapStorageVirtualMachineEndpointIscsi.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOntapStorageVirtualMachineEndpointIscsi.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineEndpointIscsi(
       dnsName: map['dnsName'] as String,
       ipAddresses: (map['ipAddresses'] as List).cast<String>(),
     );
   }
 }
+

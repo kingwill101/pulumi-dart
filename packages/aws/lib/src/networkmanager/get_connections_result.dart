@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnections.
 class GetConnectionsResult {
   final String? deviceId;
   final String globalNetworkId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// IDs of the connections.
   final List<String> ids;
   final Map<String, String>? tags;
@@ -42,9 +41,8 @@ class GetConnectionsResult {
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

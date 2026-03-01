@@ -3,8 +3,7 @@
 import 'channel_encoder_settings_video_description_codec_settings_h264_settings_filter_settings_temporal_filter_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings {
-  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings?
-  temporalFilterSettings;
+  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings? temporalFilterSettings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings].
   /// [temporalFilterSettings] Optional.
@@ -14,21 +13,14 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'temporalFilterSettings': ?temporalFilterSettings == null
-          ? null
-          : temporalFilterSettings!.toMap(),
+      'temporalFilterSettings': ?temporalFilterSettings == null ? null : temporalFilterSettings!.toMap(),
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings(
-      temporalFilterSettings: map['temporalFilterSettings'] == null
-          ? null
-          : ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(
-              (map['temporalFilterSettings'] as Map).cast<String, dynamic>(),
-            ),
+      temporalFilterSettings: map['temporalFilterSettings'] == null ? null : ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap((map['temporalFilterSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

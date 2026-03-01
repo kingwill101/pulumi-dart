@@ -834,38 +834,29 @@ import 'gcpolicy_max_version.dart';
 class GCPolicy extends pulumi.CustomResource {
   /// The name of the column family.
   late final pulumi.Output<String> columnFamily;
-
   /// The deletion policy for the GC policy.
   /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
   ///
   /// Possible values are: `ABANDON`.
   late final pulumi.Output<String?> deletionPolicy;
-
   /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
   late final pulumi.Output<String?> gcRules;
-
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
   /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
   ///
   /// -----
   late final pulumi.Output<bool?> ignoreWarnings;
-
   /// The name of the Bigtable instance.
   late final pulumi.Output<String> instanceName;
-
   /// GC policy that applies to all cells older than the given age.
   late final pulumi.Output<GCPolicyMaxAge?> maxAge;
-
   /// GC policy that applies to all versions of a cell except for the most recent.
   late final pulumi.Output<List<GCPolicyMaxVersion>?> maxVersions;
-
   /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
   late final pulumi.Output<String?> mode;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the table.
   late final pulumi.Output<String> table;
 
@@ -878,11 +869,11 @@ class GCPolicy extends pulumi.CustomResource {
     GCPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigtable/gCPolicy:GCPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:bigtable/gCPolicy:GCPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.columnFamily = registerOutput<String>('columnFamily');
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.gcRules = registerOutput<String?>('gcRules');

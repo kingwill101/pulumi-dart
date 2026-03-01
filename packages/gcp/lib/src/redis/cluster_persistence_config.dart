@@ -7,14 +7,12 @@ class ClusterPersistenceConfig {
   /// AOF configuration. This field will be ignored if mode is not AOF.
   /// Structure is documented below.
   final ClusterPersistenceConfigAofConfig? aofConfig;
-
   /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
   /// - RDB: RDB based Persistence is enabled.
   /// - AOF: AOF based Persistence is enabled.
   /// Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
   final String? mode;
-
   /// RDB configuration. This field will be ignored if mode is not RDB.
   /// Structure is documented below.
   final ClusterPersistenceConfigRdbConfig? rdbConfig;
@@ -23,7 +21,11 @@ class ClusterPersistenceConfig {
   /// [aofConfig] AOF configuration. This field will be ignored if mode is not AOF.
   /// [mode] Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// [rdbConfig] RDB configuration. This field will be ignored if mode is not RDB.
-  ClusterPersistenceConfig({this.aofConfig, this.mode, this.rdbConfig});
+  ClusterPersistenceConfig({
+    this.aofConfig,
+    this.mode,
+    this.rdbConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,17 +37,10 @@ class ClusterPersistenceConfig {
 
   factory ClusterPersistenceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfig(
-      aofConfig: map['aofConfig'] == null
-          ? null
-          : ClusterPersistenceConfigAofConfig.fromMap(
-              (map['aofConfig'] as Map).cast<String, dynamic>(),
-            ),
+      aofConfig: map['aofConfig'] == null ? null : ClusterPersistenceConfigAofConfig.fromMap((map['aofConfig'] as Map).cast<String, dynamic>()),
       mode: map['mode'] == null ? null : map['mode'] as String,
-      rdbConfig: map['rdbConfig'] == null
-          ? null
-          : ClusterPersistenceConfigRdbConfig.fromMap(
-              (map['rdbConfig'] as Map).cast<String, dynamic>(),
-            ),
+      rdbConfig: map['rdbConfig'] == null ? null : ClusterPersistenceConfigRdbConfig.fromMap((map['rdbConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

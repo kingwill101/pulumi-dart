@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLinks.
 class GetLinksResult {
   /// Set of ARN of the Links.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -13,10 +13,18 @@ class GetLinksResult {
   /// [arns] Set of ARN of the Links.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetLinksResult({required this.arns, required this.id, required this.region});
+  GetLinksResult({
+    required this.arns,
+    required this.id,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arns': arns, 'id': id, 'region': region};
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetLinksResult.fromMap(Map<String, dynamic> map) {
@@ -27,3 +35,4 @@ class GetLinksResult {
     );
   }
 }
+

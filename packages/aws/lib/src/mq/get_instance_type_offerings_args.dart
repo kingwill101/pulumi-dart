@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypeOfferingsArgs {
   /// Filter response by engine type.
   final pulumi.Input<String>? engineType;
-
   /// Filter response by host instance type.
   final pulumi.Input<String>? hostInstanceType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Filter response by storage type.
   final pulumi.Input<String>? storageType;
 
@@ -29,12 +26,11 @@ class GetInstanceTypeOfferingsArgs {
     String? hostInstanceType,
     String? region,
     String? storageType,
-  }) : engineType = pulumi.Input.asOptionalInput<String>(engineType),
-       hostInstanceType = pulumi.Input.asOptionalInput<String>(
-         hostInstanceType,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       storageType = pulumi.Input.asOptionalInput<String>(storageType);
+  }) :
+      engineType = pulumi.Input.asOptionalInput<String>(engineType),
+      hostInstanceType = pulumi.Input.asOptionalInput<String>(hostInstanceType),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      storageType = pulumi.Input.asOptionalInput<String>(storageType);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,16 +43,11 @@ class GetInstanceTypeOfferingsArgs {
 
   factory GetInstanceTypeOfferingsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsArgs(
-      engineType: map['engineType'] == null
-          ? null
-          : map['engineType'] as String,
-      hostInstanceType: map['hostInstanceType'] == null
-          ? null
-          : map['hostInstanceType'] as String,
+      engineType: map['engineType'] == null ? null : map['engineType'] as String,
+      hostInstanceType: map['hostInstanceType'] == null ? null : map['hostInstanceType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      storageType: map['storageType'] == null
-          ? null
-          : map['storageType'] as String,
+      storageType: map['storageType'] == null ? null : map['storageType'] as String,
     );
   }
 }
+

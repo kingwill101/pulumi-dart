@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions {
   /// Enables or disables the logging. Defaults to `false`.
   final bool? enabled;
-
   /// The CloudWatch group name for logging. This value is required if `enabled` is true.
   final String? logGroupName;
-
   /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
   final String? logStreamName;
 
@@ -28,17 +27,12 @@ class FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions {
     };
   }
 
-  factory FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logGroupName: map['logGroupName'] == null
-          ? null
-          : map['logGroupName'] as String,
-      logStreamName: map['logStreamName'] == null
-          ? null
-          : map['logStreamName'] as String,
+      logGroupName: map['logGroupName'] == null ? null : map['logGroupName'] as String,
+      logStreamName: map['logStreamName'] == null ? null : map['logStreamName'] as String,
     );
   }
 }
+

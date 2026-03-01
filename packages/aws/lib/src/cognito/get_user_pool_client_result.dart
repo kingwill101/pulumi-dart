@@ -9,69 +9,49 @@ import 'get_user_pool_client_token_validity_unit.dart';
 class GetUserPoolClientResult {
   /// (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
   final int accessTokenValidity;
-
   /// (Optional) List of allowed OAuth flows (code, implicit, client_credentials).
   final List<String> allowedOauthFlows;
-
   /// (Optional) Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
   final bool allowedOauthFlowsUserPoolClient;
-
   /// (Optional) List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
   final List<String> allowedOauthScopes;
-
   /// (Optional) Configuration block for Amazon Pinpoint analytics for collecting metrics for this user pool. Detailed below.
   final List<GetUserPoolClientAnalyticsConfiguration> analyticsConfigurations;
-
   /// (Optional) List of allowed callback URLs for the identity providers.
   final List<String> callbackUrls;
   final String clientId;
-
   /// Client secret of the user pool client.
   final String clientSecret;
-
   /// (Optional) Default redirect URI. Must be in the list of callback URLs.
   final String defaultRedirectUri;
   final bool enablePropagateAdditionalUserContextData;
-
   /// (Optional) Enables or disables token revocation.
   final bool enableTokenRevocation;
-
   /// (Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
   final List<String> explicitAuthFlows;
-
   /// (Optional) Should an application secret be generated.
   final bool generateSecret;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
   final int idTokenValidity;
-
   /// (Optional) List of allowed logout URLs for the identity providers.
   final List<String> logoutUrls;
   final String name;
-
   /// (Optional) Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
   final String preventUserExistenceErrors;
-
   /// (Optional) List of user pool attributes the application client can read from.
   final List<String> readAttributes;
-
   /// (Optional) A block that specifies the configuration of refresh token rotation. Detailed below.
   final List<GetUserPoolClientRefreshTokenRotation> refreshTokenRotations;
-
   /// (Optional) Time limit in days refresh tokens are valid for.
   final int refreshTokenValidity;
   final String region;
-
   /// (Optional) List of provider names for the identity providers that are supported on this client. Uses the `provider_name` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   final List<String> supportedIdentityProviders;
-
   /// (Optional) Configuration block for units in which the validity times are represented in. Detailed below.
   final List<GetUserPoolClientTokenValidityUnit> tokenValidityUnits;
   final String userPoolId;
-
   /// (Optional) List of user pool attributes the application client can write to.
   final List<String> writeAttributes;
 
@@ -137,17 +117,12 @@ class GetUserPoolClientResult {
       'allowedOauthFlows': allowedOauthFlows,
       'allowedOauthFlowsUserPoolClient': allowedOauthFlowsUserPoolClient,
       'allowedOauthScopes': allowedOauthScopes,
-      'analyticsConfigurations':
-          pulumi.Input.encodeList<
-            GetUserPoolClientAnalyticsConfiguration,
-            Map<String, dynamic>
-          >(analyticsConfigurations, (value) => value.toMap()),
+      'analyticsConfigurations': pulumi.Input.encodeList<GetUserPoolClientAnalyticsConfiguration, Map<String, dynamic>>(analyticsConfigurations, (value) => value.toMap()),
       'callbackUrls': callbackUrls,
       'clientId': clientId,
       'clientSecret': clientSecret,
       'defaultRedirectUri': defaultRedirectUri,
-      'enablePropagateAdditionalUserContextData':
-          enablePropagateAdditionalUserContextData,
+      'enablePropagateAdditionalUserContextData': enablePropagateAdditionalUserContextData,
       'enableTokenRevocation': enableTokenRevocation,
       'explicitAuthFlows': explicitAuthFlows,
       'generateSecret': generateSecret,
@@ -157,19 +132,11 @@ class GetUserPoolClientResult {
       'name': name,
       'preventUserExistenceErrors': preventUserExistenceErrors,
       'readAttributes': readAttributes,
-      'refreshTokenRotations':
-          pulumi.Input.encodeList<
-            GetUserPoolClientRefreshTokenRotation,
-            Map<String, dynamic>
-          >(refreshTokenRotations, (value) => value.toMap()),
+      'refreshTokenRotations': pulumi.Input.encodeList<GetUserPoolClientRefreshTokenRotation, Map<String, dynamic>>(refreshTokenRotations, (value) => value.toMap()),
       'refreshTokenValidity': refreshTokenValidity,
       'region': region,
       'supportedIdentityProviders': supportedIdentityProviders,
-      'tokenValidityUnits':
-          pulumi.Input.encodeList<
-            GetUserPoolClientTokenValidityUnit,
-            Map<String, dynamic>
-          >(tokenValidityUnits, (value) => value.toMap()),
+      'tokenValidityUnits': pulumi.Input.encodeList<GetUserPoolClientTokenValidityUnit, Map<String, dynamic>>(tokenValidityUnits, (value) => value.toMap()),
       'userPoolId': userPoolId,
       'writeAttributes': writeAttributes,
     };
@@ -179,22 +146,14 @@ class GetUserPoolClientResult {
     return GetUserPoolClientResult(
       accessTokenValidity: map['accessTokenValidity'] as int,
       allowedOauthFlows: (map['allowedOauthFlows'] as List).cast<String>(),
-      allowedOauthFlowsUserPoolClient:
-          map['allowedOauthFlowsUserPoolClient'] as bool,
+      allowedOauthFlowsUserPoolClient: map['allowedOauthFlowsUserPoolClient'] as bool,
       allowedOauthScopes: (map['allowedOauthScopes'] as List).cast<String>(),
-      analyticsConfigurations:
-          pulumi.Input.decodeList<GetUserPoolClientAnalyticsConfiguration>(
-            map['analyticsConfigurations'],
-            (value) => GetUserPoolClientAnalyticsConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      analyticsConfigurations: pulumi.Input.decodeList<GetUserPoolClientAnalyticsConfiguration>(map['analyticsConfigurations'], (value) => GetUserPoolClientAnalyticsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       callbackUrls: (map['callbackUrls'] as List).cast<String>(),
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
       defaultRedirectUri: map['defaultRedirectUri'] as String,
-      enablePropagateAdditionalUserContextData:
-          map['enablePropagateAdditionalUserContextData'] as bool,
+      enablePropagateAdditionalUserContextData: map['enablePropagateAdditionalUserContextData'] as bool,
       enableTokenRevocation: map['enableTokenRevocation'] as bool,
       explicitAuthFlows: (map['explicitAuthFlows'] as List).cast<String>(),
       generateSecret: map['generateSecret'] as bool,
@@ -204,26 +163,14 @@ class GetUserPoolClientResult {
       name: map['name'] as String,
       preventUserExistenceErrors: map['preventUserExistenceErrors'] as String,
       readAttributes: (map['readAttributes'] as List).cast<String>(),
-      refreshTokenRotations:
-          pulumi.Input.decodeList<GetUserPoolClientRefreshTokenRotation>(
-            map['refreshTokenRotations'],
-            (value) => GetUserPoolClientRefreshTokenRotation.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      refreshTokenRotations: pulumi.Input.decodeList<GetUserPoolClientRefreshTokenRotation>(map['refreshTokenRotations'], (value) => GetUserPoolClientRefreshTokenRotation.fromMap((value as Map).cast<String, dynamic>())),
       refreshTokenValidity: map['refreshTokenValidity'] as int,
       region: map['region'] as String,
-      supportedIdentityProviders: (map['supportedIdentityProviders'] as List)
-          .cast<String>(),
-      tokenValidityUnits:
-          pulumi.Input.decodeList<GetUserPoolClientTokenValidityUnit>(
-            map['tokenValidityUnits'],
-            (value) => GetUserPoolClientTokenValidityUnit.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      supportedIdentityProviders: (map['supportedIdentityProviders'] as List).cast<String>(),
+      tokenValidityUnits: pulumi.Input.decodeList<GetUserPoolClientTokenValidityUnit>(map['tokenValidityUnits'], (value) => GetUserPoolClientTokenValidityUnit.fromMap((value as Map).cast<String, dynamic>())),
       userPoolId: map['userPoolId'] as String,
       writeAttributes: (map['writeAttributes'] as List).cast<String>(),
     );
   }
 }
+

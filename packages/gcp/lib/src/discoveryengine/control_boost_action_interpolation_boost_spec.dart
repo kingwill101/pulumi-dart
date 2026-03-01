@@ -6,14 +6,11 @@ class ControlBoostActionInterpolationBoostSpec {
   /// The attribute type to be used to determine the boost amount.
   /// Possible values are: `NUMERICAL`, `FRESHNESS`.
   final String? attributeType;
-
   /// The control points used to define the curve.
   /// Structure is documented below.
   final ControlBoostActionInterpolationBoostSpecControlPoint? controlPoint;
-
   /// The name of the field whose value will be used to determine the boost amount.
   final String? fieldName;
-
   /// The interpolation type to be applied to connect the control points.
   /// Possible values are: `LINEAR`.
   final String? interpolationType;
@@ -39,22 +36,13 @@ class ControlBoostActionInterpolationBoostSpec {
     };
   }
 
-  factory ControlBoostActionInterpolationBoostSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlBoostActionInterpolationBoostSpec.fromMap(Map<String, dynamic> map) {
     return ControlBoostActionInterpolationBoostSpec(
-      attributeType: map['attributeType'] == null
-          ? null
-          : map['attributeType'] as String,
-      controlPoint: map['controlPoint'] == null
-          ? null
-          : ControlBoostActionInterpolationBoostSpecControlPoint.fromMap(
-              (map['controlPoint'] as Map).cast<String, dynamic>(),
-            ),
+      attributeType: map['attributeType'] == null ? null : map['attributeType'] as String,
+      controlPoint: map['controlPoint'] == null ? null : ControlBoostActionInterpolationBoostSpecControlPoint.fromMap((map['controlPoint'] as Map).cast<String, dynamic>()),
       fieldName: map['fieldName'] == null ? null : map['fieldName'] as String,
-      interpolationType: map['interpolationType'] == null
-          ? null
-          : map['interpolationType'] as String,
+      interpolationType: map['interpolationType'] == null ? null : map['interpolationType'] as String,
     );
   }
 }
+

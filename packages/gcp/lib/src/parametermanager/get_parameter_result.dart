@@ -8,7 +8,6 @@ class GetParameterResult {
   final String createTime;
   final Map<String, String> effectiveLabels;
   final String format;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKey;
@@ -58,11 +57,7 @@ class GetParameterResult {
       'labels': labels,
       'name': name,
       'parameterId': parameterId,
-      'policyMembers':
-          pulumi.Input.encodeList<
-            GetParameterPolicyMember,
-            Map<String, dynamic>
-          >(policyMembers, (value) => value.toMap()),
+      'policyMembers': pulumi.Input.encodeList<GetParameterPolicyMember, Map<String, dynamic>>(policyMembers, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'updateTime': updateTime,
@@ -79,15 +74,11 @@ class GetParameterResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
-      policyMembers: pulumi.Input.decodeList<GetParameterPolicyMember>(
-        map['policyMembers'],
-        (value) => GetParameterPolicyMember.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      policyMembers: pulumi.Input.decodeList<GetParameterPolicyMember>(map['policyMembers'], (value) => GetParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

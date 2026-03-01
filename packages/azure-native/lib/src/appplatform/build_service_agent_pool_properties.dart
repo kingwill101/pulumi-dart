@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'build_service_agent_pool_size_properties.dart';
+
+/// Build service agent pool properties
+class BuildServiceAgentPoolProperties {
+  /// build service agent pool size properties
+  final BuildServiceAgentPoolSizeProperties? poolSize;
+
+  /// Creates a new [BuildServiceAgentPoolProperties].
+  /// [poolSize] build service agent pool size properties
+  BuildServiceAgentPoolProperties({
+    this.poolSize,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'poolSize': ?poolSize == null ? null : poolSize!.toMap(),
+    };
+  }
+
+  factory BuildServiceAgentPoolProperties.fromMap(Map<String, dynamic> map) {
+    return BuildServiceAgentPoolProperties(
+      poolSize: map['poolSize'] == null ? null : BuildServiceAgentPoolSizeProperties.fromMap((map['poolSize'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

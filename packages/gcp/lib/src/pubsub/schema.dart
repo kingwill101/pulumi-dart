@@ -442,14 +442,11 @@ class Schema extends pulumi.CustomResource {
   /// error indicating that the limit has been reached require manually
   /// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
   late final pulumi.Output<String?> definition;
-
   /// The ID to use for the schema, which will become the final component of the schema's resource name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The type of the schema definition
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -459,13 +456,16 @@ class Schema extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Schema]. {@macro pulumi_pubsub_schema_schema_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Schema(String name, {SchemaArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:pubsub/schema:Schema',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Schema(
+    String name, {
+    SchemaArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:pubsub/schema:Schema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.definition = registerOutput<String?>('definition');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

@@ -1,11 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OptInPrincipal {
   final String dataLakePrincipalIdentifier;
 
   /// Creates a new [OptInPrincipal].
   /// [dataLakePrincipalIdentifier] Required.
-  OptInPrincipal({required this.dataLakePrincipalIdentifier});
+  OptInPrincipal({
+    required this.dataLakePrincipalIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,3 +22,4 @@ class OptInPrincipal {
     );
   }
 }
+

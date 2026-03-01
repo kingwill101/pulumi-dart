@@ -311,42 +311,32 @@ class ApiHubInstance extends pulumi.CustomResource {
   /// This value should be 4-40 characters, and valid characters
   /// are `/a-z[0-9]-_/`.
   late final pulumi.Output<String?> apiHubInstanceId;
-
   /// Available configurations to provision an ApiHub Instance.
   /// Structure is documented below.
   late final pulumi.Output<ApiHubInstanceConfig> config;
-
   /// Output only. Creation timestamp.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Description of the ApiHub instance.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. Instance labels to represent user-provided metadata.
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Identifier. Format:
   /// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. The current state of the ApiHub instance.
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -357,11 +347,9 @@ class ApiHubInstance extends pulumi.CustomResource {
   /// DELETING
   /// FAILED
   late final pulumi.Output<String> state;
-
   /// Output only. Extra information about ApiHub instance state. Currently the message
   /// would be populated when state is `FAILED`.
   late final pulumi.Output<String> stateMessage;
-
   /// Output only. Last update timestamp.
   late final pulumi.Output<String> updateTime;
 
@@ -374,18 +362,16 @@ class ApiHubInstance extends pulumi.CustomResource {
     ApiHubInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apihub/apiHubInstance:ApiHubInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apihub/apiHubInstance:ApiHubInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.apiHubInstanceId = registerOutput<String?>('apiHubInstanceId');
     this.config = registerOutput<ApiHubInstanceConfig>('config');
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

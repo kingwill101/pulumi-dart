@@ -325,28 +325,21 @@ import 'identity_provider_args.dart';
 class IdentityProvider extends pulumi.CustomResource {
   /// ARN of the identity provider.
   late final pulumi.Output<String> identityProviderArn;
-
   /// Identity provider details. The following list describes the provider detail keys for each identity provider type:
   /// * For Google and Login with Amazon:
   late final pulumi.Output<Map<String, String>> identityProviderDetails;
-
   /// Identity provider name.
   late final pulumi.Output<String> identityProviderName;
-
   /// Identity provider type. Valid values: `SAML`, `Facebook`, `Google`, `LoginWithAmazon`, `SignInWithApple`, `OIDC`.
   late final pulumi.Output<String> identityProviderType;
-
   /// ARN of the web portal. Forces replacement if changed.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> portalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -359,15 +352,13 @@ class IdentityProvider extends pulumi.CustomResource {
     IdentityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/identityProvider:IdentityProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/identityProvider:IdentityProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.identityProviderArn = registerOutput<String>('identityProviderArn');
-    this.identityProviderDetails = registerOutput<Map<String, String>>(
-      'identityProviderDetails',
-    );
+    this.identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails');
     this.identityProviderName = registerOutput<String>('identityProviderName');
     this.identityProviderType = registerOutput<String>('identityProviderType');
     this.portalArn = registerOutput<String>('portalArn');

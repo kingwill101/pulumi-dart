@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CostAllocationTagArgs {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   final pulumi.Input<String> status;
-
   /// The key for the cost allocation tag.
   final pulumi.Input<String> tagKey;
 
   /// Creates a new [CostAllocationTagArgs].
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   /// [tagKey] The key for the cost allocation tag.
-  CostAllocationTagArgs({required String status, required String tagKey})
-    : status = pulumi.Input.asInput<String>(status),
+  CostAllocationTagArgs({
+    required String status,
+    required String tagKey,
+  }) :
+      status = pulumi.Input.asInput<String>(status),
       tagKey = pulumi.Input.asInput<String>(tagKey);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status, 'tagKey': tagKey};
+    return <String, dynamic>{
+      'status': status,
+      'tagKey': tagKey,
+    };
   }
 
   factory CostAllocationTagArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class CostAllocationTagArgs {
     );
   }
 }
+

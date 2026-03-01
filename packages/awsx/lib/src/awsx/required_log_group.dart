@@ -7,14 +7,16 @@ import 'log_group.dart';
 class RequiredLogGroup {
   /// Arguments to use instead of the default values during creation.
   final LogGroup? args;
-
   /// Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
   final ExistingLogGroup? existing;
 
   /// Creates a new [RequiredLogGroup].
   /// [args] Arguments to use instead of the default values during creation.
   /// [existing] Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  RequiredLogGroup({this.args, this.existing});
+  RequiredLogGroup({
+    this.args,
+    this.existing,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,14 +27,9 @@ class RequiredLogGroup {
 
   factory RequiredLogGroup.fromMap(Map<String, dynamic> map) {
     return RequiredLogGroup(
-      args: map['args'] == null
-          ? null
-          : LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>()),
-      existing: map['existing'] == null
-          ? null
-          : ExistingLogGroup.fromMap(
-              (map['existing'] as Map).cast<String, dynamic>(),
-            ),
+      args: map['args'] == null ? null : LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>()),
+      existing: map['existing'] == null ? null : ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

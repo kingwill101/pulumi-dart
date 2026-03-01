@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceMetadataOption {
   /// State of the metadata service: `enabled`, `disabled`.
   final String httpEndpoint;
-
   /// Whether the IPv6 endpoint for the instance metadata service is `enabled` or `disabled`
   final String httpProtocolIpv6;
-
   /// Desired HTTP PUT response hop limit for instance metadata requests.
   final int httpPutResponseHopLimit;
-
   /// If session tokens are required: `optional`, `required`.
   final String httpTokens;
-
   /// If access to instance tags is allowed from the metadata service: `enabled`, `disabled`.
   final String instanceMetadataTags;
 
@@ -50,3 +47,4 @@ class GetInstanceMetadataOption {
     );
   }
 }
+

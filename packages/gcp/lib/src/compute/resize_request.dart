@@ -513,35 +513,25 @@ import 'resize_request_status.dart';
 class ResizeRequest extends pulumi.CustomResource {
   /// The creation timestamp for this resize request in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resize-request.
   late final pulumi.Output<String?> description;
-
   /// The reference of the instance group manager this ResizeRequest is a part of.
   late final pulumi.Output<String> instanceGroupManager;
-
   /// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
   /// Structure is documented below.
-  late final pulumi.Output<ResizeRequestRequestedRunDuration?>
-  requestedRunDuration;
-
+  late final pulumi.Output<ResizeRequestRequestedRunDuration?> requestedRunDuration;
   /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
   late final pulumi.Output<int> resizeBy;
-
   /// Current state of the request.
   late final pulumi.Output<String> state;
-
   /// Status of the request.
   /// Structure is documented below.
   late final pulumi.Output<List<ResizeRequestStatus>> statuses;
-
   /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
   late final pulumi.Output<String> zone;
 
@@ -554,20 +544,17 @@ class ResizeRequest extends pulumi.CustomResource {
     ResizeRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resizeRequest:ResizeRequest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resizeRequest:ResizeRequest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.requestedRunDuration =
-        registerOutput<ResizeRequestRequestedRunDuration?>(
-          'requestedRunDuration',
-        );
+    this.requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration');
     this.resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');
     this.statuses = registerOutput<List<ResizeRequestStatus>>('statuses');

@@ -31,36 +31,22 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
     return <String, dynamic>{
       'cidr': cidr,
       'egress': egress,
-      'portRanges':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsAnalysisExplanationAclRulePortRange,
-            Map<String, dynamic>
-          >(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisExplanationAclRulePortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
       'protocol': protocol,
       'ruleAction': ruleAction,
       'ruleNumber': ruleNumber,
     };
   }
 
-  factory GetNetworkInsightsAnalysisExplanationAclRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisExplanationAclRule.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationAclRule(
       cidr: map['cidr'] as String,
       egress: map['egress'] as bool,
-      portRanges:
-          pulumi.Input.decodeList<
-            GetNetworkInsightsAnalysisExplanationAclRulePortRange
-          >(
-            map['portRanges'],
-            (value) =>
-                GetNetworkInsightsAnalysisExplanationAclRulePortRange.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      portRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanationAclRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisExplanationAclRulePortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] as String,
       ruleAction: map['ruleAction'] as String,
       ruleNumber: map['ruleNumber'] as int,
     );
   }
 }
+

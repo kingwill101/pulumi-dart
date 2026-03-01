@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntitlementArgs {
   /// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
   final pulumi.Input<String>? entitlementId;
-
   /// The region of the Entitlement resource.
   final pulumi.Input<String>? location;
-
   /// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
   final pulumi.Input<String>? parent;
 
@@ -20,8 +18,12 @@ class GetEntitlementArgs {
   /// [entitlementId] ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
   /// [location] The region of the Entitlement resource.
   /// [parent] The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
-  GetEntitlementArgs({String? entitlementId, String? location, String? parent})
-    : entitlementId = pulumi.Input.asOptionalInput<String>(entitlementId),
+  GetEntitlementArgs({
+    String? entitlementId,
+    String? location,
+    String? parent,
+  }) :
+      entitlementId = pulumi.Input.asOptionalInput<String>(entitlementId),
       location = pulumi.Input.asOptionalInput<String>(location),
       parent = pulumi.Input.asOptionalInput<String>(parent);
 
@@ -35,11 +37,10 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      entitlementId: map['entitlementId'] == null
-          ? null
-          : map['entitlementId'] as String,
+      entitlementId: map['entitlementId'] == null ? null : map['entitlementId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       parent: map['parent'] == null ? null : map['parent'] as String,
     );
   }
 }
+

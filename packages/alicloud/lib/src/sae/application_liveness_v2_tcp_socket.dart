@@ -1,0 +1,25 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ApplicationLivenessV2TcpSocket {
+  final int? port;
+
+  /// Creates a new [ApplicationLivenessV2TcpSocket].
+  /// [port] Optional.
+  ApplicationLivenessV2TcpSocket({
+    this.port,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'port': ?port,
+    };
+  }
+
+  factory ApplicationLivenessV2TcpSocket.fromMap(Map<String, dynamic> map) {
+    return ApplicationLivenessV2TcpSocket(
+      port: map['port'] == null ? null : map['port'] as int,
+    );
+  }
+}
+

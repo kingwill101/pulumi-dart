@@ -5,10 +5,7 @@ import 'cx_flow_knowledge_connector_settings_trigger_fulfillment_message_mixed_a
 
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
   /// Segments this audio response is composed of.
-  final List<
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
-  >?
-  segments;
+  final List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>? segments;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio].
   /// [segments] Segments this audio response is composed of.
@@ -18,30 +15,14 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segments': ?segments == null
-          ? null
-          : pulumi.Input.encodeList<
-              CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment,
-              Map<String, dynamic>
-            >(segments!, (value) => value.toMap()),
+      'segments': ?segments == null ? null : pulumi.Input.encodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment, Map<String, dynamic>>(segments!, (value) => value.toMap()),
     };
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(
-      segments: map['segments'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
-            >(
-              map['segments'],
-              (value) =>
-                  CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      segments: map['segments'] == null ? null : pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(map['segments'], (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

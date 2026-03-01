@@ -9,17 +9,20 @@ class EventActionAction {
 
   /// Creates a new [EventActionAction].
   /// [exportRevisionToS3] Configuration for an Export Revision to S3 action.
-  EventActionAction({required this.exportRevisionToS3});
+  EventActionAction({
+    required this.exportRevisionToS3,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exportRevisionToS3': exportRevisionToS3.toMap()};
+    return <String, dynamic>{
+      'exportRevisionToS3': exportRevisionToS3.toMap(),
+    };
   }
 
   factory EventActionAction.fromMap(Map<String, dynamic> map) {
     return EventActionAction(
-      exportRevisionToS3: EventActionActionExportRevisionToS3.fromMap(
-        (map['exportRevisionToS3'] as Map).cast<String, dynamic>(),
-      ),
+      exportRevisionToS3: EventActionActionExportRevisionToS3.fromMap((map['exportRevisionToS3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

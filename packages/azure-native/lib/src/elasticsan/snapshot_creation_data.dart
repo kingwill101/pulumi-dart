@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Data used when creating a volume snapshot.
+class SnapshotCreationData {
+  /// Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+  final String sourceId;
+
+  /// Creates a new [SnapshotCreationData].
+  /// [sourceId] Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+  SnapshotCreationData({
+    required this.sourceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'sourceId': sourceId,
+    };
+  }
+
+  factory SnapshotCreationData.fromMap(Map<String, dynamic> map) {
+    return SnapshotCreationData(
+      sourceId: map['sourceId'] as String,
+    );
+  }
+}
+

@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagValueArgs {
   /// The resource name of the parent tagKey in format `tagKey/{name}`.
   final pulumi.Input<String> parent;
-
   /// The tag value's short_name.
   final pulumi.Input<String> shortName;
 
   /// Creates a new [GetTagValueArgs].
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
   /// [shortName] The tag value's short_name.
-  GetTagValueArgs({required String parent, required String shortName})
-    : parent = pulumi.Input.asInput<String>(parent),
+  GetTagValueArgs({
+    required String parent,
+    required String shortName,
+  }) :
+      parent = pulumi.Input.asInput<String>(parent),
       shortName = pulumi.Input.asInput<String>(shortName);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parent': parent, 'shortName': shortName};
+    return <String, dynamic>{
+      'parent': parent,
+      'shortName': shortName,
+    };
   }
 
   factory GetTagValueArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetTagValueArgs {
     );
   }
 }
+

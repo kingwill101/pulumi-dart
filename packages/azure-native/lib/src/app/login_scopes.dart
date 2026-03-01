@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The configuration settings of the login flow, including the scopes that should be requested.
+class LoginScopes {
+  /// A list of the scopes that should be requested while authenticating.
+  final List<String>? scopes;
+
+  /// Creates a new [LoginScopes].
+  /// [scopes] A list of the scopes that should be requested while authenticating.
+  LoginScopes({
+    this.scopes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'scopes': ?scopes,
+    };
+  }
+
+  factory LoginScopes.fromMap(Map<String, dynamic> map) {
+    return LoginScopes(
+      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+    );
+  }
+}
+

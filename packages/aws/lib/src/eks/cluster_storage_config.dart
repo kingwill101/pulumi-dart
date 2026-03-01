@@ -8,7 +8,9 @@ class ClusterStorageConfig {
 
   /// Creates a new [ClusterStorageConfig].
   /// [blockStorage] Configuration block with block storage configuration for the cluster. Detailed below.
-  ClusterStorageConfig({this.blockStorage});
+  ClusterStorageConfig({
+    this.blockStorage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class ClusterStorageConfig {
 
   factory ClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterStorageConfig(
-      blockStorage: map['blockStorage'] == null
-          ? null
-          : ClusterStorageConfigBlockStorage.fromMap(
-              (map['blockStorage'] as Map).cast<String, dynamic>(),
-            ),
+      blockStorage: map['blockStorage'] == null ? null : ClusterStorageConfigBlockStorage.fromMap((map['blockStorage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

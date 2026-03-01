@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectSecondarySourceVersion {
   /// An identifier for a source in the build project.
   final String sourceIdentifier;
-
   /// The source version for the corresponding source identifier.
   /// See [AWS docs](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ProjectSourceVersion.html#CodeBuild-Type-ProjectSourceVersion-sourceVersion)
   /// for more details.
@@ -31,3 +31,4 @@ class ProjectSecondarySourceVersion {
     );
   }
 }
+

@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReservationReservationSharingPolicy {
   /// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
   final String serviceShareType;
 
   /// Creates a new [GetReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
-  GetReservationReservationSharingPolicy({required this.serviceShareType});
+  GetReservationReservationSharingPolicy({
+    required this.serviceShareType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceShareType': serviceShareType};
+    return <String, dynamic>{
+      'serviceShareType': serviceShareType,
+    };
   }
 
-  factory GetReservationReservationSharingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReservationReservationSharingPolicy.fromMap(Map<String, dynamic> map) {
     return GetReservationReservationSharingPolicy(
       serviceShareType: map['serviceShareType'] as String,
     );
   }
 }
+

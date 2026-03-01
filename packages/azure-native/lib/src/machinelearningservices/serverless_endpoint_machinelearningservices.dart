@@ -1,0 +1,67 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_service_identity_response.dart';
+import 'serverless_endpoint_args.dart';
+import 'serverless_endpoint_response.dart';
+import 'sku_response.dart';
+import 'system_data_response.dart';
+
+/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
+///
+/// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// A Serverless Endpoint requires a Marketplace subscription. You can create one via the [MarketplaceSubscription resource](https://www.pulumi.com/registry/packages/azure-native/api-docs/machinelearningservices/marketplacesubscription/) and then making your endpoint [depend](https://www.pulumi.com/docs/iac/concepts/options/dependson/) on it.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:ServerlessEndpoint string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}
+/// ```
+class ServerlessEndpointMachinelearningservices extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Managed service identity (system assigned and/or user assigned identities)
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+  /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+  late final pulumi.Output<String?> kind;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<ServerlessEndpointResponse> serverlessEndpointProperties;
+  /// Sku details required for ARM contract for Autoscaling.
+  late final pulumi.Output<SkuResponse?> sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [ServerlessEndpointMachinelearningservices].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ServerlessEndpointMachinelearningservices]. {@macro pulumi_machinelearningservices_serverless_endpoint_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ServerlessEndpointMachinelearningservices(
+    String name, {
+    ServerlessEndpointArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:ServerlessEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    this.kind = registerOutput<String?>('kind');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.serverlessEndpointProperties = registerOutput<ServerlessEndpointResponse>('serverlessEndpointProperties');
+    this.sku = registerOutput<SkuResponse?>('sku');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

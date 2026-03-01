@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TlsInspectionConfigurationCertificate {
   /// ARN of the certificate.
   final String certificateArn;
-
   /// Serial number of the certificate.
   final String certificateSerial;
-
   /// Status of the certificate.
   final String status;
-
   /// Details about the certificate status, including information about certificate errors.
   final String statusMessage;
 
@@ -34,9 +32,7 @@ class TlsInspectionConfigurationCertificate {
     };
   }
 
-  factory TlsInspectionConfigurationCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationCertificate.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationCertificate(
       certificateArn: map['certificateArn'] as String,
       certificateSerial: map['certificateSerial'] as String,
@@ -45,3 +41,4 @@ class TlsInspectionConfigurationCertificate {
     );
   }
 }
+

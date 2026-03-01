@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UsagePlanThrottleSettings {
   final int? burstLimit;
   final double? rateLimit;
@@ -7,7 +8,10 @@ class UsagePlanThrottleSettings {
   /// Creates a new [UsagePlanThrottleSettings].
   /// [burstLimit] Optional.
   /// [rateLimit] Optional.
-  UsagePlanThrottleSettings({this.burstLimit, this.rateLimit});
+  UsagePlanThrottleSettings({
+    this.burstLimit,
+    this.rateLimit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,3 +27,4 @@ class UsagePlanThrottleSettings {
     );
   }
 }
+

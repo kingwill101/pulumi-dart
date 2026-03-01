@@ -8,11 +8,9 @@ class V2VmNetworkEndpoint {
   /// The access config for the TPU worker.
   /// Structure is documented below.
   final List<V2VmNetworkEndpointAccessConfig>? accessConfigs;
-
   /// (Output)
   /// The internal IP address of this network endpoint.
   final String? ipAddress;
-
   /// (Output)
   /// The port of this network endpoint.
   final int? port;
@@ -21,16 +19,15 @@ class V2VmNetworkEndpoint {
   /// [accessConfigs] (Output)
   /// [ipAddress] (Output)
   /// [port] (Output)
-  V2VmNetworkEndpoint({this.accessConfigs, this.ipAddress, this.port});
+  V2VmNetworkEndpoint({
+    this.accessConfigs,
+    this.ipAddress,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs': ?accessConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2VmNetworkEndpointAccessConfig,
-              Map<String, dynamic>
-            >(accessConfigs!, (value) => value.toMap()),
+      'accessConfigs': ?accessConfigs == null ? null : pulumi.Input.encodeList<V2VmNetworkEndpointAccessConfig, Map<String, dynamic>>(accessConfigs!, (value) => value.toMap()),
       'ipAddress': ?ipAddress,
       'port': ?port,
     };
@@ -38,16 +35,10 @@ class V2VmNetworkEndpoint {
 
   factory V2VmNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return V2VmNetworkEndpoint(
-      accessConfigs: map['accessConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<V2VmNetworkEndpointAccessConfig>(
-              map['accessConfigs'],
-              (value) => V2VmNetworkEndpointAccessConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      accessConfigs: map['accessConfigs'] == null ? null : pulumi.Input.decodeList<V2VmNetworkEndpointAccessConfig>(map['accessConfigs'], (value) => V2VmNetworkEndpointAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
       port: map['port'] == null ? null : map['port'] as int,
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23.
   final int hours;
-
   /// Minutes of hour of day. Currently, only the value 0 is supported.
   final int? minutes;
-
   /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
   final int? nanos;
-
   /// Seconds of minutes of the time. Currently, only the value 0 is supported.
   final int? seconds;
 
@@ -34,9 +32,7 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
     };
   }
 
-  factory ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(
       hours: map['hours'] as int,
       minutes: map['minutes'] == null ? null : map['minutes'] as int,
@@ -45,3 +41,4 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
     );
   }
 }
+

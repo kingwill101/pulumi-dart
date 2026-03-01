@@ -6,13 +6,10 @@ import 'v2_policy_orchestrator_for_folder_orchestrated_resource_os_policy_assign
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec {
   /// A file or script to execute.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce?
-  enforce;
-
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce? enforce;
   /// A file or script to execute.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate
-  validate;
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate validate;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec].
   /// [enforce] A file or script to execute.
@@ -29,19 +26,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec(
-      enforce: map['enforce'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce.fromMap(
-              (map['enforce'] as Map).cast<String, dynamic>(),
-            ),
-      validate:
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate.fromMap(
-            (map['validate'] as Map).cast<String, dynamic>(),
-          ),
+      enforce: map['enforce'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce'] as Map).cast<String, dynamic>()),
+      validate: V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate.fromMap((map['validate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

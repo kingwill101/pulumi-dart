@@ -537,19 +537,15 @@ import 'response_policy_network.dart';
 class ResponsePolicy extends pulumi.CustomResource {
   /// The description of the response policy, such as `My new response policy`.
   late final pulumi.Output<String?> description;
-
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
   late final pulumi.Output<List<ResponsePolicyGkeCluster>?> gkeClusters;
-
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
   late final pulumi.Output<List<ResponsePolicyNetwork>?> networks;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   late final pulumi.Output<String> responsePolicyName;
 
@@ -562,15 +558,13 @@ class ResponsePolicy extends pulumi.CustomResource {
     ResponsePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dns/responsePolicy:ResponsePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dns/responsePolicy:ResponsePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.description = registerOutput<String?>('description');
-    this.gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>(
-      'gkeClusters',
-    );
+    this.gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters');
     this.networks = registerOutput<List<ResponsePolicyNetwork>?>('networks');
     this.project = registerOutput<String>('project');
     this.responsePolicyName = registerOutput<String>('responsePolicyName');

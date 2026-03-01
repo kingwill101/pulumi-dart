@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration {
   /// List of names of the tables to use.
   final List<String> tableNames;
@@ -11,14 +12,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tableNames': tableNames};
+    return <String, dynamic>{
+      'tableNames': tableNames,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration(
       tableNames: (map['tableNames'] as List).cast<String>(),
     );
   }
 }
+

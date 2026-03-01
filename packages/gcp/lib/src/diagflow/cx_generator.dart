@@ -281,32 +281,25 @@ import 'cx_generator_prompt_text.dart';
 class CxGenerator extends pulumi.CustomResource {
   /// The human-readable name of the generator, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// The language to create generators for the following fields:
   /// * Generator.prompt_text.text
   /// If not specified, the agent's default language is used.
   late final pulumi.Output<String?> languageCode;
-
   /// The LLM model settings.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorLlmModelSettings?> llmModelSettings;
-
   /// Parameters passed to the LLM to configure its behavior.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorModelParameter?> modelParameter;
-
   /// The unique identifier of the Generator.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/generators/<Generator ID>.
   late final pulumi.Output<String> name;
-
   /// The agent to create a Generator for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
   late final pulumi.Output<String?> parent;
-
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
   late final pulumi.Output<List<CxGeneratorPlaceholder>?> placeholders;
-
   /// Prompt for the LLM model.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorPromptText> promptText;
@@ -320,24 +313,18 @@ class CxGenerator extends pulumi.CustomResource {
     CxGeneratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxGenerator:CxGenerator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxGenerator:CxGenerator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.displayName = registerOutput<String>('displayName');
     this.languageCode = registerOutput<String?>('languageCode');
-    this.llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>(
-      'llmModelSettings',
-    );
-    this.modelParameter = registerOutput<CxGeneratorModelParameter?>(
-      'modelParameter',
-    );
+    this.llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings');
+    this.modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter');
     this.name = registerOutput<String>('name');
     this.parent = registerOutput<String?>('parent');
-    this.placeholders = registerOutput<List<CxGeneratorPlaceholder>?>(
-      'placeholders',
-    );
+    this.placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders');
     this.promptText = registerOutput<CxGeneratorPromptText>('promptText');
   }
 }

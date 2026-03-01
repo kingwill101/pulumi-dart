@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'featurestore_entity_version_machinelearningservices.dart';
+
+/// {@template pulumi_machinelearningservices_featurestore_entity_version_args_doc}
+/// The set of arguments for FeaturestoreEntityVersion.
+/// {@endtemplate}
+/// {@macro pulumi_machinelearningservices_featurestore_entity_version_args_doc}
+class FeaturestoreEntityVersionArgs {
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<FeaturestoreEntityVersionMachinelearningservices> featurestoreEntityVersionProperties;
+  /// Container name. This is case-sensitive.
+  final pulumi.Input<String> name;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// Version identifier. This is case-sensitive.
+  final pulumi.Input<String>? version;
+  /// Name of Azure Machine Learning workspace.
+  final pulumi.Input<String> workspaceName;
+
+  /// Creates a new [FeaturestoreEntityVersionArgs].
+  /// [featurestoreEntityVersionProperties] [Required] Additional attributes of the entity.
+  /// [name] Container name. This is case-sensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [version] Version identifier. This is case-sensitive.
+  /// [workspaceName] Name of Azure Machine Learning workspace.
+  FeaturestoreEntityVersionArgs({
+    required FeaturestoreEntityVersionMachinelearningservices featurestoreEntityVersionProperties,
+    required String name,
+    required String resourceGroupName,
+    String? version,
+    required String workspaceName,
+  }) :
+      featurestoreEntityVersionProperties = pulumi.Input.asInput<FeaturestoreEntityVersionMachinelearningservices>(featurestoreEntityVersionProperties),
+      name = pulumi.Input.asInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      version = pulumi.Input.asOptionalInput<String>(version),
+      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'featurestoreEntityVersionProperties': featurestoreEntityVersionProperties,
+      'name': name,
+      'resourceGroupName': resourceGroupName,
+      'version': ?version,
+      'workspaceName': workspaceName,
+    };
+  }
+
+  factory FeaturestoreEntityVersionArgs.fromMap(Map<String, dynamic> map) {
+    return FeaturestoreEntityVersionArgs(
+      featurestoreEntityVersionProperties: map['featurestoreEntityVersionProperties'] as FeaturestoreEntityVersionMachinelearningservices,
+      name: map['name'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      version: map['version'] == null ? null : map['version'] as String,
+      workspaceName: map['workspaceName'] as String,
+    );
+  }
+}
+

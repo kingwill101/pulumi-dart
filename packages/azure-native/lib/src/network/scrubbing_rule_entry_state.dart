@@ -1,0 +1,18 @@
+/// Defines the state of log scrubbing rule. Default value is Enabled.
+enum ScrubbingRuleEntryState {
+  valueEnabled("Enabled"),
+  valueDisabled("Disabled");
+
+  const ScrubbingRuleEntryState(this.value);
+  final String value;
+
+  static ScrubbingRuleEntryState fromValue(String value) {
+    for (final item in ScrubbingRuleEntryState.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown ScrubbingRuleEntryState value: $value');
+  }
+}
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReceiptRuleAddHeaderAction {
   /// The name of the header to add
   final String headerName;
-
   /// The value of the header to add
   final String headerValue;
-
   /// The position of the action in the receipt rule
   final int position;
 
@@ -36,3 +35,4 @@ class ReceiptRuleAddHeaderAction {
     );
   }
 }
+

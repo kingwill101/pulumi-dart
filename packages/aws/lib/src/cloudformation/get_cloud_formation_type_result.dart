@@ -6,45 +6,33 @@ import 'get_cloud_formation_type_logging_config.dart';
 /// Result data returned by getCloudFormationType.
 class GetCloudFormationTypeResult {
   final String arn;
-
   /// Identifier of the CloudFormation Type default version.
   final String defaultVersionId;
-
   /// Deprecation status of the CloudFormation Type.
   final String deprecatedStatus;
-
   /// Description of the CloudFormation Type.
   final String description;
-
   /// URL of the documentation for the CloudFormation Type.
   final String documentationUrl;
-
   /// ARN of the IAM Role used to register the CloudFormation Type.
   final String executionRoleArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Whether the CloudFormation Type version is the default version.
   final bool isDefaultVersion;
-
   /// List of objects containing logging configuration.
   final List<GetCloudFormationTypeLoggingConfig> loggingConfigs;
-
   /// Provisioning behavior of the CloudFormation Type.
   final String provisioningType;
   final String region;
-
   /// JSON document of the CloudFormation Type schema.
   final String schema;
-
   /// URL of the source code for the CloudFormation Type.
   final String sourceUrl;
   final String type;
   final String typeArn;
   final String typeName;
   final String? versionId;
-
   /// Scope of the CloudFormation Type.
   final String visibility;
 
@@ -98,11 +86,7 @@ class GetCloudFormationTypeResult {
       'executionRoleArn': executionRoleArn,
       'id': id,
       'isDefaultVersion': isDefaultVersion,
-      'loggingConfigs':
-          pulumi.Input.encodeList<
-            GetCloudFormationTypeLoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfigs, (value) => value.toMap()),
+      'loggingConfigs': pulumi.Input.encodeList<GetCloudFormationTypeLoggingConfig, Map<String, dynamic>>(loggingConfigs, (value) => value.toMap()),
       'provisioningType': provisioningType,
       'region': region,
       'schema': schema,
@@ -125,13 +109,7 @@ class GetCloudFormationTypeResult {
       executionRoleArn: map['executionRoleArn'] as String,
       id: map['id'] as String,
       isDefaultVersion: map['isDefaultVersion'] as bool,
-      loggingConfigs:
-          pulumi.Input.decodeList<GetCloudFormationTypeLoggingConfig>(
-            map['loggingConfigs'],
-            (value) => GetCloudFormationTypeLoggingConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      loggingConfigs: pulumi.Input.decodeList<GetCloudFormationTypeLoggingConfig>(map['loggingConfigs'], (value) => GetCloudFormationTypeLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
       provisioningType: map['provisioningType'] as String,
       region: map['region'] as String,
       schema: map['schema'] as String,
@@ -144,3 +122,4 @@ class GetCloudFormationTypeResult {
     );
   }
 }
+

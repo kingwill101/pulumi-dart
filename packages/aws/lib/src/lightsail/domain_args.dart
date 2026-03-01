@@ -11,19 +11,24 @@ class DomainArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [DomainArgs].
   /// [domainName] Name of the Lightsail domain to manage.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainArgs({required String domainName, String? region})
-    : domainName = pulumi.Input.asInput<String>(domainName),
+  DomainArgs({
+    required String domainName,
+    String? region,
+  }) :
+      domainName = pulumi.Input.asInput<String>(domainName),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainName': domainName, 'region': ?region};
+    return <String, dynamic>{
+      'domainName': domainName,
+      'region': ?region,
+    };
   }
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class DomainArgs {
     );
   }
 }
+

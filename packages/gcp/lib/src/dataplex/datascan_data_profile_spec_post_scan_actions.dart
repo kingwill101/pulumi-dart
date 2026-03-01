@@ -9,25 +9,20 @@ class DatascanDataProfileSpecPostScanActions {
 
   /// Creates a new [DatascanDataProfileSpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.
-  DatascanDataProfileSpecPostScanActions({this.bigqueryExport});
+  DatascanDataProfileSpecPostScanActions({
+    this.bigqueryExport,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryExport': ?bigqueryExport == null
-          ? null
-          : bigqueryExport!.toMap(),
+      'bigqueryExport': ?bigqueryExport == null ? null : bigqueryExport!.toMap(),
     };
   }
 
-  factory DatascanDataProfileSpecPostScanActions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatascanDataProfileSpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null
-          ? null
-          : DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap(
-              (map['bigqueryExport'] as Map).cast<String, dynamic>(),
-            ),
+      bigqueryExport: map['bigqueryExport'] == null ? null : DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

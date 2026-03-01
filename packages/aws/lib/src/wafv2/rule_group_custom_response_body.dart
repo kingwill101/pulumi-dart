@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupCustomResponseBody {
   /// The payload of the custom response.
   final String content;
-
   /// The type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   final String contentType;
-
   /// A unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the Custom Response block.
   final String key;
 
@@ -36,3 +35,4 @@ class RuleGroupCustomResponseBody {
     );
   }
 }
+

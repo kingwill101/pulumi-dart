@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
   final Map<String, dynamic>? all;
-
   /// An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
   final List<String>? excludedHeaders;
-
   /// An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
   final List<String>? includedHeaders;
 
@@ -28,19 +27,12 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchSta
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderMatchPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderMatchPattern.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderMatchPattern(
-      all: map['all'] == null
-          ? null
-          : (map['all'] as Map).cast<String, dynamic>(),
-      excludedHeaders: map['excludedHeaders'] == null
-          ? null
-          : (map['excludedHeaders'] as List).cast<String>(),
-      includedHeaders: map['includedHeaders'] == null
-          ? null
-          : (map['includedHeaders'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
+      excludedHeaders: map['excludedHeaders'] == null ? null : (map['excludedHeaders'] as List).cast<String>(),
+      includedHeaders: map['includedHeaders'] == null ? null : (map['includedHeaders'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_v3_functions_function_nas_config_mount_point.dart';
+
+class GetV3FunctionsFunctionNasConfig {
+  /// Group ID.
+  final int groupId;
+  /// OSS mount point list.
+  final List<GetV3FunctionsFunctionNasConfigMountPoint> mountPoints;
+  /// Account ID.
+  final int userId;
+
+  /// Creates a new [GetV3FunctionsFunctionNasConfig].
+  /// [groupId] Group ID.
+  /// [mountPoints] OSS mount point list.
+  /// [userId] Account ID.
+  GetV3FunctionsFunctionNasConfig({
+    required this.groupId,
+    required this.mountPoints,
+    required this.userId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'groupId': groupId,
+      'mountPoints': pulumi.Input.encodeList<GetV3FunctionsFunctionNasConfigMountPoint, Map<String, dynamic>>(mountPoints, (value) => value.toMap()),
+      'userId': userId,
+    };
+  }
+
+  factory GetV3FunctionsFunctionNasConfig.fromMap(Map<String, dynamic> map) {
+    return GetV3FunctionsFunctionNasConfig(
+      groupId: map['groupId'] as int,
+      mountPoints: pulumi.Input.decodeList<GetV3FunctionsFunctionNasConfigMountPoint>(map['mountPoints'], (value) => GetV3FunctionsFunctionNasConfigMountPoint.fromMap((value as Map).cast<String, dynamic>())),
+      userId: map['userId'] as int,
+    );
+  }
+}
+

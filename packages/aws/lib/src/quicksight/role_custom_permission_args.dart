@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleCustomPermissionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// Custom permissions profile name.
   final pulumi.Input<String> customPermissionsName;
-
   /// Namespace containing the role. Defaults to `default`.
   final pulumi.Input<String>? namespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Role. Valid values are `ADMIN`, `AUTHOR`, `READER`, `ADMIN_PRO`, `AUTHOR_PRO`, and `READER_PRO`.
   ///
   /// The following arguments are optional:
@@ -36,13 +32,12 @@ class RoleCustomPermissionArgs {
     String? namespace,
     String? region,
     required String role,
-  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-       customPermissionsName = pulumi.Input.asInput<String>(
-         customPermissionsName,
-       ),
-       namespace = pulumi.Input.asOptionalInput<String>(namespace),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      customPermissionsName = pulumi.Input.asInput<String>(customPermissionsName),
+      namespace = pulumi.Input.asOptionalInput<String>(namespace),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,9 +51,7 @@ class RoleCustomPermissionArgs {
 
   factory RoleCustomPermissionArgs.fromMap(Map<String, dynamic> map) {
     return RoleCustomPermissionArgs(
-      awsAccountId: map['awsAccountId'] == null
-          ? null
-          : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
       customPermissionsName: map['customPermissionsName'] as String,
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -66,3 +59,4 @@ class RoleCustomPermissionArgs {
     );
   }
 }
+

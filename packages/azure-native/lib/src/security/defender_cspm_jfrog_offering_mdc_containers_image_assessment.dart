@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The Microsoft Defender Container image assessment configuration
+class DefenderCspmJFrogOfferingMdcContainersImageAssessment {
+  /// Is Microsoft Defender container image assessment enabled
+  final bool? enabled;
+
+  /// Creates a new [DefenderCspmJFrogOfferingMdcContainersImageAssessment].
+  /// [enabled] Is Microsoft Defender container image assessment enabled
+  DefenderCspmJFrogOfferingMdcContainersImageAssessment({
+    this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
+  }
+
+  factory DefenderCspmJFrogOfferingMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
+    return DefenderCspmJFrogOfferingMdcContainersImageAssessment(
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+    );
+  }
+}
+

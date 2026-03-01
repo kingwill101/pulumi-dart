@@ -1,0 +1,104 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetClusterInstancesInstance {
+  /// The emr cluster node group whether auto renew when payment type is 'Subscription'.
+  final bool autoRenew;
+  /// The emr cluster node group auto renew duration when payment type is 'Subscription'.
+  final int autoRenewDuration;
+  /// The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+  final String autoRenewDurationUnit;
+  /// The creation time of the resource.
+  final String createTime;
+  /// The expire time of the resource.
+  final String expireTime;
+  /// The emr cluster ecs instance ID.
+  final String instanceId;
+  /// The emr cluster ecs instance name.
+  final String instanceName;
+  /// The emr cluster ecs instance state.
+  final String instanceState;
+  /// The emr cluster ecs instance type.
+  final String instanceType;
+  /// The emr cluster node group ID.
+  final String nodeGroupId;
+  /// The emr cluster node group type.
+  final String nodeGroupType;
+  /// The emr cluster ecs instance private ip.
+  final String privateIp;
+  /// The emr cluster ecs instance public ip.
+  final String publicIp;
+  /// The emr cluster node group zone ID.
+  final String zoneId;
+
+  /// Creates a new [GetClusterInstancesInstance].
+  /// [autoRenew] The emr cluster node group whether auto renew when payment type is 'Subscription'.
+  /// [autoRenewDuration] The emr cluster node group auto renew duration when payment type is 'Subscription'.
+  /// [autoRenewDurationUnit] The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+  /// [createTime] The creation time of the resource.
+  /// [expireTime] The expire time of the resource.
+  /// [instanceId] The emr cluster ecs instance ID.
+  /// [instanceName] The emr cluster ecs instance name.
+  /// [instanceState] The emr cluster ecs instance state.
+  /// [instanceType] The emr cluster ecs instance type.
+  /// [nodeGroupId] The emr cluster node group ID.
+  /// [nodeGroupType] The emr cluster node group type.
+  /// [privateIp] The emr cluster ecs instance private ip.
+  /// [publicIp] The emr cluster ecs instance public ip.
+  /// [zoneId] The emr cluster node group zone ID.
+  GetClusterInstancesInstance({
+    required this.autoRenew,
+    required this.autoRenewDuration,
+    required this.autoRenewDurationUnit,
+    required this.createTime,
+    required this.expireTime,
+    required this.instanceId,
+    required this.instanceName,
+    required this.instanceState,
+    required this.instanceType,
+    required this.nodeGroupId,
+    required this.nodeGroupType,
+    required this.privateIp,
+    required this.publicIp,
+    required this.zoneId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'autoRenew': autoRenew,
+      'autoRenewDuration': autoRenewDuration,
+      'autoRenewDurationUnit': autoRenewDurationUnit,
+      'createTime': createTime,
+      'expireTime': expireTime,
+      'instanceId': instanceId,
+      'instanceName': instanceName,
+      'instanceState': instanceState,
+      'instanceType': instanceType,
+      'nodeGroupId': nodeGroupId,
+      'nodeGroupType': nodeGroupType,
+      'privateIp': privateIp,
+      'publicIp': publicIp,
+      'zoneId': zoneId,
+    };
+  }
+
+  factory GetClusterInstancesInstance.fromMap(Map<String, dynamic> map) {
+    return GetClusterInstancesInstance(
+      autoRenew: map['autoRenew'] as bool,
+      autoRenewDuration: map['autoRenewDuration'] as int,
+      autoRenewDurationUnit: map['autoRenewDurationUnit'] as String,
+      createTime: map['createTime'] as String,
+      expireTime: map['expireTime'] as String,
+      instanceId: map['instanceId'] as String,
+      instanceName: map['instanceName'] as String,
+      instanceState: map['instanceState'] as String,
+      instanceType: map['instanceType'] as String,
+      nodeGroupId: map['nodeGroupId'] as String,
+      nodeGroupType: map['nodeGroupType'] as String,
+      privateIp: map['privateIp'] as String,
+      publicIp: map['publicIp'] as String,
+      zoneId: map['zoneId'] as String,
+    );
+  }
+}
+

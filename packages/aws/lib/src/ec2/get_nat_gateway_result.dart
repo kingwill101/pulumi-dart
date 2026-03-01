@@ -9,50 +9,35 @@ import 'get_nat_gateway_regional_nat_gateway_address.dart';
 class GetNatGatewayResult {
   /// Allocation ID of the Elastic IP address.
   final String allocationId;
-
   /// Association ID of the Elastic IP address.
   final String associationId;
-
   /// (regional NAT gateways only) Indicates whether AWS automatically manages AZ coverage.
   final String autoProvisionZones;
-
   /// (regional NAT gateways only) Indicates whether AWS automatically allocates additional Elastic IP addresses (EIPs) in an AZ when the NAT gateway needs more ports due to increased concurrent connections to a single destination from that AZ.
   final String autoScalingIps;
-
   /// Specifies whether to create a zonal (single-AZ) or regional (multi-AZ) NAT gateway.
   final String availabilityMode;
-
   /// (regional NAT gateways only) Repeatable configuration block for the Elastic IP addresses (EIPs) and availability zones for the regional NAT gateway.
   final List<GetNatGatewayAvailabilityZoneAddress> availabilityZoneAddresses;
-
   /// Connectivity type of the NAT Gateway.
   final String connectivityType;
   final List<GetNatGatewayFilter>? filters;
   final String id;
-
   /// ID of the network interface.
   final String networkInterfaceId;
-
   /// (zonal NAT gateways only) Private IP address of the selected NAT Gateway.
   final String privateIp;
-
   /// Public IP address.
   final String publicIp;
   final String region;
-
   /// (regional NAT gateways only) Repeatable blocks for information about the IP addresses and network interface associated with the regional NAT gateway.
-  final List<GetNatGatewayRegionalNatGatewayAddress>
-  regionalNatGatewayAddresses;
-
+  final List<GetNatGatewayRegionalNatGatewayAddress> regionalNatGatewayAddresses;
   /// (regional NAT gateways only) ID of the automatically created route table.
   final String routeTableId;
-
   /// (zonal NAT gateways only) Secondary allocation EIP IDs for the selected NAT Gateway.
   final List<String> secondaryAllocationIds;
-
   /// (zonal NAT gateways only) The number of secondary private IPv4 addresses assigned to the selected NAT Gateway.
   final int secondaryPrivateIpAddressCount;
-
   /// (zonal NAT gateways only) Secondary private IPv4 addresses assigned to the selected NAT Gateway.
   final List<String> secondaryPrivateIpAddresses;
   final String state;
@@ -115,28 +100,15 @@ class GetNatGatewayResult {
       'autoProvisionZones': autoProvisionZones,
       'autoScalingIps': autoScalingIps,
       'availabilityMode': availabilityMode,
-      'availabilityZoneAddresses':
-          pulumi.Input.encodeList<
-            GetNatGatewayAvailabilityZoneAddress,
-            Map<String, dynamic>
-          >(availabilityZoneAddresses, (value) => value.toMap()),
+      'availabilityZoneAddresses': pulumi.Input.encodeList<GetNatGatewayAvailabilityZoneAddress, Map<String, dynamic>>(availabilityZoneAddresses, (value) => value.toMap()),
       'connectivityType': connectivityType,
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(
-              filters!,
-              (value) => value.toMap(),
-            ),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'networkInterfaceId': networkInterfaceId,
       'privateIp': privateIp,
       'publicIp': publicIp,
       'region': region,
-      'regionalNatGatewayAddresses':
-          pulumi.Input.encodeList<
-            GetNatGatewayRegionalNatGatewayAddress,
-            Map<String, dynamic>
-          >(regionalNatGatewayAddresses, (value) => value.toMap()),
+      'regionalNatGatewayAddresses': pulumi.Input.encodeList<GetNatGatewayRegionalNatGatewayAddress, Map<String, dynamic>>(regionalNatGatewayAddresses, (value) => value.toMap()),
       'routeTableId': routeTableId,
       'secondaryAllocationIds': secondaryAllocationIds,
       'secondaryPrivateIpAddressCount': secondaryPrivateIpAddressCount,
@@ -155,41 +127,19 @@ class GetNatGatewayResult {
       autoProvisionZones: map['autoProvisionZones'] as String,
       autoScalingIps: map['autoScalingIps'] as String,
       availabilityMode: map['availabilityMode'] as String,
-      availabilityZoneAddresses:
-          pulumi.Input.decodeList<GetNatGatewayAvailabilityZoneAddress>(
-            map['availabilityZoneAddresses'],
-            (value) => GetNatGatewayAvailabilityZoneAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      availabilityZoneAddresses: pulumi.Input.decodeList<GetNatGatewayAvailabilityZoneAddress>(map['availabilityZoneAddresses'], (value) => GetNatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>())),
       connectivityType: map['connectivityType'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetNatGatewayFilter>(
-              map['filters'],
-              (value) => GetNatGatewayFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNatGatewayFilter>(map['filters'], (value) => GetNatGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       networkInterfaceId: map['networkInterfaceId'] as String,
       privateIp: map['privateIp'] as String,
       publicIp: map['publicIp'] as String,
       region: map['region'] as String,
-      regionalNatGatewayAddresses:
-          pulumi.Input.decodeList<GetNatGatewayRegionalNatGatewayAddress>(
-            map['regionalNatGatewayAddresses'],
-            (value) => GetNatGatewayRegionalNatGatewayAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      regionalNatGatewayAddresses: pulumi.Input.decodeList<GetNatGatewayRegionalNatGatewayAddress>(map['regionalNatGatewayAddresses'], (value) => GetNatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>())),
       routeTableId: map['routeTableId'] as String,
-      secondaryAllocationIds: (map['secondaryAllocationIds'] as List)
-          .cast<String>(),
-      secondaryPrivateIpAddressCount:
-          map['secondaryPrivateIpAddressCount'] as int,
-      secondaryPrivateIpAddresses: (map['secondaryPrivateIpAddresses'] as List)
-          .cast<String>(),
+      secondaryAllocationIds: (map['secondaryAllocationIds'] as List).cast<String>(),
+      secondaryPrivateIpAddressCount: map['secondaryPrivateIpAddressCount'] as int,
+      secondaryPrivateIpAddresses: (map['secondaryPrivateIpAddresses'] as List).cast<String>(),
       state: map['state'] as String,
       subnetId: map['subnetId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -197,3 +147,4 @@ class GetNatGatewayResult {
     );
   }
 }
+

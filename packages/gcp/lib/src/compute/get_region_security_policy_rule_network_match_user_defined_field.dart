@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField {
   /// The name of the Region Security Policy.
   final String name;
-
   /// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
   final List<String> values;
 
@@ -16,15 +16,17 @@ class GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
-  factory GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField(
       name: map['name'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

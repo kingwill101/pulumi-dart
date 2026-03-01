@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DeploymentLoggingLog4jLogger {
+  /// Log output level
+  final String? loggerLevel;
+  /// Class name for log output
+  final String? loggerName;
+
+  /// Creates a new [DeploymentLoggingLog4jLogger].
+  /// [loggerLevel] Log output level
+  /// [loggerName] Class name for log output
+  DeploymentLoggingLog4jLogger({
+    this.loggerLevel,
+    this.loggerName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'loggerLevel': ?loggerLevel,
+      'loggerName': ?loggerName,
+    };
+  }
+
+  factory DeploymentLoggingLog4jLogger.fromMap(Map<String, dynamic> map) {
+    return DeploymentLoggingLog4jLogger(
+      loggerLevel: map['loggerLevel'] == null ? null : map['loggerLevel'] as String,
+      loggerName: map['loggerName'] == null ? null : map['loggerName'] as String,
+    );
+  }
+}
+

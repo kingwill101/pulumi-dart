@@ -5,8 +5,7 @@ import 'get_contacts_rotation_recurrence_monthly_setting_hand_off_time.dart';
 
 class GetContactsRotationRecurrenceMonthlySetting {
   final int dayOfMonth;
-  final List<GetContactsRotationRecurrenceMonthlySettingHandOffTime>
-  handOffTimes;
+  final List<GetContactsRotationRecurrenceMonthlySettingHandOffTime> handOffTimes;
 
   /// Creates a new [GetContactsRotationRecurrenceMonthlySetting].
   /// [dayOfMonth] Required.
@@ -19,29 +18,15 @@ class GetContactsRotationRecurrenceMonthlySetting {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dayOfMonth': dayOfMonth,
-      'handOffTimes':
-          pulumi.Input.encodeList<
-            GetContactsRotationRecurrenceMonthlySettingHandOffTime,
-            Map<String, dynamic>
-          >(handOffTimes, (value) => value.toMap()),
+      'handOffTimes': pulumi.Input.encodeList<GetContactsRotationRecurrenceMonthlySettingHandOffTime, Map<String, dynamic>>(handOffTimes, (value) => value.toMap()),
     };
   }
 
-  factory GetContactsRotationRecurrenceMonthlySetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContactsRotationRecurrenceMonthlySetting.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceMonthlySetting(
       dayOfMonth: map['dayOfMonth'] as int,
-      handOffTimes:
-          pulumi.Input.decodeList<
-            GetContactsRotationRecurrenceMonthlySettingHandOffTime
-          >(
-            map['handOffTimes'],
-            (value) =>
-                GetContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      handOffTimes: pulumi.Input.decodeList<GetContactsRotationRecurrenceMonthlySettingHandOffTime>(map['handOffTimes'], (value) => GetContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

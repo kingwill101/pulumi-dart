@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExpressGatewayServiceIngressPath {
   final String accessType;
   final String endpoint;
@@ -13,7 +14,10 @@ class ExpressGatewayServiceIngressPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accessType': accessType, 'endpoint': endpoint};
+    return <String, dynamic>{
+      'accessType': accessType,
+      'endpoint': endpoint,
+    };
   }
 
   factory ExpressGatewayServiceIngressPath.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class ExpressGatewayServiceIngressPath {
     );
   }
 }
+

@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFoldersFolder {
   /// The timestamp of when the folder was created
   final String createTime;
-
   /// The timestamp of when the folder was requested to be deleted (if applicable)
   final String deleteTime;
-
   /// The display name of the folder
   final String displayName;
-
   /// Entity tag identifier of the folder
   final String etag;
-
   /// The id of the folder
   final String name;
-
   /// The parent id of the folder
   final String parent;
-
   /// The lifecycle state of the folder
   final String state;
-
   /// The timestamp of when the folder was last modified
   final String updateTime;
 
@@ -71,3 +65,4 @@ class GetFoldersFolder {
     );
   }
 }
+

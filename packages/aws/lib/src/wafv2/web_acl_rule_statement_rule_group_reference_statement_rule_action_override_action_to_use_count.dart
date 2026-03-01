@@ -4,8 +4,7 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount {
   /// Defines custom handling for the web request. See `custom_request_handling` below for details.
-  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling?
-  customRequestHandling;
+  final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
@@ -15,21 +14,14 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null
-          ? null
-          : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
     };
   }
 
-  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
-            ),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

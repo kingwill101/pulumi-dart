@@ -21,106 +21,71 @@ import 'restore_workload_compute_instance_restore_properties_tags.dart';
 class RestoreWorkloadComputeInstanceRestoreProperties {
   /// Optional. Controls for advanced machine-related behavior features.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures?
-  advancedMachineFeatures;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures? advancedMachineFeatures;
   /// Optional. Specifies the reservations that this instance can consume from.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity?
-  allocationAffinity;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity? allocationAffinity;
   /// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
   final bool? canIpForward;
-
   /// Optional. Controls Confidential compute options on the instance.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig?
-  confidentialInstanceConfig;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig? confidentialInstanceConfig;
   /// Optional. Whether the resource should be protected against deletion.
   final bool? deletionProtection;
-
   /// Optional. An optional description of this resource.
   final String? description;
-
   /// Optional. Array of disks associated with this instance.
   /// Structure is documented below.
   final List<RestoreWorkloadComputeInstanceRestorePropertiesDisk>? disks;
-
   /// Optional. Enables display device for the instance.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice?
-  displayDevice;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice? displayDevice;
   /// Optional. A list of the type and count of accelerator cards attached to the instance.
   /// Structure is documented below.
-  final List<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>?
-  guestAccelerators;
-
+  final List<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>? guestAccelerators;
   /// Optional. Specifies the hostname of the instance.
   final String? hostname;
-
   /// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey?
-  instanceEncryptionKey;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey? instanceEncryptionKey;
   /// Optional. KeyRevocationActionType of the instance.
   /// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
   final String? keyRevocationActionType;
-
   /// Optional. Labels to apply to this instance.
   /// Structure is documented below.
   final List<RestoreWorkloadComputeInstanceRestorePropertiesLabel>? labels;
-
   /// Optional. Full or partial URL of the machine type resource to use for this instance.
   final String? machineType;
-
   /// Optional. This includes custom metadata and predefined keys.
   /// Structure is documented below.
   final RestoreWorkloadComputeInstanceRestorePropertiesMetadata? metadata;
-
   /// Optional. Minimum CPU platform to use for this instance.
   final String? minCpuPlatform;
-
   /// Required. Name of the compute instance.
   final String name;
-
   /// Optional. An array of network configurations for this instance.
   /// Structure is documented below.
-  final List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>?
-  networkInterfaces;
-
+  final List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>? networkInterfaces;
   /// Optional. Configure network performance such as egress bandwidth tier.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig?
-  networkPerformanceConfig;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig? networkPerformanceConfig;
   /// Input only. Additional params passed with the request.
   /// Structure is documented below.
   final RestoreWorkloadComputeInstanceRestorePropertiesParams? params;
-
   /// Optional. The private IPv6 google access type for the VM.
   /// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
   final String? privateIpv6GoogleAccess;
-
   /// Optional. Resource policies applied to this instance.
   final List<String>? resourcePolicies;
-
   /// Optional. Sets the scheduling options for this instance.
   /// Structure is documented below.
   final RestoreWorkloadComputeInstanceRestorePropertiesScheduling? scheduling;
-
   /// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
   /// Structure is documented below.
-  final List<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>?
-  serviceAccounts;
-
+  final List<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>? serviceAccounts;
   /// Optional. Controls Shielded compute options on the instance.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig?
-  shieldedInstanceConfig;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig? shieldedInstanceConfig;
   /// Optional. Tags to apply to this instance.
   /// Structure is documented below.
   final RestoreWorkloadComputeInstanceRestorePropertiesTags? tags;
@@ -183,213 +148,64 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': ?advancedMachineFeatures == null
-          ? null
-          : advancedMachineFeatures!.toMap(),
-      'allocationAffinity': ?allocationAffinity == null
-          ? null
-          : allocationAffinity!.toMap(),
+      'advancedMachineFeatures': ?advancedMachineFeatures == null ? null : advancedMachineFeatures!.toMap(),
+      'allocationAffinity': ?allocationAffinity == null ? null : allocationAffinity!.toMap(),
       'canIpForward': ?canIpForward,
-      'confidentialInstanceConfig': ?confidentialInstanceConfig == null
-          ? null
-          : confidentialInstanceConfig!.toMap(),
+      'confidentialInstanceConfig': ?confidentialInstanceConfig == null ? null : confidentialInstanceConfig!.toMap(),
       'deletionProtection': ?deletionProtection,
       'description': ?description,
-      'disks': ?disks == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesDisk,
-              Map<String, dynamic>
-            >(disks!, (value) => value.toMap()),
+      'disks': ?disks == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesDisk, Map<String, dynamic>>(disks!, (value) => value.toMap()),
       'displayDevice': ?displayDevice == null ? null : displayDevice!.toMap(),
-      'guestAccelerators': ?guestAccelerators == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator,
-              Map<String, dynamic>
-            >(guestAccelerators!, (value) => value.toMap()),
+      'guestAccelerators': ?guestAccelerators == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator, Map<String, dynamic>>(guestAccelerators!, (value) => value.toMap()),
       'hostname': ?hostname,
-      'instanceEncryptionKey': ?instanceEncryptionKey == null
-          ? null
-          : instanceEncryptionKey!.toMap(),
+      'instanceEncryptionKey': ?instanceEncryptionKey == null ? null : instanceEncryptionKey!.toMap(),
       'keyRevocationActionType': ?keyRevocationActionType,
-      'labels': ?labels == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesLabel,
-              Map<String, dynamic>
-            >(labels!, (value) => value.toMap()),
+      'labels': ?labels == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesLabel, Map<String, dynamic>>(labels!, (value) => value.toMap()),
       'machineType': ?machineType,
       'metadata': ?metadata == null ? null : metadata!.toMap(),
       'minCpuPlatform': ?minCpuPlatform,
       'name': name,
-      'networkInterfaces': ?networkInterfaces == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface,
-              Map<String, dynamic>
-            >(networkInterfaces!, (value) => value.toMap()),
-      'networkPerformanceConfig': ?networkPerformanceConfig == null
-          ? null
-          : networkPerformanceConfig!.toMap(),
+      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkPerformanceConfig': ?networkPerformanceConfig == null ? null : networkPerformanceConfig!.toMap(),
       'params': ?params == null ? null : params!.toMap(),
       'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
       'resourcePolicies': ?resourcePolicies,
       'scheduling': ?scheduling == null ? null : scheduling!.toMap(),
-      'serviceAccounts': ?serviceAccounts == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount,
-              Map<String, dynamic>
-            >(serviceAccounts!, (value) => value.toMap()),
-      'shieldedInstanceConfig': ?shieldedInstanceConfig == null
-          ? null
-          : shieldedInstanceConfig!.toMap(),
+      'serviceAccounts': ?serviceAccounts == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount, Map<String, dynamic>>(serviceAccounts!, (value) => value.toMap()),
+      'shieldedInstanceConfig': ?shieldedInstanceConfig == null ? null : shieldedInstanceConfig!.toMap(),
       'tags': ?tags == null ? null : tags!.toMap(),
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestoreProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestoreProperties.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestoreProperties(
-      advancedMachineFeatures: map['advancedMachineFeatures'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(
-              (map['advancedMachineFeatures'] as Map).cast<String, dynamic>(),
-            ),
-      allocationAffinity: map['allocationAffinity'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(
-              (map['allocationAffinity'] as Map).cast<String, dynamic>(),
-            ),
-      canIpForward: map['canIpForward'] == null
-          ? null
-          : map['canIpForward'] as bool,
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(
-              (map['confidentialInstanceConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      deletionProtection: map['deletionProtection'] == null
-          ? null
-          : map['deletionProtection'] as bool,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      disks: map['disks'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesDisk
-            >(
-              map['disks'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesDisk.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      displayDevice: map['displayDevice'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(
-              (map['displayDevice'] as Map).cast<String, dynamic>(),
-            ),
-      guestAccelerators: map['guestAccelerators'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator
-            >(
-              map['guestAccelerators'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      advancedMachineFeatures: map['advancedMachineFeatures'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
+      allocationAffinity: map['allocationAffinity'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap((map['allocationAffinity'] as Map).cast<String, dynamic>()),
+      canIpForward: map['canIpForward'] == null ? null : map['canIpForward'] as bool,
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>()),
+      deletionProtection: map['deletionProtection'] == null ? null : map['deletionProtection'] as bool,
+      description: map['description'] == null ? null : map['description'] as String,
+      disks: map['disks'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesDisk>(map['disks'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesDisk.fromMap((value as Map).cast<String, dynamic>())),
+      displayDevice: map['displayDevice'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap((map['displayDevice'] as Map).cast<String, dynamic>()),
+      guestAccelerators: map['guestAccelerators'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>(map['guestAccelerators'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
       hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      instanceEncryptionKey: map['instanceEncryptionKey'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey.fromMap(
-              (map['instanceEncryptionKey'] as Map).cast<String, dynamic>(),
-            ),
-      keyRevocationActionType: map['keyRevocationActionType'] == null
-          ? null
-          : map['keyRevocationActionType'] as String,
-      labels: map['labels'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesLabel
-            >(
-              map['labels'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesLabel.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      machineType: map['machineType'] == null
-          ? null
-          : map['machineType'] as String,
-      metadata: map['metadata'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesMetadata.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>(),
-            ),
-      minCpuPlatform: map['minCpuPlatform'] == null
-          ? null
-          : map['minCpuPlatform'] as String,
+      instanceEncryptionKey: map['instanceEncryptionKey'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey.fromMap((map['instanceEncryptionKey'] as Map).cast<String, dynamic>()),
+      keyRevocationActionType: map['keyRevocationActionType'] == null ? null : map['keyRevocationActionType'] as String,
+      labels: map['labels'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesLabel>(map['labels'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesLabel.fromMap((value as Map).cast<String, dynamic>())),
+      machineType: map['machineType'] == null ? null : map['machineType'] as String,
+      metadata: map['metadata'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : map['minCpuPlatform'] as String,
       name: map['name'] as String,
-      networkInterfaces: map['networkInterfaces'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface
-            >(
-              map['networkInterfaces'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(
-              (map['networkPerformanceConfig'] as Map).cast<String, dynamic>(),
-            ),
-      params: map['params'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesParams.fromMap(
-              (map['params'] as Map).cast<String, dynamic>(),
-            ),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null
-          ? null
-          : map['privateIpv6GoogleAccess'] as String,
-      resourcePolicies: map['resourcePolicies'] == null
-          ? null
-          : (map['resourcePolicies'] as List).cast<String>(),
-      scheduling: map['scheduling'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesScheduling.fromMap(
-              (map['scheduling'] as Map).cast<String, dynamic>(),
-            ),
-      serviceAccounts: map['serviceAccounts'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount
-            >(
-              map['serviceAccounts'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(
-              (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>(),
-            ),
-      tags: map['tags'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(
-              (map['tags'] as Map).cast<String, dynamic>(),
-            ),
+      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>(map['networkInterfaces'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
+      params: map['params'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesParams.fromMap((map['params'] as Map).cast<String, dynamic>()),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : map['privateIpv6GoogleAccess'] as String,
+      resourcePolicies: map['resourcePolicies'] == null ? null : (map['resourcePolicies'] as List).cast<String>(),
+      scheduling: map['scheduling'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
+      serviceAccounts: map['serviceAccounts'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>(map['serviceAccounts'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount.fromMap((value as Map).cast<String, dynamic>())),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

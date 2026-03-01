@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ResourceAccessRoleResponse {
+  /// The actions.
+  final List<String>? actions;
+  /// The allowed group claims.
+  final List<String>? allowedGroupClaims;
+
+  /// Creates a new [ResourceAccessRoleResponse].
+  /// [actions] The actions.
+  /// [allowedGroupClaims] The allowed group claims.
+  ResourceAccessRoleResponse({
+    this.actions,
+    this.allowedGroupClaims,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actions': ?actions,
+      'allowedGroupClaims': ?allowedGroupClaims,
+    };
+  }
+
+  factory ResourceAccessRoleResponse.fromMap(Map<String, dynamic> map) {
+    return ResourceAccessRoleResponse(
+      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
+      allowedGroupClaims: map['allowedGroupClaims'] == null ? null : (map['allowedGroupClaims'] as List).cast<String>(),
+    );
+  }
+}
+

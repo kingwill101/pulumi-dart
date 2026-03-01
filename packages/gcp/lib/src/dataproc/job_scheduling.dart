@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobScheduling {
   /// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
   final int maxFailuresPerHour;
-
   /// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
   final int maxFailuresTotal;
 
@@ -29,3 +29,4 @@ class JobScheduling {
     );
   }
 }
+

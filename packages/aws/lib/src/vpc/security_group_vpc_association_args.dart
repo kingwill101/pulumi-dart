@@ -10,11 +10,9 @@ import 'security_group_vpc_association_timeouts.dart';
 class SecurityGroupVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
   final pulumi.Input<SecurityGroupVpcAssociationTimeouts>? timeouts;
-
   /// The ID of the VPC to make the association with.
   final pulumi.Input<String> vpcId;
 
@@ -28,23 +26,17 @@ class SecurityGroupVpcAssociationArgs {
     required String securityGroupId,
     SecurityGroupVpcAssociationTimeouts? timeouts,
     required String vpcId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-       timeouts =
-           pulumi.Input.asOptionalInput<SecurityGroupVpcAssociationTimeouts>(
-             timeouts,
-           ),
-       vpcId = pulumi.Input.asInput<String>(vpcId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
+      timeouts = pulumi.Input.asOptionalInput<SecurityGroupVpcAssociationTimeouts>(timeouts),
+      vpcId = pulumi.Input.asInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
       'securityGroupId': securityGroupId,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityGroupVpcAssociationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<SecurityGroupVpcAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'vpcId': vpcId,
     };
   }
@@ -53,12 +45,9 @@ class SecurityGroupVpcAssociationArgs {
     return SecurityGroupVpcAssociationArgs(
       region: map['region'] == null ? null : map['region'] as String,
       securityGroupId: map['securityGroupId'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : SecurityGroupVpcAssociationTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       vpcId: map['vpcId'] as String,
     );
   }
 }
+

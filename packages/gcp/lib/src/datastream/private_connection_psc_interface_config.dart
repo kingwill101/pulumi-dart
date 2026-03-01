@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PrivateConnectionPscInterfaceConfig {
   /// Fully qualified name of the network attachment that Datastream will connect to.
   /// Format: projects/{project}/regions/{region}/networkAttachments/{name}
@@ -11,17 +12,20 @@ class PrivateConnectionPscInterfaceConfig {
 
   /// Creates a new [PrivateConnectionPscInterfaceConfig].
   /// [networkAttachment] Fully qualified name of the network attachment that Datastream will connect to.
-  PrivateConnectionPscInterfaceConfig({required this.networkAttachment});
+  PrivateConnectionPscInterfaceConfig({
+    required this.networkAttachment,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkAttachment': networkAttachment};
+    return <String, dynamic>{
+      'networkAttachment': networkAttachment,
+    };
   }
 
-  factory PrivateConnectionPscInterfaceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateConnectionPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionPscInterfaceConfig(
       networkAttachment: map['networkAttachment'] as String,
     );
   }
 }
+

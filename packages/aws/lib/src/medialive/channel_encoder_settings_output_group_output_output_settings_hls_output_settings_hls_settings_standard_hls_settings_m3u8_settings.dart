@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings {
   final int? audioFramesPerPes;
   final String? audioPids;
@@ -13,7 +14,6 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   final String? pmtPid;
   final int? programNum;
   final String? scte35Behavior;
-
   /// PID from which to read SCTE-35 messages.
   final String? scte35Pid;
   final String? timedMetadataBehavior;
@@ -81,45 +81,26 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings(
-      audioFramesPerPes: map['audioFramesPerPes'] == null
-          ? null
-          : map['audioFramesPerPes'] as int,
+      audioFramesPerPes: map['audioFramesPerPes'] == null ? null : map['audioFramesPerPes'] as int,
       audioPids: map['audioPids'] == null ? null : map['audioPids'] as String,
       ecmPid: map['ecmPid'] == null ? null : map['ecmPid'] as String,
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null
-          ? null
-          : map['nielsenId3Behavior'] as String,
-      patInterval: map['patInterval'] == null
-          ? null
-          : map['patInterval'] as int,
-      pcrControl: map['pcrControl'] == null
-          ? null
-          : map['pcrControl'] as String,
+      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : map['nielsenId3Behavior'] as String,
+      patInterval: map['patInterval'] == null ? null : map['patInterval'] as int,
+      pcrControl: map['pcrControl'] == null ? null : map['pcrControl'] as String,
       pcrPeriod: map['pcrPeriod'] == null ? null : map['pcrPeriod'] as int,
       pcrPid: map['pcrPid'] == null ? null : map['pcrPid'] as String,
-      pmtInterval: map['pmtInterval'] == null
-          ? null
-          : map['pmtInterval'] as int,
+      pmtInterval: map['pmtInterval'] == null ? null : map['pmtInterval'] as int,
       pmtPid: map['pmtPid'] == null ? null : map['pmtPid'] as String,
       programNum: map['programNum'] == null ? null : map['programNum'] as int,
-      scte35Behavior: map['scte35Behavior'] == null
-          ? null
-          : map['scte35Behavior'] as String,
+      scte35Behavior: map['scte35Behavior'] == null ? null : map['scte35Behavior'] as String,
       scte35Pid: map['scte35Pid'] == null ? null : map['scte35Pid'] as String,
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null
-          ? null
-          : map['timedMetadataBehavior'] as String,
-      timedMetadataPid: map['timedMetadataPid'] == null
-          ? null
-          : map['timedMetadataPid'] as String,
-      transportStreamId: map['transportStreamId'] == null
-          ? null
-          : map['transportStreamId'] as int,
+      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : map['timedMetadataBehavior'] as String,
+      timedMetadataPid: map['timedMetadataPid'] == null ? null : map['timedMetadataPid'] as String,
+      transportStreamId: map['transportStreamId'] == null ? null : map['transportStreamId'] as int,
       videoPid: map['videoPid'] == null ? null : map['videoPid'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersResourceAwsEc2InstanceType {
   final String comparison;
   final String value;
@@ -13,15 +14,17 @@ class InsightFiltersResourceAwsEc2InstanceType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
-  factory InsightFiltersResourceAwsEc2InstanceType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightFiltersResourceAwsEc2InstanceType.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsEc2InstanceType(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
+

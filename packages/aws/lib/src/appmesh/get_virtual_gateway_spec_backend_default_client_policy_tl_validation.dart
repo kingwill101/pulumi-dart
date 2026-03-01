@@ -5,12 +5,8 @@ import 'get_virtual_gateway_spec_backend_default_client_policy_tl_validation_sub
 import 'get_virtual_gateway_spec_backend_default_client_policy_tl_validation_trust.dart';
 
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation {
-  final List<
-    GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName
-  >
-  subjectAlternativeNames;
-  final List<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust>
-  trusts;
+  final List<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName> subjectAlternativeNames;
+  final List<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust> trusts;
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation].
   /// [subjectAlternativeNames] Required.
@@ -22,43 +18,16 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName,
-            Map<String, dynamic>
-          >(subjectAlternativeNames, (value) => value.toMap()),
-      'trusts':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust,
-            Map<String, dynamic>
-          >(trusts, (value) => value.toMap()),
+      'subjectAlternativeNames': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName, Map<String, dynamic>>(subjectAlternativeNames, (value) => value.toMap()),
+      'trusts': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust, Map<String, dynamic>>(trusts, (value) => value.toMap()),
     };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation(
-      subjectAlternativeNames:
-          pulumi.Input.decodeList<
-            GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName
-          >(
-            map['subjectAlternativeNames'],
-            (value) =>
-                GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      trusts:
-          pulumi.Input.decodeList<
-            GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust
-          >(
-            map['trusts'],
-            (value) =>
-                GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      subjectAlternativeNames: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName>(map['subjectAlternativeNames'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap((value as Map).cast<String, dynamic>())),
+      trusts: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust>(map['trusts'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

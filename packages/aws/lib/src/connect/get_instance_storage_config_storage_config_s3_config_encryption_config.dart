@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
   /// The type of encryption. Valid Values: `KMS`.
   final String encryptionType;
-
   /// The full ARN of the encryption key. Be sure to provide the full ARN of the encryption key, not just the ID.
   final String keyId;
 
@@ -16,15 +16,17 @@ class GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'encryptionType': encryptionType, 'keyId': keyId};
+    return <String, dynamic>{
+      'encryptionType': encryptionType,
+      'keyId': keyId,
+    };
   }
 
-  factory GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig(
       encryptionType: map['encryptionType'] as String,
       keyId: map['keyId'] as String,
     );
   }
 }
+

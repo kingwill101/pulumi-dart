@@ -336,12 +336,9 @@ import 'user_hierarchy_structure_hierarchy_structure.dart';
 /// ```
 class UserHierarchyStructure extends pulumi.CustomResource {
   /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
-  late final pulumi.Output<UserHierarchyStructureHierarchyStructure>
-  hierarchyStructure;
-
+  late final pulumi.Output<UserHierarchyStructureHierarchyStructure> hierarchyStructure;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -354,15 +351,12 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     UserHierarchyStructureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/userHierarchyStructure:UserHierarchyStructure',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.hierarchyStructure =
-        registerOutput<UserHierarchyStructureHierarchyStructure>(
-          'hierarchyStructure',
-        );
+          'aws:connect/userHierarchyStructure:UserHierarchyStructure',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure');
     this.instanceId = registerOutput<String>('instanceId');
     this.region = registerOutput<String>('region');
   }

@@ -1,0 +1,61 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_dedicated_cloud_node_args.dart';
+import 'get_dedicated_cloud_node_result.dart';
+import 'get_dedicated_cloud_service_args.dart';
+import 'get_dedicated_cloud_service_result.dart';
+import 'get_virtual_machine_args.dart';
+import 'get_virtual_machine_result.dart';
+
+/// Returns dedicated cloud node
+///
+/// Uses Azure REST API version 2019-04-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_vmwarecloudsimple_get_dedicated_cloud_node_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedCloudNodeResult> getDedicatedCloudNode(
+  GetDedicatedCloudNodeArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getDedicatedCloudNode',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedCloudNodeResult.fromMap(result);
+}
+
+/// Returns Dedicate Cloud Service
+///
+/// Uses Azure REST API version 2019-04-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_vmwarecloudsimple_get_dedicated_cloud_service_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedCloudServiceResult> getDedicatedCloudService(
+  GetDedicatedCloudServiceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getDedicatedCloudService',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedCloudServiceResult.fromMap(result);
+}
+
+/// Get virtual machine
+///
+/// Uses Azure REST API version 2019-04-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_vmwarecloudsimple_get_virtual_machine_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetVirtualMachineResult> getVirtualMachine(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getVirtualMachine',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetVirtualMachineResult.fromMap(result);
+}

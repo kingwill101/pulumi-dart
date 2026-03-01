@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
   /// The dataset ID of the table.
   final String datasetId;
-
   /// The Google Cloud Platform project ID of the project containing the table.
   final String projectId;
-
   /// The name of the table.
   final String tableId;
 
@@ -28,9 +27,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(
       datasetId: map['datasetId'] as String,
       projectId: map['projectId'] as String,
@@ -38,3 +35,4 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
     );
   }
 }
+

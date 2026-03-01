@@ -19,9 +19,10 @@ class GetBackupPlanArgs {
     required String backupPlanId,
     required String location,
     String? project,
-  }) : backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,3 +40,4 @@ class GetBackupPlanArgs {
     );
   }
 }
+

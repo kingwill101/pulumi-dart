@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWorkerPoolInstanceSplitStatus {
   /// Specifies percent of the instance split to this Revision.
   final int percent;
-
   /// Revision to which this instance split is assigned.
   final String revision;
-
   /// The allocation type for this instance split.
   final String type;
 
@@ -36,3 +35,4 @@ class GetWorkerPoolInstanceSplitStatus {
     );
   }
 }
+

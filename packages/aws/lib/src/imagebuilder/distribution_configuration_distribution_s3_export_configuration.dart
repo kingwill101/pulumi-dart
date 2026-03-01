@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionConfigurationDistributionS3ExportConfiguration {
   /// The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)
   final String diskImageFormat;
-
   /// The name of the IAM role to use for exporting.
   final String roleName;
-
   /// The name of the S3 bucket to store the exported image in. The bucket needs to exist before the export configuration is created.
   final String s3Bucket;
-
   /// The prefix for the exported image.
   final String? s3Prefix;
 
@@ -34,9 +32,7 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
     };
   }
 
-  factory DistributionConfigurationDistributionS3ExportConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionConfigurationDistributionS3ExportConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionS3ExportConfiguration(
       diskImageFormat: map['diskImageFormat'] as String,
       roleName: map['roleName'] as String,
@@ -45,3 +41,4 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
     );
   }
 }
+

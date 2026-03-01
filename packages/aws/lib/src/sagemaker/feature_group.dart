@@ -176,38 +176,26 @@ import 'feature_group_throughput_config.dart';
 class FeatureGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this feature_group.
   late final pulumi.Output<String> arn;
-
   /// A free-form description of a Feature Group.
   late final pulumi.Output<String?> description;
-
   /// The name of the feature that stores the EventTime of a Record in a Feature Group.
   late final pulumi.Output<String> eventTimeFeatureName;
-
   /// A list of Feature names and types. See Feature Definition Below.
-  late final pulumi.Output<List<FeatureGroupFeatureDefinition>>
-  featureDefinitions;
-
+  late final pulumi.Output<List<FeatureGroupFeatureDefinition>> featureDefinitions;
   /// The name of the Feature Group. The name must be unique within an AWS Region in an AWS account.
   late final pulumi.Output<String> featureGroupName;
-
   /// The Offline Feature Store Configuration. See Offline Store Config Below.
   late final pulumi.Output<FeatureGroupOfflineStoreConfig?> offlineStoreConfig;
-
   /// The Online Feature Store Configuration. See Online Store Config Below.
   late final pulumi.Output<FeatureGroupOnlineStoreConfig?> onlineStoreConfig;
-
   /// The name of the Feature whose value uniquely identifies a Record defined in the Feature Store. Only the latest record per identifier value will be stored in the Online Store.
   late final pulumi.Output<String> recordIdentifierFeatureName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offline_store_config` is provided.
   late final pulumi.Output<String> roleArn;
-
   /// Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<FeatureGroupThroughputConfig> throughputConfig;
@@ -221,34 +209,23 @@ class FeatureGroup extends pulumi.CustomResource {
     FeatureGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/featureGroup:FeatureGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/featureGroup:FeatureGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
     this.eventTimeFeatureName = registerOutput<String>('eventTimeFeatureName');
-    this.featureDefinitions =
-        registerOutput<List<FeatureGroupFeatureDefinition>>(
-          'featureDefinitions',
-        );
+    this.featureDefinitions = registerOutput<List<FeatureGroupFeatureDefinition>>('featureDefinitions');
     this.featureGroupName = registerOutput<String>('featureGroupName');
-    this.offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>(
-      'offlineStoreConfig',
-    );
-    this.onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>(
-      'onlineStoreConfig',
-    );
-    this.recordIdentifierFeatureName = registerOutput<String>(
-      'recordIdentifierFeatureName',
-    );
+    this.offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>('offlineStoreConfig');
+    this.onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>('onlineStoreConfig');
+    this.recordIdentifierFeatureName = registerOutput<String>('recordIdentifierFeatureName');
     this.region = registerOutput<String>('region');
     this.roleArn = registerOutput<String>('roleArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.throughputConfig = registerOutput<FeatureGroupThroughputConfig>(
-      'throughputConfig',
-    );
+    this.throughputConfig = registerOutput<FeatureGroupThroughputConfig>('throughputConfig');
   }
 }

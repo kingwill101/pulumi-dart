@@ -1,0 +1,23 @@
+/// Day of the week when a managed environment can be patched.
+enum WeekDay {
+  valueMonday("Monday"),
+  valueTuesday("Tuesday"),
+  valueWednesday("Wednesday"),
+  valueThursday("Thursday"),
+  valueFriday("Friday"),
+  valueSaturday("Saturday"),
+  valueSunday("Sunday");
+
+  const WeekDay(this.value);
+  final String value;
+
+  static WeekDay fromValue(String value) {
+    for (final item in WeekDay.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown WeekDay value: $value');
+  }
+}
+

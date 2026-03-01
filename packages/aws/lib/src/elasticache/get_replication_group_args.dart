@@ -9,15 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier for the replication group.
   final pulumi.Input<String> replicationGroupId;
 
   /// Creates a new [GetReplicationGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationGroupId] Identifier for the replication group.
-  GetReplicationGroupArgs({String? region, required String replicationGroupId})
-    : region = pulumi.Input.asOptionalInput<String>(region),
+  GetReplicationGroupArgs({
+    String? region,
+    required String replicationGroupId,
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
       replicationGroupId = pulumi.Input.asInput<String>(replicationGroupId);
 
   Map<String, dynamic> toMap() {
@@ -34,3 +36,4 @@ class GetReplicationGroupArgs {
     );
   }
 }
+

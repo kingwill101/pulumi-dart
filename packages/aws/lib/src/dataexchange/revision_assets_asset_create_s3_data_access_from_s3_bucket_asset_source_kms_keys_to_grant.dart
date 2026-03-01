@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant {
   /// The ARN of the KMS key.
   final String kmsKeyArn;
@@ -11,14 +12,15 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyArn': kmsKeyArn};
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
-  factory RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant(
       kmsKeyArn: map['kmsKeyArn'] as String,
     );
   }
 }
+

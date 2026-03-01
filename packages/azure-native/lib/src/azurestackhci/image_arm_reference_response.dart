@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The Azure Resource ID for a Gallery Image.
+class ImageArmReferenceResponse {
+  /// The Azure Resource ID for an image resource used by the virtual machine instance.
+  final String? id;
+
+  /// Creates a new [ImageArmReferenceResponse].
+  /// [id] The Azure Resource ID for an image resource used by the virtual machine instance.
+  ImageArmReferenceResponse({
+    this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+    };
+  }
+
+  factory ImageArmReferenceResponse.fromMap(Map<String, dynamic> map) {
+    return ImageArmReferenceResponse(
+      id: map['id'] == null ? null : map['id'] as String,
+    );
+  }
+}
+

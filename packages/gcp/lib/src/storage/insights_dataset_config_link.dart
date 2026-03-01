@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightsDatasetConfigLink {
   /// (Output)
   /// Dataset name for the linked DatasetConfig.
   final String? dataset;
-
   /// (Output)
   /// State of the linked DatasetConfig.
   final bool? linked;
@@ -12,10 +12,16 @@ class InsightsDatasetConfigLink {
   /// Creates a new [InsightsDatasetConfigLink].
   /// [dataset] (Output)
   /// [linked] (Output)
-  InsightsDatasetConfigLink({this.dataset, this.linked});
+  InsightsDatasetConfigLink({
+    this.dataset,
+    this.linked,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataset': ?dataset, 'linked': ?linked};
+    return <String, dynamic>{
+      'dataset': ?dataset,
+      'linked': ?linked,
+    };
   }
 
   factory InsightsDatasetConfigLink.fromMap(Map<String, dynamic> map) {
@@ -25,3 +31,4 @@ class InsightsDatasetConfigLink {
     );
   }
 }
+

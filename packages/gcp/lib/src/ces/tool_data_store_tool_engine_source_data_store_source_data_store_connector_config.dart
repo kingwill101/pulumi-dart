@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
   /// Resource name of the collection the data store belongs to.
   final String? collection;
-
   /// Display name of the collection the data store belongs to.
   final String? collectionDisplayName;
-
   /// The name of the data source.
   /// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
   final String? dataSource;
@@ -29,19 +28,12 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
     };
   }
 
-  factory ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig(
-      collection: map['collection'] == null
-          ? null
-          : map['collection'] as String,
-      collectionDisplayName: map['collectionDisplayName'] == null
-          ? null
-          : map['collectionDisplayName'] as String,
-      dataSource: map['dataSource'] == null
-          ? null
-          : map['dataSource'] as String,
+      collection: map['collection'] == null ? null : map['collection'] as String,
+      collectionDisplayName: map['collectionDisplayName'] == null ? null : map['collectionDisplayName'] as String,
+      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
     );
   }
 }
+

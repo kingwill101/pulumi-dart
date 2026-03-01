@@ -12,14 +12,21 @@ class GetPolicyArgs {
 
   /// Creates a new [GetPolicyArgs].
   /// [policyId] The unique identifier (ID) of the policy that you want more details on. Policy id starts with a "p-" followed by 8-28 lowercase or uppercase letters, digits, and underscores.
-  GetPolicyArgs({required String policyId})
-    : policyId = pulumi.Input.asInput<String>(policyId);
+  GetPolicyArgs({
+    required String policyId,
+  }) :
+      policyId = pulumi.Input.asInput<String>(policyId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyId': policyId};
+    return <String, dynamic>{
+      'policyId': policyId,
+    };
   }
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetPolicyArgs(policyId: map['policyId'] as String);
+    return GetPolicyArgs(
+      policyId: map['policyId'] as String,
+    );
   }
 }
+

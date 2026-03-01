@@ -6,16 +6,12 @@ import 'subnet_type.dart';
 class ResolvedSubnetSpec {
   /// An optional list of CIDR blocks to assign to the subnet spec for each AZ. If specified, the count must match the number of AZs being used for the VPC, and must also be specified for all other subnet specs.
   final List<String>? cidrBlocks;
-
   /// The netmask for the subnet's CIDR block. This is optional, the default value is inferred from the `cidrMask`, `cidrBlocks` or based on an even distribution of available space from the VPC's CIDR block after being divided evenly by availability zone.
   final int? cidrMask;
-
   /// The subnet's name. Will be templated upon creation.
   final String? name;
-
   /// Optional size of the subnet's CIDR block - the number of hosts. This value must be a power of 2 (e.g. 256, 512, 1024, etc.). This is optional, the default value is inferred from the `cidrMask`, `cidrBlocks` or based on an even distribution of available space from the VPC's CIDR block after being divided evenly by availability zone.
   final int? size;
-
   /// The type of subnet.
   final SubnetType type;
 
@@ -45,9 +41,7 @@ class ResolvedSubnetSpec {
 
   factory ResolvedSubnetSpec.fromMap(Map<String, dynamic> map) {
     return ResolvedSubnetSpec(
-      cidrBlocks: map['cidrBlocks'] == null
-          ? null
-          : (map['cidrBlocks'] as List).cast<String>(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (map['cidrBlocks'] as List).cast<String>(),
       cidrMask: map['cidrMask'] == null ? null : map['cidrMask'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       size: map['size'] == null ? null : map['size'] as int,
@@ -55,3 +49,4 @@ class ResolvedSubnetSpec {
     );
   }
 }
+

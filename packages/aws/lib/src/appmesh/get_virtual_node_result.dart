@@ -7,26 +7,20 @@ import 'get_virtual_node_spec.dart';
 class GetVirtualNodeResult {
   /// ARN of the virtual node.
   final String arn;
-
   /// Creation date of the virtual node.
   final String createdDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Last update date of the virtual node.
   final String lastUpdatedDate;
   final String meshName;
   final String meshOwner;
   final String name;
   final String region;
-
   /// Resource owner's AWS account ID.
   final String resourceOwner;
-
   /// Virtual node specification. See the `aws.appmesh.VirtualNode` resource for details.
   final List<GetVirtualNodeSpec> specs;
-
   /// Map of tags.
   final Map<String, String> tags;
 
@@ -67,11 +61,7 @@ class GetVirtualNodeResult {
       'name': name,
       'region': region,
       'resourceOwner': resourceOwner,
-      'specs':
-          pulumi.Input.encodeList<GetVirtualNodeSpec, Map<String, dynamic>>(
-            specs,
-            (value) => value.toMap(),
-          ),
+      'specs': pulumi.Input.encodeList<GetVirtualNodeSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -87,12 +77,9 @@ class GetVirtualNodeResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetVirtualNodeSpec>(
-        map['specs'],
-        (value) =>
-            GetVirtualNodeSpec.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      specs: pulumi.Input.decodeList<GetVirtualNodeSpec>(map['specs'], (value) => GetVirtualNodeSpec.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

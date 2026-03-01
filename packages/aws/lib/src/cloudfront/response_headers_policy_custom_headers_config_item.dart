@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResponseHeadersPolicyCustomHeadersConfigItem {
   final String header;
   final bool override;
-
   /// The value for the HTTP response header.
   final String value;
 
@@ -25,9 +25,7 @@ class ResponseHeadersPolicyCustomHeadersConfigItem {
     };
   }
 
-  factory ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCustomHeadersConfigItem(
       header: map['header'] as String,
       override: map['override'] as bool,
@@ -35,3 +33,4 @@ class ResponseHeadersPolicyCustomHeadersConfigItem {
     );
   }
 }
+

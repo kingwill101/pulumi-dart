@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource {
   /// URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final String? s3Uri;
@@ -11,14 +12,15 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineS
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Uri': ?s3Uri};
+    return <String, dynamic>{
+      's3Uri': ?s3Uri,
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource(
       s3Uri: map['s3Uri'] == null ? null : map['s3Uri'] as String,
     );
   }
 }
+

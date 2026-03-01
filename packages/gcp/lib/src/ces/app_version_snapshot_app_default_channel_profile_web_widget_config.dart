@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// (Output)
   /// The modality of the web widget.
@@ -9,7 +10,6 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// VOICE_ONLY
   /// CHAT_ONLY
   final String? modality;
-
   /// (Output)
   /// The theme of the web widget.
   /// Possible values:
@@ -17,7 +17,6 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// LIGHT
   /// DARK
   final String? theme;
-
   /// (Output)
   /// The title of the web widget.
   final String? webWidgetTitle;
@@ -40,15 +39,12 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
     };
   }
 
-  factory AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig(
       modality: map['modality'] == null ? null : map['modality'] as String,
       theme: map['theme'] == null ? null : map['theme'] as String,
-      webWidgetTitle: map['webWidgetTitle'] == null
-          ? null
-          : map['webWidgetTitle'] as String,
+      webWidgetTitle: map['webWidgetTitle'] == null ? null : map['webWidgetTitle'] as String,
     );
   }
 }
+

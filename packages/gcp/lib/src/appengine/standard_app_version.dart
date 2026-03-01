@@ -674,87 +674,64 @@ import 'standard_app_version_vpc_access_connector.dart';
 class StandardAppVersion extends pulumi.CustomResource {
   /// Allows App Engine second generation runtimes to access the legacy bundled services.
   late final pulumi.Output<bool?> appEngineApis;
-
   /// Automatic scaling is based on request rate, response latencies, and other application metrics.
   /// Structure is documented below.
-  late final pulumi.Output<StandardAppVersionAutomaticScaling?>
-  automaticScaling;
-
+  late final pulumi.Output<StandardAppVersionAutomaticScaling?> automaticScaling;
   /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionBasicScaling?> basicScaling;
-
   /// If set to `true`, the service will be deleted if it is the last version.
   late final pulumi.Output<bool?> deleteServiceOnDestroy;
-
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionDeployment> deployment;
-
   /// The entrypoint for the application.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionEntrypoint> entrypoint;
-
   /// Environment variables available to the application.
   late final pulumi.Output<Map<String, String>?> envVariables;
-
   /// An ordered list of URL-matching patterns that should be applied to incoming requests.
   /// The first matching URL handles the request and other request handlers are not attempted.
   /// Structure is documented below.
   late final pulumi.Output<List<StandardAppVersionHandler>> handlers;
-
   /// A list of the types of messages that this application is able to receive.
   /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
   late final pulumi.Output<List<String>?> inboundServices;
-
   /// Instance class that is used to run this version. Valid values are
   /// AutomaticScaling: F1, F2, F4, F4_1G
   /// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
   /// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
   late final pulumi.Output<String> instanceClass;
-
   /// Configuration for third-party Python runtime libraries that are required by the application.
   /// Structure is documented below.
   late final pulumi.Output<List<StandardAppVersionLibrary>?> libraries;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionManualScaling?> manualScaling;
-
   /// Full path to the Version resource in the API. Example, "v1".
   late final pulumi.Output<String> name;
-
   /// If set to `true`, the application version will not be deleted.
   late final pulumi.Output<bool?> noopOnDestroy;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Desired runtime. Example python27.
   late final pulumi.Output<String> runtime;
-
   /// The version of the API in the given runtime environment.
   /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
   /// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
   late final pulumi.Output<String?> runtimeApiVersion;
-
   /// AppEngine service resource
   late final pulumi.Output<String> service;
-
   /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
   late final pulumi.Output<String> serviceAccount;
-
   /// Whether multiple requests can be dispatched to this version at once.
   late final pulumi.Output<bool?> threadsafe;
-
   /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
   late final pulumi.Output<String?> versionId;
-
   /// Enables VPC connectivity for standard apps.
   /// Structure is documented below.
-  late final pulumi.Output<StandardAppVersionVpcAccessConnector?>
-  vpcAccessConnector;
+  late final pulumi.Output<StandardAppVersionVpcAccessConnector?> vpcAccessConnector;
 
   /// Creates a new [StandardAppVersion].
   /// [name] The Pulumi resource name.
@@ -765,37 +742,23 @@ class StandardAppVersion extends pulumi.CustomResource {
     StandardAppVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/standardAppVersion:StandardAppVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/standardAppVersion:StandardAppVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.appEngineApis = registerOutput<bool?>('appEngineApis');
-    this.automaticScaling = registerOutput<StandardAppVersionAutomaticScaling?>(
-      'automaticScaling',
-    );
-    this.basicScaling = registerOutput<StandardAppVersionBasicScaling?>(
-      'basicScaling',
-    );
-    this.deleteServiceOnDestroy = registerOutput<bool?>(
-      'deleteServiceOnDestroy',
-    );
-    this.deployment = registerOutput<StandardAppVersionDeployment>(
-      'deployment',
-    );
-    this.entrypoint = registerOutput<StandardAppVersionEntrypoint>(
-      'entrypoint',
-    );
+    this.automaticScaling = registerOutput<StandardAppVersionAutomaticScaling?>('automaticScaling');
+    this.basicScaling = registerOutput<StandardAppVersionBasicScaling?>('basicScaling');
+    this.deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
+    this.deployment = registerOutput<StandardAppVersionDeployment>('deployment');
+    this.entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint');
     this.envVariables = registerOutput<Map<String, String>?>('envVariables');
     this.handlers = registerOutput<List<StandardAppVersionHandler>>('handlers');
     this.inboundServices = registerOutput<List<String>?>('inboundServices');
     this.instanceClass = registerOutput<String>('instanceClass');
-    this.libraries = registerOutput<List<StandardAppVersionLibrary>?>(
-      'libraries',
-    );
-    this.manualScaling = registerOutput<StandardAppVersionManualScaling?>(
-      'manualScaling',
-    );
+    this.libraries = registerOutput<List<StandardAppVersionLibrary>?>('libraries');
+    this.manualScaling = registerOutput<StandardAppVersionManualScaling?>('manualScaling');
     this.name = registerOutput<String>('name');
     this.noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
     this.project = registerOutput<String>('project');
@@ -805,9 +768,6 @@ class StandardAppVersion extends pulumi.CustomResource {
     this.serviceAccount = registerOutput<String>('serviceAccount');
     this.threadsafe = registerOutput<bool?>('threadsafe');
     this.versionId = registerOutput<String?>('versionId');
-    this.vpcAccessConnector =
-        registerOutput<StandardAppVersionVpcAccessConnector?>(
-          'vpcAccessConnector',
-        );
+    this.vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>('vpcAccessConnector');
   }
 }

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   /// The cloud location of the endpoint group, currently restricted to `global`.
   final String? location;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -21,15 +21,17 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'state': ?state};
+    return <String, dynamic>{
+      'location': ?location,
+      'state': ?state,
+    };
   }
 
-  factory MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupConnectedDeploymentGroupLocation(
       location: map['location'] == null ? null : map['location'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
+

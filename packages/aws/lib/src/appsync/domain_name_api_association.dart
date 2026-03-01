@@ -109,10 +109,8 @@ import 'domain_name_api_association_args.dart';
 class DomainNameApiAssociation extends pulumi.CustomResource {
   /// API ID.
   late final pulumi.Output<String> apiId;
-
   /// Appsync domain name.
   late final pulumi.Output<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -125,11 +123,11 @@ class DomainNameApiAssociation extends pulumi.CustomResource {
     DomainNameApiAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/domainNameApiAssociation:DomainNameApiAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/domainNameApiAssociation:DomainNameApiAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.apiId = registerOutput<String>('apiId');
     this.domainName = registerOutput<String>('domainName');
     this.region = registerOutput<String>('region');

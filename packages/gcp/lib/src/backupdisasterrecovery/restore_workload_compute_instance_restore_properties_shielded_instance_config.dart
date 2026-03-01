@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
   /// (Optional)
   final bool? enableIntegrityMonitoring;
-
   /// (Optional)
   final bool? enableSecureBoot;
-
   /// (Optional)
   final bool? enableVtpm;
 
@@ -28,17 +27,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
       enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
     );
   }
 }
+

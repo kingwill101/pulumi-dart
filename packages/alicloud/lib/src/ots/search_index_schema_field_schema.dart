@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class SearchIndexSchemaFieldSchema {
+  /// Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+  final String? analyzer;
+  /// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+  final bool? enableSortAndAgg;
+  /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+  final String fieldName;
+  /// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
+  final String fieldType;
+  /// Specifies whether to enable indexing for the column. Type: Boolean.
+  final bool? index;
+  /// Specifies whether the value is an array. Type: Boolean.
+  final bool? isArray;
+  /// Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+  final bool? store;
+
+  /// Creates a new [SearchIndexSchemaFieldSchema].
+  /// [analyzer] Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+  /// [enableSortAndAgg] Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+  /// [fieldName] The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+  /// [fieldType] Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
+  /// [index] Specifies whether to enable indexing for the column. Type: Boolean.
+  /// [isArray] Specifies whether the value is an array. Type: Boolean.
+  /// [store] Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+  SearchIndexSchemaFieldSchema({
+    this.analyzer,
+    this.enableSortAndAgg,
+    required this.fieldName,
+    required this.fieldType,
+    this.index,
+    this.isArray,
+    this.store,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'analyzer': ?analyzer,
+      'enableSortAndAgg': ?enableSortAndAgg,
+      'fieldName': fieldName,
+      'fieldType': fieldType,
+      'index': ?index,
+      'isArray': ?isArray,
+      'store': ?store,
+    };
+  }
+
+  factory SearchIndexSchemaFieldSchema.fromMap(Map<String, dynamic> map) {
+    return SearchIndexSchemaFieldSchema(
+      analyzer: map['analyzer'] == null ? null : map['analyzer'] as String,
+      enableSortAndAgg: map['enableSortAndAgg'] == null ? null : map['enableSortAndAgg'] as bool,
+      fieldName: map['fieldName'] as String,
+      fieldType: map['fieldType'] as String,
+      index: map['index'] == null ? null : map['index'] as bool,
+      isArray: map['isArray'] == null ? null : map['isArray'] as bool,
+      store: map['store'] == null ? null : map['store'] as bool,
+    );
+  }
+}
+

@@ -10,20 +10,15 @@ import 'connector_task_restart_policy.dart';
 class ConnectorArgs {
   /// Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
   final pulumi.Input<Map<String, String>>? configs;
-
   /// The connect cluster name.
   final pulumi.Input<String> connectCluster;
-
   /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
   final pulumi.Input<String> connectorId;
-
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
   /// Structure is documented below.
   final pulumi.Input<ConnectorTaskRestartPolicy>? taskRestartPolicy;
@@ -42,15 +37,13 @@ class ConnectorArgs {
     required String location,
     String? project,
     ConnectorTaskRestartPolicy? taskRestartPolicy,
-  }) : configs = pulumi.Input.asOptionalInput<Map<String, String>>(configs),
-       connectCluster = pulumi.Input.asInput<String>(connectCluster),
-       connectorId = pulumi.Input.asInput<String>(connectorId),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       taskRestartPolicy =
-           pulumi.Input.asOptionalInput<ConnectorTaskRestartPolicy>(
-             taskRestartPolicy,
-           );
+  }) :
+      configs = pulumi.Input.asOptionalInput<Map<String, String>>(configs),
+      connectCluster = pulumi.Input.asInput<String>(connectCluster),
+      connectorId = pulumi.Input.asInput<String>(connectorId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      taskRestartPolicy = pulumi.Input.asOptionalInput<ConnectorTaskRestartPolicy>(taskRestartPolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,28 +52,19 @@ class ConnectorArgs {
       'connectorId': connectorId,
       'location': location,
       'project': ?project,
-      'taskRestartPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectorTaskRestartPolicy,
-            Map<String, dynamic>
-          >(taskRestartPolicy, (value) => value.toMap()),
+      'taskRestartPolicy': ?pulumi.Input.mapOptionalInputValue<ConnectorTaskRestartPolicy, Map<String, dynamic>>(taskRestartPolicy, (value) => value.toMap()),
     };
   }
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      configs: map['configs'] == null
-          ? null
-          : (map['configs'] as Map).cast<String, String>(),
+      configs: map['configs'] == null ? null : (map['configs'] as Map).cast<String, String>(),
       connectCluster: map['connectCluster'] as String,
       connectorId: map['connectorId'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      taskRestartPolicy: map['taskRestartPolicy'] == null
-          ? null
-          : ConnectorTaskRestartPolicy.fromMap(
-              (map['taskRestartPolicy'] as Map).cast<String, dynamic>(),
-            ),
+      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

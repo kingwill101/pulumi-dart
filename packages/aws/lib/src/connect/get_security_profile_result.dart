@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSecurityProfile.
 class GetSecurityProfileResult {
   /// ARN of the Security Profile.
   final String arn;
-
   /// Description of the Security Profile.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
-
   /// The organization resource identifier for the security profile.
   final String organizationResourceId;
-
   /// List of permissions assigned to the security profile.
   final List<String> permissions;
   final String region;
   final String securityProfileId;
-
   /// Map of tags to assign to the Security Profile.
   final Map<String, String> tags;
 
@@ -78,3 +74,4 @@ class GetSecurityProfileResult {
     );
   }
 }
+

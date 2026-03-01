@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRandomPassword.
 class GetRandomPasswordResult {
   final String? excludeCharacters;
@@ -7,12 +8,10 @@ class GetRandomPasswordResult {
   final bool? excludeNumbers;
   final bool? excludePunctuation;
   final bool? excludeUppercase;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includeSpace;
   final int? passwordLength;
-
   /// Random password.
   final String randomPassword;
   final String region;
@@ -62,33 +61,18 @@ class GetRandomPasswordResult {
 
   factory GetRandomPasswordResult.fromMap(Map<String, dynamic> map) {
     return GetRandomPasswordResult(
-      excludeCharacters: map['excludeCharacters'] == null
-          ? null
-          : map['excludeCharacters'] as String,
-      excludeLowercase: map['excludeLowercase'] == null
-          ? null
-          : map['excludeLowercase'] as bool,
-      excludeNumbers: map['excludeNumbers'] == null
-          ? null
-          : map['excludeNumbers'] as bool,
-      excludePunctuation: map['excludePunctuation'] == null
-          ? null
-          : map['excludePunctuation'] as bool,
-      excludeUppercase: map['excludeUppercase'] == null
-          ? null
-          : map['excludeUppercase'] as bool,
+      excludeCharacters: map['excludeCharacters'] == null ? null : map['excludeCharacters'] as String,
+      excludeLowercase: map['excludeLowercase'] == null ? null : map['excludeLowercase'] as bool,
+      excludeNumbers: map['excludeNumbers'] == null ? null : map['excludeNumbers'] as bool,
+      excludePunctuation: map['excludePunctuation'] == null ? null : map['excludePunctuation'] as bool,
+      excludeUppercase: map['excludeUppercase'] == null ? null : map['excludeUppercase'] as bool,
       id: map['id'] as String,
-      includeSpace: map['includeSpace'] == null
-          ? null
-          : map['includeSpace'] as bool,
-      passwordLength: map['passwordLength'] == null
-          ? null
-          : map['passwordLength'] as int,
+      includeSpace: map['includeSpace'] == null ? null : map['includeSpace'] as bool,
+      passwordLength: map['passwordLength'] == null ? null : map['passwordLength'] as int,
       randomPassword: map['randomPassword'] as String,
       region: map['region'] as String,
-      requireEachIncludedType: map['requireEachIncludedType'] == null
-          ? null
-          : map['requireEachIncludedType'] as bool,
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : map['requireEachIncludedType'] as bool,
     );
   }
 }
+

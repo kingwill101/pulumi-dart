@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccessPoints.
 class GetAccessPointsResult {
   /// Set of Amazon Resource Names (ARNs).
   final List<String> arns;
   final String fileSystemId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of identifiers.
   final List<String> ids;
   final String region;
@@ -47,3 +46,4 @@ class GetAccessPointsResult {
     );
   }
 }
+

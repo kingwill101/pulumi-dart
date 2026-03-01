@@ -1,0 +1,111 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom_location_properties_authentication.dart';
+import 'identity.dart';
+
+/// {@template pulumi_extendedlocation_custom_location_args_doc}
+/// The set of arguments for CustomLocation.
+/// {@endtemplate}
+/// {@macro pulumi_extendedlocation_custom_location_args_doc}
+class CustomLocationArgs {
+  /// This is optional input that contains the authentication that should be used to generate the namespace.
+  final pulumi.Input<CustomLocationPropertiesAuthentication>? authentication;
+  /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
+  final pulumi.Input<List<String>>? clusterExtensionIds;
+  /// Display name for the Custom Locations location.
+  final pulumi.Input<String>? displayName;
+  /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
+  final pulumi.Input<String>? hostResourceId;
+  /// Type of host the Custom Locations is referencing (Kubernetes, etc...).
+  final pulumi.Input<String>? hostType;
+  /// Identity for the resource.
+  final pulumi.Input<Identity>? identity;
+  /// The geo-location where the resource lives
+  final pulumi.Input<String>? location;
+  /// Kubernetes namespace that will be created on the specified cluster.
+  final pulumi.Input<String>? namespace;
+  /// Provisioning State for the Custom Location.
+  final pulumi.Input<String>? provisioningState;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// Custom Locations name.
+  final pulumi.Input<String>? resourceName;
+  /// Resource tags.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [CustomLocationArgs].
+  /// [authentication] This is optional input that contains the authentication that should be used to generate the namespace.
+  /// [clusterExtensionIds] Contains the reference to the add-on that contains charts to deploy CRDs and operators.
+  /// [displayName] Display name for the Custom Locations location.
+  /// [hostResourceId] Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
+  /// [hostType] Type of host the Custom Locations is referencing (Kubernetes, etc...).
+  /// [identity] Identity for the resource.
+  /// [location] The geo-location where the resource lives
+  /// [namespace] Kubernetes namespace that will be created on the specified cluster.
+  /// [provisioningState] Provisioning State for the Custom Location.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [resourceName] Custom Locations name.
+  /// [tags] Resource tags.
+  CustomLocationArgs({
+    CustomLocationPropertiesAuthentication? authentication,
+    List<String>? clusterExtensionIds,
+    String? displayName,
+    String? hostResourceId,
+    String? hostType,
+    Identity? identity,
+    String? location,
+    String? namespace,
+    String? provisioningState,
+    required String resourceGroupName,
+    String? resourceName,
+    Map<String, String>? tags,
+  }) :
+      authentication = pulumi.Input.asOptionalInput<CustomLocationPropertiesAuthentication>(authentication),
+      clusterExtensionIds = pulumi.Input.asOptionalInput<List<String>>(clusterExtensionIds),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      hostResourceId = pulumi.Input.asOptionalInput<String>(hostResourceId),
+      hostType = pulumi.Input.asOptionalInput<String>(hostType),
+      identity = pulumi.Input.asOptionalInput<Identity>(identity),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      namespace = pulumi.Input.asOptionalInput<String>(namespace),
+      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authentication': ?pulumi.Input.mapOptionalInputValue<CustomLocationPropertiesAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'clusterExtensionIds': ?clusterExtensionIds,
+      'displayName': ?displayName,
+      'hostResourceId': ?hostResourceId,
+      'hostType': ?hostType,
+      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'location': ?location,
+      'namespace': ?namespace,
+      'provisioningState': ?provisioningState,
+      'resourceGroupName': resourceGroupName,
+      'resourceName': ?resourceName,
+      'tags': ?tags,
+    };
+  }
+
+  factory CustomLocationArgs.fromMap(Map<String, dynamic> map) {
+    return CustomLocationArgs(
+      authentication: map['authentication'] == null ? null : CustomLocationPropertiesAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
+      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : (map['clusterExtensionIds'] as List).cast<String>(),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      hostResourceId: map['hostResourceId'] == null ? null : map['hostResourceId'] as String,
+      hostType: map['hostType'] == null ? null : map['hostType'] as String,
+      identity: map['identity'] == null ? null : Identity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location'] as String,
+      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}
+

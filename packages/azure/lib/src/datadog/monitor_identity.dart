@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class MonitorIdentity {
+  /// The Principal ID for the Service Principal associated with the Identity of this Datadog Monitor.
+  final String? principalId;
+  /// The Tenant ID for the Service Principal associated with the Identity of this Datadog Monitor.
+  final String? tenantId;
+  /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is `SystemAssigned`.
+  ///
+  /// > **Note:** The assigned `principal_id` and `tenant_id` can be retrieved after the identity `type` has been set to `SystemAssigned` and the Datadog Monitor has been created. More details are available below.
+  final String type;
+
+  /// Creates a new [MonitorIdentity].
+  /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Datadog Monitor.
+  /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Datadog Monitor.
+  /// [type] Specifies the identity type of the Datadog Monitor. At this time the only allowed value is `SystemAssigned`.
+  MonitorIdentity({
+    this.principalId,
+    this.tenantId,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'principalId': ?principalId,
+      'tenantId': ?tenantId,
+      'type': type,
+    };
+  }
+
+  factory MonitorIdentity.fromMap(Map<String, dynamic> map) {
+    return MonitorIdentity(
+      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

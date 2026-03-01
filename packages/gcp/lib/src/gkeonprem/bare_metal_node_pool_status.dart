@@ -8,7 +8,6 @@ class BareMetalNodePoolStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
   /// Structure is documented below.
   final List<BareMetalNodePoolStatusCondition>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the user cluster
   /// controller. The error message can be temporary as the user cluster
@@ -20,33 +19,23 @@ class BareMetalNodePoolStatus {
   /// Creates a new [BareMetalNodePoolStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  BareMetalNodePoolStatus({this.conditions, this.errorMessage});
+  BareMetalNodePoolStatus({
+    this.conditions,
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null
-          ? null
-          : pulumi.Input.encodeList<
-              BareMetalNodePoolStatusCondition,
-              Map<String, dynamic>
-            >(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<BareMetalNodePoolStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
       'errorMessage': ?errorMessage,
     };
   }
 
   factory BareMetalNodePoolStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<BareMetalNodePoolStatusCondition>(
-              map['conditions'],
-              (value) => BareMetalNodePoolStatusCondition.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      errorMessage: map['errorMessage'] == null
-          ? null
-          : map['errorMessage'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<BareMetalNodePoolStatusCondition>(map['conditions'], (value) => BareMetalNodePoolStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
     );
   }
 }
+

@@ -6,14 +6,9 @@ import 'v2models_intent_initial_response_setting_conditional_conditional_branch_
 
 class V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
-  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage?
-  message;
-
+  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage? message;
   /// Configuration blocks for message variations to send to the user. When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user. See `variation`.
-  final List<
-    V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation
-  >?
-  variations;
+  final List<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation>? variations;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
@@ -26,35 +21,15 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMe
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'message': ?message == null ? null : message!.toMap(),
-      'variations': ?variations == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation,
-              Map<String, dynamic>
-            >(variations!, (value) => value.toMap()),
+      'variations': ?variations == null ? null : pulumi.Input.encodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation, Map<String, dynamic>>(variations!, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup(
-      message: map['message'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage.fromMap(
-              (map['message'] as Map).cast<String, dynamic>(),
-            ),
-      variations: map['variations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation
-            >(
-              map['variations'],
-              (value) =>
-                  V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      message: map['message'] == null ? null : V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>()),
+      variations: map['variations'] == null ? null : pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseReceivedMetadata {
   /// A list of allowed operations.
   final List<String> allowedOperations;
-
   /// Received status.
   final String receivedStatus;
-
   /// Received status reason.
   final String receivedStatusReason;
 
@@ -36,3 +35,4 @@ class GetReceivedLicenseReceivedMetadata {
     );
   }
 }
+

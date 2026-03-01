@@ -7,20 +7,11 @@ import 'get_group_mixed_instances_policy_launch_template_override_launch_templat
 class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
   /// List of instance requirements objects.
   /// * `accelerator_count - List of objects describing the minimum and maximum number of accelerators for an instance type.
-  final List<
-    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement
-  >
-  instanceRequirements;
-
+  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement> instanceRequirements;
   /// Overriding instance type.
   final String instanceType;
-
   /// List of overriding launch template specification objects.
-  final List<
-    GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification
-  >
-  launchTemplateSpecifications;
-
+  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification> launchTemplateSpecifications;
   /// Number of capacity units, which gives the instance type a proportional weight to other instance types.
   final String weightedCapacity;
 
@@ -38,47 +29,20 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceRequirements':
-          pulumi.Input.encodeList<
-            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement,
-            Map<String, dynamic>
-          >(instanceRequirements, (value) => value.toMap()),
+      'instanceRequirements': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement, Map<String, dynamic>>(instanceRequirements, (value) => value.toMap()),
       'instanceType': instanceType,
-      'launchTemplateSpecifications':
-          pulumi.Input.encodeList<
-            GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification,
-            Map<String, dynamic>
-          >(launchTemplateSpecifications, (value) => value.toMap()),
+      'launchTemplateSpecifications': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification, Map<String, dynamic>>(launchTemplateSpecifications, (value) => value.toMap()),
       'weightedCapacity': weightedCapacity,
     };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverride(
-      instanceRequirements:
-          pulumi.Input.decodeList<
-            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement
-          >(
-            map['instanceRequirements'],
-            (value) =>
-                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      instanceRequirements: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>(map['instanceRequirements'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap((value as Map).cast<String, dynamic>())),
       instanceType: map['instanceType'] as String,
-      launchTemplateSpecifications:
-          pulumi.Input.decodeList<
-            GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification
-          >(
-            map['launchTemplateSpecifications'],
-            (value) =>
-                GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      launchTemplateSpecifications: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification>(map['launchTemplateSpecifications'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap((value as Map).cast<String, dynamic>())),
       weightedCapacity: map['weightedCapacity'] as String,
     );
   }
 }
+

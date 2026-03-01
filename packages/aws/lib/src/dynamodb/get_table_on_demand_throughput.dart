@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableOnDemandThroughput {
   final int maxReadRequestUnits;
   final int maxWriteRequestUnits;
@@ -26,3 +27,4 @@ class GetTableOnDemandThroughput {
     );
   }
 }
+

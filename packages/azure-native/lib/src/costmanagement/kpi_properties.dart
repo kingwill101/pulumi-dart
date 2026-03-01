@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Each KPI must contain a 'type' and 'enabled' key.
+class KpiProperties {
+  /// show the KPI in the UI?
+  final bool? enabled;
+  /// ID of resource related to metric (budget).
+  final String? id;
+  /// KPI type (Forecast, Budget).
+  final String? type;
+
+  /// Creates a new [KpiProperties].
+  /// [enabled] show the KPI in the UI?
+  /// [id] ID of resource related to metric (budget).
+  /// [type] KPI type (Forecast, Budget).
+  KpiProperties({
+    this.enabled,
+    this.id,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'id': ?id,
+      'type': ?type,
+    };
+  }
+
+  factory KpiProperties.fromMap(Map<String, dynamic> map) {
+    return KpiProperties(
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      id: map['id'] == null ? null : map['id'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

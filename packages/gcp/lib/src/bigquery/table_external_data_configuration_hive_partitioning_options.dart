@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableExternalDataConfigurationHivePartitioningOptions {
   /// When set, what mode of hive partitioning to use when
   /// reading data. The following modes are supported.
@@ -10,12 +11,10 @@ class TableExternalDataConfigurationHivePartitioningOptions {
   /// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
   /// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
   final String? mode;
-
   /// If set to true, queries over this table
   /// require a partition filter that can be used for partition elimination to be
   /// specified.
   final bool? requirePartitionFilter;
-
   /// When hive partition detection is requested,
   /// a common for all source uris must be required. The prefix must end immediately
   /// before the partition key encoding begins. For example, consider files following
@@ -44,17 +43,12 @@ class TableExternalDataConfigurationHivePartitioningOptions {
     };
   }
 
-  factory TableExternalDataConfigurationHivePartitioningOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableExternalDataConfigurationHivePartitioningOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationHivePartitioningOptions(
       mode: map['mode'] == null ? null : map['mode'] as String,
-      requirePartitionFilter: map['requirePartitionFilter'] == null
-          ? null
-          : map['requirePartitionFilter'] as bool,
-      sourceUriPrefix: map['sourceUriPrefix'] == null
-          ? null
-          : map['sourceUriPrefix'] as String,
+      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : map['requirePartitionFilter'] as bool,
+      sourceUriPrefix: map['sourceUriPrefix'] == null ? null : map['sourceUriPrefix'] as String,
     );
   }
 }
+

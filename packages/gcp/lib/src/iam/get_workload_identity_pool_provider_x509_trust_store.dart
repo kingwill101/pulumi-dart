@@ -8,14 +8,11 @@ class GetWorkloadIdentityPoolProviderX509TrustStore {
   /// Set of intermediate CA certificates used for building the trust chain to
   /// trust anchor.
   /// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
-  final List<GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>
-  intermediateCas;
-
+  final List<GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa> intermediateCas;
   /// List of Trust Anchors to be used while performing validation
   /// against a given TrustStore. The incoming end entity's certificate
   /// must be chained up to one of the trust anchors here.
-  final List<GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor>
-  trustAnchors;
+  final List<GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor> trustAnchors;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderX509TrustStore].
   /// [intermediateCas] Set of intermediate CA certificates used for building the trust chain to
@@ -27,43 +24,16 @@ class GetWorkloadIdentityPoolProviderX509TrustStore {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intermediateCas':
-          pulumi.Input.encodeList<
-            GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa,
-            Map<String, dynamic>
-          >(intermediateCas, (value) => value.toMap()),
-      'trustAnchors':
-          pulumi.Input.encodeList<
-            GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor,
-            Map<String, dynamic>
-          >(trustAnchors, (value) => value.toMap()),
+      'intermediateCas': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa, Map<String, dynamic>>(intermediateCas, (value) => value.toMap()),
+      'trustAnchors': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor, Map<String, dynamic>>(trustAnchors, (value) => value.toMap()),
     };
   }
 
-  factory GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509TrustStore(
-      intermediateCas:
-          pulumi.Input.decodeList<
-            GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa
-          >(
-            map['intermediateCas'],
-            (value) =>
-                GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      trustAnchors:
-          pulumi.Input.decodeList<
-            GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor
-          >(
-            map['trustAnchors'],
-            (value) =>
-                GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      intermediateCas: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>(map['intermediateCas'], (value) => GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap((value as Map).cast<String, dynamic>())),
+      trustAnchors: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor>(map['trustAnchors'], (value) => GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

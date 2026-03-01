@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRecordSet.
 class GetRecordSetResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -7,10 +8,8 @@ class GetRecordSetResult {
   final String managedZone;
   final String name;
   final String? project;
-
   /// The string data for the records in this record set.
   final List<String> rrdatas;
-
   /// The time-to-live of this record set (seconds).
   final int ttl;
   final String type;
@@ -57,3 +56,4 @@ class GetRecordSetResult {
     );
   }
 }
+

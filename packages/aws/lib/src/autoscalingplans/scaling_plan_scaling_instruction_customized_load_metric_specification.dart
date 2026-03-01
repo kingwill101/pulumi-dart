@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
   /// Dimensions of the metric.
   final Map<String, String>? dimensions;
-
   /// Name of the metric.
   final String metricName;
-
   /// Namespace of the metric.
   final String namespace;
-
   /// Statistic of the metric. Currently, the value must always be `Sum`.
   final String statistic;
-
   /// Unit of the metric.
   final String? unit;
 
@@ -40,13 +37,9 @@ class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
     };
   }
 
-  factory ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionCustomizedLoadMetricSpecification(
-      dimensions: map['dimensions'] == null
-          ? null
-          : (map['dimensions'] as Map).cast<String, String>(),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as Map).cast<String, String>(),
       metricName: map['metricName'] as String,
       namespace: map['namespace'] as String,
       statistic: map['statistic'] as String,
@@ -54,3 +47,4 @@ class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
     );
   }
 }
+

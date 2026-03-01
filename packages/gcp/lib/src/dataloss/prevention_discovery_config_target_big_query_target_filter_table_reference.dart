@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   /// Dataset ID of the table.
   final String datasetId;
-
   /// Name of the table.
   final String tableId;
 
@@ -16,15 +16,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId, 'tableId': tableId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'tableId': tableId,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(
       datasetId: map['datasetId'] as String,
       tableId: map['tableId'] as String,
     );
   }
 }
+

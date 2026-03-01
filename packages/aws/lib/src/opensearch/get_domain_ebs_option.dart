@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainEbsOption {
   /// Whether EBS volumes are attached to data nodes in the domain.
   final bool ebsEnabled;
-
   /// Baseline input/output (I/O) performance of EBS volumes attached to data nodes.
   final int iops;
-
   /// The throughput (in MiB/s) of the EBS volumes attached to data nodes.
   final int throughput;
-
   /// Size of EBS volumes attached to data nodes (in GB).
   final int volumeSize;
-
   /// Type of EBS volumes attached to data nodes.
   final String volumeType;
 
@@ -50,3 +47,4 @@ class GetDomainEbsOption {
     );
   }
 }
+

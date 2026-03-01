@@ -13,23 +13,16 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final String? baseUrlContent1;
   final String? baseUrlManifest;
   final String? baseUrlManifest1;
-  final List<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping
-  >?
-  captionLanguageMappings;
+  final List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>? captionLanguageMappings;
   final String? captionLanguageSetting;
   final String? clientCache;
   final String? codecSpecification;
   final String? constantIv;
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination
-  destination;
+  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination destination;
   final String? directoryStructure;
   final String? discontinuityTags;
   final String? encryptionType;
-  final List<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting
-  >?
-  hlsCdnSettings;
+  final List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>? hlsCdnSettings;
   final String? hlsId3SegmentTagging;
   final String? iframeOnlyPlaylists;
   final String? incompleteSegmentBehavior;
@@ -40,8 +33,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final int? keepSegments;
   final String? keyFormat;
   final String? keyFormatVersions;
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings?
-  keyProviderSettings;
+  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings? keyProviderSettings;
   final String? manifestCompression;
   final String? manifestDurationFormat;
   final int? minSegmentLength;
@@ -54,7 +46,6 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final int? segmentLength;
   final int? segmentsPerSubdirectory;
   final String? streamInfResolution;
-
   /// Indicates ID3 frame that has the timecode.
   final String? timedMetadataId3Frame;
   final int? timedMetadataId3Period;
@@ -156,12 +147,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
       'baseUrlContent1': ?baseUrlContent1,
       'baseUrlManifest': ?baseUrlManifest,
       'baseUrlManifest1': ?baseUrlManifest1,
-      'captionLanguageMappings': ?captionLanguageMappings == null
-          ? null
-          : pulumi.Input.encodeList<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping,
-              Map<String, dynamic>
-            >(captionLanguageMappings!, (value) => value.toMap()),
+      'captionLanguageMappings': ?captionLanguageMappings == null ? null : pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping, Map<String, dynamic>>(captionLanguageMappings!, (value) => value.toMap()),
       'captionLanguageSetting': ?captionLanguageSetting,
       'clientCache': ?clientCache,
       'codecSpecification': ?codecSpecification,
@@ -170,12 +156,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
       'directoryStructure': ?directoryStructure,
       'discontinuityTags': ?discontinuityTags,
       'encryptionType': ?encryptionType,
-      'hlsCdnSettings': ?hlsCdnSettings == null
-          ? null
-          : pulumi.Input.encodeList<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting,
-              Map<String, dynamic>
-            >(hlsCdnSettings!, (value) => value.toMap()),
+      'hlsCdnSettings': ?hlsCdnSettings == null ? null : pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting, Map<String, dynamic>>(hlsCdnSettings!, (value) => value.toMap()),
       'hlsId3SegmentTagging': ?hlsId3SegmentTagging,
       'iframeOnlyPlaylists': ?iframeOnlyPlaylists,
       'incompleteSegmentBehavior': ?incompleteSegmentBehavior,
@@ -186,9 +167,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
       'keepSegments': ?keepSegments,
       'keyFormat': ?keyFormat,
       'keyFormatVersions': ?keyFormatVersions,
-      'keyProviderSettings': ?keyProviderSettings == null
-          ? null
-          : keyProviderSettings!.toMap(),
+      'keyProviderSettings': ?keyProviderSettings == null ? null : keyProviderSettings!.toMap(),
       'manifestCompression': ?manifestCompression,
       'manifestDurationFormat': ?manifestDurationFormat,
       'minSegmentLength': ?minSegmentLength,
@@ -208,149 +187,51 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings(
-      adMarkers: map['adMarkers'] == null
-          ? null
-          : (map['adMarkers'] as List).cast<String>(),
-      baseUrlContent: map['baseUrlContent'] == null
-          ? null
-          : map['baseUrlContent'] as String,
-      baseUrlContent1: map['baseUrlContent1'] == null
-          ? null
-          : map['baseUrlContent1'] as String,
-      baseUrlManifest: map['baseUrlManifest'] == null
-          ? null
-          : map['baseUrlManifest'] as String,
-      baseUrlManifest1: map['baseUrlManifest1'] == null
-          ? null
-          : map['baseUrlManifest1'] as String,
-      captionLanguageMappings: map['captionLanguageMappings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping
-            >(
-              map['captionLanguageMappings'],
-              (value) =>
-                  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      captionLanguageSetting: map['captionLanguageSetting'] == null
-          ? null
-          : map['captionLanguageSetting'] as String,
-      clientCache: map['clientCache'] == null
-          ? null
-          : map['clientCache'] as String,
-      codecSpecification: map['codecSpecification'] == null
-          ? null
-          : map['codecSpecification'] as String,
-      constantIv: map['constantIv'] == null
-          ? null
-          : map['constantIv'] as String,
-      destination:
-          ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination.fromMap(
-            (map['destination'] as Map).cast<String, dynamic>(),
-          ),
-      directoryStructure: map['directoryStructure'] == null
-          ? null
-          : map['directoryStructure'] as String,
-      discontinuityTags: map['discontinuityTags'] == null
-          ? null
-          : map['discontinuityTags'] as String,
-      encryptionType: map['encryptionType'] == null
-          ? null
-          : map['encryptionType'] as String,
-      hlsCdnSettings: map['hlsCdnSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting
-            >(
-              map['hlsCdnSettings'],
-              (value) =>
-                  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      hlsId3SegmentTagging: map['hlsId3SegmentTagging'] == null
-          ? null
-          : map['hlsId3SegmentTagging'] as String,
-      iframeOnlyPlaylists: map['iframeOnlyPlaylists'] == null
-          ? null
-          : map['iframeOnlyPlaylists'] as String,
-      incompleteSegmentBehavior: map['incompleteSegmentBehavior'] == null
-          ? null
-          : map['incompleteSegmentBehavior'] as String,
-      indexNSegments: map['indexNSegments'] == null
-          ? null
-          : map['indexNSegments'] as int,
-      inputLossAction: map['inputLossAction'] == null
-          ? null
-          : map['inputLossAction'] as String,
-      ivInManifest: map['ivInManifest'] == null
-          ? null
-          : map['ivInManifest'] as String,
+      adMarkers: map['adMarkers'] == null ? null : (map['adMarkers'] as List).cast<String>(),
+      baseUrlContent: map['baseUrlContent'] == null ? null : map['baseUrlContent'] as String,
+      baseUrlContent1: map['baseUrlContent1'] == null ? null : map['baseUrlContent1'] as String,
+      baseUrlManifest: map['baseUrlManifest'] == null ? null : map['baseUrlManifest'] as String,
+      baseUrlManifest1: map['baseUrlManifest1'] == null ? null : map['baseUrlManifest1'] as String,
+      captionLanguageMappings: map['captionLanguageMappings'] == null ? null : pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>(map['captionLanguageMappings'], (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap((value as Map).cast<String, dynamic>())),
+      captionLanguageSetting: map['captionLanguageSetting'] == null ? null : map['captionLanguageSetting'] as String,
+      clientCache: map['clientCache'] == null ? null : map['clientCache'] as String,
+      codecSpecification: map['codecSpecification'] == null ? null : map['codecSpecification'] as String,
+      constantIv: map['constantIv'] == null ? null : map['constantIv'] as String,
+      destination: ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      directoryStructure: map['directoryStructure'] == null ? null : map['directoryStructure'] as String,
+      discontinuityTags: map['discontinuityTags'] == null ? null : map['discontinuityTags'] as String,
+      encryptionType: map['encryptionType'] == null ? null : map['encryptionType'] as String,
+      hlsCdnSettings: map['hlsCdnSettings'] == null ? null : pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>(map['hlsCdnSettings'], (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting.fromMap((value as Map).cast<String, dynamic>())),
+      hlsId3SegmentTagging: map['hlsId3SegmentTagging'] == null ? null : map['hlsId3SegmentTagging'] as String,
+      iframeOnlyPlaylists: map['iframeOnlyPlaylists'] == null ? null : map['iframeOnlyPlaylists'] as String,
+      incompleteSegmentBehavior: map['incompleteSegmentBehavior'] == null ? null : map['incompleteSegmentBehavior'] as String,
+      indexNSegments: map['indexNSegments'] == null ? null : map['indexNSegments'] as int,
+      inputLossAction: map['inputLossAction'] == null ? null : map['inputLossAction'] as String,
+      ivInManifest: map['ivInManifest'] == null ? null : map['ivInManifest'] as String,
       ivSource: map['ivSource'] == null ? null : map['ivSource'] as String,
-      keepSegments: map['keepSegments'] == null
-          ? null
-          : map['keepSegments'] as int,
+      keepSegments: map['keepSegments'] == null ? null : map['keepSegments'] as int,
       keyFormat: map['keyFormat'] == null ? null : map['keyFormat'] as String,
-      keyFormatVersions: map['keyFormatVersions'] == null
-          ? null
-          : map['keyFormatVersions'] as String,
-      keyProviderSettings: map['keyProviderSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings.fromMap(
-              (map['keyProviderSettings'] as Map).cast<String, dynamic>(),
-            ),
-      manifestCompression: map['manifestCompression'] == null
-          ? null
-          : map['manifestCompression'] as String,
-      manifestDurationFormat: map['manifestDurationFormat'] == null
-          ? null
-          : map['manifestDurationFormat'] as String,
-      minSegmentLength: map['minSegmentLength'] == null
-          ? null
-          : map['minSegmentLength'] as int,
+      keyFormatVersions: map['keyFormatVersions'] == null ? null : map['keyFormatVersions'] as String,
+      keyProviderSettings: map['keyProviderSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings.fromMap((map['keyProviderSettings'] as Map).cast<String, dynamic>()),
+      manifestCompression: map['manifestCompression'] == null ? null : map['manifestCompression'] as String,
+      manifestDurationFormat: map['manifestDurationFormat'] == null ? null : map['manifestDurationFormat'] as String,
+      minSegmentLength: map['minSegmentLength'] == null ? null : map['minSegmentLength'] as int,
       mode: map['mode'] == null ? null : map['mode'] as String,
-      outputSelection: map['outputSelection'] == null
-          ? null
-          : map['outputSelection'] as String,
-      programDateTime: map['programDateTime'] == null
-          ? null
-          : map['programDateTime'] as String,
-      programDateTimeClock: map['programDateTimeClock'] == null
-          ? null
-          : map['programDateTimeClock'] as String,
-      programDateTimePeriod: map['programDateTimePeriod'] == null
-          ? null
-          : map['programDateTimePeriod'] as int,
-      redundantManifest: map['redundantManifest'] == null
-          ? null
-          : map['redundantManifest'] as String,
-      segmentLength: map['segmentLength'] == null
-          ? null
-          : map['segmentLength'] as int,
-      segmentsPerSubdirectory: map['segmentsPerSubdirectory'] == null
-          ? null
-          : map['segmentsPerSubdirectory'] as int,
-      streamInfResolution: map['streamInfResolution'] == null
-          ? null
-          : map['streamInfResolution'] as String,
-      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null
-          ? null
-          : map['timedMetadataId3Frame'] as String,
-      timedMetadataId3Period: map['timedMetadataId3Period'] == null
-          ? null
-          : map['timedMetadataId3Period'] as int,
-      timestampDeltaMilliseconds: map['timestampDeltaMilliseconds'] == null
-          ? null
-          : map['timestampDeltaMilliseconds'] as int,
-      tsFileMode: map['tsFileMode'] == null
-          ? null
-          : map['tsFileMode'] as String,
+      outputSelection: map['outputSelection'] == null ? null : map['outputSelection'] as String,
+      programDateTime: map['programDateTime'] == null ? null : map['programDateTime'] as String,
+      programDateTimeClock: map['programDateTimeClock'] == null ? null : map['programDateTimeClock'] as String,
+      programDateTimePeriod: map['programDateTimePeriod'] == null ? null : map['programDateTimePeriod'] as int,
+      redundantManifest: map['redundantManifest'] == null ? null : map['redundantManifest'] as String,
+      segmentLength: map['segmentLength'] == null ? null : map['segmentLength'] as int,
+      segmentsPerSubdirectory: map['segmentsPerSubdirectory'] == null ? null : map['segmentsPerSubdirectory'] as int,
+      streamInfResolution: map['streamInfResolution'] == null ? null : map['streamInfResolution'] as String,
+      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null ? null : map['timedMetadataId3Frame'] as String,
+      timedMetadataId3Period: map['timedMetadataId3Period'] == null ? null : map['timedMetadataId3Period'] as int,
+      timestampDeltaMilliseconds: map['timestampDeltaMilliseconds'] == null ? null : map['timestampDeltaMilliseconds'] as int,
+      tsFileMode: map['tsFileMode'] == null ? null : map['tsFileMode'] as String,
     );
   }
 }
+

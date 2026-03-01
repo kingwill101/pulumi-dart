@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadEkmProvisioningResponse {
   /// Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
   final String? ekmProvisioningErrorDomain;
-
   /// Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
   final String? ekmProvisioningErrorMapping;
-
   /// Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
   final String? ekmProvisioningState;
 
@@ -30,15 +29,10 @@ class WorkloadEkmProvisioningResponse {
 
   factory WorkloadEkmProvisioningResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadEkmProvisioningResponse(
-      ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] == null
-          ? null
-          : map['ekmProvisioningErrorDomain'] as String,
-      ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] == null
-          ? null
-          : map['ekmProvisioningErrorMapping'] as String,
-      ekmProvisioningState: map['ekmProvisioningState'] == null
-          ? null
-          : map['ekmProvisioningState'] as String,
+      ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] == null ? null : map['ekmProvisioningErrorDomain'] as String,
+      ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] == null ? null : map['ekmProvisioningErrorMapping'] as String,
+      ekmProvisioningState: map['ekmProvisioningState'] == null ? null : map['ekmProvisioningState'] as String,
     );
   }
 }
+

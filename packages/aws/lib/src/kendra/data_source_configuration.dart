@@ -7,10 +7,8 @@ import 'data_source_configuration_web_crawler_configuration.dart';
 class DataSourceConfiguration {
   /// A block that provides the configuration information to connect to an Amazon S3 bucket as your data source. Detailed below.
   final DataSourceConfigurationS3Configuration? s3Configuration;
-
   /// A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
   final DataSourceConfigurationTemplateConfiguration? templateConfiguration;
-
   /// A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
   final DataSourceConfigurationWebCrawlerConfiguration? webCrawlerConfiguration;
 
@@ -26,35 +24,18 @@ class DataSourceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Configuration': ?s3Configuration == null
-          ? null
-          : s3Configuration!.toMap(),
-      'templateConfiguration': ?templateConfiguration == null
-          ? null
-          : templateConfiguration!.toMap(),
-      'webCrawlerConfiguration': ?webCrawlerConfiguration == null
-          ? null
-          : webCrawlerConfiguration!.toMap(),
+      's3Configuration': ?s3Configuration == null ? null : s3Configuration!.toMap(),
+      'templateConfiguration': ?templateConfiguration == null ? null : templateConfiguration!.toMap(),
+      'webCrawlerConfiguration': ?webCrawlerConfiguration == null ? null : webCrawlerConfiguration!.toMap(),
     };
   }
 
   factory DataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfiguration(
-      s3Configuration: map['s3Configuration'] == null
-          ? null
-          : DataSourceConfigurationS3Configuration.fromMap(
-              (map['s3Configuration'] as Map).cast<String, dynamic>(),
-            ),
-      templateConfiguration: map['templateConfiguration'] == null
-          ? null
-          : DataSourceConfigurationTemplateConfiguration.fromMap(
-              (map['templateConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      webCrawlerConfiguration: map['webCrawlerConfiguration'] == null
-          ? null
-          : DataSourceConfigurationWebCrawlerConfiguration.fromMap(
-              (map['webCrawlerConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      s3Configuration: map['s3Configuration'] == null ? null : DataSourceConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
+      templateConfiguration: map['templateConfiguration'] == null ? null : DataSourceConfigurationTemplateConfiguration.fromMap((map['templateConfiguration'] as Map).cast<String, dynamic>()),
+      webCrawlerConfiguration: map['webCrawlerConfiguration'] == null ? null : DataSourceConfigurationWebCrawlerConfiguration.fromMap((map['webCrawlerConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

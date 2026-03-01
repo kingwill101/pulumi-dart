@@ -7,16 +7,12 @@ import 'deploy_policy_rule_rollout_restriction_time_windows_weekly_window.dart';
 class DeployPolicyRuleRolloutRestrictionTimeWindows {
   /// One-time windows within which actions are restricted.
   /// Structure is documented below.
-  final List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>?
-  oneTimeWindows;
-
+  final List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>? oneTimeWindows;
   /// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
   final String timeZone;
-
   /// Recurring weekly windows within which actions are restricted.
   /// Structure is documented below.
-  final List<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>?
-  weeklyWindows;
+  final List<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>? weeklyWindows;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindows].
   /// [oneTimeWindows] One-time windows within which actions are restricted.
@@ -30,49 +26,18 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oneTimeWindows': ?oneTimeWindows == null
-          ? null
-          : pulumi.Input.encodeList<
-              DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow,
-              Map<String, dynamic>
-            >(oneTimeWindows!, (value) => value.toMap()),
+      'oneTimeWindows': ?oneTimeWindows == null ? null : pulumi.Input.encodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow, Map<String, dynamic>>(oneTimeWindows!, (value) => value.toMap()),
       'timeZone': timeZone,
-      'weeklyWindows': ?weeklyWindows == null
-          ? null
-          : pulumi.Input.encodeList<
-              DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow,
-              Map<String, dynamic>
-            >(weeklyWindows!, (value) => value.toMap()),
+      'weeklyWindows': ?weeklyWindows == null ? null : pulumi.Input.encodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow, Map<String, dynamic>>(weeklyWindows!, (value) => value.toMap()),
     };
   }
 
-  factory DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindows(
-      oneTimeWindows: map['oneTimeWindows'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow
-            >(
-              map['oneTimeWindows'],
-              (value) =>
-                  DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      oneTimeWindows: map['oneTimeWindows'] == null ? null : pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>(map['oneTimeWindows'], (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.fromMap((value as Map).cast<String, dynamic>())),
       timeZone: map['timeZone'] as String,
-      weeklyWindows: map['weeklyWindows'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow
-            >(
-              map['weeklyWindows'],
-              (value) =>
-                  DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      weeklyWindows: map['weeklyWindows'] == null ? null : pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>(map['weeklyWindows'], (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'voice_connector_group_connector.dart';
 class VoiceConnectorGroupArgs {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
   final pulumi.Input<List<VoiceConnectorGroupConnector>>? connectors;
-
   /// The name of the Amazon Chime Voice Connector group.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -25,27 +23,14 @@ class VoiceConnectorGroupArgs {
     List<VoiceConnectorGroupConnector>? connectors,
     String? name,
     String? region,
-  }) : connectors =
-           pulumi.Input.asOptionalInput<List<VoiceConnectorGroupConnector>>(
-             connectors,
-           ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      connectors = pulumi.Input.asOptionalInput<List<VoiceConnectorGroupConnector>>(connectors),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VoiceConnectorGroupConnector>,
-            List<Map<String, dynamic>>
-          >(
-            connectors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VoiceConnectorGroupConnector,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'connectors': ?pulumi.Input.mapOptionalInputValue<List<VoiceConnectorGroupConnector>, List<Map<String, dynamic>>>(connectors, (value) => pulumi.Input.encodeList<VoiceConnectorGroupConnector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'region': ?region,
     };
@@ -53,16 +38,10 @@ class VoiceConnectorGroupArgs {
 
   factory VoiceConnectorGroupArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorGroupArgs(
-      connectors: map['connectors'] == null
-          ? null
-          : pulumi.Input.decodeList<VoiceConnectorGroupConnector>(
-              map['connectors'],
-              (value) => VoiceConnectorGroupConnector.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      connectors: map['connectors'] == null ? null : pulumi.Input.decodeList<VoiceConnectorGroupConnector>(map['connectors'], (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

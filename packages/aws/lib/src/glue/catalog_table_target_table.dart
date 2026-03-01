@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CatalogTableTargetTable {
   /// ID of the Data Catalog in which the table resides.
   final String catalogId;
-
   /// Name of the catalog database that contains the target table.
   final String databaseName;
-
   /// Name of the target table.
   final String name;
-
   /// Region of the target table.
   final String? region;
 
@@ -43,3 +41,4 @@ class CatalogTableTargetTable {
     );
   }
 }
+

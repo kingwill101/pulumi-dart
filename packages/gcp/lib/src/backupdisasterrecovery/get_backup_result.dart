@@ -7,22 +7,16 @@ import 'get_backup_backup.dart';
 class GetBackupResult {
   /// Name of the Backup Vault associated with Backup.
   final String backupVaultId;
-
   /// List of all backups under data source. Structure is defined below.
   final List<GetBackupBackup> backups;
-
   /// The time when the backup was created.
   final String createTime;
-
   /// Name of the Data Source associated with Backup.
   final String dataSourceId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Location of the resource.
   final String location;
-
   /// Name of the resource.
   final String name;
   final String project;
@@ -50,10 +44,7 @@ class GetBackupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupVaultId': backupVaultId,
-      'backups': pulumi.Input.encodeList<GetBackupBackup, Map<String, dynamic>>(
-        backups,
-        (value) => value.toMap(),
-      ),
+      'backups': pulumi.Input.encodeList<GetBackupBackup, Map<String, dynamic>>(backups, (value) => value.toMap()),
       'createTime': createTime,
       'dataSourceId': dataSourceId,
       'id': id,
@@ -66,11 +57,7 @@ class GetBackupResult {
   factory GetBackupResult.fromMap(Map<String, dynamic> map) {
     return GetBackupResult(
       backupVaultId: map['backupVaultId'] as String,
-      backups: pulumi.Input.decodeList<GetBackupBackup>(
-        map['backups'],
-        (value) =>
-            GetBackupBackup.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      backups: pulumi.Input.decodeList<GetBackupBackup>(map['backups'], (value) => GetBackupBackup.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       dataSourceId: map['dataSourceId'] as String,
       id: map['id'] as String,
@@ -80,3 +67,4 @@ class GetBackupResult {
     );
   }
 }
+

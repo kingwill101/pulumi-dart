@@ -9,54 +9,44 @@ class RegionBackendServiceOutlierDetection {
   /// 30000ms or 30s.
   /// Structure is documented below.
   final RegionBackendServiceOutlierDetectionBaseEjectionTime? baseEjectionTime;
-
   /// Number of errors before a host is ejected from the connection pool. When the
   /// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
   /// Defaults to 5.
   final int? consecutiveErrors;
-
   /// The number of consecutive gateway failures (502, 503, 504 status or connection
   /// errors that are mapped to one of those status codes) before a consecutive
   /// gateway failure ejection occurs. Defaults to 5.
   final int? consecutiveGatewayFailure;
-
   /// The percentage chance that a host will be actually ejected when an outlier
   /// status is detected through consecutive 5xx. This setting can be used to disable
   /// ejection or to ramp it up slowly. Defaults to 100.
   final int? enforcingConsecutiveErrors;
-
   /// The percentage chance that a host will be actually ejected when an outlier
   /// status is detected through consecutive gateway failures. This setting can be
   /// used to disable ejection or to ramp it up slowly. Defaults to 0.
   final int? enforcingConsecutiveGatewayFailure;
-
   /// The percentage chance that a host will be actually ejected when an outlier
   /// status is detected through success rate statistics. This setting can be used to
   /// disable ejection or to ramp it up slowly. Defaults to 100.
   final int? enforcingSuccessRate;
-
   /// Time interval between ejection sweep analysis. This can result in both new
   /// ejections as well as hosts being returned to service. Defaults to 10 seconds.
   /// Structure is documented below.
   final RegionBackendServiceOutlierDetectionInterval? interval;
-
   /// Maximum percentage of hosts in the load balancing pool for the backend service
   /// that can be ejected. Defaults to 10%.
   final int? maxEjectionPercent;
-
   /// The number of hosts in a cluster that must have enough request volume to detect
   /// success rate outliers. If the number of hosts is less than this setting, outlier
   /// detection via success rate statistics is not performed for any host in the
   /// cluster. Defaults to 5.
   final int? successRateMinimumHosts;
-
   /// The minimum number of total requests that must be collected in one interval (as
   /// defined by the interval duration above) to include this host in success rate
   /// based outlier detection. If the volume is lower than this setting, outlier
   /// detection via success rate statistics is not performed for that host. Defaults
   /// to 100.
   final int? successRateRequestVolume;
-
   /// This factor is used to determine the ejection threshold for success rate outlier
   /// ejection. The ejection threshold is the difference between the mean success
   /// rate, and the product of this factor and the standard deviation of the mean
@@ -93,9 +83,7 @@ class RegionBackendServiceOutlierDetection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseEjectionTime': ?baseEjectionTime == null
-          ? null
-          : baseEjectionTime!.toMap(),
+      'baseEjectionTime': ?baseEjectionTime == null ? null : baseEjectionTime!.toMap(),
       'consecutiveErrors': ?consecutiveErrors,
       'consecutiveGatewayFailure': ?consecutiveGatewayFailure,
       'enforcingConsecutiveErrors': ?enforcingConsecutiveErrors,
@@ -109,48 +97,20 @@ class RegionBackendServiceOutlierDetection {
     };
   }
 
-  factory RegionBackendServiceOutlierDetection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceOutlierDetection.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceOutlierDetection(
-      baseEjectionTime: map['baseEjectionTime'] == null
-          ? null
-          : RegionBackendServiceOutlierDetectionBaseEjectionTime.fromMap(
-              (map['baseEjectionTime'] as Map).cast<String, dynamic>(),
-            ),
-      consecutiveErrors: map['consecutiveErrors'] == null
-          ? null
-          : map['consecutiveErrors'] as int,
-      consecutiveGatewayFailure: map['consecutiveGatewayFailure'] == null
-          ? null
-          : map['consecutiveGatewayFailure'] as int,
-      enforcingConsecutiveErrors: map['enforcingConsecutiveErrors'] == null
-          ? null
-          : map['enforcingConsecutiveErrors'] as int,
-      enforcingConsecutiveGatewayFailure:
-          map['enforcingConsecutiveGatewayFailure'] == null
-          ? null
-          : map['enforcingConsecutiveGatewayFailure'] as int,
-      enforcingSuccessRate: map['enforcingSuccessRate'] == null
-          ? null
-          : map['enforcingSuccessRate'] as int,
-      interval: map['interval'] == null
-          ? null
-          : RegionBackendServiceOutlierDetectionInterval.fromMap(
-              (map['interval'] as Map).cast<String, dynamic>(),
-            ),
-      maxEjectionPercent: map['maxEjectionPercent'] == null
-          ? null
-          : map['maxEjectionPercent'] as int,
-      successRateMinimumHosts: map['successRateMinimumHosts'] == null
-          ? null
-          : map['successRateMinimumHosts'] as int,
-      successRateRequestVolume: map['successRateRequestVolume'] == null
-          ? null
-          : map['successRateRequestVolume'] as int,
-      successRateStdevFactor: map['successRateStdevFactor'] == null
-          ? null
-          : map['successRateStdevFactor'] as int,
+      baseEjectionTime: map['baseEjectionTime'] == null ? null : RegionBackendServiceOutlierDetectionBaseEjectionTime.fromMap((map['baseEjectionTime'] as Map).cast<String, dynamic>()),
+      consecutiveErrors: map['consecutiveErrors'] == null ? null : map['consecutiveErrors'] as int,
+      consecutiveGatewayFailure: map['consecutiveGatewayFailure'] == null ? null : map['consecutiveGatewayFailure'] as int,
+      enforcingConsecutiveErrors: map['enforcingConsecutiveErrors'] == null ? null : map['enforcingConsecutiveErrors'] as int,
+      enforcingConsecutiveGatewayFailure: map['enforcingConsecutiveGatewayFailure'] == null ? null : map['enforcingConsecutiveGatewayFailure'] as int,
+      enforcingSuccessRate: map['enforcingSuccessRate'] == null ? null : map['enforcingSuccessRate'] as int,
+      interval: map['interval'] == null ? null : RegionBackendServiceOutlierDetectionInterval.fromMap((map['interval'] as Map).cast<String, dynamic>()),
+      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : map['maxEjectionPercent'] as int,
+      successRateMinimumHosts: map['successRateMinimumHosts'] == null ? null : map['successRateMinimumHosts'] as int,
+      successRateRequestVolume: map['successRateRequestVolume'] == null ? null : map['successRateRequestVolume'] as int,
+      successRateStdevFactor: map['successRateStdevFactor'] == null ? null : map['successRateStdevFactor'] as int,
     );
   }
 }
+

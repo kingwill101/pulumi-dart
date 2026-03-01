@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader {
   /// Managed rule group name.
   final String name;
@@ -14,15 +15,17 @@ class GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

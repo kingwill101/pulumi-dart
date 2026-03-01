@@ -6,19 +6,13 @@ import 'v2models_intent_initial_response_setting_conditional_conditional_branch_
 
 class V2modelsIntentInitialResponseSettingConditionalConditionalBranch {
   /// Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
-  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition?
-  condition;
-
+  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition? condition;
   /// Name of the branch.
   final String name;
-
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStep?
-  nextStep;
-
+  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStep? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponse?
-  response;
+  final V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponse? response;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
@@ -41,26 +35,13 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranch {
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranch(
-      condition: map['condition'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      nextStep: map['nextStep'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStep.fromMap(
-              (map['nextStep'] as Map).cast<String, dynamic>(),
-            ),
-      response: map['response'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponse.fromMap(
-              (map['response'] as Map).cast<String, dynamic>(),
-            ),
+      nextStep: map['nextStep'] == null ? null : V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
+      response: map['response'] == null ? null : V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

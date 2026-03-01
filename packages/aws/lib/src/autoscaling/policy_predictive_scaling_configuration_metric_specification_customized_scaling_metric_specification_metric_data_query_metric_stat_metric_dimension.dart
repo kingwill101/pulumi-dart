@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension {
   /// Name of the dimension.
   final String name;
-
   /// Value of the dimension.
   final String value;
 
@@ -16,15 +16,17 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
   /// Designated field in the BigQuery table.
   /// Structure is documented below.
   final PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field;
-
   /// Field in a BigQuery table where each cell represents a dictionary phrase.
   /// Structure is documented below.
   final PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table;
@@ -21,21 +20,17 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'field': field.toMap(), 'table': table.toMap()};
+    return <String, dynamic>{
+      'field': field.toMap(),
+      'table': table.toMap(),
+    };
   }
 
-  factory PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(
-      field:
-          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField.fromMap(
-            (map['field'] as Map).cast<String, dynamic>(),
-          ),
-      table:
-          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.fromMap(
-            (map['table'] as Map).cast<String, dynamic>(),
-          ),
+      field: PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      table: PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

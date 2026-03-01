@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetPermission {
   final List<String> actions;
   final String principal;
@@ -7,10 +8,16 @@ class GetDataSetPermission {
   /// Creates a new [GetDataSetPermission].
   /// [actions] Required.
   /// [principal] Required.
-  GetDataSetPermission({required this.actions, required this.principal});
+  GetDataSetPermission({
+    required this.actions,
+    required this.principal,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actions': actions, 'principal': principal};
+    return <String, dynamic>{
+      'actions': actions,
+      'principal': principal,
+    };
   }
 
   factory GetDataSetPermission.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class GetDataSetPermission {
     );
   }
 }
+

@@ -10,29 +10,20 @@ class V2QueuedResourceTpu {
 
   /// Creates a new [V2QueuedResourceTpu].
   /// [nodeSpecs] The TPU node(s) being requested.
-  V2QueuedResourceTpu({this.nodeSpecs});
+  V2QueuedResourceTpu({
+    this.nodeSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSpecs': ?nodeSpecs == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2QueuedResourceTpuNodeSpec,
-              Map<String, dynamic>
-            >(nodeSpecs!, (value) => value.toMap()),
+      'nodeSpecs': ?nodeSpecs == null ? null : pulumi.Input.encodeList<V2QueuedResourceTpuNodeSpec, Map<String, dynamic>>(nodeSpecs!, (value) => value.toMap()),
     };
   }
 
   factory V2QueuedResourceTpu.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpu(
-      nodeSpecs: map['nodeSpecs'] == null
-          ? null
-          : pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(
-              map['nodeSpecs'],
-              (value) => V2QueuedResourceTpuNodeSpec.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      nodeSpecs: map['nodeSpecs'] == null ? null : pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(map['nodeSpecs'], (value) => V2QueuedResourceTpuNodeSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

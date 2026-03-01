@@ -1,0 +1,664 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rai_policy_properties_response.dart';
+import 'subscription_rai_policy_args.dart';
+import 'system_data_response.dart';
+
+/// Cognitive Services RaiPolicy.
+///
+/// Uses Azure REST API version 2025-10-01-preview.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### PutRaiPolicy
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var subscriptionRaiPolicy = new AzureNative.CognitiveServices.SubscriptionRaiPolicy("subscriptionRaiPolicy", new()
+///     {
+///         Properties = new AzureNative.CognitiveServices.Inputs.RaiPolicyPropertiesArgs
+///         {
+///             BasePolicyName = "Microsoft.Default",
+///             ContentFilters = new[]
+///             {
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = false,
+///                     Enabled = false,
+///                     Name = "Hate",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.High,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Hate",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.Medium,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Sexual",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.High,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Sexual",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.Medium,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Selfharm",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.High,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Selfharm",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.Medium,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Violence",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.Medium,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Violence",
+///                     SeverityThreshold = AzureNative.CognitiveServices.ContentLevel.Medium,
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Jailbreak",
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Protected Material Text",
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Protected Material Code",
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Completion,
+///                 },
+///                 new AzureNative.CognitiveServices.Inputs.RaiPolicyContentFilterArgs
+///                 {
+///                     Blocking = true,
+///                     Enabled = true,
+///                     Name = "Profanity",
+///                     Source = AzureNative.CognitiveServices.RaiPolicyContentSource.Prompt,
+///                 },
+///             },
+///             Mode = AzureNative.CognitiveServices.RaiPolicyMode.Asynchronous_filter,
+///         },
+///         RaiPolicyName = "raiPolicyName",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	cognitiveservices "github.com/pulumi/pulumi-azure-native-sdk/cognitiveservices/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cognitiveservices.NewSubscriptionRaiPolicy(ctx, "subscriptionRaiPolicy", &cognitiveservices.SubscriptionRaiPolicyArgs{
+/// 			Properties: &cognitiveservices.RaiPolicyPropertiesArgs{
+/// 				BasePolicyName: pulumi.String("Microsoft.Default"),
+/// 				ContentFilters: cognitiveservices.RaiPolicyContentFilterArray{
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(false),
+/// 						Enabled:           pulumi.Bool(false),
+/// 						Name:              pulumi.String("Hate"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelHigh),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Hate"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelMedium),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Sexual"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelHigh),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Sexual"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelMedium),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Selfharm"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelHigh),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Selfharm"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelMedium),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Violence"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelMedium),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking:          pulumi.Bool(true),
+/// 						Enabled:           pulumi.Bool(true),
+/// 						Name:              pulumi.String("Violence"),
+/// 						SeverityThreshold: pulumi.String(cognitiveservices.ContentLevelMedium),
+/// 						Source:            pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking: pulumi.Bool(true),
+/// 						Enabled:  pulumi.Bool(true),
+/// 						Name:     pulumi.String("Jailbreak"),
+/// 						Source:   pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking: pulumi.Bool(true),
+/// 						Enabled:  pulumi.Bool(true),
+/// 						Name:     pulumi.String("Protected Material Text"),
+/// 						Source:   pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking: pulumi.Bool(true),
+/// 						Enabled:  pulumi.Bool(true),
+/// 						Name:     pulumi.String("Protected Material Code"),
+/// 						Source:   pulumi.String(cognitiveservices.RaiPolicyContentSourceCompletion),
+/// 					},
+/// 					&cognitiveservices.RaiPolicyContentFilterArgs{
+/// 						Blocking: pulumi.Bool(true),
+/// 						Enabled:  pulumi.Bool(true),
+/// 						Name:     pulumi.String("Profanity"),
+/// 						Source:   pulumi.String(cognitiveservices.RaiPolicyContentSourcePrompt),
+/// 					},
+/// 				},
+/// 				Mode: pulumi.String(cognitiveservices.RaiPolicyMode_Asynchronous_filter),
+/// 			},
+/// 			RaiPolicyName: pulumi.String("raiPolicyName"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.cognitiveservices.SubscriptionRaiPolicy;
+/// import com.pulumi.azurenative.cognitiveservices.SubscriptionRaiPolicyArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.RaiPolicyPropertiesArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var subscriptionRaiPolicy = new SubscriptionRaiPolicy("subscriptionRaiPolicy", SubscriptionRaiPolicyArgs.builder()
+///             .properties(RaiPolicyPropertiesArgs.builder()
+///                 .basePolicyName("Microsoft.Default")
+///                 .contentFilters(
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(false)
+///                         .enabled(false)
+///                         .name("Hate")
+///                         .severityThreshold("High")
+///                         .source("Prompt")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Hate")
+///                         .severityThreshold("Medium")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Sexual")
+///                         .severityThreshold("High")
+///                         .source("Prompt")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Sexual")
+///                         .severityThreshold("Medium")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Selfharm")
+///                         .severityThreshold("High")
+///                         .source("Prompt")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Selfharm")
+///                         .severityThreshold("Medium")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Violence")
+///                         .severityThreshold("Medium")
+///                         .source("Prompt")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Violence")
+///                         .severityThreshold("Medium")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Jailbreak")
+///                         .source("Prompt")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Protected Material Text")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Protected Material Code")
+///                         .source("Completion")
+///                         .build(),
+///                     RaiPolicyContentFilterArgs.builder()
+///                         .blocking(true)
+///                         .enabled(true)
+///                         .name("Profanity")
+///                         .source("Prompt")
+///                         .build())
+///                 .mode("Asynchronous_filter")
+///                 .build())
+///             .raiPolicyName("raiPolicyName")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const subscriptionRaiPolicy = new azure_native.cognitiveservices.SubscriptionRaiPolicy("subscriptionRaiPolicy", {
+///     properties: {
+///         basePolicyName: "Microsoft.Default",
+///         contentFilters: [
+///             {
+///                 blocking: false,
+///                 enabled: false,
+///                 name: "Hate",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.High,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Hate",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.Medium,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Sexual",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.High,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Sexual",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.Medium,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Selfharm",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.High,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Selfharm",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.Medium,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Violence",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.Medium,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Violence",
+///                 severityThreshold: azure_native.cognitiveservices.ContentLevel.Medium,
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Jailbreak",
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Protected Material Text",
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Protected Material Code",
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Completion,
+///             },
+///             {
+///                 blocking: true,
+///                 enabled: true,
+///                 name: "Profanity",
+///                 source: azure_native.cognitiveservices.RaiPolicyContentSource.Prompt,
+///             },
+///         ],
+///         mode: azure_native.cognitiveservices.RaiPolicyMode.Asynchronous_filter,
+///     },
+///     raiPolicyName: "raiPolicyName",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// subscription_rai_policy = azure_native.cognitiveservices.SubscriptionRaiPolicy("subscriptionRaiPolicy",
+///     properties={
+///         "base_policy_name": "Microsoft.Default",
+///         "content_filters": [
+///             {
+///                 "blocking": False,
+///                 "enabled": False,
+///                 "name": "Hate",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.HIGH,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Hate",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.MEDIUM,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Sexual",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.HIGH,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Sexual",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.MEDIUM,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Selfharm",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.HIGH,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Selfharm",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.MEDIUM,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Violence",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.MEDIUM,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Violence",
+///                 "severity_threshold": azure_native.cognitiveservices.ContentLevel.MEDIUM,
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Jailbreak",
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Protected Material Text",
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Protected Material Code",
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.COMPLETION,
+///             },
+///             {
+///                 "blocking": True,
+///                 "enabled": True,
+///                 "name": "Profanity",
+///                 "source": azure_native.cognitiveservices.RaiPolicyContentSource.PROMPT,
+///             },
+///         ],
+///         "mode": azure_native.cognitiveservices.RaiPolicyMode.ASYNCHRONOUS_FILTER,
+///     },
+///     rai_policy_name="raiPolicyName")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   subscriptionRaiPolicy:
+///     type: azure-native:cognitiveservices:SubscriptionRaiPolicy
+///     properties:
+///       properties:
+///         basePolicyName: Microsoft.Default
+///         contentFilters:
+///           - blocking: false
+///             enabled: false
+///             name: Hate
+///             severityThreshold: High
+///             source: Prompt
+///           - blocking: true
+///             enabled: true
+///             name: Hate
+///             severityThreshold: Medium
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Sexual
+///             severityThreshold: High
+///             source: Prompt
+///           - blocking: true
+///             enabled: true
+///             name: Sexual
+///             severityThreshold: Medium
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Selfharm
+///             severityThreshold: High
+///             source: Prompt
+///           - blocking: true
+///             enabled: true
+///             name: Selfharm
+///             severityThreshold: Medium
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Violence
+///             severityThreshold: Medium
+///             source: Prompt
+///           - blocking: true
+///             enabled: true
+///             name: Violence
+///             severityThreshold: Medium
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Jailbreak
+///             source: Prompt
+///           - blocking: true
+///             enabled: true
+///             name: Protected Material Text
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Protected Material Code
+///             source: Completion
+///           - blocking: true
+///             enabled: true
+///             name: Profanity
+///             source: Prompt
+///         mode: Asynchronous_filter
+///       raiPolicyName: raiPolicyName
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:cognitiveservices:SubscriptionRaiPolicy raiPolicyName /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}
+/// ```
+class SubscriptionRaiPolicy extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Resource Etag.
+  late final pulumi.Output<String> etag;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// Properties of Cognitive Services RaiPolicy.
+  late final pulumi.Output<RaiPolicyPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [SubscriptionRaiPolicy].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [SubscriptionRaiPolicy]. {@macro pulumi_cognitiveservices_subscription_rai_policy_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  SubscriptionRaiPolicy(
+    String name, {
+    SubscriptionRaiPolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cognitiveservices:SubscriptionRaiPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.properties = registerOutput<RaiPolicyPropertiesResponse>('properties');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

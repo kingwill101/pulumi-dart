@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectorySamlProperty {
   final String relayStateParameterName;
   final String status;
@@ -31,3 +32,4 @@ class GetDirectorySamlProperty {
     );
   }
 }
+

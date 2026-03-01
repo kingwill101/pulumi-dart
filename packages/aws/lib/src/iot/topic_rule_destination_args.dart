@@ -10,10 +10,8 @@ import 'topic_rule_destination_vpc_configuration.dart';
 class TopicRuleDestinationArgs {
   /// Whether or not to enable the destination. Default: `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
   final pulumi.Input<TopicRuleDestinationVpcConfiguration> vpcConfiguration;
 
@@ -25,22 +23,16 @@ class TopicRuleDestinationArgs {
     bool? enabled,
     String? region,
     required TopicRuleDestinationVpcConfiguration vpcConfiguration,
-  }) : enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       vpcConfiguration =
-           pulumi.Input.asInput<TopicRuleDestinationVpcConfiguration>(
-             vpcConfiguration,
-           );
+  }) :
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpcConfiguration = pulumi.Input.asInput<TopicRuleDestinationVpcConfiguration>(vpcConfiguration);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
       'region': ?region,
-      'vpcConfiguration':
-          pulumi.Input.mapInputValue<
-            TopicRuleDestinationVpcConfiguration,
-            Map<String, dynamic>
-          >(vpcConfiguration, (value) => value.toMap()),
+      'vpcConfiguration': pulumi.Input.mapInputValue<TopicRuleDestinationVpcConfiguration, Map<String, dynamic>>(vpcConfiguration, (value) => value.toMap()),
     };
   }
 
@@ -48,9 +40,8 @@ class TopicRuleDestinationArgs {
     return TopicRuleDestinationArgs(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
-      vpcConfiguration: TopicRuleDestinationVpcConfiguration.fromMap(
-        (map['vpcConfiguration'] as Map).cast<String, dynamic>(),
-      ),
+      vpcConfiguration: TopicRuleDestinationVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// security ml analytics settings data sources
+class SecurityMLAnalyticsSettingsDataSource {
+  /// The connector id that provides the following data types
+  final String? connectorId;
+  /// The data types used by the security ml analytics settings
+  final List<String>? dataTypes;
+
+  /// Creates a new [SecurityMLAnalyticsSettingsDataSource].
+  /// [connectorId] The connector id that provides the following data types
+  /// [dataTypes] The data types used by the security ml analytics settings
+  SecurityMLAnalyticsSettingsDataSource({
+    this.connectorId,
+    this.dataTypes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'connectorId': ?connectorId,
+      'dataTypes': ?dataTypes,
+    };
+  }
+
+  factory SecurityMLAnalyticsSettingsDataSource.fromMap(Map<String, dynamic> map) {
+    return SecurityMLAnalyticsSettingsDataSource(
+      connectorId: map['connectorId'] == null ? null : map['connectorId'] as String,
+      dataTypes: map['dataTypes'] == null ? null : (map['dataTypes'] as List).cast<String>(),
+    );
+  }
+}
+

@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesInterfaceSourceHostdevUsbProduct {
+  /// Specifies the unique identifier for the vendor of the USB device.
+  final String? id;
+
+  /// Creates a new [DomainDevicesInterfaceSourceHostdevUsbProduct].
+  /// [id] Specifies the unique identifier for the vendor of the USB device.
+  DomainDevicesInterfaceSourceHostdevUsbProduct({
+    this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+    };
+  }
+
+  factory DomainDevicesInterfaceSourceHostdevUsbProduct.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesInterfaceSourceHostdevUsbProduct(
+      id: map['id'] == null ? null : map['id'] as String,
+    );
+  }
+}
+

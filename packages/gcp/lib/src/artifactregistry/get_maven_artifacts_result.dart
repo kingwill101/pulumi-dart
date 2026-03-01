@@ -8,7 +8,6 @@ class GetMavenArtifactsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// A list of all retrieved Artifact Registry Maven artifacts. Structure is defined below.
   final List<GetMavenArtifactsMavenArtifact> mavenArtifacts;
   final String? project;
@@ -32,11 +31,7 @@ class GetMavenArtifactsResult {
     return <String, dynamic>{
       'id': id,
       'location': location,
-      'mavenArtifacts':
-          pulumi.Input.encodeList<
-            GetMavenArtifactsMavenArtifact,
-            Map<String, dynamic>
-          >(mavenArtifacts, (value) => value.toMap()),
+      'mavenArtifacts': pulumi.Input.encodeList<GetMavenArtifactsMavenArtifact, Map<String, dynamic>>(mavenArtifacts, (value) => value.toMap()),
       'project': ?project,
       'repositoryId': repositoryId,
     };
@@ -46,14 +41,10 @@ class GetMavenArtifactsResult {
     return GetMavenArtifactsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      mavenArtifacts: pulumi.Input.decodeList<GetMavenArtifactsMavenArtifact>(
-        map['mavenArtifacts'],
-        (value) => GetMavenArtifactsMavenArtifact.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      mavenArtifacts: pulumi.Input.decodeList<GetMavenArtifactsMavenArtifact>(map['mavenArtifacts'], (value) => GetMavenArtifactsMavenArtifact.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       repositoryId: map['repositoryId'] as String,
     );
   }
 }
+

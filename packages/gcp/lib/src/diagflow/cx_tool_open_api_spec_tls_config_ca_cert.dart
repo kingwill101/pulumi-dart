@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxToolOpenApiSpecTlsConfigCaCert {
   /// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
   /// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
@@ -13,7 +14,6 @@ class CxToolOpenApiSpecTlsConfigCaCert {
   /// ```
   /// A base64-encoded string.
   final String cert;
-
   /// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
   final String displayName;
 
@@ -26,7 +26,10 @@ class CxToolOpenApiSpecTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': cert, 'displayName': displayName};
+    return <String, dynamic>{
+      'cert': cert,
+      'displayName': displayName,
+    };
   }
 
   factory CxToolOpenApiSpecTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
@@ -36,3 +39,4 @@ class CxToolOpenApiSpecTlsConfigCaCert {
     );
   }
 }
+

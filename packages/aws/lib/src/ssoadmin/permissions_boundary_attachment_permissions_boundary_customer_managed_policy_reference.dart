@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference {
   /// Name of the customer managed IAM Policy to be attached.
   final String name;
-
   /// The path to the IAM policy to be attached. The default is `/`. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) for more information.
   final String? path;
 
@@ -16,15 +16,17 @@ class PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyRefer
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'path': ?path};
+    return <String, dynamic>{
+      'name': name,
+      'path': ?path,
+    };
   }
 
-  factory PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap(Map<String, dynamic> map) {
     return PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference(
       name: map['name'] as String,
       path: map['path'] == null ? null : map['path'] as String,
     );
   }
 }
+

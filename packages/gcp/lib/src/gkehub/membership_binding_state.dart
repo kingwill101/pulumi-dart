@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MembershipBindingState {
   /// (Output)
   /// Code describes the state of a MembershipBinding resource.
@@ -7,10 +8,14 @@ class MembershipBindingState {
 
   /// Creates a new [MembershipBindingState].
   /// [code] (Output)
-  MembershipBindingState({this.code});
+  MembershipBindingState({
+    this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': ?code};
+    return <String, dynamic>{
+      'code': ?code,
+    };
   }
 
   factory MembershipBindingState.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class MembershipBindingState {
     );
   }
 }
+

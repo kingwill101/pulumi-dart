@@ -144,38 +144,26 @@ import 'organization_root.dart';
 class Organization extends pulumi.CustomResource {
   /// List of organization accounts including the master account. For a list excluding the master account, see the `non_master_accounts` attribute. All elements have these attributes:
   late final pulumi.Output<List<OrganizationAccount>> accounts;
-
   /// ARN of the root.
   late final pulumi.Output<String> arn;
-
   /// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `feature_set` set to `ALL`. Some services do not support enablement via this endpoint, see [warning in aws docs](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnableAWSServiceAccess.html).
   late final pulumi.Output<List<String>?> awsServiceAccessPrincipals;
-
   /// List of Organizations policy types to enable in the Organization Root. Organization must have `feature_set` set to `ALL`. For additional information about valid policy types (e.g., `AISERVICES_OPT_OUT_POLICY`, `BACKUP_POLICY`, `BEDROCK_POLICY`, `CHATBOT_POLICY`, `DECLARATIVE_POLICY_EC2`, `INSPECTOR_POLICY`, `RESOURCE_CONTROL_POLICY`, `S3_POLICY`, `SECURITYHUB_POLICY`, `SERVICE_CONTROL_POLICY`, `TAG_POLICY` and `UPGRADE_ROLLOUT_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html). To enable `INSPECTOR_POLICY`, `aws_service_access_principals` must include `inspector2.amazonaws.com`. To enable `SECURITYHUB_POLICY`, `aws_service_access_principals` must include `securityhub.amazonaws.com`.
   late final pulumi.Output<List<String>?> enabledPolicyTypes;
-
   /// Specify `ALL` (default) or `CONSOLIDATED_BILLING`.
   late final pulumi.Output<String?> featureSet;
-
   /// ARN of the master account.
   late final pulumi.Output<String> masterAccountArn;
-
   /// Email address of the master account.
   late final pulumi.Output<String> masterAccountEmail;
-
   /// Identifier of the master account.
   late final pulumi.Output<String> masterAccountId;
-
   /// Name of the master account.
   late final pulumi.Output<String> masterAccountName;
-
   /// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
-  late final pulumi.Output<List<OrganizationNonMasterAccount>>
-  nonMasterAccounts;
-
+  late final pulumi.Output<List<OrganizationNonMasterAccount>> nonMasterAccounts;
   /// Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `feature_set`, `master_account_arn`, `master_account_email` and `master_account_id` attributes will be returned. All others will be empty. Default: `false`.
   late final pulumi.Output<bool?> returnOrganizationOnly;
-
   /// List of organization roots. All elements have these attributes:
   late final pulumi.Output<List<OrganizationRoot>> roots;
 
@@ -188,30 +176,22 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:organizations/organization:Organization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:organizations/organization:Organization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accounts = registerOutput<List<OrganizationAccount>>('accounts');
     this.arn = registerOutput<String>('arn');
-    this.awsServiceAccessPrincipals = registerOutput<List<String>?>(
-      'awsServiceAccessPrincipals',
-    );
-    this.enabledPolicyTypes = registerOutput<List<String>?>(
-      'enabledPolicyTypes',
-    );
+    this.awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals');
+    this.enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes');
     this.featureSet = registerOutput<String?>('featureSet');
     this.masterAccountArn = registerOutput<String>('masterAccountArn');
     this.masterAccountEmail = registerOutput<String>('masterAccountEmail');
     this.masterAccountId = registerOutput<String>('masterAccountId');
     this.masterAccountName = registerOutput<String>('masterAccountName');
-    this.nonMasterAccounts = registerOutput<List<OrganizationNonMasterAccount>>(
-      'nonMasterAccounts',
-    );
-    this.returnOrganizationOnly = registerOutput<bool?>(
-      'returnOrganizationOnly',
-    );
+    this.nonMasterAccounts = registerOutput<List<OrganizationNonMasterAccount>>('nonMasterAccounts');
+    this.returnOrganizationOnly = registerOutput<bool?>('returnOrganizationOnly');
     this.roots = registerOutput<List<OrganizationRoot>>('roots');
   }
 }

@@ -5,9 +5,7 @@ import 'get_realtime_log_config_endpoint_kinesis_stream_config.dart';
 
 class GetRealtimeLogConfigEndpoint {
   /// (Required) Amazon Kinesis data stream configuration.
-  final List<GetRealtimeLogConfigEndpointKinesisStreamConfig>
-  kinesisStreamConfigs;
-
+  final List<GetRealtimeLogConfigEndpointKinesisStreamConfig> kinesisStreamConfigs;
   /// (Required) Type of data stream where real-time log data is sent. The only valid value is `Kinesis`.
   final String streamType;
 
@@ -21,27 +19,16 @@ class GetRealtimeLogConfigEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kinesisStreamConfigs':
-          pulumi.Input.encodeList<
-            GetRealtimeLogConfigEndpointKinesisStreamConfig,
-            Map<String, dynamic>
-          >(kinesisStreamConfigs, (value) => value.toMap()),
+      'kinesisStreamConfigs': pulumi.Input.encodeList<GetRealtimeLogConfigEndpointKinesisStreamConfig, Map<String, dynamic>>(kinesisStreamConfigs, (value) => value.toMap()),
       'streamType': streamType,
     };
   }
 
   factory GetRealtimeLogConfigEndpoint.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigEndpoint(
-      kinesisStreamConfigs:
-          pulumi.Input.decodeList<
-            GetRealtimeLogConfigEndpointKinesisStreamConfig
-          >(
-            map['kinesisStreamConfigs'],
-            (value) => GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      kinesisStreamConfigs: pulumi.Input.decodeList<GetRealtimeLogConfigEndpointKinesisStreamConfig>(map['kinesisStreamConfigs'], (value) => GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap((value as Map).cast<String, dynamic>())),
       streamType: map['streamType'] as String,
     );
   }
 }
+

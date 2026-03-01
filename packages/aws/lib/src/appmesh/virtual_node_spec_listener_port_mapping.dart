@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualNodeSpecListenerPortMapping {
   /// Port used for the port mapping.
   final int port;
-
   /// Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final String protocol;
 
@@ -16,7 +16,10 @@ class VirtualNodeSpecListenerPortMapping {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'protocol': protocol};
+    return <String, dynamic>{
+      'port': port,
+      'protocol': protocol,
+    };
   }
 
   factory VirtualNodeSpecListenerPortMapping.fromMap(Map<String, dynamic> map) {
@@ -26,3 +29,4 @@ class VirtualNodeSpecListenerPortMapping {
     );
   }
 }
+

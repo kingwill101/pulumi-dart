@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A class represent managed identities used for request and response
+class ManagedIdentity {
+  /// Represents the identity type: systemAssigned, userAssigned, None
+  final String? type;
+  /// Get or set the user assigned identities
+  final List<String>? userAssignedIdentities;
+
+  /// Creates a new [ManagedIdentity].
+  /// [type] Represents the identity type: systemAssigned, userAssigned, None
+  /// [userAssignedIdentities] Get or set the user assigned identities
+  ManagedIdentity({
+    this.type,
+    this.userAssignedIdentities,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': ?type,
+      'userAssignedIdentities': ?userAssignedIdentities,
+    };
+  }
+
+  factory ManagedIdentity.fromMap(Map<String, dynamic> map) {
+    return ManagedIdentity(
+      type: map['type'] == null ? null : map['type'] as String,
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+    );
+  }
+}
+

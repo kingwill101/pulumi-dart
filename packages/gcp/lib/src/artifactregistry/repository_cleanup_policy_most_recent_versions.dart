@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryCleanupPolicyMostRecentVersions {
   /// Minimum number of versions to keep.
   final int? keepCount;
-
   /// Match versions by package prefix. Applied on any prefix match.
   final List<String>? packageNamePrefixes;
 
@@ -22,14 +22,11 @@ class RepositoryCleanupPolicyMostRecentVersions {
     };
   }
 
-  factory RepositoryCleanupPolicyMostRecentVersions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryCleanupPolicyMostRecentVersions.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicyMostRecentVersions(
       keepCount: map['keepCount'] == null ? null : map['keepCount'] as int,
-      packageNamePrefixes: map['packageNamePrefixes'] == null
-          ? null
-          : (map['packageNamePrefixes'] as List).cast<String>(),
+      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : (map['packageNamePrefixes'] as List).cast<String>(),
     );
   }
 }
+

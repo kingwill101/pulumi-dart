@@ -111,13 +111,10 @@ import 'group_args.dart';
 class Group extends pulumi.CustomResource {
   /// The ARN assigned by AWS for this group.
   late final pulumi.Output<String> arn;
-
   /// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   late final pulumi.Output<String> name;
-
   /// Path in which to create the group.
   late final pulumi.Output<String?> path;
-
   /// The [unique ID][1] assigned by AWS.
   late final pulumi.Output<String> uniqueId;
 
@@ -125,13 +122,16 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_iam_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:iam/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:iam/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     this.path = registerOutput<String?>('path');

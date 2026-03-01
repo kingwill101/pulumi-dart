@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadIdentityPoolNamespaceOwnerService {
   /// (Output)
   /// The service agent principal subject, e.g.
@@ -8,19 +9,20 @@ class WorkloadIdentityPoolNamespaceOwnerService {
 
   /// Creates a new [WorkloadIdentityPoolNamespaceOwnerService].
   /// [principalSubject] (Output)
-  WorkloadIdentityPoolNamespaceOwnerService({this.principalSubject});
+  WorkloadIdentityPoolNamespaceOwnerService({
+    this.principalSubject,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalSubject': ?principalSubject};
+    return <String, dynamic>{
+      'principalSubject': ?principalSubject,
+    };
   }
 
-  factory WorkloadIdentityPoolNamespaceOwnerService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolNamespaceOwnerService.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceOwnerService(
-      principalSubject: map['principalSubject'] == null
-          ? null
-          : map['principalSubject'] as String,
+      principalSubject: map['principalSubject'] == null ? null : map['principalSubject'] as String,
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPrivateCloudHcx {
   /// Fully qualified domain name of the appliance.
   final String fqdn;
-
   /// Internal IP address of the appliance.
   final String internalIp;
-
   /// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
   final String state;
-
   /// Version of the appliance.
   final String version;
 
@@ -43,3 +41,4 @@ class GetPrivateCloudHcx {
     );
   }
 }
+

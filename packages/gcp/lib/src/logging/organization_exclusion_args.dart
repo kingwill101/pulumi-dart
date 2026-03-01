@@ -9,19 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationExclusionArgs {
   /// A human-readable description.
   final pulumi.Input<String>? description;
-
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   final pulumi.Input<bool>? disabled;
-
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   final pulumi.Input<String> filter;
-
   /// The name of the logging exclusion.
   final pulumi.Input<String>? name;
-
   /// The organization to create the exclusion in.
   final pulumi.Input<String> orgId;
 
@@ -37,11 +33,12 @@ class OrganizationExclusionArgs {
     required String filter,
     String? name,
     required String orgId,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-       filter = pulumi.Input.asInput<String>(filter),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       orgId = pulumi.Input.asInput<String>(orgId);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      filter = pulumi.Input.asInput<String>(filter),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      orgId = pulumi.Input.asInput<String>(orgId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,9 +52,7 @@ class OrganizationExclusionArgs {
 
   factory OrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       filter: map['filter'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -65,3 +60,4 @@ class OrganizationExclusionArgs {
     );
   }
 }
+

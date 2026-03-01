@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
   /// The name of the header to add.
   final String headerName;
-
   /// The value of the header to add.
   final String headerValue;
-
   /// Whether to replace all existing headers with the same name.
   /// By default, added header values are appended
   /// to the response or request headers with the
@@ -33,9 +32,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
     };
   }
 
-  factory EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(
       headerName: map['headerName'] as String,
       headerValue: map['headerValue'] as String,
@@ -43,3 +40,4 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
   /// Optional. Whether to enable nested virtualization or not (default is false).
   final bool? enableNestedVirtualization;
-
   /// Optional. Whether to enable UEFI networking for instance creation.
   final bool? enableUefiNetworking;
-
   /// Optional. The number of threads per physical core.
   final int? threadsPerCore;
-
   /// Optional. The number of physical cores to expose to an instance.
   final int? visibleCoreCount;
 
@@ -34,22 +32,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null
-          ? null
-          : map['enableNestedVirtualization'] as bool,
-      enableUefiNetworking: map['enableUefiNetworking'] == null
-          ? null
-          : map['enableUefiNetworking'] as bool,
-      threadsPerCore: map['threadsPerCore'] == null
-          ? null
-          : map['threadsPerCore'] as int,
-      visibleCoreCount: map['visibleCoreCount'] == null
-          ? null
-          : map['visibleCoreCount'] as int,
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : map['enableNestedVirtualization'] as bool,
+      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : map['enableUefiNetworking'] as bool,
+      threadsPerCore: map['threadsPerCore'] == null ? null : map['threadsPerCore'] as int,
+      visibleCoreCount: map['visibleCoreCount'] == null ? null : map['visibleCoreCount'] as int,
     );
   }
 }
+

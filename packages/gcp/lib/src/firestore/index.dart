@@ -1682,17 +1682,13 @@ class Index extends pulumi.CustomResource {
   /// Default value is `ANY_API`.
   /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
   late final pulumi.Output<String?> apiScope;
-
   /// The collection being indexed.
   late final pulumi.Output<String> collection;
-
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
-
   /// The density configuration for this index.
   /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
   late final pulumi.Output<String> density;
-
   /// The fields supported by this index. The last non-stored field entry is
   /// always for the field path `__name__`. If, on creation, `__name__` was not
   /// specified as the last field, it will be added automatically with the same
@@ -1701,23 +1697,18 @@ class Index extends pulumi.CustomResource {
   /// `"ASCENDING"` (unless explicitly specified otherwise).
   /// Structure is documented below.
   late final pulumi.Output<List<IndexField>> fields;
-
   /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
   late final pulumi.Output<bool?> multikey;
-
   /// A server defined name for this index. Format:
   /// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The scope at which a query is run.
   /// Default value is `COLLECTION`.
   /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
   late final pulumi.Output<String?> queryScope;
-
   /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
   late final pulumi.Output<bool> unique;
 
@@ -1725,13 +1716,16 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_firestore_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:firestore/index:Index',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Index(
+    String name, {
+    IndexArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:firestore/index:Index',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.apiScope = registerOutput<String?>('apiScope');
     this.collection = registerOutput<String>('collection');
     this.database = registerOutput<String?>('database');

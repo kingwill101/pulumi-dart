@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorCapacityProvisionedCapacity {
   /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   final int? mcuCount;
-
   /// The number of workers that are allocated to the connector.
   final int workerCount;
 
@@ -16,15 +16,17 @@ class ConnectorCapacityProvisionedCapacity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mcuCount': ?mcuCount, 'workerCount': workerCount};
+    return <String, dynamic>{
+      'mcuCount': ?mcuCount,
+      'workerCount': workerCount,
+    };
   }
 
-  factory ConnectorCapacityProvisionedCapacity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorCapacityProvisionedCapacity.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityProvisionedCapacity(
       mcuCount: map['mcuCount'] == null ? null : map['mcuCount'] as int,
       workerCount: map['workerCount'] as int,
     );
   }
 }
+

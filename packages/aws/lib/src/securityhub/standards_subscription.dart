@@ -195,7 +195,6 @@ import 'standards_subscription_args.dart';
 class StandardsSubscription extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of a standard - see below.
   ///
   /// Currently available standards (remember to replace `${var.partition}` and `${var.region}` as appropriate):
@@ -222,11 +221,11 @@ class StandardsSubscription extends pulumi.CustomResource {
     StandardsSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/standardsSubscription:StandardsSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/standardsSubscription:StandardsSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.standardsArn = registerOutput<String>('standardsArn');
   }

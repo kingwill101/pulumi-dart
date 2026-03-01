@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget {
   /// ID of the Capacity Reservation in which to run the instance.
   final String? capacityReservationId;
-
   /// ARN of the Capacity Reservation resource group in which to run the instance.
   final String? capacityReservationResourceGroupArn;
 
@@ -18,22 +18,15 @@ class SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarg
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityReservationId': ?capacityReservationId,
-      'capacityReservationResourceGroupArn':
-          ?capacityReservationResourceGroupArn,
+      'capacityReservationResourceGroupArn': ?capacityReservationResourceGroupArn,
     };
   }
 
-  factory SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget(
-      capacityReservationId: map['capacityReservationId'] == null
-          ? null
-          : map['capacityReservationId'] as String,
-      capacityReservationResourceGroupArn:
-          map['capacityReservationResourceGroupArn'] == null
-          ? null
-          : map['capacityReservationResourceGroupArn'] as String,
+      capacityReservationId: map['capacityReservationId'] == null ? null : map['capacityReservationId'] as String,
+      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : map['capacityReservationResourceGroupArn'] as String,
     );
   }
 }
+

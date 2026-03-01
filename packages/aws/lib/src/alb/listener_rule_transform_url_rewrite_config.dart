@@ -8,7 +8,9 @@ class ListenerRuleTransformUrlRewriteConfig {
 
   /// Creates a new [ListenerRuleTransformUrlRewriteConfig].
   /// [rewrite] Block for URL rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  ListenerRuleTransformUrlRewriteConfig({this.rewrite});
+  ListenerRuleTransformUrlRewriteConfig({
+    this.rewrite,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class ListenerRuleTransformUrlRewriteConfig {
     };
   }
 
-  factory ListenerRuleTransformUrlRewriteConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransformUrlRewriteConfig(
-      rewrite: map['rewrite'] == null
-          ? null
-          : ListenerRuleTransformUrlRewriteConfigRewrite.fromMap(
-              (map['rewrite'] as Map).cast<String, dynamic>(),
-            ),
+      rewrite: map['rewrite'] == null ? null : ListenerRuleTransformUrlRewriteConfigRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

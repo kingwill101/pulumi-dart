@@ -3582,75 +3582,53 @@ import 'spoke_reason.dart';
 class Spoke extends pulumi.CustomResource {
   /// Output only. The time the spoke was created.
   late final pulumi.Output<String> createTime;
-
   /// An optional description of the spoke.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This is a gateway that can apply specialized processing to traffic going through it.
   /// Structure is documented below.
   late final pulumi.Output<SpokeGateway?> gateway;
-
   /// The name of the group that this spoke is associated with.
   late final pulumi.Output<String> group;
-
   /// Immutable. The URI of the hub that this spoke is attached to.
   late final pulumi.Output<String> hub;
-
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedInterconnectAttachments?>
-  linkedInterconnectAttachments;
-
+  late final pulumi.Output<SpokeLinkedInterconnectAttachments?> linkedInterconnectAttachments;
   /// Producer VPC network that is associated with the spoke.
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedProducerVpcNetwork?>
-  linkedProducerVpcNetwork;
-
+  late final pulumi.Output<SpokeLinkedProducerVpcNetwork?> linkedProducerVpcNetwork;
   /// The URIs of linked Router appliance resources
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedRouterApplianceInstances?>
-  linkedRouterApplianceInstances;
-
+  late final pulumi.Output<SpokeLinkedRouterApplianceInstances?> linkedRouterApplianceInstances;
   /// VPC network that is associated with the spoke.
   /// Structure is documented below.
   late final pulumi.Output<SpokeLinkedVpcNetwork?> linkedVpcNetwork;
-
   /// The URIs of linked VPN tunnel resources
   /// Structure is documented below.
   late final pulumi.Output<SpokeLinkedVpnTunnels?> linkedVpnTunnels;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Immutable. The name of the spoke. Spoke names must be unique.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The reasons for the current state in the lifecycle
   /// Structure is documented below.
   late final pulumi.Output<List<SpokeReason>> reasons;
-
   /// Output only. The current lifecycle state of this spoke.
   late final pulumi.Output<String> state;
-
   /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
   late final pulumi.Output<String> uniqueId;
-
   /// Output only. The time the spoke was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -3658,40 +3636,28 @@ class Spoke extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Spoke]. {@macro pulumi_networkconnectivity_spoke_spoke_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Spoke(String name, {SpokeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:networkconnectivity/spoke:Spoke',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Spoke(
+    String name, {
+    SpokeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:networkconnectivity/spoke:Spoke',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.gateway = registerOutput<SpokeGateway?>('gateway');
     this.group = registerOutput<String>('group');
     this.hub = registerOutput<String>('hub');
     this.labels = registerOutput<Map<String, String>?>('labels');
-    this.linkedInterconnectAttachments =
-        registerOutput<SpokeLinkedInterconnectAttachments?>(
-          'linkedInterconnectAttachments',
-        );
-    this.linkedProducerVpcNetwork =
-        registerOutput<SpokeLinkedProducerVpcNetwork?>(
-          'linkedProducerVpcNetwork',
-        );
-    this.linkedRouterApplianceInstances =
-        registerOutput<SpokeLinkedRouterApplianceInstances?>(
-          'linkedRouterApplianceInstances',
-        );
-    this.linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>(
-      'linkedVpcNetwork',
-    );
-    this.linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>(
-      'linkedVpnTunnels',
-    );
+    this.linkedInterconnectAttachments = registerOutput<SpokeLinkedInterconnectAttachments?>('linkedInterconnectAttachments');
+    this.linkedProducerVpcNetwork = registerOutput<SpokeLinkedProducerVpcNetwork?>('linkedProducerVpcNetwork');
+    this.linkedRouterApplianceInstances = registerOutput<SpokeLinkedRouterApplianceInstances?>('linkedRouterApplianceInstances');
+    this.linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>('linkedVpcNetwork');
+    this.linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>('linkedVpnTunnels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

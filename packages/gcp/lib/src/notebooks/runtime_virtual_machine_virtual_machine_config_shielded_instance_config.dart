@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   /// Enables monitoring and attestation of the boot integrity of
@@ -8,14 +9,12 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// from the implicitly trusted boot image when the instance is
   /// created. Enabled by default.
   final bool? enableIntegrityMonitoring;
-
   /// Defines whether the instance has Secure Boot enabled.Secure
   /// Boot helps ensure that the system only runs authentic software
   /// by verifying the digital signature of all boot components, and
   /// halting the boot process if signature verification fails.
   /// Disabled by default.
   final bool? enableSecureBoot;
-
   /// Defines whether the instance has the vTPM enabled. Enabled by
   /// default.
   final bool? enableVtpm;
@@ -38,17 +37,12 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
     };
   }
 
-  factory RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
       enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
     );
   }
 }
+

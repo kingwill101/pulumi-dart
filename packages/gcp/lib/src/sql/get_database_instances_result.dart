@@ -6,7 +6,6 @@ import 'get_database_instances_instance.dart';
 /// Result data returned by getDatabaseInstances.
 class GetDatabaseInstancesResult {
   final String? databaseVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetDatabaseInstancesInstance> instances;
@@ -40,11 +39,7 @@ class GetDatabaseInstancesResult {
     return <String, dynamic>{
       'databaseVersion': ?databaseVersion,
       'id': id,
-      'instances':
-          pulumi.Input.encodeList<
-            GetDatabaseInstancesInstance,
-            Map<String, dynamic>
-          >(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.encodeList<GetDatabaseInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
       'state': ?state,
@@ -55,16 +50,9 @@ class GetDatabaseInstancesResult {
 
   factory GetDatabaseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesResult(
-      databaseVersion: map['databaseVersion'] == null
-          ? null
-          : map['databaseVersion'] as String,
+      databaseVersion: map['databaseVersion'] == null ? null : map['databaseVersion'] as String,
       id: map['id'] as String,
-      instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(
-        map['instances'],
-        (value) => GetDatabaseInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(map['instances'], (value) => GetDatabaseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       state: map['state'] == null ? null : map['state'] as String,
@@ -73,3 +61,4 @@ class GetDatabaseInstancesResult {
     );
   }
 }
+

@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// HTTPGetAction describes an action based on HTTP Get requests.
+class HTTPGetAction {
+  /// Path to access on the HTTP server.
+  final String? path;
+  /// Scheme to use for connecting to the host. Defaults to HTTP.
+  ///
+  /// Possible enum values:
+  /// - `"HTTP"` means that the scheme used will be http://
+  /// - `"HTTPS"` means that the scheme used will be https://
+  final String? scheme;
+  /// The type of the action to take to perform the health check.
+  /// Expected value is 'HTTPGetAction'.
+  final String type;
+
+  /// Creates a new [HTTPGetAction].
+  /// [path] Path to access on the HTTP server.
+  /// [scheme] Scheme to use for connecting to the host. Defaults to HTTP.
+  /// [type] The type of the action to take to perform the health check.
+  HTTPGetAction({
+    this.path,
+    this.scheme,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'path': ?path,
+      'scheme': ?scheme,
+      'type': type,
+    };
+  }
+
+  factory HTTPGetAction.fromMap(Map<String, dynamic> map) {
+    return HTTPGetAction(
+      path: map['path'] == null ? null : map['path'] as String,
+      scheme: map['scheme'] == null ? null : map['scheme'] as String,
+      type: map['type'] as String,
+    );
+  }
+}
+

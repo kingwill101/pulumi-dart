@@ -9,7 +9,9 @@ class JobConfigOverlayAnimation {
 
   /// Creates a new [JobConfigOverlayAnimation].
   /// [animationFade] Display overlay object with fade animation.
-  JobConfigOverlayAnimation({this.animationFade});
+  JobConfigOverlayAnimation({
+    this.animationFade,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class JobConfigOverlayAnimation {
 
   factory JobConfigOverlayAnimation.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimation(
-      animationFade: map['animationFade'] == null
-          ? null
-          : JobConfigOverlayAnimationAnimationFade.fromMap(
-              (map['animationFade'] as Map).cast<String, dynamic>(),
-            ),
+      animationFade: map['animationFade'] == null ? null : JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

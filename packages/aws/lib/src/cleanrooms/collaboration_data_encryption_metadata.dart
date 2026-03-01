@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CollaborationDataEncryptionMetadata {
   /// Whether encrypted tables can contain cleartext data. This is a boolean field.
   final bool allowClearText;
-
   /// Whether Fingerprint columns can contain duplicate entries. This is a boolean field.
   final bool allowDuplicates;
-
   /// Whether Fingerprint columns can be joined on any other Fingerprint column with a different name. This is a boolean field.
   final bool allowJoinsOnColumnsWithDifferentNames;
-
   /// Whether NULL values are to be copied as NULL to encrypted tables (true) or cryptographically processed (false).
   final bool preserveNulls;
 
@@ -29,21 +27,18 @@ class CollaborationDataEncryptionMetadata {
     return <String, dynamic>{
       'allowClearText': allowClearText,
       'allowDuplicates': allowDuplicates,
-      'allowJoinsOnColumnsWithDifferentNames':
-          allowJoinsOnColumnsWithDifferentNames,
+      'allowJoinsOnColumnsWithDifferentNames': allowJoinsOnColumnsWithDifferentNames,
       'preserveNulls': preserveNulls,
     };
   }
 
-  factory CollaborationDataEncryptionMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CollaborationDataEncryptionMetadata.fromMap(Map<String, dynamic> map) {
     return CollaborationDataEncryptionMetadata(
       allowClearText: map['allowClearText'] as bool,
       allowDuplicates: map['allowDuplicates'] as bool,
-      allowJoinsOnColumnsWithDifferentNames:
-          map['allowJoinsOnColumnsWithDifferentNames'] as bool,
+      allowJoinsOnColumnsWithDifferentNames: map['allowJoinsOnColumnsWithDifferentNames'] as bool,
       preserveNulls: map['preserveNulls'] as bool,
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes a virtual machines scale sets network configuration's DNS settings.
+class VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+  /// List of DNS servers IP addresses
+  final List<String>? dnsServers;
+
+  /// Creates a new [VirtualMachineScaleSetNetworkConfigurationDnsSettings].
+  /// [dnsServers] List of DNS servers IP addresses
+  VirtualMachineScaleSetNetworkConfigurationDnsSettings({
+    this.dnsServers,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dnsServers': ?dnsServers,
+    };
+  }
+
+  factory VirtualMachineScaleSetNetworkConfigurationDnsSettings.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineScaleSetNetworkConfigurationDnsSettings(
+      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
+    );
+  }
+}
+

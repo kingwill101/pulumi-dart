@@ -10,16 +10,12 @@ import 'connection_group_timeouts.dart';
 class ConnectionGroupArgs {
   /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
   final pulumi.Input<String>? anycastIpListId;
-
   /// Whether the connection group is enabled. Default is `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
   final pulumi.Input<bool>? ipv6Enabled;
-
   /// Name of the connection group.
   final pulumi.Input<String>? name;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
@@ -41,17 +37,14 @@ class ConnectionGroupArgs {
     Map<String, String>? tags,
     ConnectionGroupTimeouts? timeouts,
     bool? waitForDeployment,
-  }) : anycastIpListId = pulumi.Input.asOptionalInput<String>(anycastIpListId),
-       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-       ipv6Enabled = pulumi.Input.asOptionalInput<bool>(ipv6Enabled),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       timeouts = pulumi.Input.asOptionalInput<ConnectionGroupTimeouts>(
-         timeouts,
-       ),
-       waitForDeployment = pulumi.Input.asOptionalInput<bool>(
-         waitForDeployment,
-       );
+  }) :
+      anycastIpListId = pulumi.Input.asOptionalInput<String>(anycastIpListId),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      ipv6Enabled = pulumi.Input.asOptionalInput<bool>(ipv6Enabled),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeouts = pulumi.Input.asOptionalInput<ConnectionGroupTimeouts>(timeouts),
+      waitForDeployment = pulumi.Input.asOptionalInput<bool>(waitForDeployment);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,36 +53,21 @@ class ConnectionGroupArgs {
       'ipv6Enabled': ?ipv6Enabled,
       'name': ?name,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionGroupTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ConnectionGroupTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'waitForDeployment': ?waitForDeployment,
     };
   }
 
   factory ConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionGroupArgs(
-      anycastIpListId: map['anycastIpListId'] == null
-          ? null
-          : map['anycastIpListId'] as String,
+      anycastIpListId: map['anycastIpListId'] == null ? null : map['anycastIpListId'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      ipv6Enabled: map['ipv6Enabled'] == null
-          ? null
-          : map['ipv6Enabled'] as bool,
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : map['ipv6Enabled'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null
-          ? null
-          : ConnectionGroupTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
-      waitForDeployment: map['waitForDeployment'] == null
-          ? null
-          : map['waitForDeployment'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null ? null : ConnectionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      waitForDeployment: map['waitForDeployment'] == null ? null : map['waitForDeployment'] as bool,
     );
   }
 }
+

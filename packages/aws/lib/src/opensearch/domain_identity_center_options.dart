@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainIdentityCenterOptions {
   final bool? enabledApiAccess;
   final String? identityCenterInstanceArn;
@@ -29,16 +30,11 @@ class DomainIdentityCenterOptions {
 
   factory DomainIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
     return DomainIdentityCenterOptions(
-      enabledApiAccess: map['enabledApiAccess'] == null
-          ? null
-          : map['enabledApiAccess'] as bool,
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null
-          ? null
-          : map['identityCenterInstanceArn'] as String,
+      enabledApiAccess: map['enabledApiAccess'] == null ? null : map['enabledApiAccess'] as bool,
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : map['identityCenterInstanceArn'] as String,
       rolesKey: map['rolesKey'] == null ? null : map['rolesKey'] as String,
-      subjectKey: map['subjectKey'] == null
-          ? null
-          : map['subjectKey'] as String,
+      subjectKey: map['subjectKey'] == null ? null : map['subjectKey'] as String,
     );
   }
 }
+

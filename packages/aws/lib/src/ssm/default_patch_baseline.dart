@@ -172,7 +172,6 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
   /// Can be an ID or an ARN.
   /// When specifying an AWS-provided patch baseline, must be the ARN.
   late final pulumi.Output<String> baselineId;
-
   /// The operating system the patch baseline applies to.
   /// Valid values are
   /// `AMAZON_LINUX`,
@@ -190,7 +189,6 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
   /// `UBUNTU`, and
   /// `WINDOWS`.
   late final pulumi.Output<String> operatingSystem;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -203,11 +201,11 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     DefaultPatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.baselineId = registerOutput<String>('baselineId');
     this.operatingSystem = registerOutput<String>('operatingSystem');
     this.region = registerOutput<String>('region');

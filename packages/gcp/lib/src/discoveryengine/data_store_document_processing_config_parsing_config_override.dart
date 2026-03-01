@@ -6,19 +6,14 @@ import 'data_store_document_processing_config_parsing_config_override_ocr_parsin
 class DataStoreDocumentProcessingConfigParsingConfigOverride {
   /// Configurations applied to digital parser.
   final Map<String, dynamic>? digitalParsingConfig;
-
   /// The identifier for this object. Format specified above.
   final String fileType;
-
   /// Configurations applied to layout parser.
   /// Structure is documented below.
-  final DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig?
-  layoutParsingConfig;
-
+  final DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig? layoutParsingConfig;
   /// Configurations applied to OCR parser. Currently it only applies to PDFs.
   /// Structure is documented below.
-  final DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig?
-  ocrParsingConfig;
+  final DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig? ocrParsingConfig;
 
   /// Creates a new [DataStoreDocumentProcessingConfigParsingConfigOverride].
   /// [digitalParsingConfig] Configurations applied to digital parser.
@@ -36,33 +31,18 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride {
     return <String, dynamic>{
       'digitalParsingConfig': ?digitalParsingConfig,
       'fileType': fileType,
-      'layoutParsingConfig': ?layoutParsingConfig == null
-          ? null
-          : layoutParsingConfig!.toMap(),
-      'ocrParsingConfig': ?ocrParsingConfig == null
-          ? null
-          : ocrParsingConfig!.toMap(),
+      'layoutParsingConfig': ?layoutParsingConfig == null ? null : layoutParsingConfig!.toMap(),
+      'ocrParsingConfig': ?ocrParsingConfig == null ? null : ocrParsingConfig!.toMap(),
     };
   }
 
-  factory DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigParsingConfigOverride(
-      digitalParsingConfig: map['digitalParsingConfig'] == null
-          ? null
-          : (map['digitalParsingConfig'] as Map).cast<String, dynamic>(),
+      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : (map['digitalParsingConfig'] as Map).cast<String, dynamic>(),
       fileType: map['fileType'] as String,
-      layoutParsingConfig: map['layoutParsingConfig'] == null
-          ? null
-          : DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap(
-              (map['layoutParsingConfig'] as Map).cast<String, dynamic>(),
-            ),
-      ocrParsingConfig: map['ocrParsingConfig'] == null
-          ? null
-          : DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap(
-              (map['ocrParsingConfig'] as Map).cast<String, dynamic>(),
-            ),
+      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap((map['layoutParsingConfig'] as Map).cast<String, dynamic>()),
+      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap((map['ocrParsingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

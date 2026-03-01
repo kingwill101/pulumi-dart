@@ -411,36 +411,23 @@ import 'bucket_website_configuration_routing_rule.dart';
 class BucketWebsiteConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Name of the error document for the website. See below.
-  late final pulumi.Output<BucketWebsiteConfigurationErrorDocument?>
-  errorDocument;
-
+  late final pulumi.Output<BucketWebsiteConfigurationErrorDocument?> errorDocument;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Name of the index document for the website. See below.
-  late final pulumi.Output<BucketWebsiteConfigurationIndexDocument?>
-  indexDocument;
-
+  late final pulumi.Output<BucketWebsiteConfigurationIndexDocument?> indexDocument;
   /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
-  late final pulumi.Output<BucketWebsiteConfigurationRedirectAllRequestsTo?>
-  redirectAllRequestsTo;
-
+  late final pulumi.Output<BucketWebsiteConfigurationRedirectAllRequestsTo?> redirectAllRequestsTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
   /// describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   late final pulumi.Output<String> routingRuleDetails;
-
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
-  late final pulumi.Output<List<BucketWebsiteConfigurationRoutingRule>>
-  routingRules;
-
+  late final pulumi.Output<List<BucketWebsiteConfigurationRoutingRule>> routingRules;
   /// Domain of the website endpoint. This is used to create Route 53 alias records.
   late final pulumi.Output<String> websiteDomain;
-
   /// Website endpoint.
   late final pulumi.Output<String> websiteEndpoint;
 
@@ -453,31 +440,19 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
     BucketWebsiteConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
-    this.errorDocument =
-        registerOutput<BucketWebsiteConfigurationErrorDocument?>(
-          'errorDocument',
-        );
+    this.errorDocument = registerOutput<BucketWebsiteConfigurationErrorDocument?>('errorDocument');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.indexDocument =
-        registerOutput<BucketWebsiteConfigurationIndexDocument?>(
-          'indexDocument',
-        );
-    this.redirectAllRequestsTo =
-        registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>(
-          'redirectAllRequestsTo',
-        );
+    this.indexDocument = registerOutput<BucketWebsiteConfigurationIndexDocument?>('indexDocument');
+    this.redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>('redirectAllRequestsTo');
     this.region = registerOutput<String>('region');
     this.routingRuleDetails = registerOutput<String>('routingRuleDetails');
-    this.routingRules =
-        registerOutput<List<BucketWebsiteConfigurationRoutingRule>>(
-          'routingRules',
-        );
+    this.routingRules = registerOutput<List<BucketWebsiteConfigurationRoutingRule>>('routingRules');
     this.websiteDomain = registerOutput<String>('websiteDomain');
     this.websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }

@@ -22,50 +22,18 @@ class GetDistributionTenantCustomization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates':
-          pulumi.Input.encodeList<
-            GetDistributionTenantCustomizationCertificate,
-            Map<String, dynamic>
-          >(certificates, (value) => value.toMap()),
-      'geoRestrictions':
-          pulumi.Input.encodeList<
-            GetDistributionTenantCustomizationGeoRestriction,
-            Map<String, dynamic>
-          >(geoRestrictions, (value) => value.toMap()),
-      'webAcls':
-          pulumi.Input.encodeList<
-            GetDistributionTenantCustomizationWebAcl,
-            Map<String, dynamic>
-          >(webAcls, (value) => value.toMap()),
+      'certificates': pulumi.Input.encodeList<GetDistributionTenantCustomizationCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'geoRestrictions': pulumi.Input.encodeList<GetDistributionTenantCustomizationGeoRestriction, Map<String, dynamic>>(geoRestrictions, (value) => value.toMap()),
+      'webAcls': pulumi.Input.encodeList<GetDistributionTenantCustomizationWebAcl, Map<String, dynamic>>(webAcls, (value) => value.toMap()),
     };
   }
 
   factory GetDistributionTenantCustomization.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomization(
-      certificates:
-          pulumi
-              .Input.decodeList<GetDistributionTenantCustomizationCertificate>(
-            map['certificates'],
-            (value) => GetDistributionTenantCustomizationCertificate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      geoRestrictions:
-          pulumi.Input.decodeList<
-            GetDistributionTenantCustomizationGeoRestriction
-          >(
-            map['geoRestrictions'],
-            (value) => GetDistributionTenantCustomizationGeoRestriction.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      webAcls:
-          pulumi.Input.decodeList<GetDistributionTenantCustomizationWebAcl>(
-            map['webAcls'],
-            (value) => GetDistributionTenantCustomizationWebAcl.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      certificates: pulumi.Input.decodeList<GetDistributionTenantCustomizationCertificate>(map['certificates'], (value) => GetDistributionTenantCustomizationCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      geoRestrictions: pulumi.Input.decodeList<GetDistributionTenantCustomizationGeoRestriction>(map['geoRestrictions'], (value) => GetDistributionTenantCustomizationGeoRestriction.fromMap((value as Map).cast<String, dynamic>())),
+      webAcls: pulumi.Input.decodeList<GetDistributionTenantCustomizationWebAcl>(map['webAcls'], (value) => GetDistributionTenantCustomizationWebAcl.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

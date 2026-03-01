@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupTag {
   /// Key.
   final String key;
-
   /// Whether the tag is propagated to Amazon EC2 instances launched via this ASG.
   final bool propagateAtLaunch;
-
   /// Value.
   final String value;
 
@@ -36,3 +35,4 @@ class GetGroupTag {
     );
   }
 }
+

@@ -9,29 +9,20 @@ class PipeSourceParametersFilterCriteria {
 
   /// Creates a new [PipeSourceParametersFilterCriteria].
   /// [filters] An array of up to 5 event patterns. Detailed below.
-  PipeSourceParametersFilterCriteria({this.filters});
+  PipeSourceParametersFilterCriteria({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              PipeSourceParametersFilterCriteriaFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<PipeSourceParametersFilterCriteriaFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
     };
   }
 
   factory PipeSourceParametersFilterCriteria.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersFilterCriteria(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(
-              map['filters'],
-              (value) => PipeSourceParametersFilterCriteriaFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(map['filters'], (value) => PipeSourceParametersFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

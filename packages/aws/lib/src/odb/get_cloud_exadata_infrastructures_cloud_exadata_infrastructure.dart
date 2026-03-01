@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
   final String arn;
-
   /// The display name of the Exadata infrastructure.
   final String displayName;
-
   /// The unique identifier of the Exadata infrastructure.
   final String id;
-
   /// The name of the OCI resource anchor for the Exadata infrastructure.
   final String ociResourceAnchorName;
-
   /// The HTTPS link to the Exadata infrastructure in OCI.
   final String ociUrl;
-
   /// The OCID of the Exadata infrastructure in OCI.
   final String ocid;
 
@@ -46,9 +42,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     };
   }
 
-  factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructure(
       arn: map['arn'] as String,
       displayName: map['displayName'] as String,
@@ -59,3 +53,4 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     );
   }
 }
+

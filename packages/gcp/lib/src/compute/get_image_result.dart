@@ -1,65 +1,49 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getImage.
 class GetImageResult {
   /// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
   final int archiveSizeBytes;
-
   /// The creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// An optional description of this image.
   final String description;
-
   /// The size of the image when restored onto a persistent disk in gigabytes.
   final int diskSizeGb;
-
   /// The family name of the image.
   final String family;
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   /// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
   /// that protects this image.
   final String imageEncryptionKeySha256;
-
   /// The unique identifier for the image.
   final String imageId;
-
   /// A fingerprint for the labels being applied to this image.
   final String labelFingerprint;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final Map<String, String> labels;
-
   /// A list of applicable license URI.
   final List<String> licenses;
   final bool? mostRecent;
-
   /// The name of the image.
   final String name;
   final String project;
-
   /// The URI of the image.
   final String selfLink;
-
   /// The URL of the source disk used to create this image.
   final String sourceDisk;
-
   /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   /// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
   /// that protects this image.
   final String sourceDiskEncryptionKeySha256;
-
   /// The ID value of the disk used to create this image.
   final String sourceDiskId;
-
   /// The ID value of the image used to create this image.
   final String sourceImageId;
-
   /// The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
   final String status;
 
@@ -154,11 +138,11 @@ class GetImageResult {
       project: map['project'] as String,
       selfLink: map['selfLink'] as String,
       sourceDisk: map['sourceDisk'] as String,
-      sourceDiskEncryptionKeySha256:
-          map['sourceDiskEncryptionKeySha256'] as String,
+      sourceDiskEncryptionKeySha256: map['sourceDiskEncryptionKeySha256'] as String,
       sourceDiskId: map['sourceDiskId'] as String,
       sourceImageId: map['sourceImageId'] as String,
       status: map['status'] as String,
     );
   }
 }
+

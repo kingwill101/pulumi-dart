@@ -2457,99 +2457,72 @@ class Connection extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Configuration for connections to an instance of Bitbucket Cloud.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionBitbucketCloudConfig?>
-  bitbucketCloudConfig;
-
+  late final pulumi.Output<ConnectionBitbucketCloudConfig?> bitbucketCloudConfig;
   /// Configuration for connections to an instance of Bitbucket Data Center.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionBitbucketDataCenterConfig?>
-  bitbucketDataCenterConfig;
-
+  late final pulumi.Output<ConnectionBitbucketDataCenterConfig?> bitbucketDataCenterConfig;
   /// Required. Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
   /// connection_id from the method_signature of Create RPC
   late final pulumi.Output<String> connectionId;
-
   /// Output only. [Output only] Create timestamp
   late final pulumi.Output<String> createTime;
-
   /// The crypto key configuration. This field is used by the Customer-managed
   /// encryption keys (CMEK) feature.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionCryptoKeyConfig?> cryptoKeyConfig;
-
   /// Output only. [Output only] Delete timestamp
   late final pulumi.Output<String> deleteTime;
-
   /// Optional. If disabled is set to true, functionality is disabled for this connection.
   /// Repository based API methods and webhooks processing for repositories in
   /// this connection will be disabled.
   late final pulumi.Output<bool?> disabled;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   late final pulumi.Output<String?> etag;
-
   /// Configuration for connections to github.com.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionGithubConfig?> githubConfig;
-
   /// Configuration for connections to an instance of GitHub Enterprise.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionGithubEnterpriseConfig?>
-  githubEnterpriseConfig;
-
+  late final pulumi.Output<ConnectionGithubEnterpriseConfig?> githubEnterpriseConfig;
   /// Configuration for connections to gitlab.com.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionGitlabConfig?> gitlabConfig;
-
   /// Configuration for connections to an instance of GitLab Enterprise.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionGitlabEnterpriseConfig?>
-  gitlabEnterpriseConfig;
-
+  late final pulumi.Output<ConnectionGitlabEnterpriseConfig?> gitlabEnterpriseConfig;
   /// Describes stage and necessary actions to be taken by the
   /// user to complete the installation. Used for GitHub and GitHub Enterprise
   /// based connections.
   /// Structure is documented below.
-  late final pulumi.Output<List<ConnectionInstallationState>>
-  installationStates;
-
+  late final pulumi.Output<List<ConnectionInstallationState>> installationStates;
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the connection, in the format
   /// `projects/{project}/locations/{location}/connections/{connection_id}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. Set to true when the connection is being set up or updated in the
   /// background.
   late final pulumi.Output<bool> reconciling;
-
   /// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
   late final pulumi.Output<String> uid;
-
   /// Output only. [Output only] Update timestamp
   late final pulumi.Output<String> updateTime;
 
@@ -2562,46 +2535,27 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:developerconnect/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:developerconnect/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>(
-      'bitbucketCloudConfig',
-    );
-    this.bitbucketDataCenterConfig =
-        registerOutput<ConnectionBitbucketDataCenterConfig?>(
-          'bitbucketDataCenterConfig',
-        );
+    this.bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig');
+    this.bitbucketDataCenterConfig = registerOutput<ConnectionBitbucketDataCenterConfig?>('bitbucketDataCenterConfig');
     this.connectionId = registerOutput<String>('connectionId');
     this.createTime = registerOutput<String>('createTime');
-    this.cryptoKeyConfig = registerOutput<ConnectionCryptoKeyConfig?>(
-      'cryptoKeyConfig',
-    );
+    this.cryptoKeyConfig = registerOutput<ConnectionCryptoKeyConfig?>('cryptoKeyConfig');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.disabled = registerOutput<bool?>('disabled');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.etag = registerOutput<String?>('etag');
     this.githubConfig = registerOutput<ConnectionGithubConfig?>('githubConfig');
-    this.githubEnterpriseConfig =
-        registerOutput<ConnectionGithubEnterpriseConfig?>(
-          'githubEnterpriseConfig',
-        );
+    this.githubEnterpriseConfig = registerOutput<ConnectionGithubEnterpriseConfig?>('githubEnterpriseConfig');
     this.gitlabConfig = registerOutput<ConnectionGitlabConfig?>('gitlabConfig');
-    this.gitlabEnterpriseConfig =
-        registerOutput<ConnectionGitlabEnterpriseConfig?>(
-          'gitlabEnterpriseConfig',
-        );
-    this.installationStates = registerOutput<List<ConnectionInstallationState>>(
-      'installationStates',
-    );
+    this.gitlabEnterpriseConfig = registerOutput<ConnectionGitlabEnterpriseConfig?>('gitlabEnterpriseConfig');
+    this.installationStates = registerOutput<List<ConnectionInstallationState>>('installationStates');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

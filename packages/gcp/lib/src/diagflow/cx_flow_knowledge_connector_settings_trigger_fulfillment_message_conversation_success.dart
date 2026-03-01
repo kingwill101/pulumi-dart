@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
   /// Custom metadata. Dialogflow doesn't impose any structure on this.
   final String? metadata;
@@ -11,14 +12,15 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSucce
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': ?metadata};
+    return <String, dynamic>{
+      'metadata': ?metadata,
+    };
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess(
       metadata: map['metadata'] == null ? null : map['metadata'] as String,
     );
   }
 }
+

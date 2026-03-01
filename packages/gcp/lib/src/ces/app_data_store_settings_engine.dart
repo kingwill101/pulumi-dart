@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppDataStoreSettingsEngine {
   /// Identifier. The unique identifier of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}`
   final String? name;
-
   /// The type of the engine.
   /// Possible values:
   /// ENGINE_TYPE_SEARCH
@@ -14,10 +14,16 @@ class AppDataStoreSettingsEngine {
   /// Creates a new [AppDataStoreSettingsEngine].
   /// [name] Identifier. The unique identifier of the app.
   /// [type] The type of the engine.
-  AppDataStoreSettingsEngine({this.name, this.type});
+  AppDataStoreSettingsEngine({
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'type': ?type};
+    return <String, dynamic>{
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
   factory AppDataStoreSettingsEngine.fromMap(Map<String, dynamic> map) {
@@ -27,3 +33,4 @@ class AppDataStoreSettingsEngine {
     );
   }
 }
+

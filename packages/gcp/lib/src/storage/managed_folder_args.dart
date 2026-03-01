@@ -9,13 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedFolderArgs {
   /// The name of the bucket that contains the managed folder.
   final pulumi.Input<String> bucket;
-
   /// Allows the deletion of a managed folder even if contains
   /// objects. If a non-empty managed folder is deleted, any objects
   /// within the folder will remain in a simulated folder with the
   /// same name.
   final pulumi.Input<bool>? forceDestroy;
-
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
   final pulumi.Input<String>? name;
@@ -24,8 +22,12 @@ class ManagedFolderArgs {
   /// [bucket] The name of the bucket that contains the managed folder.
   /// [forceDestroy] Allows the deletion of a managed folder even if contains
   /// [name] The name of the managed folder expressed as a path. Must include
-  ManagedFolderArgs({required String bucket, bool? forceDestroy, String? name})
-    : bucket = pulumi.Input.asInput<String>(bucket),
+  ManagedFolderArgs({
+    required String bucket,
+    bool? forceDestroy,
+    String? name,
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
       forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
       name = pulumi.Input.asOptionalInput<String>(name);
 
@@ -40,10 +42,9 @@ class ManagedFolderArgs {
   factory ManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderArgs(
       bucket: map['bucket'] as String,
-      forceDestroy: map['forceDestroy'] == null
-          ? null
-          : map['forceDestroy'] as bool,
+      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

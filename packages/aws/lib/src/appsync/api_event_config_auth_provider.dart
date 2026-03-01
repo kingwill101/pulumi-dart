@@ -7,14 +7,10 @@ import 'api_event_config_auth_provider_openid_connect_config.dart';
 class ApiEventConfigAuthProvider {
   /// Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
   final String authType;
-
   /// Configuration for Cognito user pool authentication. Required when `auth_type` is `AMAZON_COGNITO_USER_POOLS`. See Cognito Config below.
   final ApiEventConfigAuthProviderCognitoConfig? cognitoConfig;
-
   /// Configuration for Lambda authorization. Required when `auth_type` is `AWS_LAMBDA`. See Lambda Authorizer Config below.
-  final ApiEventConfigAuthProviderLambdaAuthorizerConfig?
-  lambdaAuthorizerConfig;
-
+  final ApiEventConfigAuthProviderLambdaAuthorizerConfig? lambdaAuthorizerConfig;
   /// Configuration for OpenID Connect. Required when `auth_type` is `OPENID_CONNECT`. See OpenID Connect Config below.
   final ApiEventConfigAuthProviderOpenidConnectConfig? openidConnectConfig;
 
@@ -34,33 +30,18 @@ class ApiEventConfigAuthProvider {
     return <String, dynamic>{
       'authType': authType,
       'cognitoConfig': ?cognitoConfig == null ? null : cognitoConfig!.toMap(),
-      'lambdaAuthorizerConfig': ?lambdaAuthorizerConfig == null
-          ? null
-          : lambdaAuthorizerConfig!.toMap(),
-      'openidConnectConfig': ?openidConnectConfig == null
-          ? null
-          : openidConnectConfig!.toMap(),
+      'lambdaAuthorizerConfig': ?lambdaAuthorizerConfig == null ? null : lambdaAuthorizerConfig!.toMap(),
+      'openidConnectConfig': ?openidConnectConfig == null ? null : openidConnectConfig!.toMap(),
     };
   }
 
   factory ApiEventConfigAuthProvider.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProvider(
       authType: map['authType'] as String,
-      cognitoConfig: map['cognitoConfig'] == null
-          ? null
-          : ApiEventConfigAuthProviderCognitoConfig.fromMap(
-              (map['cognitoConfig'] as Map).cast<String, dynamic>(),
-            ),
-      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null
-          ? null
-          : ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap(
-              (map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>(),
-            ),
-      openidConnectConfig: map['openidConnectConfig'] == null
-          ? null
-          : ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(
-              (map['openidConnectConfig'] as Map).cast<String, dynamic>(),
-            ),
+      cognitoConfig: map['cognitoConfig'] == null ? null : ApiEventConfigAuthProviderCognitoConfig.fromMap((map['cognitoConfig'] as Map).cast<String, dynamic>()),
+      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>()),
+      openidConnectConfig: map['openidConnectConfig'] == null ? null : ApiEventConfigAuthProviderOpenidConnectConfig.fromMap((map['openidConnectConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

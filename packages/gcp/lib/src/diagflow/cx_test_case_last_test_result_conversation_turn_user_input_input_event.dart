@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
   /// Name of the event.
   final String event;
@@ -11,14 +12,15 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'event': event};
+    return <String, dynamic>{
+      'event': event,
+    };
   }
 
-  factory CxTestCaseLastTestResultConversationTurnUserInputInputEvent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseLastTestResultConversationTurnUserInputInputEvent.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnUserInputInputEvent(
       event: map['event'] as String,
     );
   }
 }
+

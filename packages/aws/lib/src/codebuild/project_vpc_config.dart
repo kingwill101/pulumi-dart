@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectVpcConfig {
   /// Security group IDs to assign to running builds.
   final List<String> securityGroupIds;
-
   /// Subnet IDs within which to run builds.
   final List<String> subnets;
-
   /// ID of the VPC within which to run builds.
   final String vpcId;
 
@@ -36,3 +35,4 @@ class ProjectVpcConfig {
     );
   }
 }
+

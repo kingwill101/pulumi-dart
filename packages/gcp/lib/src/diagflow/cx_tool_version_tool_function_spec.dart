@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxToolVersionToolFunctionSpec {
   /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
   /// This input is a JSON object that contains the function's parameters as properties of the object
   final String? inputSchema;
-
   /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
   /// This output is a JSON object that contains the function's parameters as properties of the object
   final String? outputSchema;
@@ -12,7 +12,10 @@ class CxToolVersionToolFunctionSpec {
   /// Creates a new [CxToolVersionToolFunctionSpec].
   /// [inputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
   /// [outputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
-  CxToolVersionToolFunctionSpec({this.inputSchema, this.outputSchema});
+  CxToolVersionToolFunctionSpec({
+    this.inputSchema,
+    this.outputSchema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,12 +26,9 @@ class CxToolVersionToolFunctionSpec {
 
   factory CxToolVersionToolFunctionSpec.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolFunctionSpec(
-      inputSchema: map['inputSchema'] == null
-          ? null
-          : map['inputSchema'] as String,
-      outputSchema: map['outputSchema'] == null
-          ? null
-          : map['outputSchema'] as String,
+      inputSchema: map['inputSchema'] == null ? null : map['inputSchema'] as String,
+      outputSchema: map['outputSchema'] == null ? null : map['outputSchema'] as String,
     );
   }
 }
+

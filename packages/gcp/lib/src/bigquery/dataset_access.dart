@@ -10,29 +10,23 @@ class DatasetAccess {
   /// access binding will be considered.
   /// Structure is documented below.
   final DatasetAccessCondition? condition;
-
   /// Grants all resources of particular types in a particular dataset read access to the current dataset.
   /// Structure is documented below.
   final DatasetAccessDataset? dataset;
-
   /// A domain to grant access to. Any users signed in with the
   /// domain specified will be granted the specified access
   final String? domain;
-
   /// An email address of a Google Group to grant access to.
   final String? groupByEmail;
-
   /// Some other type of member that appears in the IAM Policy but isn't a user,
   /// group, domain, or special group. For example: `allUsers`
   final String? iamMember;
-
   /// Describes the rights granted to the user specified by the other
   /// member of the access object. Basic, predefined, and custom roles
   /// are supported. Predefined roles that have equivalent basic roles
   /// are swapped by the API to their basic counterparts. See
   /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
   final String? role;
-
   /// A routine from a different dataset to grant access to. Queries
   /// executed against that routine will have read access to tables in
   /// this dataset. The role field is not required when this field is
@@ -40,18 +34,15 @@ class DatasetAccess {
   /// needs to be granted again via an update operation.
   /// Structure is documented below.
   final DatasetAccessRoutine? routine;
-
   /// A special group to grant access to. Possible values include:
   /// * `projectOwners`: Owners of the enclosing project.
   /// * `projectReaders`: Readers of the enclosing project.
   /// * `projectWriters`: Writers of the enclosing project.
   /// * `allAuthenticatedUsers`: All authenticated BigQuery users.
   final String? specialGroup;
-
   /// An email address of a user to grant access to. For example:
   /// fred@example.com
   final String? userByEmail;
-
   /// A view from a different dataset to grant access to. Queries
   /// executed against that view will have read access to tables in
   /// this dataset. The role field is not required when this field is
@@ -101,38 +92,17 @@ class DatasetAccess {
 
   factory DatasetAccess.fromMap(Map<String, dynamic> map) {
     return DatasetAccess(
-      condition: map['condition'] == null
-          ? null
-          : DatasetAccessCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
-      dataset: map['dataset'] == null
-          ? null
-          : DatasetAccessDataset.fromMap(
-              (map['dataset'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : DatasetAccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      dataset: map['dataset'] == null ? null : DatasetAccessDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
       domain: map['domain'] == null ? null : map['domain'] as String,
-      groupByEmail: map['groupByEmail'] == null
-          ? null
-          : map['groupByEmail'] as String,
+      groupByEmail: map['groupByEmail'] == null ? null : map['groupByEmail'] as String,
       iamMember: map['iamMember'] == null ? null : map['iamMember'] as String,
       role: map['role'] == null ? null : map['role'] as String,
-      routine: map['routine'] == null
-          ? null
-          : DatasetAccessRoutine.fromMap(
-              (map['routine'] as Map).cast<String, dynamic>(),
-            ),
-      specialGroup: map['specialGroup'] == null
-          ? null
-          : map['specialGroup'] as String,
-      userByEmail: map['userByEmail'] == null
-          ? null
-          : map['userByEmail'] as String,
-      view: map['view'] == null
-          ? null
-          : DatasetAccessView.fromMap(
-              (map['view'] as Map).cast<String, dynamic>(),
-            ),
+      routine: map['routine'] == null ? null : DatasetAccessRoutine.fromMap((map['routine'] as Map).cast<String, dynamic>()),
+      specialGroup: map['specialGroup'] == null ? null : map['specialGroup'] as String,
+      userByEmail: map['userByEmail'] == null ? null : map['userByEmail'] as String,
+      view: map['view'] == null ? null : DatasetAccessView.fromMap((map['view'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

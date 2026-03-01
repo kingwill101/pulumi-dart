@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BlockchainNodesConnectionInfoEndpointInfo {
   /// (Output)
   /// The assigned URL for the node JSON-RPC API endpoint.
   final String? jsonRpcApiEndpoint;
-
   /// (Output)
   /// The assigned URL for the node WebSockets API endpoint.
   final String? websocketsApiEndpoint;
@@ -24,16 +24,11 @@ class BlockchainNodesConnectionInfoEndpointInfo {
     };
   }
 
-  factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesConnectionInfoEndpointInfo(
-      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null
-          ? null
-          : map['jsonRpcApiEndpoint'] as String,
-      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null
-          ? null
-          : map['websocketsApiEndpoint'] as String,
+      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null ? null : map['jsonRpcApiEndpoint'] as String,
+      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null ? null : map['websocketsApiEndpoint'] as String,
     );
   }
 }
+

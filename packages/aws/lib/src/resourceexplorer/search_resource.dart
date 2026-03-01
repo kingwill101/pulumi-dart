@@ -6,22 +6,16 @@ import 'search_resource_property.dart';
 class SearchResource {
   /// Amazon resource name of resource.
   final String arn;
-
   /// The date and time that the information about this resource property was last updated.
   final String lastReportedAt;
-
   /// Amazon Web Services account that owns the resource.
   final String owningAccountId;
-
   /// Structure with additional type-specific details about the resource.  See `properties` below.
   final List<SearchResourceProperty> properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
-
   /// Type of the resource.
   final String resourceType;
-
   /// Amazon Web Service that owns the resource and is responsible for creating and updating it.
   final String service;
 
@@ -48,11 +42,7 @@ class SearchResource {
       'arn': arn,
       'lastReportedAt': lastReportedAt,
       'owningAccountId': owningAccountId,
-      'properties':
-          pulumi.Input.encodeList<SearchResourceProperty, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.encodeList<SearchResourceProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'region': region,
       'resourceType': resourceType,
       'service': service,
@@ -64,15 +54,11 @@ class SearchResource {
       arn: map['arn'] as String,
       lastReportedAt: map['lastReportedAt'] as String,
       owningAccountId: map['owningAccountId'] as String,
-      properties: pulumi.Input.decodeList<SearchResourceProperty>(
-        map['properties'],
-        (value) => SearchResourceProperty.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.decodeList<SearchResourceProperty>(map['properties'], (value) => SearchResourceProperty.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       resourceType: map['resourceType'] as String,
       service: map['service'] as String,
     );
   }
 }
+

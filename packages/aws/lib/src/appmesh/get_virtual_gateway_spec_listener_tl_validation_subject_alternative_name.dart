@@ -4,10 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_gateway_spec_listener_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName {
-  final List<
-    GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch
-  >
-  matches;
+  final List<GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch> matches;
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName].
   /// [matches] Required.
@@ -17,28 +14,14 @@ class GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matches':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch,
-            Map<String, dynamic>
-          >(matches, (value) => value.toMap()),
+      'matches': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
     };
   }
 
-  factory GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName(
-      matches:
-          pulumi.Input.decodeList<
-            GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch
-          >(
-            map['matches'],
-            (value) =>
-                GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      matches: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

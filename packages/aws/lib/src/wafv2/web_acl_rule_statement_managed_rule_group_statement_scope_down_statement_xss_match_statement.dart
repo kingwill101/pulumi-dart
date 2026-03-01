@@ -6,14 +6,9 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement {
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch?
-  fieldToMatch;
-
+  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch? fieldToMatch;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final List<
-    WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation
-  >
-  textTransformations;
+  final List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation> textTransformations;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement].
   /// [fieldToMatch] Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
@@ -26,33 +21,15 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStat
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fieldToMatch': ?fieldToMatch == null ? null : fieldToMatch!.toMap(),
-      'textTransformations':
-          pulumi.Input.encodeList<
-            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation,
-            Map<String, dynamic>
-          >(textTransformations, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap(
-              (map['fieldToMatch'] as Map).cast<String, dynamic>(),
-            ),
-      textTransformations:
-          pulumi.Input.decodeList<
-            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation
-          >(
-            map['textTransformations'],
-            (value) =>
-                WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      fieldToMatch: map['fieldToMatch'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
+      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

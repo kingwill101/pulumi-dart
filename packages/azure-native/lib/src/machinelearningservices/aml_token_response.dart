@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// AML Token identity configuration.
+class AmlTokenResponse {
+  /// Enum to determine identity framework.
+  /// Expected value is 'AMLToken'.
+  final String identityType;
+
+  /// Creates a new [AmlTokenResponse].
+  /// [identityType] Enum to determine identity framework.
+  AmlTokenResponse({
+    required this.identityType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'identityType': identityType,
+    };
+  }
+
+  factory AmlTokenResponse.fromMap(Map<String, dynamic> map) {
+    return AmlTokenResponse(
+      identityType: map['identityType'] as String,
+    );
+  }
+}
+

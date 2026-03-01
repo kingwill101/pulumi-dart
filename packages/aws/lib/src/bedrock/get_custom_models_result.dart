@@ -6,7 +6,6 @@ import 'get_custom_models_model_summary.dart';
 /// Result data returned by getCustomModels.
 class GetCustomModelsResult {
   final String id;
-
   /// Model summaries.
   final List<GetCustomModelsModelSummary> modelSummaries;
   final String region;
@@ -24,11 +23,7 @@ class GetCustomModelsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'modelSummaries':
-          pulumi.Input.encodeList<
-            GetCustomModelsModelSummary,
-            Map<String, dynamic>
-          >(modelSummaries, (value) => value.toMap()),
+      'modelSummaries': pulumi.Input.encodeList<GetCustomModelsModelSummary, Map<String, dynamic>>(modelSummaries, (value) => value.toMap()),
       'region': region,
     };
   }
@@ -36,13 +31,9 @@ class GetCustomModelsResult {
   factory GetCustomModelsResult.fromMap(Map<String, dynamic> map) {
     return GetCustomModelsResult(
       id: map['id'] as String,
-      modelSummaries: pulumi.Input.decodeList<GetCustomModelsModelSummary>(
-        map['modelSummaries'],
-        (value) => GetCustomModelsModelSummary.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      modelSummaries: pulumi.Input.decodeList<GetCustomModelsModelSummary>(map['modelSummaries'], (value) => GetCustomModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

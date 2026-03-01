@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMembershipArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// The name of the group in which the member will be added.
   final pulumi.Input<String> groupName;
-
   /// The name of the member to add to the group.
   final pulumi.Input<String> memberName;
-
   /// The namespace that you want the user to be a part of. Defaults to `default`.
   final pulumi.Input<String>? namespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,11 +30,12 @@ class GroupMembershipArgs {
     required String memberName,
     String? namespace,
     String? region,
-  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-       groupName = pulumi.Input.asInput<String>(groupName),
-       memberName = pulumi.Input.asInput<String>(memberName),
-       namespace = pulumi.Input.asOptionalInput<String>(namespace),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      groupName = pulumi.Input.asInput<String>(groupName),
+      memberName = pulumi.Input.asInput<String>(memberName),
+      namespace = pulumi.Input.asOptionalInput<String>(namespace),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,9 +49,7 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null
-          ? null
-          : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
       groupName: map['groupName'] as String,
       memberName: map['memberName'] as String,
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
@@ -62,3 +57,4 @@ class GroupMembershipArgs {
     );
   }
 }
+

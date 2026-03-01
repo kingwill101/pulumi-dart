@@ -5,8 +5,7 @@ import 'rule_group_rule_action_captcha_custom_request_handling_insert_header.dar
 
 class RuleGroupRuleActionCaptchaCustomRequestHandling {
   /// The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
-  final List<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>
-  insertHeaders;
+  final List<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader> insertHeaders;
 
   /// Creates a new [RuleGroupRuleActionCaptchaCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
@@ -16,28 +15,14 @@ class RuleGroupRuleActionCaptchaCustomRequestHandling {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders':
-          pulumi.Input.encodeList<
-            RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader,
-            Map<String, dynamic>
-          >(insertHeaders, (value) => value.toMap()),
+      'insertHeaders': pulumi.Input.encodeList<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders, (value) => value.toMap()),
     };
   }
 
-  factory RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionCaptchaCustomRequestHandling(
-      insertHeaders:
-          pulumi.Input.decodeList<
-            RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader
-          >(
-            map['insertHeaders'],
-            (value) =>
-                RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      insertHeaders: pulumi.Input.decodeList<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

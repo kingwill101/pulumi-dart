@@ -1,0 +1,15 @@
+library module_devspaces;
+
+export 'devspaces/controller.dart';
+export 'devspaces/controller_args.dart';
+export 'devspaces/controller_connection_details_response.dart';
+export 'devspaces/functions.dart';
+export 'devspaces/get_controller_args.dart';
+export 'devspaces/get_controller_result.dart';
+export 'devspaces/kubernetes_connection_details_response.dart';
+export 'devspaces/list_controller_connection_details_args.dart';
+export 'devspaces/list_controller_connection_details_result.dart';
+export 'devspaces/sku.dart';
+export 'devspaces/sku_name.dart';
+export 'devspaces/sku_response.dart';
+export 'devspaces/sku_tier.dart';

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiCacheConfigArgs {
   /// If set to true, disables GenAI caching. Otherwise caching is enabled.
   final pulumi.Input<bool> disableCache;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -17,12 +16,18 @@ class AiCacheConfigArgs {
   /// Creates a new [AiCacheConfigArgs].
   /// [disableCache] If set to true, disables GenAI caching. Otherwise caching is enabled.
   /// [project] The ID of the project in which the resource belongs.
-  AiCacheConfigArgs({required bool disableCache, String? project})
-    : disableCache = pulumi.Input.asInput<bool>(disableCache),
+  AiCacheConfigArgs({
+    required bool disableCache,
+    String? project,
+  }) :
+      disableCache = pulumi.Input.asInput<bool>(disableCache),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disableCache': disableCache, 'project': ?project};
+    return <String, dynamic>{
+      'disableCache': disableCache,
+      'project': ?project,
+    };
   }
 
   factory AiCacheConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +37,4 @@ class AiCacheConfigArgs {
     );
   }
 }
+

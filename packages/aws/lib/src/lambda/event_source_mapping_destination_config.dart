@@ -8,7 +8,9 @@ class EventSourceMappingDestinationConfig {
 
   /// Creates a new [EventSourceMappingDestinationConfig].
   /// [onFailure] Destination configuration for failed invocations. See below.
-  EventSourceMappingDestinationConfig({this.onFailure});
+  EventSourceMappingDestinationConfig({
+    this.onFailure,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class EventSourceMappingDestinationConfig {
     };
   }
 
-  factory EventSourceMappingDestinationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceMappingDestinationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingDestinationConfig(
-      onFailure: map['onFailure'] == null
-          ? null
-          : EventSourceMappingDestinationConfigOnFailure.fromMap(
-              (map['onFailure'] as Map).cast<String, dynamic>(),
-            ),
+      onFailure: map['onFailure'] == null ? null : EventSourceMappingDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

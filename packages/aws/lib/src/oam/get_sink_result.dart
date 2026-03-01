@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSink.
 class GetSinkResult {
   /// ARN of the sink.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the sink.
   final String name;
   final String region;
-
   /// Random ID string that AWS generated as part of the sink ARN.
   final String sinkId;
   final String sinkIdentifier;
-
   /// Tags assigned to the sink.
   final Map<String, String> tags;
 
@@ -61,3 +58,4 @@ class GetSinkResult {
     );
   }
 }
+

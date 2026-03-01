@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustStoreRevocationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// S3 Bucket name holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Bucket;
-
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Key;
-
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   final pulumi.Input<String>? revocationsS3ObjectVersion;
-
   /// Trust Store ARN.
   final pulumi.Input<String> trustStoreArn;
 
@@ -34,13 +30,12 @@ class TrustStoreRevocationArgs {
     required String revocationsS3Key,
     String? revocationsS3ObjectVersion,
     required String trustStoreArn,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       revocationsS3Bucket = pulumi.Input.asInput<String>(revocationsS3Bucket),
-       revocationsS3Key = pulumi.Input.asInput<String>(revocationsS3Key),
-       revocationsS3ObjectVersion = pulumi.Input.asOptionalInput<String>(
-         revocationsS3ObjectVersion,
-       ),
-       trustStoreArn = pulumi.Input.asInput<String>(trustStoreArn);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      revocationsS3Bucket = pulumi.Input.asInput<String>(revocationsS3Bucket),
+      revocationsS3Key = pulumi.Input.asInput<String>(revocationsS3Key),
+      revocationsS3ObjectVersion = pulumi.Input.asOptionalInput<String>(revocationsS3ObjectVersion),
+      trustStoreArn = pulumi.Input.asInput<String>(trustStoreArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,10 +52,9 @@ class TrustStoreRevocationArgs {
       region: map['region'] == null ? null : map['region'] as String,
       revocationsS3Bucket: map['revocationsS3Bucket'] as String,
       revocationsS3Key: map['revocationsS3Key'] as String,
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null
-          ? null
-          : map['revocationsS3ObjectVersion'] as String,
+      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : map['revocationsS3ObjectVersion'] as String,
       trustStoreArn: map['trustStoreArn'] as String,
     );
   }
 }
+

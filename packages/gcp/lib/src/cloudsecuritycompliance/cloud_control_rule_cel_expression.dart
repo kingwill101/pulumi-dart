@@ -6,7 +6,6 @@ class CloudControlRuleCelExpression {
   /// Logic expression in CEL language.
   /// The max length of the condition is 1000 characters.
   final String expression;
-
   /// A list of strings.
   /// Structure is documented below.
   final CloudControlRuleCelExpressionResourceTypesValues? resourceTypesValues;
@@ -22,20 +21,15 @@ class CloudControlRuleCelExpression {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expression': expression,
-      'resourceTypesValues': ?resourceTypesValues == null
-          ? null
-          : resourceTypesValues!.toMap(),
+      'resourceTypesValues': ?resourceTypesValues == null ? null : resourceTypesValues!.toMap(),
     };
   }
 
   factory CloudControlRuleCelExpression.fromMap(Map<String, dynamic> map) {
     return CloudControlRuleCelExpression(
       expression: map['expression'] as String,
-      resourceTypesValues: map['resourceTypesValues'] == null
-          ? null
-          : CloudControlRuleCelExpressionResourceTypesValues.fromMap(
-              (map['resourceTypesValues'] as Map).cast<String, dynamic>(),
-            ),
+      resourceTypesValues: map['resourceTypesValues'] == null ? null : CloudControlRuleCelExpressionResourceTypesValues.fromMap((map['resourceTypesValues'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -285,13 +285,10 @@ import 'directory_bucket_access_point_scope_scope.dart';
 class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
   /// The AWS account ID that owns the specified access point.
   late final pulumi.Output<String> accountId;
-
   /// The name of the access point that you want to apply the scope to.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
   late final pulumi.Output<DirectoryBucketAccessPointScopeScope> scope;
 
@@ -304,11 +301,11 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     DirectoryBucketAccessPointScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

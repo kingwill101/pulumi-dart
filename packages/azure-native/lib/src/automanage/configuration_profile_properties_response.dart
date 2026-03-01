@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Automanage configuration profile properties.
+class ConfigurationProfilePropertiesResponse {
+  /// configuration dictionary of the configuration profile.
+  final dynamic configuration;
+
+  /// Creates a new [ConfigurationProfilePropertiesResponse].
+  /// [configuration] configuration dictionary of the configuration profile.
+  ConfigurationProfilePropertiesResponse({
+    this.configuration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configuration': ?configuration,
+    };
+  }
+
+  factory ConfigurationProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return ConfigurationProfilePropertiesResponse(
+      configuration: map['configuration'] == null ? null : map['configuration'],
+    );
+  }
+}
+

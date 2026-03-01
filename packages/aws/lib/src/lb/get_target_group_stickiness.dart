@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTargetGroupStickiness {
   final int cookieDuration;
   final String cookieName;
@@ -36,3 +37,4 @@ class GetTargetGroupStickiness {
     );
   }
 }
+

@@ -599,16 +599,12 @@ import 'route_table_propagation_args.dart';
 class RouteTablePropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the resource
   late final pulumi.Output<String> resourceId;
-
   /// Type of the resource
   late final pulumi.Output<String> resourceType;
-
   /// Identifier of EC2 Transit Gateway Attachment.
   late final pulumi.Output<String> transitGatewayAttachmentId;
-
   /// Identifier of EC2 Transit Gateway Route Table.
   late final pulumi.Output<String> transitGatewayRouteTableId;
 
@@ -621,19 +617,15 @@ class RouteTablePropagation extends pulumi.CustomResource {
     RouteTablePropagationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.resourceId = registerOutput<String>('resourceId');
     this.resourceType = registerOutput<String>('resourceType');
-    this.transitGatewayAttachmentId = registerOutput<String>(
-      'transitGatewayAttachmentId',
-    );
-    this.transitGatewayRouteTableId = registerOutput<String>(
-      'transitGatewayRouteTableId',
-    );
+    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    this.transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
   }
 }

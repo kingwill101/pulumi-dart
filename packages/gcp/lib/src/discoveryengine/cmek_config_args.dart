@@ -10,23 +10,18 @@ import 'cmek_config_single_region_key.dart';
 class CmekConfigArgs {
   /// The unique id of the cmek config.
   final pulumi.Input<String> cmekConfigId;
-
   /// KMS key resource name which will be used to encrypt resources
   /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
   final pulumi.Input<String> kmsKey;
-
   /// The geographic location where the CMEK config should reside. The value can
   /// only be one of "us" and "eu".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Set the following CmekConfig as the default to be used for child resources
   /// if one is not specified. The default value is true.
   final pulumi.Input<bool>? setDefault;
-
   /// Single-regional CMEKs that are required for some VAIS features.
   /// Structure is documented below.
   final pulumi.Input<List<CmekConfigSingleRegionKey>>? singleRegionKeys;
@@ -45,15 +40,13 @@ class CmekConfigArgs {
     String? project,
     bool? setDefault,
     List<CmekConfigSingleRegionKey>? singleRegionKeys,
-  }) : cmekConfigId = pulumi.Input.asInput<String>(cmekConfigId),
-       kmsKey = pulumi.Input.asInput<String>(kmsKey),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       setDefault = pulumi.Input.asOptionalInput<bool>(setDefault),
-       singleRegionKeys =
-           pulumi.Input.asOptionalInput<List<CmekConfigSingleRegionKey>>(
-             singleRegionKeys,
-           );
+  }) :
+      cmekConfigId = pulumi.Input.asInput<String>(cmekConfigId),
+      kmsKey = pulumi.Input.asInput<String>(kmsKey),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      setDefault = pulumi.Input.asOptionalInput<bool>(setDefault),
+      singleRegionKeys = pulumi.Input.asOptionalInput<List<CmekConfigSingleRegionKey>>(singleRegionKeys);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,18 +55,7 @@ class CmekConfigArgs {
       'location': location,
       'project': ?project,
       'setDefault': ?setDefault,
-      'singleRegionKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CmekConfigSingleRegionKey>,
-            List<Map<String, dynamic>>
-          >(
-            singleRegionKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CmekConfigSingleRegionKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'singleRegionKeys': ?pulumi.Input.mapOptionalInputValue<List<CmekConfigSingleRegionKey>, List<Map<String, dynamic>>>(singleRegionKeys, (value) => pulumi.Input.encodeList<CmekConfigSingleRegionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -84,14 +66,8 @@ class CmekConfigArgs {
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       setDefault: map['setDefault'] == null ? null : map['setDefault'] as bool,
-      singleRegionKeys: map['singleRegionKeys'] == null
-          ? null
-          : pulumi.Input.decodeList<CmekConfigSingleRegionKey>(
-              map['singleRegionKeys'],
-              (value) => CmekConfigSingleRegionKey.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      singleRegionKeys: map['singleRegionKeys'] == null ? null : pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

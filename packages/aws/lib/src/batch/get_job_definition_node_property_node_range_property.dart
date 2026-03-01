@@ -6,7 +6,6 @@ import 'get_job_definition_node_property_node_range_property_container.dart';
 class GetJobDefinitionNodePropertyNodeRangeProperty {
   /// The container details for the node range.
   final List<GetJobDefinitionNodePropertyNodeRangePropertyContainer> containers;
-
   /// The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. I
   final String targetNodes;
 
@@ -20,30 +19,16 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers':
-          pulumi.Input.encodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainer,
-            Map<String, dynamic>
-          >(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
       'targetNodes': targetNodes,
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangeProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionNodePropertyNodeRangeProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangeProperty(
-      containers:
-          pulumi.Input.decodeList<
-            GetJobDefinitionNodePropertyNodeRangePropertyContainer
-          >(
-            map['containers'],
-            (value) =>
-                GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      containers: pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer>(map['containers'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap((value as Map).cast<String, dynamic>())),
       targetNodes: map['targetNodes'] as String,
     );
   }
 }
+

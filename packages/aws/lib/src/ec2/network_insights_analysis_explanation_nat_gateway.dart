@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkInsightsAnalysisExplanationNatGateway {
   /// ARN of the Network Insights Analysis.
   final String? arn;
-
   /// ID of the Network Insights Analysis.
   final String? id;
   final String? name;
@@ -12,15 +12,21 @@ class NetworkInsightsAnalysisExplanationNatGateway {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationNatGateway({this.arn, this.id, this.name});
+  NetworkInsightsAnalysisExplanationNatGateway({
+    this.arn,
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
-  factory NetworkInsightsAnalysisExplanationNatGateway.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisExplanationNatGateway.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationNatGateway(
       arn: map['arn'] == null ? null : map['arn'] as String,
       id: map['id'] == null ? null : map['id'] as String,
@@ -28,3 +34,4 @@ class NetworkInsightsAnalysisExplanationNatGateway {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputSource {
   final String passwordParam;
   final String url;
@@ -31,3 +32,4 @@ class GetInputSource {
     );
   }
 }
+

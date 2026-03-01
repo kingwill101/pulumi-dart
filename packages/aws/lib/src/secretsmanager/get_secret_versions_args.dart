@@ -10,10 +10,8 @@ class GetSecretVersionsArgs {
   /// If true, all deprecated secret versions are included in the response.
   /// If false, no deprecated secret versions are included in the response. If no value is specified, the default value is `false`.
   final pulumi.Input<bool>? includeDeprecated;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   final pulumi.Input<String> secretId;
 
@@ -25,11 +23,10 @@ class GetSecretVersionsArgs {
     bool? includeDeprecated,
     String? region,
     required String secretId,
-  }) : includeDeprecated = pulumi.Input.asOptionalInput<bool>(
-         includeDeprecated,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       secretId = pulumi.Input.asInput<String>(secretId);
+  }) :
+      includeDeprecated = pulumi.Input.asOptionalInput<bool>(includeDeprecated),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secretId = pulumi.Input.asInput<String>(secretId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,11 +38,10 @@ class GetSecretVersionsArgs {
 
   factory GetSecretVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsArgs(
-      includeDeprecated: map['includeDeprecated'] == null
-          ? null
-          : map['includeDeprecated'] as bool,
+      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       secretId: map['secretId'] as String,
     );
   }
 }
+

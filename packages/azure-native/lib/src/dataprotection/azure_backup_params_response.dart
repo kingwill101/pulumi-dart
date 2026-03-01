@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Azure backup parameters
+class AzureBackupParamsResponse {
+  /// BackupType ; Full/Incremental etc
+  final String backupType;
+  /// Type of the specific object - used for deserializing
+  /// Expected value is 'AzureBackupParams'.
+  final String objectType;
+
+  /// Creates a new [AzureBackupParamsResponse].
+  /// [backupType] BackupType ; Full/Incremental etc
+  /// [objectType] Type of the specific object - used for deserializing
+  AzureBackupParamsResponse({
+    required this.backupType,
+    required this.objectType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'backupType': backupType,
+      'objectType': objectType,
+    };
+  }
+
+  factory AzureBackupParamsResponse.fromMap(Map<String, dynamic> map) {
+    return AzureBackupParamsResponse(
+      backupType: map['backupType'] as String,
+      objectType: map['objectType'] as String,
+    );
+  }
+}
+

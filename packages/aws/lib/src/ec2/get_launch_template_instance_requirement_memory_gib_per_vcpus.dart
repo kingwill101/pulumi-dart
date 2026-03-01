@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus {
   final double max;
   final double min;
@@ -13,15 +14,17 @@ class GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus(
       max: map['max'] as double,
       min: map['min'] as double,
     );
   }
 }
+

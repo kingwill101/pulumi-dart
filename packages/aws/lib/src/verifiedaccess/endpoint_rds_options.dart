@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointRdsOptions {
   final int? port;
   final String? protocol;
@@ -43,21 +44,12 @@ class EndpointRdsOptions {
     return EndpointRdsOptions(
       port: map['port'] == null ? null : map['port'] as int,
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      rdsDbClusterArn: map['rdsDbClusterArn'] == null
-          ? null
-          : map['rdsDbClusterArn'] as String,
-      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null
-          ? null
-          : map['rdsDbInstanceArn'] as String,
-      rdsDbProxyArn: map['rdsDbProxyArn'] == null
-          ? null
-          : map['rdsDbProxyArn'] as String,
-      rdsEndpoint: map['rdsEndpoint'] == null
-          ? null
-          : map['rdsEndpoint'] as String,
-      subnetIds: map['subnetIds'] == null
-          ? null
-          : (map['subnetIds'] as List).cast<String>(),
+      rdsDbClusterArn: map['rdsDbClusterArn'] == null ? null : map['rdsDbClusterArn'] as String,
+      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null ? null : map['rdsDbInstanceArn'] as String,
+      rdsDbProxyArn: map['rdsDbProxyArn'] == null ? null : map['rdsDbProxyArn'] as String,
+      rdsEndpoint: map['rdsEndpoint'] == null ? null : map['rdsEndpoint'] as String,
+      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
     );
   }
 }
+

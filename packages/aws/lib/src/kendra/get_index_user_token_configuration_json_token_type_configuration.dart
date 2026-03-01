@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
   /// The group attribute field.
   final String groupAttributeField;
-
   /// The user name attribute field.
   final String userNameAttributeField;
 
@@ -22,12 +22,11 @@ class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
     };
   }
 
-  factory GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfigurationJsonTokenTypeConfiguration(
       groupAttributeField: map['groupAttributeField'] as String,
       userNameAttributeField: map['userNameAttributeField'] as String,
     );
   }
 }
+

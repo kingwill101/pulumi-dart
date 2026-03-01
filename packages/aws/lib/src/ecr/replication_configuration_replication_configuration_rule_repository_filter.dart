@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   /// The repository filter details.
   final String filter;
-
   /// The repository filter type. The only supported value is `PREFIX_MATCH`, which is a repository name prefix specified with the filter parameter.
   final String filterType;
 
@@ -16,15 +16,17 @@ class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter, 'filterType': filterType};
+    return <String, dynamic>{
+      'filter': filter,
+      'filterType': filterType,
+    };
   }
 
-  factory ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter(
       filter: map['filter'] as String,
       filterType: map['filterType'] as String,
     );
   }
 }
+

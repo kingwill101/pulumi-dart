@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterRoleAssociationArgs {
   /// DB Cluster Identifier to associate with the IAM Role.
   final pulumi.Input<String> dbClusterIdentifier;
-
   /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
   final pulumi.Input<String>? featureName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Cluster.
   final pulumi.Input<String> roleArn;
 
@@ -29,10 +26,11 @@ class ClusterRoleAssociationArgs {
     String? featureName,
     String? region,
     required String roleArn,
-  }) : dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-       featureName = pulumi.Input.asOptionalInput<String>(featureName),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       roleArn = pulumi.Input.asInput<String>(roleArn);
+  }) :
+      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
+      featureName = pulumi.Input.asOptionalInput<String>(featureName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      roleArn = pulumi.Input.asInput<String>(roleArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +44,10 @@ class ClusterRoleAssociationArgs {
   factory ClusterRoleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ClusterRoleAssociationArgs(
       dbClusterIdentifier: map['dbClusterIdentifier'] as String,
-      featureName: map['featureName'] == null
-          ? null
-          : map['featureName'] as String,
+      featureName: map['featureName'] == null ? null : map['featureName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       roleArn: map['roleArn'] as String,
     );
   }
 }
+

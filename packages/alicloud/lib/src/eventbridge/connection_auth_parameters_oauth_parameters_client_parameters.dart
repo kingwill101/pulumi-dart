@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ConnectionAuthParametersOauthParametersClientParameters {
+  /// The ID of the client.
+  final String? clientId;
+  /// The AccessKey secret of the client.
+  final String? clientSecret;
+
+  /// Creates a new [ConnectionAuthParametersOauthParametersClientParameters].
+  /// [clientId] The ID of the client.
+  /// [clientSecret] The AccessKey secret of the client.
+  ConnectionAuthParametersOauthParametersClientParameters({
+    this.clientId,
+    this.clientSecret,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+    };
+  }
+
+  factory ConnectionAuthParametersOauthParametersClientParameters.fromMap(Map<String, dynamic> map) {
+    return ConnectionAuthParametersOauthParametersClientParameters(
+      clientId: map['clientId'] == null ? null : map['clientId'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+    );
+  }
+}
+

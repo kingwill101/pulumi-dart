@@ -8,7 +8,9 @@ class WorkteamWorkerAccessConfiguration {
 
   /// Creates a new [WorkteamWorkerAccessConfiguration].
   /// [s3Presign] Defines any Amazon S3 resource constraints. see S3 Presign details below.
-  WorkteamWorkerAccessConfiguration({this.s3Presign});
+  WorkteamWorkerAccessConfiguration({
+    this.s3Presign,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class WorkteamWorkerAccessConfiguration {
 
   factory WorkteamWorkerAccessConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkteamWorkerAccessConfiguration(
-      s3Presign: map['s3Presign'] == null
-          ? null
-          : WorkteamWorkerAccessConfigurationS3Presign.fromMap(
-              (map['s3Presign'] as Map).cast<String, dynamic>(),
-            ),
+      s3Presign: map['s3Presign'] == null ? null : WorkteamWorkerAccessConfigurationS3Presign.fromMap((map['s3Presign'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

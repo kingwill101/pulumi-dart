@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolConfigProxyConfig {
   /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final String secretArn;
-
   /// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final String secretVersion;
 
@@ -29,3 +29,4 @@ class AwsNodePoolConfigProxyConfig {
     );
   }
 }
+

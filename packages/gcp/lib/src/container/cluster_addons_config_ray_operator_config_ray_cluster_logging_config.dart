@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
   final bool enabled;
 
@@ -10,14 +11,15 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

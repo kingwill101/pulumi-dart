@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkOciDnsForwardingConfig {
   final String domainName;
   final String ociDnsListenerIp;
@@ -26,3 +27,4 @@ class NetworkOciDnsForwardingConfig {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMaintenancePolicyRecurringWindow {
   final String endTime;
   final String recurrence;
@@ -23,9 +24,7 @@ class GetClusterMaintenancePolicyRecurringWindow {
     };
   }
 
-  factory GetClusterMaintenancePolicyRecurringWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMaintenancePolicyRecurringWindow.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyRecurringWindow(
       endTime: map['endTime'] as String,
       recurrence: map['recurrence'] as String,
@@ -33,3 +32,4 @@ class GetClusterMaintenancePolicyRecurringWindow {
     );
   }
 }
+

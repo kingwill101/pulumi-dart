@@ -10,13 +10,10 @@ import 'virtual_cluster_container_provider.dart';
 class VirtualClusterArgs {
   /// Configuration block for the container provider associated with your cluster.
   final pulumi.Input<VirtualClusterContainerProvider> containerProvider;
-
   /// Name of the virtual cluster.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,19 +27,15 @@ class VirtualClusterArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  }) : containerProvider = pulumi
-           .Input.asInput<VirtualClusterContainerProvider>(containerProvider),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      containerProvider = pulumi.Input.asInput<VirtualClusterContainerProvider>(containerProvider),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerProvider':
-          pulumi.Input.mapInputValue<
-            VirtualClusterContainerProvider,
-            Map<String, dynamic>
-          >(containerProvider, (value) => value.toMap()),
+      'containerProvider': pulumi.Input.mapInputValue<VirtualClusterContainerProvider, Map<String, dynamic>>(containerProvider, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
@@ -51,14 +44,11 @@ class VirtualClusterArgs {
 
   factory VirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualClusterArgs(
-      containerProvider: VirtualClusterContainerProvider.fromMap(
-        (map['containerProvider'] as Map).cast<String, dynamic>(),
-      ),
+      containerProvider: VirtualClusterContainerProvider.fromMap((map['containerProvider'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

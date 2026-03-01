@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'get_database_postgresql_config_pglookout_max_failover_replication_time_lag.dart';
+
+class GetDatabasePostgresqlConfigPglookout {
+  final GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag maxFailoverReplicationTimeLag;
+
+  /// Creates a new [GetDatabasePostgresqlConfigPglookout].
+  /// [maxFailoverReplicationTimeLag] Required.
+  GetDatabasePostgresqlConfigPglookout({
+    required this.maxFailoverReplicationTimeLag,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'maxFailoverReplicationTimeLag': maxFailoverReplicationTimeLag.toMap(),
+    };
+  }
+
+  factory GetDatabasePostgresqlConfigPglookout.fromMap(Map<String, dynamic> map) {
+    return GetDatabasePostgresqlConfigPglookout(
+      maxFailoverReplicationTimeLag: GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag.fromMap((map['maxFailoverReplicationTimeLag'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

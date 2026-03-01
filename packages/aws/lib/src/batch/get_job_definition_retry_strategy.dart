@@ -6,7 +6,6 @@ import 'get_job_definition_retry_strategy_evaluate_on_exit.dart';
 class GetJobDefinitionRetryStrategy {
   /// The number of times to move a job to the RUNNABLE status.
   final int attempts;
-
   /// Array of up to 5 objects that specify the conditions where jobs are retried or failed.
   final List<GetJobDefinitionRetryStrategyEvaluateOnExit> evaluateOnExits;
 
@@ -21,24 +20,15 @@ class GetJobDefinitionRetryStrategy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attempts': attempts,
-      'evaluateOnExits':
-          pulumi.Input.encodeList<
-            GetJobDefinitionRetryStrategyEvaluateOnExit,
-            Map<String, dynamic>
-          >(evaluateOnExits, (value) => value.toMap()),
+      'evaluateOnExits': pulumi.Input.encodeList<GetJobDefinitionRetryStrategyEvaluateOnExit, Map<String, dynamic>>(evaluateOnExits, (value) => value.toMap()),
     };
   }
 
   factory GetJobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionRetryStrategy(
       attempts: map['attempts'] as int,
-      evaluateOnExits:
-          pulumi.Input.decodeList<GetJobDefinitionRetryStrategyEvaluateOnExit>(
-            map['evaluateOnExits'],
-            (value) => GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      evaluateOnExits: pulumi.Input.decodeList<GetJobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits'], (value) => GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Import Route Policy either IPv4 or IPv6.
+class ImportRoutePolicyResponse {
+  /// ARM resource ID of RoutePolicy.
+  final String? importIpv4RoutePolicyId;
+  /// ARM resource ID of RoutePolicy.
+  final String? importIpv6RoutePolicyId;
+
+  /// Creates a new [ImportRoutePolicyResponse].
+  /// [importIpv4RoutePolicyId] ARM resource ID of RoutePolicy.
+  /// [importIpv6RoutePolicyId] ARM resource ID of RoutePolicy.
+  ImportRoutePolicyResponse({
+    this.importIpv4RoutePolicyId,
+    this.importIpv6RoutePolicyId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'importIpv4RoutePolicyId': ?importIpv4RoutePolicyId,
+      'importIpv6RoutePolicyId': ?importIpv6RoutePolicyId,
+    };
+  }
+
+  factory ImportRoutePolicyResponse.fromMap(Map<String, dynamic> map) {
+    return ImportRoutePolicyResponse(
+      importIpv4RoutePolicyId: map['importIpv4RoutePolicyId'] == null ? null : map['importIpv4RoutePolicyId'] as String,
+      importIpv6RoutePolicyId: map['importIpv6RoutePolicyId'] == null ? null : map['importIpv6RoutePolicyId'] as String,
+    );
+  }
+}
+

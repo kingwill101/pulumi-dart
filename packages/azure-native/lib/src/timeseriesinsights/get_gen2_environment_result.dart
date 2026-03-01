@@ -1,0 +1,124 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_status_response.dart';
+import 'gen2_storage_configuration_output_response.dart';
+import 'sku_response.dart';
+import 'time_series_id_property_response.dart';
+import 'warm_store_configuration_properties_response.dart';
+
+/// Result data returned by getGen2Environment.
+class GetGen2EnvironmentResult {
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// The time the resource was created.
+  final String creationTime;
+  /// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+  final String dataAccessFqdn;
+  /// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+  final String dataAccessId;
+  /// Resource Id
+  final String id;
+  /// The kind of the environment.
+  /// Expected value is 'Gen2'.
+  final String kind;
+  /// Resource location
+  final String location;
+  /// Resource name
+  final String name;
+  /// Provisioning state of the resource.
+  final String provisioningState;
+  /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
+  final SkuResponse sku;
+  /// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
+  final EnvironmentStatusResponse status;
+  /// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
+  final Gen2StorageConfigurationOutputResponse storageConfiguration;
+  /// Resource tags
+  final Map<String, String>? tags;
+  /// The list of event properties which will be used to define the environment's time series id.
+  final List<TimeSeriesIdPropertyResponse> timeSeriesIdProperties;
+  /// Resource type
+  final String type;
+  /// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
+  final WarmStoreConfigurationPropertiesResponse? warmStoreConfiguration;
+
+  /// Creates a new [GetGen2EnvironmentResult].
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [creationTime] The time the resource was created.
+  /// [dataAccessFqdn] The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+  /// [dataAccessId] An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+  /// [id] Resource Id
+  /// [kind] The kind of the environment.
+  /// [location] Resource location
+  /// [name] Resource name
+  /// [provisioningState] Provisioning state of the resource.
+  /// [sku] The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
+  /// [status] An object that represents the status of the environment, and its internal state in the Time Series Insights service.
+  /// [storageConfiguration] The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
+  /// [tags] Resource tags
+  /// [timeSeriesIdProperties] The list of event properties which will be used to define the environment's time series id.
+  /// [type] Resource type
+  /// [warmStoreConfiguration] The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
+  GetGen2EnvironmentResult({
+    required this.azureApiVersion,
+    required this.creationTime,
+    required this.dataAccessFqdn,
+    required this.dataAccessId,
+    required this.id,
+    required this.kind,
+    required this.location,
+    required this.name,
+    required this.provisioningState,
+    required this.sku,
+    required this.status,
+    required this.storageConfiguration,
+    this.tags,
+    required this.timeSeriesIdProperties,
+    required this.type,
+    this.warmStoreConfiguration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureApiVersion': azureApiVersion,
+      'creationTime': creationTime,
+      'dataAccessFqdn': dataAccessFqdn,
+      'dataAccessId': dataAccessId,
+      'id': id,
+      'kind': kind,
+      'location': location,
+      'name': name,
+      'provisioningState': provisioningState,
+      'sku': sku.toMap(),
+      'status': status.toMap(),
+      'storageConfiguration': storageConfiguration.toMap(),
+      'tags': ?tags,
+      'timeSeriesIdProperties': pulumi.Input.encodeList<TimeSeriesIdPropertyResponse, Map<String, dynamic>>(timeSeriesIdProperties, (value) => value.toMap()),
+      'type': type,
+      'warmStoreConfiguration': ?warmStoreConfiguration == null ? null : warmStoreConfiguration!.toMap(),
+    };
+  }
+
+  factory GetGen2EnvironmentResult.fromMap(Map<String, dynamic> map) {
+    return GetGen2EnvironmentResult(
+      azureApiVersion: map['azureApiVersion'] as String,
+      creationTime: map['creationTime'] as String,
+      dataAccessFqdn: map['dataAccessFqdn'] as String,
+      dataAccessId: map['dataAccessId'] as String,
+      id: map['id'] as String,
+      kind: map['kind'] as String,
+      location: map['location'] as String,
+      name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
+      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      status: EnvironmentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      storageConfiguration: Gen2StorageConfigurationOutputResponse.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeSeriesIdProperties: pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(map['timeSeriesIdProperties'], (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: map['type'] as String,
+      warmStoreConfiguration: map['warmStoreConfiguration'] == null ? null : WarmStoreConfigurationPropertiesResponse.fromMap((map['warmStoreConfiguration'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

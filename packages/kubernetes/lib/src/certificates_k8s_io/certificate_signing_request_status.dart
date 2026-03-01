@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'certificate_signing_request_condition.dart';
+
+/// CertificateSigningRequestStatus contains conditions used to indicate approved/denied/failed status of the request, and the issued certificate.
+class CertificateSigningRequestStatus {
+  /// certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
+  ///
+  /// If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty.
+  ///
+  /// Validation requirements:
+  /// 1. certificate must contain one or more PEM blocks.
+  /// 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the encoded data
+  /// must be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280.
+  /// 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and is unvalidated,
+  /// to allow for explanatory text as described in section 5.2 of RFC7468.
+  ///
+  /// If more than one PEM block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.
+  ///
+  /// The certificate is encoded in PEM format.
+  ///
+  /// When serialized as JSON or YAML, the data is additionally base64-encoded, so it consists of:
+  ///
+  /// base64(
+  /// -----BEGIN CERTIFICATE-----
+  /// ...
+  /// -----END CERTIFICATE-----
+  /// )
+  final String? certificate;
+  /// conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
+  final List<CertificateSigningRequestCondition>? conditions;
+
+  /// Creates a new [CertificateSigningRequestStatus].
+  /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
+  /// [conditions] conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
+  CertificateSigningRequestStatus({
+    this.certificate,
+    this.conditions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'certificate': ?certificate,
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<CertificateSigningRequestCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+    };
+  }
+
+  factory CertificateSigningRequestStatus.fromMap(Map<String, dynamic> map) {
+    return CertificateSigningRequestStatus(
+      certificate: map['certificate'] == null ? null : map['certificate'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions'], (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

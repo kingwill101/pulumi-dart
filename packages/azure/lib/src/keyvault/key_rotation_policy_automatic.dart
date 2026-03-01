@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class KeyRotationPolicyAutomatic {
+  /// Rotate automatically at a duration after create as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+  final String? timeAfterCreation;
+  /// Rotate automatically at a duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+  final String? timeBeforeExpiry;
+
+  /// Creates a new [KeyRotationPolicyAutomatic].
+  /// [timeAfterCreation] Rotate automatically at a duration after create as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+  /// [timeBeforeExpiry] Rotate automatically at a duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+  KeyRotationPolicyAutomatic({
+    this.timeAfterCreation,
+    this.timeBeforeExpiry,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'timeAfterCreation': ?timeAfterCreation,
+      'timeBeforeExpiry': ?timeBeforeExpiry,
+    };
+  }
+
+  factory KeyRotationPolicyAutomatic.fromMap(Map<String, dynamic> map) {
+    return KeyRotationPolicyAutomatic(
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : map['timeAfterCreation'] as String,
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : map['timeBeforeExpiry'] as String,
+    );
+  }
+}
+

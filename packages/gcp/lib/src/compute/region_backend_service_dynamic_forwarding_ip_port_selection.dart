@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionBackendServiceDynamicForwardingIpPortSelection {
   /// A boolean flag enabling IP:PORT based dynamic forwarding.
   final bool? enabled;
 
   /// Creates a new [RegionBackendServiceDynamicForwardingIpPortSelection].
   /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
-  RegionBackendServiceDynamicForwardingIpPortSelection({this.enabled});
+  RegionBackendServiceDynamicForwardingIpPortSelection({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory RegionBackendServiceDynamicForwardingIpPortSelection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceDynamicForwardingIpPortSelection.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceDynamicForwardingIpPortSelection(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

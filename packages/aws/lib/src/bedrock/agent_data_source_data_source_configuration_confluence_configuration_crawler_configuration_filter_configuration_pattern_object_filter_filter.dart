@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter {
   final List<String>? exclusionFilters;
   final List<String>? inclusionFilters;
-
   /// The supported object type or content type of the data source.
   final String objectType;
 
@@ -25,17 +25,12 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter(
-      exclusionFilters: map['exclusionFilters'] == null
-          ? null
-          : (map['exclusionFilters'] as List).cast<String>(),
-      inclusionFilters: map['inclusionFilters'] == null
-          ? null
-          : (map['inclusionFilters'] as List).cast<String>(),
+      exclusionFilters: map['exclusionFilters'] == null ? null : (map['exclusionFilters'] as List).cast<String>(),
+      inclusionFilters: map['inclusionFilters'] == null ? null : (map['inclusionFilters'] as List).cast<String>(),
       objectType: map['objectType'] as String,
     );
   }
 }
+

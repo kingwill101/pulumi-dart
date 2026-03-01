@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
   /// CPU requirement expressed in Kubernetes resource units.
   final String? cpu;
-
   /// Memory requirement expressed in Kubernetes resource units.
   final String? memory;
 
@@ -16,15 +16,17 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': ?cpu, 'memory': ?memory};
+    return <String, dynamic>{
+      'cpu': ?cpu,
+      'memory': ?memory,
+    };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits(
       cpu: map['cpu'] == null ? null : map['cpu'] as String,
       memory: map['memory'] == null ? null : map['memory'] as String,
     );
   }
 }
+

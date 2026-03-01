@@ -7,31 +7,17 @@ import 'get_private_cloud_management_cluster_autoscaling_setting_autoscaling_pol
 
 class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
   final String autoscalePolicyId;
-
   /// Utilization thresholds pertaining to amount of consumed memory.
-  final List<
-    GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold
-  >
-  consumedMemoryThresholds;
-
+  final List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold> consumedMemoryThresholds;
   /// Utilization thresholds pertaining to CPU utilization.
-  final List<
-    GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold
-  >
-  cpuThresholds;
-
+  final List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold> cpuThresholds;
   /// The canonical identifier of the node type to add or remove.
   final String nodeTypeId;
-
   /// Number of nodes to add to a cluster during a scale-out operation.
   /// Must be divisible by 2 for stretched clusters.
   final int scaleOutSize;
-
   /// Utilization thresholds pertaining to amount of consumed storage.
-  final List<
-    GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold
-  >
-  storageThresholds;
+  final List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold> storageThresholds;
 
   /// Creates a new [GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy].
   /// [autoscalePolicyId] Required.
@@ -52,63 +38,23 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalePolicyId': autoscalePolicyId,
-      'consumedMemoryThresholds':
-          pulumi.Input.encodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold,
-            Map<String, dynamic>
-          >(consumedMemoryThresholds, (value) => value.toMap()),
-      'cpuThresholds':
-          pulumi.Input.encodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold,
-            Map<String, dynamic>
-          >(cpuThresholds, (value) => value.toMap()),
+      'consumedMemoryThresholds': pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold, Map<String, dynamic>>(consumedMemoryThresholds, (value) => value.toMap()),
+      'cpuThresholds': pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold, Map<String, dynamic>>(cpuThresholds, (value) => value.toMap()),
       'nodeTypeId': nodeTypeId,
       'scaleOutSize': scaleOutSize,
-      'storageThresholds':
-          pulumi.Input.encodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold,
-            Map<String, dynamic>
-          >(storageThresholds, (value) => value.toMap()),
+      'storageThresholds': pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold, Map<String, dynamic>>(storageThresholds, (value) => value.toMap()),
     };
   }
 
-  factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy(
       autoscalePolicyId: map['autoscalePolicyId'] as String,
-      consumedMemoryThresholds:
-          pulumi.Input.decodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold
-          >(
-            map['consumedMemoryThresholds'],
-            (value) =>
-                GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      cpuThresholds:
-          pulumi.Input.decodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold
-          >(
-            map['cpuThresholds'],
-            (value) =>
-                GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      consumedMemoryThresholds: pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>(map['consumedMemoryThresholds'], (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      cpuThresholds: pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>(map['cpuThresholds'], (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap((value as Map).cast<String, dynamic>())),
       nodeTypeId: map['nodeTypeId'] as String,
       scaleOutSize: map['scaleOutSize'] as int,
-      storageThresholds:
-          pulumi.Input.decodeList<
-            GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold
-          >(
-            map['storageThresholds'],
-            (value) =>
-                GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      storageThresholds: pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>(map['storageThresholds'], (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

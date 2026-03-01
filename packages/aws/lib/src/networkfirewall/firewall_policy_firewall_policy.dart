@@ -10,34 +10,22 @@ import 'firewall_policy_firewall_policy_stateless_rule_group_reference.dart';
 class FirewallPolicyFirewallPolicy {
   /// . Contains variables that you can use to override default Suricata settings in your firewall policy. See Rule Variables for details.
   final FirewallPolicyFirewallPolicyPolicyVariables? policyVariables;
-
   /// Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
   final List<String>? statefulDefaultActions;
-
   /// A configuration block that defines options on how the policy handles stateful rules. See Stateful Engine Options below for details.
-  final FirewallPolicyFirewallPolicyStatefulEngineOptions?
-  statefulEngineOptions;
-
+  final FirewallPolicyFirewallPolicyStatefulEngineOptions? statefulEngineOptions;
   /// Set of configuration blocks containing references to the stateful rule groups that are used in the policy. See Stateful Rule Group Reference below for details.
-  final List<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>?
-  statefulRuleGroupReferences;
-
+  final List<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>? statefulRuleGroupReferences;
   /// Set of configuration blocks describing the custom action definitions that are available for use in the firewall policy's `stateless_default_actions`. See Stateless Custom Action below for details.
-  final List<FirewallPolicyFirewallPolicyStatelessCustomAction>?
-  statelessCustomActions;
-
+  final List<FirewallPolicyFirewallPolicyStatelessCustomAction>? statelessCustomActions;
   /// Set of actions to take on a packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// In addition, you can specify custom actions that are compatible with your standard action choice. If you want non-matching packets to be forwarded for stateful inspection, specify `aws:forward_to_sfe`.
   final List<String> statelessDefaultActions;
-
   /// Set of actions to take on a fragmented packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// In addition, you can specify custom actions that are compatible with your standard action choice. If you want non-matching packets to be forwarded for stateful inspection, specify `aws:forward_to_sfe`.
   final List<String> statelessFragmentDefaultActions;
-
   /// Set of configuration blocks containing references to the stateless rule groups that are used in the policy. See Stateless Rule Group Reference below for details.
-  final List<FirewallPolicyFirewallPolicyStatelessRuleGroupReference>?
-  statelessRuleGroupReferences;
-
+  final List<FirewallPolicyFirewallPolicyStatelessRuleGroupReference>? statelessRuleGroupReferences;
   /// The (ARN) of the TLS Inspection policy to attach to the FW Policy.  This must be added at creation of the resource per AWS documentation. "You can only add a TLS inspection configuration to a new policy, not to an existing policy."  This cannot be removed from a FW Policy.
   final String? tlsInspectionConfigurationArn;
 
@@ -65,93 +53,30 @@ class FirewallPolicyFirewallPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyVariables': ?policyVariables == null
-          ? null
-          : policyVariables!.toMap(),
+      'policyVariables': ?policyVariables == null ? null : policyVariables!.toMap(),
       'statefulDefaultActions': ?statefulDefaultActions,
-      'statefulEngineOptions': ?statefulEngineOptions == null
-          ? null
-          : statefulEngineOptions!.toMap(),
-      'statefulRuleGroupReferences': ?statefulRuleGroupReferences == null
-          ? null
-          : pulumi.Input.encodeList<
-              FirewallPolicyFirewallPolicyStatefulRuleGroupReference,
-              Map<String, dynamic>
-            >(statefulRuleGroupReferences!, (value) => value.toMap()),
-      'statelessCustomActions': ?statelessCustomActions == null
-          ? null
-          : pulumi.Input.encodeList<
-              FirewallPolicyFirewallPolicyStatelessCustomAction,
-              Map<String, dynamic>
-            >(statelessCustomActions!, (value) => value.toMap()),
+      'statefulEngineOptions': ?statefulEngineOptions == null ? null : statefulEngineOptions!.toMap(),
+      'statefulRuleGroupReferences': ?statefulRuleGroupReferences == null ? null : pulumi.Input.encodeList<FirewallPolicyFirewallPolicyStatefulRuleGroupReference, Map<String, dynamic>>(statefulRuleGroupReferences!, (value) => value.toMap()),
+      'statelessCustomActions': ?statelessCustomActions == null ? null : pulumi.Input.encodeList<FirewallPolicyFirewallPolicyStatelessCustomAction, Map<String, dynamic>>(statelessCustomActions!, (value) => value.toMap()),
       'statelessDefaultActions': statelessDefaultActions,
       'statelessFragmentDefaultActions': statelessFragmentDefaultActions,
-      'statelessRuleGroupReferences': ?statelessRuleGroupReferences == null
-          ? null
-          : pulumi.Input.encodeList<
-              FirewallPolicyFirewallPolicyStatelessRuleGroupReference,
-              Map<String, dynamic>
-            >(statelessRuleGroupReferences!, (value) => value.toMap()),
+      'statelessRuleGroupReferences': ?statelessRuleGroupReferences == null ? null : pulumi.Input.encodeList<FirewallPolicyFirewallPolicyStatelessRuleGroupReference, Map<String, dynamic>>(statelessRuleGroupReferences!, (value) => value.toMap()),
       'tlsInspectionConfigurationArn': ?tlsInspectionConfigurationArn,
     };
   }
 
   factory FirewallPolicyFirewallPolicy.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicy(
-      policyVariables: map['policyVariables'] == null
-          ? null
-          : FirewallPolicyFirewallPolicyPolicyVariables.fromMap(
-              (map['policyVariables'] as Map).cast<String, dynamic>(),
-            ),
-      statefulDefaultActions: map['statefulDefaultActions'] == null
-          ? null
-          : (map['statefulDefaultActions'] as List).cast<String>(),
-      statefulEngineOptions: map['statefulEngineOptions'] == null
-          ? null
-          : FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap(
-              (map['statefulEngineOptions'] as Map).cast<String, dynamic>(),
-            ),
-      statefulRuleGroupReferences: map['statefulRuleGroupReferences'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FirewallPolicyFirewallPolicyStatefulRuleGroupReference
-            >(
-              map['statefulRuleGroupReferences'],
-              (value) =>
-                  FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      statelessCustomActions: map['statelessCustomActions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FirewallPolicyFirewallPolicyStatelessCustomAction
-            >(
-              map['statelessCustomActions'],
-              (value) =>
-                  FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      statelessDefaultActions: (map['statelessDefaultActions'] as List)
-          .cast<String>(),
-      statelessFragmentDefaultActions:
-          (map['statelessFragmentDefaultActions'] as List).cast<String>(),
-      statelessRuleGroupReferences: map['statelessRuleGroupReferences'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FirewallPolicyFirewallPolicyStatelessRuleGroupReference
-            >(
-              map['statelessRuleGroupReferences'],
-              (value) =>
-                  FirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      tlsInspectionConfigurationArn:
-          map['tlsInspectionConfigurationArn'] == null
-          ? null
-          : map['tlsInspectionConfigurationArn'] as String,
+      policyVariables: map['policyVariables'] == null ? null : FirewallPolicyFirewallPolicyPolicyVariables.fromMap((map['policyVariables'] as Map).cast<String, dynamic>()),
+      statefulDefaultActions: map['statefulDefaultActions'] == null ? null : (map['statefulDefaultActions'] as List).cast<String>(),
+      statefulEngineOptions: map['statefulEngineOptions'] == null ? null : FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap((map['statefulEngineOptions'] as Map).cast<String, dynamic>()),
+      statefulRuleGroupReferences: map['statefulRuleGroupReferences'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>(map['statefulRuleGroupReferences'], (value) => FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>())),
+      statelessCustomActions: map['statelessCustomActions'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatelessCustomAction>(map['statelessCustomActions'], (value) => FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap((value as Map).cast<String, dynamic>())),
+      statelessDefaultActions: (map['statelessDefaultActions'] as List).cast<String>(),
+      statelessFragmentDefaultActions: (map['statelessFragmentDefaultActions'] as List).cast<String>(),
+      statelessRuleGroupReferences: map['statelessRuleGroupReferences'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatelessRuleGroupReference>(map['statelessRuleGroupReferences'], (value) => FirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap((value as Map).cast<String, dynamic>())),
+      tlsInspectionConfigurationArn: map['tlsInspectionConfigurationArn'] == null ? null : map['tlsInspectionConfigurationArn'] as String,
     );
   }
 }
+

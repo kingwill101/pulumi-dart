@@ -1,0 +1,22 @@
+library module_healthbot;
+
+export 'healthbot/bot.dart';
+export 'healthbot/bot_args.dart';
+export 'healthbot/functions.dart';
+export 'healthbot/get_bot_args.dart';
+export 'healthbot/get_bot_result.dart';
+export 'healthbot/health_bot_key_response.dart';
+export 'healthbot/health_bot_properties.dart';
+export 'healthbot/health_bot_properties_response.dart';
+export 'healthbot/identity.dart';
+export 'healthbot/identity_response.dart';
+export 'healthbot/key_vault_properties.dart';
+export 'healthbot/key_vault_properties_response.dart';
+export 'healthbot/list_bot_secrets_args.dart';
+export 'healthbot/list_bot_secrets_result.dart';
+export 'healthbot/resource_identity_type.dart';
+export 'healthbot/sku.dart';
+export 'healthbot/sku_name.dart';
+export 'healthbot/sku_response.dart';
+export 'healthbot/system_data_response.dart';
+export 'healthbot/user_assigned_identity_response.dart';

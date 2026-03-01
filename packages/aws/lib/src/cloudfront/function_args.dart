@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionArgs {
   /// Source code of the function
   final pulumi.Input<String> code;
-
   /// Comment.
   final pulumi.Input<String>? comment;
-
   /// List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
   final pulumi.Input<List<String>>? keyValueStoreAssociations;
-
   /// Unique name for your CloudFront Function.
   final pulumi.Input<String>? name;
-
   /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   final pulumi.Input<bool>? publish;
-
   /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   ///
   /// The following arguments are optional:
@@ -41,14 +36,13 @@ class FunctionArgs {
     String? name,
     bool? publish,
     required String runtime,
-  }) : code = pulumi.Input.asInput<String>(code),
-       comment = pulumi.Input.asOptionalInput<String>(comment),
-       keyValueStoreAssociations = pulumi.Input.asOptionalInput<List<String>>(
-         keyValueStoreAssociations,
-       ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       publish = pulumi.Input.asOptionalInput<bool>(publish),
-       runtime = pulumi.Input.asInput<String>(runtime);
+  }) :
+      code = pulumi.Input.asInput<String>(code),
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      keyValueStoreAssociations = pulumi.Input.asOptionalInput<List<String>>(keyValueStoreAssociations),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      publish = pulumi.Input.asOptionalInput<bool>(publish),
+      runtime = pulumi.Input.asInput<String>(runtime);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,11 @@ class FunctionArgs {
     return FunctionArgs(
       code: map['code'] as String,
       comment: map['comment'] == null ? null : map['comment'] as String,
-      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null
-          ? null
-          : (map['keyValueStoreAssociations'] as List).cast<String>(),
+      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : (map['keyValueStoreAssociations'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       publish: map['publish'] == null ? null : map['publish'] as bool,
       runtime: map['runtime'] as String,
     );
   }
 }
+

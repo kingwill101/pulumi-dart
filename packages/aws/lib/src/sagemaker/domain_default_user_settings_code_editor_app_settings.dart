@@ -7,20 +7,13 @@ import 'domain_default_user_settings_code_editor_app_settings_default_resource_s
 
 class DomainDefaultUserSettingsCodeEditorAppSettings {
   /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
-  final DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement?
-  appLifecycleManagement;
-
+  final DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement? appLifecycleManagement;
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   final String? builtInLifecycleConfigArn;
-
   /// A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see `custom_image` Block below.
-  final List<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage>?
-  customImages;
-
+  final List<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage>? customImages;
   /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
-  final DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec?
-  defaultResourceSpec;
-
+  final DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec? defaultResourceSpec;
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
   final List<String>? lifecycleConfigArns;
 
@@ -40,54 +33,22 @@ class DomainDefaultUserSettingsCodeEditorAppSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appLifecycleManagement': ?appLifecycleManagement == null
-          ? null
-          : appLifecycleManagement!.toMap(),
+      'appLifecycleManagement': ?appLifecycleManagement == null ? null : appLifecycleManagement!.toMap(),
       'builtInLifecycleConfigArn': ?builtInLifecycleConfigArn,
-      'customImages': ?customImages == null
-          ? null
-          : pulumi.Input.encodeList<
-              DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage,
-              Map<String, dynamic>
-            >(customImages!, (value) => value.toMap()),
-      'defaultResourceSpec': ?defaultResourceSpec == null
-          ? null
-          : defaultResourceSpec!.toMap(),
+      'customImages': ?customImages == null ? null : pulumi.Input.encodeList<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage, Map<String, dynamic>>(customImages!, (value) => value.toMap()),
+      'defaultResourceSpec': ?defaultResourceSpec == null ? null : defaultResourceSpec!.toMap(),
       'lifecycleConfigArns': ?lifecycleConfigArns,
     };
   }
 
-  factory DomainDefaultUserSettingsCodeEditorAppSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultUserSettingsCodeEditorAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCodeEditorAppSettings(
-      appLifecycleManagement: map['appLifecycleManagement'] == null
-          ? null
-          : DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(
-              (map['appLifecycleManagement'] as Map).cast<String, dynamic>(),
-            ),
-      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null
-          ? null
-          : map['builtInLifecycleConfigArn'] as String,
-      customImages: map['customImages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage
-            >(
-              map['customImages'],
-              (value) =>
-                  DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      defaultResourceSpec: map['defaultResourceSpec'] == null
-          ? null
-          : DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap(
-              (map['defaultResourceSpec'] as Map).cast<String, dynamic>(),
-            ),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null
-          ? null
-          : (map['lifecycleConfigArns'] as List).cast<String>(),
+      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement'] as Map).cast<String, dynamic>()),
+      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : map['builtInLifecycleConfigArn'] as String,
+      customImages: map['customImages'] == null ? null : pulumi.Input.decodeList<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage>(map['customImages'], (value) => DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>())),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>()),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (map['lifecycleConfigArns'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,0 +1,103 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'vpn_server_configuration_azure_active_directory_authentication.dart';
+import 'vpn_server_configuration_client_revoked_certificate.dart';
+import 'vpn_server_configuration_client_root_certificate.dart';
+import 'vpn_server_configuration_ipsec_policy.dart';
+import 'vpn_server_configuration_radius.dart';
+
+/// {@template pulumi_network_vpn_server_configuration_vpn_server_configuration_args_doc}
+/// The set of arguments for VpnServerConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_network_vpn_server_configuration_vpn_server_configuration_args_doc}
+class VpnServerConfigurationArgs {
+  final pulumi.Input<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>? azureActiveDirectoryAuthentications;
+  final pulumi.Input<List<VpnServerConfigurationClientRevokedCertificate>>? clientRevokedCertificates;
+  final pulumi.Input<List<VpnServerConfigurationClientRootCertificate>>? clientRootCertificates;
+  /// A `ipsec_policy` block as defined below.
+  final pulumi.Input<VpnServerConfigurationIpsecPolicy>? ipsecPolicy;
+  /// The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// The Name which should be used for this VPN Server Configuration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  final pulumi.Input<VpnServerConfigurationRadius>? radius;
+  /// The Name of the Resource Group in which this VPN Server Configuration should be created. Changing this forces a new resource to be created.
+  final pulumi.Input<String> resourceGroupName;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
+  final pulumi.Input<List<String>> vpnAuthenticationTypes;
+  /// A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
+  final pulumi.Input<List<String>>? vpnProtocols;
+
+  /// Creates a new [VpnServerConfigurationArgs].
+  /// [azureActiveDirectoryAuthentications] Optional.
+  /// [clientRevokedCertificates] Optional.
+  /// [clientRootCertificates] Optional.
+  /// [ipsecPolicy] A `ipsec_policy` block as defined below.
+  /// [location] The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
+  /// [name] The Name which should be used for this VPN Server Configuration. Changing this forces a new resource to be created.
+  /// [radius] Optional.
+  /// [resourceGroupName] The Name of the Resource Group in which this VPN Server Configuration should be created. Changing this forces a new resource to be created.
+  /// [tags] A mapping of tags to assign to the resource.
+  /// [vpnAuthenticationTypes] A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
+  /// [vpnProtocols] A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
+  VpnServerConfigurationArgs({
+    List<VpnServerConfigurationAzureActiveDirectoryAuthentication>? azureActiveDirectoryAuthentications,
+    List<VpnServerConfigurationClientRevokedCertificate>? clientRevokedCertificates,
+    List<VpnServerConfigurationClientRootCertificate>? clientRootCertificates,
+    VpnServerConfigurationIpsecPolicy? ipsecPolicy,
+    String? location,
+    String? name,
+    VpnServerConfigurationRadius? radius,
+    required String resourceGroupName,
+    Map<String, String>? tags,
+    required List<String> vpnAuthenticationTypes,
+    List<String>? vpnProtocols,
+  }) :
+      azureActiveDirectoryAuthentications = pulumi.Input.asOptionalInput<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>(azureActiveDirectoryAuthentications),
+      clientRevokedCertificates = pulumi.Input.asOptionalInput<List<VpnServerConfigurationClientRevokedCertificate>>(clientRevokedCertificates),
+      clientRootCertificates = pulumi.Input.asOptionalInput<List<VpnServerConfigurationClientRootCertificate>>(clientRootCertificates),
+      ipsecPolicy = pulumi.Input.asOptionalInput<VpnServerConfigurationIpsecPolicy>(ipsecPolicy),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      radius = pulumi.Input.asOptionalInput<VpnServerConfigurationRadius>(radius),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpnAuthenticationTypes = pulumi.Input.asInput<List<String>>(vpnAuthenticationTypes),
+      vpnProtocols = pulumi.Input.asOptionalInput<List<String>>(vpnProtocols);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureActiveDirectoryAuthentications': ?pulumi.Input.mapOptionalInputValue<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>, List<Map<String, dynamic>>>(azureActiveDirectoryAuthentications, (value) => pulumi.Input.encodeList<VpnServerConfigurationAzureActiveDirectoryAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clientRevokedCertificates': ?pulumi.Input.mapOptionalInputValue<List<VpnServerConfigurationClientRevokedCertificate>, List<Map<String, dynamic>>>(clientRevokedCertificates, (value) => pulumi.Input.encodeList<VpnServerConfigurationClientRevokedCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clientRootCertificates': ?pulumi.Input.mapOptionalInputValue<List<VpnServerConfigurationClientRootCertificate>, List<Map<String, dynamic>>>(clientRootCertificates, (value) => pulumi.Input.encodeList<VpnServerConfigurationClientRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipsecPolicy': ?pulumi.Input.mapOptionalInputValue<VpnServerConfigurationIpsecPolicy, Map<String, dynamic>>(ipsecPolicy, (value) => value.toMap()),
+      'location': ?location,
+      'name': ?name,
+      'radius': ?pulumi.Input.mapOptionalInputValue<VpnServerConfigurationRadius, Map<String, dynamic>>(radius, (value) => value.toMap()),
+      'resourceGroupName': resourceGroupName,
+      'tags': ?tags,
+      'vpnAuthenticationTypes': vpnAuthenticationTypes,
+      'vpnProtocols': ?vpnProtocols,
+    };
+  }
+
+  factory VpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return VpnServerConfigurationArgs(
+      azureActiveDirectoryAuthentications: map['azureActiveDirectoryAuthentications'] == null ? null : pulumi.Input.decodeList<VpnServerConfigurationAzureActiveDirectoryAuthentication>(map['azureActiveDirectoryAuthentications'], (value) => VpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap((value as Map).cast<String, dynamic>())),
+      clientRevokedCertificates: map['clientRevokedCertificates'] == null ? null : pulumi.Input.decodeList<VpnServerConfigurationClientRevokedCertificate>(map['clientRevokedCertificates'], (value) => VpnServerConfigurationClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      clientRootCertificates: map['clientRootCertificates'] == null ? null : pulumi.Input.decodeList<VpnServerConfigurationClientRootCertificate>(map['clientRootCertificates'], (value) => VpnServerConfigurationClientRootCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      ipsecPolicy: map['ipsecPolicy'] == null ? null : VpnServerConfigurationIpsecPolicy.fromMap((map['ipsecPolicy'] as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      radius: map['radius'] == null ? null : VpnServerConfigurationRadius.fromMap((map['radius'] as Map).cast<String, dynamic>()),
+      resourceGroupName: map['resourceGroupName'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      vpnAuthenticationTypes: (map['vpnAuthenticationTypes'] as List).cast<String>(),
+      vpnProtocols: map['vpnProtocols'] == null ? null : (map['vpnProtocols'] as List).cast<String>(),
+    );
+  }
+}
+

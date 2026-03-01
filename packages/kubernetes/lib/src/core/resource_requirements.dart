@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resource_claim.dart';
+
+/// ResourceRequirements describes the compute resource requirements.
+class ResourceRequirements {
+  /// Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.
+  ///
+  /// This field depends on the DynamicResourceAllocation feature gate.
+  ///
+  /// This field is immutable. It can only be set for containers.
+  final List<ResourceClaim>? claims;
+  /// Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  final Map<String, String>? limits;
+  /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  final Map<String, String>? requests;
+
+  /// Creates a new [ResourceRequirements].
+  /// [claims] Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.
+  /// [limits] Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  /// [requests] Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  ResourceRequirements({
+    this.claims,
+    this.limits,
+    this.requests,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'claims': ?claims == null ? null : pulumi.Input.encodeList<ResourceClaim, Map<String, dynamic>>(claims!, (value) => value.toMap()),
+      'limits': ?limits,
+      'requests': ?requests,
+    };
+  }
+
+  factory ResourceRequirements.fromMap(Map<String, dynamic> map) {
+    return ResourceRequirements(
+      claims: map['claims'] == null ? null : pulumi.Input.decodeList<ResourceClaim>(map['claims'], (value) => ResourceClaim.fromMap((value as Map).cast<String, dynamic>())),
+      limits: map['limits'] == null ? null : (map['limits'] as Map).cast<String, String>(),
+      requests: map['requests'] == null ? null : (map['requests'] as Map).cast<String, String>(),
+    );
+  }
+}
+

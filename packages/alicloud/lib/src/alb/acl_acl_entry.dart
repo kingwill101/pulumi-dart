@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class AclAclEntry {
+  /// The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+  final String? description;
+  /// The IP address for the ACL entry.
+  final String? entry;
+  /// The status of the ACL entry. Valid values:
+  /// - `Adding`: The ACL entry is being added.
+  /// - `Available`: The ACL entry is added and available.
+  /// - `Removing`: The ACL entry is being removed.
+  final String? status;
+
+  /// Creates a new [AclAclEntry].
+  /// [description] The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+  /// [entry] The IP address for the ACL entry.
+  /// [status] The status of the ACL entry. Valid values:
+  AclAclEntry({
+    this.description,
+    this.entry,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'entry': ?entry,
+      'status': ?status,
+    };
+  }
+
+  factory AclAclEntry.fromMap(Map<String, dynamic> map) {
+    return AclAclEntry(
+      description: map['description'] == null ? null : map['description'] as String,
+      entry: map['entry'] == null ? null : map['entry'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}
+

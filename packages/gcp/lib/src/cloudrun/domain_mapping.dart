@@ -277,22 +277,17 @@ import 'domain_mapping_status.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
-
   /// Metadata associated with this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingMetadata> metadata;
-
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The spec for this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSpec> spec;
-
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   late final pulumi.Output<List<DomainMappingStatus>> statuses;
@@ -306,11 +301,11 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudrun/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudrun/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.location = registerOutput<String>('location');
     this.metadata = registerOutput<DomainMappingMetadata>('metadata');
     this.name = registerOutput<String>('name');

@@ -343,33 +343,24 @@ import 'fargate_profile_selector.dart';
 class FargateProfile extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EKS Fargate Profile.
   late final pulumi.Output<String> arn;
-
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
-
   /// Name of the EKS Fargate Profile.
   late final pulumi.Output<String> fargateProfileName;
-
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
   late final pulumi.Output<String> podExecutionRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
   late final pulumi.Output<List<FargateProfileSelector>> selectors;
-
   /// Status of the EKS Fargate Profile.
   late final pulumi.Output<String> status;
-
   /// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>?> subnetIds;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -382,11 +373,11 @@ class FargateProfile extends pulumi.CustomResource {
     FargateProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/fargateProfile:FargateProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:eks/fargateProfile:FargateProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.clusterName = registerOutput<String>('clusterName');
     this.fargateProfileName = registerOutput<String>('fargateProfileName');

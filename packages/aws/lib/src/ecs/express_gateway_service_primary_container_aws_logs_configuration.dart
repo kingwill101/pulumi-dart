@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
   /// CloudWatch log group name.
   final String logGroup;
-
   /// Prefix for log stream names. If not specified, a default prefix will be used.
   final String logStreamPrefix;
 
@@ -22,12 +22,11 @@ class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
     };
   }
 
-  factory ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainerAwsLogsConfiguration(
       logGroup: map['logGroup'] as String,
       logStreamPrefix: map['logStreamPrefix'] as String,
     );
   }
 }
+

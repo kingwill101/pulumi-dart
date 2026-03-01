@@ -5,14 +5,9 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric {
   /// Dimensions of the metric. See supported fields below.
-  final List<
-    PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension
-  >?
-  dimensions;
-
+  final List<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension>? dimensions;
   /// Name of the metric.
   final String? metricName;
-
   /// Namespace of the metric.
   final String? namespace;
 
@@ -28,36 +23,18 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoa
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null
-          ? null
-          : pulumi.Input.encodeList<
-              PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension,
-              Map<String, dynamic>
-            >(dimensions!, (value) => value.toMap()),
+      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
       'metricName': ?metricName,
       'namespace': ?namespace,
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric(
-      dimensions: map['dimensions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension
-            >(
-              map['dimensions'],
-              (value) =>
-                  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      metricName: map['metricName'] == null
-          ? null
-          : map['metricName'] as String,
+      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension>(map['dimensions'], (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
+      metricName: map['metricName'] == null ? null : map['metricName'] as String,
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
     );
   }
 }
+

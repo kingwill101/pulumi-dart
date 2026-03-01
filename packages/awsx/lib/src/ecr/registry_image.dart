@@ -132,11 +132,11 @@ class RegistryImage extends pulumi.ComponentResource {
     RegistryImageArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:ecr:RegistryImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-       ) {
+          'awsx:ecr:RegistryImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+        ) {
     this.image = registerOutput<pulumi_docker_index.RegistryImage>('image');
   }
 }

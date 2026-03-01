@@ -7,7 +7,6 @@ class GroupMembershipRole {
   /// Other roles cannot be accompanied with MEMBER role having expiry.
   /// Structure is documented below.
   final GroupMembershipRoleExpiryDetail? expiryDetail;
-
   /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
   /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
   final String name;
@@ -15,7 +14,10 @@ class GroupMembershipRole {
   /// Creates a new [GroupMembershipRole].
   /// [expiryDetail] The MembershipRole expiry details, only supported for MEMBER role.
   /// [name] The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-  GroupMembershipRole({this.expiryDetail, required this.name});
+  GroupMembershipRole({
+    this.expiryDetail,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,12 +28,9 @@ class GroupMembershipRole {
 
   factory GroupMembershipRole.fromMap(Map<String, dynamic> map) {
     return GroupMembershipRole(
-      expiryDetail: map['expiryDetail'] == null
-          ? null
-          : GroupMembershipRoleExpiryDetail.fromMap(
-              (map['expiryDetail'] as Map).cast<String, dynamic>(),
-            ),
+      expiryDetail: map['expiryDetail'] == null ? null : GroupMembershipRoleExpiryDetail.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

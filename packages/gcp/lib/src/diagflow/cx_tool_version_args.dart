@@ -10,11 +10,9 @@ import 'cx_tool_version_tool.dart';
 class CxToolVersionArgs {
   /// The display name of the tool version.
   final pulumi.Input<String> displayName;
-
   /// The tool to create a Version for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
   final pulumi.Input<String> parent;
-
   /// Snapshot of the tool to be associated with this version.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionTool> tool;
@@ -27,19 +25,16 @@ class CxToolVersionArgs {
     required String displayName,
     required String parent,
     required CxToolVersionTool tool,
-  }) : displayName = pulumi.Input.asInput<String>(displayName),
-       parent = pulumi.Input.asInput<String>(parent),
-       tool = pulumi.Input.asInput<CxToolVersionTool>(tool);
+  }) :
+      displayName = pulumi.Input.asInput<String>(displayName),
+      parent = pulumi.Input.asInput<String>(parent),
+      tool = pulumi.Input.asInput<CxToolVersionTool>(tool);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
       'parent': parent,
-      'tool':
-          pulumi.Input.mapInputValue<CxToolVersionTool, Map<String, dynamic>>(
-            tool,
-            (value) => value.toMap(),
-          ),
+      'tool': pulumi.Input.mapInputValue<CxToolVersionTool, Map<String, dynamic>>(tool, (value) => value.toMap()),
     };
   }
 
@@ -47,9 +42,8 @@ class CxToolVersionArgs {
     return CxToolVersionArgs(
       displayName: map['displayName'] as String,
       parent: map['parent'] as String,
-      tool: CxToolVersionTool.fromMap(
-        (map['tool'] as Map).cast<String, dynamic>(),
-      ),
+      tool: CxToolVersionTool.fromMap((map['tool'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

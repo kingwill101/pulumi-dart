@@ -5,10 +5,8 @@ import 'region_backend_service_consistent_hash_http_cookie_ttl.dart';
 class RegionBackendServiceConsistentHashHttpCookie {
   /// Name of the cookie.
   final String? name;
-
   /// Path to set for the cookie.
   final String? path;
-
   /// Lifetime of the cookie.
   /// Structure is documented below.
   final RegionBackendServiceConsistentHashHttpCookieTtl? ttl;
@@ -31,17 +29,12 @@ class RegionBackendServiceConsistentHashHttpCookie {
     };
   }
 
-  factory RegionBackendServiceConsistentHashHttpCookie.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceConsistentHashHttpCookie.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceConsistentHashHttpCookie(
       name: map['name'] == null ? null : map['name'] as String,
       path: map['path'] == null ? null : map['path'] as String,
-      ttl: map['ttl'] == null
-          ? null
-          : RegionBackendServiceConsistentHashHttpCookieTtl.fromMap(
-              (map['ttl'] as Map).cast<String, dynamic>(),
-            ),
+      ttl: map['ttl'] == null ? null : RegionBackendServiceConsistentHashHttpCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

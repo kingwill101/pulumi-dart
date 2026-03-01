@@ -5,7 +5,6 @@ import 'framework_cloud_control_detail_parameter_parameter_value.dart';
 class FrameworkCloudControlDetailParameter {
   /// The name of the parameter.
   final String name;
-
   /// Possible parameter value types.
   /// Structure is documented below.
   final FrameworkCloudControlDetailParameterParameterValue parameterValue;
@@ -25,15 +24,11 @@ class FrameworkCloudControlDetailParameter {
     };
   }
 
-  factory FrameworkCloudControlDetailParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkCloudControlDetailParameter.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameter(
       name: map['name'] as String,
-      parameterValue:
-          FrameworkCloudControlDetailParameterParameterValue.fromMap(
-            (map['parameterValue'] as Map).cast<String, dynamic>(),
-          ),
+      parameterValue: FrameworkCloudControlDetailParameterParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,21 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGatewayRouteSpecHttpRouteActionRewritePath {
   final String exact;
 
   /// Creates a new [GetGatewayRouteSpecHttpRouteActionRewritePath].
   /// [exact] Required.
-  GetGatewayRouteSpecHttpRouteActionRewritePath({required this.exact});
+  GetGatewayRouteSpecHttpRouteActionRewritePath({
+    required this.exact,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact};
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory GetGatewayRouteSpecHttpRouteActionRewritePath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayRouteSpecHttpRouteActionRewritePath.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteActionRewritePath(
       exact: map['exact'] as String,
     );
   }
 }
+

@@ -18,34 +18,16 @@ class GetRouteSpecHttp2RouteTimeout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idles':
-          pulumi.Input.encodeList<
-            GetRouteSpecHttp2RouteTimeoutIdle,
-            Map<String, dynamic>
-          >(idles, (value) => value.toMap()),
-      'perRequests':
-          pulumi.Input.encodeList<
-            GetRouteSpecHttp2RouteTimeoutPerRequest,
-            Map<String, dynamic>
-          >(perRequests, (value) => value.toMap()),
+      'idles': pulumi.Input.encodeList<GetRouteSpecHttp2RouteTimeoutIdle, Map<String, dynamic>>(idles, (value) => value.toMap()),
+      'perRequests': pulumi.Input.encodeList<GetRouteSpecHttp2RouteTimeoutPerRequest, Map<String, dynamic>>(perRequests, (value) => value.toMap()),
     };
   }
 
   factory GetRouteSpecHttp2RouteTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteTimeout(
-      idles: pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeoutIdle>(
-        map['idles'],
-        (value) => GetRouteSpecHttp2RouteTimeoutIdle.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      perRequests:
-          pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeoutPerRequest>(
-            map['perRequests'],
-            (value) => GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      idles: pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeoutIdle>(map['idles'], (value) => GetRouteSpecHttp2RouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>())),
+      perRequests: pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeoutPerRequest>(map['perRequests'], (value) => GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

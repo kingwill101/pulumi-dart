@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerCertificateArgs {
   /// The ARN of the certificate to attach to the listener.
   final pulumi.Input<String> certificateArn;
-
   /// The ARN of the listener to which to attach the certificate.
   final pulumi.Input<String> listenerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class ListenerCertificateArgs {
     required String certificateArn,
     required String listenerArn,
     String? region,
-  }) : certificateArn = pulumi.Input.asInput<String>(certificateArn),
-       listenerArn = pulumi.Input.asInput<String>(listenerArn),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      certificateArn = pulumi.Input.asInput<String>(certificateArn),
+      listenerArn = pulumi.Input.asInput<String>(listenerArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class ListenerCertificateArgs {
     );
   }
 }
+

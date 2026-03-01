@@ -5,8 +5,7 @@ import 'flow_destination_flow_config_destination_connector_properties_upsolver_s
 class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
   final String bucketName;
   final String? bucketPrefix;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig
-  s3OutputFormatConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig s3OutputFormatConfig;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver].
   /// [bucketName] Required.
@@ -26,18 +25,12 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver(
       bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null
-          ? null
-          : map['bucketPrefix'] as String,
-      s3OutputFormatConfig:
-          FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap(
-            (map['s3OutputFormatConfig'] as Map).cast<String, dynamic>(),
-          ),
+      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
+      s3OutputFormatConfig: FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

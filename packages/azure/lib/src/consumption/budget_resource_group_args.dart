@@ -1,0 +1,84 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'budget_resource_group_filter.dart';
+import 'budget_resource_group_notification.dart';
+import 'budget_resource_group_time_period.dart';
+
+/// {@template pulumi_consumption_budget_resource_group_budget_resource_group_args_doc}
+/// The set of arguments for BudgetResourceGroup.
+/// {@endtemplate}
+/// {@macro pulumi_consumption_budget_resource_group_budget_resource_group_args_doc}
+class BudgetResourceGroupArgs {
+  /// The total amount of cost to track with the budget.
+  final pulumi.Input<double> amount;
+  /// (Optional) The ETag of the Resource Group Consumption Budget
+  final pulumi.Input<String>? etag;
+  /// A `filter` block as defined below.
+  final pulumi.Input<BudgetResourceGroupFilter>? filter;
+  /// The name which should be used for this Resource Group Consumption Budget. Changing this forces a new Resource Group Consumption Budget to be created.
+  final pulumi.Input<String>? name;
+  /// One or more `notification` blocks as defined below.
+  final pulumi.Input<List<BudgetResourceGroupNotification>> notifications;
+  /// The ID of the Resource Group to create the consumption budget for in the form of /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1. Changing this forces a new Resource Group Consumption Budget to be created.
+  final pulumi.Input<String> resourceGroupId;
+  /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? timeGrain;
+  /// A `time_period` block as defined below.
+  final pulumi.Input<BudgetResourceGroupTimePeriod> timePeriod;
+
+  /// Creates a new [BudgetResourceGroupArgs].
+  /// [amount] The total amount of cost to track with the budget.
+  /// [etag] (Optional) The ETag of the Resource Group Consumption Budget
+  /// [filter] A `filter` block as defined below.
+  /// [name] The name which should be used for this Resource Group Consumption Budget. Changing this forces a new Resource Group Consumption Budget to be created.
+  /// [notifications] One or more `notification` blocks as defined below.
+  /// [resourceGroupId] The ID of the Resource Group to create the consumption budget for in the form of /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1. Changing this forces a new Resource Group Consumption Budget to be created.
+  /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
+  /// [timePeriod] A `time_period` block as defined below.
+  BudgetResourceGroupArgs({
+    required double amount,
+    String? etag,
+    BudgetResourceGroupFilter? filter,
+    String? name,
+    required List<BudgetResourceGroupNotification> notifications,
+    required String resourceGroupId,
+    String? timeGrain,
+    required BudgetResourceGroupTimePeriod timePeriod,
+  }) :
+      amount = pulumi.Input.asInput<double>(amount),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      filter = pulumi.Input.asOptionalInput<BudgetResourceGroupFilter>(filter),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      notifications = pulumi.Input.asInput<List<BudgetResourceGroupNotification>>(notifications),
+      resourceGroupId = pulumi.Input.asInput<String>(resourceGroupId),
+      timeGrain = pulumi.Input.asOptionalInput<String>(timeGrain),
+      timePeriod = pulumi.Input.asInput<BudgetResourceGroupTimePeriod>(timePeriod);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'amount': amount,
+      'etag': ?etag,
+      'filter': ?pulumi.Input.mapOptionalInputValue<BudgetResourceGroupFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'name': ?name,
+      'notifications': pulumi.Input.mapInputValue<List<BudgetResourceGroupNotification>, List<Map<String, dynamic>>>(notifications, (value) => pulumi.Input.encodeList<BudgetResourceGroupNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceGroupId': resourceGroupId,
+      'timeGrain': ?timeGrain,
+      'timePeriod': pulumi.Input.mapInputValue<BudgetResourceGroupTimePeriod, Map<String, dynamic>>(timePeriod, (value) => value.toMap()),
+    };
+  }
+
+  factory BudgetResourceGroupArgs.fromMap(Map<String, dynamic> map) {
+    return BudgetResourceGroupArgs(
+      amount: map['amount'] as double,
+      etag: map['etag'] == null ? null : map['etag'] as String,
+      filter: map['filter'] == null ? null : BudgetResourceGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      notifications: pulumi.Input.decodeList<BudgetResourceGroupNotification>(map['notifications'], (value) => BudgetResourceGroupNotification.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroupId: map['resourceGroupId'] as String,
+      timeGrain: map['timeGrain'] == null ? null : map['timeGrain'] as String,
+      timePeriod: BudgetResourceGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

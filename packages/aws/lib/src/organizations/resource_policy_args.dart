@@ -9,27 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyArgs {
   /// Content for the resource policy. The text must be correctly formatted JSON that complies with the syntax for the resource policy's type. See the [_AWS Organizations User Guide_](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_delegate_examples.html) for examples.
   final pulumi.Input<String> content;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ResourcePolicyArgs].
   /// [content] Content for the resource policy. The text must be correctly formatted JSON that complies with the syntax for the resource policy's type. See the [_AWS Organizations User Guide_](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_delegate_examples.html) for examples.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ResourcePolicyArgs({required String content, Map<String, String>? tags})
-    : content = pulumi.Input.asInput<String>(content),
+  ResourcePolicyArgs({
+    required String content,
+    Map<String, String>? tags,
+  }) :
+      content = pulumi.Input.asInput<String>(content),
       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'content': content, 'tags': ?tags};
+    return <String, dynamic>{
+      'content': content,
+      'tags': ?tags,
+    };
   }
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
       content: map['content'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

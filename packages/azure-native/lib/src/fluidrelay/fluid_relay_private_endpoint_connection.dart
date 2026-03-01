@@ -1,0 +1,201 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'fluid_relay_private_endpoint_connection_args.dart';
+import 'private_endpoint_response.dart';
+import 'private_link_service_connection_state_response.dart';
+import 'system_data_response.dart';
+
+/// The private endpoint connection resource.
+///
+/// Uses Azure REST API version 2025-06-20-preview.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Put Private Endpoint Connection
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var fluidRelayPrivateEndpointConnection = new AzureNative.FluidRelay.FluidRelayPrivateEndpointConnection("fluidRelayPrivateEndpointConnection", new()
+///     {
+///         FluidRelayServerName = "myFluidRelayServer",
+///         PrivateEndpointConnectionName = "myPrivateEndpointConnection",
+///         PrivateLinkServiceConnectionState = new AzureNative.FluidRelay.Inputs.PrivateLinkServiceConnectionStateArgs
+///         {
+///             Description = "Auto-Approved",
+///             Status = AzureNative.FluidRelay.PrivateEndpointServiceConnectionStatus.Approved,
+///         },
+///         ResourceGroup = "myResourceGroup",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	fluidrelay "github.com/pulumi/pulumi-azure-native-sdk/fluidrelay/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := fluidrelay.NewFluidRelayPrivateEndpointConnection(ctx, "fluidRelayPrivateEndpointConnection", &fluidrelay.FluidRelayPrivateEndpointConnectionArgs{
+/// 			FluidRelayServerName:          pulumi.String("myFluidRelayServer"),
+/// 			PrivateEndpointConnectionName: pulumi.String("myPrivateEndpointConnection"),
+/// 			PrivateLinkServiceConnectionState: &fluidrelay.PrivateLinkServiceConnectionStateArgs{
+/// 				Description: pulumi.String("Auto-Approved"),
+/// 				Status:      pulumi.String(fluidrelay.PrivateEndpointServiceConnectionStatusApproved),
+/// 			},
+/// 			ResourceGroup: pulumi.String("myResourceGroup"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.fluidrelay.FluidRelayPrivateEndpointConnection;
+/// import com.pulumi.azurenative.fluidrelay.FluidRelayPrivateEndpointConnectionArgs;
+/// import com.pulumi.azurenative.fluidrelay.inputs.PrivateLinkServiceConnectionStateArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var fluidRelayPrivateEndpointConnection = new FluidRelayPrivateEndpointConnection("fluidRelayPrivateEndpointConnection", FluidRelayPrivateEndpointConnectionArgs.builder()
+///             .fluidRelayServerName("myFluidRelayServer")
+///             .privateEndpointConnectionName("myPrivateEndpointConnection")
+///             .privateLinkServiceConnectionState(PrivateLinkServiceConnectionStateArgs.builder()
+///                 .description("Auto-Approved")
+///                 .status("Approved")
+///                 .build())
+///             .resourceGroup("myResourceGroup")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const fluidRelayPrivateEndpointConnection = new azure_native.fluidrelay.FluidRelayPrivateEndpointConnection("fluidRelayPrivateEndpointConnection", {
+///     fluidRelayServerName: "myFluidRelayServer",
+///     privateEndpointConnectionName: "myPrivateEndpointConnection",
+///     privateLinkServiceConnectionState: {
+///         description: "Auto-Approved",
+///         status: azure_native.fluidrelay.PrivateEndpointServiceConnectionStatus.Approved,
+///     },
+///     resourceGroup: "myResourceGroup",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// fluid_relay_private_endpoint_connection = azure_native.fluidrelay.FluidRelayPrivateEndpointConnection("fluidRelayPrivateEndpointConnection",
+///     fluid_relay_server_name="myFluidRelayServer",
+///     private_endpoint_connection_name="myPrivateEndpointConnection",
+///     private_link_service_connection_state={
+///         "description": "Auto-Approved",
+///         "status": azure_native.fluidrelay.PrivateEndpointServiceConnectionStatus.APPROVED,
+///     },
+///     resource_group="myResourceGroup")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   fluidRelayPrivateEndpointConnection:
+///     type: azure-native:fluidrelay:FluidRelayPrivateEndpointConnection
+///     properties:
+///       fluidRelayServerName: myFluidRelayServer
+///       privateEndpointConnectionName: myPrivateEndpointConnection
+///       privateLinkServiceConnectionState:
+///         description: Auto-Approved
+///         status: Approved
+///       resourceGroup: myResourceGroup
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:fluidrelay:FluidRelayPrivateEndpointConnection myPrivateEndpointConnection1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/privateEndpointConnections/{privateEndpointConnectionName}
+/// ```
+class FluidRelayPrivateEndpointConnection extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The group ids for the private endpoint resource.
+  late final pulumi.Output<List<String>> groupIds;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// The private endpoint resource.
+  late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+  /// A collection of information about the state of the connection between service consumer and provider.
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
+  /// The provisioning state of the private endpoint connection resource.
+  late final pulumi.Output<String> provisioningState;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [FluidRelayPrivateEndpointConnection].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [FluidRelayPrivateEndpointConnection]. {@macro pulumi_fluidrelay_fluid_relay_private_endpoint_connection_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  FluidRelayPrivateEndpointConnection(
+    String name, {
+    FluidRelayPrivateEndpointConnectionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:fluidrelay:FluidRelayPrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.groupIds = registerOutput<List<String>>('groupIds');
+    this.name = registerOutput<String>('name');
+    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
+    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState');
+    this.provisioningState = registerOutput<String>('provisioningState');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.type = registerOutput<String>('type');
+  }
+}

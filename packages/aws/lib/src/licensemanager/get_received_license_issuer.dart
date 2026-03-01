@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseIssuer {
   /// Issuer key fingerprint.
   final String keyFingerprint;
-
   /// The key name.
   final String name;
-
   /// Asymmetric KMS key from AWS Key Management Service. The KMS key must have a key usage of sign and verify, and support the RSASSA-PSS SHA-256 signing algorithm.
   final String signKey;
 
@@ -36,3 +35,4 @@ class GetReceivedLicenseIssuer {
     );
   }
 }
+

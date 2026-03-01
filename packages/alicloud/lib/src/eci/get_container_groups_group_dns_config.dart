@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_container_groups_group_dns_config_option.dart';
+
+class GetContainerGroupsGroupDnsConfig {
+  /// The list of DNS server IP addresses.
+  final List<String> nameServers;
+  /// The list of objects. Each object is a name-value pair. The value is optional.
+  final List<GetContainerGroupsGroupDnsConfigOption> options;
+  /// The list of DNS lookup domains.
+  final List<String> searches;
+
+  /// Creates a new [GetContainerGroupsGroupDnsConfig].
+  /// [nameServers] The list of DNS server IP addresses.
+  /// [options] The list of objects. Each object is a name-value pair. The value is optional.
+  /// [searches] The list of DNS lookup domains.
+  GetContainerGroupsGroupDnsConfig({
+    required this.nameServers,
+    required this.options,
+    required this.searches,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'nameServers': nameServers,
+      'options': pulumi.Input.encodeList<GetContainerGroupsGroupDnsConfigOption, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'searches': searches,
+    };
+  }
+
+  factory GetContainerGroupsGroupDnsConfig.fromMap(Map<String, dynamic> map) {
+    return GetContainerGroupsGroupDnsConfig(
+      nameServers: (map['nameServers'] as List).cast<String>(),
+      options: pulumi.Input.decodeList<GetContainerGroupsGroupDnsConfigOption>(map['options'], (value) => GetContainerGroupsGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>())),
+      searches: (map['searches'] as List).cast<String>(),
+    );
+  }
+}
+

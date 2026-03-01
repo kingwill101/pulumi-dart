@@ -1170,78 +1170,51 @@ import 'deployment_group_trigger_configuration.dart';
 /// [1]: http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html
 class DeploymentGroup extends pulumi.CustomResource {
   /// Configuration block of alarms associated with the deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupAlarmConfiguration?>
-  alarmConfiguration;
-
+  late final pulumi.Output<DeploymentGroupAlarmConfiguration?> alarmConfiguration;
   /// The name of the application.
   late final pulumi.Output<String> appName;
-
   /// The ARN of the CodeDeploy deployment group.
   late final pulumi.Output<String> arn;
-
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?>
-  autoRollbackConfiguration;
-
+  late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?> autoRollbackConfiguration;
   /// Autoscaling groups associated with the deployment group.
   late final pulumi.Output<List<String>?> autoscalingGroups;
-
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig>
-  blueGreenDeploymentConfig;
-
+  late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig> blueGreenDeploymentConfig;
   /// The destination platform type for the deployment.
   late final pulumi.Output<String> computePlatform;
-
   /// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
   late final pulumi.Output<String?> deploymentConfigName;
-
   /// The ID of the CodeDeploy deployment group.
   late final pulumi.Output<String> deploymentGroupId;
-
   /// The name of the deployment group.
   late final pulumi.Output<String> deploymentGroupName;
-
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
   late final pulumi.Output<DeploymentGroupDeploymentStyle?> deploymentStyle;
-
   /// Tag filters associated with the deployment group. See the AWS docs for details.
   late final pulumi.Output<List<DeploymentGroupEc2TagFilter>?> ec2TagFilters;
-
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
   late final pulumi.Output<List<DeploymentGroupEc2TagSet>?> ec2TagSets;
-
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
   late final pulumi.Output<DeploymentGroupEcsService?> ecsService;
-
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
   late final pulumi.Output<DeploymentGroupLoadBalancerInfo?> loadBalancerInfo;
-
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  late final pulumi.Output<List<DeploymentGroupOnPremisesInstanceTagFilter>?>
-  onPremisesInstanceTagFilters;
-
+  late final pulumi.Output<List<DeploymentGroupOnPremisesInstanceTagFilter>?> onPremisesInstanceTagFilters;
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
   late final pulumi.Output<String?> outdatedInstancesStrategy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The service role ARN that allows deployments.
   late final pulumi.Output<String> serviceRoleArn;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   late final pulumi.Output<bool?> terminationHookEnabled;
-
   /// Configuration block(s) of the triggers for the deployment group (documented below).
-  late final pulumi.Output<List<DeploymentGroupTriggerConfiguration>?>
-  triggerConfigurations;
+  late final pulumi.Output<List<DeploymentGroupTriggerConfiguration>?> triggerConfigurations;
 
   /// Creates a new [DeploymentGroup].
   /// [name] The Pulumi resource name.
@@ -1252,60 +1225,33 @@ class DeploymentGroup extends pulumi.CustomResource {
     DeploymentGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codedeploy/deploymentGroup:DeploymentGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.alarmConfiguration =
-        registerOutput<DeploymentGroupAlarmConfiguration?>(
-          'alarmConfiguration',
-        );
+          'aws:codedeploy/deploymentGroup:DeploymentGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration');
     this.appName = registerOutput<String>('appName');
     this.arn = registerOutput<String>('arn');
-    this.autoRollbackConfiguration =
-        registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
-          'autoRollbackConfiguration',
-        );
+    this.autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration');
     this.autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
-    this.blueGreenDeploymentConfig =
-        registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
-          'blueGreenDeploymentConfig',
-        );
+    this.blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig');
     this.computePlatform = registerOutput<String>('computePlatform');
     this.deploymentConfigName = registerOutput<String?>('deploymentConfigName');
     this.deploymentGroupId = registerOutput<String>('deploymentGroupId');
     this.deploymentGroupName = registerOutput<String>('deploymentGroupName');
-    this.deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>(
-      'deploymentStyle',
-    );
-    this.ec2TagFilters = registerOutput<List<DeploymentGroupEc2TagFilter>?>(
-      'ec2TagFilters',
-    );
-    this.ec2TagSets = registerOutput<List<DeploymentGroupEc2TagSet>?>(
-      'ec2TagSets',
-    );
+    this.deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle');
+    this.ec2TagFilters = registerOutput<List<DeploymentGroupEc2TagFilter>?>('ec2TagFilters');
+    this.ec2TagSets = registerOutput<List<DeploymentGroupEc2TagSet>?>('ec2TagSets');
     this.ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService');
-    this.loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>(
-      'loadBalancerInfo',
-    );
-    this.onPremisesInstanceTagFilters =
-        registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>(
-          'onPremisesInstanceTagFilters',
-        );
-    this.outdatedInstancesStrategy = registerOutput<String?>(
-      'outdatedInstancesStrategy',
-    );
+    this.loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo');
+    this.onPremisesInstanceTagFilters = registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>('onPremisesInstanceTagFilters');
+    this.outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
     this.region = registerOutput<String>('region');
     this.serviceRoleArn = registerOutput<String>('serviceRoleArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.terminationHookEnabled = registerOutput<bool?>(
-      'terminationHookEnabled',
-    );
-    this.triggerConfigurations =
-        registerOutput<List<DeploymentGroupTriggerConfiguration>?>(
-          'triggerConfigurations',
-        );
+    this.terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
+    this.triggerConfigurations = registerOutput<List<DeploymentGroupTriggerConfiguration>?>('triggerConfigurations');
   }
 }

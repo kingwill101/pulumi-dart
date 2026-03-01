@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Status of the assignment resource
+class AssignmentStatusResponse {
+  /// Reason for the status
+  final String? message;
+  /// State of the assignment resource
+  final String state;
+
+  /// Creates a new [AssignmentStatusResponse].
+  /// [message] Reason for the status
+  /// [state] State of the assignment resource
+  AssignmentStatusResponse({
+    this.message,
+    required this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'message': ?message,
+      'state': state,
+    };
+  }
+
+  factory AssignmentStatusResponse.fromMap(Map<String, dynamic> map) {
+    return AssignmentStatusResponse(
+      message: map['message'] == null ? null : map['message'] as String,
+      state: map['state'] as String,
+    );
+  }
+}
+

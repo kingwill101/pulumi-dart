@@ -10,10 +10,8 @@ class KeyRingArgs {
   /// The location for the KeyRing.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   final pulumi.Input<String> location;
-
   /// The resource name for the KeyRing.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -22,8 +20,12 @@ class KeyRingArgs {
   /// [location] The location for the KeyRing.
   /// [name] The resource name for the KeyRing.
   /// [project] The ID of the project in which the resource belongs.
-  KeyRingArgs({required String location, String? name, String? project})
-    : location = pulumi.Input.asInput<String>(location),
+  KeyRingArgs({
+    required String location,
+    String? name,
+    String? project,
+  }) :
+      location = pulumi.Input.asInput<String>(location),
       name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -43,3 +45,4 @@ class KeyRingArgs {
     );
   }
 }
+

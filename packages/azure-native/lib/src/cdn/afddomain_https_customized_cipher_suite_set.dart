@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
+class AFDDomainHttpsCustomizedCipherSuiteSet {
+  /// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+  final List<String>? cipherSuiteSetForTls12;
+  /// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+  final List<String>? cipherSuiteSetForTls13;
+
+  /// Creates a new [AFDDomainHttpsCustomizedCipherSuiteSet].
+  /// [cipherSuiteSetForTls12] Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+  /// [cipherSuiteSetForTls13] Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+  AFDDomainHttpsCustomizedCipherSuiteSet({
+    this.cipherSuiteSetForTls12,
+    this.cipherSuiteSetForTls13,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cipherSuiteSetForTls12': ?cipherSuiteSetForTls12,
+      'cipherSuiteSetForTls13': ?cipherSuiteSetForTls13,
+    };
+  }
+
+  factory AFDDomainHttpsCustomizedCipherSuiteSet.fromMap(Map<String, dynamic> map) {
+    return AFDDomainHttpsCustomizedCipherSuiteSet(
+      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : (map['cipherSuiteSetForTls12'] as List).cast<String>(),
+      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : (map['cipherSuiteSetForTls13'] as List).cast<String>(),
+    );
+  }
+}
+

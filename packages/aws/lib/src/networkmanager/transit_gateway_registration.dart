@@ -148,7 +148,6 @@ import 'transit_gateway_registration_args.dart';
 class TransitGatewayRegistration extends pulumi.CustomResource {
   /// ID of the Global Network to register to.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ARN of the Transit Gateway to register.
   late final pulumi.Output<String> transitGatewayArn;
 
@@ -161,11 +160,11 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
     TransitGatewayRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.globalNetworkId = registerOutput<String>('globalNetworkId');
     this.transitGatewayArn = registerOutput<String>('transitGatewayArn');
   }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FhirStoreConsentConfigConsentHeaderHandling {
   /// Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
   /// Default value is `PERMIT_EMPTY_SCOPE`.
@@ -8,17 +9,20 @@ class FhirStoreConsentConfigConsentHeaderHandling {
 
   /// Creates a new [FhirStoreConsentConfigConsentHeaderHandling].
   /// [profile] Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
-  FhirStoreConsentConfigConsentHeaderHandling({this.profile});
+  FhirStoreConsentConfigConsentHeaderHandling({
+    this.profile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'profile': ?profile};
+    return <String, dynamic>{
+      'profile': ?profile,
+    };
   }
 
-  factory FhirStoreConsentConfigConsentHeaderHandling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FhirStoreConsentConfigConsentHeaderHandling.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfigConsentHeaderHandling(
       profile: map['profile'] == null ? null : map['profile'] as String,
     );
   }
 }
+

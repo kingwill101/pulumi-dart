@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataQualityRulesetTargetTable {
   /// The catalog id where the AWS Glue table exists.
   final String? catalogId;
-
   /// Name of the database where the AWS Glue table exists.
   final String databaseName;
-
   /// Name of the AWS Glue table.
   final String tableName;
 
@@ -36,3 +35,4 @@ class DataQualityRulesetTargetTable {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouterMd5AuthenticationKeys {
   /// Value of the key used for MD5 authentication.
   final String key;
-
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -15,10 +15,16 @@ class RouterMd5AuthenticationKeys {
   /// Creates a new [RouterMd5AuthenticationKeys].
   /// [key] Value of the key used for MD5 authentication.
   /// [name] Name of the resource. The name must be 1-63 characters long, and
-  RouterMd5AuthenticationKeys({required this.key, required this.name});
+  RouterMd5AuthenticationKeys({
+    required this.key,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
   factory RouterMd5AuthenticationKeys.fromMap(Map<String, dynamic> map) {
@@ -28,3 +34,4 @@ class RouterMd5AuthenticationKeys {
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'prevention_discovery_config_target_cloud_sql_target_filter_collection_in
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection {
   /// A collection of regular expressions to match a resource against.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes?
-  includeRegexes;
+  final PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes? includeRegexes;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection].
   /// [includeRegexes] A collection of regular expressions to match a resource against.
@@ -16,21 +15,14 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': ?includeRegexes == null
-          ? null
-          : includeRegexes!.toMap(),
+      'includeRegexes': ?includeRegexes == null ? null : includeRegexes!.toMap(),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection(
-      includeRegexes: map['includeRegexes'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes.fromMap(
-              (map['includeRegexes'] as Map).cast<String, dynamic>(),
-            ),
+      includeRegexes: map['includeRegexes'] == null ? null : PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

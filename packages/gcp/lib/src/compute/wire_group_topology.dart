@@ -10,29 +10,20 @@ class WireGroupTopology {
 
   /// Creates a new [WireGroupTopology].
   /// [endpoints] Endpoints grouped by location, each mapping to interconnect configurations.
-  WireGroupTopology({this.endpoints});
+  WireGroupTopology({
+    this.endpoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints': ?endpoints == null
-          ? null
-          : pulumi.Input.encodeList<
-              WireGroupTopologyEndpoint,
-              Map<String, dynamic>
-            >(endpoints!, (value) => value.toMap()),
+      'endpoints': ?endpoints == null ? null : pulumi.Input.encodeList<WireGroupTopologyEndpoint, Map<String, dynamic>>(endpoints!, (value) => value.toMap()),
     };
   }
 
   factory WireGroupTopology.fromMap(Map<String, dynamic> map) {
     return WireGroupTopology(
-      endpoints: map['endpoints'] == null
-          ? null
-          : pulumi.Input.decodeList<WireGroupTopologyEndpoint>(
-              map['endpoints'],
-              (value) => WireGroupTopologyEndpoint.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<WireGroupTopologyEndpoint>(map['endpoints'], (value) => WireGroupTopologyEndpoint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

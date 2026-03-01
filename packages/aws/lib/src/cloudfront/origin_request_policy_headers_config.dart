@@ -9,7 +9,10 @@ class OriginRequestPolicyHeadersConfig {
   /// Creates a new [OriginRequestPolicyHeadersConfig].
   /// [headerBehavior] Optional.
   /// [headers] Optional.
-  OriginRequestPolicyHeadersConfig({this.headerBehavior, this.headers});
+  OriginRequestPolicyHeadersConfig({
+    this.headerBehavior,
+    this.headers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,14 +23,9 @@ class OriginRequestPolicyHeadersConfig {
 
   factory OriginRequestPolicyHeadersConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyHeadersConfig(
-      headerBehavior: map['headerBehavior'] == null
-          ? null
-          : map['headerBehavior'] as String,
-      headers: map['headers'] == null
-          ? null
-          : OriginRequestPolicyHeadersConfigHeaders.fromMap(
-              (map['headers'] as Map).cast<String, dynamic>(),
-            ),
+      headerBehavior: map['headerBehavior'] == null ? null : map['headerBehavior'] as String,
+      headers: map['headers'] == null ? null : OriginRequestPolicyHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

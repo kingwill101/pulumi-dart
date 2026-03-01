@@ -1,0 +1,625 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'category_response.dart';
+import 'destination_addr_response.dart';
+import 'post_rule_args.dart';
+import 'source_addr_response.dart';
+import 'system_data_response.dart';
+import 'tag_info_response.dart';
+
+/// PostRulestack rule list
+///
+/// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+///
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### PostRules_CreateOrUpdate_MaximumSet_Gen
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var postRule = new AzureNative.Cloudngfw.PostRule("postRule", new()
+///     {
+///         ActionType = AzureNative.Cloudngfw.ActionEnum.Allow,
+///         Applications = new[]
+///         {
+///             "app1",
+///         },
+///         AuditComment = "example comment",
+///         Category = new AzureNative.Cloudngfw.Inputs.CategoryArgs
+///         {
+///             Feeds = new[]
+///             {
+///                 "feed",
+///             },
+///             UrlCustom = new[]
+///             {
+///                 "https://microsoft.com",
+///             },
+///         },
+///         DecryptionRuleType = AzureNative.Cloudngfw.DecryptionRuleTypeEnum.SSLOutboundInspection,
+///         Description = "description of post rule",
+///         Destination = new AzureNative.Cloudngfw.Inputs.DestinationAddrArgs
+///         {
+///             Cidrs = new[]
+///             {
+///                 "1.0.0.1/10",
+///             },
+///             Countries = new[]
+///             {
+///                 "India",
+///             },
+///             Feeds = new[]
+///             {
+///                 "feed",
+///             },
+///             FqdnLists = new[]
+///             {
+///                 "FQDN1",
+///             },
+///             PrefixLists = new[]
+///             {
+///                 "PL1",
+///             },
+///         },
+///         EnableLogging = AzureNative.Cloudngfw.StateEnum.DISABLED,
+///         GlobalRulestackName = "lrs1",
+///         InboundInspectionCertificate = "cert1",
+///         NegateDestination = AzureNative.Cloudngfw.BooleanEnum.TRUE,
+///         NegateSource = AzureNative.Cloudngfw.BooleanEnum.TRUE,
+///         Priority = "1",
+///         Protocol = "HTTP",
+///         ProtocolPortList = new[]
+///         {
+///             "80",
+///         },
+///         RuleName = "postRule1",
+///         RuleState = AzureNative.Cloudngfw.StateEnum.DISABLED,
+///         Source = new AzureNative.Cloudngfw.Inputs.SourceAddrArgs
+///         {
+///             Cidrs = new[]
+///             {
+///                 "1.0.0.1/10",
+///             },
+///             Countries = new[]
+///             {
+///                 "India",
+///             },
+///             Feeds = new[]
+///             {
+///                 "feed",
+///             },
+///             PrefixLists = new[]
+///             {
+///                 "PL1",
+///             },
+///         },
+///         Tags = new[]
+///         {
+///             new AzureNative.Cloudngfw.Inputs.TagInfoArgs
+///             {
+///                 Key = "keyName",
+///                 Value = "value",
+///             },
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	cloudngfw "github.com/pulumi/pulumi-azure-native-sdk/cloudngfw/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudngfw.NewPostRule(ctx, "postRule", &cloudngfw.PostRuleArgs{
+/// 			ActionType: pulumi.String(cloudngfw.ActionEnumAllow),
+/// 			Applications: pulumi.StringArray{
+/// 				pulumi.String("app1"),
+/// 			},
+/// 			AuditComment: pulumi.String("example comment"),
+/// 			Category: &cloudngfw.CategoryArgs{
+/// 				Feeds: pulumi.StringArray{
+/// 					pulumi.String("feed"),
+/// 				},
+/// 				UrlCustom: pulumi.StringArray{
+/// 					pulumi.String("https://microsoft.com"),
+/// 				},
+/// 			},
+/// 			DecryptionRuleType: pulumi.String(cloudngfw.DecryptionRuleTypeEnumSSLOutboundInspection),
+/// 			Description:        pulumi.String("description of post rule"),
+/// 			Destination: &cloudngfw.DestinationAddrArgs{
+/// 				Cidrs: pulumi.StringArray{
+/// 					pulumi.String("1.0.0.1/10"),
+/// 				},
+/// 				Countries: pulumi.StringArray{
+/// 					pulumi.String("India"),
+/// 				},
+/// 				Feeds: pulumi.StringArray{
+/// 					pulumi.String("feed"),
+/// 				},
+/// 				FqdnLists: pulumi.StringArray{
+/// 					pulumi.String("FQDN1"),
+/// 				},
+/// 				PrefixLists: pulumi.StringArray{
+/// 					pulumi.String("PL1"),
+/// 				},
+/// 			},
+/// 			EnableLogging:                pulumi.String(cloudngfw.StateEnumDISABLED),
+/// 			GlobalRulestackName:          pulumi.String("lrs1"),
+/// 			InboundInspectionCertificate: pulumi.String("cert1"),
+/// 			NegateDestination:            pulumi.String(cloudngfw.BooleanEnumTRUE),
+/// 			NegateSource:                 pulumi.String(cloudngfw.BooleanEnumTRUE),
+/// 			Priority:                     pulumi.String("1"),
+/// 			Protocol:                     pulumi.String("HTTP"),
+/// 			ProtocolPortList: pulumi.StringArray{
+/// 				pulumi.String("80"),
+/// 			},
+/// 			RuleName:  pulumi.String("postRule1"),
+/// 			RuleState: pulumi.String(cloudngfw.StateEnumDISABLED),
+/// 			Source: &cloudngfw.SourceAddrArgs{
+/// 				Cidrs: pulumi.StringArray{
+/// 					pulumi.String("1.0.0.1/10"),
+/// 				},
+/// 				Countries: pulumi.StringArray{
+/// 					pulumi.String("India"),
+/// 				},
+/// 				Feeds: pulumi.StringArray{
+/// 					pulumi.String("feed"),
+/// 				},
+/// 				PrefixLists: pulumi.StringArray{
+/// 					pulumi.String("PL1"),
+/// 				},
+/// 			},
+/// 			Tags: cloudngfw.TagInfoArray{
+/// 				&cloudngfw.TagInfoArgs{
+/// 					Key:   pulumi.String("keyName"),
+/// 					Value: pulumi.String("value"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.cloudngfw.PostRule;
+/// import com.pulumi.azurenative.cloudngfw.PostRuleArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.CategoryArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.DestinationAddrArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.SourceAddrArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.TagInfoArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var postRule = new PostRule("postRule", PostRuleArgs.builder()
+///             .actionType("Allow")
+///             .applications("app1")
+///             .auditComment("example comment")
+///             .category(CategoryArgs.builder()
+///                 .feeds("feed")
+///                 .urlCustom("https://microsoft.com")
+///                 .build())
+///             .decryptionRuleType("SSLOutboundInspection")
+///             .description("description of post rule")
+///             .destination(DestinationAddrArgs.builder()
+///                 .cidrs("1.0.0.1/10")
+///                 .countries("India")
+///                 .feeds("feed")
+///                 .fqdnLists("FQDN1")
+///                 .prefixLists("PL1")
+///                 .build())
+///             .enableLogging("DISABLED")
+///             .globalRulestackName("lrs1")
+///             .inboundInspectionCertificate("cert1")
+///             .negateDestination("TRUE")
+///             .negateSource("TRUE")
+///             .priority("1")
+///             .protocol("HTTP")
+///             .protocolPortList("80")
+///             .ruleName("postRule1")
+///             .ruleState("DISABLED")
+///             .source(SourceAddrArgs.builder()
+///                 .cidrs("1.0.0.1/10")
+///                 .countries("India")
+///                 .feeds("feed")
+///                 .prefixLists("PL1")
+///                 .build())
+///             .tags(TagInfoArgs.builder()
+///                 .key("keyName")
+///                 .value("value")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const postRule = new azure_native.cloudngfw.PostRule("postRule", {
+///     actionType: azure_native.cloudngfw.ActionEnum.Allow,
+///     applications: ["app1"],
+///     auditComment: "example comment",
+///     category: {
+///         feeds: ["feed"],
+///         urlCustom: ["https://microsoft.com"],
+///     },
+///     decryptionRuleType: azure_native.cloudngfw.DecryptionRuleTypeEnum.SSLOutboundInspection,
+///     description: "description of post rule",
+///     destination: {
+///         cidrs: ["1.0.0.1/10"],
+///         countries: ["India"],
+///         feeds: ["feed"],
+///         fqdnLists: ["FQDN1"],
+///         prefixLists: ["PL1"],
+///     },
+///     enableLogging: azure_native.cloudngfw.StateEnum.DISABLED,
+///     globalRulestackName: "lrs1",
+///     inboundInspectionCertificate: "cert1",
+///     negateDestination: azure_native.cloudngfw.BooleanEnum.TRUE,
+///     negateSource: azure_native.cloudngfw.BooleanEnum.TRUE,
+///     priority: "1",
+///     protocol: "HTTP",
+///     protocolPortList: ["80"],
+///     ruleName: "postRule1",
+///     ruleState: azure_native.cloudngfw.StateEnum.DISABLED,
+///     source: {
+///         cidrs: ["1.0.0.1/10"],
+///         countries: ["India"],
+///         feeds: ["feed"],
+///         prefixLists: ["PL1"],
+///     },
+///     tags: [{
+///         key: "keyName",
+///         value: "value",
+///     }],
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// post_rule = azure_native.cloudngfw.PostRule("postRule",
+///     action_type=azure_native.cloudngfw.ActionEnum.ALLOW,
+///     applications=["app1"],
+///     audit_comment="example comment",
+///     category={
+///         "feeds": ["feed"],
+///         "url_custom": ["https://microsoft.com"],
+///     },
+///     decryption_rule_type=azure_native.cloudngfw.DecryptionRuleTypeEnum.SSL_OUTBOUND_INSPECTION,
+///     description="description of post rule",
+///     destination={
+///         "cidrs": ["1.0.0.1/10"],
+///         "countries": ["India"],
+///         "feeds": ["feed"],
+///         "fqdn_lists": ["FQDN1"],
+///         "prefix_lists": ["PL1"],
+///     },
+///     enable_logging=azure_native.cloudngfw.StateEnum.DISABLED,
+///     global_rulestack_name="lrs1",
+///     inbound_inspection_certificate="cert1",
+///     negate_destination=azure_native.cloudngfw.BooleanEnum.TRUE,
+///     negate_source=azure_native.cloudngfw.BooleanEnum.TRUE,
+///     priority="1",
+///     protocol="HTTP",
+///     protocol_port_list=["80"],
+///     rule_name="postRule1",
+///     rule_state=azure_native.cloudngfw.StateEnum.DISABLED,
+///     source={
+///         "cidrs": ["1.0.0.1/10"],
+///         "countries": ["India"],
+///         "feeds": ["feed"],
+///         "prefix_lists": ["PL1"],
+///     },
+///     tags=[{
+///         "key": "keyName",
+///         "value": "value",
+///     }])
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   postRule:
+///     type: azure-native:cloudngfw:PostRule
+///     properties:
+///       actionType: Allow
+///       applications:
+///         - app1
+///       auditComment: example comment
+///       category:
+///         feeds:
+///           - feed
+///         urlCustom:
+///           - https://microsoft.com
+///       decryptionRuleType: SSLOutboundInspection
+///       description: description of post rule
+///       destination:
+///         cidrs:
+///           - 1.0.0.1/10
+///         countries:
+///           - India
+///         feeds:
+///           - feed
+///         fqdnLists:
+///           - FQDN1
+///         prefixLists:
+///           - PL1
+///       enableLogging: DISABLED
+///       globalRulestackName: lrs1
+///       inboundInspectionCertificate: cert1
+///       negateDestination: TRUE
+///       negateSource: TRUE
+///       priority: '1'
+///       protocol: HTTP
+///       protocolPortList:
+///         - '80'
+///       ruleName: postRule1
+///       ruleState: DISABLED
+///       source:
+///         cidrs:
+///           - 1.0.0.1/10
+///         countries:
+///           - India
+///         feeds:
+///           - feed
+///         prefixLists:
+///           - PL1
+///       tags:
+///         - key: keyName
+///           value: value
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### PostRules_CreateOrUpdate_MinimumSet_Gen
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var postRule = new AzureNative.Cloudngfw.PostRule("postRule", new()
+///     {
+///         GlobalRulestackName = "lrs1",
+///         Priority = "1",
+///         RuleName = "postRule1",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	cloudngfw "github.com/pulumi/pulumi-azure-native-sdk/cloudngfw/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudngfw.NewPostRule(ctx, "postRule", &cloudngfw.PostRuleArgs{
+/// 			GlobalRulestackName: pulumi.String("lrs1"),
+/// 			Priority:            pulumi.String("1"),
+/// 			RuleName:            pulumi.String("postRule1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.cloudngfw.PostRule;
+/// import com.pulumi.azurenative.cloudngfw.PostRuleArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var postRule = new PostRule("postRule", PostRuleArgs.builder()
+///             .globalRulestackName("lrs1")
+///             .priority("1")
+///             .ruleName("postRule1")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const postRule = new azure_native.cloudngfw.PostRule("postRule", {
+///     globalRulestackName: "lrs1",
+///     priority: "1",
+///     ruleName: "postRule1",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// post_rule = azure_native.cloudngfw.PostRule("postRule",
+///     global_rulestack_name="lrs1",
+///     priority="1",
+///     rule_name="postRule1")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   postRule:
+///     type: azure-native:cloudngfw:PostRule
+///     properties:
+///       globalRulestackName: lrs1
+///       priority: '1'
+///       ruleName: postRule1
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:cloudngfw:PostRule aaaaaaaaaa /providers/PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/postRules/{priority}
+/// ```
+class PostRule extends pulumi.CustomResource {
+  /// rule action
+  late final pulumi.Output<String?> actionType;
+  /// array of rule applications
+  late final pulumi.Output<List<String>?> applications;
+  /// rule comment
+  late final pulumi.Output<String?> auditComment;
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// rule category
+  late final pulumi.Output<CategoryResponse?> category;
+  /// enable or disable decryption
+  late final pulumi.Output<String?> decryptionRuleType;
+  /// rule description
+  late final pulumi.Output<String?> description;
+  /// destination address
+  late final pulumi.Output<DestinationAddrResponse?> destination;
+  /// enable or disable logging
+  late final pulumi.Output<String?> enableLogging;
+  /// etag info
+  late final pulumi.Output<String?> etag;
+  /// inbound Inspection Certificate
+  late final pulumi.Output<String?> inboundInspectionCertificate;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// cidr should not be 'any'
+  late final pulumi.Output<String?> negateDestination;
+  /// cidr should not be 'any'
+  late final pulumi.Output<String?> negateSource;
+  late final pulumi.Output<int> priority;
+  /// any, application-default, TCP:number, UDP:number
+  late final pulumi.Output<String?> protocol;
+  /// prot port list
+  late final pulumi.Output<List<String>?> protocolPortList;
+  /// Provisioning state of the resource.
+  late final pulumi.Output<String> provisioningState;
+  /// rule name
+  late final pulumi.Output<String> ruleName;
+  /// state of this rule
+  late final pulumi.Output<String?> ruleState;
+  /// source address
+  late final pulumi.Output<SourceAddrResponse?> source;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// tag for rule
+  late final pulumi.Output<List<TagInfoResponse>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [PostRule].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [PostRule]. {@macro pulumi_cloudngfw_post_rule_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  PostRule(
+    String name, {
+    PostRuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cloudngfw:PostRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.actionType = registerOutput<String?>('actionType');
+    this.applications = registerOutput<List<String>?>('applications');
+    this.auditComment = registerOutput<String?>('auditComment');
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.category = registerOutput<CategoryResponse?>('category');
+    this.decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    this.description = registerOutput<String?>('description');
+    this.destination = registerOutput<DestinationAddrResponse?>('destination');
+    this.enableLogging = registerOutput<String?>('enableLogging');
+    this.etag = registerOutput<String?>('etag');
+    this.inboundInspectionCertificate = registerOutput<String?>('inboundInspectionCertificate');
+    this.name = registerOutput<String>('name');
+    this.negateDestination = registerOutput<String?>('negateDestination');
+    this.negateSource = registerOutput<String?>('negateSource');
+    this.priority = registerOutput<int>('priority');
+    this.protocol = registerOutput<String?>('protocol');
+    this.protocolPortList = registerOutput<List<String>?>('protocolPortList');
+    this.provisioningState = registerOutput<String>('provisioningState');
+    this.ruleName = registerOutput<String>('ruleName');
+    this.ruleState = registerOutput<String?>('ruleState');
+    this.source = registerOutput<SourceAddrResponse?>('source');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<List<TagInfoResponse>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

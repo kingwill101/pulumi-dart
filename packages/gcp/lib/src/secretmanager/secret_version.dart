@@ -1118,7 +1118,6 @@ import 'secret_version_args.dart';
 class SecretVersion extends pulumi.CustomResource {
   /// The time at which the Secret was created.
   late final pulumi.Output<String> createTime;
-
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
   /// disabled rather than deleted. Default is `DELETE`. Possible values are:
@@ -1126,31 +1125,23 @@ class SecretVersion extends pulumi.CustomResource {
   /// * DISABLE
   /// * ABANDON
   late final pulumi.Output<String?> deletionPolicy;
-
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
   late final pulumi.Output<String> destroyTime;
-
   /// The current state of the SecretVersion.
   late final pulumi.Output<bool?> enabled;
-
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   late final pulumi.Output<bool?> isSecretDataBase64;
-
   /// The resource name of the SecretVersion. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
   late final pulumi.Output<String> project;
-
   /// Secret Manager secret resource
   late final pulumi.Output<String> secret;
-
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> secretData;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
@@ -1158,10 +1149,8 @@ class SecretVersion extends pulumi.CustomResource {
   ///
   /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
   late final pulumi.Output<String?> secretDataWo;
-
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<int?> secretDataWoVersion;
-
   /// The version of the Secret.
   late final pulumi.Output<String> version;
 
@@ -1174,11 +1163,11 @@ class SecretVersion extends pulumi.CustomResource {
     SecretVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:secretmanager/secretVersion:SecretVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:secretmanager/secretVersion:SecretVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.destroyTime = registerOutput<String>('destroyTime');

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainVpcOptions {
   /// If the domain was created inside a VPC, the names of the availability zones the configured `subnet_ids` were created inside.
   final List<String>? availabilityZones;
-
   /// List of VPC Security Group IDs to be applied to the OpenSearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
   final List<String>? securityGroupIds;
-
   /// List of VPC Subnet IDs for the OpenSearch domain endpoints to be created in.
   final List<String>? subnetIds;
-
   /// If the domain was created inside a VPC, the ID of the VPC.
   final String? vpcId;
 
@@ -36,16 +34,11 @@ class DomainVpcOptions {
 
   factory DomainVpcOptions.fromMap(Map<String, dynamic> map) {
     return DomainVpcOptions(
-      availabilityZones: map['availabilityZones'] == null
-          ? null
-          : (map['availabilityZones'] as List).cast<String>(),
-      securityGroupIds: map['securityGroupIds'] == null
-          ? null
-          : (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: map['subnetIds'] == null
-          ? null
-          : (map['subnetIds'] as List).cast<String>(),
+      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
+      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
+

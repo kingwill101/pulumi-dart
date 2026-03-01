@@ -15,24 +15,19 @@ class RegionAutoscalerArgs {
   /// on cpuUtilization to 0.6 or 60%.
   /// Structure is documented below.
   final pulumi.Input<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// Name of the resource. The name must be 1-63 characters long and match
   /// the regular expression `a-z?` which means the
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// URL of the region where the instance group resides.
   final pulumi.Input<String>? region;
-
   /// URL of the managed instance group that this autoscaler will scale.
   final pulumi.Input<String> target;
 
@@ -50,21 +45,17 @@ class RegionAutoscalerArgs {
     String? project,
     String? region,
     required String target,
-  }) : autoscalingPolicy = pulumi
-           .Input.asInput<RegionAutoscalerAutoscalingPolicy>(autoscalingPolicy),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       target = pulumi.Input.asInput<String>(target);
+  }) :
+      autoscalingPolicy = pulumi.Input.asInput<RegionAutoscalerAutoscalingPolicy>(autoscalingPolicy),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      target = pulumi.Input.asInput<String>(target);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingPolicy':
-          pulumi.Input.mapInputValue<
-            RegionAutoscalerAutoscalingPolicy,
-            Map<String, dynamic>
-          >(autoscalingPolicy, (value) => value.toMap()),
+      'autoscalingPolicy': pulumi.Input.mapInputValue<RegionAutoscalerAutoscalingPolicy, Map<String, dynamic>>(autoscalingPolicy, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'project': ?project,
@@ -75,12 +66,8 @@ class RegionAutoscalerArgs {
 
   factory RegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerArgs(
-      autoscalingPolicy: RegionAutoscalerAutoscalingPolicy.fromMap(
-        (map['autoscalingPolicy'] as Map).cast<String, dynamic>(),
-      ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      autoscalingPolicy: RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -88,3 +75,4 @@ class RegionAutoscalerArgs {
     );
   }
 }
+

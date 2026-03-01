@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketResourceAccessArgs {
   /// Name of the bucket to grant access to.
   final pulumi.Input<String> bucketName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the resource to grant bucket access.
   final pulumi.Input<String> resourceName;
 
@@ -24,9 +22,10 @@ class BucketResourceAccessArgs {
     required String bucketName,
     String? region,
     required String resourceName,
-  }) : bucketName = pulumi.Input.asInput<String>(bucketName),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourceName = pulumi.Input.asInput<String>(resourceName);
+  }) :
+      bucketName = pulumi.Input.asInput<String>(bucketName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceName = pulumi.Input.asInput<String>(resourceName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class BucketResourceAccessArgs {
     );
   }
 }
+

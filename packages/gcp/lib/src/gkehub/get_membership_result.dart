@@ -9,7 +9,6 @@ class GetMembershipResult {
   final List<GetMembershipAuthority> authorities;
   final Map<String, String> effectiveLabels;
   final List<GetMembershipEndpoint> endpoints;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -45,17 +44,9 @@ class GetMembershipResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorities':
-          pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(
-            authorities,
-            (value) => value.toMap(),
-          ),
+      'authorities': pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(authorities, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
-      'endpoints':
-          pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(
-            endpoints,
-            (value) => value.toMap(),
-          ),
+      'endpoints': pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
       'id': id,
       'labels': labels,
       'location': location,
@@ -68,19 +59,9 @@ class GetMembershipResult {
 
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
     return GetMembershipResult(
-      authorities: pulumi.Input.decodeList<GetMembershipAuthority>(
-        map['authorities'],
-        (value) => GetMembershipAuthority.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      authorities: pulumi.Input.decodeList<GetMembershipAuthority>(map['authorities'], (value) => GetMembershipAuthority.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      endpoints: pulumi.Input.decodeList<GetMembershipEndpoint>(
-        map['endpoints'],
-        (value) => GetMembershipEndpoint.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      endpoints: pulumi.Input.decodeList<GetMembershipEndpoint>(map['endpoints'], (value) => GetMembershipEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
@@ -91,3 +72,4 @@ class GetMembershipResult {
     );
   }
 }
+

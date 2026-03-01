@@ -6,7 +6,6 @@ import 'get_entitlement_approval_workflow_manual_approval_step.dart';
 class GetEntitlementApprovalWorkflowManualApproval {
   /// Optional. Do the approvers need to provide a justification for their actions?
   final bool requireApproverJustification;
-
   /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
   final List<GetEntitlementApprovalWorkflowManualApprovalStep> steps;
 
@@ -21,28 +20,15 @@ class GetEntitlementApprovalWorkflowManualApproval {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'requireApproverJustification': requireApproverJustification,
-      'steps':
-          pulumi.Input.encodeList<
-            GetEntitlementApprovalWorkflowManualApprovalStep,
-            Map<String, dynamic>
-          >(steps, (value) => value.toMap()),
+      'steps': pulumi.Input.encodeList<GetEntitlementApprovalWorkflowManualApprovalStep, Map<String, dynamic>>(steps, (value) => value.toMap()),
     };
   }
 
-  factory GetEntitlementApprovalWorkflowManualApproval.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEntitlementApprovalWorkflowManualApproval.fromMap(Map<String, dynamic> map) {
     return GetEntitlementApprovalWorkflowManualApproval(
       requireApproverJustification: map['requireApproverJustification'] as bool,
-      steps:
-          pulumi.Input.decodeList<
-            GetEntitlementApprovalWorkflowManualApprovalStep
-          >(
-            map['steps'],
-            (value) => GetEntitlementApprovalWorkflowManualApprovalStep.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      steps: pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApprovalStep>(map['steps'], (value) => GetEntitlementApprovalWorkflowManualApprovalStep.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

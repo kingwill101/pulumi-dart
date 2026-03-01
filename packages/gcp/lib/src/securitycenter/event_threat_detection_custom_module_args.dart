@@ -10,17 +10,13 @@ class EventThreatDetectionCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
   final pulumi.Input<String> config;
-
   /// The human readable name to be displayed for the module.
   final pulumi.Input<String>? displayName;
-
   /// The state of enablement for the module at the given level of the hierarchy.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> enablementState;
-
   /// Numerical ID of the parent organization.
   final pulumi.Input<String> organization;
-
   /// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
   final pulumi.Input<String> type;
 
@@ -36,11 +32,12 @@ class EventThreatDetectionCustomModuleArgs {
     required String enablementState,
     required String organization,
     required String type,
-  }) : config = pulumi.Input.asInput<String>(config),
-       displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       enablementState = pulumi.Input.asInput<String>(enablementState),
-       organization = pulumi.Input.asInput<String>(organization),
-       type = pulumi.Input.asInput<String>(type);
+  }) :
+      config = pulumi.Input.asInput<String>(config),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      enablementState = pulumi.Input.asInput<String>(enablementState),
+      organization = pulumi.Input.asInput<String>(organization),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,17 +49,14 @@ class EventThreatDetectionCustomModuleArgs {
     };
   }
 
-  factory EventThreatDetectionCustomModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventThreatDetectionCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return EventThreatDetectionCustomModuleArgs(
       config: map['config'] as String,
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       enablementState: map['enablementState'] as String,
       organization: map['organization'] as String,
       type: map['type'] as String,
     );
   }
 }
+

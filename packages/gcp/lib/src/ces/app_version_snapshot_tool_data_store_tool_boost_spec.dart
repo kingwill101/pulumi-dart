@@ -9,7 +9,6 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
   /// name of DataStore, such as
   /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
   final List<String>? dataStores;
-
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
@@ -18,38 +17,23 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpec].
   /// [dataStores] (Output)
   /// [specs] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpec({this.dataStores, this.specs});
+  AppVersionSnapshotToolDataStoreToolBoostSpec({
+    this.dataStores,
+    this.specs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataStores': ?dataStores,
-      'specs': ?specs == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppVersionSnapshotToolDataStoreToolBoostSpecSpec,
-              Map<String, dynamic>
-            >(specs!, (value) => value.toMap()),
+      'specs': ?specs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec, Map<String, dynamic>>(specs!, (value) => value.toMap()),
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpec(
-      dataStores: map['dataStores'] == null
-          ? null
-          : (map['dataStores'] as List).cast<String>(),
-      specs: map['specs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AppVersionSnapshotToolDataStoreToolBoostSpecSpec
-            >(
-              map['specs'],
-              (value) =>
-                  AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      dataStores: map['dataStores'] == null ? null : (map['dataStores'] as List).cast<String>(),
+      specs: map['specs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>(map['specs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

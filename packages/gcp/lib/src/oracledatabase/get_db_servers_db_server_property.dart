@@ -1,33 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDbServersDbServerProperty {
   /// Output only
   final List<String> dbNodeIds;
-
   /// Output only
   final int dbNodeStorageSizeGb;
-
   /// Output only
   final int maxDbNodeStorageSizeGb;
-
   /// Output only
   final int maxMemorySizeGb;
-
   /// Output only
   final int maxOcpuCount;
-
   /// Output only
   final int memorySizeGb;
-
   /// Output only
   final String ocid;
-
   /// Output only
   final int ocpuCount;
-
   /// Output only
   final String state;
-
   /// Output only
   final int vmCount;
 
@@ -85,3 +77,4 @@ class GetDbServersDbServerProperty {
     );
   }
 }
+

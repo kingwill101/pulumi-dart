@@ -231,25 +231,18 @@ import 'rate_based_rule_predicate.dart';
 class RateBasedRule extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The name or description for the Amazon CloudWatch metric of this rule.
   late final pulumi.Output<String> metricName;
-
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
-
   /// The objects to include in a rule (documented below).
   late final pulumi.Output<List<RateBasedRulePredicate>?> predicates;
-
   /// Valid value is IP.
   late final pulumi.Output<String> rateKey;
-
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   late final pulumi.Output<int> rateLimit;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -262,17 +255,15 @@ class RateBasedRule extends pulumi.CustomResource {
     RateBasedRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/rateBasedRule:RateBasedRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/rateBasedRule:RateBasedRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    this.predicates = registerOutput<List<RateBasedRulePredicate>?>(
-      'predicates',
-    );
+    this.predicates = registerOutput<List<RateBasedRulePredicate>?>('predicates');
     this.rateKey = registerOutput<String>('rateKey');
     this.rateLimit = registerOutput<int>('rateLimit');
     this.tags = registerOutput<Map<String, String>?>('tags');

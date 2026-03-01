@@ -8,7 +8,9 @@ class CanaryArtifactConfig {
 
   /// Creates a new [CanaryArtifactConfig].
   /// [s3Encryption] Configuration of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3. See S3 Encryption.
-  CanaryArtifactConfig({this.s3Encryption});
+  CanaryArtifactConfig({
+    this.s3Encryption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class CanaryArtifactConfig {
 
   factory CanaryArtifactConfig.fromMap(Map<String, dynamic> map) {
     return CanaryArtifactConfig(
-      s3Encryption: map['s3Encryption'] == null
-          ? null
-          : CanaryArtifactConfigS3Encryption.fromMap(
-              (map['s3Encryption'] as Map).cast<String, dynamic>(),
-            ),
+      s3Encryption: map['s3Encryption'] == null ? null : CanaryArtifactConfigS3Encryption.fromMap((map['s3Encryption'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

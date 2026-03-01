@@ -9,15 +9,12 @@ class SecurityGatewayApplicationUpstream {
   /// Optional. Routing policy information.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamEgressPolicy? egressPolicy;
-
   /// List of the external endpoints to forward traffic to.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamExternal? external;
-
   /// Network to forward traffic to.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamNetwork? network;
-
   /// Shared proxy configuration for all apps.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamProxyProtocol? proxyProtocol;
@@ -45,26 +42,11 @@ class SecurityGatewayApplicationUpstream {
 
   factory SecurityGatewayApplicationUpstream.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstream(
-      egressPolicy: map['egressPolicy'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(
-              (map['egressPolicy'] as Map).cast<String, dynamic>(),
-            ),
-      external: map['external'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamExternal.fromMap(
-              (map['external'] as Map).cast<String, dynamic>(),
-            ),
-      network: map['network'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamNetwork.fromMap(
-              (map['network'] as Map).cast<String, dynamic>(),
-            ),
-      proxyProtocol: map['proxyProtocol'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamProxyProtocol.fromMap(
-              (map['proxyProtocol'] as Map).cast<String, dynamic>(),
-            ),
+      egressPolicy: map['egressPolicy'] == null ? null : SecurityGatewayApplicationUpstreamEgressPolicy.fromMap((map['egressPolicy'] as Map).cast<String, dynamic>()),
+      external: map['external'] == null ? null : SecurityGatewayApplicationUpstreamExternal.fromMap((map['external'] as Map).cast<String, dynamic>()),
+      network: map['network'] == null ? null : SecurityGatewayApplicationUpstreamNetwork.fromMap((map['network'] as Map).cast<String, dynamic>()),
+      proxyProtocol: map['proxyProtocol'] == null ? null : SecurityGatewayApplicationUpstreamProxyProtocol.fromMap((map['proxyProtocol'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetGroupArgs {
   /// A description of the subnet group.
   final pulumi.Input<String>? description;
-
   /// The name of the subnet group.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A list of VPC subnet IDs for the subnet group.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -29,10 +26,11 @@ class SubnetGroupArgs {
     String? name,
     String? region,
     required List<String> subnetIds,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       subnetIds = pulumi.Input.asInput<List<String>>(subnetIds);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,12 +43,11 @@ class SubnetGroupArgs {
 
   factory SubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return SubnetGroupArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
     );
   }
 }
+

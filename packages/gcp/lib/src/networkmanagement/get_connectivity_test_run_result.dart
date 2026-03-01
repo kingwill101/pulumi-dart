@@ -9,7 +9,6 @@ class GetConnectivityTestRunResult {
   final String id;
   final String name;
   final String project;
-
   /// Connectivity test reachability details.
   /// Structure is documented below.
   final List<GetConnectivityTestRunReachabilityDetail> reachabilityDetails;
@@ -31,11 +30,7 @@ class GetConnectivityTestRunResult {
       'id': id,
       'name': name,
       'project': project,
-      'reachabilityDetails':
-          pulumi.Input.encodeList<
-            GetConnectivityTestRunReachabilityDetail,
-            Map<String, dynamic>
-          >(reachabilityDetails, (value) => value.toMap()),
+      'reachabilityDetails': pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetail, Map<String, dynamic>>(reachabilityDetails, (value) => value.toMap()),
     };
   }
 
@@ -44,13 +39,8 @@ class GetConnectivityTestRunResult {
       id: map['id'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      reachabilityDetails:
-          pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetail>(
-            map['reachabilityDetails'],
-            (value) => GetConnectivityTestRunReachabilityDetail.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      reachabilityDetails: pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetail>(map['reachabilityDetails'], (value) => GetConnectivityTestRunReachabilityDetail.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

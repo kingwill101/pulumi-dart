@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail {
   /// The email HTML body.
   final String htmlBody;
-
   /// The email subject.
   final String subject;
-
   /// The email text body.
   final String textBody;
 
@@ -28,9 +27,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockE
     };
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail(
       htmlBody: map['htmlBody'] as String,
       subject: map['subject'] as String,
@@ -38,3 +35,4 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockE
     );
   }
 }
+

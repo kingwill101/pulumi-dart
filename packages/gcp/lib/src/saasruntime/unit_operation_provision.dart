@@ -7,38 +7,29 @@ class UnitOperationProvision {
   /// Set of input variables. Maximum 100. (optional)
   /// Structure is documented below.
   final List<UnitOperationProvisionInputVariable>? inputVariables;
-
   /// Reference to the Release object to use for the Unit. (optional).
   final String? release;
 
   /// Creates a new [UnitOperationProvision].
   /// [inputVariables] Set of input variables. Maximum 100. (optional)
   /// [release] Reference to the Release object to use for the Unit. (optional).
-  UnitOperationProvision({this.inputVariables, this.release});
+  UnitOperationProvision({
+    this.inputVariables,
+    this.release,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inputVariables': ?inputVariables == null
-          ? null
-          : pulumi.Input.encodeList<
-              UnitOperationProvisionInputVariable,
-              Map<String, dynamic>
-            >(inputVariables!, (value) => value.toMap()),
+      'inputVariables': ?inputVariables == null ? null : pulumi.Input.encodeList<UnitOperationProvisionInputVariable, Map<String, dynamic>>(inputVariables!, (value) => value.toMap()),
       'release': ?release,
     };
   }
 
   factory UnitOperationProvision.fromMap(Map<String, dynamic> map) {
     return UnitOperationProvision(
-      inputVariables: map['inputVariables'] == null
-          ? null
-          : pulumi.Input.decodeList<UnitOperationProvisionInputVariable>(
-              map['inputVariables'],
-              (value) => UnitOperationProvisionInputVariable.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      inputVariables: map['inputVariables'] == null ? null : pulumi.Input.decodeList<UnitOperationProvisionInputVariable>(map['inputVariables'], (value) => UnitOperationProvisionInputVariable.fromMap((value as Map).cast<String, dynamic>())),
       release: map['release'] == null ? null : map['release'] as String,
     );
   }
 }
+

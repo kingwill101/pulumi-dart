@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cdn_get_frontdoor_secret_get_frontdoor_secret_args_doc}
+/// Arguments for getFrontdoorSecret.
+/// {@endtemplate}
+/// {@macro pulumi_cdn_get_frontdoor_secret_get_frontdoor_secret_args_doc}
+class GetFrontdoorSecretArgs {
+  /// Specifies the name of the Front Door Secret.
+  final pulumi.Input<String> name;
+  /// The name of the Front Door Profile within which the Front Door Secret exists.
+  final pulumi.Input<String> profileName;
+  /// The name of the Resource Group where the Front Door Profile exists.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetFrontdoorSecretArgs].
+  /// [name] Specifies the name of the Front Door Secret.
+  /// [profileName] The name of the Front Door Profile within which the Front Door Secret exists.
+  /// [resourceGroupName] The name of the Resource Group where the Front Door Profile exists.
+  GetFrontdoorSecretArgs({
+    required String name,
+    required String profileName,
+    required String resourceGroupName,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      profileName = pulumi.Input.asInput<String>(profileName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'profileName': profileName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetFrontdoorSecretArgs.fromMap(Map<String, dynamic> map) {
+    return GetFrontdoorSecretArgs(
+      name: map['name'] as String,
+      profileName: map['profileName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+    );
+  }
+}
+

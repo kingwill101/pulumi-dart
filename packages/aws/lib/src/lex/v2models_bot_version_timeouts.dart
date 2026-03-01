@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsBotVersionTimeouts {
   /// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
   final String? create;
-
   /// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
   final String? delete;
 
   /// Creates a new [V2modelsBotVersionTimeouts].
   /// [create] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
   /// [delete] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-  V2modelsBotVersionTimeouts({this.create, this.delete});
+  V2modelsBotVersionTimeouts({
+    this.create,
+    this.delete,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'create': ?create, 'delete': ?delete};
+    return <String, dynamic>{
+      'create': ?create,
+      'delete': ?delete,
+    };
   }
 
   factory V2modelsBotVersionTimeouts.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class V2modelsBotVersionTimeouts {
     );
   }
 }
+

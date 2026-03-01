@@ -14,15 +14,12 @@ class PipelineJobMappingPipelineJob {
   /// to true. The destination store must use FHIR version R4.
   /// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
   final String? fhirStoreDestination;
-
   /// A streaming FHIR data source.
   /// Structure is documented below.
   final PipelineJobMappingPipelineJobFhirStreamingSource? fhirStreamingSource;
-
   /// The location of the mapping configuration.
   /// Structure is documented below.
   final PipelineJobMappingPipelineJobMappingConfig mappingConfig;
-
   /// If set to true, a mapping pipeline will send output snapshots
   /// to the reconciliation pipeline in its dataset. A reconciliation
   /// pipeline must exist in this dataset before a mapping pipeline
@@ -44,9 +41,7 @@ class PipelineJobMappingPipelineJob {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fhirStoreDestination': ?fhirStoreDestination,
-      'fhirStreamingSource': ?fhirStreamingSource == null
-          ? null
-          : fhirStreamingSource!.toMap(),
+      'fhirStreamingSource': ?fhirStreamingSource == null ? null : fhirStreamingSource!.toMap(),
       'mappingConfig': mappingConfig.toMap(),
       'reconciliationDestination': ?reconciliationDestination,
     };
@@ -54,20 +49,11 @@ class PipelineJobMappingPipelineJob {
 
   factory PipelineJobMappingPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJob(
-      fhirStoreDestination: map['fhirStoreDestination'] == null
-          ? null
-          : map['fhirStoreDestination'] as String,
-      fhirStreamingSource: map['fhirStreamingSource'] == null
-          ? null
-          : PipelineJobMappingPipelineJobFhirStreamingSource.fromMap(
-              (map['fhirStreamingSource'] as Map).cast<String, dynamic>(),
-            ),
-      mappingConfig: PipelineJobMappingPipelineJobMappingConfig.fromMap(
-        (map['mappingConfig'] as Map).cast<String, dynamic>(),
-      ),
-      reconciliationDestination: map['reconciliationDestination'] == null
-          ? null
-          : map['reconciliationDestination'] as bool,
+      fhirStoreDestination: map['fhirStoreDestination'] == null ? null : map['fhirStoreDestination'] as String,
+      fhirStreamingSource: map['fhirStreamingSource'] == null ? null : PipelineJobMappingPipelineJobFhirStreamingSource.fromMap((map['fhirStreamingSource'] as Map).cast<String, dynamic>()),
+      mappingConfig: PipelineJobMappingPipelineJobMappingConfig.fromMap((map['mappingConfig'] as Map).cast<String, dynamic>()),
+      reconciliationDestination: map['reconciliationDestination'] == null ? null : map['reconciliationDestination'] as bool,
     );
   }
 }
+

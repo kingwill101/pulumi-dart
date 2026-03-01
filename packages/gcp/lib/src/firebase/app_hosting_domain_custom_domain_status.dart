@@ -14,7 +14,6 @@ class AppHostingDomainCustomDomainStatus {
   /// CERT_EXPIRING_SOON
   /// CERT_EXPIRED
   final String? certState;
-
   /// (Output)
   /// Possible values:
   /// HOST_UNHOSTED
@@ -24,13 +23,11 @@ class AppHostingDomainCustomDomainStatus {
   /// HOST_WRONG_SHARD
   /// HOST_ACTIVE
   final String? hostState;
-
   /// (Output)
   /// A list of issues with domain configuration. Allows users to self-correct
   /// problems with DNS records.
   /// Structure is documented below.
   final List<AppHostingDomainCustomDomainStatusIssue>? issues;
-
   /// (Output)
   /// Possible values:
   /// OWNERSHIP_MISSING
@@ -40,7 +37,6 @@ class AppHostingDomainCustomDomainStatus {
   /// OWNERSHIP_PENDING
   /// OWNERSHIP_ACTIVE
   final String? ownershipState;
-
   /// (Output)
   /// Lists the records that must added or removed to a custom domain's DNS
   /// in order to finish setup and start serving content.
@@ -48,8 +44,7 @@ class AppHostingDomainCustomDomainStatus {
   /// or more of the above states is not *_ACTIVE, indicating the domain's DNS
   /// records are in a bad state.
   /// Structure is documented below.
-  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdate>?
-  requiredDnsUpdates;
+  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdate>? requiredDnsUpdates;
 
   /// Creates a new [AppHostingDomainCustomDomainStatus].
   /// [certState] (Output)
@@ -69,19 +64,9 @@ class AppHostingDomainCustomDomainStatus {
     return <String, dynamic>{
       'certState': ?certState,
       'hostState': ?hostState,
-      'issues': ?issues == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppHostingDomainCustomDomainStatusIssue,
-              Map<String, dynamic>
-            >(issues!, (value) => value.toMap()),
+      'issues': ?issues == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusIssue, Map<String, dynamic>>(issues!, (value) => value.toMap()),
       'ownershipState': ?ownershipState,
-      'requiredDnsUpdates': ?requiredDnsUpdates == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppHostingDomainCustomDomainStatusRequiredDnsUpdate,
-              Map<String, dynamic>
-            >(requiredDnsUpdates!, (value) => value.toMap()),
+      'requiredDnsUpdates': ?requiredDnsUpdates == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdate, Map<String, dynamic>>(requiredDnsUpdates!, (value) => value.toMap()),
     };
   }
 
@@ -89,28 +74,10 @@ class AppHostingDomainCustomDomainStatus {
     return AppHostingDomainCustomDomainStatus(
       certState: map['certState'] == null ? null : map['certState'] as String,
       hostState: map['hostState'] == null ? null : map['hostState'] as String,
-      issues: map['issues'] == null
-          ? null
-          : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusIssue>(
-              map['issues'],
-              (value) => AppHostingDomainCustomDomainStatusIssue.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      ownershipState: map['ownershipState'] == null
-          ? null
-          : map['ownershipState'] as String,
-      requiredDnsUpdates: map['requiredDnsUpdates'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              AppHostingDomainCustomDomainStatusRequiredDnsUpdate
-            >(
-              map['requiredDnsUpdates'],
-              (value) =>
-                  AppHostingDomainCustomDomainStatusRequiredDnsUpdate.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      issues: map['issues'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusIssue>(map['issues'], (value) => AppHostingDomainCustomDomainStatusIssue.fromMap((value as Map).cast<String, dynamic>())),
+      ownershipState: map['ownershipState'] == null ? null : map['ownershipState'] as String,
+      requiredDnsUpdates: map['requiredDnsUpdates'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdate>(map['requiredDnsUpdates'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

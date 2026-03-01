@@ -278,13 +278,10 @@ import 'bucket_cors_configuration_v2_cors_rule.dart';
 class BucketCorsConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   late final pulumi.Output<List<BucketCorsConfigurationV2CorsRule>> corsRules;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -297,15 +294,13 @@ class BucketCorsConfigurationV2 extends pulumi.CustomResource {
     BucketCorsConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
-    this.corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>(
-      'corsRules',
-    );
+    this.corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.region = registerOutput<String>('region');
   }

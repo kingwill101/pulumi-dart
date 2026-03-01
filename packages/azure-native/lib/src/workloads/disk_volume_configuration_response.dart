@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'disk_sku_response.dart';
+
+/// The disk configuration required for the selected volume.
+class DiskVolumeConfigurationResponse {
+  /// The total number of disks required for the concerned volume.
+  final double? count;
+  /// The disk size in GB.
+  final double? sizeGB;
+  /// The disk SKU details.
+  final DiskSkuResponse? sku;
+
+  /// Creates a new [DiskVolumeConfigurationResponse].
+  /// [count] The total number of disks required for the concerned volume.
+  /// [sizeGB] The disk size in GB.
+  /// [sku] The disk SKU details.
+  DiskVolumeConfigurationResponse({
+    this.count,
+    this.sizeGB,
+    this.sku,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': ?count,
+      'sizeGB': ?sizeGB,
+      'sku': ?sku == null ? null : sku!.toMap(),
+    };
+  }
+
+  factory DiskVolumeConfigurationResponse.fromMap(Map<String, dynamic> map) {
+    return DiskVolumeConfigurationResponse(
+      count: map['count'] == null ? null : map['count'] as double,
+      sizeGB: map['sizeGB'] == null ? null : map['sizeGB'] as double,
+      sku: map['sku'] == null ? null : DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

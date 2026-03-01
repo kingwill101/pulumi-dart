@@ -12,16 +12,12 @@ class ClusterActivityStreamArgs {
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/start-activity-stream.html).
   final pulumi.Input<bool>? engineNativeAuditFieldsIncluded;
-
   /// The AWS KMS key identifier for encrypting messages in the database activity stream. The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
   final pulumi.Input<String> kmsKeyId;
-
   /// Specifies the mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously. One of: `sync`, `async`.
   final pulumi.Input<String> mode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) of the DB cluster.
   final pulumi.Input<String> resourceArn;
 
@@ -37,13 +33,12 @@ class ClusterActivityStreamArgs {
     required String mode,
     String? region,
     required String resourceArn,
-  }) : engineNativeAuditFieldsIncluded = pulumi.Input.asOptionalInput<bool>(
-         engineNativeAuditFieldsIncluded,
-       ),
-       kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
-       mode = pulumi.Input.asInput<String>(mode),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourceArn = pulumi.Input.asInput<String>(resourceArn);
+  }) :
+      engineNativeAuditFieldsIncluded = pulumi.Input.asOptionalInput<bool>(engineNativeAuditFieldsIncluded),
+      kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
+      mode = pulumi.Input.asInput<String>(mode),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceArn = pulumi.Input.asInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,10 +52,7 @@ class ClusterActivityStreamArgs {
 
   factory ClusterActivityStreamArgs.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamArgs(
-      engineNativeAuditFieldsIncluded:
-          map['engineNativeAuditFieldsIncluded'] == null
-          ? null
-          : map['engineNativeAuditFieldsIncluded'] as bool,
+      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : map['engineNativeAuditFieldsIncluded'] as bool,
       kmsKeyId: map['kmsKeyId'] as String,
       mode: map['mode'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -68,3 +60,4 @@ class ClusterActivityStreamArgs {
     );
   }
 }
+

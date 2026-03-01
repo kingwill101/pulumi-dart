@@ -4,9 +4,7 @@ import 'service_source_configuration_code_repository_code_configuration_code_con
 
 class ServiceSourceConfigurationCodeRepositoryCodeConfiguration {
   /// Basic configuration for building and running the App Runner service. Use this parameter to quickly launch an App Runner service without providing an apprunner.yaml file in the source code repository (or ignoring the file if it exists). See Code Configuration Values below for more details.
-  final ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues?
-  codeConfigurationValues;
-
+  final ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues? codeConfigurationValues;
   /// Source of the App Runner configuration. Valid values: `REPOSITORY`, `API`. Values are interpreted as follows:
   /// * `REPOSITORY` - App Runner reads configuration values from the apprunner.yaml file in the
   /// source code repository and ignores the CodeConfigurationValues parameter.
@@ -24,23 +22,16 @@ class ServiceSourceConfigurationCodeRepositoryCodeConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeConfigurationValues': ?codeConfigurationValues == null
-          ? null
-          : codeConfigurationValues!.toMap(),
+      'codeConfigurationValues': ?codeConfigurationValues == null ? null : codeConfigurationValues!.toMap(),
       'configurationSource': configurationSource,
     };
   }
 
-  factory ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationCodeRepositoryCodeConfiguration(
-      codeConfigurationValues: map['codeConfigurationValues'] == null
-          ? null
-          : ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues.fromMap(
-              (map['codeConfigurationValues'] as Map).cast<String, dynamic>(),
-            ),
+      codeConfigurationValues: map['codeConfigurationValues'] == null ? null : ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues.fromMap((map['codeConfigurationValues'] as Map).cast<String, dynamic>()),
       configurationSource: map['configurationSource'] as String,
     );
   }
 }
+

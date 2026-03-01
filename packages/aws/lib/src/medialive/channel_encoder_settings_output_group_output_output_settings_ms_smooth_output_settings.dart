@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings {
   final String? h265PackagingType;
-
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   final String? nameModifier;
 
@@ -21,16 +21,11 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSetting
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings(
-      h265PackagingType: map['h265PackagingType'] == null
-          ? null
-          : map['h265PackagingType'] as String,
-      nameModifier: map['nameModifier'] == null
-          ? null
-          : map['nameModifier'] as String,
+      h265PackagingType: map['h265PackagingType'] == null ? null : map['h265PackagingType'] as String,
+      nameModifier: map['nameModifier'] == null ? null : map['nameModifier'] as String,
     );
   }
 }
+

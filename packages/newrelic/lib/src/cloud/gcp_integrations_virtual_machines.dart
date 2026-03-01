@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GcpIntegrationsVirtualMachines {
+  /// the data polling interval in seconds
+  final int? metricsPollingInterval;
+
+  /// Creates a new [GcpIntegrationsVirtualMachines].
+  /// [metricsPollingInterval] the data polling interval in seconds
+  GcpIntegrationsVirtualMachines({
+    this.metricsPollingInterval,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'metricsPollingInterval': ?metricsPollingInterval,
+    };
+  }
+
+  factory GcpIntegrationsVirtualMachines.fromMap(Map<String, dynamic> map) {
+    return GcpIntegrationsVirtualMachines(
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
+    );
+  }
+}
+

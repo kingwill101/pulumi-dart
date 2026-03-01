@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationConfigurationDatasourcesKubernetesAuditLogs {
   /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
   /// Defaults to `true`.
@@ -12,14 +13,15 @@ class OrganizationConfigurationDatasourcesKubernetesAuditLogs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': enable};
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
-  factory OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasourcesKubernetesAuditLogs(
       enable: map['enable'] as bool,
     );
   }
 }
+

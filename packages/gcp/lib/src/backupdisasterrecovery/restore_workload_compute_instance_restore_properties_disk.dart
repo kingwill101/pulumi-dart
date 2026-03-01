@@ -8,58 +8,40 @@ import 'restore_workload_compute_instance_restore_properties_disk_initialize_par
 class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
   /// Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
   final bool? autoDelete;
-
   /// Optional. Indicates that this is a boot disk.
   final bool? boot;
-
   /// Optional. This is used as an identifier for the disks.
   final String? deviceName;
-
   /// Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey?
-  diskEncryptionKey;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey? diskEncryptionKey;
   /// Optional. Specifies the disk interface to use for attaching this disk.
   /// Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
   final String? diskInterface;
-
   /// Optional. The size of the disk in GB.
   final int? diskSizeGb;
-
   /// Output only. The URI of the disk type resource.
   final String? diskType;
-
   /// Optional. A list of features to enable on the guest operating system.
   /// Structure is documented below.
-  final List<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>?
-  guestOsFeatures;
-
+  final List<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>? guestOsFeatures;
   /// Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
   final int? index;
-
   /// Optional. Specifies the parameters to initialize this disk.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams?
-  initializeParams;
-
+  final RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams? initializeParams;
   /// Optional. Type of the resource.
   final String? kind;
-
   /// Optional. Any valid publicly visible licenses.
   final List<String>? licenses;
-
   /// Optional. The mode in which to attach this disk.
   /// Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
   final String? mode;
-
   /// Optional. Specifies the saved state of the disk.
   /// Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
   final String? savedState;
-
   /// Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
   final String? source;
-
   /// Optional. Specifies the type of the disk.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
   final String? type;
@@ -105,22 +87,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
       'autoDelete': ?autoDelete,
       'boot': ?boot,
       'deviceName': ?deviceName,
-      'diskEncryptionKey': ?diskEncryptionKey == null
-          ? null
-          : diskEncryptionKey!.toMap(),
+      'diskEncryptionKey': ?diskEncryptionKey == null ? null : diskEncryptionKey!.toMap(),
       'diskInterface': ?diskInterface,
       'diskSizeGb': ?diskSizeGb,
       'diskType': ?diskType,
-      'guestOsFeatures': ?guestOsFeatures == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature,
-              Map<String, dynamic>
-            >(guestOsFeatures!, (value) => value.toMap()),
+      'guestOsFeatures': ?guestOsFeatures == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature, Map<String, dynamic>>(guestOsFeatures!, (value) => value.toMap()),
       'index': ?index,
-      'initializeParams': ?initializeParams == null
-          ? null
-          : initializeParams!.toMap(),
+      'initializeParams': ?initializeParams == null ? null : initializeParams!.toMap(),
       'kind': ?kind,
       'licenses': ?licenses,
       'mode': ?mode,
@@ -130,52 +103,25 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDisk.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisk(
       autoDelete: map['autoDelete'] == null ? null : map['autoDelete'] as bool,
       boot: map['boot'] == null ? null : map['boot'] as bool,
-      deviceName: map['deviceName'] == null
-          ? null
-          : map['deviceName'] as String,
-      diskEncryptionKey: map['diskEncryptionKey'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap(
-              (map['diskEncryptionKey'] as Map).cast<String, dynamic>(),
-            ),
-      diskInterface: map['diskInterface'] == null
-          ? null
-          : map['diskInterface'] as String,
+      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
+      diskInterface: map['diskInterface'] == null ? null : map['diskInterface'] as String,
       diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      guestOsFeatures: map['guestOsFeatures'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature
-            >(
-              map['guestOsFeatures'],
-              (value) =>
-                  RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      guestOsFeatures: map['guestOsFeatures'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>(map['guestOsFeatures'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())),
       index: map['index'] == null ? null : map['index'] as int,
-      initializeParams: map['initializeParams'] == null
-          ? null
-          : RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(
-              (map['initializeParams'] as Map).cast<String, dynamic>(),
-            ),
+      initializeParams: map['initializeParams'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>()),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      licenses: map['licenses'] == null
-          ? null
-          : (map['licenses'] as List).cast<String>(),
+      licenses: map['licenses'] == null ? null : (map['licenses'] as List).cast<String>(),
       mode: map['mode'] == null ? null : map['mode'] as String,
-      savedState: map['savedState'] == null
-          ? null
-          : map['savedState'] as String,
+      savedState: map['savedState'] == null ? null : map['savedState'] as String,
       source: map['source'] == null ? null : map['source'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

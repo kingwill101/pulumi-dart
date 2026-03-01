@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'frontdoor_backend_pool_backend.dart';
+
+class FrontdoorBackendPool {
+  /// A `backend` block as defined below.
+  final List<FrontdoorBackendPoolBackend> backends;
+  /// Specifies the name of the `backend_pool_health_probe` block within this resource to use for this `Backend Pool`.
+  final String healthProbeName;
+  /// The ID of the FrontDoor.
+  final String? id;
+  /// Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
+  final String loadBalancingName;
+  /// Specifies the name of the Backend Pool.
+  final String name;
+
+  /// Creates a new [FrontdoorBackendPool].
+  /// [backends] A `backend` block as defined below.
+  /// [healthProbeName] Specifies the name of the `backend_pool_health_probe` block within this resource to use for this `Backend Pool`.
+  /// [id] The ID of the FrontDoor.
+  /// [loadBalancingName] Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
+  /// [name] Specifies the name of the Backend Pool.
+  FrontdoorBackendPool({
+    required this.backends,
+    required this.healthProbeName,
+    this.id,
+    required this.loadBalancingName,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'backends': pulumi.Input.encodeList<FrontdoorBackendPoolBackend, Map<String, dynamic>>(backends, (value) => value.toMap()),
+      'healthProbeName': healthProbeName,
+      'id': ?id,
+      'loadBalancingName': loadBalancingName,
+      'name': name,
+    };
+  }
+
+  factory FrontdoorBackendPool.fromMap(Map<String, dynamic> map) {
+    return FrontdoorBackendPool(
+      backends: pulumi.Input.decodeList<FrontdoorBackendPoolBackend>(map['backends'], (value) => FrontdoorBackendPoolBackend.fromMap((value as Map).cast<String, dynamic>())),
+      healthProbeName: map['healthProbeName'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+      loadBalancingName: map['loadBalancingName'] as String,
+      name: map['name'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// List of features that are enabled for the database
+class SqlServerDatabaseResourcePropertiesDatabaseOptions {
+  final bool? isAutoCloseOn;
+  final bool? isAutoCreateStatsOn;
+  final bool? isAutoShrinkOn;
+  final bool? isAutoUpdateStatsOn;
+  final bool? isEncrypted;
+  final bool? isMemoryOptimizationEnabled;
+  final bool? isRemoteDataArchiveEnabled;
+  final bool? isTrustworthyOn;
+
+  /// Creates a new [SqlServerDatabaseResourcePropertiesDatabaseOptions].
+  /// [isAutoCloseOn] Optional.
+  /// [isAutoCreateStatsOn] Optional.
+  /// [isAutoShrinkOn] Optional.
+  /// [isAutoUpdateStatsOn] Optional.
+  /// [isEncrypted] Optional.
+  /// [isMemoryOptimizationEnabled] Optional.
+  /// [isRemoteDataArchiveEnabled] Optional.
+  /// [isTrustworthyOn] Optional.
+  SqlServerDatabaseResourcePropertiesDatabaseOptions({
+    this.isAutoCloseOn,
+    this.isAutoCreateStatsOn,
+    this.isAutoShrinkOn,
+    this.isAutoUpdateStatsOn,
+    this.isEncrypted,
+    this.isMemoryOptimizationEnabled,
+    this.isRemoteDataArchiveEnabled,
+    this.isTrustworthyOn,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'isAutoCloseOn': ?isAutoCloseOn,
+      'isAutoCreateStatsOn': ?isAutoCreateStatsOn,
+      'isAutoShrinkOn': ?isAutoShrinkOn,
+      'isAutoUpdateStatsOn': ?isAutoUpdateStatsOn,
+      'isEncrypted': ?isEncrypted,
+      'isMemoryOptimizationEnabled': ?isMemoryOptimizationEnabled,
+      'isRemoteDataArchiveEnabled': ?isRemoteDataArchiveEnabled,
+      'isTrustworthyOn': ?isTrustworthyOn,
+    };
+  }
+
+  factory SqlServerDatabaseResourcePropertiesDatabaseOptions.fromMap(Map<String, dynamic> map) {
+    return SqlServerDatabaseResourcePropertiesDatabaseOptions(
+      isAutoCloseOn: map['isAutoCloseOn'] == null ? null : map['isAutoCloseOn'] as bool,
+      isAutoCreateStatsOn: map['isAutoCreateStatsOn'] == null ? null : map['isAutoCreateStatsOn'] as bool,
+      isAutoShrinkOn: map['isAutoShrinkOn'] == null ? null : map['isAutoShrinkOn'] as bool,
+      isAutoUpdateStatsOn: map['isAutoUpdateStatsOn'] == null ? null : map['isAutoUpdateStatsOn'] as bool,
+      isEncrypted: map['isEncrypted'] == null ? null : map['isEncrypted'] as bool,
+      isMemoryOptimizationEnabled: map['isMemoryOptimizationEnabled'] == null ? null : map['isMemoryOptimizationEnabled'] as bool,
+      isRemoteDataArchiveEnabled: map['isRemoteDataArchiveEnabled'] == null ? null : map['isRemoteDataArchiveEnabled'] as bool,
+      isTrustworthyOn: map['isTrustworthyOn'] == null ? null : map['isTrustworthyOn'] as bool,
+    );
+  }
+}
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutoscalingPolicyWorkerConfig {
   /// Maximum number of instances for this group.
   final int maxInstances;
-
   /// Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
   final int? minInstances;
-
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -42,10 +41,9 @@ class AutoscalingPolicyWorkerConfig {
   factory AutoscalingPolicyWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyWorkerConfig(
       maxInstances: map['maxInstances'] as int,
-      minInstances: map['minInstances'] == null
-          ? null
-          : map['minInstances'] as int,
+      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
       weight: map['weight'] == null ? null : map['weight'] as int,
     );
   }
 }
+

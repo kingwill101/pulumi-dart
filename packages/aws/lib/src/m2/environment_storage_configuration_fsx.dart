@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentStorageConfigurationFsx {
   /// Id of the FSX filesystem to mount.
   final String fileSystemId;
-
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final String mountPoint;
 
@@ -29,3 +29,4 @@ class EnvironmentStorageConfigurationFsx {
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTraffic {
   /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
   final int percent;
-
   /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
   final String revision;
-
   /// Indicates a string to be part of the URI to exclusively reference this target.
   final String tag;
-
   /// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
   final String type;
 
@@ -43,3 +41,4 @@ class GetServiceTraffic {
     );
   }
 }
+

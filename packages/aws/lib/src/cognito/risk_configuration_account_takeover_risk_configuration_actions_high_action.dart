@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction {
   final String eventAction;
-
   /// Whether to send a notification.
   final bool notify;
 
@@ -15,15 +15,17 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventAction': eventAction, 'notify': notify};
+    return <String, dynamic>{
+      'eventAction': eventAction,
+      'notify': notify,
+    };
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction(
       eventAction: map['eventAction'] as String,
       notify: map['notify'] as bool,
     );
   }
 }
+

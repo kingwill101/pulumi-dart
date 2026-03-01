@@ -1,0 +1,18 @@
+name: pulumi_azuread
+description: A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.
+version: 6.8.1
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-azuread
+topics:
+    - pulumi
+    - azuread
+publish_to: none
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi:
+        path: /home/kingwill101/code/dart_packages/pulumi-dart/pulumi-dart
+dev_dependencies:
+    lints: ^5.0.0

@@ -1,0 +1,18 @@
+/// Specifies how the first party applications should be inter-operated with user's application.
+enum InteropExecutionMode {
+  valueFirstPartyAppWithTests("firstPartyAppWithTests"),
+  valueFirstPartyApp("firstPartyApp");
+
+  const InteropExecutionMode(this.value);
+  final String value;
+
+  static InteropExecutionMode fromValue(String value) {
+    for (final item in InteropExecutionMode.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown InteropExecutionMode value: $value');
+  }
+}
+

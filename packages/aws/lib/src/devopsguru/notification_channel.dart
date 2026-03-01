@@ -257,10 +257,8 @@ import 'notification_channel_sns.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   late final pulumi.Output<NotificationChannelFilters?> filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
@@ -275,11 +273,11 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devopsguru/notificationChannel:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:devopsguru/notificationChannel:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.filters = registerOutput<NotificationChannelFilters?>('filters');
     this.region = registerOutput<String>('region');
     this.sns = registerOutput<NotificationChannelSns>('sns');

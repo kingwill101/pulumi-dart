@@ -1,0 +1,68 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ImageOsDisk {
+  /// Specifies the URI in Azure storage of the blob that you want to use to create the image. Changing this forces a new resource to be created.
+  final String? blobUri;
+  /// Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
+  final String? caching;
+  /// The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
+  final String? diskEncryptionSetId;
+  /// Specifies the ID of the managed disk resource that you want to use to create the image.
+  final String? managedDiskId;
+  /// Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized. Possible values are `Generalized` and `Specialized`.
+  final String? osState;
+  /// Specifies the type of operating system contained in the virtual machine image. Possible values are: `Windows` or `Linux`.
+  final String? osType;
+  /// Specifies the size of the image to be created. Changing this forces a new resource to be created.
+  final int? sizeGb;
+  /// The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
+  final String storageType;
+
+  /// Creates a new [ImageOsDisk].
+  /// [blobUri] Specifies the URI in Azure storage of the blob that you want to use to create the image. Changing this forces a new resource to be created.
+  /// [caching] Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
+  /// [diskEncryptionSetId] The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
+  /// [managedDiskId] Specifies the ID of the managed disk resource that you want to use to create the image.
+  /// [osState] Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized. Possible values are `Generalized` and `Specialized`.
+  /// [osType] Specifies the type of operating system contained in the virtual machine image. Possible values are: `Windows` or `Linux`.
+  /// [sizeGb] Specifies the size of the image to be created. Changing this forces a new resource to be created.
+  /// [storageType] The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
+  ImageOsDisk({
+    this.blobUri,
+    this.caching,
+    this.diskEncryptionSetId,
+    this.managedDiskId,
+    this.osState,
+    this.osType,
+    this.sizeGb,
+    required this.storageType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'blobUri': ?blobUri,
+      'caching': ?caching,
+      'diskEncryptionSetId': ?diskEncryptionSetId,
+      'managedDiskId': ?managedDiskId,
+      'osState': ?osState,
+      'osType': ?osType,
+      'sizeGb': ?sizeGb,
+      'storageType': storageType,
+    };
+  }
+
+  factory ImageOsDisk.fromMap(Map<String, dynamic> map) {
+    return ImageOsDisk(
+      blobUri: map['blobUri'] == null ? null : map['blobUri'] as String,
+      caching: map['caching'] == null ? null : map['caching'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
+      managedDiskId: map['managedDiskId'] == null ? null : map['managedDiskId'] as String,
+      osState: map['osState'] == null ? null : map['osState'] as String,
+      osType: map['osType'] == null ? null : map['osType'] as String,
+      sizeGb: map['sizeGb'] == null ? null : map['sizeGb'] as int,
+      storageType: map['storageType'] as String,
+    );
+  }
+}
+

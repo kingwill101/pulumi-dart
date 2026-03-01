@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// Rate limit key name applicable only for the following key types:
   /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
   /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
   final String enforceOnKeyName;
-
   /// Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
   /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
@@ -35,12 +35,11 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
     };
   }
 
-  factory GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig(
       enforceOnKeyName: map['enforceOnKeyName'] as String,
       enforceOnKeyType: map['enforceOnKeyType'] as String,
     );
   }
 }
+

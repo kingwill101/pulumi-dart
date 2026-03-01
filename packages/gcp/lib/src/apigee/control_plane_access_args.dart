@@ -11,10 +11,8 @@ class ControlPlaneAccessArgs {
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
   final pulumi.Input<List<String>>? analyticsPublisherIdentities;
-
   /// Name of the Apigee organization.
   final pulumi.Input<String>? name;
-
   /// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -29,12 +27,10 @@ class ControlPlaneAccessArgs {
     List<String>? analyticsPublisherIdentities,
     String? name,
     List<String>? synchronizerIdentities,
-  }) : analyticsPublisherIdentities = pulumi
-           .Input.asOptionalInput<List<String>>(analyticsPublisherIdentities),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       synchronizerIdentities = pulumi.Input.asOptionalInput<List<String>>(
-         synchronizerIdentities,
-       );
+  }) :
+      analyticsPublisherIdentities = pulumi.Input.asOptionalInput<List<String>>(analyticsPublisherIdentities),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      synchronizerIdentities = pulumi.Input.asOptionalInput<List<String>>(synchronizerIdentities);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,13 +42,10 @@ class ControlPlaneAccessArgs {
 
   factory ControlPlaneAccessArgs.fromMap(Map<String, dynamic> map) {
     return ControlPlaneAccessArgs(
-      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null
-          ? null
-          : (map['analyticsPublisherIdentities'] as List).cast<String>(),
+      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null ? null : (map['analyticsPublisherIdentities'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      synchronizerIdentities: map['synchronizerIdentities'] == null
-          ? null
-          : (map['synchronizerIdentities'] as List).cast<String>(),
+      synchronizerIdentities: map['synchronizerIdentities'] == null ? null : (map['synchronizerIdentities'] as List).cast<String>(),
     );
   }
 }
+

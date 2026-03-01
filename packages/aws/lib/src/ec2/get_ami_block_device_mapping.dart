@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAmiBlockDeviceMapping {
   /// Physical name of the device.
   final String deviceName;
-
   /// Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volume_size"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`).
   final Map<String, String> ebs;
-
   /// Suppresses the specified device included in the block device mapping of the AMI.
   final String noDevice;
-
   /// Virtual device name (for instance stores).
   final String virtualName;
 
@@ -43,3 +41,4 @@ class GetAmiBlockDeviceMapping {
     );
   }
 }
+

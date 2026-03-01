@@ -9,27 +9,20 @@ class ContainerServicePublicDomainNames {
 
   /// Creates a new [ContainerServicePublicDomainNames].
   /// [certificates] Set of certificate configurations for the public domain names. Each element contains the following attributes:
-  ContainerServicePublicDomainNames({required this.certificates});
+  ContainerServicePublicDomainNames({
+    required this.certificates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates':
-          pulumi.Input.encodeList<
-            ContainerServicePublicDomainNamesCertificate,
-            Map<String, dynamic>
-          >(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.encodeList<ContainerServicePublicDomainNamesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
     };
   }
 
   factory ContainerServicePublicDomainNames.fromMap(Map<String, dynamic> map) {
     return ContainerServicePublicDomainNames(
-      certificates:
-          pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(
-            map['certificates'],
-            (value) => ContainerServicePublicDomainNamesCertificate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      certificates: pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(map['certificates'], (value) => ContainerServicePublicDomainNamesCertificate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class FloorsettingFilterConfigRaiSettings {
 
   /// Creates a new [FloorsettingFilterConfigRaiSettings].
   /// [raiFilters] List of Responsible AI filters enabled for template.
-  FloorsettingFilterConfigRaiSettings({required this.raiFilters});
+  FloorsettingFilterConfigRaiSettings({
+    required this.raiFilters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'raiFilters':
-          pulumi.Input.encodeList<
-            FloorsettingFilterConfigRaiSettingsRaiFilter,
-            Map<String, dynamic>
-          >(raiFilters, (value) => value.toMap()),
+      'raiFilters': pulumi.Input.encodeList<FloorsettingFilterConfigRaiSettingsRaiFilter, Map<String, dynamic>>(raiFilters, (value) => value.toMap()),
     };
   }
 
-  factory FloorsettingFilterConfigRaiSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FloorsettingFilterConfigRaiSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettings(
-      raiFilters:
-          pulumi.Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(
-            map['raiFilters'],
-            (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      raiFilters: pulumi.Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(map['raiFilters'], (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

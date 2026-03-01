@@ -1,23 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVpcLink.
 class GetVpcLinkResult {
   /// ARN of the VPC Link.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// VPC Link Name.
   final String name;
   final String region;
-
   /// List of security groups associated with the VPC Link.
   final List<String> securityGroupIds;
-
   /// List of subnets attached to the VPC Link.
   final List<String> subnetIds;
-
   /// VPC Link Tags.
   final Map<String, String> tags;
   final String vpcLinkId;
@@ -68,3 +64,4 @@ class GetVpcLinkResult {
     );
   }
 }
+

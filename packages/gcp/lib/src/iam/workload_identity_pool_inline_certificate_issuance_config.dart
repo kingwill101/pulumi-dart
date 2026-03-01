@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// A required mapping of a cloud region to the CA pool resource located in that region used
   /// for certificate issuance, adhering to these constraints:
@@ -10,7 +11,6 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
   /// same region. Also the CA pool region (in value) must match the workload's region (key).
   final Map<String, String> caPools;
-
   /// Key algorithm to use when generating the key pair. This key pair will be used to create
   /// the certificate. If unspecified, this will default to `ECDSA_P256`.
   /// * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
@@ -20,13 +20,11 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// * `ECDSA_P384`: Specifies ECDSA with curve P384.
   /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
   final String? keyAlgorithm;
-
   /// Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
   /// `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
   /// and is preceded by the number of seconds. If unspecified, this will be defaulted to
   /// `86400s` (24 hours).
   final String? lifetime;
-
   /// Rotation window percentage indicating when certificate rotation should be initiated based
   /// on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
   /// to `50`.
@@ -53,18 +51,13 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
     };
   }
 
-  factory WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineCertificateIssuanceConfig(
       caPools: (map['caPools'] as Map).cast<String, String>(),
-      keyAlgorithm: map['keyAlgorithm'] == null
-          ? null
-          : map['keyAlgorithm'] as String,
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : map['keyAlgorithm'] as String,
       lifetime: map['lifetime'] == null ? null : map['lifetime'] as String,
-      rotationWindowPercentage: map['rotationWindowPercentage'] == null
-          ? null
-          : map['rotationWindowPercentage'] as int,
+      rotationWindowPercentage: map['rotationWindowPercentage'] == null ? null : map['rotationWindowPercentage'] as int,
     );
   }
 }
+

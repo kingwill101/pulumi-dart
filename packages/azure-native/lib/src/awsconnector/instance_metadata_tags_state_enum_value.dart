@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of InstanceMetadataTagsStateEnumValue
+class InstanceMetadataTagsStateEnumValue {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [InstanceMetadataTagsStateEnumValue].
+  /// [value] Property value
+  InstanceMetadataTagsStateEnumValue({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory InstanceMetadataTagsStateEnumValue.fromMap(Map<String, dynamic> map) {
+    return InstanceMetadataTagsStateEnumValue(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

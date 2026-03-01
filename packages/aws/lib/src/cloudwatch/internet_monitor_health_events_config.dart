@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InternetMonitorHealthEventsConfig {
   /// The health event threshold percentage set for availability scores.
   final double? availabilityScoreThreshold;
-
   /// The health event threshold percentage set for performance scores.
   final double? performanceScoreThreshold;
 
@@ -24,12 +24,9 @@ class InternetMonitorHealthEventsConfig {
 
   factory InternetMonitorHealthEventsConfig.fromMap(Map<String, dynamic> map) {
     return InternetMonitorHealthEventsConfig(
-      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null
-          ? null
-          : map['availabilityScoreThreshold'] as double,
-      performanceScoreThreshold: map['performanceScoreThreshold'] == null
-          ? null
-          : map['performanceScoreThreshold'] as double,
+      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null ? null : map['availabilityScoreThreshold'] as double,
+      performanceScoreThreshold: map['performanceScoreThreshold'] == null ? null : map['performanceScoreThreshold'] as double,
     );
   }
 }
+

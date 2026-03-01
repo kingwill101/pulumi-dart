@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dns_delegation_properties_response.dart';
+
+/// Details of DNS Domains delegated to the Communications Gateway.
+class DnsDelegationsPropertiesResponse {
+  /// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+  final List<DnsDelegationPropertiesResponse>? delegations;
+
+  /// Creates a new [DnsDelegationsPropertiesResponse].
+  /// [delegations] DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+  DnsDelegationsPropertiesResponse({
+    this.delegations,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'delegations': ?delegations == null ? null : pulumi.Input.encodeList<DnsDelegationPropertiesResponse, Map<String, dynamic>>(delegations!, (value) => value.toMap()),
+    };
+  }
+
+  factory DnsDelegationsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return DnsDelegationsPropertiesResponse(
+      delegations: map['delegations'] == null ? null : pulumi.Input.decodeList<DnsDelegationPropertiesResponse>(map['delegations'], (value) => DnsDelegationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

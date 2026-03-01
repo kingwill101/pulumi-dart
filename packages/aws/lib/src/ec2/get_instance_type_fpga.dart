@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeFpga {
   final int count;
   final String manufacturer;
-
   /// Size of the instance memory, in MiB.
   final int memorySize;
   final String name;
@@ -38,3 +38,4 @@ class GetInstanceTypeFpga {
     );
   }
 }
+

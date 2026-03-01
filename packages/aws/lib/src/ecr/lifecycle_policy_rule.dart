@@ -7,13 +7,10 @@ import 'lifecycle_policy_selection.dart';
 class LifecyclePolicyRule {
   /// The action to take when the rule is triggered.
   final LifecyclePolicyAction action;
-
   /// A description of the rule.
   final String? description;
-
   /// The priority of the rule, must be unique within the policy.
   final int rulePriority;
-
   /// The selection criteria for the rule.
   final LifecyclePolicySelection selection;
 
@@ -40,16 +37,11 @@ class LifecyclePolicyRule {
 
   factory LifecyclePolicyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyRule(
-      action: LifecyclePolicyAction.fromMap(
-        (map['action'] as Map).cast<String, dynamic>(),
-      ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      action: LifecyclePolicyAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       rulePriority: map['rulePriority'] as int,
-      selection: LifecyclePolicySelection.fromMap(
-        (map['selection'] as Map).cast<String, dynamic>(),
-      ),
+      selection: LifecyclePolicySelection.fromMap((map['selection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

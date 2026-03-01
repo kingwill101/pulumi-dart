@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination {
   /// An IP address or a block of IP addresses in CIDR notation. AWS Network Firewall supports all address ranges for IPv4.
   final String addressDefinition;
@@ -11,14 +12,15 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressDefinition': addressDefinition};
+    return <String, dynamic>{
+      'addressDefinition': addressDefinition,
+    };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination(
       addressDefinition: map['addressDefinition'] as String,
     );
   }
 }
+

@@ -1,0 +1,214 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'system_data_response.dart';
+
+/// Result data returned by getRegisteredServer.
+class GetRegisteredServerResult {
+  /// Server auth type.
+  final String activeAuthType;
+  /// Registered Server Agent Version
+  final String? agentVersion;
+  /// Registered Server Agent Version Expiration Date
+  final String agentVersionExpirationDate;
+  /// Registered Server Agent Version Status
+  final String agentVersionStatus;
+  /// Server Application Id
+  final String? applicationId;
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// Registered Server clusterId
+  final String? clusterId;
+  /// Registered Server clusterName
+  final String? clusterName;
+  /// Resource discoveryEndpointUri
+  final String? discoveryEndpointUri;
+  /// Friendly Name
+  final String? friendlyName;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  final String id;
+  /// Apply server with newly discovered ApplicationId if available.
+  final bool identity;
+  /// Registered Server last heart beat
+  final String? lastHeartBeat;
+  /// Resource Last Operation Name
+  final String? lastOperationName;
+  /// Registered Server lastWorkflowId
+  final String? lastWorkflowId;
+  /// Latest Server Application Id discovered from the server. It is not yet applied.
+  final String? latestApplicationId;
+  /// Management Endpoint Uri
+  final String? managementEndpointUri;
+  /// Monitoring Configuration
+  final String? monitoringConfiguration;
+  /// Telemetry Endpoint Uri
+  final String? monitoringEndpointUri;
+  /// The name of the resource
+  final String name;
+  /// Registered Server Provisioning State
+  final String? provisioningState;
+  /// Resource Location
+  final String? resourceLocation;
+  /// Registered Server Certificate
+  final String? serverCertificate;
+  /// Registered Server serverId
+  final String? serverId;
+  /// Registered Server Management Error Code
+  final int? serverManagementErrorCode;
+  /// Server name
+  final String serverName;
+  /// Registered Server OS Version
+  final String? serverOSVersion;
+  /// Registered Server serverRole
+  final String? serverRole;
+  /// Service Location
+  final String? serviceLocation;
+  /// Registered Server storageSyncServiceUid
+  final String? storageSyncServiceUid;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String type;
+
+  /// Creates a new [GetRegisteredServerResult].
+  /// [activeAuthType] Server auth type.
+  /// [agentVersion] Registered Server Agent Version
+  /// [agentVersionExpirationDate] Registered Server Agent Version Expiration Date
+  /// [agentVersionStatus] Registered Server Agent Version Status
+  /// [applicationId] Server Application Id
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [clusterId] Registered Server clusterId
+  /// [clusterName] Registered Server clusterName
+  /// [discoveryEndpointUri] Resource discoveryEndpointUri
+  /// [friendlyName] Friendly Name
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [identity] Apply server with newly discovered ApplicationId if available.
+  /// [lastHeartBeat] Registered Server last heart beat
+  /// [lastOperationName] Resource Last Operation Name
+  /// [lastWorkflowId] Registered Server lastWorkflowId
+  /// [latestApplicationId] Latest Server Application Id discovered from the server. It is not yet applied.
+  /// [managementEndpointUri] Management Endpoint Uri
+  /// [monitoringConfiguration] Monitoring Configuration
+  /// [monitoringEndpointUri] Telemetry Endpoint Uri
+  /// [name] The name of the resource
+  /// [provisioningState] Registered Server Provisioning State
+  /// [resourceLocation] Resource Location
+  /// [serverCertificate] Registered Server Certificate
+  /// [serverId] Registered Server serverId
+  /// [serverManagementErrorCode] Registered Server Management Error Code
+  /// [serverName] Server name
+  /// [serverOSVersion] Registered Server OS Version
+  /// [serverRole] Registered Server serverRole
+  /// [serviceLocation] Service Location
+  /// [storageSyncServiceUid] Registered Server storageSyncServiceUid
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  GetRegisteredServerResult({
+    required this.activeAuthType,
+    this.agentVersion,
+    required this.agentVersionExpirationDate,
+    required this.agentVersionStatus,
+    this.applicationId,
+    required this.azureApiVersion,
+    this.clusterId,
+    this.clusterName,
+    this.discoveryEndpointUri,
+    this.friendlyName,
+    required this.id,
+    required this.identity,
+    this.lastHeartBeat,
+    this.lastOperationName,
+    this.lastWorkflowId,
+    this.latestApplicationId,
+    this.managementEndpointUri,
+    this.monitoringConfiguration,
+    this.monitoringEndpointUri,
+    required this.name,
+    this.provisioningState,
+    this.resourceLocation,
+    this.serverCertificate,
+    this.serverId,
+    this.serverManagementErrorCode,
+    required this.serverName,
+    this.serverOSVersion,
+    this.serverRole,
+    this.serviceLocation,
+    this.storageSyncServiceUid,
+    required this.systemData,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'activeAuthType': activeAuthType,
+      'agentVersion': ?agentVersion,
+      'agentVersionExpirationDate': agentVersionExpirationDate,
+      'agentVersionStatus': agentVersionStatus,
+      'applicationId': ?applicationId,
+      'azureApiVersion': azureApiVersion,
+      'clusterId': ?clusterId,
+      'clusterName': ?clusterName,
+      'discoveryEndpointUri': ?discoveryEndpointUri,
+      'friendlyName': ?friendlyName,
+      'id': id,
+      'identity': identity,
+      'lastHeartBeat': ?lastHeartBeat,
+      'lastOperationName': ?lastOperationName,
+      'lastWorkflowId': ?lastWorkflowId,
+      'latestApplicationId': ?latestApplicationId,
+      'managementEndpointUri': ?managementEndpointUri,
+      'monitoringConfiguration': ?monitoringConfiguration,
+      'monitoringEndpointUri': ?monitoringEndpointUri,
+      'name': name,
+      'provisioningState': ?provisioningState,
+      'resourceLocation': ?resourceLocation,
+      'serverCertificate': ?serverCertificate,
+      'serverId': ?serverId,
+      'serverManagementErrorCode': ?serverManagementErrorCode,
+      'serverName': serverName,
+      'serverOSVersion': ?serverOSVersion,
+      'serverRole': ?serverRole,
+      'serviceLocation': ?serviceLocation,
+      'storageSyncServiceUid': ?storageSyncServiceUid,
+      'systemData': systemData.toMap(),
+      'type': type,
+    };
+  }
+
+  factory GetRegisteredServerResult.fromMap(Map<String, dynamic> map) {
+    return GetRegisteredServerResult(
+      activeAuthType: map['activeAuthType'] as String,
+      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
+      agentVersionExpirationDate: map['agentVersionExpirationDate'] as String,
+      agentVersionStatus: map['agentVersionStatus'] as String,
+      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
+      azureApiVersion: map['azureApiVersion'] as String,
+      clusterId: map['clusterId'] == null ? null : map['clusterId'] as String,
+      clusterName: map['clusterName'] == null ? null : map['clusterName'] as String,
+      discoveryEndpointUri: map['discoveryEndpointUri'] == null ? null : map['discoveryEndpointUri'] as String,
+      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
+      id: map['id'] as String,
+      identity: map['identity'] as bool,
+      lastHeartBeat: map['lastHeartBeat'] == null ? null : map['lastHeartBeat'] as String,
+      lastOperationName: map['lastOperationName'] == null ? null : map['lastOperationName'] as String,
+      lastWorkflowId: map['lastWorkflowId'] == null ? null : map['lastWorkflowId'] as String,
+      latestApplicationId: map['latestApplicationId'] == null ? null : map['latestApplicationId'] as String,
+      managementEndpointUri: map['managementEndpointUri'] == null ? null : map['managementEndpointUri'] as String,
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : map['monitoringConfiguration'] as String,
+      monitoringEndpointUri: map['monitoringEndpointUri'] == null ? null : map['monitoringEndpointUri'] as String,
+      name: map['name'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      resourceLocation: map['resourceLocation'] == null ? null : map['resourceLocation'] as String,
+      serverCertificate: map['serverCertificate'] == null ? null : map['serverCertificate'] as String,
+      serverId: map['serverId'] == null ? null : map['serverId'] as String,
+      serverManagementErrorCode: map['serverManagementErrorCode'] == null ? null : map['serverManagementErrorCode'] as int,
+      serverName: map['serverName'] as String,
+      serverOSVersion: map['serverOSVersion'] == null ? null : map['serverOSVersion'] as String,
+      serverRole: map['serverRole'] == null ? null : map['serverRole'] as String,
+      serviceLocation: map['serviceLocation'] == null ? null : map['serviceLocation'] as String,
+      storageSyncServiceUid: map['storageSyncServiceUid'] == null ? null : map['storageSyncServiceUid'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// An array of destination IPv4 Addresses or IPv6 Addresses.
+class NeighborGroupDestination {
+  /// Array of IPv4 Addresses.
+  final List<String>? ipv4Addresses;
+  /// Array of IPv6 Addresses.
+  final List<String>? ipv6Addresses;
+
+  /// Creates a new [NeighborGroupDestination].
+  /// [ipv4Addresses] Array of IPv4 Addresses.
+  /// [ipv6Addresses] Array of IPv6 Addresses.
+  NeighborGroupDestination({
+    this.ipv4Addresses,
+    this.ipv6Addresses,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ipv4Addresses': ?ipv4Addresses,
+      'ipv6Addresses': ?ipv6Addresses,
+    };
+  }
+
+  factory NeighborGroupDestination.fromMap(Map<String, dynamic> map) {
+    return NeighborGroupDestination(
+      ipv4Addresses: map['ipv4Addresses'] == null ? null : (map['ipv4Addresses'] as List).cast<String>(),
+      ipv6Addresses: map['ipv6Addresses'] == null ? null : (map['ipv6Addresses'] as List).cast<String>(),
+    );
+  }
+}
+

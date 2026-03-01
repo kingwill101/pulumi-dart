@@ -2628,25 +2628,18 @@ import 'feature_membership_policycontroller.dart';
 class FeatureMembership extends pulumi.CustomResource {
   /// Config Management-specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipConfigmanagement?> configmanagement;
-
   /// The name of the feature
   late final pulumi.Output<String> feature;
-
   /// The location of the feature
   late final pulumi.Output<String> location;
-
   /// The name of the membership
   late final pulumi.Output<String> membership;
-
   /// The location of the membership, for example, "us-central1". Default is "global".
   late final pulumi.Output<String?> membershipLocation;
-
   /// Service mesh specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipMesh?> mesh;
-
   /// Policy Controller-specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipPolicycontroller?> policycontroller;
-
   /// The project of the feature
   late final pulumi.Output<String> project;
 
@@ -2659,22 +2652,18 @@ class FeatureMembership extends pulumi.CustomResource {
     FeatureMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/featureMembership:FeatureMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.configmanagement = registerOutput<FeatureMembershipConfigmanagement?>(
-      'configmanagement',
-    );
+          'gcp:gkehub/featureMembership:FeatureMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement');
     this.feature = registerOutput<String>('feature');
     this.location = registerOutput<String>('location');
     this.membership = registerOutput<String>('membership');
     this.membershipLocation = registerOutput<String?>('membershipLocation');
     this.mesh = registerOutput<FeatureMembershipMesh?>('mesh');
-    this.policycontroller = registerOutput<FeatureMembershipPolicycontroller?>(
-      'policycontroller',
-    );
+    this.policycontroller = registerOutput<FeatureMembershipPolicycontroller?>('policycontroller');
     this.project = registerOutput<String>('project');
   }
 }

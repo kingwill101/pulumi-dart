@@ -7,7 +7,9 @@ class DomainMatchingExportingConfig {
 
   /// Creates a new [DomainMatchingExportingConfig].
   /// [s3Exporting] Optional.
-  DomainMatchingExportingConfig({this.s3Exporting});
+  DomainMatchingExportingConfig({
+    this.s3Exporting,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,11 +19,8 @@ class DomainMatchingExportingConfig {
 
   factory DomainMatchingExportingConfig.fromMap(Map<String, dynamic> map) {
     return DomainMatchingExportingConfig(
-      s3Exporting: map['s3Exporting'] == null
-          ? null
-          : DomainMatchingExportingConfigS3Exporting.fromMap(
-              (map['s3Exporting'] as Map).cast<String, dynamic>(),
-            ),
+      s3Exporting: map['s3Exporting'] == null ? null : DomainMatchingExportingConfigS3Exporting.fromMap((map['s3Exporting'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

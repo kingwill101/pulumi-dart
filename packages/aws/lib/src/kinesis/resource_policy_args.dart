@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyArgs {
   /// The policy document.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) of the data stream or consumer.
   final pulumi.Input<String> resourceArn;
 
@@ -24,9 +22,10 @@ class ResourcePolicyArgs {
     required String policy,
     String? region,
     required String resourceArn,
-  }) : policy = pulumi.Input.asInput<String>(policy),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourceArn = pulumi.Input.asInput<String>(resourceArn);
+  }) :
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceArn = pulumi.Input.asInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class ResourcePolicyArgs {
     );
   }
 }
+

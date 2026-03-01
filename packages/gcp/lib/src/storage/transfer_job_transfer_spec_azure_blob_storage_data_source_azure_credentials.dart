@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
   /// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
   final String sasToken;
@@ -11,14 +12,15 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sasToken': sasToken};
+    return <String, dynamic>{
+      'sasToken': sasToken,
+    };
   }
 
-  factory TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(
       sasToken: map['sasToken'] as String,
     );
   }
 }
+

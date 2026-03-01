@@ -6,17 +6,12 @@ import 'v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_
 class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
   /// Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `start_response`, `update_response`, and `timeout_in_seconds` fields are required.
   final bool active;
-
   /// Configuration block for the message sent to users when the fulfillment Lambda functions starts running.
-  final V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse?
-  startResponse;
-
+  final V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse? startResponse;
   /// Length of time that the fulfillment Lambda function should run before it times out.
   final int? timeoutInSeconds;
-
   /// Configuration block for messages sent periodically to the user while the fulfillment Lambda function is running.
-  final V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse?
-  updateResponse;
+  final V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse? updateResponse;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification].
   /// [active] Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `start_response`, `update_response`, and `timeout_in_seconds` fields are required.
@@ -35,30 +30,17 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
       'active': active,
       'startResponse': ?startResponse == null ? null : startResponse!.toMap(),
       'timeoutInSeconds': ?timeoutInSeconds,
-      'updateResponse': ?updateResponse == null
-          ? null
-          : updateResponse!.toMap(),
+      'updateResponse': ?updateResponse == null ? null : updateResponse!.toMap(),
     };
   }
 
-  factory V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification(
       active: map['active'] as bool,
-      startResponse: map['startResponse'] == null
-          ? null
-          : V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse.fromMap(
-              (map['startResponse'] as Map).cast<String, dynamic>(),
-            ),
-      timeoutInSeconds: map['timeoutInSeconds'] == null
-          ? null
-          : map['timeoutInSeconds'] as int,
-      updateResponse: map['updateResponse'] == null
-          ? null
-          : V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse.fromMap(
-              (map['updateResponse'] as Map).cast<String, dynamic>(),
-            ),
+      startResponse: map['startResponse'] == null ? null : V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse.fromMap((map['startResponse'] as Map).cast<String, dynamic>()),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
+      updateResponse: map['updateResponse'] == null ? null : V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse.fromMap((map['updateResponse'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

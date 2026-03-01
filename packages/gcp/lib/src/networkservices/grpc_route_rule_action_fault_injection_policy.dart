@@ -7,7 +7,6 @@ class GrpcRouteRuleActionFaultInjectionPolicy {
   /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// Structure is documented below.
   final GrpcRouteRuleActionFaultInjectionPolicyAbort? abort;
-
   /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
   /// Structure is documented below.
   final GrpcRouteRuleActionFaultInjectionPolicyDelay? delay;
@@ -15,7 +14,10 @@ class GrpcRouteRuleActionFaultInjectionPolicy {
   /// Creates a new [GrpcRouteRuleActionFaultInjectionPolicy].
   /// [abort] Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// [delay] Specification of how client requests are delayed as part of fault injection before being sent to a destination.
-  GrpcRouteRuleActionFaultInjectionPolicy({this.abort, this.delay});
+  GrpcRouteRuleActionFaultInjectionPolicy({
+    this.abort,
+    this.delay,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,20 +26,11 @@ class GrpcRouteRuleActionFaultInjectionPolicy {
     };
   }
 
-  factory GrpcRouteRuleActionFaultInjectionPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrpcRouteRuleActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleActionFaultInjectionPolicy(
-      abort: map['abort'] == null
-          ? null
-          : GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap(
-              (map['abort'] as Map).cast<String, dynamic>(),
-            ),
-      delay: map['delay'] == null
-          ? null
-          : GrpcRouteRuleActionFaultInjectionPolicyDelay.fromMap(
-              (map['delay'] as Map).cast<String, dynamic>(),
-            ),
+      abort: map['abort'] == null ? null : GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: map['delay'] == null ? null : GrpcRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

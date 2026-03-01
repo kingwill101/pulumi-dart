@@ -1,0 +1,184 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'hosting_environment_profile_response.dart';
+
+/// Result data returned by getCertificate.
+class GetCertificateResult {
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// CNAME of the certificate to be issued via free certificate
+  final String? canonicalName;
+  /// Raw bytes of .cer file
+  final String cerBlob;
+  /// Method of domain validation for free cert
+  final String? domainValidationMethod;
+  /// Certificate expiration date.
+  final String expirationDate;
+  /// Friendly name of the certificate.
+  final String friendlyName;
+  /// Host names the certificate applies to.
+  final List<String>? hostNames;
+  /// Specification for the App Service Environment to use for the certificate.
+  final HostingEnvironmentProfileResponse hostingEnvironmentProfile;
+  /// Resource Id.
+  final String id;
+  /// Certificate issue Date.
+  final String issueDate;
+  /// Certificate issuer.
+  final String issuer;
+  /// Key Vault Csm resource Id.
+  final String? keyVaultId;
+  /// Key Vault secret name.
+  final String? keyVaultSecretName;
+  /// Status of the Key Vault secret.
+  final String keyVaultSecretStatus;
+  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  final String? kind;
+  /// Resource Location.
+  final String location;
+  /// Resource Name.
+  final String name;
+  /// Pfx blob.
+  final String? pfxBlob;
+  /// Public key hash.
+  final String publicKeyHash;
+  /// Self link.
+  final String selfLink;
+  /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  final String? serverFarmId;
+  /// App name.
+  final String siteName;
+  /// Subject name of the certificate.
+  final String subjectName;
+  /// Resource tags.
+  final Map<String, String>? tags;
+  /// Certificate thumbprint.
+  final String thumbprint;
+  /// Resource type.
+  final String type;
+  /// Is the certificate valid?.
+  final bool valid;
+
+  /// Creates a new [GetCertificateResult].
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [canonicalName] CNAME of the certificate to be issued via free certificate
+  /// [cerBlob] Raw bytes of .cer file
+  /// [domainValidationMethod] Method of domain validation for free cert
+  /// [expirationDate] Certificate expiration date.
+  /// [friendlyName] Friendly name of the certificate.
+  /// [hostNames] Host names the certificate applies to.
+  /// [hostingEnvironmentProfile] Specification for the App Service Environment to use for the certificate.
+  /// [id] Resource Id.
+  /// [issueDate] Certificate issue Date.
+  /// [issuer] Certificate issuer.
+  /// [keyVaultId] Key Vault Csm resource Id.
+  /// [keyVaultSecretName] Key Vault secret name.
+  /// [keyVaultSecretStatus] Status of the Key Vault secret.
+  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// [location] Resource Location.
+  /// [name] Resource Name.
+  /// [pfxBlob] Pfx blob.
+  /// [publicKeyHash] Public key hash.
+  /// [selfLink] Self link.
+  /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// [siteName] App name.
+  /// [subjectName] Subject name of the certificate.
+  /// [tags] Resource tags.
+  /// [thumbprint] Certificate thumbprint.
+  /// [type] Resource type.
+  /// [valid] Is the certificate valid?.
+  GetCertificateResult({
+    required this.azureApiVersion,
+    this.canonicalName,
+    required this.cerBlob,
+    this.domainValidationMethod,
+    required this.expirationDate,
+    required this.friendlyName,
+    this.hostNames,
+    required this.hostingEnvironmentProfile,
+    required this.id,
+    required this.issueDate,
+    required this.issuer,
+    this.keyVaultId,
+    this.keyVaultSecretName,
+    required this.keyVaultSecretStatus,
+    this.kind,
+    required this.location,
+    required this.name,
+    this.pfxBlob,
+    required this.publicKeyHash,
+    required this.selfLink,
+    this.serverFarmId,
+    required this.siteName,
+    required this.subjectName,
+    this.tags,
+    required this.thumbprint,
+    required this.type,
+    required this.valid,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'azureApiVersion': azureApiVersion,
+      'canonicalName': ?canonicalName,
+      'cerBlob': cerBlob,
+      'domainValidationMethod': ?domainValidationMethod,
+      'expirationDate': expirationDate,
+      'friendlyName': friendlyName,
+      'hostNames': ?hostNames,
+      'hostingEnvironmentProfile': hostingEnvironmentProfile.toMap(),
+      'id': id,
+      'issueDate': issueDate,
+      'issuer': issuer,
+      'keyVaultId': ?keyVaultId,
+      'keyVaultSecretName': ?keyVaultSecretName,
+      'keyVaultSecretStatus': keyVaultSecretStatus,
+      'kind': ?kind,
+      'location': location,
+      'name': name,
+      'pfxBlob': ?pfxBlob,
+      'publicKeyHash': publicKeyHash,
+      'selfLink': selfLink,
+      'serverFarmId': ?serverFarmId,
+      'siteName': siteName,
+      'subjectName': subjectName,
+      'tags': ?tags,
+      'thumbprint': thumbprint,
+      'type': type,
+      'valid': valid,
+    };
+  }
+
+  factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
+    return GetCertificateResult(
+      azureApiVersion: map['azureApiVersion'] as String,
+      canonicalName: map['canonicalName'] == null ? null : map['canonicalName'] as String,
+      cerBlob: map['cerBlob'] as String,
+      domainValidationMethod: map['domainValidationMethod'] == null ? null : map['domainValidationMethod'] as String,
+      expirationDate: map['expirationDate'] as String,
+      friendlyName: map['friendlyName'] as String,
+      hostNames: map['hostNames'] == null ? null : (map['hostNames'] as List).cast<String>(),
+      hostingEnvironmentProfile: HostingEnvironmentProfileResponse.fromMap((map['hostingEnvironmentProfile'] as Map).cast<String, dynamic>()),
+      id: map['id'] as String,
+      issueDate: map['issueDate'] as String,
+      issuer: map['issuer'] as String,
+      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : map['keyVaultSecretName'] as String,
+      keyVaultSecretStatus: map['keyVaultSecretStatus'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      location: map['location'] as String,
+      name: map['name'] as String,
+      pfxBlob: map['pfxBlob'] == null ? null : map['pfxBlob'] as String,
+      publicKeyHash: map['publicKeyHash'] as String,
+      selfLink: map['selfLink'] as String,
+      serverFarmId: map['serverFarmId'] == null ? null : map['serverFarmId'] as String,
+      siteName: map['siteName'] as String,
+      subjectName: map['subjectName'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      thumbprint: map['thumbprint'] as String,
+      type: map['type'] as String,
+      valid: map['valid'] as bool,
+    );
+  }
+}
+

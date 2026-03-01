@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuntimeVersionArgs {
   /// Whether the latest version of the runtime should be fetched. Conflicts with `version`. Valid values: `true`.
   final pulumi.Input<bool>? latest;
-
   /// Name prefix of the runtime version (for example, `syn-nodejs-puppeteer`).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> prefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
   final pulumi.Input<String>? version;
 
@@ -31,10 +28,11 @@ class GetRuntimeVersionArgs {
     required String prefix,
     String? region,
     String? version,
-  }) : latest = pulumi.Input.asOptionalInput<bool>(latest),
-       prefix = pulumi.Input.asInput<String>(prefix),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       version = pulumi.Input.asOptionalInput<String>(version);
+  }) :
+      latest = pulumi.Input.asOptionalInput<bool>(latest),
+      prefix = pulumi.Input.asInput<String>(prefix),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      version = pulumi.Input.asOptionalInput<String>(version);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,3 +52,4 @@ class GetRuntimeVersionArgs {
     );
   }
 }
+

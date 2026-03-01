@@ -10,27 +10,20 @@ import 'get_vpc_filter.dart';
 class GetVpcArgs {
   /// Cidr block of the desired VPC.
   final pulumi.Input<String>? cidrBlock;
-
   /// Boolean constraint on whether the desired VPC is
   /// the default VPC for the region.
   final pulumi.Input<bool>? default_;
-
   /// DHCP options id of the desired VPC.
   final pulumi.Input<String>? dhcpOptionsId;
-
   /// Custom filter block as described below.
   final pulumi.Input<List<GetVpcFilter>>? filters;
-
   /// ID of the specific VPC to retrieve.
   final pulumi.Input<String>? id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Current state of the desired VPC.
   /// Can be either `"pending"` or `"available"`.
   final pulumi.Input<String>? state;
-
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired VPC.
   ///
@@ -56,32 +49,22 @@ class GetVpcArgs {
     String? region,
     String? state,
     Map<String, String>? tags,
-  }) : cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-       default_ = pulumi.Input.asOptionalInput<bool>(default_),
-       dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
-       filters = pulumi.Input.asOptionalInput<List<GetVpcFilter>>(filters),
-       id = pulumi.Input.asOptionalInput<String>(id),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       state = pulumi.Input.asOptionalInput<String>(state),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
+      default_ = pulumi.Input.asOptionalInput<bool>(default_),
+      dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
+      filters = pulumi.Input.asOptionalInput<List<GetVpcFilter>>(filters),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      state = pulumi.Input.asOptionalInput<String>(state),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidrBlock': ?cidrBlock,
       'default': ?default_,
       'dhcpOptionsId': ?dhcpOptionsId,
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetVpcFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetVpcFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'region': ?region,
       'state': ?state,
@@ -93,22 +76,13 @@ class GetVpcArgs {
     return GetVpcArgs(
       cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
       default_: map['default'] == null ? null : map['default'] as bool,
-      dhcpOptionsId: map['dhcpOptionsId'] == null
-          ? null
-          : map['dhcpOptionsId'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetVpcFilter>(
-              map['filters'],
-              (value) =>
-                  GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()),
-            ),
+      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : map['dhcpOptionsId'] as String,
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcFilter>(map['filters'], (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       state: map['state'] == null ? null : map['state'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

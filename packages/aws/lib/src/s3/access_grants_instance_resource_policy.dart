@@ -222,10 +222,8 @@ import 'access_grants_instance_resource_policy_args.dart';
 class AccessGrantsInstanceResourcePolicy extends pulumi.CustomResource {
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// The policy document.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -238,11 +236,11 @@ class AccessGrantsInstanceResourcePolicy extends pulumi.CustomResource {
     AccessGrantsInstanceResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accountId = registerOutput<String>('accountId');
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

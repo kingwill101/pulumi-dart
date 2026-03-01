@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigHttpLoadBalancing {
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
   ///
@@ -8,17 +9,20 @@ class ClusterAddonsConfigHttpLoadBalancing {
 
   /// Creates a new [ClusterAddonsConfigHttpLoadBalancing].
   /// [disabled] Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
-  ClusterAddonsConfigHttpLoadBalancing({required this.disabled});
+  ClusterAddonsConfigHttpLoadBalancing({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory ClusterAddonsConfigHttpLoadBalancing.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAddonsConfigHttpLoadBalancing.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigHttpLoadBalancing(
       disabled: map['disabled'] as bool,
     );
   }
 }
+

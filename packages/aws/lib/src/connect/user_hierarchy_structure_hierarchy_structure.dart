@@ -11,16 +11,12 @@ class UserHierarchyStructureHierarchyStructure {
   ///
   /// Each level block supports the following arguments:
   final UserHierarchyStructureHierarchyStructureLevelFive? levelFive;
-
   /// A block that defines the details of level four. The level block is documented below.
   final UserHierarchyStructureHierarchyStructureLevelFour? levelFour;
-
   /// A block that defines the details of level one. The level block is documented below.
   final UserHierarchyStructureHierarchyStructureLevelOne? levelOne;
-
   /// A block that defines the details of level three. The level block is documented below.
   final UserHierarchyStructureHierarchyStructureLevelThree? levelThree;
-
   /// A block that defines the details of level two. The level block is documented below.
   final UserHierarchyStructureHierarchyStructureLevelTwo? levelTwo;
 
@@ -48,35 +44,14 @@ class UserHierarchyStructureHierarchyStructure {
     };
   }
 
-  factory UserHierarchyStructureHierarchyStructure.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserHierarchyStructureHierarchyStructure.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureHierarchyStructure(
-      levelFive: map['levelFive'] == null
-          ? null
-          : UserHierarchyStructureHierarchyStructureLevelFive.fromMap(
-              (map['levelFive'] as Map).cast<String, dynamic>(),
-            ),
-      levelFour: map['levelFour'] == null
-          ? null
-          : UserHierarchyStructureHierarchyStructureLevelFour.fromMap(
-              (map['levelFour'] as Map).cast<String, dynamic>(),
-            ),
-      levelOne: map['levelOne'] == null
-          ? null
-          : UserHierarchyStructureHierarchyStructureLevelOne.fromMap(
-              (map['levelOne'] as Map).cast<String, dynamic>(),
-            ),
-      levelThree: map['levelThree'] == null
-          ? null
-          : UserHierarchyStructureHierarchyStructureLevelThree.fromMap(
-              (map['levelThree'] as Map).cast<String, dynamic>(),
-            ),
-      levelTwo: map['levelTwo'] == null
-          ? null
-          : UserHierarchyStructureHierarchyStructureLevelTwo.fromMap(
-              (map['levelTwo'] as Map).cast<String, dynamic>(),
-            ),
+      levelFive: map['levelFive'] == null ? null : UserHierarchyStructureHierarchyStructureLevelFive.fromMap((map['levelFive'] as Map).cast<String, dynamic>()),
+      levelFour: map['levelFour'] == null ? null : UserHierarchyStructureHierarchyStructureLevelFour.fromMap((map['levelFour'] as Map).cast<String, dynamic>()),
+      levelOne: map['levelOne'] == null ? null : UserHierarchyStructureHierarchyStructureLevelOne.fromMap((map['levelOne'] as Map).cast<String, dynamic>()),
+      levelThree: map['levelThree'] == null ? null : UserHierarchyStructureHierarchyStructureLevelThree.fromMap((map['levelThree'] as Map).cast<String, dynamic>()),
+      levelTwo: map['levelTwo'] == null ? null : UserHierarchyStructureHierarchyStructureLevelTwo.fromMap((map['levelTwo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

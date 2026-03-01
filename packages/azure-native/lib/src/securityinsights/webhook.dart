@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Detail about the webhook object.
+class Webhook {
+  /// A flag to instruct the backend service to rotate webhook secret.
+  final bool? rotateWebhookSecret;
+  /// Unique identifier for the webhook.
+  final String? webhookId;
+  /// Time when the webhook secret was updated.
+  final String? webhookSecretUpdateTime;
+  /// URL that gets invoked by the webhook.
+  final String? webhookUrl;
+
+  /// Creates a new [Webhook].
+  /// [rotateWebhookSecret] A flag to instruct the backend service to rotate webhook secret.
+  /// [webhookId] Unique identifier for the webhook.
+  /// [webhookSecretUpdateTime] Time when the webhook secret was updated.
+  /// [webhookUrl] URL that gets invoked by the webhook.
+  Webhook({
+    this.rotateWebhookSecret,
+    this.webhookId,
+    this.webhookSecretUpdateTime,
+    this.webhookUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'rotateWebhookSecret': ?rotateWebhookSecret,
+      'webhookId': ?webhookId,
+      'webhookSecretUpdateTime': ?webhookSecretUpdateTime,
+      'webhookUrl': ?webhookUrl,
+    };
+  }
+
+  factory Webhook.fromMap(Map<String, dynamic> map) {
+    return Webhook(
+      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : map['rotateWebhookSecret'] as bool,
+      webhookId: map['webhookId'] == null ? null : map['webhookId'] as String,
+      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : map['webhookSecretUpdateTime'] as String,
+      webhookUrl: map['webhookUrl'] == null ? null : map['webhookUrl'] as String,
+    );
+  }
+}
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
   /// The maximum size of bursty pulls, temporarily allows pulls to burst to this
   /// number, while still not exceeding registry_pull_qps.
@@ -8,14 +9,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
   /// traffic produced by image pulls.
   /// Defaults to 10.
   final int? registryBurst;
-
   /// The limit of registry pulls per second.
   /// Setting this value to 0 means no limit.
   /// Updating this field may impact scalability by changing the amount of
   /// traffic produced by image pulls.
   /// Defaults to 5.
   final int? registryPullQps;
-
   /// Prevents the Kubelet from pulling multiple images at a time.
   /// We recommend *not* changing the default value on nodes that run docker
   /// daemon with version  < 1.9 or an Another Union File System (Aufs) storage
@@ -41,19 +40,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     };
   }
 
-  factory BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(
-      registryBurst: map['registryBurst'] == null
-          ? null
-          : map['registryBurst'] as int,
-      registryPullQps: map['registryPullQps'] == null
-          ? null
-          : map['registryPullQps'] as int,
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null
-          ? null
-          : map['serializeImagePullsDisabled'] as bool,
+      registryBurst: map['registryBurst'] == null ? null : map['registryBurst'] as int,
+      registryPullQps: map['registryPullQps'] == null ? null : map['registryPullQps'] as int,
+      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : map['serializeImagePullsDisabled'] as bool,
     );
   }
 }
+

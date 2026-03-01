@@ -5,13 +5,10 @@ import 'distribution_configuration_distribution_container_distribution_configura
 class DistributionConfigurationDistributionContainerDistributionConfiguration {
   /// Set of tags that are attached to the container distribution configuration.
   final List<String>? containerTags;
-
   /// Description of the container distribution configuration.
   final String? description;
-
   /// Configuration block with the destination repository for the container distribution configuration.
-  final DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository
-  targetRepository;
+  final DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository targetRepository;
 
   /// Creates a new [DistributionConfigurationDistributionContainerDistributionConfiguration].
   /// [containerTags] Set of tags that are attached to the container distribution configuration.
@@ -31,20 +28,12 @@ class DistributionConfigurationDistributionContainerDistributionConfiguration {
     };
   }
 
-  factory DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionContainerDistributionConfiguration(
-      containerTags: map['containerTags'] == null
-          ? null
-          : (map['containerTags'] as List).cast<String>(),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      targetRepository:
-          DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap(
-            (map['targetRepository'] as Map).cast<String, dynamic>(),
-          ),
+      containerTags: map['containerTags'] == null ? null : (map['containerTags'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      targetRepository: DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((map['targetRepository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

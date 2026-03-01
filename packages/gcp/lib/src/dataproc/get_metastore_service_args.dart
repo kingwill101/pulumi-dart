@@ -11,11 +11,9 @@ class GetMetastoreServiceArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the metastore service.
   final pulumi.Input<String> serviceId;
 
@@ -27,9 +25,10 @@ class GetMetastoreServiceArgs {
     required String location,
     String? project,
     required String serviceId,
-  }) : location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,3 +46,4 @@ class GetMetastoreServiceArgs {
     );
   }
 }
+

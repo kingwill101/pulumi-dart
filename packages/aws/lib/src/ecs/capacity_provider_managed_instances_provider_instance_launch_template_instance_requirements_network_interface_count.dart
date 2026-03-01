@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount {
   final int? max;
   final int? min;
@@ -13,15 +14,17 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount(
       max: map['max'] == null ? null : map['max'] as int,
       min: map['min'] == null ? null : map['min'] as int,
     );
   }
 }
+

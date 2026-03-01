@@ -6,25 +6,18 @@ import 'get_database_instance_setting_read_pool_auto_scale_config_target_metric.
 class GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
   /// True if auto scale in is disabled.
   final bool disableScaleIn;
-
   /// True if Read Pool Auto Scale is enabled.
   final bool enabled;
-
   /// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
   final int maxNodeCount;
-
   /// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
   final int minNodeCount;
-
   /// The cooldown period for scale in operations.
   final int scaleInCooldownSeconds;
-
   /// The cooldown period for scale out operations.
   final int scaleOutCooldownSeconds;
-
   /// Target metrics for Read Pool Auto Scale.
-  final List<GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric>
-  targetMetrics;
+  final List<GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric> targetMetrics;
 
   /// Creates a new [GetDatabaseInstanceSettingReadPoolAutoScaleConfig].
   /// [disableScaleIn] True if auto scale in is disabled.
@@ -52,17 +45,11 @@ class GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
       'minNodeCount': minNodeCount,
       'scaleInCooldownSeconds': scaleInCooldownSeconds,
       'scaleOutCooldownSeconds': scaleOutCooldownSeconds,
-      'targetMetrics':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric,
-            Map<String, dynamic>
-          >(targetMetrics, (value) => value.toMap()),
+      'targetMetrics': pulumi.Input.encodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric, Map<String, dynamic>>(targetMetrics, (value) => value.toMap()),
     };
   }
 
-  factory GetDatabaseInstanceSettingReadPoolAutoScaleConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceSettingReadPoolAutoScaleConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingReadPoolAutoScaleConfig(
       disableScaleIn: map['disableScaleIn'] as bool,
       enabled: map['enabled'] as bool,
@@ -70,16 +57,8 @@ class GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
       minNodeCount: map['minNodeCount'] as int,
       scaleInCooldownSeconds: map['scaleInCooldownSeconds'] as int,
       scaleOutCooldownSeconds: map['scaleOutCooldownSeconds'] as int,
-      targetMetrics:
-          pulumi.Input.decodeList<
-            GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric
-          >(
-            map['targetMetrics'],
-            (value) =>
-                GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      targetMetrics: pulumi.Input.decodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric>(map['targetMetrics'], (value) => GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

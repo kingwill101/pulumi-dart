@@ -5,7 +5,6 @@ import 'bucket_replication_config_rule_destination_replication_time_time.dart';
 class BucketReplicationConfigRuleDestinationReplicationTime {
   /// Status of the Replication Time Control. Either `"Enabled"` or `"Disabled"`.
   final String status;
-
   /// Configuration block specifying the time by which replication should be complete for all objects and operations on objects. See below.
   final BucketReplicationConfigRuleDestinationReplicationTimeTime time;
 
@@ -18,17 +17,17 @@ class BucketReplicationConfigRuleDestinationReplicationTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status, 'time': time.toMap()};
+    return <String, dynamic>{
+      'status': status,
+      'time': time.toMap(),
+    };
   }
 
-  factory BucketReplicationConfigRuleDestinationReplicationTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketReplicationConfigRuleDestinationReplicationTime.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationReplicationTime(
       status: map['status'] as String,
-      time: BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap(
-        (map['time'] as Map).cast<String, dynamic>(),
-      ),
+      time: BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap((map['time'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

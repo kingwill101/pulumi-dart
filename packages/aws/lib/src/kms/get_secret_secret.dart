@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecretSecret {
   final Map<String, String>? context;
   final List<String>? grantTokens;
@@ -29,14 +30,11 @@ class GetSecretSecret {
 
   factory GetSecretSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretSecret(
-      context: map['context'] == null
-          ? null
-          : (map['context'] as Map).cast<String, String>(),
-      grantTokens: map['grantTokens'] == null
-          ? null
-          : (map['grantTokens'] as List).cast<String>(),
+      context: map['context'] == null ? null : (map['context'] as Map).cast<String, String>(),
+      grantTokens: map['grantTokens'] == null ? null : (map['grantTokens'] as List).cast<String>(),
       name: map['name'] as String,
       payload: map['payload'] as String,
     );
   }
 }
+

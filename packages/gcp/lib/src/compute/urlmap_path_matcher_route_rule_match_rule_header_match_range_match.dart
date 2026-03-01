@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
   /// The end of the range (exclusive).
   final int rangeEnd;
-
   /// The start of the range (inclusive).
   final int rangeStart;
 
@@ -16,15 +16,17 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rangeEnd': rangeEnd, 'rangeStart': rangeStart};
+    return <String, dynamic>{
+      'rangeEnd': rangeEnd,
+      'rangeStart': rangeStart,
+    };
   }
 
-  factory URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(
       rangeEnd: map['rangeEnd'] as int,
       rangeStart: map['rangeStart'] as int,
     );
   }
 }
+

@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaArgs {
   /// The unique id of the data store.
   final pulumi.Input<String> dataStoreId;
-
   /// The JSON representation of the schema.
   final pulumi.Input<String>? jsonSchema;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The unique id of the schema.
   final pulumi.Input<String> schemaId;
 
@@ -36,11 +32,12 @@ class SchemaArgs {
     required String location,
     String? project,
     required String schemaId,
-  }) : dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-       jsonSchema = pulumi.Input.asOptionalInput<String>(jsonSchema),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       schemaId = pulumi.Input.asInput<String>(schemaId);
+  }) :
+      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+      jsonSchema = pulumi.Input.asOptionalInput<String>(jsonSchema),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      schemaId = pulumi.Input.asInput<String>(schemaId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +52,11 @@ class SchemaArgs {
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
       dataStoreId: map['dataStoreId'] as String,
-      jsonSchema: map['jsonSchema'] == null
-          ? null
-          : map['jsonSchema'] as String,
+      jsonSchema: map['jsonSchema'] == null ? null : map['jsonSchema'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       schemaId: map['schemaId'] as String,
     );
   }
 }
+

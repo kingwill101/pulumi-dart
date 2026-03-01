@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The api properties for special APIs.
+class ApiPropertiesResponse {
+  /// (Metrics Advisor Only) The Azure AD Client Id (Application Id).
+  final String? aadClientId;
+  /// (Metrics Advisor Only) The Azure AD Tenant Id.
+  final String? aadTenantId;
+  /// (Personalization Only) The flag to enable statistics of Bing Search.
+  final String? eventHubConnectionString;
+  /// (QnAMaker Only) The Azure Search endpoint id of QnAMaker.
+  final String? qnaAzureSearchEndpointId;
+  /// (QnAMaker Only) The Azure Search endpoint key of QnAMaker.
+  final String? qnaAzureSearchEndpointKey;
+  /// (QnAMaker Only) The runtime endpoint of QnAMaker.
+  final String? qnaRuntimeEndpoint;
+  /// (Bing Search Only) The flag to enable statistics of Bing Search.
+  final bool? statisticsEnabled;
+  /// (Personalization Only) The storage account connection string.
+  final String? storageAccountConnectionString;
+  /// (Metrics Advisor Only) The super user of Metrics Advisor.
+  final String? superUser;
+  /// (Metrics Advisor Only) The website name of Metrics Advisor.
+  final String? websiteName;
+
+  /// Creates a new [ApiPropertiesResponse].
+  /// [aadClientId] (Metrics Advisor Only) The Azure AD Client Id (Application Id).
+  /// [aadTenantId] (Metrics Advisor Only) The Azure AD Tenant Id.
+  /// [eventHubConnectionString] (Personalization Only) The flag to enable statistics of Bing Search.
+  /// [qnaAzureSearchEndpointId] (QnAMaker Only) The Azure Search endpoint id of QnAMaker.
+  /// [qnaAzureSearchEndpointKey] (QnAMaker Only) The Azure Search endpoint key of QnAMaker.
+  /// [qnaRuntimeEndpoint] (QnAMaker Only) The runtime endpoint of QnAMaker.
+  /// [statisticsEnabled] (Bing Search Only) The flag to enable statistics of Bing Search.
+  /// [storageAccountConnectionString] (Personalization Only) The storage account connection string.
+  /// [superUser] (Metrics Advisor Only) The super user of Metrics Advisor.
+  /// [websiteName] (Metrics Advisor Only) The website name of Metrics Advisor.
+  ApiPropertiesResponse({
+    this.aadClientId,
+    this.aadTenantId,
+    this.eventHubConnectionString,
+    this.qnaAzureSearchEndpointId,
+    this.qnaAzureSearchEndpointKey,
+    this.qnaRuntimeEndpoint,
+    this.statisticsEnabled,
+    this.storageAccountConnectionString,
+    this.superUser,
+    this.websiteName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'aadClientId': ?aadClientId,
+      'aadTenantId': ?aadTenantId,
+      'eventHubConnectionString': ?eventHubConnectionString,
+      'qnaAzureSearchEndpointId': ?qnaAzureSearchEndpointId,
+      'qnaAzureSearchEndpointKey': ?qnaAzureSearchEndpointKey,
+      'qnaRuntimeEndpoint': ?qnaRuntimeEndpoint,
+      'statisticsEnabled': ?statisticsEnabled,
+      'storageAccountConnectionString': ?storageAccountConnectionString,
+      'superUser': ?superUser,
+      'websiteName': ?websiteName,
+    };
+  }
+
+  factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return ApiPropertiesResponse(
+      aadClientId: map['aadClientId'] == null ? null : map['aadClientId'] as String,
+      aadTenantId: map['aadTenantId'] == null ? null : map['aadTenantId'] as String,
+      eventHubConnectionString: map['eventHubConnectionString'] == null ? null : map['eventHubConnectionString'] as String,
+      qnaAzureSearchEndpointId: map['qnaAzureSearchEndpointId'] == null ? null : map['qnaAzureSearchEndpointId'] as String,
+      qnaAzureSearchEndpointKey: map['qnaAzureSearchEndpointKey'] == null ? null : map['qnaAzureSearchEndpointKey'] as String,
+      qnaRuntimeEndpoint: map['qnaRuntimeEndpoint'] == null ? null : map['qnaRuntimeEndpoint'] as String,
+      statisticsEnabled: map['statisticsEnabled'] == null ? null : map['statisticsEnabled'] as bool,
+      storageAccountConnectionString: map['storageAccountConnectionString'] == null ? null : map['storageAccountConnectionString'] as String,
+      superUser: map['superUser'] == null ? null : map['superUser'] as String,
+      websiteName: map['websiteName'] == null ? null : map['websiteName'] as String,
+    );
+  }
+}
+

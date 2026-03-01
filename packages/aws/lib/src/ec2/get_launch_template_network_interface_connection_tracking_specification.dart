@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
   final int tcpEstablishedTimeout;
   final int udpStreamTimeout;
@@ -23,9 +24,7 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
     };
   }
 
-  factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification(
       tcpEstablishedTimeout: map['tcpEstablishedTimeout'] as int,
       udpStreamTimeout: map['udpStreamTimeout'] as int,
@@ -33,3 +32,4 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
     );
   }
 }
+

@@ -22,10 +22,11 @@ class RepositoryIamPolicyArgs {
     String? project,
     String? region,
     required String repository,
-  }) : policyData = pulumi.Input.asInput<String>(policyData),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       repository = pulumi.Input.asInput<String>(repository);
+  }) :
+      policyData = pulumi.Input.asInput<String>(policyData),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      repository = pulumi.Input.asInput<String>(repository);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,3 +46,4 @@ class RepositoryIamPolicyArgs {
     );
   }
 }
+

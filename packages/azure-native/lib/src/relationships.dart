@@ -1,0 +1,18 @@
+library module_relationships;
+
+export 'relationships/dependency_of_relationship.dart';
+export 'relationships/dependency_of_relationship_args.dart';
+export 'relationships/dependency_of_relationship_properties.dart';
+export 'relationships/dependency_of_relationship_properties_response.dart';
+export 'relationships/functions.dart';
+export 'relationships/get_dependency_of_relationship_args.dart';
+export 'relationships/get_dependency_of_relationship_result.dart';
+export 'relationships/get_service_group_member_relationship_args.dart';
+export 'relationships/get_service_group_member_relationship_result.dart';
+export 'relationships/relationship_metadata_response.dart';
+export 'relationships/relationship_origin_information_response.dart';
+export 'relationships/service_group_member_relationship.dart';
+export 'relationships/service_group_member_relationship_args.dart';
+export 'relationships/service_group_member_relationship_properties.dart';
+export 'relationships/service_group_member_relationship_properties_response.dart';
+export 'relationships/system_data_response.dart';

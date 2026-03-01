@@ -13,10 +13,8 @@ class GetCoipPoolsArgs {
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
   final pulumi.Input<List<GetCoipPoolsFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired aws_ec2_coip_pools.
   final pulumi.Input<Map<String, String>>? tags;
@@ -29,26 +27,14 @@ class GetCoipPoolsArgs {
     List<GetCoipPoolsFilter>? filters,
     String? region,
     Map<String, String>? tags,
-  }) : filters = pulumi.Input.asOptionalInput<List<GetCoipPoolsFilter>>(
-         filters,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetCoipPoolsFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetCoipPoolsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCoipPoolsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetCoipPoolsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetCoipPoolsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
     };
@@ -56,18 +42,10 @@ class GetCoipPoolsArgs {
 
   factory GetCoipPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolsArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetCoipPoolsFilter>(
-              map['filters'],
-              (value) => GetCoipPoolsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCoipPoolsFilter>(map['filters'], (value) => GetCoipPoolsFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -200,10 +200,8 @@ import 'bucket_policy_s3_control_args.dart';
 class BucketPolicyS3Control extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// JSON string of the resource policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -216,11 +214,11 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
     BucketPolicyS3ControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/bucketPolicy:BucketPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/bucketPolicy:BucketPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

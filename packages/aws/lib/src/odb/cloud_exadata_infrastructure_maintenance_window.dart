@@ -7,29 +7,20 @@ import 'cloud_exadata_infrastructure_maintenance_window_month.dart';
 class CloudExadataInfrastructureMaintenanceWindow {
   /// The custom action timeout in minutes for the maintenance window.
   final int customActionTimeoutInMins;
-
   /// The days of the week when maintenance can be performed.
-  final List<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>?
-  daysOfWeeks;
-
+  final List<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>? daysOfWeeks;
   /// The hours of the day when maintenance can be performed.
   final List<int>? hoursOfDays;
-
   /// ndicates whether custom action timeout is enabled for the maintenance window.
   final bool isCustomActionTimeoutEnabled;
-
   /// The lead time in weeks before the maintenance window.
   final int? leadTimeInWeeks;
-
   /// The months when maintenance can be performed.
   final List<CloudExadataInfrastructureMaintenanceWindowMonth>? months;
-
   /// The patching mode for the maintenance window.
   final String patchingMode;
-
   /// The preference for the maintenance window scheduling.
   final String preference;
-
   /// The weeks of the month when maintenance can be performed.
   final List<int>? weeksOfMonths;
 
@@ -58,66 +49,29 @@ class CloudExadataInfrastructureMaintenanceWindow {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customActionTimeoutInMins': customActionTimeoutInMins,
-      'daysOfWeeks': ?daysOfWeeks == null
-          ? null
-          : pulumi.Input.encodeList<
-              CloudExadataInfrastructureMaintenanceWindowDaysOfWeek,
-              Map<String, dynamic>
-            >(daysOfWeeks!, (value) => value.toMap()),
+      'daysOfWeeks': ?daysOfWeeks == null ? null : pulumi.Input.encodeList<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek, Map<String, dynamic>>(daysOfWeeks!, (value) => value.toMap()),
       'hoursOfDays': ?hoursOfDays,
       'isCustomActionTimeoutEnabled': isCustomActionTimeoutEnabled,
       'leadTimeInWeeks': ?leadTimeInWeeks,
-      'months': ?months == null
-          ? null
-          : pulumi.Input.encodeList<
-              CloudExadataInfrastructureMaintenanceWindowMonth,
-              Map<String, dynamic>
-            >(months!, (value) => value.toMap()),
+      'months': ?months == null ? null : pulumi.Input.encodeList<CloudExadataInfrastructureMaintenanceWindowMonth, Map<String, dynamic>>(months!, (value) => value.toMap()),
       'patchingMode': patchingMode,
       'preference': preference,
       'weeksOfMonths': ?weeksOfMonths,
     };
   }
 
-  factory CloudExadataInfrastructureMaintenanceWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudExadataInfrastructureMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureMaintenanceWindow(
       customActionTimeoutInMins: map['customActionTimeoutInMins'] as int,
-      daysOfWeeks: map['daysOfWeeks'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              CloudExadataInfrastructureMaintenanceWindowDaysOfWeek
-            >(
-              map['daysOfWeeks'],
-              (value) =>
-                  CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      hoursOfDays: map['hoursOfDays'] == null
-          ? null
-          : (map['hoursOfDays'] as List).cast<int>(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>(map['daysOfWeeks'], (value) => CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>())),
+      hoursOfDays: map['hoursOfDays'] == null ? null : (map['hoursOfDays'] as List).cast<int>(),
       isCustomActionTimeoutEnabled: map['isCustomActionTimeoutEnabled'] as bool,
-      leadTimeInWeeks: map['leadTimeInWeeks'] == null
-          ? null
-          : map['leadTimeInWeeks'] as int,
-      months: map['months'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              CloudExadataInfrastructureMaintenanceWindowMonth
-            >(
-              map['months'],
-              (value) =>
-                  CloudExadataInfrastructureMaintenanceWindowMonth.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : map['leadTimeInWeeks'] as int,
+      months: map['months'] == null ? null : pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowMonth>(map['months'], (value) => CloudExadataInfrastructureMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>())),
       patchingMode: map['patchingMode'] as String,
       preference: map['preference'] as String,
-      weeksOfMonths: map['weeksOfMonths'] == null
-          ? null
-          : (map['weeksOfMonths'] as List).cast<int>(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : (map['weeksOfMonths'] as List).cast<int>(),
     );
   }
 }
+

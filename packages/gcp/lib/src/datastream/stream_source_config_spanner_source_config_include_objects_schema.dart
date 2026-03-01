@@ -6,11 +6,9 @@ import 'stream_source_config_spanner_source_config_include_objects_schema_table.
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
   /// Schema name.
   final String schema;
-
   /// Tables in the schema.
   /// Structure is documented below.
-  final List<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>?
-  tables;
+  final List<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>? tables;
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema].
   /// [schema] Schema name.
@@ -23,31 +21,15 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schema': schema,
-      'tables': ?tables == null
-          ? null
-          : pulumi.Input.encodeList<
-              StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable,
-              Map<String, dynamic>
-            >(tables!, (value) => value.toMap()),
+      'tables': ?tables == null ? null : pulumi.Input.encodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable, Map<String, dynamic>>(tables!, (value) => value.toMap()),
     };
   }
 
-  factory StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema(
       schema: map['schema'] as String,
-      tables: map['tables'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable
-            >(
-              map['tables'],
-              (value) =>
-                  StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      tables: map['tables'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>(map['tables'], (value) => StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

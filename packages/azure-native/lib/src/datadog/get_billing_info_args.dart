@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_datadog_get_billing_info_args_doc}
+/// Arguments for getBillingInfo.
+/// {@endtemplate}
+/// {@macro pulumi_datadog_get_billing_info_args_doc}
+class GetBillingInfoArgs {
+  /// Monitor resource name
+  final pulumi.Input<String> monitorName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetBillingInfoArgs].
+  /// [monitorName] Monitor resource name
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  GetBillingInfoArgs({
+    required String monitorName,
+    required String resourceGroupName,
+  }) :
+      monitorName = pulumi.Input.asInput<String>(monitorName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'monitorName': monitorName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetBillingInfoArgs.fromMap(Map<String, dynamic> map) {
+    return GetBillingInfoArgs(
+      monitorName: map['monitorName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+    );
+  }
+}
+

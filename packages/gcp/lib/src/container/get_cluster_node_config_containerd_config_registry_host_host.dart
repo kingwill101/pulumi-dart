@@ -8,24 +8,16 @@ import 'get_cluster_node_config_containerd_config_registry_host_host_header.dart
 class GetClusterNodeConfigContainerdConfigRegistryHostHost {
   /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
   final List<String> capabilities;
-
   /// Configures the registry host certificate.
   final List<GetClusterNodeConfigContainerdConfigRegistryHostHostCa> cas;
-
   /// Configures the registry host client certificate and key.
-  final List<GetClusterNodeConfigContainerdConfigRegistryHostHostClient>
-  clients;
-
+  final List<GetClusterNodeConfigContainerdConfigRegistryHostHostClient> clients;
   /// Specifies the maximum duration allowed for a connection attempt to complete.
   final String dialTimeout;
-
   /// Configures the registry host headers.
-  final List<GetClusterNodeConfigContainerdConfigRegistryHostHostHeader>
-  headers;
-
+  final List<GetClusterNodeConfigContainerdConfigRegistryHostHostHeader> headers;
   /// Configures the registry host/mirror.
   final String host;
-
   /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
   final bool overridePath;
 
@@ -50,65 +42,25 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHost {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capabilities': capabilities,
-      'cas':
-          pulumi.Input.encodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostCa,
-            Map<String, dynamic>
-          >(cas, (value) => value.toMap()),
-      'clients':
-          pulumi.Input.encodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostClient,
-            Map<String, dynamic>
-          >(clients, (value) => value.toMap()),
+      'cas': pulumi.Input.encodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostCa, Map<String, dynamic>>(cas, (value) => value.toMap()),
+      'clients': pulumi.Input.encodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostClient, Map<String, dynamic>>(clients, (value) => value.toMap()),
       'dialTimeout': dialTimeout,
-      'headers':
-          pulumi.Input.encodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostHeader,
-            Map<String, dynamic>
-          >(headers, (value) => value.toMap()),
+      'headers': pulumi.Input.encodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostHeader, Map<String, dynamic>>(headers, (value) => value.toMap()),
       'host': host,
       'overridePath': overridePath,
     };
   }
 
-  factory GetClusterNodeConfigContainerdConfigRegistryHostHost.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigContainerdConfigRegistryHostHost.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigContainerdConfigRegistryHostHost(
       capabilities: (map['capabilities'] as List).cast<String>(),
-      cas:
-          pulumi.Input.decodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostCa
-          >(
-            map['cas'],
-            (value) =>
-                GetClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      clients:
-          pulumi.Input.decodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostClient
-          >(
-            map['clients'],
-            (value) =>
-                GetClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      cas: pulumi.Input.decodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostCa>(map['cas'], (value) => GetClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap((value as Map).cast<String, dynamic>())),
+      clients: pulumi.Input.decodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostClient>(map['clients'], (value) => GetClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap((value as Map).cast<String, dynamic>())),
       dialTimeout: map['dialTimeout'] as String,
-      headers:
-          pulumi.Input.decodeList<
-            GetClusterNodeConfigContainerdConfigRegistryHostHostHeader
-          >(
-            map['headers'],
-            (value) =>
-                GetClusterNodeConfigContainerdConfigRegistryHostHostHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      headers: pulumi.Input.decodeList<GetClusterNodeConfigContainerdConfigRegistryHostHostHeader>(map['headers'], (value) => GetClusterNodeConfigContainerdConfigRegistryHostHostHeader.fromMap((value as Map).cast<String, dynamic>())),
       host: map['host'] as String,
       overridePath: map['overridePath'] as bool,
     );
   }
 }
+

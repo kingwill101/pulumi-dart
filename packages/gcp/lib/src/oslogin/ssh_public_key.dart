@@ -170,16 +170,12 @@ import 'ssh_public_key_args.dart';
 class SshPublicKey extends pulumi.CustomResource {
   /// An expiration time in microseconds since epoch.
   late final pulumi.Output<String?> expirationTimeUsec;
-
   /// The SHA-256 fingerprint of the SSH public key.
   late final pulumi.Output<String> fingerprint;
-
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   late final pulumi.Output<String> key;
-
   /// The project ID of the Google Cloud Platform project.
   late final pulumi.Output<String?> project;
-
   /// The user email.
   late final pulumi.Output<String> user;
 
@@ -192,11 +188,11 @@ class SshPublicKey extends pulumi.CustomResource {
     SshPublicKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:oslogin/sshPublicKey:SshPublicKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:oslogin/sshPublicKey:SshPublicKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
     this.fingerprint = registerOutput<String>('fingerprint');
     this.key = registerOutput<String>('key');

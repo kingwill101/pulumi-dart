@@ -10,7 +10,6 @@ import 'size_constraint_set_size_constraint.dart';
 class SizeConstraintSetArgs {
   /// Name or description of the Size Constraint Set.
   final pulumi.Input<String>? name;
-
   /// Parts of web requests that you want to inspect the size of.
   final pulumi.Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
 
@@ -20,41 +19,22 @@ class SizeConstraintSetArgs {
   SizeConstraintSetArgs({
     String? name,
     List<SizeConstraintSetSizeConstraint>? sizeConstraints,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       sizeConstraints =
-           pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(
-             sizeConstraints,
-           );
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      sizeConstraints = pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(sizeConstraints);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'sizeConstraints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SizeConstraintSetSizeConstraint>,
-            List<Map<String, dynamic>>
-          >(
-            sizeConstraints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SizeConstraintSetSizeConstraint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sizeConstraints': ?pulumi.Input.mapOptionalInputValue<List<SizeConstraintSetSizeConstraint>, List<Map<String, dynamic>>>(sizeConstraints, (value) => pulumi.Input.encodeList<SizeConstraintSetSizeConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SizeConstraintSetArgs.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetArgs(
       name: map['name'] == null ? null : map['name'] as String,
-      sizeConstraints: map['sizeConstraints'] == null
-          ? null
-          : pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(
-              map['sizeConstraints'],
-              (value) => SizeConstraintSetSizeConstraint.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      sizeConstraints: map['sizeConstraints'] == null ? null : pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

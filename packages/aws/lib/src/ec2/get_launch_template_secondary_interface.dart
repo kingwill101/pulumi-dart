@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateSecondaryInterface {
   final bool deleteOnTermination;
   final int deviceIndex;
@@ -39,9 +40,7 @@ class GetLaunchTemplateSecondaryInterface {
     };
   }
 
-  factory GetLaunchTemplateSecondaryInterface.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateSecondaryInterface(
       deleteOnTermination: map['deleteOnTermination'] as bool,
       deviceIndex: map['deviceIndex'] as int,
@@ -53,3 +52,4 @@ class GetLaunchTemplateSecondaryInterface {
     );
   }
 }
+

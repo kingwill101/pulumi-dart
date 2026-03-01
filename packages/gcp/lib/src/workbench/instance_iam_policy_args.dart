@@ -22,10 +22,11 @@ class InstanceIamPolicyArgs {
     String? name,
     required String policyData,
     String? project,
-  }) : location = pulumi.Input.asOptionalInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       policyData = pulumi.Input.asInput<String>(policyData),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyData = pulumi.Input.asInput<String>(policyData),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,3 +46,4 @@ class InstanceIamPolicyArgs {
     );
   }
 }
+

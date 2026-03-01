@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSetPhysicalTableMapRelationalTableInputColumn {
   /// Name of this column in the underlying data source.
   final String name;
-
   /// Data type of the column.
   final String type;
 
@@ -16,15 +16,17 @@ class DataSetPhysicalTableMapRelationalTableInputColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapRelationalTableInputColumn(
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

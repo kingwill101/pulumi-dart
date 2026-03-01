@@ -15,23 +15,14 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements':
-          pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(
-            statements,
-            (value) => value.toMap(),
-          ),
+      'statements': pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement(
-      statements: pulumi.Input.decodeList<WebAclRuleStatement>(
-        map['statements'],
-        (value) =>
-            WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      statements: pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

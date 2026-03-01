@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentConfigWorkloadsConfigWorker {
   /// CPU request and limit for a single Airflow worker replica.
   final double? cpu;
-
   /// Maximum number of workers for autoscaling.
   final int? maxCount;
-
   /// Memory (GB) request and limit for a single Airflow worker replica.
   final double? memoryGb;
-
   /// Minimum number of workers for autoscaling.
   final int? minCount;
-
   /// Storage (GB) request and limit for a single Airflow worker replica.
   final double? storageGb;
 
@@ -40,9 +37,7 @@ class EnvironmentConfigWorkloadsConfigWorker {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigWorker.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigWorkloadsConfigWorker.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigWorker(
       cpu: map['cpu'] == null ? null : map['cpu'] as double,
       maxCount: map['maxCount'] == null ? null : map['maxCount'] as int,
@@ -52,3 +47,4 @@ class EnvironmentConfigWorkloadsConfigWorker {
     );
   }
 }
+

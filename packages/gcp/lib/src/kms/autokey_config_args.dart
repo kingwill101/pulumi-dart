@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutokeyConfigArgs {
   /// The folder for which to retrieve config.
   final pulumi.Input<String> folder;
-
   /// The target key project for a given folder where KMS Autokey will provision a
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
   /// `projects/<project_id_or_number>`.
@@ -18,20 +17,25 @@ class AutokeyConfigArgs {
   /// Creates a new [AutokeyConfigArgs].
   /// [folder] The folder for which to retrieve config.
   /// [keyProject] The target key project for a given folder where KMS Autokey will provision a
-  AutokeyConfigArgs({required String folder, String? keyProject})
-    : folder = pulumi.Input.asInput<String>(folder),
+  AutokeyConfigArgs({
+    required String folder,
+    String? keyProject,
+  }) :
+      folder = pulumi.Input.asInput<String>(folder),
       keyProject = pulumi.Input.asOptionalInput<String>(keyProject);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'folder': folder, 'keyProject': ?keyProject};
+    return <String, dynamic>{
+      'folder': folder,
+      'keyProject': ?keyProject,
+    };
   }
 
   factory AutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return AutokeyConfigArgs(
       folder: map['folder'] as String,
-      keyProject: map['keyProject'] == null
-          ? null
-          : map['keyProject'] as String,
+      keyProject: map['keyProject'] == null ? null : map['keyProject'] as String,
     );
   }
 }
+

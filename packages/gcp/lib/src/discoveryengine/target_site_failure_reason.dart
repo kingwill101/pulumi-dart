@@ -9,7 +9,9 @@ class TargetSiteFailureReason {
 
   /// Creates a new [TargetSiteFailureReason].
   /// [quotaFailure] Site verification state indicating the ownership and validity.
-  TargetSiteFailureReason({this.quotaFailure});
+  TargetSiteFailureReason({
+    this.quotaFailure,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class TargetSiteFailureReason {
 
   factory TargetSiteFailureReason.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReason(
-      quotaFailure: map['quotaFailure'] == null
-          ? null
-          : TargetSiteFailureReasonQuotaFailure.fromMap(
-              (map['quotaFailure'] as Map).cast<String, dynamic>(),
-            ),
+      quotaFailure: map['quotaFailure'] == null ? null : TargetSiteFailureReasonQuotaFailure.fromMap((map['quotaFailure'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

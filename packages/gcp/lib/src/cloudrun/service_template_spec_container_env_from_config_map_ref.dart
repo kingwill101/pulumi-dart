@@ -5,9 +5,7 @@ import 'service_template_spec_container_env_from_config_map_ref_local_object_ref
 class ServiceTemplateSpecContainerEnvFromConfigMapRef {
   /// The ConfigMap to select from.
   /// Structure is documented below.
-  final ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference?
-  localObjectReference;
-
+  final ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference? localObjectReference;
   /// Specify whether the ConfigMap must be defined
   final bool? optional;
 
@@ -21,23 +19,16 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localObjectReference': ?localObjectReference == null
-          ? null
-          : localObjectReference!.toMap(),
+      'localObjectReference': ?localObjectReference == null ? null : localObjectReference!.toMap(),
       'optional': ?optional,
     };
   }
 
-  factory ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvFromConfigMapRef(
-      localObjectReference: map['localObjectReference'] == null
-          ? null
-          : ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap(
-              (map['localObjectReference'] as Map).cast<String, dynamic>(),
-            ),
+      localObjectReference: map['localObjectReference'] == null ? null : ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
       optional: map['optional'] == null ? null : map['optional'] as bool,
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'prevention_deidentify_template_deidentify_config_info_type_transformatio
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig {
   /// The key used by the encryption function.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey?
-  cryptoKey;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey? cryptoKey;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig].
   /// [cryptoKey] The key used by the encryption function.
@@ -20,15 +19,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig(
-      cryptoKey: map['cryptoKey'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey.fromMap(
-              (map['cryptoKey'] as Map).cast<String, dynamic>(),
-            ),
+      cryptoKey: map['cryptoKey'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

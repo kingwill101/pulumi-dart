@@ -19,9 +19,10 @@ class GetRegionSSLPolicyArgs {
     required String name,
     String? project,
     String? region,
-  }) : name = pulumi.Input.asInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,3 +40,4 @@ class GetRegionSSLPolicyArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationTemplateSetting {
   /// A unique name for this Template.
   final String name;
@@ -37,3 +38,4 @@ class ConfigurationTemplateSetting {
     );
   }
 }
+

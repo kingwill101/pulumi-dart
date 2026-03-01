@@ -174,7 +174,6 @@ import 'event_configurations_args.dart';
 class EventConfigurations extends pulumi.CustomResource {
   /// Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   late final pulumi.Output<Map<String, bool>> eventConfigurations;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -187,14 +186,12 @@ class EventConfigurations extends pulumi.CustomResource {
     EventConfigurationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/eventConfigurations:EventConfigurations',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.eventConfigurations = registerOutput<Map<String, bool>>(
-      'eventConfigurations',
-    );
+          'aws:iot/eventConfigurations:EventConfigurations',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations');
     this.region = registerOutput<String>('region');
   }
 }

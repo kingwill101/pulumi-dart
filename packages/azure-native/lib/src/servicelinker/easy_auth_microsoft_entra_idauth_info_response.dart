@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The authentication info when authType is EasyAuth Microsoft Entra ID
+class EasyAuthMicrosoftEntraIDAuthInfoResponse {
+  /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+  final String? authMode;
+  /// The authentication type.
+  /// Expected value is 'easyAuthMicrosoftEntraID'.
+  final String authType;
+  /// Application clientId for EasyAuth Microsoft Entra ID.
+  final String? clientId;
+  /// Indicates whether to clean up previous operation when Linker is updating or deleting
+  final String? deleteOrUpdateBehavior;
+  /// Application Secret for EasyAuth Microsoft Entra ID.
+  final String? secret;
+
+  /// Creates a new [EasyAuthMicrosoftEntraIDAuthInfoResponse].
+  /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+  /// [authType] The authentication type.
+  /// [clientId] Application clientId for EasyAuth Microsoft Entra ID.
+  /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
+  /// [secret] Application Secret for EasyAuth Microsoft Entra ID.
+  EasyAuthMicrosoftEntraIDAuthInfoResponse({
+    this.authMode,
+    required this.authType,
+    this.clientId,
+    this.deleteOrUpdateBehavior,
+    this.secret,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authMode': ?authMode,
+      'authType': authType,
+      'clientId': ?clientId,
+      'deleteOrUpdateBehavior': ?deleteOrUpdateBehavior,
+      'secret': ?secret,
+    };
+  }
+
+  factory EasyAuthMicrosoftEntraIDAuthInfoResponse.fromMap(Map<String, dynamic> map) {
+    return EasyAuthMicrosoftEntraIDAuthInfoResponse(
+      authMode: map['authMode'] == null ? null : map['authMode'] as String,
+      authType: map['authType'] as String,
+      clientId: map['clientId'] == null ? null : map['clientId'] as String,
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : map['deleteOrUpdateBehavior'] as String,
+      secret: map['secret'] == null ? null : map['secret'] as String,
+    );
+  }
+}
+

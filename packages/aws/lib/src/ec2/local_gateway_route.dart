@@ -115,13 +115,10 @@ import 'local_gateway_route_args.dart';
 class LocalGatewayRoute extends pulumi.CustomResource {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
   late final pulumi.Output<String> destinationCidrBlock;
-
   /// Identifier of EC2 Local Gateway Route Table.
   late final pulumi.Output<String> localGatewayRouteTableId;
-
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
   late final pulumi.Output<String> localGatewayVirtualInterfaceGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -134,18 +131,14 @@ class LocalGatewayRoute extends pulumi.CustomResource {
     LocalGatewayRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/localGatewayRoute:LocalGatewayRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/localGatewayRoute:LocalGatewayRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
-    this.localGatewayRouteTableId = registerOutput<String>(
-      'localGatewayRouteTableId',
-    );
-    this.localGatewayVirtualInterfaceGroupId = registerOutput<String>(
-      'localGatewayVirtualInterfaceGroupId',
-    );
+    this.localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');
+    this.localGatewayVirtualInterfaceGroupId = registerOutput<String>('localGatewayVirtualInterfaceGroupId');
     this.region = registerOutput<String>('region');
   }
 }

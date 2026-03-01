@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBucketArgs {
   /// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   final pulumi.Input<String>? bucketId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -17,12 +16,18 @@ class StorageBucketArgs {
   /// Creates a new [StorageBucketArgs].
   /// [bucketId] Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   /// [project] The ID of the project in which the resource belongs.
-  StorageBucketArgs({String? bucketId, String? project})
-    : bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
+  StorageBucketArgs({
+    String? bucketId,
+    String? project,
+  }) :
+      bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketId': ?bucketId, 'project': ?project};
+    return <String, dynamic>{
+      'bucketId': ?bucketId,
+      'project': ?project,
+    };
   }
 
   factory StorageBucketArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +37,4 @@ class StorageBucketArgs {
     );
   }
 }
+

@@ -6,7 +6,6 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
   /// Settings object for snapshot management.
   /// See `iceberg_snapshot_management.settings` below.
   final TableMaintenanceConfigurationIcebergSnapshotManagementSettings settings;
-
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
   final String status;
@@ -20,18 +19,17 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'settings': settings.toMap(), 'status': status};
+    return <String, dynamic>{
+      'settings': settings.toMap(),
+      'status': status,
+    };
   }
 
-  factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagement(
-      settings:
-          TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(
-            (map['settings'] as Map).cast<String, dynamic>(),
-          ),
+      settings: TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
     );
   }
 }
+

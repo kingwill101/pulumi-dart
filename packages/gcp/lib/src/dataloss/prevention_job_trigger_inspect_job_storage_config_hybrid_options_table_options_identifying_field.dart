@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField {
   /// Name describing the field.
   final String name;
@@ -11,14 +12,15 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField(
       name: map['name'] as String,
     );
   }
 }
+

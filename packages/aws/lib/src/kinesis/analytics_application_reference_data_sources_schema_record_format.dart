@@ -5,9 +5,7 @@ import 'analytics_application_reference_data_sources_schema_record_format_mappin
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
   /// The Mapping Information for the record format.
   /// See Mapping Parameters below for more details.
-  final AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters?
-  mappingParameters;
-
+  final AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters? mappingParameters;
   /// The type of Record Format. Can be `CSV` or `JSON`.
   final String? recordFormatType;
 
@@ -21,25 +19,16 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mappingParameters': ?mappingParameters == null
-          ? null
-          : mappingParameters!.toMap(),
+      'mappingParameters': ?mappingParameters == null ? null : mappingParameters!.toMap(),
       'recordFormatType': ?recordFormatType,
     };
   }
 
-  factory AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat(
-      mappingParameters: map['mappingParameters'] == null
-          ? null
-          : AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters.fromMap(
-              (map['mappingParameters'] as Map).cast<String, dynamic>(),
-            ),
-      recordFormatType: map['recordFormatType'] == null
-          ? null
-          : map['recordFormatType'] as String,
+      mappingParameters: map['mappingParameters'] == null ? null : AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>()),
+      recordFormatType: map['recordFormatType'] == null ? null : map['recordFormatType'] as String,
     );
   }
 }
+

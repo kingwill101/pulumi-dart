@@ -18,10 +18,8 @@ import 'web_acl_association_args.dart';
 class WebAclAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer, an Amazon API Gateway stage (REST only, HTTP is unsupported), an Amazon Cognito User Pool, an Amazon AppSync GraphQL API, an Amazon App Runner service, or an Amazon Verified Access instance.
   late final pulumi.Output<String> resourceArn;
-
   /// The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
   late final pulumi.Output<String> webAclArn;
 
@@ -34,11 +32,11 @@ class WebAclAssociation extends pulumi.CustomResource {
     WebAclAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafv2/webAclAssociation:WebAclAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafv2/webAclAssociation:WebAclAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');
     this.webAclArn = registerOutput<String>('webAclArn');

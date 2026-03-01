@@ -417,11 +417,9 @@ class ServicePerimeters extends pulumi.CustomResource {
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
-
   /// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<ServicePerimetersServicePerimeter>?>
-  servicePerimeters;
+  late final pulumi.Output<List<ServicePerimetersServicePerimeter>?> servicePerimeters;
 
   /// Creates a new [ServicePerimeters].
   /// [name] The Pulumi resource name.
@@ -432,15 +430,12 @@ class ServicePerimeters extends pulumi.CustomResource {
     ServicePerimetersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.parent = registerOutput<String>('parent');
-    this.servicePerimeters =
-        registerOutput<List<ServicePerimetersServicePerimeter>?>(
-          'servicePerimeters',
-        );
+    this.servicePerimeters = registerOutput<List<ServicePerimetersServicePerimeter>?>('servicePerimeters');
   }
 }

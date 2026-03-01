@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolSigningCertificateArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Cognito user pool ID.
   final pulumi.Input<String> userPoolId;
 
@@ -19,11 +18,15 @@ class GetUserPoolSigningCertificateArgs {
   GetUserPoolSigningCertificateArgs({
     String? region,
     required String userPoolId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       userPoolId = pulumi.Input.asInput<String>(userPoolId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      userPoolId = pulumi.Input.asInput<String>(userPoolId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region, 'userPoolId': userPoolId};
+    return <String, dynamic>{
+      'region': ?region,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetUserPoolSigningCertificateArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +36,4 @@ class GetUserPoolSigningCertificateArgs {
     );
   }
 }
+

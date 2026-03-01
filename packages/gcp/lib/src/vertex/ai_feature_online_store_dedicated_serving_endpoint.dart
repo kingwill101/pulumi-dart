@@ -5,13 +5,10 @@ import 'ai_feature_online_store_dedicated_serving_endpoint_private_service_conne
 class AiFeatureOnlineStoreDedicatedServingEndpoint {
   /// Private service connect config.
   /// Structure is documented below.
-  final AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig?
-  privateServiceConnectConfig;
-
+  final AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig? privateServiceConnectConfig;
   /// (Output)
   /// Domain name to use for this FeatureOnlineStore
   final String? publicEndpointDomainName;
-
   /// (Output)
   /// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
   final String? serviceAttachment;
@@ -28,30 +25,18 @@ class AiFeatureOnlineStoreDedicatedServingEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateServiceConnectConfig': ?privateServiceConnectConfig == null
-          ? null
-          : privateServiceConnectConfig!.toMap(),
+      'privateServiceConnectConfig': ?privateServiceConnectConfig == null ? null : privateServiceConnectConfig!.toMap(),
       'publicEndpointDomainName': ?publicEndpointDomainName,
       'serviceAttachment': ?serviceAttachment,
     };
   }
 
-  factory AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreDedicatedServingEndpoint(
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null
-          ? null
-          : AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap(
-              (map['privateServiceConnectConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      publicEndpointDomainName: map['publicEndpointDomainName'] == null
-          ? null
-          : map['publicEndpointDomainName'] as String,
-      serviceAttachment: map['serviceAttachment'] == null
-          ? null
-          : map['serviceAttachment'] as String,
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
+      publicEndpointDomainName: map['publicEndpointDomainName'] == null ? null : map['publicEndpointDomainName'] as String,
+      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
     );
   }
 }
+

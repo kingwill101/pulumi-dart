@@ -6,7 +6,6 @@ class TableMaintenanceConfigurationIcebergCompaction {
   /// Settings object for compaction.
   /// See `iceberg_compaction.settings` below.
   final TableMaintenanceConfigurationIcebergCompactionSettings settings;
-
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
   final String status;
@@ -20,17 +19,17 @@ class TableMaintenanceConfigurationIcebergCompaction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'settings': settings.toMap(), 'status': status};
+    return <String, dynamic>{
+      'settings': settings.toMap(),
+      'status': status,
+    };
   }
 
-  factory TableMaintenanceConfigurationIcebergCompaction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableMaintenanceConfigurationIcebergCompaction.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergCompaction(
-      settings: TableMaintenanceConfigurationIcebergCompactionSettings.fromMap(
-        (map['settings'] as Map).cast<String, dynamic>(),
-      ),
+      settings: TableMaintenanceConfigurationIcebergCompactionSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
     );
   }
 }
+

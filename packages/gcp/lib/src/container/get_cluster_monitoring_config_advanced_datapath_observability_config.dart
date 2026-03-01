@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
   /// Whether or not the advanced datapath metrics are enabled.
   final bool enableMetrics;
-
   /// Whether or not Relay is enabled.
   final bool enableRelay;
 
@@ -22,12 +22,11 @@ class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
     };
   }
 
-  factory GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig(
       enableMetrics: map['enableMetrics'] as bool,
       enableRelay: map['enableRelay'] as bool,
     );
   }
 }
+

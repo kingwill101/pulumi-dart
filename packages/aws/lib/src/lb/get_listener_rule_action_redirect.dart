@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleActionRedirect {
   /// The hostname.
   final String host;
-
   /// The absolute path, starting with `/`.
   final String path;
-
   /// The port.
   final String port;
-
   /// The protocol.
   final String protocol;
-
   /// The query parameters.
   final String query;
-
   /// The HTTP redirect code.
   final String statusCode;
 
@@ -57,3 +53,4 @@ class GetListenerRuleActionRedirect {
     );
   }
 }
+

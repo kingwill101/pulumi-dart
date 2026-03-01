@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'shared_access_signature_authorization_rule_access_rights_description_response.dart';
+
+/// Result data returned by listIotDpsResourceKeys.
+class ListIotDpsResourceKeysResult {
+  /// The next link.
+  final String nextLink;
+  /// The list of shared access policies.
+  final List<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>? value;
+
+  /// Creates a new [ListIotDpsResourceKeysResult].
+  /// [nextLink] The next link.
+  /// [value] The list of shared access policies.
+  ListIotDpsResourceKeysResult({
+    required this.nextLink,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'nextLink': nextLink,
+      'value': ?value == null ? null : pulumi.Input.encodeList<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+    };
+  }
+
+  factory ListIotDpsResourceKeysResult.fromMap(Map<String, dynamic> map) {
+    return ListIotDpsResourceKeysResult(
+      nextLink: map['nextLink'] as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>(map['value'], (value) => SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

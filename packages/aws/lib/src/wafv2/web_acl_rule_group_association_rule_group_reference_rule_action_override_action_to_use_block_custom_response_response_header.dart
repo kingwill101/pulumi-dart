@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponseResponseHeader {
   /// Name of the response header.
   final String name;
-
   /// Value of the response header.
   final String value;
 
@@ -16,15 +16,17 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseB
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponseResponseHeader(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

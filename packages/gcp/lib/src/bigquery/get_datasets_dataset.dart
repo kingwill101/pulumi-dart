@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatasetsDataset {
   /// The id of the dataset.
   final String datasetId;
-
   /// The friendly name of the dataset.
   final String friendlyName;
-
   /// User-provided dataset labels, in key/value pairs.
   final Map<String, String> labels;
-
   /// The geographic location of the dataset.
   final String location;
 
@@ -43,3 +41,4 @@ class GetDatasetsDataset {
     );
   }
 }
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Sql upsert option settings
+class SqlUpsertSettings {
+  /// Schema name for interim table. Type: string (or Expression with resultType string).
+  final dynamic interimSchemaName;
+  /// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+  final dynamic keys;
+  /// Specifies whether to use temp db for upsert interim table. Type: boolean (or Expression with resultType boolean).
+  final dynamic useTempDB;
+
+  /// Creates a new [SqlUpsertSettings].
+  /// [interimSchemaName] Schema name for interim table. Type: string (or Expression with resultType string).
+  /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+  /// [useTempDB] Specifies whether to use temp db for upsert interim table. Type: boolean (or Expression with resultType boolean).
+  SqlUpsertSettings({
+    this.interimSchemaName,
+    this.keys,
+    this.useTempDB,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'interimSchemaName': ?interimSchemaName,
+      'keys': ?keys,
+      'useTempDB': ?useTempDB,
+    };
+  }
+
+  factory SqlUpsertSettings.fromMap(Map<String, dynamic> map) {
+    return SqlUpsertSettings(
+      interimSchemaName: map['interimSchemaName'] == null ? null : map['interimSchemaName'],
+      keys: map['keys'] == null ? null : map['keys'],
+      useTempDB: map['useTempDB'] == null ? null : map['useTempDB'],
+    );
+  }
+}
+

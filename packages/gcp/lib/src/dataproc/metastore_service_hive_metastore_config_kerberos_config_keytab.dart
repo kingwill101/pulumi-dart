@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
   /// The relative resource name of a Secret Manager secret version, in the following form:
   /// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
@@ -12,14 +13,15 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cloudSecret': cloudSecret};
+    return <String, dynamic>{
+      'cloudSecret': cloudSecret,
+    };
   }
 
-  factory MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(
       cloudSecret: map['cloudSecret'] as String,
     );
   }
 }
+

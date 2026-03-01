@@ -5,12 +5,9 @@ import 'get_service_template_spec_container_liveness_probe_http_get_http_header.
 
 class GetServiceTemplateSpecContainerLivenessProbeHttpGet {
   /// Custom headers to set in the request. HTTP allows repeated headers.
-  final List<GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader>
-  httpHeaders;
-
+  final List<GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader> httpHeaders;
   /// Path to access on the HTTP server. If set, it should not be empty string.
   final String path;
-
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
   final int port;
@@ -27,32 +24,18 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpHeaders':
-          pulumi.Input.encodeList<
-            GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader,
-            Map<String, dynamic>
-          >(httpHeaders, (value) => value.toMap()),
+      'httpHeaders': pulumi.Input.encodeList<GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader, Map<String, dynamic>>(httpHeaders, (value) => value.toMap()),
       'path': path,
       'port': port,
     };
   }
 
-  factory GetServiceTemplateSpecContainerLivenessProbeHttpGet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateSpecContainerLivenessProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerLivenessProbeHttpGet(
-      httpHeaders:
-          pulumi.Input.decodeList<
-            GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader
-          >(
-            map['httpHeaders'],
-            (value) =>
-                GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      httpHeaders: pulumi.Input.decodeList<GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
       path: map['path'] as String,
       port: map['port'] as int,
     );
   }
 }
+

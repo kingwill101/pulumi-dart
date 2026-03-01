@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
   /// Enables using the slot values as a custom vocabulary for recognizing user utterances.
   /// Valid value is `UseSlotValuesAsCustomVocabulary`.
@@ -17,13 +18,10 @@ class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
     };
   }
 
-  factory V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting(
-      audioRecognitionStrategy: map['audioRecognitionStrategy'] == null
-          ? null
-          : map['audioRecognitionStrategy'] as String,
+      audioRecognitionStrategy: map['audioRecognitionStrategy'] == null ? null : map['audioRecognitionStrategy'] as String,
     );
   }
 }
+

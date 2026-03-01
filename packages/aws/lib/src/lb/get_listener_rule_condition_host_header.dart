@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleConditionHostHeader {
   /// Set of regular expressions to compare against the request URL.
   final List<String> regexValues;
-
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final List<String> values;
 
@@ -16,7 +16,10 @@ class GetListenerRuleConditionHostHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regexValues': regexValues, 'values': values};
+    return <String, dynamic>{
+      'regexValues': regexValues,
+      'values': values,
+    };
   }
 
   factory GetListenerRuleConditionHostHeader.fromMap(Map<String, dynamic> map) {
@@ -26,3 +29,4 @@ class GetListenerRuleConditionHostHeader {
     );
   }
 }
+

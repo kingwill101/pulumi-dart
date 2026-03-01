@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAuthorizationToken.
 class GetAuthorizationTokenResult {
   /// Temporary authorization token.
@@ -7,10 +8,8 @@ class GetAuthorizationTokenResult {
   final String domain;
   final String domainOwner;
   final int? durationSeconds;
-
   /// Time in UTC RFC3339 format when the authorization token expires.
   final String expiration;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -50,12 +49,11 @@ class GetAuthorizationTokenResult {
       authorizationToken: map['authorizationToken'] as String,
       domain: map['domain'] as String,
       domainOwner: map['domainOwner'] as String,
-      durationSeconds: map['durationSeconds'] == null
-          ? null
-          : map['durationSeconds'] as int,
+      durationSeconds: map['durationSeconds'] == null ? null : map['durationSeconds'] as int,
       expiration: map['expiration'] as String,
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

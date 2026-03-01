@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeSourceParametersSelfManagedKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? basicAuth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? clientCertificateTlsAuth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? saslScram256Auth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? saslScram512Auth;
 
@@ -34,20 +32,13 @@ class PipeSourceParametersSelfManagedKafkaParametersCredentials {
     };
   }
 
-  factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersCredentials(
       basicAuth: map['basicAuth'] == null ? null : map['basicAuth'] as String,
-      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null
-          ? null
-          : map['clientCertificateTlsAuth'] as String,
-      saslScram256Auth: map['saslScram256Auth'] == null
-          ? null
-          : map['saslScram256Auth'] as String,
-      saslScram512Auth: map['saslScram512Auth'] == null
-          ? null
-          : map['saslScram512Auth'] as String,
+      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : map['clientCertificateTlsAuth'] as String,
+      saslScram256Auth: map['saslScram256Auth'] == null ? null : map['saslScram256Auth'] as String,
+      saslScram512Auth: map['saslScram512Auth'] == null ? null : map['saslScram512Auth'] as String,
     );
   }
 }
+

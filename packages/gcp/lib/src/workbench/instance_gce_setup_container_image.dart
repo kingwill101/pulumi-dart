@@ -1,20 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGceSetupContainerImage {
   /// The path to the container image repository.
   /// For example: gcr.io/{project_id}/{imageName}
   final String repository;
-
   /// The tag of the container image. If not specified, this defaults to the latest tag.
   final String? tag;
 
   /// Creates a new [InstanceGceSetupContainerImage].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  InstanceGceSetupContainerImage({required this.repository, this.tag});
+  InstanceGceSetupContainerImage({
+    required this.repository,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'repository': repository, 'tag': ?tag};
+    return <String, dynamic>{
+      'repository': repository,
+      'tag': ?tag,
+    };
   }
 
   factory InstanceGceSetupContainerImage.fromMap(Map<String, dynamic> map) {
@@ -24,3 +30,4 @@ class InstanceGceSetupContainerImage {
     );
   }
 }
+

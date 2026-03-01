@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'metric_value_status_patch.dart';
+
+/// ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing a single container in each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
+class ContainerResourceMetricStatusPatch {
+  /// container is the name of the container in the pods of the scaling target
+  final String? container;
+  /// current contains the current value for the given metric
+  final MetricValueStatusPatch? current;
+  /// name is the name of the resource in question.
+  final String? name;
+
+  /// Creates a new [ContainerResourceMetricStatusPatch].
+  /// [container] container is the name of the container in the pods of the scaling target
+  /// [current] current contains the current value for the given metric
+  /// [name] name is the name of the resource in question.
+  ContainerResourceMetricStatusPatch({
+    this.container,
+    this.current,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'container': ?container,
+      'current': ?current == null ? null : current!.toMap(),
+      'name': ?name,
+    };
+  }
+
+  factory ContainerResourceMetricStatusPatch.fromMap(Map<String, dynamic> map) {
+    return ContainerResourceMetricStatusPatch(
+      container: map['container'] == null ? null : map['container'] as String,
+      current: map['current'] == null ? null : MetricValueStatusPatch.fromMap((map['current'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

@@ -339,40 +339,29 @@ import 'membership_rbac_role_binding_state.dart';
 class MembershipRbacRoleBinding extends pulumi.CustomResource {
   /// Time the RBAC Role Binding was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Time the RBAC Role Binding was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
-
   /// Location of the Membership
   late final pulumi.Output<String> location;
-
   /// Id of the membership
   late final pulumi.Output<String> membershipId;
-
   /// The client-provided identifier of the RBAC Role Binding.
   late final pulumi.Output<String> membershipRbacRoleBindingId;
-
   /// The resource name for the RBAC Role Binding
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Role to bind to the principal.
   /// Structure is documented below.
   late final pulumi.Output<MembershipRbacRoleBindingRole> role;
-
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
   late final pulumi.Output<List<MembershipRbacRoleBindingState>> states;
-
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
-
   /// Time the RBAC Role Binding was updated in UTC.
   late final pulumi.Output<String> updateTime;
-
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
@@ -388,24 +377,20 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     MembershipRbacRoleBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.location = registerOutput<String>('location');
     this.membershipId = registerOutput<String>('membershipId');
-    this.membershipRbacRoleBindingId = registerOutput<String>(
-      'membershipRbacRoleBindingId',
-    );
+    this.membershipRbacRoleBindingId = registerOutput<String>('membershipRbacRoleBindingId');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.role = registerOutput<MembershipRbacRoleBindingRole>('role');
-    this.states = registerOutput<List<MembershipRbacRoleBindingState>>(
-      'states',
-    );
+    this.states = registerOutput<List<MembershipRbacRoleBindingState>>('states');
     this.uid = registerOutput<String>('uid');
     this.updateTime = registerOutput<String>('updateTime');
     this.user = registerOutput<String>('user');

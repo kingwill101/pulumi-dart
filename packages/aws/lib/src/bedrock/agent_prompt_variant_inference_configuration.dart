@@ -8,21 +8,20 @@ class AgentPromptVariantInferenceConfiguration {
 
   /// Creates a new [AgentPromptVariantInferenceConfiguration].
   /// [text] Contains inference configurations for the prompt variant. See Text Inference Configuration for more information.
-  AgentPromptVariantInferenceConfiguration({this.text});
+  AgentPromptVariantInferenceConfiguration({
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': ?text == null ? null : text!.toMap()};
+    return <String, dynamic>{
+      'text': ?text == null ? null : text!.toMap(),
+    };
   }
 
-  factory AgentPromptVariantInferenceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPromptVariantInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantInferenceConfiguration(
-      text: map['text'] == null
-          ? null
-          : AgentPromptVariantInferenceConfigurationText.fromMap(
-              (map['text'] as Map).cast<String, dynamic>(),
-            ),
+      text: map['text'] == null ? null : AgentPromptVariantInferenceConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

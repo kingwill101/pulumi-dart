@@ -6,14 +6,11 @@ import 'get_regional_parameters_parameter.dart';
 /// Result data returned by getRegionalParameters.
 class GetRegionalParametersResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// A list of regional parameters matching the filter. Structure is defined below.
   final List<GetRegionalParametersParameter> parameters;
-
   /// The ID of the project in which the resource belongs.
   final String project;
 
@@ -36,11 +33,7 @@ class GetRegionalParametersResult {
       'filter': ?filter,
       'id': id,
       'location': location,
-      'parameters':
-          pulumi.Input.encodeList<
-            GetRegionalParametersParameter,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.encodeList<GetRegionalParametersParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'project': project,
     };
   }
@@ -50,13 +43,9 @@ class GetRegionalParametersResult {
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      parameters: pulumi.Input.decodeList<GetRegionalParametersParameter>(
-        map['parameters'],
-        (value) => GetRegionalParametersParameter.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.decodeList<GetRegionalParametersParameter>(map['parameters'], (value) => GetRegionalParametersParameter.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] as String,
     );
   }
 }
+

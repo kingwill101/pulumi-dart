@@ -5,13 +5,10 @@ import 'byte_match_set_byte_match_tuple_field_to_match.dart';
 class ByteMatchSetByteMatchTuple {
   /// Settings for the ByteMatchTuple. FieldToMatch documented below.
   final ByteMatchSetByteMatchTupleFieldToMatch fieldToMatch;
-
   /// Within the portion of a web request that you want to search.
   final String positionalConstraint;
-
   /// The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
   final String? targetString;
-
   /// The formatting way for web request.
   ///
   /// FieldToMatch(field_to_match) support following:
@@ -40,14 +37,11 @@ class ByteMatchSetByteMatchTuple {
 
   factory ByteMatchSetByteMatchTuple.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetByteMatchTuple(
-      fieldToMatch: ByteMatchSetByteMatchTupleFieldToMatch.fromMap(
-        (map['fieldToMatch'] as Map).cast<String, dynamic>(),
-      ),
+      fieldToMatch: ByteMatchSetByteMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
-      targetString: map['targetString'] == null
-          ? null
-          : map['targetString'] as String,
+      targetString: map['targetString'] == null ? null : map['targetString'] as String,
       textTransformation: map['textTransformation'] as String,
     );
   }
 }
+

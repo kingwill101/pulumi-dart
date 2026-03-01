@@ -5,12 +5,9 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_predeploy.dart
 
 class DeliveryPipelineSerialPipelineStageStrategyStandard {
   /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-  final DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy?
-  postdeploy;
-
+  final DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy? postdeploy;
   /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
   final DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy? predeploy;
-
   /// Whether to verify a deployment.
   final bool? verify;
 
@@ -32,21 +29,12 @@ class DeliveryPipelineSerialPipelineStageStrategyStandard {
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyStandard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeliveryPipelineSerialPipelineStageStrategyStandard.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyStandard(
-      postdeploy: map['postdeploy'] == null
-          ? null
-          : DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy.fromMap(
-              (map['postdeploy'] as Map).cast<String, dynamic>(),
-            ),
-      predeploy: map['predeploy'] == null
-          ? null
-          : DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy.fromMap(
-              (map['predeploy'] as Map).cast<String, dynamic>(),
-            ),
+      postdeploy: map['postdeploy'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>()),
+      predeploy: map['predeploy'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>()),
       verify: map['verify'] == null ? null : map['verify'] as bool,
     );
   }
 }
+

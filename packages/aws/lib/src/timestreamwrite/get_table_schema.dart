@@ -8,27 +8,20 @@ class GetTableSchema {
 
   /// Creates a new [GetTableSchema].
   /// [compositePartitionKeys] Required.
-  GetTableSchema({required this.compositePartitionKeys});
+  GetTableSchema({
+    required this.compositePartitionKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compositePartitionKeys':
-          pulumi.Input.encodeList<
-            GetTableSchemaCompositePartitionKey,
-            Map<String, dynamic>
-          >(compositePartitionKeys, (value) => value.toMap()),
+      'compositePartitionKeys': pulumi.Input.encodeList<GetTableSchemaCompositePartitionKey, Map<String, dynamic>>(compositePartitionKeys, (value) => value.toMap()),
     };
   }
 
   factory GetTableSchema.fromMap(Map<String, dynamic> map) {
     return GetTableSchema(
-      compositePartitionKeys:
-          pulumi.Input.decodeList<GetTableSchemaCompositePartitionKey>(
-            map['compositePartitionKeys'],
-            (value) => GetTableSchemaCompositePartitionKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      compositePartitionKeys: pulumi.Input.decodeList<GetTableSchemaCompositePartitionKey>(map['compositePartitionKeys'], (value) => GetTableSchemaCompositePartitionKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,14 +6,16 @@ class LiteTopicPartitionConfig {
   /// The capacity configuration.
   /// Structure is documented below.
   final LiteTopicPartitionConfigCapacity? capacity;
-
   /// The number of partitions in the topic. Must be at least 1.
   final int count;
 
   /// Creates a new [LiteTopicPartitionConfig].
   /// [capacity] The capacity configuration.
   /// [count] The number of partitions in the topic. Must be at least 1.
-  LiteTopicPartitionConfig({this.capacity, required this.count});
+  LiteTopicPartitionConfig({
+    this.capacity,
+    required this.count,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +26,9 @@ class LiteTopicPartitionConfig {
 
   factory LiteTopicPartitionConfig.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfig(
-      capacity: map['capacity'] == null
-          ? null
-          : LiteTopicPartitionConfigCapacity.fromMap(
-              (map['capacity'] as Map).cast<String, dynamic>(),
-            ),
+      capacity: map['capacity'] == null ? null : LiteTopicPartitionConfigCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>()),
       count: map['count'] as int,
     );
   }
 }
+

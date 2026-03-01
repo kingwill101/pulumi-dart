@@ -10,7 +10,6 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   ///
   /// <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
   final SettingsAccessSettingsWorkforceIdentitySettingsOauth2? oauth2;
-
   /// The workforce pool resources. Only one workforce pool is accepted.
   final String? workforcePools;
 
@@ -29,18 +28,11 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
     };
   }
 
-  factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsWorkforceIdentitySettings(
-      oauth2: map['oauth2'] == null
-          ? null
-          : SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap(
-              (map['oauth2'] as Map).cast<String, dynamic>(),
-            ),
-      workforcePools: map['workforcePools'] == null
-          ? null
-          : map['workforcePools'] as String,
+      oauth2: map['oauth2'] == null ? null : SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((map['oauth2'] as Map).cast<String, dynamic>()),
+      workforcePools: map['workforcePools'] == null ? null : map['workforcePools'] as String,
     );
   }
 }
+

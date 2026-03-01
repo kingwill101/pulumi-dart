@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCatalogTablePartitionKey {
   /// Free-form text comment.
   final String comment;
-
   /// Name of the table.
   final String name;
-
   /// Map of initialization parameters for the SerDe, in key-value form.
   final Map<String, String> parameters;
-
   /// Datatype of data in the Column.
   final String type;
 
@@ -43,3 +41,4 @@ class GetCatalogTablePartitionKey {
     );
   }
 }
+

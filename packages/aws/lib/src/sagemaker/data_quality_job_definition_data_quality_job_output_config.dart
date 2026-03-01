@@ -5,10 +5,8 @@ import 'data_quality_job_definition_data_quality_job_output_config_monitoring_ou
 class DataQualityJobDefinitionDataQualityJobOutputConfig {
   /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
   final String? kmsKeyId;
-
   /// Monitoring outputs for monitoring jobs. This is where the output of the periodic monitoring jobs is uploaded. Fields are documented below.
-  final DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs
-  monitoringOutputs;
+  final DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs monitoringOutputs;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobOutputConfig].
   /// [kmsKeyId] The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
@@ -25,15 +23,11 @@ class DataQualityJobDefinitionDataQualityJobOutputConfig {
     };
   }
 
-  factory DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfig(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      monitoringOutputs:
-          DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap(
-            (map['monitoringOutputs'] as Map).cast<String, dynamic>(),
-          ),
+      monitoringOutputs: DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap((map['monitoringOutputs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

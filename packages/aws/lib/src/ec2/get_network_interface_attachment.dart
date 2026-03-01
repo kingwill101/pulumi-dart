@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInterfaceAttachment {
   /// ID of the network interface attachment.
   final String attachmentId;
-
   /// Device index of the network interface attachment on the instance.
   final int deviceIndex;
-
   /// ID of the instance.
   final String instanceId;
-
   /// AWS account ID of the owner of the instance.
   final String instanceOwnerId;
-
   /// Index of the network card.
   final int networkCardIndex;
 
@@ -50,3 +47,4 @@ class GetNetworkInterfaceAttachment {
     );
   }
 }
+

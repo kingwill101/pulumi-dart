@@ -11,20 +11,16 @@ class JobArgs {
   /// The configuration for this template.
   /// Structure is documented below.
   final pulumi.Input<JobConfig>? config;
-
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the transcoding job resource.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Specify the templateId to use for populating Job.config.
   /// The default is preset/web-hd, which is the only supported preset.
   final pulumi.Input<String>? templateId;
@@ -41,19 +37,16 @@ class JobArgs {
     required String location,
     String? project,
     String? templateId,
-  }) : config = pulumi.Input.asOptionalInput<JobConfig>(config),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       templateId = pulumi.Input.asOptionalInput<String>(templateId);
+  }) :
+      config = pulumi.Input.asOptionalInput<JobConfig>(config),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      templateId = pulumi.Input.asOptionalInput<String>(templateId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<JobConfig, Map<String, dynamic>>(
-            config,
-            (value) => value.toMap(),
-          ),
+      'config': ?pulumi.Input.mapOptionalInputValue<JobConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
       'project': ?project,
@@ -63,17 +56,12 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      config: map['config'] == null
-          ? null
-          : JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      config: map['config'] == null ? null : JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      templateId: map['templateId'] == null
-          ? null
-          : map['templateId'] as String,
+      templateId: map['templateId'] == null ? null : map['templateId'] as String,
     );
   }
 }
+

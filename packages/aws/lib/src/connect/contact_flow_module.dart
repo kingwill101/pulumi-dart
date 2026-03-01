@@ -598,34 +598,24 @@ import 'contact_flow_module_args.dart';
 class ContactFlowModule extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Contact Flow Module.
   late final pulumi.Output<String> arn;
-
   /// The identifier of the Contact Flow Module.
   late final pulumi.Output<String> contactFlowModuleId;
-
   /// Specifies the content of the Contact Flow Module, provided as a JSON string, written in Amazon Connect Contact Flow Language. If defined, the `filename` argument cannot be used.
   late final pulumi.Output<String> content;
-
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the Contact Flow Module source specified with `filename`.
   late final pulumi.Output<String?> contentHash;
-
   /// Specifies the description of the Contact Flow Module.
   late final pulumi.Output<String?> description;
-
   /// The path to the Contact Flow Module source within the local filesystem. Conflicts with `content`.
   late final pulumi.Output<String?> filename;
-
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Specifies the name of the Contact Flow Module.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tags to apply to the Contact Flow Module. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -638,11 +628,11 @@ class ContactFlowModule extends pulumi.CustomResource {
     ContactFlowModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/contactFlowModule:ContactFlowModule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:connect/contactFlowModule:ContactFlowModule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.contactFlowModuleId = registerOutput<String>('contactFlowModuleId');
     this.content = registerOutput<String>('content');

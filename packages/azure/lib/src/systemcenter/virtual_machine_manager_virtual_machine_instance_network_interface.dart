@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
+  /// The IPv4 address type. Possible values are `Dynamic` and `Static`.
+  final String? ipv4AddressType;
+  /// The IPv6 address type. Possible values are `Dynamic` and `Static`.
+  final String? ipv6AddressType;
+  /// The MAC address type. Possible values are `Dynamic` and `Static`.
+  final String? macAddressType;
+  /// The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
+  final String name;
+  /// The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
+  final String? virtualNetworkId;
+
+  /// Creates a new [VirtualMachineManagerVirtualMachineInstanceNetworkInterface].
+  /// [ipv4AddressType] The IPv4 address type. Possible values are `Dynamic` and `Static`.
+  /// [ipv6AddressType] The IPv6 address type. Possible values are `Dynamic` and `Static`.
+  /// [macAddressType] The MAC address type. Possible values are `Dynamic` and `Static`.
+  /// [name] The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
+  /// [virtualNetworkId] The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
+  VirtualMachineManagerVirtualMachineInstanceNetworkInterface({
+    this.ipv4AddressType,
+    this.ipv6AddressType,
+    this.macAddressType,
+    required this.name,
+    this.virtualNetworkId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ipv4AddressType': ?ipv4AddressType,
+      'ipv6AddressType': ?ipv6AddressType,
+      'macAddressType': ?macAddressType,
+      'name': name,
+      'virtualNetworkId': ?virtualNetworkId,
+    };
+  }
+
+  factory VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineManagerVirtualMachineInstanceNetworkInterface(
+      ipv4AddressType: map['ipv4AddressType'] == null ? null : map['ipv4AddressType'] as String,
+      ipv6AddressType: map['ipv6AddressType'] == null ? null : map['ipv6AddressType'] as String,
+      macAddressType: map['macAddressType'] == null ? null : map['macAddressType'] as String,
+      name: map['name'] as String,
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : map['virtualNetworkId'] as String,
+    );
+  }
+}
+

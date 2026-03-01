@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Details for ownership voucher.
+class OwnershipVoucherDetails {
+  /// Owner key type
+  final String ownerKeyType;
+  /// Ownership voucher in base64 encoded format
+  final String ownershipVoucher;
+
+  /// Creates a new [OwnershipVoucherDetails].
+  /// [ownerKeyType] Owner key type
+  /// [ownershipVoucher] Ownership voucher in base64 encoded format
+  OwnershipVoucherDetails({
+    required this.ownerKeyType,
+    required this.ownershipVoucher,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ownerKeyType': ownerKeyType,
+      'ownershipVoucher': ownershipVoucher,
+    };
+  }
+
+  factory OwnershipVoucherDetails.fromMap(Map<String, dynamic> map) {
+    return OwnershipVoucherDetails(
+      ownerKeyType: map['ownerKeyType'] as String,
+      ownershipVoucher: map['ownershipVoucher'] as String,
+    );
+  }
+}
+

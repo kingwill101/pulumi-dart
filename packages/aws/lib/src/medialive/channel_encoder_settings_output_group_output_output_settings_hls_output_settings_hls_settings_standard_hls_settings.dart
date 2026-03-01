@@ -4,8 +4,7 @@ import 'channel_encoder_settings_output_group_output_output_settings_hls_output_
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings {
   final String? audioRenditionSets;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings
-  m3u8Settings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings m3u8Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings].
   /// [audioRenditionSets] Optional.
@@ -22,17 +21,11 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings(
-      audioRenditionSets: map['audioRenditionSets'] == null
-          ? null
-          : map['audioRenditionSets'] as String,
-      m3u8Settings:
-          ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(
-            (map['m3u8Settings'] as Map).cast<String, dynamic>(),
-          ),
+      audioRenditionSets: map['audioRenditionSets'] == null ? null : map['audioRenditionSets'] as String,
+      m3u8Settings: ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap((map['m3u8Settings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobCopySourceTable {
   /// The ID of the dataset containing this table.
   final String? datasetId;
-
   /// The ID of the project containing this table.
   final String? projectId;
-
   /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final String tableId;
@@ -15,7 +14,11 @@ class JobCopySourceTable {
   /// [datasetId] The ID of the dataset containing this table.
   /// [projectId] The ID of the project containing this table.
   /// [tableId] The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-  JobCopySourceTable({this.datasetId, this.projectId, required this.tableId});
+  JobCopySourceTable({
+    this.datasetId,
+    this.projectId,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,3 +36,4 @@ class JobCopySourceTable {
     );
   }
 }
+

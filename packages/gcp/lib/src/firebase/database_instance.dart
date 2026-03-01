@@ -592,31 +592,24 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
   /// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
   late final pulumi.Output<String> databaseUrl;
-
   /// The intended database state. Possible values: ACTIVE, DISABLED.
   late final pulumi.Output<String?> desiredState;
-
   /// The globally unique identifier of the Firebase Realtime Database instance.
   /// Instance IDs cannot be reused after deletion.
   late final pulumi.Output<String> instanceId;
-
   /// The fully-qualified resource name of the Firebase Realtime Database, in
   /// the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
   /// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
   /// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the region where the Firebase Realtime database resides.
   /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
   late final pulumi.Output<String> region;
-
   /// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
   late final pulumi.Output<String> state;
-
   /// The database type.
   /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
   /// Creating user Databases is only available for projects on the Blaze plan.
@@ -634,11 +627,11 @@ class DatabaseInstance extends pulumi.CustomResource {
     DatabaseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/databaseInstance:DatabaseInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/databaseInstance:DatabaseInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.databaseUrl = registerOutput<String>('databaseUrl');
     this.desiredState = registerOutput<String?>('desiredState');
     this.instanceId = registerOutput<String>('instanceId');

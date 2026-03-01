@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersSnowflake {
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String host;
-
   /// The warehouse to which to connect.
   final String warehouse;
 
@@ -36,3 +35,4 @@ class DataSourceParametersSnowflake {
     );
   }
 }
+

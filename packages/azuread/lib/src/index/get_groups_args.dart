@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_get_groups_get_groups_args_doc}
+/// Arguments for getGroups.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_groups_get_groups_args_doc}
+class GetGroupsArgs {
+  /// A common display name prefix to match when returning groups.
+  final pulumi.Input<String>? displayNamePrefix;
+  /// The display names of the groups.
+  final pulumi.Input<List<String>>? displayNames;
+  /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+  final pulumi.Input<bool>? ignoreMissing;
+  /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+  final pulumi.Input<bool>? mailEnabled;
+  /// The object IDs of the groups.
+  final pulumi.Input<List<String>>? objectIds;
+  /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+  final pulumi.Input<bool>? returnAll;
+  /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+  ///
+  /// > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+  final pulumi.Input<bool>? securityEnabled;
+
+  /// Creates a new [GetGroupsArgs].
+  /// [displayNamePrefix] A common display name prefix to match when returning groups.
+  /// [displayNames] The display names of the groups.
+  /// [ignoreMissing] Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+  /// [mailEnabled] Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+  /// [objectIds] The object IDs of the groups.
+  /// [returnAll] A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+  /// [securityEnabled] Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+  GetGroupsArgs({
+    String? displayNamePrefix,
+    List<String>? displayNames,
+    bool? ignoreMissing,
+    bool? mailEnabled,
+    List<String>? objectIds,
+    bool? returnAll,
+    bool? securityEnabled,
+  }) :
+      displayNamePrefix = pulumi.Input.asOptionalInput<String>(displayNamePrefix),
+      displayNames = pulumi.Input.asOptionalInput<List<String>>(displayNames),
+      ignoreMissing = pulumi.Input.asOptionalInput<bool>(ignoreMissing),
+      mailEnabled = pulumi.Input.asOptionalInput<bool>(mailEnabled),
+      objectIds = pulumi.Input.asOptionalInput<List<String>>(objectIds),
+      returnAll = pulumi.Input.asOptionalInput<bool>(returnAll),
+      securityEnabled = pulumi.Input.asOptionalInput<bool>(securityEnabled);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'displayNamePrefix': ?displayNamePrefix,
+      'displayNames': ?displayNames,
+      'ignoreMissing': ?ignoreMissing,
+      'mailEnabled': ?mailEnabled,
+      'objectIds': ?objectIds,
+      'returnAll': ?returnAll,
+      'securityEnabled': ?securityEnabled,
+    };
+  }
+
+  factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
+    return GetGroupsArgs(
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : map['displayNamePrefix'] as String,
+      displayNames: map['displayNames'] == null ? null : (map['displayNames'] as List).cast<String>(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing'] as bool,
+      mailEnabled: map['mailEnabled'] == null ? null : map['mailEnabled'] as bool,
+      objectIds: map['objectIds'] == null ? null : (map['objectIds'] as List).cast<String>(),
+      returnAll: map['returnAll'] == null ? null : map['returnAll'] as bool,
+      securityEnabled: map['securityEnabled'] == null ? null : map['securityEnabled'] as bool,
+    );
+  }
+}
+

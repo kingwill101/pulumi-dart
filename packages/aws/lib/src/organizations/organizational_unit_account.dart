@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationalUnitAccount {
   /// ARN of the organizational unit
   final String? arn;
-
   /// Email of the account
   final String? email;
-
   /// Identifier of the organization unit
   final String? id;
-
   /// The name for the organizational unit
   final String? name;
 
@@ -18,7 +16,12 @@ class OrganizationalUnitAccount {
   /// [email] Email of the account
   /// [id] Identifier of the organization unit
   /// [name] The name for the organizational unit
-  OrganizationalUnitAccount({this.arn, this.email, this.id, this.name});
+  OrganizationalUnitAccount({
+    this.arn,
+    this.email,
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,3 +41,4 @@ class OrganizationalUnitAccount {
     );
   }
 }
+

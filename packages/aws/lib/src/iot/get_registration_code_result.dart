@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistrationCode.
 class GetRegistrationCodeResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The CA certificate registration code.
   final String registrationCode;
 
@@ -35,3 +35,4 @@ class GetRegistrationCodeResult {
     );
   }
 }
+

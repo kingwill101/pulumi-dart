@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VpcIpamPoolSourceResource {
   /// ID of the resource.
   final String resourceId;
-
   /// Owner of the resource.
   final String resourceOwner;
-
   /// Region where the resource exists. Must match the `locale` of the parent IPAM Pool.
   final String resourceRegion;
-
   /// Type of the resource. (`vpc`)
   final String resourceType;
 
@@ -43,3 +41,4 @@ class VpcIpamPoolSourceResource {
     );
   }
 }
+

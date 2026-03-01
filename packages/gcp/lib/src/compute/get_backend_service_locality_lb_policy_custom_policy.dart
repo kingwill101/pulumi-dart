@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceLocalityLbPolicyCustomPolicy {
   /// An optional, arbitrary JSON object with configuration data, understood
   /// by a locally installed custom policy implementation.
   final String data;
-
   /// The name of the Backend Service.
   ///
   /// - - -
@@ -19,15 +19,17 @@ class GetBackendServiceLocalityLbPolicyCustomPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': data, 'name': name};
+    return <String, dynamic>{
+      'data': data,
+      'name': name,
+    };
   }
 
-  factory GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceLocalityLbPolicyCustomPolicy(
       data: map['data'] as String,
       name: map['name'] as String,
     );
   }
 }
+

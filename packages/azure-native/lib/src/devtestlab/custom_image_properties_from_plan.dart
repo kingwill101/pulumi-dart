@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Properties for plan on a custom image.
+class CustomImagePropertiesFromPlan {
+  /// The id of the plan, equivalent to name of the plan
+  final String? id;
+  /// The offer for the plan from the marketplace image the custom image is derived from
+  final String? offer;
+  /// The publisher for the plan from the marketplace image the custom image is derived from
+  final String? publisher;
+
+  /// Creates a new [CustomImagePropertiesFromPlan].
+  /// [id] The id of the plan, equivalent to name of the plan
+  /// [offer] The offer for the plan from the marketplace image the custom image is derived from
+  /// [publisher] The publisher for the plan from the marketplace image the custom image is derived from
+  CustomImagePropertiesFromPlan({
+    this.id,
+    this.offer,
+    this.publisher,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'offer': ?offer,
+      'publisher': ?publisher,
+    };
+  }
+
+  factory CustomImagePropertiesFromPlan.fromMap(Map<String, dynamic> map) {
+    return CustomImagePropertiesFromPlan(
+      id: map['id'] == null ? null : map['id'] as String,
+      offer: map['offer'] == null ? null : map['offer'] as String,
+      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+    );
+  }
+}
+

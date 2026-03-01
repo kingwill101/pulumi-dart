@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAiIndexDeployedIndex {
   /// The ID of the DeployedIndex in the above IndexEndpoint.
   final String deployedIndexId;
-
   /// A resource name of the IndexEndpoint.
   final String indexEndpoint;
 
@@ -29,3 +29,4 @@ class GetAiIndexDeployedIndex {
     );
   }
 }
+

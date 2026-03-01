@@ -7,7 +7,6 @@ import 'get_docker_images_docker_image.dart';
 class GetDockerImagesResult {
   /// A list of all retrieved Artifact Registry Docker images. Structure is defined below.
   final List<GetDockerImagesDockerImage> dockerImages;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -30,11 +29,7 @@ class GetDockerImagesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dockerImages':
-          pulumi.Input.encodeList<
-            GetDockerImagesDockerImage,
-            Map<String, dynamic>
-          >(dockerImages, (value) => value.toMap()),
+      'dockerImages': pulumi.Input.encodeList<GetDockerImagesDockerImage, Map<String, dynamic>>(dockerImages, (value) => value.toMap()),
       'id': id,
       'location': location,
       'project': ?project,
@@ -44,12 +39,7 @@ class GetDockerImagesResult {
 
   factory GetDockerImagesResult.fromMap(Map<String, dynamic> map) {
     return GetDockerImagesResult(
-      dockerImages: pulumi.Input.decodeList<GetDockerImagesDockerImage>(
-        map['dockerImages'],
-        (value) => GetDockerImagesDockerImage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dockerImages: pulumi.Input.decodeList<GetDockerImagesDockerImage>(map['dockerImages'], (value) => GetDockerImagesDockerImage.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -57,3 +47,4 @@ class GetDockerImagesResult {
     );
   }
 }
+

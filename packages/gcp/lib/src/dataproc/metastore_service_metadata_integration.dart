@@ -9,20 +9,20 @@ class MetastoreServiceMetadataIntegration {
 
   /// Creates a new [MetastoreServiceMetadataIntegration].
   /// [dataCatalogConfig] The integration config for the Data Catalog service.
-  MetastoreServiceMetadataIntegration({required this.dataCatalogConfig});
+  MetastoreServiceMetadataIntegration({
+    required this.dataCatalogConfig,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataCatalogConfig': dataCatalogConfig.toMap()};
+    return <String, dynamic>{
+      'dataCatalogConfig': dataCatalogConfig.toMap(),
+    };
   }
 
-  factory MetastoreServiceMetadataIntegration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetastoreServiceMetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceMetadataIntegration(
-      dataCatalogConfig:
-          MetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(
-            (map['dataCatalogConfig'] as Map).cast<String, dynamic>(),
-          ),
+      dataCatalogConfig: MetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

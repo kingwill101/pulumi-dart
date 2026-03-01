@@ -1,45 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPrimaryContact.
 class GetPrimaryContactResult {
   final String accountId;
-
   /// The first line of the primary contact address.
   final String addressLine1;
-
   /// The second line of the primary contact address.
   final String addressLine2;
-
   /// The third line of the primary contact address.
   final String addressLine3;
-
   /// The city of the primary contact address.
   final String city;
-
   /// The name of the company associated with the primary contact information.
   final String companyName;
-
   /// The ISO-3166 two-letter country code for the primary contact address.
   final String countryCode;
-
   /// The district or county of the primary contact address.
   final String districtOrCounty;
-
   /// The full name of the primary contact address.
   final String fullName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The phone number of the primary contact information.
   final String phoneNumber;
-
   /// The postal code of the primary contact address.
   final String postalCode;
-
   /// The state or region of the primary contact address.
   final String stateOrRegion;
-
   /// The URL of the website associated with the primary contact information.
   final String websiteUrl;
 
@@ -113,3 +101,4 @@ class GetPrimaryContactResult {
     );
   }
 }
+

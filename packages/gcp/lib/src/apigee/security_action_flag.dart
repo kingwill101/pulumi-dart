@@ -12,29 +12,20 @@ class SecurityActionFlag {
 
   /// Creates a new [SecurityActionFlag].
   /// [headers] A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
-  SecurityActionFlag({this.headers});
+  SecurityActionFlag({
+    this.headers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null
-          ? null
-          : pulumi.Input.encodeList<
-              SecurityActionFlagHeader,
-              Map<String, dynamic>
-            >(headers!, (value) => value.toMap()),
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<SecurityActionFlagHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
     };
   }
 
   factory SecurityActionFlag.fromMap(Map<String, dynamic> map) {
     return SecurityActionFlag(
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<SecurityActionFlagHeader>(
-              map['headers'],
-              (value) => SecurityActionFlagHeader.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<SecurityActionFlagHeader>(map['headers'], (value) => SecurityActionFlagHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

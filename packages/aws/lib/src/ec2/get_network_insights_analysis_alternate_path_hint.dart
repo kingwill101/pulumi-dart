@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisAlternatePathHint {
   final String componentArn;
   final String componentId;
@@ -19,12 +20,11 @@ class GetNetworkInsightsAnalysisAlternatePathHint {
     };
   }
 
-  factory GetNetworkInsightsAnalysisAlternatePathHint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisAlternatePathHint(
       componentArn: map['componentArn'] as String,
       componentId: map['componentId'] as String,
     );
   }
 }
+

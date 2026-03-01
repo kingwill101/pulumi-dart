@@ -12,11 +12,15 @@ class GetCustomModelsArgs {
 
   /// Creates a new [GetCustomModelsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCustomModelsArgs({String? region})
-    : region = pulumi.Input.asOptionalInput<String>(region);
+  GetCustomModelsArgs({
+    String? region,
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region};
+    return <String, dynamic>{
+      'region': ?region,
+    };
   }
 
   factory GetCustomModelsArgs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class GetCustomModelsArgs {
     );
   }
 }
+

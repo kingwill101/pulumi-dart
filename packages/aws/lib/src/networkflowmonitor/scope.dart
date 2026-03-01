@@ -198,19 +198,14 @@ import 'scope_timeouts.dart';
 class Scope extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the scope.
   late final pulumi.Output<String> scopeArn;
-
   /// The identifier for the scope that includes the resources you want to get data results for.
   late final pulumi.Output<String> scopeId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///
   /// The following arguments are optional:
@@ -221,13 +216,16 @@ class Scope extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Scope]. {@macro pulumi_networkflowmonitor_scope_scope_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Scope(String name, {ScopeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:networkflowmonitor/scope:Scope',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Scope(
+    String name, {
+    ScopeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:networkflowmonitor/scope:Scope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.scopeArn = registerOutput<String>('scopeArn');
     this.scopeId = registerOutput<String>('scopeId');

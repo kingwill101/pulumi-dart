@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
   /// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
   final String? gcpServiceAccountEmail;
-
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image
   final String? policyDir;
-
   /// Type of secret configured for access to the Git repo
   final String secretType;
-
   /// The OCI image repository URL for the package to sync from
   final String? syncRepo;
-
   /// Period in seconds between consecutive syncs. Default: 15
   final String? syncWaitSecs;
-
   /// (Optional, Deprecated)
   /// Version of Config Sync installed
   ///
@@ -49,20 +45,15 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(
-      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null
-          ? null
-          : map['gcpServiceAccountEmail'] as String,
+      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : map['gcpServiceAccountEmail'] as String,
       policyDir: map['policyDir'] == null ? null : map['policyDir'] as String,
       secretType: map['secretType'] as String,
       syncRepo: map['syncRepo'] == null ? null : map['syncRepo'] as String,
-      syncWaitSecs: map['syncWaitSecs'] == null
-          ? null
-          : map['syncWaitSecs'] as String,
+      syncWaitSecs: map['syncWaitSecs'] == null ? null : map['syncWaitSecs'] as String,
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
+

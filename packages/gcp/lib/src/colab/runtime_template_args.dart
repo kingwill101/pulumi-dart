@@ -17,57 +17,42 @@ import 'runtime_template_software_config.dart';
 class RuntimeTemplateArgs {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>?
-  dataPersistentDiskSpec;
-
+  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>? dataPersistentDiskSpec;
   /// The description of the Runtime Template.
   final pulumi.Input<String>? description;
-
   /// Required. The display name of the Runtime Template.
   final pulumi.Input<String> displayName;
-
   /// Customer-managed encryption key spec for the notebook runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateEncryptionSpec>? encryptionSpec;
-
   /// EUC configuration of the NotebookRuntimeTemplate.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateEucConfig>? eucConfig;
-
   /// Notebook Idle Shutdown configuration for the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateIdleShutdownConfig>? idleShutdownConfig;
-
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
-
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateMachineSpec>? machineSpec;
-
   /// The resource name of the Runtime Template
   final pulumi.Input<String>? name;
-
   /// The network configuration for the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateNetworkSpec>? networkSpec;
-
   /// Applies the given Compute Engine tags to the runtime.
   final pulumi.Input<List<String>>? networkTags;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Runtime Shielded VM spec.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateShieldedVmConfig>? shieldedVmConfig;
-
   /// The notebook software configuration of the notebook runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateSoftwareConfig>? softwareConfig;
@@ -104,150 +89,61 @@ class RuntimeTemplateArgs {
     String? project,
     RuntimeTemplateShieldedVmConfig? shieldedVmConfig,
     RuntimeTemplateSoftwareConfig? softwareConfig,
-  }) : dataPersistentDiskSpec =
-           pulumi.Input.asOptionalInput<RuntimeTemplateDataPersistentDiskSpec>(
-             dataPersistentDiskSpec,
-           ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       displayName = pulumi.Input.asInput<String>(displayName),
-       encryptionSpec =
-           pulumi.Input.asOptionalInput<RuntimeTemplateEncryptionSpec>(
-             encryptionSpec,
-           ),
-       eucConfig = pulumi.Input.asOptionalInput<RuntimeTemplateEucConfig>(
-         eucConfig,
-       ),
-       idleShutdownConfig =
-           pulumi.Input.asOptionalInput<RuntimeTemplateIdleShutdownConfig>(
-             idleShutdownConfig,
-           ),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       location = pulumi.Input.asInput<String>(location),
-       machineSpec = pulumi.Input.asOptionalInput<RuntimeTemplateMachineSpec>(
-         machineSpec,
-       ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       networkSpec = pulumi.Input.asOptionalInput<RuntimeTemplateNetworkSpec>(
-         networkSpec,
-       ),
-       networkTags = pulumi.Input.asOptionalInput<List<String>>(networkTags),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       shieldedVmConfig =
-           pulumi.Input.asOptionalInput<RuntimeTemplateShieldedVmConfig>(
-             shieldedVmConfig,
-           ),
-       softwareConfig =
-           pulumi.Input.asOptionalInput<RuntimeTemplateSoftwareConfig>(
-             softwareConfig,
-           );
+  }) :
+      dataPersistentDiskSpec = pulumi.Input.asOptionalInput<RuntimeTemplateDataPersistentDiskSpec>(dataPersistentDiskSpec),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      encryptionSpec = pulumi.Input.asOptionalInput<RuntimeTemplateEncryptionSpec>(encryptionSpec),
+      eucConfig = pulumi.Input.asOptionalInput<RuntimeTemplateEucConfig>(eucConfig),
+      idleShutdownConfig = pulumi.Input.asOptionalInput<RuntimeTemplateIdleShutdownConfig>(idleShutdownConfig),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      machineSpec = pulumi.Input.asOptionalInput<RuntimeTemplateMachineSpec>(machineSpec),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      networkSpec = pulumi.Input.asOptionalInput<RuntimeTemplateNetworkSpec>(networkSpec),
+      networkTags = pulumi.Input.asOptionalInput<List<String>>(networkTags),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      shieldedVmConfig = pulumi.Input.asOptionalInput<RuntimeTemplateShieldedVmConfig>(shieldedVmConfig),
+      softwareConfig = pulumi.Input.asOptionalInput<RuntimeTemplateSoftwareConfig>(softwareConfig);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPersistentDiskSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateDataPersistentDiskSpec,
-            Map<String, dynamic>
-          >(dataPersistentDiskSpec, (value) => value.toMap()),
+      'dataPersistentDiskSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateDataPersistentDiskSpec, Map<String, dynamic>>(dataPersistentDiskSpec, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateEncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
-      'eucConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateEucConfig,
-            Map<String, dynamic>
-          >(eucConfig, (value) => value.toMap()),
-      'idleShutdownConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateIdleShutdownConfig,
-            Map<String, dynamic>
-          >(idleShutdownConfig, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'eucConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateEucConfig, Map<String, dynamic>>(eucConfig, (value) => value.toMap()),
+      'idleShutdownConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateIdleShutdownConfig, Map<String, dynamic>>(idleShutdownConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
-      'machineSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateMachineSpec,
-            Map<String, dynamic>
-          >(machineSpec, (value) => value.toMap()),
+      'machineSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateMachineSpec, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
       'name': ?name,
-      'networkSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateNetworkSpec,
-            Map<String, dynamic>
-          >(networkSpec, (value) => value.toMap()),
+      'networkSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateNetworkSpec, Map<String, dynamic>>(networkSpec, (value) => value.toMap()),
       'networkTags': ?networkTags,
       'project': ?project,
-      'shieldedVmConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateShieldedVmConfig,
-            Map<String, dynamic>
-          >(shieldedVmConfig, (value) => value.toMap()),
-      'softwareConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateSoftwareConfig,
-            Map<String, dynamic>
-          >(softwareConfig, (value) => value.toMap()),
+      'shieldedVmConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateShieldedVmConfig, Map<String, dynamic>>(shieldedVmConfig, (value) => value.toMap()),
+      'softwareConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateSoftwareConfig, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
     };
   }
 
   factory RuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateArgs(
-      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null
-          ? null
-          : RuntimeTemplateDataPersistentDiskSpec.fromMap(
-              (map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>(),
-            ),
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : RuntimeTemplateDataPersistentDiskSpec.fromMap((map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       displayName: map['displayName'] as String,
-      encryptionSpec: map['encryptionSpec'] == null
-          ? null
-          : RuntimeTemplateEncryptionSpec.fromMap(
-              (map['encryptionSpec'] as Map).cast<String, dynamic>(),
-            ),
-      eucConfig: map['eucConfig'] == null
-          ? null
-          : RuntimeTemplateEucConfig.fromMap(
-              (map['eucConfig'] as Map).cast<String, dynamic>(),
-            ),
-      idleShutdownConfig: map['idleShutdownConfig'] == null
-          ? null
-          : RuntimeTemplateIdleShutdownConfig.fromMap(
-              (map['idleShutdownConfig'] as Map).cast<String, dynamic>(),
-            ),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : RuntimeTemplateEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      eucConfig: map['eucConfig'] == null ? null : RuntimeTemplateEucConfig.fromMap((map['eucConfig'] as Map).cast<String, dynamic>()),
+      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : RuntimeTemplateIdleShutdownConfig.fromMap((map['idleShutdownConfig'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      machineSpec: map['machineSpec'] == null
-          ? null
-          : RuntimeTemplateMachineSpec.fromMap(
-              (map['machineSpec'] as Map).cast<String, dynamic>(),
-            ),
+      machineSpec: map['machineSpec'] == null ? null : RuntimeTemplateMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      networkSpec: map['networkSpec'] == null
-          ? null
-          : RuntimeTemplateNetworkSpec.fromMap(
-              (map['networkSpec'] as Map).cast<String, dynamic>(),
-            ),
-      networkTags: map['networkTags'] == null
-          ? null
-          : (map['networkTags'] as List).cast<String>(),
+      networkSpec: map['networkSpec'] == null ? null : RuntimeTemplateNetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>()),
+      networkTags: map['networkTags'] == null ? null : (map['networkTags'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
-      shieldedVmConfig: map['shieldedVmConfig'] == null
-          ? null
-          : RuntimeTemplateShieldedVmConfig.fromMap(
-              (map['shieldedVmConfig'] as Map).cast<String, dynamic>(),
-            ),
-      softwareConfig: map['softwareConfig'] == null
-          ? null
-          : RuntimeTemplateSoftwareConfig.fromMap(
-              (map['softwareConfig'] as Map).cast<String, dynamic>(),
-            ),
+      shieldedVmConfig: map['shieldedVmConfig'] == null ? null : RuntimeTemplateShieldedVmConfig.fromMap((map['shieldedVmConfig'] as Map).cast<String, dynamic>()),
+      softwareConfig: map['softwareConfig'] == null ? null : RuntimeTemplateSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

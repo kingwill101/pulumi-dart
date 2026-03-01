@@ -11,37 +11,23 @@ class GetGatewayRouteSpecHttp2Route {
   /// Creates a new [GetGatewayRouteSpecHttp2Route].
   /// [actions] Required.
   /// [matches] Required.
-  GetGatewayRouteSpecHttp2Route({required this.actions, required this.matches});
+  GetGatewayRouteSpecHttp2Route({
+    required this.actions,
+    required this.matches,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          pulumi.Input.encodeList<
-            GetGatewayRouteSpecHttp2RouteAction,
-            Map<String, dynamic>
-          >(actions, (value) => value.toMap()),
-      'matches':
-          pulumi.Input.encodeList<
-            GetGatewayRouteSpecHttp2RouteMatch,
-            Map<String, dynamic>
-          >(matches, (value) => value.toMap()),
+      'actions': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'matches': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
     };
   }
 
   factory GetGatewayRouteSpecHttp2Route.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2Route(
-      actions: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteAction>(
-        map['actions'],
-        (value) => GetGatewayRouteSpecHttp2RouteAction.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      matches: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatch>(
-        map['matches'],
-        (value) => GetGatewayRouteSpecHttp2RouteMatch.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      actions: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteAction>(map['actions'], (value) => GetGatewayRouteSpecHttp2RouteAction.fromMap((value as Map).cast<String, dynamic>())),
+      matches: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatch>(map['matches'], (value) => GetGatewayRouteSpecHttp2RouteMatch.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -251,13 +251,10 @@ import 'user_in_group_args.dart';
 class UserInGroup extends pulumi.CustomResource {
   /// The name of the group to which the user is to be added.
   late final pulumi.Output<String> groupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The user pool ID of the user and group.
   late final pulumi.Output<String> userPoolId;
-
   /// The username of the user to be added to the group.
   late final pulumi.Output<String> username;
 
@@ -270,11 +267,11 @@ class UserInGroup extends pulumi.CustomResource {
     UserInGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userInGroup:UserInGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userInGroup:UserInGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.groupName = registerOutput<String>('groupName');
     this.region = registerOutput<String>('region');
     this.userPoolId = registerOutput<String>('userPoolId');

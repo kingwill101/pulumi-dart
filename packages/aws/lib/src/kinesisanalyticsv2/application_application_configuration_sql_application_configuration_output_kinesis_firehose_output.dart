@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput {
   /// The ARN of the destination delivery stream to write to.
   final String resourceArn;
@@ -11,14 +12,15 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceArn': resourceArn};
+    return <String, dynamic>{
+      'resourceArn': resourceArn,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput(
       resourceArn: map['resourceArn'] as String,
     );
   }
 }
+

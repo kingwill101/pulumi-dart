@@ -5,10 +5,7 @@ import 'configuration_set_event_destination_event_destination_cloud_watch_destin
 
 class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
   /// An array of objects that define the dimensions to use when you send email events to Amazon CloudWatch. See `dimension_configuration` Block for details.
-  final List<
-    ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration
-  >
-  dimensionConfigurations;
+  final List<ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration> dimensionConfigurations;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationCloudWatchDestination].
   /// [dimensionConfigurations] An array of objects that define the dimensions to use when you send email events to Amazon CloudWatch. See `dimension_configuration` Block for details.
@@ -18,28 +15,14 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensionConfigurations':
-          pulumi.Input.encodeList<
-            ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration,
-            Map<String, dynamic>
-          >(dimensionConfigurations, (value) => value.toMap()),
+      'dimensionConfigurations': pulumi.Input.encodeList<ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration, Map<String, dynamic>>(dimensionConfigurations, (value) => value.toMap()),
     };
   }
 
-  factory ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationCloudWatchDestination(
-      dimensionConfigurations:
-          pulumi.Input.decodeList<
-            ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration
-          >(
-            map['dimensionConfigurations'],
-            (value) =>
-                ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      dimensionConfigurations: pulumi.Input.decodeList<ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration>(map['dimensionConfigurations'], (value) => ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

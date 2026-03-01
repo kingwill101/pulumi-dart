@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
   /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
   final bool snapshotsEnabled;
@@ -11,14 +12,15 @@ class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'snapshotsEnabled': snapshotsEnabled};
+    return <String, dynamic>{
+      'snapshotsEnabled': snapshotsEnabled,
+    };
   }
 
-  factory ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationSnapshotConfiguration(
       snapshotsEnabled: map['snapshotsEnabled'] as bool,
     );
   }
 }
+

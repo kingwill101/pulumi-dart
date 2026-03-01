@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+class PlacementV1Toleration {
+  /// Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
+  final String? effect;
+  /// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+  final String? key;
+  /// Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
+  final String? operator;
+  /// Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+  final String? value;
+
+  /// Creates a new [PlacementV1Toleration].
+  /// [effect] Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
+  /// [key] Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+  /// [operator] Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
+  /// [value] Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+  PlacementV1Toleration({
+    this.effect,
+    this.key,
+    this.operator,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'effect': ?effect,
+      'key': ?key,
+      'operator': ?operator,
+      'value': ?value,
+    };
+  }
+
+  factory PlacementV1Toleration.fromMap(Map<String, dynamic> map) {
+    return PlacementV1Toleration(
+      effect: map['effect'] == null ? null : map['effect'] as String,
+      key: map['key'] == null ? null : map['key'] as String,
+      operator: map['operator'] == null ? null : map['operator'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

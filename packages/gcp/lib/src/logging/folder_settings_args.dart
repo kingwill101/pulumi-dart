@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderSettingsArgs {
   /// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
   final pulumi.Input<bool>? disableDefaultSink;
-
   /// The folder for which to retrieve settings.
   final pulumi.Input<String> folder;
-
   /// The resource name for the configured Cloud KMS key.
   final pulumi.Input<String>? kmsKeyName;
-
   /// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
   final pulumi.Input<String>? storageLocation;
 
@@ -29,12 +26,11 @@ class FolderSettingsArgs {
     required String folder,
     String? kmsKeyName,
     String? storageLocation,
-  }) : disableDefaultSink = pulumi.Input.asOptionalInput<bool>(
-         disableDefaultSink,
-       ),
-       folder = pulumi.Input.asInput<String>(folder),
-       kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-       storageLocation = pulumi.Input.asOptionalInput<String>(storageLocation);
+  }) :
+      disableDefaultSink = pulumi.Input.asOptionalInput<bool>(disableDefaultSink),
+      folder = pulumi.Input.asInput<String>(folder),
+      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
+      storageLocation = pulumi.Input.asOptionalInput<String>(storageLocation);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,16 +43,11 @@ class FolderSettingsArgs {
 
   factory FolderSettingsArgs.fromMap(Map<String, dynamic> map) {
     return FolderSettingsArgs(
-      disableDefaultSink: map['disableDefaultSink'] == null
-          ? null
-          : map['disableDefaultSink'] as bool,
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : map['disableDefaultSink'] as bool,
       folder: map['folder'] as String,
-      kmsKeyName: map['kmsKeyName'] == null
-          ? null
-          : map['kmsKeyName'] as String,
-      storageLocation: map['storageLocation'] == null
-          ? null
-          : map['storageLocation'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      storageLocation: map['storageLocation'] == null ? null : map['storageLocation'] as String,
     );
   }
 }
+

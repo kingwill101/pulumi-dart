@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'managed_cluster_ingress_profile_web_app_routing.dart';
+
+/// Ingress profile for the container service cluster.
+class ManagedClusterIngressProfile {
+  /// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
+  final ManagedClusterIngressProfileWebAppRouting? webAppRouting;
+
+  /// Creates a new [ManagedClusterIngressProfile].
+  /// [webAppRouting] App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
+  ManagedClusterIngressProfile({
+    this.webAppRouting,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'webAppRouting': ?webAppRouting == null ? null : webAppRouting!.toMap(),
+    };
+  }
+
+  factory ManagedClusterIngressProfile.fromMap(Map<String, dynamic> map) {
+    return ManagedClusterIngressProfile(
+      webAppRouting: map['webAppRouting'] == null ? null : ManagedClusterIngressProfileWebAppRouting.fromMap((map['webAppRouting'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

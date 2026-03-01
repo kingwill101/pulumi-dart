@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReservationSpecificReservationInstancePropertyGuestAccelerator {
   /// The number of the guest accelerator cards exposed to
   /// this instance.
   final int acceleratorCount;
-
   /// The full or partial URL of the accelerator type to
   /// attach to this instance. For example:
   /// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
@@ -27,12 +27,11 @@ class GetReservationSpecificReservationInstancePropertyGuestAccelerator {
     };
   }
 
-  factory GetReservationSpecificReservationInstancePropertyGuestAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReservationSpecificReservationInstancePropertyGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return GetReservationSpecificReservationInstancePropertyGuestAccelerator(
       acceleratorCount: map['acceleratorCount'] as int,
       acceleratorType: map['acceleratorType'] as String,
     );
   }
 }
+

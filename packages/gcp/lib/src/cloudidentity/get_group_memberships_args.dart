@@ -12,14 +12,21 @@ class GetGroupMembershipsArgs {
 
   /// Creates a new [GetGroupMembershipsArgs].
   /// [group] The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
-  GetGroupMembershipsArgs({required String group})
-    : group = pulumi.Input.asInput<String>(group);
+  GetGroupMembershipsArgs({
+    required String group,
+  }) :
+      group = pulumi.Input.asInput<String>(group);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group};
+    return <String, dynamic>{
+      'group': group,
+    };
   }
 
   factory GetGroupMembershipsArgs.fromMap(Map<String, dynamic> map) {
-    return GetGroupMembershipsArgs(group: map['group'] as String);
+    return GetGroupMembershipsArgs(
+      group: map['group'] as String,
+    );
   }
 }
+

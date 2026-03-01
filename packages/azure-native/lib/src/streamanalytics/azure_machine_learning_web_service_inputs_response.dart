@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'azure_machine_learning_web_service_input_column_response.dart';
+
+/// The inputs for the Azure Machine Learning web service endpoint.
+class AzureMachineLearningWebServiceInputsResponse {
+  /// A list of input columns for the Azure Machine Learning web service endpoint.
+  final List<AzureMachineLearningWebServiceInputColumnResponse>? columnNames;
+  /// The name of the input. This is the name provided while authoring the endpoint.
+  final String? name;
+
+  /// Creates a new [AzureMachineLearningWebServiceInputsResponse].
+  /// [columnNames] A list of input columns for the Azure Machine Learning web service endpoint.
+  /// [name] The name of the input. This is the name provided while authoring the endpoint.
+  AzureMachineLearningWebServiceInputsResponse({
+    this.columnNames,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'columnNames': ?columnNames == null ? null : pulumi.Input.encodeList<AzureMachineLearningWebServiceInputColumnResponse, Map<String, dynamic>>(columnNames!, (value) => value.toMap()),
+      'name': ?name,
+    };
+  }
+
+  factory AzureMachineLearningWebServiceInputsResponse.fromMap(Map<String, dynamic> map) {
+    return AzureMachineLearningWebServiceInputsResponse(
+      columnNames: map['columnNames'] == null ? null : pulumi.Input.decodeList<AzureMachineLearningWebServiceInputColumnResponse>(map['columnNames'], (value) => AzureMachineLearningWebServiceInputColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

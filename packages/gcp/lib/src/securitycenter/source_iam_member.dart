@@ -141,7 +141,6 @@ class SourceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<SourceIamMemberCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> member;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;
@@ -157,11 +156,11 @@ class SourceIamMember extends pulumi.CustomResource {
     SourceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamMember:SourceIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/sourceIamMember:SourceIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<SourceIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.member = registerOutput<String>('member');

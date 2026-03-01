@@ -8,10 +8,8 @@ class GetRegionSecurityPolicyRuleMatch {
   /// The configuration options available when specifying versionedExpr.
   /// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
   final List<GetRegionSecurityPolicyRuleMatchConfig> configs;
-
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
   final List<GetRegionSecurityPolicyRuleMatchExpr> exprs;
-
   /// Preconfigured versioned expression. If this field is specified, config must also be specified.
   /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
   final String versionedExpr;
@@ -28,35 +26,18 @@ class GetRegionSecurityPolicyRuleMatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRuleMatchConfig,
-            Map<String, dynamic>
-          >(configs, (value) => value.toMap()),
-      'exprs':
-          pulumi.Input.encodeList<
-            GetRegionSecurityPolicyRuleMatchExpr,
-            Map<String, dynamic>
-          >(exprs, (value) => value.toMap()),
+      'configs': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleMatchConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'exprs': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleMatchExpr, Map<String, dynamic>>(exprs, (value) => value.toMap()),
       'versionedExpr': versionedExpr,
     };
   }
 
   factory GetRegionSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleMatch(
-      configs: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatchConfig>(
-        map['configs'],
-        (value) => GetRegionSecurityPolicyRuleMatchConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      exprs: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatchExpr>(
-        map['exprs'],
-        (value) => GetRegionSecurityPolicyRuleMatchExpr.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configs: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatchConfig>(map['configs'], (value) => GetRegionSecurityPolicyRuleMatchConfig.fromMap((value as Map).cast<String, dynamic>())),
+      exprs: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatchExpr>(map['exprs'], (value) => GetRegionSecurityPolicyRuleMatchExpr.fromMap((value as Map).cast<String, dynamic>())),
       versionedExpr: map['versionedExpr'] as String,
     );
   }
 }
+

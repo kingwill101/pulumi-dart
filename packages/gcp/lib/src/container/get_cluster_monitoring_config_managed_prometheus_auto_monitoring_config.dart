@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   /// The scope of auto-monitoring.
   final String scope;
@@ -11,14 +12,15 @@ class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope};
+    return <String, dynamic>{
+      'scope': scope,
+    };
   }
 
-  factory GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(
       scope: map['scope'] as String,
     );
   }
 }
+

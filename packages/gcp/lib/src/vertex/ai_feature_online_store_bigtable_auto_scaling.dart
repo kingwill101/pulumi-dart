@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiFeatureOnlineStoreBigtableAutoScaling {
   /// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
   final int? cpuUtilizationTarget;
-
   /// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
   final int maxNodeCount;
-
   /// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
   final int minNodeCount;
 
@@ -28,15 +27,12 @@ class AiFeatureOnlineStoreBigtableAutoScaling {
     };
   }
 
-  factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtableAutoScaling(
-      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null
-          ? null
-          : map['cpuUtilizationTarget'] as int,
+      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : map['cpuUtilizationTarget'] as int,
       maxNodeCount: map['maxNodeCount'] as int,
       minNodeCount: map['minNodeCount'] as int,
     );
   }
 }
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Resource query management options.
+class ResourceTypeRegistrationPropertiesResourceQueryManagementResponse {
+  /// Filter option.
+  final String? filterOption;
+
+  /// Creates a new [ResourceTypeRegistrationPropertiesResourceQueryManagementResponse].
+  /// [filterOption] Filter option.
+  ResourceTypeRegistrationPropertiesResourceQueryManagementResponse({
+    this.filterOption,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'filterOption': ?filterOption,
+    };
+  }
+
+  factory ResourceTypeRegistrationPropertiesResourceQueryManagementResponse.fromMap(Map<String, dynamic> map) {
+    return ResourceTypeRegistrationPropertiesResourceQueryManagementResponse(
+      filterOption: map['filterOption'] == null ? null : map['filterOption'] as String,
+    );
+  }
+}
+

@@ -8,23 +8,20 @@ class WebAclRuleActionBlock {
 
   /// Creates a new [WebAclRuleActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclRuleActionBlock({this.customResponse});
+  WebAclRuleActionBlock({
+    this.customResponse,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customResponse': ?customResponse == null
-          ? null
-          : customResponse!.toMap(),
+      'customResponse': ?customResponse == null ? null : customResponse!.toMap(),
     };
   }
 
   factory WebAclRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionBlock(
-      customResponse: map['customResponse'] == null
-          ? null
-          : WebAclRuleActionBlockCustomResponse.fromMap(
-              (map['customResponse'] as Map).cast<String, dynamic>(),
-            ),
+      customResponse: map['customResponse'] == null ? null : WebAclRuleActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

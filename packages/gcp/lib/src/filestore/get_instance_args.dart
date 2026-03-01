@@ -11,12 +11,10 @@ class GetInstanceArgs {
   /// can be a region for ENTERPRISE tier instances. If it is not provided,
   /// the provider region or zone is used.
   final pulumi.Input<String>? location;
-
   /// The name of a Filestore instance.
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,8 +23,12 @@ class GetInstanceArgs {
   /// [location] The name of the location of the instance. This
   /// [name] The name of a Filestore instance.
   /// [project] The project in which the resource belongs. If it
-  GetInstanceArgs({String? location, required String name, String? project})
-    : location = pulumi.Input.asOptionalInput<String>(location),
+  GetInstanceArgs({
+    String? location,
+    required String name,
+    String? project,
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
       name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -46,3 +48,4 @@ class GetInstanceArgs {
     );
   }
 }
+

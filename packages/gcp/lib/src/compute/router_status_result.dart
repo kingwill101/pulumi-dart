@@ -8,14 +8,11 @@ import 'router_status_best_routes_for_router.dart';
 class RouterStatusResult {
   /// List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
   final List<RouterStatusBestRoute> bestRoutes;
-
   /// List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
   final List<RouterStatusBestRoutesForRouter> bestRoutesForRouters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The network name or resource link to the parent
   /// network of this subnetwork.
   final String network;
@@ -42,16 +39,8 @@ class RouterStatusResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bestRoutes':
-          pulumi.Input.encodeList<RouterStatusBestRoute, Map<String, dynamic>>(
-            bestRoutes,
-            (value) => value.toMap(),
-          ),
-      'bestRoutesForRouters':
-          pulumi.Input.encodeList<
-            RouterStatusBestRoutesForRouter,
-            Map<String, dynamic>
-          >(bestRoutesForRouters, (value) => value.toMap()),
+      'bestRoutes': pulumi.Input.encodeList<RouterStatusBestRoute, Map<String, dynamic>>(bestRoutes, (value) => value.toMap()),
+      'bestRoutesForRouters': pulumi.Input.encodeList<RouterStatusBestRoutesForRouter, Map<String, dynamic>>(bestRoutesForRouters, (value) => value.toMap()),
       'id': id,
       'name': name,
       'network': network,
@@ -62,19 +51,8 @@ class RouterStatusResult {
 
   factory RouterStatusResult.fromMap(Map<String, dynamic> map) {
     return RouterStatusResult(
-      bestRoutes: pulumi.Input.decodeList<RouterStatusBestRoute>(
-        map['bestRoutes'],
-        (value) => RouterStatusBestRoute.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      bestRoutesForRouters:
-          pulumi.Input.decodeList<RouterStatusBestRoutesForRouter>(
-            map['bestRoutesForRouters'],
-            (value) => RouterStatusBestRoutesForRouter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      bestRoutes: pulumi.Input.decodeList<RouterStatusBestRoute>(map['bestRoutes'], (value) => RouterStatusBestRoute.fromMap((value as Map).cast<String, dynamic>())),
+      bestRoutesForRouters: pulumi.Input.decodeList<RouterStatusBestRoutesForRouter>(map['bestRoutesForRouters'], (value) => RouterStatusBestRoutesForRouter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       network: map['network'] as String,
@@ -83,3 +61,4 @@ class RouterStatusResult {
     );
   }
 }
+

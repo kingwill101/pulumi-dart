@@ -4,9 +4,7 @@ import 'subscriber_notification_configuration_https_notification_configuration.d
 
 class SubscriberNotificationConfiguration {
   /// The configurations for HTTPS subscriber notification.
-  final SubscriberNotificationConfigurationHttpsNotificationConfiguration?
-  httpsNotificationConfiguration;
-
+  final SubscriberNotificationConfigurationHttpsNotificationConfiguration? httpsNotificationConfiguration;
   /// The configurations for SQS subscriber notification.
   /// There are no parameters within `sqs_notification_configuration`.
   final Map<String, dynamic>? sqsNotificationConfiguration;
@@ -21,28 +19,16 @@ class SubscriberNotificationConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpsNotificationConfiguration': ?httpsNotificationConfiguration == null
-          ? null
-          : httpsNotificationConfiguration!.toMap(),
+      'httpsNotificationConfiguration': ?httpsNotificationConfiguration == null ? null : httpsNotificationConfiguration!.toMap(),
       'sqsNotificationConfiguration': ?sqsNotificationConfiguration,
     };
   }
 
-  factory SubscriberNotificationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriberNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationConfiguration(
-      httpsNotificationConfiguration:
-          map['httpsNotificationConfiguration'] == null
-          ? null
-          : SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap(
-              (map['httpsNotificationConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      sqsNotificationConfiguration: map['sqsNotificationConfiguration'] == null
-          ? null
-          : (map['sqsNotificationConfiguration'] as Map)
-                .cast<String, dynamic>(),
+      httpsNotificationConfiguration: map['httpsNotificationConfiguration'] == null ? null : SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap((map['httpsNotificationConfiguration'] as Map).cast<String, dynamic>()),
+      sqsNotificationConfiguration: map['sqsNotificationConfiguration'] == null ? null : (map['sqsNotificationConfiguration'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

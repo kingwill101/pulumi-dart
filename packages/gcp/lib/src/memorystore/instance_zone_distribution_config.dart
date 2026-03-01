@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceZoneDistributionConfig {
   /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// Possible values:
@@ -7,7 +8,6 @@ class InstanceZoneDistributionConfig {
   /// SINGLE_ZONE
   /// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
   final String? mode;
-
   /// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
   /// Ignored for MULTI_ZONE mode.
   final String? zone;
@@ -15,10 +15,16 @@ class InstanceZoneDistributionConfig {
   /// Creates a new [InstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// [zone] Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
-  InstanceZoneDistributionConfig({this.mode, this.zone});
+  InstanceZoneDistributionConfig({
+    this.mode,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': ?mode, 'zone': ?zone};
+    return <String, dynamic>{
+      'mode': ?mode,
+      'zone': ?zone,
+    };
   }
 
   factory InstanceZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
@@ -28,3 +34,4 @@ class InstanceZoneDistributionConfig {
     );
   }
 }
+

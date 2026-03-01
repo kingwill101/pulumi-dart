@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// The value of the header should exactly match contents of exactMatch.
   final String? exactMatch;
-
   /// The header name to match on.
   final String headerName;
-
   /// If set to false (default), the headerMatch is considered a match if the match criteria above are met.
   /// If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
   final bool? invertMatch;
-
   /// The value of the header must start with the contents of prefixMatch.
   final String? prefixMatch;
-
   /// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
   final bool? presentMatch;
-
   /// The value of the header must end with the contents of suffixMatch.
   final String? suffixMatch;
 
@@ -47,26 +43,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(
-      exactMatch: map['exactMatch'] == null
-          ? null
-          : map['exactMatch'] as String,
+      exactMatch: map['exactMatch'] == null ? null : map['exactMatch'] as String,
       headerName: map['headerName'] as String,
-      invertMatch: map['invertMatch'] == null
-          ? null
-          : map['invertMatch'] as bool,
-      prefixMatch: map['prefixMatch'] == null
-          ? null
-          : map['prefixMatch'] as String,
-      presentMatch: map['presentMatch'] == null
-          ? null
-          : map['presentMatch'] as bool,
-      suffixMatch: map['suffixMatch'] == null
-          ? null
-          : map['suffixMatch'] as String,
+      invertMatch: map['invertMatch'] == null ? null : map['invertMatch'] as bool,
+      prefixMatch: map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
+      presentMatch: map['presentMatch'] == null ? null : map['presentMatch'] as bool,
+      suffixMatch: map['suffixMatch'] == null ? null : map['suffixMatch'] as String,
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'get_vpc_dhcp_options_filter.dart';
 class GetVpcDhcpOptionsArgs {
   /// EC2 DHCP Options ID.
   final pulumi.Input<String>? dhcpOptionsId;
-
   /// List of custom filters as described below.
   final pulumi.Input<List<GetVpcDhcpOptionsFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,28 +27,16 @@ class GetVpcDhcpOptionsArgs {
     List<GetVpcDhcpOptionsFilter>? filters,
     String? region,
     Map<String, String>? tags,
-  }) : dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
-       filters = pulumi.Input.asOptionalInput<List<GetVpcDhcpOptionsFilter>>(
-         filters,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
+      filters = pulumi.Input.asOptionalInput<List<GetVpcDhcpOptionsFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dhcpOptionsId': ?dhcpOptionsId,
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetVpcDhcpOptionsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVpcDhcpOptionsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcDhcpOptionsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcDhcpOptionsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
     };
@@ -59,21 +44,11 @@ class GetVpcDhcpOptionsArgs {
 
   factory GetVpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcDhcpOptionsArgs(
-      dhcpOptionsId: map['dhcpOptionsId'] == null
-          ? null
-          : map['dhcpOptionsId'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(
-              map['filters'],
-              (value) => GetVpcDhcpOptionsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : map['dhcpOptionsId'] as String,
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(map['filters'], (value) => GetVpcDhcpOptionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

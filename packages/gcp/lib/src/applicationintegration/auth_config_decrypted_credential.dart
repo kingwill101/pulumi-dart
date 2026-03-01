@@ -12,33 +12,23 @@ class AuthConfigDecryptedCredential {
   /// Auth token credential.
   /// Structure is documented below.
   final AuthConfigDecryptedCredentialAuthToken? authToken;
-
   /// Credential type associated with auth configs.
   final String credentialType;
-
   /// JWT credential.
   /// Structure is documented below.
   final AuthConfigDecryptedCredentialJwt? jwt;
-
   /// OAuth2 authorization code credential.
   /// Structure is documented below.
-  final AuthConfigDecryptedCredentialOauth2AuthorizationCode?
-  oauth2AuthorizationCode;
-
+  final AuthConfigDecryptedCredentialOauth2AuthorizationCode? oauth2AuthorizationCode;
   /// OAuth2 client credentials.
   /// Structure is documented below.
-  final AuthConfigDecryptedCredentialOauth2ClientCredentials?
-  oauth2ClientCredentials;
-
+  final AuthConfigDecryptedCredentialOauth2ClientCredentials? oauth2ClientCredentials;
   /// Google OIDC ID Token.
   /// Structure is documented below.
   final AuthConfigDecryptedCredentialOidcToken? oidcToken;
-
   /// Service account credential.
   /// Structure is documented below.
-  final AuthConfigDecryptedCredentialServiceAccountCredentials?
-  serviceAccountCredentials;
-
+  final AuthConfigDecryptedCredentialServiceAccountCredentials? serviceAccountCredentials;
   /// Username and password credential.
   /// Structure is documented below.
   final AuthConfigDecryptedCredentialUsernameAndPassword? usernameAndPassword;
@@ -68,60 +58,25 @@ class AuthConfigDecryptedCredential {
       'authToken': ?authToken == null ? null : authToken!.toMap(),
       'credentialType': credentialType,
       'jwt': ?jwt == null ? null : jwt!.toMap(),
-      'oauth2AuthorizationCode': ?oauth2AuthorizationCode == null
-          ? null
-          : oauth2AuthorizationCode!.toMap(),
-      'oauth2ClientCredentials': ?oauth2ClientCredentials == null
-          ? null
-          : oauth2ClientCredentials!.toMap(),
+      'oauth2AuthorizationCode': ?oauth2AuthorizationCode == null ? null : oauth2AuthorizationCode!.toMap(),
+      'oauth2ClientCredentials': ?oauth2ClientCredentials == null ? null : oauth2ClientCredentials!.toMap(),
       'oidcToken': ?oidcToken == null ? null : oidcToken!.toMap(),
-      'serviceAccountCredentials': ?serviceAccountCredentials == null
-          ? null
-          : serviceAccountCredentials!.toMap(),
-      'usernameAndPassword': ?usernameAndPassword == null
-          ? null
-          : usernameAndPassword!.toMap(),
+      'serviceAccountCredentials': ?serviceAccountCredentials == null ? null : serviceAccountCredentials!.toMap(),
+      'usernameAndPassword': ?usernameAndPassword == null ? null : usernameAndPassword!.toMap(),
     };
   }
 
   factory AuthConfigDecryptedCredential.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredential(
-      authToken: map['authToken'] == null
-          ? null
-          : AuthConfigDecryptedCredentialAuthToken.fromMap(
-              (map['authToken'] as Map).cast<String, dynamic>(),
-            ),
+      authToken: map['authToken'] == null ? null : AuthConfigDecryptedCredentialAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>()),
       credentialType: map['credentialType'] as String,
-      jwt: map['jwt'] == null
-          ? null
-          : AuthConfigDecryptedCredentialJwt.fromMap(
-              (map['jwt'] as Map).cast<String, dynamic>(),
-            ),
-      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null
-          ? null
-          : AuthConfigDecryptedCredentialOauth2AuthorizationCode.fromMap(
-              (map['oauth2AuthorizationCode'] as Map).cast<String, dynamic>(),
-            ),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null
-          ? null
-          : AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap(
-              (map['oauth2ClientCredentials'] as Map).cast<String, dynamic>(),
-            ),
-      oidcToken: map['oidcToken'] == null
-          ? null
-          : AuthConfigDecryptedCredentialOidcToken.fromMap(
-              (map['oidcToken'] as Map).cast<String, dynamic>(),
-            ),
-      serviceAccountCredentials: map['serviceAccountCredentials'] == null
-          ? null
-          : AuthConfigDecryptedCredentialServiceAccountCredentials.fromMap(
-              (map['serviceAccountCredentials'] as Map).cast<String, dynamic>(),
-            ),
-      usernameAndPassword: map['usernameAndPassword'] == null
-          ? null
-          : AuthConfigDecryptedCredentialUsernameAndPassword.fromMap(
-              (map['usernameAndPassword'] as Map).cast<String, dynamic>(),
-            ),
+      jwt: map['jwt'] == null ? null : AuthConfigDecryptedCredentialJwt.fromMap((map['jwt'] as Map).cast<String, dynamic>()),
+      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null ? null : AuthConfigDecryptedCredentialOauth2AuthorizationCode.fromMap((map['oauth2AuthorizationCode'] as Map).cast<String, dynamic>()),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>()),
+      oidcToken: map['oidcToken'] == null ? null : AuthConfigDecryptedCredentialOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>()),
+      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : AuthConfigDecryptedCredentialServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>()),
+      usernameAndPassword: map['usernameAndPassword'] == null ? null : AuthConfigDecryptedCredentialUsernameAndPassword.fromMap((map['usernameAndPassword'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

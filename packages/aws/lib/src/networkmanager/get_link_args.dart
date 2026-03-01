@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkArgs {
   /// ID of the Global Network of the link to retrieve.
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the specific link to retrieve.
   final pulumi.Input<String> linkId;
-
   /// Key-value tags for the link.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,9 +22,10 @@ class GetLinkArgs {
     required String globalNetworkId,
     required String linkId,
     Map<String, String>? tags,
-  }) : globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-       linkId = pulumi.Input.asInput<String>(linkId),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+      linkId = pulumi.Input.asInput<String>(linkId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +39,8 @@ class GetLinkArgs {
     return GetLinkArgs(
       globalNetworkId: map['globalNetworkId'] as String,
       linkId: map['linkId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

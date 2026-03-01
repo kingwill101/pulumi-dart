@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesGraphicSdlGl {
+  /// Configures whether OpenGL support is enabled in SDL graphics settings.
+  final String? enable;
+
+  /// Creates a new [DomainDevicesGraphicSdlGl].
+  /// [enable] Configures whether OpenGL support is enabled in SDL graphics settings.
+  DomainDevicesGraphicSdlGl({
+    this.enable,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
+  }
+
+  factory DomainDevicesGraphicSdlGl.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesGraphicSdlGl(
+      enable: map['enable'] == null ? null : map['enable'] as String,
+    );
+  }
+}
+

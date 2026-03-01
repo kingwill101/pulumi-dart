@@ -6,10 +6,8 @@ import 'get_service_template_container_env_value_source.dart';
 class GetServiceTemplateContainerEnv {
   /// The name of the Cloud Run v2 Service.
   final String name;
-
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   final String value;
-
   /// Source for the environment variable's value.
   final List<GetServiceTemplateContainerEnvValueSource> valueSources;
 
@@ -27,11 +25,7 @@ class GetServiceTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueSources':
-          pulumi.Input.encodeList<
-            GetServiceTemplateContainerEnvValueSource,
-            Map<String, dynamic>
-          >(valueSources, (value) => value.toMap()),
+      'valueSources': pulumi.Input.encodeList<GetServiceTemplateContainerEnvValueSource, Map<String, dynamic>>(valueSources, (value) => value.toMap()),
     };
   }
 
@@ -39,13 +33,8 @@ class GetServiceTemplateContainerEnv {
     return GetServiceTemplateContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueSources:
-          pulumi.Input.decodeList<GetServiceTemplateContainerEnvValueSource>(
-            map['valueSources'],
-            (value) => GetServiceTemplateContainerEnvValueSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      valueSources: pulumi.Input.decodeList<GetServiceTemplateContainerEnvValueSource>(map['valueSources'], (value) => GetServiceTemplateContainerEnvValueSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

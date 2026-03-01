@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleDeleteMarkerReplication {
   final String status;
 
@@ -10,14 +11,15 @@ class GetBucketReplicationConfigurationRuleDeleteMarkerReplication {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDeleteMarkerReplication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleDeleteMarkerReplication.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDeleteMarkerReplication(
       status: map['status'] as String,
     );
   }
 }
+

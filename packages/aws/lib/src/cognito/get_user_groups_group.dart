@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserGroupsGroup {
   /// Description of the user group.
   final String description;
-
   /// Name of the user group.
   final String groupName;
-
   /// Precedence of the user group.
   final int precedence;
-
   /// ARN of the IAM role to be associated with the user group.
   final String roleArn;
 
@@ -43,3 +41,4 @@ class GetUserGroupsGroup {
     );
   }
 }
+

@@ -10,23 +10,17 @@ import 'certificate_validity.dart';
 class CertificateArgs {
   /// Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates
   final pulumi.Input<String>? apiPassthrough;
-
   /// ARN of the certificate authority.
   final pulumi.Input<String> certificateAuthorityArn;
-
   /// Certificate Signing Request in PEM format.
   final pulumi.Input<String> certificateSigningRequest;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
   final pulumi.Input<String> signingAlgorithm;
-
   /// Template to use when issuing a certificate.
   /// See [ACM PCA Documentation](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html) for more information.
   final pulumi.Input<String>? templateArn;
-
   /// Configures end of the validity period for the certificate. See validity block below.
   final pulumi.Input<CertificateValidity> validity;
 
@@ -46,17 +40,14 @@ class CertificateArgs {
     required String signingAlgorithm,
     String? templateArn,
     required CertificateValidity validity,
-  }) : apiPassthrough = pulumi.Input.asOptionalInput<String>(apiPassthrough),
-       certificateAuthorityArn = pulumi.Input.asInput<String>(
-         certificateAuthorityArn,
-       ),
-       certificateSigningRequest = pulumi.Input.asInput<String>(
-         certificateSigningRequest,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       signingAlgorithm = pulumi.Input.asInput<String>(signingAlgorithm),
-       templateArn = pulumi.Input.asOptionalInput<String>(templateArn),
-       validity = pulumi.Input.asInput<CertificateValidity>(validity);
+  }) :
+      apiPassthrough = pulumi.Input.asOptionalInput<String>(apiPassthrough),
+      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
+      certificateSigningRequest = pulumi.Input.asInput<String>(certificateSigningRequest),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      signingAlgorithm = pulumi.Input.asInput<String>(signingAlgorithm),
+      templateArn = pulumi.Input.asOptionalInput<String>(templateArn),
+      validity = pulumi.Input.asInput<CertificateValidity>(validity);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,29 +57,20 @@ class CertificateArgs {
       'region': ?region,
       'signingAlgorithm': signingAlgorithm,
       'templateArn': ?templateArn,
-      'validity':
-          pulumi.Input.mapInputValue<CertificateValidity, Map<String, dynamic>>(
-            validity,
-            (value) => value.toMap(),
-          ),
+      'validity': pulumi.Input.mapInputValue<CertificateValidity, Map<String, dynamic>>(validity, (value) => value.toMap()),
     };
   }
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      apiPassthrough: map['apiPassthrough'] == null
-          ? null
-          : map['apiPassthrough'] as String,
+      apiPassthrough: map['apiPassthrough'] == null ? null : map['apiPassthrough'] as String,
       certificateAuthorityArn: map['certificateAuthorityArn'] as String,
       certificateSigningRequest: map['certificateSigningRequest'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       signingAlgorithm: map['signingAlgorithm'] as String,
-      templateArn: map['templateArn'] == null
-          ? null
-          : map['templateArn'] as String,
-      validity: CertificateValidity.fromMap(
-        (map['validity'] as Map).cast<String, dynamic>(),
-      ),
+      templateArn: map['templateArn'] == null ? null : map['templateArn'] as String,
+      validity: CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

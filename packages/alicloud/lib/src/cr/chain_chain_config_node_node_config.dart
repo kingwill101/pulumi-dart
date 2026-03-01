@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'chain_chain_config_node_node_config_deny_policy.dart';
+
+class ChainChainConfigNodeNodeConfig {
+  /// Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+  final List<ChainChainConfigNodeNodeConfigDenyPolicy>? denyPolicies;
+
+  /// Creates a new [ChainChainConfigNodeNodeConfig].
+  /// [denyPolicies] Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+  ChainChainConfigNodeNodeConfig({
+    this.denyPolicies,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'denyPolicies': ?denyPolicies == null ? null : pulumi.Input.encodeList<ChainChainConfigNodeNodeConfigDenyPolicy, Map<String, dynamic>>(denyPolicies!, (value) => value.toMap()),
+    };
+  }
+
+  factory ChainChainConfigNodeNodeConfig.fromMap(Map<String, dynamic> map) {
+    return ChainChainConfigNodeNodeConfig(
+      denyPolicies: map['denyPolicies'] == null ? null : pulumi.Input.decodeList<ChainChainConfigNodeNodeConfigDenyPolicy>(map['denyPolicies'], (value) => ChainChainConfigNodeNodeConfigDenyPolicy.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

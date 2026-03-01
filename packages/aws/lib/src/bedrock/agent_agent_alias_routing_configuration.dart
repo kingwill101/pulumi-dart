@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentAgentAliasRoutingConfiguration {
   /// Version of the agent with which the alias is associated.
   final String agentVersion;
-
   /// ARN of the Provisioned Throughput assigned to the agent alias.
   final String provisionedThroughput;
 
@@ -22,12 +22,11 @@ class AgentAgentAliasRoutingConfiguration {
     };
   }
 
-  factory AgentAgentAliasRoutingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentAgentAliasRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentAliasRoutingConfiguration(
       agentVersion: map['agentVersion'] as String,
       provisionedThroughput: map['provisionedThroughput'] as String,
     );
   }
 }
+

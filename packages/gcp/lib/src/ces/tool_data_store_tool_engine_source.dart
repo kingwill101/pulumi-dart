@@ -9,12 +9,10 @@ class ToolDataStoreToolEngineSource {
   /// Engine.
   /// Structure is documented below.
   final List<ToolDataStoreToolEngineSourceDataStoreSource>? dataStoreSources;
-
   /// Full resource name of the Engine.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
   final String engine;
-
   /// A filter applied to the search across the Engine. Not relevant and not
   /// used if 'data_store_sources' is provided.
   /// See:
@@ -33,12 +31,7 @@ class ToolDataStoreToolEngineSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStoreSources': ?dataStoreSources == null
-          ? null
-          : pulumi.Input.encodeList<
-              ToolDataStoreToolEngineSourceDataStoreSource,
-              Map<String, dynamic>
-            >(dataStoreSources!, (value) => value.toMap()),
+      'dataStoreSources': ?dataStoreSources == null ? null : pulumi.Input.encodeList<ToolDataStoreToolEngineSourceDataStoreSource, Map<String, dynamic>>(dataStoreSources!, (value) => value.toMap()),
       'engine': engine,
       'filter': ?filter,
     };
@@ -46,17 +39,10 @@ class ToolDataStoreToolEngineSource {
 
   factory ToolDataStoreToolEngineSource.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSource(
-      dataStoreSources: map['dataStoreSources'] == null
-          ? null
-          : pulumi
-                .Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(
-              map['dataStoreSources'],
-              (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      dataStoreSources: map['dataStoreSources'] == null ? null : pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>())),
       engine: map['engine'] as String,
       filter: map['filter'] == null ? null : map['filter'] as String,
     );
   }
 }
+

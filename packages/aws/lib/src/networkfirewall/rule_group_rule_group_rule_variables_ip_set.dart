@@ -5,7 +5,6 @@ import 'rule_group_rule_group_rule_variables_ip_set_ip_set.dart';
 class RuleGroupRuleGroupRuleVariablesIpSet {
   /// A configuration block that defines a set of IP addresses. See IP Set below for details.
   final RuleGroupRuleGroupRuleVariablesIpSetIpSet ipSet;
-
   /// A unique alphanumeric string to identify the `ip_set`.
   final String key;
 
@@ -18,17 +17,17 @@ class RuleGroupRuleGroupRuleVariablesIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipSet': ipSet.toMap(), 'key': key};
+    return <String, dynamic>{
+      'ipSet': ipSet.toMap(),
+      'key': key,
+    };
   }
 
-  factory RuleGroupRuleGroupRuleVariablesIpSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleGroupRuleVariablesIpSet.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariablesIpSet(
-      ipSet: RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap(
-        (map['ipSet'] as Map).cast<String, dynamic>(),
-      ),
+      ipSet: RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap((map['ipSet'] as Map).cast<String, dynamic>()),
       key: map['key'] as String,
     );
   }
 }
+

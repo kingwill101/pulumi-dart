@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of ClusterIssueCodeEnumValue
+class ClusterIssueCodeEnumValue {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [ClusterIssueCodeEnumValue].
+  /// [value] Property value
+  ClusterIssueCodeEnumValue({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory ClusterIssueCodeEnumValue.fromMap(Map<String, dynamic> map) {
+    return ClusterIssueCodeEnumValue(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

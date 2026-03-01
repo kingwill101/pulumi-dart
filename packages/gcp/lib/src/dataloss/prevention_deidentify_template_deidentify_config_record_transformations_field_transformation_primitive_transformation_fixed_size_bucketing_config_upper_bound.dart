@@ -6,30 +6,21 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound {
   /// A boolean value.
   final bool? booleanValue;
-
   /// Represents a whole or partial calendar date.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue?
-  dateValue;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue? dateValue;
   /// Represents a day of the week.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String? dayOfWeekValue;
-
   /// A float value.
   final double? floatValue;
-
   /// An integer value (int64 format)
   final String? integerValue;
-
   /// A string value.
   final String? stringValue;
-
   /// Represents a time of day.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue?
-  timeValue;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue? timeValue;
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final String? timestampValue;
 
@@ -66,38 +57,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(
-      booleanValue: map['booleanValue'] == null
-          ? null
-          : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue.fromMap(
-              (map['dateValue'] as Map).cast<String, dynamic>(),
-            ),
-      dayOfWeekValue: map['dayOfWeekValue'] == null
-          ? null
-          : map['dayOfWeekValue'] as String,
-      floatValue: map['floatValue'] == null
-          ? null
-          : map['floatValue'] as double,
-      integerValue: map['integerValue'] == null
-          ? null
-          : map['integerValue'] as String,
-      stringValue: map['stringValue'] == null
-          ? null
-          : map['stringValue'] as String,
-      timeValue: map['timeValue'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue.fromMap(
-              (map['timeValue'] as Map).cast<String, dynamic>(),
-            ),
-      timestampValue: map['timestampValue'] == null
-          ? null
-          : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
+      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : map['dayOfWeekValue'] as String,
+      floatValue: map['floatValue'] == null ? null : map['floatValue'] as double,
+      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
+      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      timeValue: map['timeValue'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue.fromMap((map['timeValue'] as Map).cast<String, dynamic>()),
+      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
     );
   }
 }
+

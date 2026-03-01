@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecListenerTimeoutHttpIdle {
   final String unit;
   final int value;
@@ -13,15 +14,17 @@ class GetVirtualNodeSpecListenerTimeoutHttpIdle {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerTimeoutHttpIdle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecListenerTimeoutHttpIdle.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutHttpIdle(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
+

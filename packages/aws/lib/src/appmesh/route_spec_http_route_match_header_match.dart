@@ -5,16 +5,12 @@ import 'route_spec_http_route_match_header_match_range.dart';
 class RouteSpecHttpRouteMatchHeaderMatch {
   /// Header value sent by the client must match the specified value exactly.
   final String? exact;
-
   /// Header value sent by the client must begin with the specified characters.
   final String? prefix;
-
   /// Object that specifies the range of numbers that the header value sent by the client must be included in.
   final RouteSpecHttpRouteMatchHeaderMatchRange? range;
-
   /// Header value sent by the client must include the specified characters.
   final String? regex;
-
   /// Header value sent by the client must end with the specified characters.
   final String? suffix;
 
@@ -46,13 +42,10 @@ class RouteSpecHttpRouteMatchHeaderMatch {
     return RouteSpecHttpRouteMatchHeaderMatch(
       exact: map['exact'] == null ? null : map['exact'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      range: map['range'] == null
-          ? null
-          : RouteSpecHttpRouteMatchHeaderMatchRange.fromMap(
-              (map['range'] as Map).cast<String, dynamic>(),
-            ),
+      range: map['range'] == null ? null : RouteSpecHttpRouteMatchHeaderMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
       regex: map['regex'] == null ? null : map['regex'] as String,
       suffix: map['suffix'] == null ? null : map['suffix'] as String,
     );
   }
 }
+

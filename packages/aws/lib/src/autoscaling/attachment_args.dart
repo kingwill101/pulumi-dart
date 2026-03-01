@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentArgs {
   /// Name of ASG to associate with the ELB.
   final pulumi.Input<String> autoscalingGroupName;
-
   /// Name of the ELB.
   final pulumi.Input<String>? elb;
-
   /// ARN of a load balancer target group.
   final pulumi.Input<String>? lbTargetGroupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,14 +26,11 @@ class AttachmentArgs {
     String? elb,
     String? lbTargetGroupArn,
     String? region,
-  }) : autoscalingGroupName = pulumi.Input.asInput<String>(
-         autoscalingGroupName,
-       ),
-       elb = pulumi.Input.asOptionalInput<String>(elb),
-       lbTargetGroupArn = pulumi.Input.asOptionalInput<String>(
-         lbTargetGroupArn,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
+      elb = pulumi.Input.asOptionalInput<String>(elb),
+      lbTargetGroupArn = pulumi.Input.asOptionalInput<String>(lbTargetGroupArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +45,9 @@ class AttachmentArgs {
     return AttachmentArgs(
       autoscalingGroupName: map['autoscalingGroupName'] as String,
       elb: map['elb'] == null ? null : map['elb'] as String,
-      lbTargetGroupArn: map['lbTargetGroupArn'] == null
-          ? null
-          : map['lbTargetGroupArn'] as String,
+      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : map['lbTargetGroupArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

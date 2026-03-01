@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
   /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
   /// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -12,14 +13,15 @@ class GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hours': hours};
+    return <String, dynamic>{
+      'hours': hours,
+    };
   }
 
-  factory GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(Map<String, dynamic> map) {
     return GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime(
       hours: map['hours'] as int,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerRuleActionForwardTargetGroup {
   final String targetGroupIdentifier;
   final int? weight;
@@ -19,12 +20,11 @@ class ListenerRuleActionForwardTargetGroup {
     };
   }
 
-  factory ListenerRuleActionForwardTargetGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardTargetGroup(
       targetGroupIdentifier: map['targetGroupIdentifier'] as String,
       weight: map['weight'] == null ? null : map['weight'] as int,
     );
   }
 }
+

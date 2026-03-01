@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'diagnostic_setting_enabled_log_retention_policy.dart';
+
+class DiagnosticSettingEnabledLog {
+  /// The name of a Diagnostic Log Category for this Resource.
+  ///
+  /// > **NOTE:** The Log Categories available vary depending on the Resource being used. You may wish to use the `azure.monitoring.getDiagnosticCategories` Data Source or [list of service specific schemas](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-schema#service-specific-schemas) to identify which categories are available for a given Resource.
+  final String? category;
+  /// The name of a Diagnostic Log Category Group for this Resource.
+  ///
+  /// > **NOTE:** Not all resources have category groups available.
+  ///
+  /// > **NOTE:** Exactly one of `category` or `category_group` must be specified.
+  final String? categoryGroup;
+  final DiagnosticSettingEnabledLogRetentionPolicy? retentionPolicy;
+
+  /// Creates a new [DiagnosticSettingEnabledLog].
+  /// [category] The name of a Diagnostic Log Category for this Resource.
+  /// [categoryGroup] The name of a Diagnostic Log Category Group for this Resource.
+  /// [retentionPolicy] Optional.
+  DiagnosticSettingEnabledLog({
+    this.category,
+    this.categoryGroup,
+    this.retentionPolicy,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'category': ?category,
+      'categoryGroup': ?categoryGroup,
+      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
+    };
+  }
+
+  factory DiagnosticSettingEnabledLog.fromMap(Map<String, dynamic> map) {
+    return DiagnosticSettingEnabledLog(
+      category: map['category'] == null ? null : map['category'] as String,
+      categoryGroup: map['categoryGroup'] == null ? null : map['categoryGroup'] as String,
+      retentionPolicy: map['retentionPolicy'] == null ? null : DiagnosticSettingEnabledLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

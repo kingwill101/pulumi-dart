@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretArgs {
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
-
   /// The name of the secret.
   final pulumi.Input<String> secretId;
 
   /// Creates a new [GetSecretArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] The name of the secret.
-  GetSecretArgs({String? project, required String secretId})
-    : project = pulumi.Input.asOptionalInput<String>(project),
+  GetSecretArgs({
+    String? project,
+    required String secretId,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
       secretId = pulumi.Input.asInput<String>(secretId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'secretId': secretId};
+    return <String, dynamic>{
+      'project': ?project,
+      'secretId': secretId,
+    };
   }
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetSecretArgs {
     );
   }
 }
+

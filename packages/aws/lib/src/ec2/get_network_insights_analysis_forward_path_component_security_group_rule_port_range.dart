@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange {
   final int from;
   final int to;
@@ -13,15 +14,17 @@ class GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange(
       from: map['from'] as int,
       to: map['to'] as int,
     );
   }
 }
+

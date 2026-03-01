@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
   /// Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
   final String installation;
@@ -11,14 +12,15 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'installation': installation};
+    return <String, dynamic>{
+      'installation': installation,
+    };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(
       installation: map['installation'] as String,
     );
   }
 }
+

@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FolderCustomModuleCustomConfigResourceSelector {
   /// The resource types to run the detector on.
   final List<String> resourceTypes;
 
   /// Creates a new [FolderCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  FolderCustomModuleCustomConfigResourceSelector({required this.resourceTypes});
+  FolderCustomModuleCustomConfigResourceSelector({
+    required this.resourceTypes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceTypes': resourceTypes};
+    return <String, dynamic>{
+      'resourceTypes': resourceTypes,
+    };
   }
 
-  factory FolderCustomModuleCustomConfigResourceSelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FolderCustomModuleCustomConfigResourceSelector.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleCustomConfigResourceSelector(
       resourceTypes: (map['resourceTypes'] as List).cast<String>(),
     );
   }
 }
+

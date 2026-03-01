@@ -6,20 +6,14 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue {
   /// Represents a boolean value.
   final bool? boolValue;
-
   /// Represents a double value.
   final double? numberValue;
-
   /// Sub-parameter values.
   /// Structure is documented below.
-  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue?
-  oneofValue;
-
+  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue? oneofValue;
   /// A list of strings.
   /// Structure is documented below.
-  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue?
-  stringListValue;
-
+  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue? stringListValue;
   /// Represents a string value.
   final String? stringValue;
 
@@ -42,34 +36,19 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
       'boolValue': ?boolValue,
       'numberValue': ?numberValue,
       'oneofValue': ?oneofValue == null ? null : oneofValue!.toMap(),
-      'stringListValue': ?stringListValue == null
-          ? null
-          : stringListValue!.toMap(),
+      'stringListValue': ?stringListValue == null ? null : stringListValue!.toMap(),
       'stringValue': ?stringValue,
     };
   }
 
-  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue(
       boolValue: map['boolValue'] == null ? null : map['boolValue'] as bool,
-      numberValue: map['numberValue'] == null
-          ? null
-          : map['numberValue'] as double,
-      oneofValue: map['oneofValue'] == null
-          ? null
-          : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue.fromMap(
-              (map['oneofValue'] as Map).cast<String, dynamic>(),
-            ),
-      stringListValue: map['stringListValue'] == null
-          ? null
-          : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue.fromMap(
-              (map['stringListValue'] as Map).cast<String, dynamic>(),
-            ),
-      stringValue: map['stringValue'] == null
-          ? null
-          : map['stringValue'] as String,
+      numberValue: map['numberValue'] == null ? null : map['numberValue'] as double,
+      oneofValue: map['oneofValue'] == null ? null : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue.fromMap((map['oneofValue'] as Map).cast<String, dynamic>()),
+      stringListValue: map['stringListValue'] == null ? null : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue.fromMap((map['stringListValue'] as Map).cast<String, dynamic>()),
+      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
     );
   }
 }
+

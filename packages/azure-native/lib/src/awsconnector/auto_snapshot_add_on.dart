@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of AutoSnapshotAddOn
+class AutoSnapshotAddOn {
+  /// The daily time when an automatic snapshot will be created.
+  final String? snapshotTimeOfDay;
+
+  /// Creates a new [AutoSnapshotAddOn].
+  /// [snapshotTimeOfDay] The daily time when an automatic snapshot will be created.
+  AutoSnapshotAddOn({
+    this.snapshotTimeOfDay,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'snapshotTimeOfDay': ?snapshotTimeOfDay,
+    };
+  }
+
+  factory AutoSnapshotAddOn.fromMap(Map<String, dynamic> map) {
+    return AutoSnapshotAddOn(
+      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : map['snapshotTimeOfDay'] as String,
+    );
+  }
+}
+

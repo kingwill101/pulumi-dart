@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A domain specific resource identifier.
+class IdentifierResponse {
+  /// Resource Id.
+  final String id;
+  /// Kind of resource.
+  final String? kind;
+  /// Resource Name.
+  final String name;
+  /// Resource type.
+  final String type;
+  /// String representation of the identity.
+  final String? value;
+
+  /// Creates a new [IdentifierResponse].
+  /// [id] Resource Id.
+  /// [kind] Kind of resource.
+  /// [name] Resource Name.
+  /// [type] Resource type.
+  /// [value] String representation of the identity.
+  IdentifierResponse({
+    required this.id,
+    this.kind,
+    required this.name,
+    required this.type,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'kind': ?kind,
+      'name': name,
+      'type': type,
+      'value': ?value,
+    };
+  }
+
+  factory IdentifierResponse.fromMap(Map<String, dynamic> map) {
+    return IdentifierResponse(
+      id: map['id'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      name: map['name'] as String,
+      type: map['type'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

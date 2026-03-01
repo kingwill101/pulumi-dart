@@ -5,14 +5,10 @@ import 'agent_knowledge_base_storage_configuration_redis_enterprise_cloud_config
 class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
   /// ARN of the secret that you created in AWS Secrets Manager that is linked to your Redis Enterprise Cloud database.
   final String credentialsSecretArn;
-
   /// Endpoint URL of the Redis Enterprise Cloud database.
   final String endpoint;
-
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping
-  fieldMapping;
-
+  final AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping fieldMapping;
   /// Name of the vector index.
   final String vectorIndexName;
 
@@ -37,17 +33,13 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration(
       credentialsSecretArn: map['credentialsSecretArn'] as String,
       endpoint: map['endpoint'] as String,
-      fieldMapping:
-          AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap(
-            (map['fieldMapping'] as Map).cast<String, dynamic>(),
-          ),
+      fieldMapping: AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
       vectorIndexName: map['vectorIndexName'] as String,
     );
   }
 }
+

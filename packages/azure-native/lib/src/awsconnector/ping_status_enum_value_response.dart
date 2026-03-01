@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of PingStatusEnumValue
+class PingStatusEnumValueResponse {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [PingStatusEnumValueResponse].
+  /// [value] Property value
+  PingStatusEnumValueResponse({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory PingStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
+    return PingStatusEnumValueResponse(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

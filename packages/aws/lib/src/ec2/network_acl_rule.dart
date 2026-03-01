@@ -188,13 +188,10 @@ import 'network_acl_rule_args.dart';
 class NetworkAclRule extends pulumi.CustomResource {
   /// The network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
   late final pulumi.Output<String?> cidrBlock;
-
   /// Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet). Default `false`.
   late final pulumi.Output<bool?> egress;
-
   /// The from port to match.
   late final pulumi.Output<int?> fromPort;
-
   /// ICMP protocol: The ICMP code. Required if specifying ICMP for the protocolE.g., -1
   ///
   /// > **NOTE:** If the value of `protocol` is `-1` or `all`, the `from_port` and `to_port` values will be ignored and the rule will apply to all ports.
@@ -203,28 +200,20 @@ class NetworkAclRule extends pulumi.CustomResource {
   ///
   /// > Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
   late final pulumi.Output<int?> icmpCode;
-
   /// ICMP protocol: The ICMP type. Required if specifying ICMP for the protocolE.g., -1
   late final pulumi.Output<int?> icmpType;
-
   /// The IPv6 CIDR block to allow or deny.
   late final pulumi.Output<String?> ipv6CidrBlock;
-
   /// The ID of the network ACL.
   late final pulumi.Output<String> networkAclId;
-
   /// The protocol. A value of -1 means all protocols.
   late final pulumi.Output<String> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Indicates whether to allow or deny the traffic that matches the rule. Accepted values: `allow` | `deny`
   late final pulumi.Output<String> ruleAction;
-
   /// The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
   late final pulumi.Output<int> ruleNumber;
-
   /// The to port to match.
   late final pulumi.Output<int?> toPort;
 
@@ -237,11 +226,11 @@ class NetworkAclRule extends pulumi.CustomResource {
     NetworkAclRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkAclRule:NetworkAclRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkAclRule:NetworkAclRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.cidrBlock = registerOutput<String?>('cidrBlock');
     this.egress = registerOutput<bool?>('egress');
     this.fromPort = registerOutput<int?>('fromPort');

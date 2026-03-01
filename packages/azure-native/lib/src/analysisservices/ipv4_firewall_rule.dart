@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The detail of firewall rule.
+class IPv4FirewallRule {
+  /// The rule name.
+  final String? firewallRuleName;
+  /// The end range of IPv4.
+  final String? rangeEnd;
+  /// The start range of IPv4.
+  final String? rangeStart;
+
+  /// Creates a new [IPv4FirewallRule].
+  /// [firewallRuleName] The rule name.
+  /// [rangeEnd] The end range of IPv4.
+  /// [rangeStart] The start range of IPv4.
+  IPv4FirewallRule({
+    this.firewallRuleName,
+    this.rangeEnd,
+    this.rangeStart,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'firewallRuleName': ?firewallRuleName,
+      'rangeEnd': ?rangeEnd,
+      'rangeStart': ?rangeStart,
+    };
+  }
+
+  factory IPv4FirewallRule.fromMap(Map<String, dynamic> map) {
+    return IPv4FirewallRule(
+      firewallRuleName: map['firewallRuleName'] == null ? null : map['firewallRuleName'] as String,
+      rangeEnd: map['rangeEnd'] == null ? null : map['rangeEnd'] as String,
+      rangeStart: map['rangeStart'] == null ? null : map['rangeStart'] as String,
+    );
+  }
+}
+

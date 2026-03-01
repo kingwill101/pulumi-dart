@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getParameter.
 class GetParameterResult {
   /// ARN of the parameter.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Value of the parameter. **Use caution:** This value is never marked as sensitive.
   final String insecureValue;
-
   /// Name of the parameter.
   final String name;
   final String region;
-
   /// Type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
   final String type;
-
   /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`.
   final String value;
-
   /// Version of the parameter.
   final int version;
   final bool? withDecryption;
@@ -71,9 +66,8 @@ class GetParameterResult {
       type: map['type'] as String,
       value: map['value'] as String,
       version: map['version'] as int,
-      withDecryption: map['withDecryption'] == null
-          ? null
-          : map['withDecryption'] as bool,
+      withDecryption: map['withDecryption'] == null ? null : map['withDecryption'] as bool,
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Public representation of one of the locations where a resource is provisioned.
+class IotHubLocationDescriptionResponse {
+  /// The name of the Azure region
+  final String? location;
+  /// The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
+  final String? role;
+
+  /// Creates a new [IotHubLocationDescriptionResponse].
+  /// [location] The name of the Azure region
+  /// [role] The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
+  IotHubLocationDescriptionResponse({
+    this.location,
+    this.role,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': ?location,
+      'role': ?role,
+    };
+  }
+
+  factory IotHubLocationDescriptionResponse.fromMap(Map<String, dynamic> map) {
+    return IotHubLocationDescriptionResponse(
+      location: map['location'] == null ? null : map['location'] as String,
+      role: map['role'] == null ? null : map['role'] as String,
+    );
+  }
+}
+

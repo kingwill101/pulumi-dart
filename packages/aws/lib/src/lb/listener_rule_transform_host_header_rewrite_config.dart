@@ -8,7 +8,9 @@ class ListenerRuleTransformHostHeaderRewriteConfig {
 
   /// Creates a new [ListenerRuleTransformHostHeaderRewriteConfig].
   /// [rewrite] Block for host header rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  ListenerRuleTransformHostHeaderRewriteConfig({this.rewrite});
+  ListenerRuleTransformHostHeaderRewriteConfig({
+    this.rewrite,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class ListenerRuleTransformHostHeaderRewriteConfig {
     };
   }
 
-  factory ListenerRuleTransformHostHeaderRewriteConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleTransformHostHeaderRewriteConfig.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransformHostHeaderRewriteConfig(
-      rewrite: map['rewrite'] == null
-          ? null
-          : ListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap(
-              (map['rewrite'] as Map).cast<String, dynamic>(),
-            ),
+      rewrite: map['rewrite'] == null ? null : ListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

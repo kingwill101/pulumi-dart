@@ -7,11 +7,9 @@ class InsightsReportConfigFrequencyOptions {
   /// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
   /// Structure is documented below.
   final InsightsReportConfigFrequencyOptionsEndDate endDate;
-
   /// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
   /// Possible values are: `DAILY`, `WEEKLY`.
   final String frequency;
-
   /// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
   /// Structure is documented below.
   final InsightsReportConfigFrequencyOptionsStartDate startDate;
@@ -34,17 +32,12 @@ class InsightsReportConfigFrequencyOptions {
     };
   }
 
-  factory InsightsReportConfigFrequencyOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsReportConfigFrequencyOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigFrequencyOptions(
-      endDate: InsightsReportConfigFrequencyOptionsEndDate.fromMap(
-        (map['endDate'] as Map).cast<String, dynamic>(),
-      ),
+      endDate: InsightsReportConfigFrequencyOptionsEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
       frequency: map['frequency'] as String,
-      startDate: InsightsReportConfigFrequencyOptionsStartDate.fromMap(
-        (map['startDate'] as Map).cast<String, dynamic>(),
-      ),
+      startDate: InsightsReportConfigFrequencyOptionsStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

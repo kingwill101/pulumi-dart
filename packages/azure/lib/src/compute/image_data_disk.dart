@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ImageDataDisk {
+  /// Specifies the URI in Azure storage of the blob that you want to use to create the image.
+  final String? blobUri;
+  /// Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. Defaults to `None`.
+  final String? caching;
+  /// The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
+  final String? diskEncryptionSetId;
+  /// Specifies the logical unit number of the data disk.
+  final int? lun;
+  /// Specifies the ID of the managed disk resource that you want to use to create the image. Changing this forces a new resource to be created.
+  final String? managedDiskId;
+  /// Specifies the size of the image to be created. The target size can't be smaller than the source size.
+  final int? sizeGb;
+  /// The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
+  final String storageType;
+
+  /// Creates a new [ImageDataDisk].
+  /// [blobUri] Specifies the URI in Azure storage of the blob that you want to use to create the image.
+  /// [caching] Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. Defaults to `None`.
+  /// [diskEncryptionSetId] The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
+  /// [lun] Specifies the logical unit number of the data disk.
+  /// [managedDiskId] Specifies the ID of the managed disk resource that you want to use to create the image. Changing this forces a new resource to be created.
+  /// [sizeGb] Specifies the size of the image to be created. The target size can't be smaller than the source size.
+  /// [storageType] The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
+  ImageDataDisk({
+    this.blobUri,
+    this.caching,
+    this.diskEncryptionSetId,
+    this.lun,
+    this.managedDiskId,
+    this.sizeGb,
+    required this.storageType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'blobUri': ?blobUri,
+      'caching': ?caching,
+      'diskEncryptionSetId': ?diskEncryptionSetId,
+      'lun': ?lun,
+      'managedDiskId': ?managedDiskId,
+      'sizeGb': ?sizeGb,
+      'storageType': storageType,
+    };
+  }
+
+  factory ImageDataDisk.fromMap(Map<String, dynamic> map) {
+    return ImageDataDisk(
+      blobUri: map['blobUri'] == null ? null : map['blobUri'] as String,
+      caching: map['caching'] == null ? null : map['caching'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
+      lun: map['lun'] == null ? null : map['lun'] as int,
+      managedDiskId: map['managedDiskId'] == null ? null : map['managedDiskId'] as String,
+      sizeGb: map['sizeGb'] == null ? null : map['sizeGb'] as int,
+      storageType: map['storageType'] as String,
+    );
+  }
+}
+

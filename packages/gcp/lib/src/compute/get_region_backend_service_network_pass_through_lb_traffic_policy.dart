@@ -5,10 +5,7 @@ import 'get_region_backend_service_network_pass_through_lb_traffic_policy_zonal_
 
 class GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
   /// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-  final List<
-    GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
-  >
-  zonalAffinities;
+  final List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity> zonalAffinities;
 
   /// Creates a new [GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy].
   /// [zonalAffinities] When configured, new connections are load balanced across healthy backend endpoints in the local zone.
@@ -18,28 +15,14 @@ class GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'zonalAffinities':
-          pulumi.Input.encodeList<
-            GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity,
-            Map<String, dynamic>
-          >(zonalAffinities, (value) => value.toMap()),
+      'zonalAffinities': pulumi.Input.encodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity, Map<String, dynamic>>(zonalAffinities, (value) => value.toMap()),
     };
   }
 
-  factory GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy(
-      zonalAffinities:
-          pulumi.Input.decodeList<
-            GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
-          >(
-            map['zonalAffinities'],
-            (value) =>
-                GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      zonalAffinities: pulumi.Input.decodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity>(map['zonalAffinities'], (value) => GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

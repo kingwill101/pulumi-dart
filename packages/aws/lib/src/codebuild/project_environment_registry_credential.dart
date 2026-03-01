@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectEnvironmentRegistryCredential {
   /// ARN or name of credentials created using AWS Secrets Manager.
   final String credential;
-
   /// Service that created the credentials to access a private Docker registry. Valid
   /// value: `SECRETS_MANAGER` (AWS Secrets Manager).
   final String credentialProvider;
@@ -23,12 +23,11 @@ class ProjectEnvironmentRegistryCredential {
     };
   }
 
-  factory ProjectEnvironmentRegistryCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProjectEnvironmentRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentRegistryCredential(
       credential: map['credential'] as String,
       credentialProvider: map['credentialProvider'] as String,
     );
   }
 }
+

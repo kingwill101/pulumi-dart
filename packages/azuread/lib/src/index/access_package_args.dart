@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_access_package_access_package_args_doc}
+/// The set of arguments for AccessPackage.
+/// {@endtemplate}
+/// {@macro pulumi_index_access_package_access_package_args_doc}
+class AccessPackageArgs {
+  /// The ID of the Catalog this access package will be created in.
+  final pulumi.Input<String> catalogId;
+  /// The description of the access package.
+  final pulumi.Input<String> description;
+  /// The display name of the access package.
+  final pulumi.Input<String> displayName;
+  /// Whether the access package is hidden from the requestor.
+  final pulumi.Input<bool>? hidden;
+
+  /// Creates a new [AccessPackageArgs].
+  /// [catalogId] The ID of the Catalog this access package will be created in.
+  /// [description] The description of the access package.
+  /// [displayName] The display name of the access package.
+  /// [hidden] Whether the access package is hidden from the requestor.
+  AccessPackageArgs({
+    required String catalogId,
+    required String description,
+    required String displayName,
+    bool? hidden,
+  }) :
+      catalogId = pulumi.Input.asInput<String>(catalogId),
+      description = pulumi.Input.asInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      hidden = pulumi.Input.asOptionalInput<bool>(hidden);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'description': description,
+      'displayName': displayName,
+      'hidden': ?hidden,
+    };
+  }
+
+  factory AccessPackageArgs.fromMap(Map<String, dynamic> map) {
+    return AccessPackageArgs(
+      catalogId: map['catalogId'] as String,
+      description: map['description'] as String,
+      displayName: map['displayName'] as String,
+      hidden: map['hidden'] == null ? null : map['hidden'] as bool,
+    );
+  }
+}
+

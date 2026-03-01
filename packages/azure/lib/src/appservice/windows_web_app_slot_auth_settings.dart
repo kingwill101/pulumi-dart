@@ -1,0 +1,120 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'windows_web_app_slot_auth_settings_active_directory.dart';
+import 'windows_web_app_slot_auth_settings_facebook.dart';
+import 'windows_web_app_slot_auth_settings_github.dart';
+import 'windows_web_app_slot_auth_settings_google.dart';
+import 'windows_web_app_slot_auth_settings_microsoft.dart';
+import 'windows_web_app_slot_auth_settings_twitter.dart';
+
+class WindowsWebAppSlotAuthSettings {
+  /// An `active_directory` block as defined above.
+  final WindowsWebAppSlotAuthSettingsActiveDirectory? activeDirectory;
+  /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
+  final Map<String, String>? additionalLoginParameters;
+  /// Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Web App Slot.
+  final List<String>? allowedExternalRedirectUrls;
+  /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
+  ///
+  /// > **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticated_client_action` is set to "RedirectToLoginPage".
+  final String? defaultProvider;
+  /// Should the Authentication / Authorization feature be enabled for the Windows Web App?
+  final bool enabled;
+  /// A `facebook` block as defined below.
+  final WindowsWebAppSlotAuthSettingsFacebook? facebook;
+  /// A `github` block as defined below.
+  final WindowsWebAppSlotAuthSettingsGithub? github;
+  /// A `google` block as defined below.
+  final WindowsWebAppSlotAuthSettingsGoogle? google;
+  /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this Windows Web App Slot.
+  ///
+  /// > **Note:** When using Azure Active Directory, this value is the URI of the directory tenant, e.g. <https://sts.windows.net/{tenant-guid}/>.
+  final String? issuer;
+  /// A `microsoft` block as defined below.
+  final WindowsWebAppSlotAuthSettingsMicrosoft? microsoft;
+  /// The RuntimeVersion of the Authentication / Authorization feature in use for the Windows Web App Slot.
+  final String? runtimeVersion;
+  /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
+  final double? tokenRefreshExtensionHours;
+  /// Should the Windows Web App Slot durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
+  final bool? tokenStoreEnabled;
+  /// A `twitter` block as defined below.
+  final WindowsWebAppSlotAuthSettingsTwitter? twitter;
+  /// The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
+  final String? unauthenticatedClientAction;
+
+  /// Creates a new [WindowsWebAppSlotAuthSettings].
+  /// [activeDirectory] An `active_directory` block as defined above.
+  /// [additionalLoginParameters] Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
+  /// [allowedExternalRedirectUrls] Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Web App Slot.
+  /// [defaultProvider] The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
+  /// [enabled] Should the Authentication / Authorization feature be enabled for the Windows Web App?
+  /// [facebook] A `facebook` block as defined below.
+  /// [github] A `github` block as defined below.
+  /// [google] A `google` block as defined below.
+  /// [issuer] The OpenID Connect Issuer URI that represents the entity which issues access tokens for this Windows Web App Slot.
+  /// [microsoft] A `microsoft` block as defined below.
+  /// [runtimeVersion] The RuntimeVersion of the Authentication / Authorization feature in use for the Windows Web App Slot.
+  /// [tokenRefreshExtensionHours] The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
+  /// [tokenStoreEnabled] Should the Windows Web App Slot durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
+  /// [twitter] A `twitter` block as defined below.
+  /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
+  WindowsWebAppSlotAuthSettings({
+    this.activeDirectory,
+    this.additionalLoginParameters,
+    this.allowedExternalRedirectUrls,
+    this.defaultProvider,
+    required this.enabled,
+    this.facebook,
+    this.github,
+    this.google,
+    this.issuer,
+    this.microsoft,
+    this.runtimeVersion,
+    this.tokenRefreshExtensionHours,
+    this.tokenStoreEnabled,
+    this.twitter,
+    this.unauthenticatedClientAction,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'activeDirectory': ?activeDirectory == null ? null : activeDirectory!.toMap(),
+      'additionalLoginParameters': ?additionalLoginParameters,
+      'allowedExternalRedirectUrls': ?allowedExternalRedirectUrls,
+      'defaultProvider': ?defaultProvider,
+      'enabled': enabled,
+      'facebook': ?facebook == null ? null : facebook!.toMap(),
+      'github': ?github == null ? null : github!.toMap(),
+      'google': ?google == null ? null : google!.toMap(),
+      'issuer': ?issuer,
+      'microsoft': ?microsoft == null ? null : microsoft!.toMap(),
+      'runtimeVersion': ?runtimeVersion,
+      'tokenRefreshExtensionHours': ?tokenRefreshExtensionHours,
+      'tokenStoreEnabled': ?tokenStoreEnabled,
+      'twitter': ?twitter == null ? null : twitter!.toMap(),
+      'unauthenticatedClientAction': ?unauthenticatedClientAction,
+    };
+  }
+
+  factory WindowsWebAppSlotAuthSettings.fromMap(Map<String, dynamic> map) {
+    return WindowsWebAppSlotAuthSettings(
+      activeDirectory: map['activeDirectory'] == null ? null : WindowsWebAppSlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>()),
+      additionalLoginParameters: map['additionalLoginParameters'] == null ? null : (map['additionalLoginParameters'] as Map).cast<String, String>(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : (map['allowedExternalRedirectUrls'] as List).cast<String>(),
+      defaultProvider: map['defaultProvider'] == null ? null : map['defaultProvider'] as String,
+      enabled: map['enabled'] as bool,
+      facebook: map['facebook'] == null ? null : WindowsWebAppSlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>()),
+      github: map['github'] == null ? null : WindowsWebAppSlotAuthSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>()),
+      google: map['google'] == null ? null : WindowsWebAppSlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>()),
+      issuer: map['issuer'] == null ? null : map['issuer'] as String,
+      microsoft: map['microsoft'] == null ? null : WindowsWebAppSlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>()),
+      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : map['tokenRefreshExtensionHours'] as double,
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : map['tokenStoreEnabled'] as bool,
+      twitter: map['twitter'] == null ? null : WindowsWebAppSlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>()),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : map['unauthenticatedClientAction'] as String,
+    );
+  }
+}
+

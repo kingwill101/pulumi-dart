@@ -1,0 +1,112 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_system_groups_group_stat.dart';
+
+class GetSystemGroupsGroup {
+  /// The App Name of Group.
+  final String app;
+  /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
+  final String callback;
+  /// The creation time of the Group.
+  final String createTime;
+  /// The description of the Group.
+  final String description;
+  /// Whether to open Group.
+  final bool enabled;
+  /// Space of national standard ID. **NOTE:** Available only in the national standard access space.
+  final String gbId;
+  /// Space of national standard signaling server address. **NOTE:** Available only in the national standard access space.
+  final String gbIp;
+  /// The ID of Group.
+  final String groupId;
+  /// The name of Group.
+  final String groupName;
+  /// The ID of the Group.
+  final String id;
+  /// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+  final String inProtocol;
+  /// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
+  final String outProtocol;
+  /// The domain name of plan streaming used by the group.
+  final String playDomain;
+  /// The domain name of push streaming used by the group.
+  final String pushDomain;
+  /// The Device statistics of Group.
+  final List<GetSystemGroupsGroupStat> stats;
+
+  /// Creates a new [GetSystemGroupsGroup].
+  /// [app] The App Name of Group.
+  /// [callback] The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
+  /// [createTime] The creation time of the Group.
+  /// [description] The description of the Group.
+  /// [enabled] Whether to open Group.
+  /// [gbId] Space of national standard ID. **NOTE:** Available only in the national standard access space.
+  /// [gbIp] Space of national standard signaling server address. **NOTE:** Available only in the national standard access space.
+  /// [groupId] The ID of Group.
+  /// [groupName] The name of Group.
+  /// [id] The ID of the Group.
+  /// [inProtocol] The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+  /// [outProtocol] The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
+  /// [playDomain] The domain name of plan streaming used by the group.
+  /// [pushDomain] The domain name of push streaming used by the group.
+  /// [stats] The Device statistics of Group.
+  GetSystemGroupsGroup({
+    required this.app,
+    required this.callback,
+    required this.createTime,
+    required this.description,
+    required this.enabled,
+    required this.gbId,
+    required this.gbIp,
+    required this.groupId,
+    required this.groupName,
+    required this.id,
+    required this.inProtocol,
+    required this.outProtocol,
+    required this.playDomain,
+    required this.pushDomain,
+    required this.stats,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'app': app,
+      'callback': callback,
+      'createTime': createTime,
+      'description': description,
+      'enabled': enabled,
+      'gbId': gbId,
+      'gbIp': gbIp,
+      'groupId': groupId,
+      'groupName': groupName,
+      'id': id,
+      'inProtocol': inProtocol,
+      'outProtocol': outProtocol,
+      'playDomain': playDomain,
+      'pushDomain': pushDomain,
+      'stats': pulumi.Input.encodeList<GetSystemGroupsGroupStat, Map<String, dynamic>>(stats, (value) => value.toMap()),
+    };
+  }
+
+  factory GetSystemGroupsGroup.fromMap(Map<String, dynamic> map) {
+    return GetSystemGroupsGroup(
+      app: map['app'] as String,
+      callback: map['callback'] as String,
+      createTime: map['createTime'] as String,
+      description: map['description'] as String,
+      enabled: map['enabled'] as bool,
+      gbId: map['gbId'] as String,
+      gbIp: map['gbIp'] as String,
+      groupId: map['groupId'] as String,
+      groupName: map['groupName'] as String,
+      id: map['id'] as String,
+      inProtocol: map['inProtocol'] as String,
+      outProtocol: map['outProtocol'] as String,
+      playDomain: map['playDomain'] as String,
+      pushDomain: map['pushDomain'] as String,
+      stats: pulumi.Input.decodeList<GetSystemGroupsGroupStat>(map['stats'], (value) => GetSystemGroupsGroupStat.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

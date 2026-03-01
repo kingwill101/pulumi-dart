@@ -5,13 +5,9 @@ import 'channel_encoder_settings_output_group_output_group_settings_archive_grou
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
   /// Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings?
-  archiveCdnSettings;
-
+  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings? archiveCdnSettings;
   /// A director and base filename where archive files should be written. See Destination for more details.
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination
-  destination;
-
+  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination destination;
   /// Number of seconds to write to archive file before closing and starting a new one.
   final int? rolloverInterval;
 
@@ -27,30 +23,18 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveCdnSettings': ?archiveCdnSettings == null
-          ? null
-          : archiveCdnSettings!.toMap(),
+      'archiveCdnSettings': ?archiveCdnSettings == null ? null : archiveCdnSettings!.toMap(),
       'destination': destination.toMap(),
       'rolloverInterval': ?rolloverInterval,
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
-      archiveCdnSettings: map['archiveCdnSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap(
-              (map['archiveCdnSettings'] as Map).cast<String, dynamic>(),
-            ),
-      destination:
-          ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap(
-            (map['destination'] as Map).cast<String, dynamic>(),
-          ),
-      rolloverInterval: map['rolloverInterval'] == null
-          ? null
-          : map['rolloverInterval'] as int,
+      archiveCdnSettings: map['archiveCdnSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((map['archiveCdnSettings'] as Map).cast<String, dynamic>()),
+      destination: ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      rolloverInterval: map['rolloverInterval'] == null ? null : map['rolloverInterval'] as int,
     );
   }
 }
+

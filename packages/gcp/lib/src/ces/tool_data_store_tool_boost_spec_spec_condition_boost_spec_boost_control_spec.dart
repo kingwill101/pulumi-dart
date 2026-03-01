@@ -13,20 +13,14 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   /// NUMERICAL
   /// FRESHNESS
   final String? attributeType;
-
   /// The control points used to define the curve. The monotonic function
   /// (defined through the interpolation_type above) passes through the
   /// control points listed here.
   /// Structure is documented below.
-  final List<
-    ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
-  >?
-  controlPoints;
-
+  final List<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>? controlPoints;
   /// The name of the field whose value will be used to determine the
   /// boost amount.
   final String? fieldName;
-
   /// The interpolation type to be applied to connect the control points
   /// listed below.
   /// Possible values:
@@ -48,39 +42,19 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeType': ?attributeType,
-      'controlPoints': ?controlPoints == null
-          ? null
-          : pulumi.Input.encodeList<
-              ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint,
-              Map<String, dynamic>
-            >(controlPoints!, (value) => value.toMap()),
+      'controlPoints': ?controlPoints == null ? null : pulumi.Input.encodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint, Map<String, dynamic>>(controlPoints!, (value) => value.toMap()),
       'fieldName': ?fieldName,
       'interpolationType': ?interpolationType,
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec(
-      attributeType: map['attributeType'] == null
-          ? null
-          : map['attributeType'] as String,
-      controlPoints: map['controlPoints'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
-            >(
-              map['controlPoints'],
-              (value) =>
-                  ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      attributeType: map['attributeType'] == null ? null : map['attributeType'] as String,
+      controlPoints: map['controlPoints'] == null ? null : pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(map['controlPoints'], (value) => ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap((value as Map).cast<String, dynamic>())),
       fieldName: map['fieldName'] == null ? null : map['fieldName'] as String,
-      interpolationType: map['interpolationType'] == null
-          ? null
-          : map['interpolationType'] as String,
+      interpolationType: map['interpolationType'] == null ? null : map['interpolationType'] as String,
     );
   }
 }
+

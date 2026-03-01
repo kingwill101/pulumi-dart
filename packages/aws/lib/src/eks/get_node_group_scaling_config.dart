@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNodeGroupScalingConfig {
   /// Desired number of worker nodes.
   final int desiredSize;
-
   /// Maximum number of worker nodes.
   final int maxSize;
-
   /// Minimum number of worker nodes.
   final int minSize;
 
@@ -36,3 +35,4 @@ class GetNodeGroupScalingConfig {
     );
   }
 }
+

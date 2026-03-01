@@ -1,0 +1,106 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'key_vault_secret_reference_response.dart';
+
+/// Describes a Virtual Machine Scale Set Extension.
+class VirtualMachineScaleSetExtensionResponse {
+  /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  final bool? autoUpgradeMinorVersion;
+  /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+  final bool? enableAutomaticUpgrade;
+  /// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+  final String? forceUpdateTag;
+  /// Resource Id
+  final String id;
+  /// Resource name
+  final String? name;
+  /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  final dynamic protectedSettings;
+  /// The extensions protected settings that are passed by reference, and consumed from key vault
+  final KeyVaultSecretReferenceResponse? protectedSettingsFromKeyVault;
+  /// Collection of extension names after which this extension needs to be provisioned.
+  final List<String>? provisionAfterExtensions;
+  /// The provisioning state, which only appears in the response.
+  final String provisioningState;
+  /// The name of the extension handler publisher.
+  final String? publisher;
+  /// Json formatted public settings for the extension.
+  final dynamic settings;
+  /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+  final bool? suppressFailures;
+  /// Resource type
+  final String type;
+  /// Specifies the version of the script handler.
+  final String? typeHandlerVersion;
+
+  /// Creates a new [VirtualMachineScaleSetExtensionResponse].
+  /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  /// [enableAutomaticUpgrade] Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+  /// [forceUpdateTag] If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+  /// [id] Resource Id
+  /// [name] Resource name
+  /// [protectedSettings] The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  /// [protectedSettingsFromKeyVault] The extensions protected settings that are passed by reference, and consumed from key vault
+  /// [provisionAfterExtensions] Collection of extension names after which this extension needs to be provisioned.
+  /// [provisioningState] The provisioning state, which only appears in the response.
+  /// [publisher] The name of the extension handler publisher.
+  /// [settings] Json formatted public settings for the extension.
+  /// [suppressFailures] Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+  /// [type] Resource type
+  /// [typeHandlerVersion] Specifies the version of the script handler.
+  VirtualMachineScaleSetExtensionResponse({
+    this.autoUpgradeMinorVersion,
+    this.enableAutomaticUpgrade,
+    this.forceUpdateTag,
+    required this.id,
+    this.name,
+    this.protectedSettings,
+    this.protectedSettingsFromKeyVault,
+    this.provisionAfterExtensions,
+    required this.provisioningState,
+    this.publisher,
+    this.settings,
+    this.suppressFailures,
+    required this.type,
+    this.typeHandlerVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
+      'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
+      'forceUpdateTag': ?forceUpdateTag,
+      'id': id,
+      'name': ?name,
+      'protectedSettings': ?protectedSettings,
+      'protectedSettingsFromKeyVault': ?protectedSettingsFromKeyVault == null ? null : protectedSettingsFromKeyVault!.toMap(),
+      'provisionAfterExtensions': ?provisionAfterExtensions,
+      'provisioningState': provisioningState,
+      'publisher': ?publisher,
+      'settings': ?settings,
+      'suppressFailures': ?suppressFailures,
+      'type': type,
+      'typeHandlerVersion': ?typeHandlerVersion,
+    };
+  }
+
+  factory VirtualMachineScaleSetExtensionResponse.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineScaleSetExtensionResponse(
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      id: map['id'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>()),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions'] as List).cast<String>(),
+      provisioningState: map['provisioningState'] as String,
+      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+      settings: map['settings'] == null ? null : map['settings'],
+      suppressFailures: map['suppressFailures'] == null ? null : map['suppressFailures'] as bool,
+      type: map['type'] as String,
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+    );
+  }
+}
+

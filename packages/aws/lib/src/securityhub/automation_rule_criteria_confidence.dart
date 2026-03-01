@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutomationRuleCriteriaConfidence {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final double? eq;
   final double? gt;
-
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final double? gte;
   final double? lt;
-
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final double? lte;
 
@@ -46,3 +45,4 @@ class AutomationRuleCriteriaConfidence {
     );
   }
 }
+

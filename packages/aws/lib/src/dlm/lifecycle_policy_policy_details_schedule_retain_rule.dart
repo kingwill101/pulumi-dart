@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LifecyclePolicyPolicyDetailsScheduleRetainRule {
   final int? count;
   final int? interval;
@@ -23,15 +24,12 @@ class LifecyclePolicyPolicyDetailsScheduleRetainRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleRetainRule(
       count: map['count'] == null ? null : map['count'] as int,
       interval: map['interval'] == null ? null : map['interval'] as int,
-      intervalUnit: map['intervalUnit'] == null
-          ? null
-          : map['intervalUnit'] as String,
+      intervalUnit: map['intervalUnit'] == null ? null : map['intervalUnit'] as String,
     );
   }
 }
+

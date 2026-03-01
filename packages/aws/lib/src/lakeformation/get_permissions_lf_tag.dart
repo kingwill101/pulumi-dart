@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPermissionsLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String catalogId;
-
   /// Key-name for the tag.
   final String key;
-
   /// List of possible values an attribute can take.
   ///
   /// The following argument is optional:
@@ -38,3 +37,4 @@ class GetPermissionsLfTag {
     );
   }
 }
+

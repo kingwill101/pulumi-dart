@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload {
   final String value;
 
@@ -10,14 +11,15 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariatio
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload(
       value: map['value'] as String,
     );
   }
 }
+

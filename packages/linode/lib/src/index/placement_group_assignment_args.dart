@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_placement_group_assignment_placement_group_assignment_args_doc}
+/// The set of arguments for PlacementGroupAssignment.
+/// {@endtemplate}
+/// {@macro pulumi_index_placement_group_assignment_placement_group_assignment_args_doc}
+class PlacementGroupAssignmentArgs {
+  final pulumi.Input<bool>? compliantOnly;
+  /// The unique ID of the Linode to assign.
+  final pulumi.Input<int> linodeId;
+  /// The unique ID of the target Placement Group.
+  final pulumi.Input<int> placementGroupId;
+
+  /// Creates a new [PlacementGroupAssignmentArgs].
+  /// [compliantOnly] Optional.
+  /// [linodeId] The unique ID of the Linode to assign.
+  /// [placementGroupId] The unique ID of the target Placement Group.
+  PlacementGroupAssignmentArgs({
+    bool? compliantOnly,
+    required int linodeId,
+    required int placementGroupId,
+  }) :
+      compliantOnly = pulumi.Input.asOptionalInput<bool>(compliantOnly),
+      linodeId = pulumi.Input.asInput<int>(linodeId),
+      placementGroupId = pulumi.Input.asInput<int>(placementGroupId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'compliantOnly': ?compliantOnly,
+      'linodeId': linodeId,
+      'placementGroupId': placementGroupId,
+    };
+  }
+
+  factory PlacementGroupAssignmentArgs.fromMap(Map<String, dynamic> map) {
+    return PlacementGroupAssignmentArgs(
+      compliantOnly: map['compliantOnly'] == null ? null : map['compliantOnly'] as bool,
+      linodeId: map['linodeId'] as int,
+      placementGroupId: map['placementGroupId'] as int,
+    );
+  }
+}
+

@@ -6,38 +6,29 @@ import 'link_link_configuration_metric_configuration.dart';
 class LinkLinkConfiguration {
   /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
   final LinkLinkConfigurationLogGroupConfiguration? logGroupConfiguration;
-
   /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
   final LinkLinkConfigurationMetricConfiguration? metricConfiguration;
 
   /// Creates a new [LinkLinkConfiguration].
   /// [logGroupConfiguration] Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
   /// [metricConfiguration] Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
-  LinkLinkConfiguration({this.logGroupConfiguration, this.metricConfiguration});
+  LinkLinkConfiguration({
+    this.logGroupConfiguration,
+    this.metricConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logGroupConfiguration': ?logGroupConfiguration == null
-          ? null
-          : logGroupConfiguration!.toMap(),
-      'metricConfiguration': ?metricConfiguration == null
-          ? null
-          : metricConfiguration!.toMap(),
+      'logGroupConfiguration': ?logGroupConfiguration == null ? null : logGroupConfiguration!.toMap(),
+      'metricConfiguration': ?metricConfiguration == null ? null : metricConfiguration!.toMap(),
     };
   }
 
   factory LinkLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return LinkLinkConfiguration(
-      logGroupConfiguration: map['logGroupConfiguration'] == null
-          ? null
-          : LinkLinkConfigurationLogGroupConfiguration.fromMap(
-              (map['logGroupConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      metricConfiguration: map['metricConfiguration'] == null
-          ? null
-          : LinkLinkConfigurationMetricConfiguration.fromMap(
-              (map['metricConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      logGroupConfiguration: map['logGroupConfiguration'] == null ? null : LinkLinkConfigurationLogGroupConfiguration.fromMap((map['logGroupConfiguration'] as Map).cast<String, dynamic>()),
+      metricConfiguration: map['metricConfiguration'] == null ? null : LinkLinkConfigurationMetricConfiguration.fromMap((map['metricConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

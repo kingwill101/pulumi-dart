@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ContinuousDeploymentPolicyStagingDistributionDnsNames {
   /// A list of CloudFront domain names for the staging distribution.
   final List<String>? items;
-
   /// Number of CloudFront domain names in the staging distribution.
   final int quantity;
 
@@ -16,17 +16,17 @@ class ContinuousDeploymentPolicyStagingDistributionDnsNames {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': ?items, 'quantity': quantity};
+    return <String, dynamic>{
+      'items': ?items,
+      'quantity': quantity,
+    };
   }
 
-  factory ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyStagingDistributionDnsNames(
-      items: map['items'] == null
-          ? null
-          : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
       quantity: map['quantity'] as int,
     );
   }
 }
+

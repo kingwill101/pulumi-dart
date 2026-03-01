@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FileCacheLustreConfigurationLogConfiguration {
   final String? destination;
   final String? level;
@@ -7,20 +8,23 @@ class FileCacheLustreConfigurationLogConfiguration {
   /// Creates a new [FileCacheLustreConfigurationLogConfiguration].
   /// [destination] Optional.
   /// [level] Optional.
-  FileCacheLustreConfigurationLogConfiguration({this.destination, this.level});
+  FileCacheLustreConfigurationLogConfiguration({
+    this.destination,
+    this.level,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'destination': ?destination, 'level': ?level};
+    return <String, dynamic>{
+      'destination': ?destination,
+      'level': ?level,
+    };
   }
 
-  factory FileCacheLustreConfigurationLogConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FileCacheLustreConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return FileCacheLustreConfigurationLogConfiguration(
-      destination: map['destination'] == null
-          ? null
-          : map['destination'] as String,
+      destination: map['destination'] == null ? null : map['destination'] as String,
       level: map['level'] == null ? null : map['level'] as String,
     );
   }
 }
+

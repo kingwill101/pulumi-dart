@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TriggerPubsubConfig {
   /// Service account that will make the push request.
   final String? serviceAccountEmail;
-
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
   final String? state;
-
   /// (Output)
   /// Output only. Name of the subscription.
   final String? subscription;
-
   /// The name of the topic from which this subscription is receiving messages.
   final String topic;
 
@@ -39,14 +37,11 @@ class TriggerPubsubConfig {
 
   factory TriggerPubsubConfig.fromMap(Map<String, dynamic> map) {
     return TriggerPubsubConfig(
-      serviceAccountEmail: map['serviceAccountEmail'] == null
-          ? null
-          : map['serviceAccountEmail'] as String,
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : map['serviceAccountEmail'] as String,
       state: map['state'] == null ? null : map['state'] as String,
-      subscription: map['subscription'] == null
-          ? null
-          : map['subscription'] as String,
+      subscription: map['subscription'] == null ? null : map['subscription'] as String,
       topic: map['topic'] as String,
     );
   }
 }
+

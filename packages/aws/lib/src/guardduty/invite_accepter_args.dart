@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InviteAccepterArgs {
   /// The detector ID of the member GuardDuty account.
   final pulumi.Input<String> detectorId;
-
   /// AWS account ID for primary account.
   final pulumi.Input<String> masterAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class InviteAccepterArgs {
     required String detectorId,
     required String masterAccountId,
     String? region,
-  }) : detectorId = pulumi.Input.asInput<String>(detectorId),
-       masterAccountId = pulumi.Input.asInput<String>(masterAccountId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      detectorId = pulumi.Input.asInput<String>(detectorId),
+      masterAccountId = pulumi.Input.asInput<String>(masterAccountId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class InviteAccepterArgs {
     );
   }
 }
+

@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessEntryArgs {
   /// Name of the EKS Cluster.
   final pulumi.Input<String> clusterName;
-
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
   final pulumi.Input<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
-
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -32,11 +29,12 @@ class GetAccessEntryArgs {
     String? region,
     Map<String, String>? tags,
     Map<String, String>? tagsAll,
-  }) : clusterName = pulumi.Input.asInput<String>(clusterName),
-       principalArn = pulumi.Input.asInput<String>(principalArn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+  }) :
+      clusterName = pulumi.Input.asInput<String>(clusterName),
+      principalArn = pulumi.Input.asInput<String>(principalArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +51,9 @@ class GetAccessEntryArgs {
       clusterName: map['clusterName'] as String,
       principalArn: map['principalArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      tagsAll: map['tagsAll'] == null
-          ? null
-          : (map['tagsAll'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tagsAll: map['tagsAll'] == null ? null : (map['tagsAll'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -11,32 +11,20 @@ class RepositoryVirtualRepositoryConfig {
 
   /// Creates a new [RepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual
-  RepositoryVirtualRepositoryConfig({this.upstreamPolicies});
+  RepositoryVirtualRepositoryConfig({
+    this.upstreamPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'upstreamPolicies': ?upstreamPolicies == null
-          ? null
-          : pulumi.Input.encodeList<
-              RepositoryVirtualRepositoryConfigUpstreamPolicy,
-              Map<String, dynamic>
-            >(upstreamPolicies!, (value) => value.toMap()),
+      'upstreamPolicies': ?upstreamPolicies == null ? null : pulumi.Input.encodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy, Map<String, dynamic>>(upstreamPolicies!, (value) => value.toMap()),
     };
   }
 
   factory RepositoryVirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryVirtualRepositoryConfig(
-      upstreamPolicies: map['upstreamPolicies'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RepositoryVirtualRepositoryConfigUpstreamPolicy
-            >(
-              map['upstreamPolicies'],
-              (value) =>
-                  RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      upstreamPolicies: map['upstreamPolicies'] == null ? null : pulumi.Input.decodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy>(map['upstreamPolicies'], (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

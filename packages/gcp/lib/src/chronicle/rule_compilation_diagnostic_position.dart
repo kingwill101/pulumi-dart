@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleCompilationDiagnosticPosition {
   /// (Output)
   /// Output only. End column number, beginning at 1.
   final int? endColumn;
-
   /// (Output)
   /// Output only. End line number, beginning at 1.
   final int? endLine;
-
   /// (Output)
   /// Output only. Start column number, beginning at 1.
   final int? startColumn;
-
   /// (Output)
   /// Output only. Start line number, beginning at 1.
   final int? startLine;
@@ -42,10 +40,9 @@ class RuleCompilationDiagnosticPosition {
     return RuleCompilationDiagnosticPosition(
       endColumn: map['endColumn'] == null ? null : map['endColumn'] as int,
       endLine: map['endLine'] == null ? null : map['endLine'] as int,
-      startColumn: map['startColumn'] == null
-          ? null
-          : map['startColumn'] as int,
+      startColumn: map['startColumn'] == null ? null : map['startColumn'] as int,
       startLine: map['startLine'] == null ? null : map['startLine'] as int,
     );
   }
 }
+

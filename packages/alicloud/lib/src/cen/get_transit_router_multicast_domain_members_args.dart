@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cen_get_transit_router_multicast_domain_members_get_transit_router_multicast_domain_members_args_doc}
+/// Arguments for getTransitRouterMulticastDomainMembers.
+/// {@endtemplate}
+/// {@macro pulumi_cen_get_transit_router_multicast_domain_members_get_transit_router_multicast_domain_members_args_doc}
+class GetTransitRouterMulticastDomainMembersArgs {
+  /// A list of Transit Router Multicast Domain Member IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// The ID of the ENI.
+  final pulumi.Input<String>? networkInterfaceId;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+  /// The ID of the multicast domain to which the multicast member belongs.
+  final pulumi.Input<String> transitRouterMulticastDomainId;
+
+  /// Creates a new [GetTransitRouterMulticastDomainMembersArgs].
+  /// [ids] A list of Transit Router Multicast Domain Member IDs.
+  /// [networkInterfaceId] The ID of the ENI.
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
+  GetTransitRouterMulticastDomainMembersArgs({
+    List<String>? ids,
+    String? networkInterfaceId,
+    String? outputFile,
+    required String transitRouterMulticastDomainId,
+  }) :
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ids': ?ids,
+      'networkInterfaceId': ?networkInterfaceId,
+      'outputFile': ?outputFile,
+      'transitRouterMulticastDomainId': transitRouterMulticastDomainId,
+    };
+  }
+
+  factory GetTransitRouterMulticastDomainMembersArgs.fromMap(Map<String, dynamic> map) {
+    return GetTransitRouterMulticastDomainMembersArgs(
+      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
+    );
+  }
+}
+

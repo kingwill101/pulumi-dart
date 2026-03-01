@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReplicatorKafkaClusterVpcConfig {
   /// The AWS security groups to associate with the ENIs used by the replicator. If a security group is not specified, the default security group associated with the VPC is used.
   final List<String>? securityGroupsIds;
-
   /// The list of subnets to connect to in the virtual private cloud (VPC). AWS creates elastic network interfaces inside these subnets to allow communication between your Kafka Cluster and the replicator.
   final List<String> subnetIds;
 
@@ -24,10 +24,9 @@ class ReplicatorKafkaClusterVpcConfig {
 
   factory ReplicatorKafkaClusterVpcConfig.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaClusterVpcConfig(
-      securityGroupsIds: map['securityGroupsIds'] == null
-          ? null
-          : (map['securityGroupsIds'] as List).cast<String>(),
+      securityGroupsIds: map['securityGroupsIds'] == null ? null : (map['securityGroupsIds'] as List).cast<String>(),
       subnetIds: (map['subnetIds'] as List).cast<String>(),
     );
   }
 }
+

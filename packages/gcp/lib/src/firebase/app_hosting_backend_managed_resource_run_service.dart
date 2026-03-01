@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppHostingBackendManagedResourceRunService {
   /// (Output)
   /// The name of the Cloud Run
@@ -10,17 +11,20 @@ class AppHostingBackendManagedResourceRunService {
 
   /// Creates a new [AppHostingBackendManagedResourceRunService].
   /// [service] (Output)
-  AppHostingBackendManagedResourceRunService({this.service});
+  AppHostingBackendManagedResourceRunService({
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': ?service};
+    return <String, dynamic>{
+      'service': ?service,
+    };
   }
 
-  factory AppHostingBackendManagedResourceRunService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppHostingBackendManagedResourceRunService.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendManagedResourceRunService(
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

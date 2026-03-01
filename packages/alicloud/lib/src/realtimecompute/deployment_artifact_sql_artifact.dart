@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DeploymentArtifactSqlArtifact {
+  /// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+  final List<String>? additionalDependencies;
+  /// Text content of the SQL job
+  final String? sqlScript;
+
+  /// Creates a new [DeploymentArtifactSqlArtifact].
+  /// [additionalDependencies] Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+  /// [sqlScript] Text content of the SQL job
+  DeploymentArtifactSqlArtifact({
+    this.additionalDependencies,
+    this.sqlScript,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'additionalDependencies': ?additionalDependencies,
+      'sqlScript': ?sqlScript,
+    };
+  }
+
+  factory DeploymentArtifactSqlArtifact.fromMap(Map<String, dynamic> map) {
+    return DeploymentArtifactSqlArtifact(
+      additionalDependencies: map['additionalDependencies'] == null ? null : (map['additionalDependencies'] as List).cast<String>(),
+      sqlScript: map['sqlScript'] == null ? null : map['sqlScript'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of the connection fields.
+class FieldDefinitionResponse {
+  /// Gets or sets the isEncrypted flag of the connection field definition.
+  final bool? isEncrypted;
+  /// Gets or sets the isOptional flag of the connection field definition.
+  final bool? isOptional;
+  /// Gets or sets the type of the connection field definition.
+  final String type;
+
+  /// Creates a new [FieldDefinitionResponse].
+  /// [isEncrypted] Gets or sets the isEncrypted flag of the connection field definition.
+  /// [isOptional] Gets or sets the isOptional flag of the connection field definition.
+  /// [type] Gets or sets the type of the connection field definition.
+  FieldDefinitionResponse({
+    this.isEncrypted,
+    this.isOptional,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'isEncrypted': ?isEncrypted,
+      'isOptional': ?isOptional,
+      'type': type,
+    };
+  }
+
+  factory FieldDefinitionResponse.fromMap(Map<String, dynamic> map) {
+    return FieldDefinitionResponse(
+      isEncrypted: map['isEncrypted'] == null ? null : map['isEncrypted'] as bool,
+      isOptional: map['isOptional'] == null ? null : map['isOptional'] as bool,
+      type: map['type'] as String,
+    );
+  }
+}
+

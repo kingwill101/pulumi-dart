@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUsersUserName {
   /// Family name of the user.
   final String familyName;
-
   /// Name that is typically displayed when the name is shown for display.
   final String formatted;
-
   /// Given name of the user.
   final String givenName;
-
   /// Honorific prefix of the user.
   final String honorificPrefix;
-
   /// Honorific suffix of the user.
   final String honorificSuffix;
-
   /// Middle name of the user.
   final String middleName;
 
@@ -57,3 +53,4 @@ class GetUsersUserName {
     );
   }
 }
+

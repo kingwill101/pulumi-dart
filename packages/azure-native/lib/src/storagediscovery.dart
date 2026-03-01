@@ -1,0 +1,14 @@
+library module_storagediscovery;
+
+export 'storagediscovery/functions.dart';
+export 'storagediscovery/get_storage_discovery_workspace_args.dart';
+export 'storagediscovery/get_storage_discovery_workspace_result.dart';
+export 'storagediscovery/storage_discovery_resource_type.dart';
+export 'storagediscovery/storage_discovery_scope.dart';
+export 'storagediscovery/storage_discovery_scope_response.dart';
+export 'storagediscovery/storage_discovery_sku.dart';
+export 'storagediscovery/storage_discovery_workspace.dart';
+export 'storagediscovery/storage_discovery_workspace_args.dart';
+export 'storagediscovery/storage_discovery_workspace_properties.dart';
+export 'storagediscovery/storage_discovery_workspace_properties_response.dart';
+export 'storagediscovery/system_data_response.dart';

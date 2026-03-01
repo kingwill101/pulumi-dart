@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParametersByPathArgs {
   /// The hierarchy for the parameter. Hierarchies start with a forward slash (/). The hierarchy is the parameter name except the last part of the parameter. The last part of the parameter name can't be in the path. A parameter name hierarchy can have a maximum of 15 levels. **Note:** If the parameter name (e.g., `/my-app/my-param`) is specified, the data source will not retrieve any value as designed, unless there are other parameters that happen to use the former path in their hierarchy (e.g., `/my-app/my-param/my-actual-param`).
   final pulumi.Input<String> path;
-
   /// Whether to retrieve all parameters within the hirerachy. Defaults to `false`.
   final pulumi.Input<bool>? recursive;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether to retrieve all parameters in the hierarchy, particularly those of `SecureString` type, with their value decrypted. Defaults to `true`.
   final pulumi.Input<bool>? withDecryption;
 
@@ -29,10 +26,11 @@ class GetParametersByPathArgs {
     bool? recursive,
     String? region,
     bool? withDecryption,
-  }) : path = pulumi.Input.asInput<String>(path),
-       recursive = pulumi.Input.asOptionalInput<bool>(recursive),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       withDecryption = pulumi.Input.asOptionalInput<bool>(withDecryption);
+  }) :
+      path = pulumi.Input.asInput<String>(path),
+      recursive = pulumi.Input.asOptionalInput<bool>(recursive),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      withDecryption = pulumi.Input.asOptionalInput<bool>(withDecryption);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +46,8 @@ class GetParametersByPathArgs {
       path: map['path'] as String,
       recursive: map['recursive'] == null ? null : map['recursive'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
-      withDecryption: map['withDecryption'] == null
-          ? null
-          : map['withDecryption'] as bool,
+      withDecryption: map['withDecryption'] == null ? null : map['withDecryption'] as bool,
     );
   }
 }
+

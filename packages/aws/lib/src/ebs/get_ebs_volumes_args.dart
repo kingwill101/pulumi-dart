@@ -10,10 +10,8 @@ import 'get_ebs_volumes_filter.dart';
 class GetEbsVolumesArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetEbsVolumesFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired volumes.
   ///
@@ -29,26 +27,14 @@ class GetEbsVolumesArgs {
     List<GetEbsVolumesFilter>? filters,
     String? region,
     Map<String, String>? tags,
-  }) : filters = pulumi.Input.asOptionalInput<List<GetEbsVolumesFilter>>(
-         filters,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetEbsVolumesFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetEbsVolumesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetEbsVolumesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetEbsVolumesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetEbsVolumesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
     };
@@ -56,18 +42,10 @@ class GetEbsVolumesArgs {
 
   factory GetEbsVolumesArgs.fromMap(Map<String, dynamic> map) {
     return GetEbsVolumesArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetEbsVolumesFilter>(
-              map['filters'],
-              (value) => GetEbsVolumesFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetEbsVolumesFilter>(map['filters'], (value) => GetEbsVolumesFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

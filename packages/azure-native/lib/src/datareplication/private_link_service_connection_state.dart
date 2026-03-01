@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Represents Private link service connection state.
+class PrivateLinkServiceConnectionState {
+  /// Gets or sets actions required.
+  final String? actionsRequired;
+  /// Gets or sets description.
+  final String? description;
+  /// Gets or sets the status.
+  final String? status;
+
+  /// Creates a new [PrivateLinkServiceConnectionState].
+  /// [actionsRequired] Gets or sets actions required.
+  /// [description] Gets or sets description.
+  /// [status] Gets or sets the status.
+  PrivateLinkServiceConnectionState({
+    this.actionsRequired,
+    this.description,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actionsRequired': ?actionsRequired,
+      'description': ?description,
+      'status': ?status,
+    };
+  }
+
+  factory PrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
+    return PrivateLinkServiceConnectionState(
+      actionsRequired: map['actionsRequired'] == null ? null : map['actionsRequired'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}
+

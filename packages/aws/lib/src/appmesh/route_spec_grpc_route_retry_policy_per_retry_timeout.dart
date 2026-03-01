@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   /// Retry unit. Valid values: `ms`, `s`.
   final String unit;
-
   /// Retry value.
   final int value;
 
@@ -16,15 +16,17 @@ class RouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory RouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteRetryPolicyPerRetryTimeout(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
+

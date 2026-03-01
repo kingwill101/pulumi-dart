@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSOrganization {
   /// The Google for Work customer ID of the Organization.
   final String directoryCustomerId;
-
   /// A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
   final String displayName;
-
   /// The Organization's current lifecycle state.
   final String lifecycleState;
-
   /// The resource name of the Organization in the form `organizations/{organization_id}`.
   final String name;
-
   /// The Organization ID.
   final String orgId;
 
@@ -50,3 +47,4 @@ class GetSOrganization {
     );
   }
 }
+

@@ -250,13 +250,10 @@ import 'zone_association_args.dart';
 class ZoneAssociation extends pulumi.CustomResource {
   /// The account ID of the account that created the hosted zone.
   late final pulumi.Output<String> owningAccount;
-
   /// The VPC to associate with the private hosted zone.
   late final pulumi.Output<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   late final pulumi.Output<String> vpcRegion;
-
   /// The private hosted zone to associate.
   late final pulumi.Output<String> zoneId;
 
@@ -269,11 +266,11 @@ class ZoneAssociation extends pulumi.CustomResource {
     ZoneAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/zoneAssociation:ZoneAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/zoneAssociation:ZoneAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.owningAccount = registerOutput<String>('owningAccount');
     this.vpcId = registerOutput<String>('vpcId');
     this.vpcRegion = registerOutput<String>('vpcRegion');

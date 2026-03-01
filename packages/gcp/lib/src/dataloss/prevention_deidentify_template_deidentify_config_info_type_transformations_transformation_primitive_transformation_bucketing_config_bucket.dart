@@ -8,20 +8,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// Upper bound of the range, exclusive; type must match min.
   /// The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax?
-  max;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax? max;
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
   /// The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin?
-  min;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin? min;
   /// Replacement value for this bucket.
   /// The `replacement_value` block must only contain one argument.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue
-  replacementValue;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue replacementValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket].
   /// [max] Upper bound of the range, exclusive; type must match min.
@@ -41,24 +36,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket(
-      max: map['max'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax.fromMap(
-              (map['max'] as Map).cast<String, dynamic>(),
-            ),
-      min: map['min'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin.fromMap(
-              (map['min'] as Map).cast<String, dynamic>(),
-            ),
-      replacementValue:
-          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue.fromMap(
-            (map['replacementValue'] as Map).cast<String, dynamic>(),
-          ),
+      max: map['max'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax.fromMap((map['max'] as Map).cast<String, dynamic>()),
+      min: map['min'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin.fromMap((map['min'] as Map).cast<String, dynamic>()),
+      replacementValue: PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue.fromMap((map['replacementValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

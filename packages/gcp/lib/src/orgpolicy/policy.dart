@@ -1281,16 +1281,12 @@ class Policy extends pulumi.CustomResource {
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
   /// Structure is documented below.
   late final pulumi.Output<PolicyDryRunSpec?> dryRunSpec;
-
   /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   late final pulumi.Output<String> name;
-
   /// The parent of the resource.
   late final pulumi.Output<String> parent;
-
   /// Basic information about the Organization Policy.
   /// Structure is documented below.
   late final pulumi.Output<PolicySpec?> spec;
@@ -1299,13 +1295,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_orgpolicy_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:orgpolicy/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:orgpolicy/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec');
     this.etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

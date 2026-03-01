@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'resource_identity_type.dart';
+
+/// The identity of the Batch account, if configured. This is used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration or when `ManagedIdentity` is selected as the auto-storage authentication mode.
+class BatchAccountIdentity {
+  /// The type of identity used for the Batch account.
+  final ResourceIdentityType type;
+  /// The list of user identities associated with the Batch account.
+  final List<String>? userAssignedIdentities;
+
+  /// Creates a new [BatchAccountIdentity].
+  /// [type] The type of identity used for the Batch account.
+  /// [userAssignedIdentities] The list of user identities associated with the Batch account.
+  BatchAccountIdentity({
+    required this.type,
+    this.userAssignedIdentities,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': type.value,
+      'userAssignedIdentities': ?userAssignedIdentities,
+    };
+  }
+
+  factory BatchAccountIdentity.fromMap(Map<String, dynamic> map) {
+    return BatchAccountIdentity(
+      type: ResourceIdentityType.fromValue(map['type'] as String),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+    );
+  }
+}
+

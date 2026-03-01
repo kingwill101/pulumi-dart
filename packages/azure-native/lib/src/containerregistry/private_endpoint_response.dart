@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The Private Endpoint resource.
+class PrivateEndpointResponse {
+  /// This is private endpoint resource created with Microsoft.Network resource provider.
+  final String? id;
+
+  /// Creates a new [PrivateEndpointResponse].
+  /// [id] This is private endpoint resource created with Microsoft.Network resource provider.
+  PrivateEndpointResponse({
+    this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+    };
+  }
+
+  factory PrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
+    return PrivateEndpointResponse(
+      id: map['id'] == null ? null : map['id'] as String,
+    );
+  }
+}
+

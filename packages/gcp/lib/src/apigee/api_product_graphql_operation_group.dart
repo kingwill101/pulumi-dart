@@ -7,7 +7,6 @@ class ApiProductGraphqlOperationGroup {
   /// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
   /// Possible values are: `proxy`, `remoteservice`.
   final String? operationConfigType;
-
   /// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
   /// Structure is documented below.
   final List<ApiProductGraphqlOperationGroupOperationConfig>? operationConfigs;
@@ -23,30 +22,15 @@ class ApiProductGraphqlOperationGroup {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'operationConfigType': ?operationConfigType,
-      'operationConfigs': ?operationConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              ApiProductGraphqlOperationGroupOperationConfig,
-              Map<String, dynamic>
-            >(operationConfigs!, (value) => value.toMap()),
+      'operationConfigs': ?operationConfigs == null ? null : pulumi.Input.encodeList<ApiProductGraphqlOperationGroupOperationConfig, Map<String, dynamic>>(operationConfigs!, (value) => value.toMap()),
     };
   }
 
   factory ApiProductGraphqlOperationGroup.fromMap(Map<String, dynamic> map) {
     return ApiProductGraphqlOperationGroup(
-      operationConfigType: map['operationConfigType'] == null
-          ? null
-          : map['operationConfigType'] as String,
-      operationConfigs: map['operationConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ApiProductGraphqlOperationGroupOperationConfig
-            >(
-              map['operationConfigs'],
-              (value) => ApiProductGraphqlOperationGroupOperationConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      operationConfigType: map['operationConfigType'] == null ? null : map['operationConfigType'] as String,
+      operationConfigs: map['operationConfigs'] == null ? null : pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfig>(map['operationConfigs'], (value) => ApiProductGraphqlOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

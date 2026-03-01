@@ -1,0 +1,27 @@
+library module_managedops;
+
+export 'managedops/azure_monitor_configuration.dart';
+export 'managedops/azure_monitor_configuration_response.dart';
+export 'managedops/azure_monitor_information_response.dart';
+export 'managedops/change_tracking_configuration.dart';
+export 'managedops/change_tracking_configuration_response.dart';
+export 'managedops/change_tracking_information_response.dart';
+export 'managedops/defender_cspm.dart';
+export 'managedops/defender_cspm_information_response.dart';
+export 'managedops/defender_for_servers.dart';
+export 'managedops/defender_for_servers_information_response.dart';
+export 'managedops/desired_configuration.dart';
+export 'managedops/desired_configuration_response.dart';
+export 'managedops/functions.dart';
+export 'managedops/get_managed_op_args.dart';
+export 'managedops/get_managed_op_result.dart';
+export 'managedops/guest_configuration_information_response.dart';
+export 'managedops/managed_op.dart';
+export 'managedops/managed_op_args.dart';
+export 'managedops/managed_ops_properties.dart';
+export 'managedops/managed_ops_properties_response.dart';
+export 'managedops/policy_assignment_properties_response.dart';
+export 'managedops/service_information_response.dart';
+export 'managedops/sku_response.dart';
+export 'managedops/system_data_response.dart';
+export 'managedops/update_manager_information_response.dart';

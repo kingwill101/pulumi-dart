@@ -2410,61 +2410,43 @@ import 'budget_planned_limit.dart';
 class Budget extends pulumi.CustomResource {
   /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   late final pulumi.Output<String> accountId;
-
   /// The ARN of the budget.
   late final pulumi.Output<String> arn;
-
   /// Object containing AutoAdjustData which determines the budget amount for an auto-adjusting budget.
   late final pulumi.Output<BudgetAutoAdjustData?> autoAdjustData;
-
   /// ARN of the billing view.
   late final pulumi.Output<String?> billingViewArn;
-
   /// Whether this budget tracks monetary cost or usage.
   late final pulumi.Output<String> budgetType;
-
   /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filter_expression`.
   late final pulumi.Output<List<BudgetCostFilter>> costFilters;
-
   /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
   late final pulumi.Output<BudgetCostTypes> costTypes;
-
   /// Object containing Filter Expression to apply to budget. Conflicts with `cost_filter`.
   late final pulumi.Output<BudgetFilterExpression?> filterExpression;
-
   /// The amount of cost or usage being measured for a budget.
   late final pulumi.Output<String> limitAmount;
-
   /// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
   late final pulumi.Output<String> limitUnit;
-
   /// The name of a budget. Unique within accounts.
   late final pulumi.Output<String> name;
-
   /// The prefix of the name of a budget. Unique within accounts.
   late final pulumi.Output<String> namePrefix;
-
   /// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification.
   late final pulumi.Output<List<BudgetNotification>?> notifications;
-
   /// Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
   late final pulumi.Output<List<BudgetPlannedLimit>?> plannedLimits;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
   late final pulumi.Output<String?> timePeriodEnd;
-
   /// The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official
   /// documentation](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-budget.html).
   late final pulumi.Output<String> timePeriodStart;
-
   /// The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
   ///
   /// The following arguments are optional:
@@ -2474,35 +2456,30 @@ class Budget extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Budget]. {@macro pulumi_budgets_budget_budget_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Budget(String name, {BudgetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:budgets/budget:Budget',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Budget(
+    String name, {
+    BudgetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:budgets/budget:Budget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accountId = registerOutput<String>('accountId');
     this.arn = registerOutput<String>('arn');
-    this.autoAdjustData = registerOutput<BudgetAutoAdjustData?>(
-      'autoAdjustData',
-    );
+    this.autoAdjustData = registerOutput<BudgetAutoAdjustData?>('autoAdjustData');
     this.billingViewArn = registerOutput<String?>('billingViewArn');
     this.budgetType = registerOutput<String>('budgetType');
     this.costFilters = registerOutput<List<BudgetCostFilter>>('costFilters');
     this.costTypes = registerOutput<BudgetCostTypes>('costTypes');
-    this.filterExpression = registerOutput<BudgetFilterExpression?>(
-      'filterExpression',
-    );
+    this.filterExpression = registerOutput<BudgetFilterExpression?>('filterExpression');
     this.limitAmount = registerOutput<String>('limitAmount');
     this.limitUnit = registerOutput<String>('limitUnit');
     this.name = registerOutput<String>('name');
     this.namePrefix = registerOutput<String>('namePrefix');
-    this.notifications = registerOutput<List<BudgetNotification>?>(
-      'notifications',
-    );
-    this.plannedLimits = registerOutput<List<BudgetPlannedLimit>?>(
-      'plannedLimits',
-    );
+    this.notifications = registerOutput<List<BudgetNotification>?>('notifications');
+    this.plannedLimits = registerOutput<List<BudgetPlannedLimit>?>('plannedLimits');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timePeriodEnd = registerOutput<String?>('timePeriodEnd');

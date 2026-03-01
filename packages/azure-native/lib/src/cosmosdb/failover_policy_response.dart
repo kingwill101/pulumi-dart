@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The failover policy for a given region of a database account.
+class FailoverPolicyResponse {
+  /// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+  final int? failoverPriority;
+  /// The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+  final String id;
+  /// The name of the region in which the database account exists.
+  final String? locationName;
+
+  /// Creates a new [FailoverPolicyResponse].
+  /// [failoverPriority] The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+  /// [id] The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+  /// [locationName] The name of the region in which the database account exists.
+  FailoverPolicyResponse({
+    this.failoverPriority,
+    required this.id,
+    this.locationName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'failoverPriority': ?failoverPriority,
+      'id': id,
+      'locationName': ?locationName,
+    };
+  }
+
+  factory FailoverPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return FailoverPolicyResponse(
+      failoverPriority: map['failoverPriority'] == null ? null : map['failoverPriority'] as int,
+      id: map['id'] as String,
+      locationName: map['locationName'] == null ? null : map['locationName'] as String,
+    );
+  }
+}
+

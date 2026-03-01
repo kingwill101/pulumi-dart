@@ -227,36 +227,26 @@ import 'application_version_args.dart';
 class ApplicationVersion extends pulumi.CustomResource {
   /// Name of the Beanstalk Application the version is associated with.
   late final pulumi.Output<String> application;
-
   /// ARN assigned by AWS for this Elastic Beanstalk Application.
   late final pulumi.Output<String> arn;
-
   /// S3 bucket that contains the Application Version source bundle.
   late final pulumi.Output<String> bucket;
-
   /// Short description of the Application Version.
   late final pulumi.Output<String?> description;
-
   /// On delete, force an Application Version to be deleted when it may be in use by multiple Elastic Beanstalk Environments.
   late final pulumi.Output<bool?> forceDelete;
-
   /// S3 object that is the Application Version source bundle.
   late final pulumi.Output<String> key;
-
   /// Unique name for the this Application Version.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Pre-processes and validates the environment manifest (env.yaml ) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. It validates Elastic Beanstalk configuration files. It doesn’t validate your application’s configuration files, like proxy server or Docker configuration.
   late final pulumi.Output<bool?> process;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -269,11 +259,11 @@ class ApplicationVersion extends pulumi.CustomResource {
     ApplicationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.application = registerOutput<String>('application');
     this.arn = registerOutput<String>('arn');
     this.bucket = registerOutput<String>('bucket');

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionIotAnalytics {
   /// The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
   final bool? batchMode;
-
   /// Name of AWS IOT Analytics channel.
   final String channelName;
-
   /// The ARN of the IAM role that grants access.
   final String roleArn;
 
@@ -36,3 +35,4 @@ class TopicRuleErrorActionIotAnalytics {
     );
   }
 }
+

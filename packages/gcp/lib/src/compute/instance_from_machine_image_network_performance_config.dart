@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceFromMachineImageNetworkPerformanceConfig {
   /// The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
   final String totalEgressBandwidthTier;
@@ -16,11 +17,10 @@ class InstanceFromMachineImageNetworkPerformanceConfig {
     };
   }
 
-  factory InstanceFromMachineImageNetworkPerformanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceFromMachineImageNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageNetworkPerformanceConfig(
       totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
     );
   }
 }
+

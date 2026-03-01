@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentGroupOnPremisesInstanceTagFilter {
   /// The key of the tag filter.
   final String? key;
-
   /// The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   final String? type;
-
   /// The value of the tag filter.
   final String? value;
 
@@ -14,15 +13,21 @@ class DeploymentGroupOnPremisesInstanceTagFilter {
   /// [key] The key of the tag filter.
   /// [type] The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   /// [value] The value of the tag filter.
-  DeploymentGroupOnPremisesInstanceTagFilter({this.key, this.type, this.value});
+  DeploymentGroupOnPremisesInstanceTagFilter({
+    this.key,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'type': ?type, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'type': ?type,
+      'value': ?value,
+    };
   }
 
-  factory DeploymentGroupOnPremisesInstanceTagFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeploymentGroupOnPremisesInstanceTagFilter.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupOnPremisesInstanceTagFilter(
       key: map['key'] == null ? null : map['key'] as String,
       type: map['type'] == null ? null : map['type'] as String,
@@ -30,3 +35,4 @@ class DeploymentGroupOnPremisesInstanceTagFilter {
     );
   }
 }
+

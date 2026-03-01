@@ -160,31 +160,22 @@ import 'environment_api_revision_deployment_args.dart';
 class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
   /// Apigee API proxy name.
   late final pulumi.Output<String> api;
-
   /// Basepaths associated with the deployed proxy.
   late final pulumi.Output<List<String>> basepaths;
-
   /// RFC3339 timestamp when deployment started.
   late final pulumi.Output<String> deployStartTime;
-
   /// Apigee environment name.
   late final pulumi.Output<String> environment;
-
   /// Apigee organization ID.
   late final pulumi.Output<String> orgId;
-
   /// If true, replaces other deployed revisions of this proxy in the environment.
   late final pulumi.Output<bool?> override;
-
   /// API proxy revision number to deploy.
   late final pulumi.Output<int> revision;
-
   /// If true, enables sequenced rollout for safe traffic switching.
   late final pulumi.Output<bool?> sequencedRollout;
-
   /// Optional service account the deployed proxy runs as.
   late final pulumi.Output<String?> serviceAccount;
-
   /// Deployment state reported by Apigee.
   late final pulumi.Output<String> state;
 
@@ -197,11 +188,11 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
     EnvironmentApiRevisionDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.api = registerOutput<String>('api');
     this.basepaths = registerOutput<List<String>>('basepaths');
     this.deployStartTime = registerOutput<String>('deployStartTime');

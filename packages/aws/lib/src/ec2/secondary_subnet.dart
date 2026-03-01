@@ -428,41 +428,28 @@ import 'secondary_subnet_timeouts.dart';
 class SecondarySubnet extends pulumi.CustomResource {
   /// ARN of the secondary subnet.
   late final pulumi.Output<String> arn;
-
   /// Availability Zone for the secondary subnet. Cannot be specified with `availability_zone_id`.
   late final pulumi.Output<String> availabilityZone;
-
   /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availability_zone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availability_zone`.
   late final pulumi.Output<String> availabilityZoneId;
-
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
-
   /// A list of IPv4 CIDR block associations for the secondary network.
-  late final pulumi.Output<List<SecondarySubnetIpv4CidrBlockAssociation>>
-  ipv4CidrBlockAssociations;
-
+  late final pulumi.Output<List<SecondarySubnetIpv4CidrBlockAssociation>> ipv4CidrBlockAssociations;
   /// ID of the AWS account that owns the secondary subnet.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the secondary network in which to create the secondary subnet.
   late final pulumi.Output<String> secondaryNetworkId;
-
   /// Type of the secondary network (e.g., `rdma`).
   late final pulumi.Output<String> secondaryNetworkType;
-
   /// ID of the secondary subnet.
   late final pulumi.Output<String> secondarySubnetId;
-
   /// State of the IPv4 CIDR block association.
   late final pulumi.Output<String> state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SecondarySubnetTimeouts?> timeouts;
@@ -476,19 +463,16 @@ class SecondarySubnet extends pulumi.CustomResource {
     SecondarySubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/secondarySubnet:SecondarySubnet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/secondarySubnet:SecondarySubnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.availabilityZone = registerOutput<String>('availabilityZone');
     this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
     this.ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    this.ipv4CidrBlockAssociations =
-        registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>(
-          'ipv4CidrBlockAssociations',
-        );
+    this.ipv4CidrBlockAssociations = registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations');
     this.ownerId = registerOutput<String>('ownerId');
     this.region = registerOutput<String>('region');
     this.secondaryNetworkId = registerOutput<String>('secondaryNetworkId');

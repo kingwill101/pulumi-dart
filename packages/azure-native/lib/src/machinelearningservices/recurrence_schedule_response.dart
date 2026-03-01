@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class RecurrenceScheduleResponse {
+  /// [Required] List of hours for the schedule.
+  final List<int> hours;
+  /// [Required] List of minutes for the schedule.
+  final List<int> minutes;
+  /// List of month days for the schedule
+  final List<int>? monthDays;
+  /// List of days for the schedule.
+  final List<String>? weekDays;
+
+  /// Creates a new [RecurrenceScheduleResponse].
+  /// [hours] [Required] List of hours for the schedule.
+  /// [minutes] [Required] List of minutes for the schedule.
+  /// [monthDays] List of month days for the schedule
+  /// [weekDays] List of days for the schedule.
+  RecurrenceScheduleResponse({
+    required this.hours,
+    required this.minutes,
+    this.monthDays,
+    this.weekDays,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'hours': hours,
+      'minutes': minutes,
+      'monthDays': ?monthDays,
+      'weekDays': ?weekDays,
+    };
+  }
+
+  factory RecurrenceScheduleResponse.fromMap(Map<String, dynamic> map) {
+    return RecurrenceScheduleResponse(
+      hours: (map['hours'] as List).cast<int>(),
+      minutes: (map['minutes'] as List).cast<int>(),
+      monthDays: map['monthDays'] == null ? null : (map['monthDays'] as List).cast<int>(),
+      weekDays: map['weekDays'] == null ? null : (map['weekDays'] as List).cast<String>(),
+    );
+  }
+}
+

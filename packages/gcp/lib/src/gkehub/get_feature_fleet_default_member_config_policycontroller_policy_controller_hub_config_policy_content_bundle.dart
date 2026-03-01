@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
   final String bundle;
-
   /// The set of namespaces to be exempted from the bundle.
   final List<String> exemptedNamespaces;
 
@@ -21,12 +21,11 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(
       bundle: map['bundle'] as String,
       exemptedNamespaces: (map['exemptedNamespaces'] as List).cast<String>(),
     );
   }
 }
+

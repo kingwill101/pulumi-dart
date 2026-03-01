@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'circuit_breaker_rule.dart';
+
+/// The configuration of the backend circuit breaker
+class BackendCircuitBreaker {
+  /// The rules for tripping the backend.
+  final List<CircuitBreakerRule>? rules;
+
+  /// Creates a new [BackendCircuitBreaker].
+  /// [rules] The rules for tripping the backend.
+  BackendCircuitBreaker({
+    this.rules,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<CircuitBreakerRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+    };
+  }
+
+  factory BackendCircuitBreaker.fromMap(Map<String, dynamic> map) {
+    return BackendCircuitBreaker(
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<CircuitBreakerRule>(map['rules'], (value) => CircuitBreakerRule.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

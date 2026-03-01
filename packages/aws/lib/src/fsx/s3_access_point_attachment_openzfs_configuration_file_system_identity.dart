@@ -4,9 +4,7 @@ import 's3_access_point_attachment_openzfs_configuration_file_system_identity_po
 
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
   /// UID and GIDs of the file system POSIX user. See `posix_user` Block for details.
-  final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser?
-  posixUser;
-
+  final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser? posixUser;
   /// FSx for OpenZFS user identity type. Valid values: `POSIX`.
   final String type;
 
@@ -25,16 +23,11 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
     };
   }
 
-  factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity(
-      posixUser: map['posixUser'] == null
-          ? null
-          : S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap(
-              (map['posixUser'] as Map).cast<String, dynamic>(),
-            ),
+      posixUser: map['posixUser'] == null ? null : S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

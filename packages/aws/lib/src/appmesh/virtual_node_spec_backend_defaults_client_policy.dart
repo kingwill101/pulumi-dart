@@ -8,21 +8,20 @@ class VirtualNodeSpecBackendDefaultsClientPolicy {
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
-  VirtualNodeSpecBackendDefaultsClientPolicy({this.tls});
+  VirtualNodeSpecBackendDefaultsClientPolicy({
+    this.tls,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tls': ?tls == null ? null : tls!.toMap()};
+    return <String, dynamic>{
+      'tls': ?tls == null ? null : tls!.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicy(
-      tls: map['tls'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap(
-              (map['tls'] as Map).cast<String, dynamic>(),
-            ),
+      tls: map['tls'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

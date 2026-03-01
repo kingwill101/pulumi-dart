@@ -11,19 +11,24 @@ class GetGlobalClusterArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetGlobalClusterArgs].
   /// [identifier] The global cluster identifier of the RDS global cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetGlobalClusterArgs({required String identifier, String? region})
-    : identifier = pulumi.Input.asInput<String>(identifier),
+  GetGlobalClusterArgs({
+    required String identifier,
+    String? region,
+  }) :
+      identifier = pulumi.Input.asInput<String>(identifier),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'identifier': identifier, 'region': ?region};
+    return <String, dynamic>{
+      'identifier': identifier,
+      'region': ?region,
+    };
   }
 
   factory GetGlobalClusterArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class GetGlobalClusterArgs {
     );
   }
 }
+

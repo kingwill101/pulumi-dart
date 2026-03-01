@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Policy to set request timeouts
+class TimeoutPolicyResponse {
+  /// Timeout, in seconds, for a request to initiate a connection
+  final int? connectionTimeoutInSeconds;
+  /// Timeout, in seconds, for a request to respond
+  final int? responseTimeoutInSeconds;
+
+  /// Creates a new [TimeoutPolicyResponse].
+  /// [connectionTimeoutInSeconds] Timeout, in seconds, for a request to initiate a connection
+  /// [responseTimeoutInSeconds] Timeout, in seconds, for a request to respond
+  TimeoutPolicyResponse({
+    this.connectionTimeoutInSeconds,
+    this.responseTimeoutInSeconds,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'connectionTimeoutInSeconds': ?connectionTimeoutInSeconds,
+      'responseTimeoutInSeconds': ?responseTimeoutInSeconds,
+    };
+  }
+
+  factory TimeoutPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return TimeoutPolicyResponse(
+      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : map['connectionTimeoutInSeconds'] as int,
+      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : map['responseTimeoutInSeconds'] as int,
+    );
+  }
+}
+

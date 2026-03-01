@@ -7,50 +7,29 @@ import 'guardrail_topic_policy_config_topics_config.dart';
 class GuardrailTopicPolicyConfig {
   /// Configuration block for the topic policy tier. See Tier Config for more information.
   final List<GuardrailTopicPolicyConfigTierConfig>? tierConfigs;
-
   /// List of topic configs in topic policy. See Topics Config for more information.
   final List<GuardrailTopicPolicyConfigTopicsConfig>? topicsConfigs;
 
   /// Creates a new [GuardrailTopicPolicyConfig].
   /// [tierConfigs] Configuration block for the topic policy tier. See Tier Config for more information.
   /// [topicsConfigs] List of topic configs in topic policy. See Topics Config for more information.
-  GuardrailTopicPolicyConfig({this.tierConfigs, this.topicsConfigs});
+  GuardrailTopicPolicyConfig({
+    this.tierConfigs,
+    this.topicsConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tierConfigs': ?tierConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              GuardrailTopicPolicyConfigTierConfig,
-              Map<String, dynamic>
-            >(tierConfigs!, (value) => value.toMap()),
-      'topicsConfigs': ?topicsConfigs == null
-          ? null
-          : pulumi.Input.encodeList<
-              GuardrailTopicPolicyConfigTopicsConfig,
-              Map<String, dynamic>
-            >(topicsConfigs!, (value) => value.toMap()),
+      'tierConfigs': ?tierConfigs == null ? null : pulumi.Input.encodeList<GuardrailTopicPolicyConfigTierConfig, Map<String, dynamic>>(tierConfigs!, (value) => value.toMap()),
+      'topicsConfigs': ?topicsConfigs == null ? null : pulumi.Input.encodeList<GuardrailTopicPolicyConfigTopicsConfig, Map<String, dynamic>>(topicsConfigs!, (value) => value.toMap()),
     };
   }
 
   factory GuardrailTopicPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailTopicPolicyConfig(
-      tierConfigs: map['tierConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(
-              map['tierConfigs'],
-              (value) => GuardrailTopicPolicyConfigTierConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      topicsConfigs: map['topicsConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(
-              map['topicsConfigs'],
-              (value) => GuardrailTopicPolicyConfigTopicsConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      tierConfigs: map['tierConfigs'] == null ? null : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(map['tierConfigs'], (value) => GuardrailTopicPolicyConfigTierConfig.fromMap((value as Map).cast<String, dynamic>())),
+      topicsConfigs: map['topicsConfigs'] == null ? null : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(map['topicsConfigs'], (value) => GuardrailTopicPolicyConfigTopicsConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

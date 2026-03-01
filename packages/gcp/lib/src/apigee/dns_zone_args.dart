@@ -10,17 +10,13 @@ import 'dns_zone_peering_config.dart';
 class DnsZoneArgs {
   /// Description for the zone.
   final pulumi.Input<String> description;
-
   /// ID of the dns zone.
   final pulumi.Input<String> dnsZoneId;
-
   /// Doamin for the zone.
   final pulumi.Input<String> domain;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// Peering zone config
   /// Structure is documented below.
   final pulumi.Input<DnsZonePeeringConfig> peeringConfig;
@@ -37,13 +33,12 @@ class DnsZoneArgs {
     required String domain,
     required String orgId,
     required DnsZonePeeringConfig peeringConfig,
-  }) : description = pulumi.Input.asInput<String>(description),
-       dnsZoneId = pulumi.Input.asInput<String>(dnsZoneId),
-       domain = pulumi.Input.asInput<String>(domain),
-       orgId = pulumi.Input.asInput<String>(orgId),
-       peeringConfig = pulumi.Input.asInput<DnsZonePeeringConfig>(
-         peeringConfig,
-       );
+  }) :
+      description = pulumi.Input.asInput<String>(description),
+      dnsZoneId = pulumi.Input.asInput<String>(dnsZoneId),
+      domain = pulumi.Input.asInput<String>(domain),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      peeringConfig = pulumi.Input.asInput<DnsZonePeeringConfig>(peeringConfig);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,7 @@ class DnsZoneArgs {
       'dnsZoneId': dnsZoneId,
       'domain': domain,
       'orgId': orgId,
-      'peeringConfig':
-          pulumi.Input.mapInputValue<
-            DnsZonePeeringConfig,
-            Map<String, dynamic>
-          >(peeringConfig, (value) => value.toMap()),
+      'peeringConfig': pulumi.Input.mapInputValue<DnsZonePeeringConfig, Map<String, dynamic>>(peeringConfig, (value) => value.toMap()),
     };
   }
 
@@ -65,9 +56,8 @@ class DnsZoneArgs {
       dnsZoneId: map['dnsZoneId'] as String,
       domain: map['domain'] as String,
       orgId: map['orgId'] as String,
-      peeringConfig: DnsZonePeeringConfig.fromMap(
-        (map['peeringConfig'] as Map).cast<String, dynamic>(),
-      ),
+      peeringConfig: DnsZonePeeringConfig.fromMap((map['peeringConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

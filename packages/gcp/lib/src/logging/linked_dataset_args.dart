@@ -13,19 +13,14 @@ class LinkedDatasetArgs {
   /// Views corresponding to the LogViews in the bucket.
   /// Structure is documented below.
   final pulumi.Input<List<LinkedDatasetBigqueryDataset>>? bigqueryDatasets;
-
   /// The bucket to which the linked dataset is attached.
   final pulumi.Input<String> bucket;
-
   /// Describes this link. The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
-
   /// The id of the linked dataset.
   final pulumi.Input<String> linkId;
-
   /// The location of the linked dataset.
   final pulumi.Input<String>? location;
-
   /// The parent of the linked dataset.
   final pulumi.Input<String>? parent;
 
@@ -43,30 +38,17 @@ class LinkedDatasetArgs {
     required String linkId,
     String? location,
     String? parent,
-  }) : bigqueryDatasets =
-           pulumi.Input.asOptionalInput<List<LinkedDatasetBigqueryDataset>>(
-             bigqueryDatasets,
-           ),
-       bucket = pulumi.Input.asInput<String>(bucket),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       linkId = pulumi.Input.asInput<String>(linkId),
-       location = pulumi.Input.asOptionalInput<String>(location),
-       parent = pulumi.Input.asOptionalInput<String>(parent);
+  }) :
+      bigqueryDatasets = pulumi.Input.asOptionalInput<List<LinkedDatasetBigqueryDataset>>(bigqueryDatasets),
+      bucket = pulumi.Input.asInput<String>(bucket),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      linkId = pulumi.Input.asInput<String>(linkId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      parent = pulumi.Input.asOptionalInput<String>(parent);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryDatasets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LinkedDatasetBigqueryDataset>,
-            List<Map<String, dynamic>>
-          >(
-            bigqueryDatasets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LinkedDatasetBigqueryDataset,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'bigqueryDatasets': ?pulumi.Input.mapOptionalInputValue<List<LinkedDatasetBigqueryDataset>, List<Map<String, dynamic>>>(bigqueryDatasets, (value) => pulumi.Input.encodeList<LinkedDatasetBigqueryDataset, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bucket': bucket,
       'description': ?description,
       'linkId': linkId,
@@ -77,21 +59,13 @@ class LinkedDatasetArgs {
 
   factory LinkedDatasetArgs.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetArgs(
-      bigqueryDatasets: map['bigqueryDatasets'] == null
-          ? null
-          : pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(
-              map['bigqueryDatasets'],
-              (value) => LinkedDatasetBigqueryDataset.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      bigqueryDatasets: map['bigqueryDatasets'] == null ? null : pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(map['bigqueryDatasets'], (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())),
       bucket: map['bucket'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       linkId: map['linkId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       parent: map['parent'] == null ? null : map['parent'] as String,
     );
   }
 }
+

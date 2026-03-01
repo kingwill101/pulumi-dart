@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont {
   /// Key used to extract the password from EC2 Parameter store.
   final String? passwordParam;
-
   /// Path to a file accessible to the live stream.
   final String uri;
-
   /// Username to be used.
   final String? username;
 
@@ -28,15 +27,12 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinati
     };
   }
 
-  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont(
-      passwordParam: map['passwordParam'] == null
-          ? null
-          : map['passwordParam'] as String,
+      passwordParam: map['passwordParam'] == null ? null : map['passwordParam'] as String,
       uri: map['uri'] as String,
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
+

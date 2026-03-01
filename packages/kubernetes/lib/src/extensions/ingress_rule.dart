@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'httpingress_rule_value.dart';
+
+/// IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.
+class IngressRule {
+  /// Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
+  /// IP in the Spec of the parent Ingress.
+  /// 2. The `:` delimiter is not respected because ports are not allowed.
+  /// Currently the port of an Ingress is implicitly :80 for http and
+  /// :443 for https.
+  /// Both these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.
+  final String? host;
+  final HTTPIngressRuleValue? http;
+
+  /// Creates a new [IngressRule].
+  /// [host] Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
+  /// [http] Optional.
+  IngressRule({
+    this.host,
+    this.http,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'host': ?host,
+      'http': ?http == null ? null : http!.toMap(),
+    };
+  }
+
+  factory IngressRule.fromMap(Map<String, dynamic> map) {
+    return IngressRule(
+      host: map['host'] == null ? null : map['host'] as String,
+      http: map['http'] == null ? null : HTTPIngressRuleValue.fromMap((map['http'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

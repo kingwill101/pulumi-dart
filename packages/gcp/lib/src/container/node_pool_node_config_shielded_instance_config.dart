@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   final bool? enableIntegrityMonitoring;
-
   /// Defines whether the instance has Secure Boot enabled.
   final bool? enableSecureBoot;
 
@@ -22,16 +22,11 @@ class NodePoolNodeConfigShieldedInstanceConfig {
     };
   }
 
-  factory NodePoolNodeConfigShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics {
   /// Whether advanced cost-optimization metrics are enabled.
   final bool? enabled;
@@ -11,14 +12,15 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

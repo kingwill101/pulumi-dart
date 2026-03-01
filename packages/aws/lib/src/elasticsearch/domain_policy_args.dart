@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainPolicyArgs {
   /// IAM policy document specifying the access policies for the domain
   final pulumi.Input<String> accessPolicies;
-
   /// Name of the domain.
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class DomainPolicyArgs {
     required String accessPolicies,
     required String domainName,
     String? region,
-  }) : accessPolicies = pulumi.Input.asInput<String>(accessPolicies),
-       domainName = pulumi.Input.asInput<String>(domainName),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accessPolicies = pulumi.Input.asInput<String>(accessPolicies),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class DomainPolicyArgs {
     );
   }
 }
+

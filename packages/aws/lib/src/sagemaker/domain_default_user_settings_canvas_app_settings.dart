@@ -12,36 +12,20 @@ import 'domain_default_user_settings_canvas_app_settings_workspace_settings.dart
 
 class DomainDefaultUserSettingsCanvasAppSettings {
   /// The model deployment settings for the SageMaker AI Canvas application. See `direct_deploy_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings?
-  directDeploySettings;
-
+  final DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings? directDeploySettings;
   /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emr_serverless_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings?
-  emrServerlessSettings;
-  final DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings?
-  generativeAiSettings;
-
+  final DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings? emrServerlessSettings;
+  final DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings? generativeAiSettings;
   /// The settings for connecting to an external data source with OAuth. See `identity_provider_oauth_settings` Block below.
-  final List<
-    DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting
-  >?
-  identityProviderOauthSettings;
-
+  final List<DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>? identityProviderOauthSettings;
   /// The settings for document querying. See `kendra_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsKendraSettings?
-  kendraSettings;
-
+  final DomainDefaultUserSettingsCanvasAppSettingsKendraSettings? kendraSettings;
   /// The model registry settings for the SageMaker AI Canvas application. See `model_register_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings?
-  modelRegisterSettings;
-
+  final DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings? modelRegisterSettings;
   /// Time series forecast settings for the Canvas app. See `time_series_forecasting_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings?
-  timeSeriesForecastingSettings;
-
+  final DomainDefaultUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings? timeSeriesForecastingSettings;
   /// The workspace settings for the SageMaker AI Canvas application. See `workspace_settings` Block below.
-  final DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings?
-  workspaceSettings;
+  final DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings? workspaceSettings;
 
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettings].
   /// [directDeploySettings] The model deployment settings for the SageMaker AI Canvas application. See `direct_deploy_settings` Block below.
@@ -65,89 +49,28 @@ class DomainDefaultUserSettingsCanvasAppSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'directDeploySettings': ?directDeploySettings == null
-          ? null
-          : directDeploySettings!.toMap(),
-      'emrServerlessSettings': ?emrServerlessSettings == null
-          ? null
-          : emrServerlessSettings!.toMap(),
-      'generativeAiSettings': ?generativeAiSettings == null
-          ? null
-          : generativeAiSettings!.toMap(),
-      'identityProviderOauthSettings': ?identityProviderOauthSettings == null
-          ? null
-          : pulumi.Input.encodeList<
-              DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting,
-              Map<String, dynamic>
-            >(identityProviderOauthSettings!, (value) => value.toMap()),
-      'kendraSettings': ?kendraSettings == null
-          ? null
-          : kendraSettings!.toMap(),
-      'modelRegisterSettings': ?modelRegisterSettings == null
-          ? null
-          : modelRegisterSettings!.toMap(),
-      'timeSeriesForecastingSettings': ?timeSeriesForecastingSettings == null
-          ? null
-          : timeSeriesForecastingSettings!.toMap(),
-      'workspaceSettings': ?workspaceSettings == null
-          ? null
-          : workspaceSettings!.toMap(),
+      'directDeploySettings': ?directDeploySettings == null ? null : directDeploySettings!.toMap(),
+      'emrServerlessSettings': ?emrServerlessSettings == null ? null : emrServerlessSettings!.toMap(),
+      'generativeAiSettings': ?generativeAiSettings == null ? null : generativeAiSettings!.toMap(),
+      'identityProviderOauthSettings': ?identityProviderOauthSettings == null ? null : pulumi.Input.encodeList<DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting, Map<String, dynamic>>(identityProviderOauthSettings!, (value) => value.toMap()),
+      'kendraSettings': ?kendraSettings == null ? null : kendraSettings!.toMap(),
+      'modelRegisterSettings': ?modelRegisterSettings == null ? null : modelRegisterSettings!.toMap(),
+      'timeSeriesForecastingSettings': ?timeSeriesForecastingSettings == null ? null : timeSeriesForecastingSettings!.toMap(),
+      'workspaceSettings': ?workspaceSettings == null ? null : workspaceSettings!.toMap(),
     };
   }
 
-  factory DomainDefaultUserSettingsCanvasAppSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultUserSettingsCanvasAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettings(
-      directDeploySettings: map['directDeploySettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap(
-              (map['directDeploySettings'] as Map).cast<String, dynamic>(),
-            ),
-      emrServerlessSettings: map['emrServerlessSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap(
-              (map['emrServerlessSettings'] as Map).cast<String, dynamic>(),
-            ),
-      generativeAiSettings: map['generativeAiSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(
-              (map['generativeAiSettings'] as Map).cast<String, dynamic>(),
-            ),
-      identityProviderOauthSettings:
-          map['identityProviderOauthSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting
-            >(
-              map['identityProviderOauthSettings'],
-              (value) =>
-                  DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      kendraSettings: map['kendraSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsKendraSettings.fromMap(
-              (map['kendraSettings'] as Map).cast<String, dynamic>(),
-            ),
-      modelRegisterSettings: map['modelRegisterSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap(
-              (map['modelRegisterSettings'] as Map).cast<String, dynamic>(),
-            ),
-      timeSeriesForecastingSettings:
-          map['timeSeriesForecastingSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings.fromMap(
-              (map['timeSeriesForecastingSettings'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      workspaceSettings: map['workspaceSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings.fromMap(
-              (map['workspaceSettings'] as Map).cast<String, dynamic>(),
-            ),
+      directDeploySettings: map['directDeploySettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap((map['directDeploySettings'] as Map).cast<String, dynamic>()),
+      emrServerlessSettings: map['emrServerlessSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap((map['emrServerlessSettings'] as Map).cast<String, dynamic>()),
+      generativeAiSettings: map['generativeAiSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap((map['generativeAiSettings'] as Map).cast<String, dynamic>()),
+      identityProviderOauthSettings: map['identityProviderOauthSettings'] == null ? null : pulumi.Input.decodeList<DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>(map['identityProviderOauthSettings'], (value) => DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting.fromMap((value as Map).cast<String, dynamic>())),
+      kendraSettings: map['kendraSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsKendraSettings.fromMap((map['kendraSettings'] as Map).cast<String, dynamic>()),
+      modelRegisterSettings: map['modelRegisterSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap((map['modelRegisterSettings'] as Map).cast<String, dynamic>()),
+      timeSeriesForecastingSettings: map['timeSeriesForecastingSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings.fromMap((map['timeSeriesForecastingSettings'] as Map).cast<String, dynamic>()),
+      workspaceSettings: map['workspaceSettings'] == null ? null : DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings.fromMap((map['workspaceSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

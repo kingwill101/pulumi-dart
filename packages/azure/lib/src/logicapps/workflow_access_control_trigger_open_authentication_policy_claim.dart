@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim {
+  /// The name of the OAuth policy claim for the Logic App Workflow.
+  final String name;
+  /// The value of the OAuth policy claim for the Logic App Workflow.
+  final String value;
+
+  /// Creates a new [WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim].
+  /// [name] The name of the OAuth policy claim for the Logic App Workflow.
+  /// [value] The value of the OAuth policy claim for the Logic App Workflow.
+  WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim({
+    required this.name,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
+  }
+
+  factory WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim.fromMap(Map<String, dynamic> map) {
+    return WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim(
+      name: map['name'] as String,
+      value: map['value'] as String,
+    );
+  }
+}
+

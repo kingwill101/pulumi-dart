@@ -5,11 +5,8 @@ import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// Description of the prompt.
   final String? description;
-
   /// The input schema of the tool. See Tool Input Schema for more information.
-  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema?
-  inputSchema;
-
+  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema? inputSchema;
   /// Name of the prompt.
   ///
   /// The following arguments are optional:
@@ -33,19 +30,12 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec {
     };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      inputSchema: map['inputSchema'] == null
-          ? null
-          : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(
-              (map['inputSchema'] as Map).cast<String, dynamic>(),
-            ),
+      description: map['description'] == null ? null : map['description'] as String,
+      inputSchema: map['inputSchema'] == null ? null : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

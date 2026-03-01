@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionGitlabConfigAuthorizerCredential {
   /// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final String userTokenSecretVersion;
-
   /// (Output)
   /// Output only. The username associated to this token.
   final String? username;
@@ -23,12 +23,11 @@ class ConnectionGitlabConfigAuthorizerCredential {
     };
   }
 
-  factory ConnectionGitlabConfigAuthorizerCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionGitlabConfigAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabConfigAuthorizerCredential(
       userTokenSecretVersion: map['userTokenSecretVersion'] as String,
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
+

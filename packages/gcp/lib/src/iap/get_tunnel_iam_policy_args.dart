@@ -13,11 +13,15 @@ class GetTunnelIamPolicyArgs {
 
   /// Creates a new [GetTunnelIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetTunnelIamPolicyArgs({String? project})
-    : project = pulumi.Input.asOptionalInput<String>(project);
+  GetTunnelIamPolicyArgs({
+    String? project,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project};
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory GetTunnelIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetTunnelIamPolicyArgs {
     );
   }
 }
+

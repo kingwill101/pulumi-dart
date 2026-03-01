@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointAuthenticationOption {
   final String activeDirectoryId;
   final String rootCertificateChainArn;
@@ -41,3 +42,4 @@ class GetEndpointAuthenticationOption {
     );
   }
 }
+

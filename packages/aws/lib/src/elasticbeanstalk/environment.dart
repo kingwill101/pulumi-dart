@@ -373,87 +373,64 @@ class Environment extends pulumi.CustomResource {
   /// are a combination of default settings and their overrides from `setting` in
   /// the configuration.
   late final pulumi.Output<List<EnvironmentAllSetting>> allSettings;
-
   /// Name of the application that contains the version
   /// to be deployed
   late final pulumi.Output<String> application;
   late final pulumi.Output<String> arn;
-
   /// The autoscaling groups used by this Environment.
   late final pulumi.Output<List<String>> autoscalingGroups;
-
   /// Fully qualified DNS name for this Environment.
   late final pulumi.Output<String> cname;
-
   /// Prefix to use for the fully qualified DNS name of
   /// the Environment.
   late final pulumi.Output<String> cnamePrefix;
-
   /// Short description of the Environment
   late final pulumi.Output<String?> description;
-
   /// The URL to the Load Balancer for this Environment
   late final pulumi.Output<String> endpointUrl;
-
   /// Instances used by this Environment.
   late final pulumi.Output<List<String>> instances;
-
   /// Launch configurations in use by this Environment.
   late final pulumi.Output<List<String>> launchConfigurations;
-
   /// Elastic load balancers in use by this Environment.
   late final pulumi.Output<List<String>> loadBalancers;
-
   /// A unique name for this Environment. This name is used
   /// in the application URL
   late final pulumi.Output<String> name;
-
   /// The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the Elastic Beanstalk [Platform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-environment.html#cfn-beanstalk-environment-platformarn)
   /// to use in deployment
   late final pulumi.Output<String> platformArn;
-
   /// The time between polling the AWS API to
   /// check if changes have been applied. Use this to adjust the rate of API calls
   /// for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
   /// use the default behavior, which is an exponential backoff
   late final pulumi.Output<String?> pollInterval;
-
   /// SQS queues in use by this Environment.
   late final pulumi.Output<List<String>> queues;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
   late final pulumi.Output<List<EnvironmentSetting>?> settings;
-
   /// A solution stack to base your environment
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   late final pulumi.Output<String> solutionStackName;
-
   /// A set of tags to apply to the Environment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The name of the Elastic Beanstalk Configuration
   /// template to use in deployment
   late final pulumi.Output<String?> templateName;
-
   /// Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// or `WebServer`. If tier is left blank `WebServer` will be used.
   late final pulumi.Output<String?> tier;
-
   /// Autoscaling triggers in use by this Environment.
   late final pulumi.Output<List<String>> triggers;
-
   /// The name of the Elastic Beanstalk Application Version
   /// to use in deployment.
   late final pulumi.Output<String> version;
-
   /// The maximum
   /// [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
   /// wait for an Elastic Beanstalk Environment to be in a ready state before timing
@@ -469,14 +446,12 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticbeanstalk/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.allSettings = registerOutput<List<EnvironmentAllSetting>>(
-      'allSettings',
-    );
+          'aws:elasticbeanstalk/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings');
     this.application = registerOutput<String>('application');
     this.arn = registerOutput<String>('arn');
     this.autoscalingGroups = registerOutput<List<String>>('autoscalingGroups');
@@ -485,9 +460,7 @@ class Environment extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.endpointUrl = registerOutput<String>('endpointUrl');
     this.instances = registerOutput<List<String>>('instances');
-    this.launchConfigurations = registerOutput<List<String>>(
-      'launchConfigurations',
-    );
+    this.launchConfigurations = registerOutput<List<String>>('launchConfigurations');
     this.loadBalancers = registerOutput<List<String>>('loadBalancers');
     this.name = registerOutput<String>('name');
     this.platformArn = registerOutput<String>('platformArn');

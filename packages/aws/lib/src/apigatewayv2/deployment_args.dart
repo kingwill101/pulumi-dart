@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-
   /// Description for the deployment resource. Must be less than or equal to 1024 characters in length.
   final pulumi.Input<String>? description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -29,10 +26,11 @@ class DeploymentArgs {
     String? description,
     String? region,
     Map<String, String>? triggers,
-  }) : apiId = pulumi.Input.asInput<String>(apiId),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,13 +44,10 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       apiId: map['apiId'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      triggers: map['triggers'] == null
-          ? null
-          : (map['triggers'] as Map).cast<String, String>(),
+      triggers: map['triggers'] == null ? null : (map['triggers'] as Map).cast<String, String>(),
     );
   }
 }
+

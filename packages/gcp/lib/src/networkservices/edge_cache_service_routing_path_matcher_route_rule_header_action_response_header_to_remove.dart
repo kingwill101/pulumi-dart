@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove {
   /// Headers to remove from the response prior to sending it back to the client.
   /// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
@@ -12,14 +13,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'headerName': headerName};
+    return <String, dynamic>{
+      'headerName': headerName,
+    };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove(
       headerName: map['headerName'] as String,
     );
   }
 }
+

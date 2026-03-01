@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetSpacesKeyGrant {
+  /// The name of the bucket to grant the key access to.
+  final String bucket;
+  /// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+  final String permission;
+
+  /// Creates a new [GetSpacesKeyGrant].
+  /// [bucket] The name of the bucket to grant the key access to.
+  /// [permission] The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+  GetSpacesKeyGrant({
+    required this.bucket,
+    required this.permission,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': bucket,
+      'permission': permission,
+    };
+  }
+
+  factory GetSpacesKeyGrant.fromMap(Map<String, dynamic> map) {
+    return GetSpacesKeyGrant(
+      bucket: map['bucket'] as String,
+      permission: map['permission'] as String,
+    );
+  }
+}
+

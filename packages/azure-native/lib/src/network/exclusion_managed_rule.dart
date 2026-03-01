@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Defines a managed rule to use for exclusion.
+class ExclusionManagedRule {
+  /// Identifier for the managed rule.
+  final String ruleId;
+
+  /// Creates a new [ExclusionManagedRule].
+  /// [ruleId] Identifier for the managed rule.
+  ExclusionManagedRule({
+    required this.ruleId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ruleId': ruleId,
+    };
+  }
+
+  factory ExclusionManagedRule.fromMap(Map<String, dynamic> map) {
+    return ExclusionManagedRule(
+      ruleId: map['ruleId'] as String,
+    );
+  }
+}
+

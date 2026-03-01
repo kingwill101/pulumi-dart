@@ -8,23 +8,20 @@ class ClusterNodePoolDefaults {
 
   /// Creates a new [ClusterNodePoolDefaults].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  ClusterNodePoolDefaults({this.nodeConfigDefaults});
+  ClusterNodePoolDefaults({
+    this.nodeConfigDefaults,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigDefaults': ?nodeConfigDefaults == null
-          ? null
-          : nodeConfigDefaults!.toMap(),
+      'nodeConfigDefaults': ?nodeConfigDefaults == null ? null : nodeConfigDefaults!.toMap(),
     };
   }
 
   factory ClusterNodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaults(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null
-          ? null
-          : ClusterNodePoolDefaultsNodeConfigDefaults.fromMap(
-              (map['nodeConfigDefaults'] as Map).cast<String, dynamic>(),
-            ),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

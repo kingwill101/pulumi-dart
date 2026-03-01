@@ -5,13 +5,9 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification {
   /// Configuration block for the settings on audio input. See `audio_specification`.
-  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification?
-  audioSpecification;
-
+  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification? audioSpecification;
   /// Configuration block for the settings on DTMF input. See `dtmf_specification`.
-  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification?
-  dtmfSpecification;
-
+  final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification? dtmfSpecification;
   /// Time for which a bot waits before assuming that the customer isn't going to speak or press a key. This timeout is shared between Audio and DTMF inputs.
   final int startTimeoutMs;
 
@@ -27,31 +23,18 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioSpecification': ?audioSpecification == null
-          ? null
-          : audioSpecification!.toMap(),
-      'dtmfSpecification': ?dtmfSpecification == null
-          ? null
-          : dtmfSpecification!.toMap(),
+      'audioSpecification': ?audioSpecification == null ? null : audioSpecification!.toMap(),
+      'dtmfSpecification': ?dtmfSpecification == null ? null : dtmfSpecification!.toMap(),
       'startTimeoutMs': startTimeoutMs,
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification(
-      audioSpecification: map['audioSpecification'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(
-              (map['audioSpecification'] as Map).cast<String, dynamic>(),
-            ),
-      dtmfSpecification: map['dtmfSpecification'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-              (map['dtmfSpecification'] as Map).cast<String, dynamic>(),
-            ),
+      audioSpecification: map['audioSpecification'] == null ? null : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((map['audioSpecification'] as Map).cast<String, dynamic>()),
+      dtmfSpecification: map['dtmfSpecification'] == null ? null : V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((map['dtmfSpecification'] as Map).cast<String, dynamic>()),
       startTimeoutMs: map['startTimeoutMs'] as int,
     );
   }
 }
+

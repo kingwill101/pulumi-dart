@@ -11,25 +11,18 @@ import 'anomaly_subscription_threshold_expression.dart';
 class AnomalySubscriptionArgs {
   /// The unique identifier for the AWS account in which the anomaly subscription ought to be created.
   final pulumi.Input<String>? accountId;
-
   /// The frequency that anomaly reports are sent. Valid Values: `DAILY` | `IMMEDIATE` | `WEEKLY`.
   final pulumi.Input<String> frequency;
-
   /// A list of cost anomaly monitors.
   final pulumi.Input<List<String>> monitorArnLists;
-
   /// The name for the subscription.
   final pulumi.Input<String>? name;
-
   /// A subscriber configuration. Multiple subscribers can be defined.
   final pulumi.Input<List<AnomalySubscriptionSubscriber>> subscribers;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  final pulumi.Input<AnomalySubscriptionThresholdExpression>?
-  thresholdExpression;
+  final pulumi.Input<AnomalySubscriptionThresholdExpression>? thresholdExpression;
 
   /// Creates a new [AnomalySubscriptionArgs].
   /// [accountId] The unique identifier for the AWS account in which the anomaly subscription ought to be created.
@@ -47,18 +40,14 @@ class AnomalySubscriptionArgs {
     required List<AnomalySubscriptionSubscriber> subscribers,
     Map<String, String>? tags,
     AnomalySubscriptionThresholdExpression? thresholdExpression,
-  }) : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-       frequency = pulumi.Input.asInput<String>(frequency),
-       monitorArnLists = pulumi.Input.asInput<List<String>>(monitorArnLists),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       subscribers = pulumi.Input.asInput<List<AnomalySubscriptionSubscriber>>(
-         subscribers,
-       ),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       thresholdExpression =
-           pulumi.Input.asOptionalInput<AnomalySubscriptionThresholdExpression>(
-             thresholdExpression,
-           );
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      frequency = pulumi.Input.asInput<String>(frequency),
+      monitorArnLists = pulumi.Input.asInput<List<String>>(monitorArnLists),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      subscribers = pulumi.Input.asInput<List<AnomalySubscriptionSubscriber>>(subscribers),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      thresholdExpression = pulumi.Input.asOptionalInput<AnomalySubscriptionThresholdExpression>(thresholdExpression);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,24 +55,9 @@ class AnomalySubscriptionArgs {
       'frequency': frequency,
       'monitorArnLists': monitorArnLists,
       'name': ?name,
-      'subscribers':
-          pulumi.Input.mapInputValue<
-            List<AnomalySubscriptionSubscriber>,
-            List<Map<String, dynamic>>
-          >(
-            subscribers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AnomalySubscriptionSubscriber,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subscribers': pulumi.Input.mapInputValue<List<AnomalySubscriptionSubscriber>, List<Map<String, dynamic>>>(subscribers, (value) => pulumi.Input.encodeList<AnomalySubscriptionSubscriber, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
-      'thresholdExpression':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnomalySubscriptionThresholdExpression,
-            Map<String, dynamic>
-          >(thresholdExpression, (value) => value.toMap()),
+      'thresholdExpression': ?pulumi.Input.mapOptionalInputValue<AnomalySubscriptionThresholdExpression, Map<String, dynamic>>(thresholdExpression, (value) => value.toMap()),
     };
   }
 
@@ -93,20 +67,10 @@ class AnomalySubscriptionArgs {
       frequency: map['frequency'] as String,
       monitorArnLists: (map['monitorArnLists'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      subscribers: pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(
-        map['subscribers'],
-        (value) => AnomalySubscriptionSubscriber.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      thresholdExpression: map['thresholdExpression'] == null
-          ? null
-          : AnomalySubscriptionThresholdExpression.fromMap(
-              (map['thresholdExpression'] as Map).cast<String, dynamic>(),
-            ),
+      subscribers: pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers'], (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      thresholdExpression: map['thresholdExpression'] == null ? null : AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputDestinationVpc {
   final String availabilityZone;
   final String networkInterfaceId;
@@ -26,3 +27,4 @@ class GetInputDestinationVpc {
     );
   }
 }
+

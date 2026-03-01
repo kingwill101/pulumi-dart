@@ -9,7 +9,9 @@ class ServiceTemplateContainerEnvValueSource {
 
   /// Creates a new [ServiceTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  ServiceTemplateContainerEnvValueSource({this.secretKeyRef});
+  ServiceTemplateContainerEnvValueSource({
+    this.secretKeyRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,15 +19,10 @@ class ServiceTemplateContainerEnvValueSource {
     };
   }
 
-  factory ServiceTemplateContainerEnvValueSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null
-          ? null
-          : ServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>(),
-            ),
+      secretKeyRef: map['secretKeyRef'] == null ? null : ServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

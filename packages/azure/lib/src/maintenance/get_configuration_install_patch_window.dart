@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetConfigurationInstallPatchWindow {
+  /// List of Classification category of patches to be patched.
+  final List<String> classificationsToIncludes;
+  /// List of KB numbers to be excluded from patching.
+  final List<String> kbNumbersToExcludes;
+  /// List of KB numbers to be included for patching.
+  final List<String> kbNumbersToIncludes;
+
+  /// Creates a new [GetConfigurationInstallPatchWindow].
+  /// [classificationsToIncludes] List of Classification category of patches to be patched.
+  /// [kbNumbersToExcludes] List of KB numbers to be excluded from patching.
+  /// [kbNumbersToIncludes] List of KB numbers to be included for patching.
+  GetConfigurationInstallPatchWindow({
+    required this.classificationsToIncludes,
+    required this.kbNumbersToExcludes,
+    required this.kbNumbersToIncludes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'classificationsToIncludes': classificationsToIncludes,
+      'kbNumbersToExcludes': kbNumbersToExcludes,
+      'kbNumbersToIncludes': kbNumbersToIncludes,
+    };
+  }
+
+  factory GetConfigurationInstallPatchWindow.fromMap(Map<String, dynamic> map) {
+    return GetConfigurationInstallPatchWindow(
+      classificationsToIncludes: (map['classificationsToIncludes'] as List).cast<String>(),
+      kbNumbersToExcludes: (map['kbNumbersToExcludes'] as List).cast<String>(),
+      kbNumbersToIncludes: (map['kbNumbersToIncludes'] as List).cast<String>(),
+    );
+  }
+}
+

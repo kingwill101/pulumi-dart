@@ -6,37 +6,24 @@ import 'cluster_maintenance_update_policy_maintenance_window.dart';
 class ClusterMaintenanceUpdatePolicy {
   /// Preferred windows to perform maintenance. Currently limited to 1.
   /// Structure is documented below.
-  final List<ClusterMaintenanceUpdatePolicyMaintenanceWindow>?
-  maintenanceWindows;
+  final List<ClusterMaintenanceUpdatePolicyMaintenanceWindow>? maintenanceWindows;
 
   /// Creates a new [ClusterMaintenanceUpdatePolicy].
   /// [maintenanceWindows] Preferred windows to perform maintenance. Currently limited to 1.
-  ClusterMaintenanceUpdatePolicy({this.maintenanceWindows});
+  ClusterMaintenanceUpdatePolicy({
+    this.maintenanceWindows,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maintenanceWindows': ?maintenanceWindows == null
-          ? null
-          : pulumi.Input.encodeList<
-              ClusterMaintenanceUpdatePolicyMaintenanceWindow,
-              Map<String, dynamic>
-            >(maintenanceWindows!, (value) => value.toMap()),
+      'maintenanceWindows': ?maintenanceWindows == null ? null : pulumi.Input.encodeList<ClusterMaintenanceUpdatePolicyMaintenanceWindow, Map<String, dynamic>>(maintenanceWindows!, (value) => value.toMap()),
     };
   }
 
   factory ClusterMaintenanceUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicy(
-      maintenanceWindows: map['maintenanceWindows'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ClusterMaintenanceUpdatePolicyMaintenanceWindow
-            >(
-              map['maintenanceWindows'],
-              (value) =>
-                  ClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : pulumi.Input.decodeList<ClusterMaintenanceUpdatePolicyMaintenanceWindow>(map['maintenanceWindows'], (value) => ClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

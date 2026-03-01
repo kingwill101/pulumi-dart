@@ -181,22 +181,17 @@ class Reservation extends pulumi.CustomResource {
   /// The configuration parameters for the auto scaling feature.
   /// Structure is documented below.
   late final pulumi.Output<ReservationAutoscale?> autoscale;
-
   /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
   late final pulumi.Output<int?> concurrency;
-
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   late final pulumi.Output<String> edition;
-
   /// If false, any query using this reservation will use idle slots from other reservations within
   /// the same admin project. If true, a query using this reservation will execute with the slot
   /// capacity specified above at most.
   late final pulumi.Output<bool?> ignoreIdleSlots;
-
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   late final pulumi.Output<String?> location;
-
   /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
   /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
   /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -230,23 +225,18 @@ class Reservation extends pulumi.CustomResource {
   /// maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
   /// feature.
   late final pulumi.Output<int?> maxSlots;
-
   /// The name of the reservation. This field must only contain alphanumeric characters or dash.
   late final pulumi.Output<String> name;
-
   /// The location where the reservation was originally created. This is set only during the
   /// failover reservation's creation. All billing charges for the failover reservation will be
   /// applied to this location.
   late final pulumi.Output<String> originalPrimaryLocation;
-
   /// The current location of the reservation's primary replica. This field is only set for
   /// reservations using the managed disaster recovery feature.
   late final pulumi.Output<String> primaryLocation;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Disaster Recovery(DR) replication status of the reservation. This is only available for
   /// the primary replicas of DR/failover reservations and provides information about the both the
   /// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -254,9 +244,7 @@ class Reservation extends pulumi.CustomResource {
   /// either not a DR reservation or the reservation is a DR secondary or that any replication
   /// operations on the reservation have succeeded.
   /// Structure is documented below.
-  late final pulumi.Output<List<ReservationReplicationStatus>>
-  replicationStatuses;
-
+  late final pulumi.Output<List<ReservationReplicationStatus>> replicationStatuses;
   /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
   /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Enum values:
@@ -291,13 +279,11 @@ class Reservation extends pulumi.CustomResource {
   /// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
   late final pulumi.Output<String?> scalingMode;
-
   /// The current location of the reservation's secondary replica. This field is only set for
   /// reservations using the managed disaster recovery feature. Users can set this in create
   /// reservation calls to create a failover reservation or in update reservation calls to convert
   /// a non-failover reservation to a failover reservation(or vice versa).
   late final pulumi.Output<String?> secondaryLocation;
-
   /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
   late final pulumi.Output<int> slotCapacity;
@@ -311,11 +297,11 @@ class Reservation extends pulumi.CustomResource {
     ReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/reservation:Reservation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:bigquery/reservation:Reservation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.autoscale = registerOutput<ReservationAutoscale?>('autoscale');
     this.concurrency = registerOutput<int?>('concurrency');
     this.edition = registerOutput<String>('edition');
@@ -323,15 +309,10 @@ class Reservation extends pulumi.CustomResource {
     this.location = registerOutput<String?>('location');
     this.maxSlots = registerOutput<int?>('maxSlots');
     this.name = registerOutput<String>('name');
-    this.originalPrimaryLocation = registerOutput<String>(
-      'originalPrimaryLocation',
-    );
+    this.originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
     this.primaryLocation = registerOutput<String>('primaryLocation');
     this.project = registerOutput<String>('project');
-    this.replicationStatuses =
-        registerOutput<List<ReservationReplicationStatus>>(
-          'replicationStatuses',
-        );
+    this.replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses');
     this.scalingMode = registerOutput<String?>('scalingMode');
     this.secondaryLocation = registerOutput<String?>('secondaryLocation');
     this.slotCapacity = registerOutput<int>('slotCapacity');

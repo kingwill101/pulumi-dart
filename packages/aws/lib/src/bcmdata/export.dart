@@ -356,10 +356,8 @@ class Export extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) for this export.
   /// * `export[0].export_arn` - Amazon Resource Name (ARN) for this export.
   late final pulumi.Output<String> arn;
-
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   late final pulumi.Output<ExportExport?> export;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -369,13 +367,16 @@ class Export extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Export]. {@macro pulumi_bcmdata_export_export_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Export(String name, {ExportArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:bcmdata/export:Export',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Export(
+    String name, {
+    ExportArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:bcmdata/export:Export',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.export = registerOutput<ExportExport?>('export');
     this.tags = registerOutput<Map<String, String>?>('tags');

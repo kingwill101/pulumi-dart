@@ -6,13 +6,10 @@ import 'get_image_recipe_block_device_mapping_eb.dart';
 class GetImageRecipeBlockDeviceMapping {
   /// Name of the device. For example, `/dev/sda` or `/dev/xvdb`.
   final String deviceName;
-
   /// Single list of object with Elastic Block Storage (EBS) block device mapping settings.
   final List<GetImageRecipeBlockDeviceMappingEb> ebs;
-
   /// Whether to remove a mapping from the parent image.
   final String noDevice;
-
   /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
   final String virtualName;
 
@@ -31,11 +28,7 @@ class GetImageRecipeBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
-      'ebs':
-          pulumi.Input.encodeList<
-            GetImageRecipeBlockDeviceMappingEb,
-            Map<String, dynamic>
-          >(ebs, (value) => value.toMap()),
+      'ebs': pulumi.Input.encodeList<GetImageRecipeBlockDeviceMappingEb, Map<String, dynamic>>(ebs, (value) => value.toMap()),
       'noDevice': noDevice,
       'virtualName': virtualName,
     };
@@ -44,14 +37,10 @@ class GetImageRecipeBlockDeviceMapping {
   factory GetImageRecipeBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeBlockDeviceMapping(
       deviceName: map['deviceName'] as String,
-      ebs: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(
-        map['ebs'],
-        (value) => GetImageRecipeBlockDeviceMappingEb.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ebs: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(map['ebs'], (value) => GetImageRecipeBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>())),
       noDevice: map['noDevice'] as String,
       virtualName: map['virtualName'] as String,
     );
   }
 }
+

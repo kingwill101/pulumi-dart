@@ -1,0 +1,27 @@
+library module_redis;
+
+export 'redis/cache.dart';
+export 'redis/cache_access_policy.dart';
+export 'redis/cache_access_policy_args.dart';
+export 'redis/cache_access_policy_assignment.dart';
+export 'redis/cache_access_policy_assignment_args.dart';
+export 'redis/cache_args.dart';
+export 'redis/cache_identity.dart';
+export 'redis/cache_patch_schedule.dart';
+export 'redis/cache_redis_configuration.dart';
+export 'redis/enterprise_cluster.dart';
+export 'redis/enterprise_cluster_args.dart';
+export 'redis/enterprise_database.dart';
+export 'redis/enterprise_database_args.dart';
+export 'redis/enterprise_database_module.dart';
+export 'redis/firewall_rule.dart';
+export 'redis/firewall_rule_args.dart';
+export 'redis/functions.dart';
+export 'redis/get_cache_args.dart';
+export 'redis/get_cache_patch_schedule.dart';
+export 'redis/get_cache_redis_configuration.dart';
+export 'redis/get_cache_result.dart';
+export 'redis/get_enterprise_database_args.dart';
+export 'redis/get_enterprise_database_result.dart';
+export 'redis/linked_server.dart';
+export 'redis/linked_server_args.dart';

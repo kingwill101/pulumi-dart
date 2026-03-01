@@ -400,9 +400,7 @@ import 'proactive_engagement_emergency_contact.dart';
 /// ```
 class ProactiveEngagement extends pulumi.CustomResource {
   /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
-  late final pulumi.Output<List<ProactiveEngagementEmergencyContact>>
-  emergencyContacts;
-
+  late final pulumi.Output<List<ProactiveEngagementEmergencyContact>> emergencyContacts;
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
   late final pulumi.Output<bool> enabled;
 
@@ -415,15 +413,12 @@ class ProactiveEngagement extends pulumi.CustomResource {
     ProactiveEngagementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/proactiveEngagement:ProactiveEngagement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.emergencyContacts =
-        registerOutput<List<ProactiveEngagementEmergencyContact>>(
-          'emergencyContacts',
-        );
+          'aws:shield/proactiveEngagement:ProactiveEngagement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts');
     this.enabled = registerOutput<bool>('enabled');
   }
 }

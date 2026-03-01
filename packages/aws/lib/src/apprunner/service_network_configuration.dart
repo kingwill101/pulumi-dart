@@ -6,10 +6,8 @@ import 'service_network_configuration_ingress_configuration.dart';
 class ServiceNetworkConfiguration {
   /// Network configuration settings for outbound message traffic. See Egress Configuration below for more details.
   final ServiceNetworkConfigurationEgressConfiguration? egressConfiguration;
-
   /// Network configuration settings for inbound network traffic. See Ingress Configuration below for more details.
   final ServiceNetworkConfigurationIngressConfiguration? ingressConfiguration;
-
   /// App Runner provides you with the option to choose between Internet Protocol version 4 (IPv4) and dual stack (IPv4 and IPv6) for your incoming public network configuration. Valid values: `IPV4`, `DUAL_STACK`. Default: `IPV4`.
   final String? ipAddressType;
 
@@ -25,31 +23,18 @@ class ServiceNetworkConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressConfiguration': ?egressConfiguration == null
-          ? null
-          : egressConfiguration!.toMap(),
-      'ingressConfiguration': ?ingressConfiguration == null
-          ? null
-          : ingressConfiguration!.toMap(),
+      'egressConfiguration': ?egressConfiguration == null ? null : egressConfiguration!.toMap(),
+      'ingressConfiguration': ?ingressConfiguration == null ? null : ingressConfiguration!.toMap(),
       'ipAddressType': ?ipAddressType,
     };
   }
 
   factory ServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfiguration(
-      egressConfiguration: map['egressConfiguration'] == null
-          ? null
-          : ServiceNetworkConfigurationEgressConfiguration.fromMap(
-              (map['egressConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      ingressConfiguration: map['ingressConfiguration'] == null
-          ? null
-          : ServiceNetworkConfigurationIngressConfiguration.fromMap(
-              (map['ingressConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      ipAddressType: map['ipAddressType'] == null
-          ? null
-          : map['ipAddressType'] as String,
+      egressConfiguration: map['egressConfiguration'] == null ? null : ServiceNetworkConfigurationEgressConfiguration.fromMap((map['egressConfiguration'] as Map).cast<String, dynamic>()),
+      ingressConfiguration: map['ingressConfiguration'] == null ? null : ServiceNetworkConfigurationIngressConfiguration.fromMap((map['ingressConfiguration'] as Map).cast<String, dynamic>()),
+      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
     );
   }
 }
+

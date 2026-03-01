@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustProviderSseSpecification {
   final bool? customerManagedKeyEnabled;
   final String? kmsKeyArn;
@@ -21,10 +22,9 @@ class TrustProviderSseSpecification {
 
   factory TrustProviderSseSpecification.fromMap(Map<String, dynamic> map) {
     return TrustProviderSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null
-          ? null
-          : map['customerManagedKeyEnabled'] as bool,
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : map['customerManagedKeyEnabled'] as bool,
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
     );
   }
 }
+

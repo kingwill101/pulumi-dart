@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_masking_entity.dart';
+
+class DataMasking {
+  /// Masking settings for headers
+  final List<DataMaskingEntity>? headers;
+  /// Masking settings for Url query parameters
+  final List<DataMaskingEntity>? queryParams;
+
+  /// Creates a new [DataMasking].
+  /// [headers] Masking settings for headers
+  /// [queryParams] Masking settings for Url query parameters
+  DataMasking({
+    this.headers,
+    this.queryParams,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<DataMaskingEntity, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'queryParams': ?queryParams == null ? null : pulumi.Input.encodeList<DataMaskingEntity, Map<String, dynamic>>(queryParams!, (value) => value.toMap()),
+    };
+  }
+
+  factory DataMasking.fromMap(Map<String, dynamic> map) {
+    return DataMasking(
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<DataMaskingEntity>(map['headers'], (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>())),
+      queryParams: map['queryParams'] == null ? null : pulumi.Input.decodeList<DataMaskingEntity>(map['queryParams'], (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

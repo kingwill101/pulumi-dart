@@ -10,19 +10,24 @@ class GetKMSCryptoKeyVersionArgs {
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
   final pulumi.Input<String> cryptoKey;
-
   /// The version number for this CryptoKeyVersion. Defaults to `1`.
   final pulumi.Input<int>? version;
 
   /// Creates a new [GetKMSCryptoKeyVersionArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [version] The version number for this CryptoKeyVersion. Defaults to `1`.
-  GetKMSCryptoKeyVersionArgs({required String cryptoKey, int? version})
-    : cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+  GetKMSCryptoKeyVersionArgs({
+    required String cryptoKey,
+    int? version,
+  }) :
+      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
       version = pulumi.Input.asOptionalInput<int>(version);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cryptoKey': cryptoKey, 'version': ?version};
+    return <String, dynamic>{
+      'cryptoKey': cryptoKey,
+      'version': ?version,
+    };
   }
 
   factory GetKMSCryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +37,4 @@ class GetKMSCryptoKeyVersionArgs {
     );
   }
 }
+

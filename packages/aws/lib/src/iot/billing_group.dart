@@ -141,20 +141,15 @@ class BillingGroup extends pulumi.CustomResource {
   /// The ARN of the Billing Group.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<List<BillingGroupMetadata>> metadatas;
-
   /// The name of the Billing Group.
   late final pulumi.Output<String> name;
-
   /// The Billing Group properties. Defined below.
   late final pulumi.Output<BillingGroupProperties?> properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The current version of the Billing Group record in the registry.
   late final pulumi.Output<int> version;
 
@@ -167,11 +162,11 @@ class BillingGroup extends pulumi.CustomResource {
     BillingGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/billingGroup:BillingGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/billingGroup:BillingGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.metadatas = registerOutput<List<BillingGroupMetadata>>('metadatas');
     this.name = registerOutput<String>('name');

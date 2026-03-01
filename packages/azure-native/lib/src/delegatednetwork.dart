@@ -1,0 +1,24 @@
+library module_delegatednetwork;
+
+export 'delegatednetwork/controller_details.dart';
+export 'delegatednetwork/controller_details_args.dart';
+export 'delegatednetwork/controller_details_delegatednetwork.dart';
+export 'delegatednetwork/controller_details_response.dart';
+export 'delegatednetwork/controller_purpose.dart';
+export 'delegatednetwork/delegated_subnet_service_details.dart';
+export 'delegatednetwork/delegated_subnet_service_details_args.dart';
+export 'delegatednetwork/functions.dart';
+export 'delegatednetwork/get_controller_details_args.dart';
+export 'delegatednetwork/get_controller_details_result.dart';
+export 'delegatednetwork/get_delegated_subnet_service_details_args.dart';
+export 'delegatednetwork/get_delegated_subnet_service_details_result.dart';
+export 'delegatednetwork/get_orchestrator_instance_service_details_args.dart';
+export 'delegatednetwork/get_orchestrator_instance_service_details_result.dart';
+export 'delegatednetwork/orchestrator_identity.dart';
+export 'delegatednetwork/orchestrator_identity_response.dart';
+export 'delegatednetwork/orchestrator_instance_service_details.dart';
+export 'delegatednetwork/orchestrator_instance_service_details_args.dart';
+export 'delegatednetwork/orchestrator_kind.dart';
+export 'delegatednetwork/resource_identity_type.dart';
+export 'delegatednetwork/subnet_details.dart';
+export 'delegatednetwork/subnet_details_response.dart';

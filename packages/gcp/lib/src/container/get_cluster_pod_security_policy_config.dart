@@ -1,18 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterPodSecurityPolicyConfig {
   /// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
   final bool enabled;
 
   /// Creates a new [GetClusterPodSecurityPolicyConfig].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
-  GetClusterPodSecurityPolicyConfig({required this.enabled});
+  GetClusterPodSecurityPolicyConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterPodSecurityPolicyConfig.fromMap(Map<String, dynamic> map) {
-    return GetClusterPodSecurityPolicyConfig(enabled: map['enabled'] as bool);
+    return GetClusterPodSecurityPolicyConfig(
+      enabled: map['enabled'] as bool,
+    );
   }
 }
+

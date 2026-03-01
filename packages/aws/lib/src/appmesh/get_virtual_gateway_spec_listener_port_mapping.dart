@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecListenerPortMapping {
   final int port;
   final String protocol;
@@ -13,15 +14,17 @@ class GetVirtualGatewaySpecListenerPortMapping {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'protocol': protocol};
+    return <String, dynamic>{
+      'port': port,
+      'protocol': protocol,
+    };
   }
 
-  factory GetVirtualGatewaySpecListenerPortMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecListenerPortMapping.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerPortMapping(
       port: map['port'] as int,
       protocol: map['protocol'] as String,
     );
   }
 }
+

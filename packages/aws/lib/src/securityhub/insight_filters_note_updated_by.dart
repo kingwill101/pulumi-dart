@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersNoteUpdatedBy {
   final String comparison;
   final String value;
@@ -7,10 +8,16 @@ class InsightFiltersNoteUpdatedBy {
   /// Creates a new [InsightFiltersNoteUpdatedBy].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNoteUpdatedBy({required this.comparison, required this.value});
+  InsightFiltersNoteUpdatedBy({
+    required this.comparison,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersNoteUpdatedBy.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class InsightFiltersNoteUpdatedBy {
     );
   }
 }
+

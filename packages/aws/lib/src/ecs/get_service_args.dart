@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// ARN of the ECS Cluster
   final pulumi.Input<String> clusterArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the ECS Service
   final pulumi.Input<String> serviceName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,10 +26,11 @@ class GetServiceArgs {
     String? region,
     required String serviceName,
     Map<String, String>? tags,
-  }) : clusterArn = pulumi.Input.asInput<String>(clusterArn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       serviceName = pulumi.Input.asInput<String>(serviceName),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      clusterArn = pulumi.Input.asInput<String>(clusterArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceName = pulumi.Input.asInput<String>(serviceName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +46,8 @@ class GetServiceArgs {
       clusterArn: map['clusterArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       serviceName: map['serviceName'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

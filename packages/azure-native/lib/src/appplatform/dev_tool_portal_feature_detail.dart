@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Detail settings for Dev Tool Portal feature
+class DevToolPortalFeatureDetail {
+  /// State of the plugin
+  final String? state;
+
+  /// Creates a new [DevToolPortalFeatureDetail].
+  /// [state] State of the plugin
+  DevToolPortalFeatureDetail({
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': ?state,
+    };
+  }
+
+  factory DevToolPortalFeatureDetail.fromMap(Map<String, dynamic> map) {
+    return DevToolPortalFeatureDetail(
+      state: map['state'] == null ? null : map['state'] as String,
+    );
+  }
+}
+

@@ -359,16 +359,12 @@ import 'vault_lock_args.dart';
 class VaultLock extends pulumi.CustomResource {
   /// Boolean whether to permanently apply this Glacier Lock Policy. Once completed, this cannot be undone. If set to `false`, the Glacier Lock Policy remains in a testing mode for 24 hours. After that time, the Glacier Lock Policy is automatically removed by Glacier and the this provider resource will show as needing recreation. Changing this from `false` to `true` will show as resource recreation, which is expected. Changing this from `true` to `false` is not possible unless the Glacier Vault is recreated at the same time.
   late final pulumi.Output<bool> completeLock;
-
   /// Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `complete_lock` being set to `true`.
   late final pulumi.Output<bool?> ignoreDeletionError;
-
   /// JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the Glacier Vault.
   late final pulumi.Output<String> vaultName;
 
@@ -381,11 +377,11 @@ class VaultLock extends pulumi.CustomResource {
     VaultLockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glacier/vaultLock:VaultLock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glacier/vaultLock:VaultLock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.completeLock = registerOutput<bool>('completeLock');
     this.ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');
     this.policy = registerOutput<String>('policy');

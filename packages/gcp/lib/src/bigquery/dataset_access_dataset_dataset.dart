@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatasetAccessDatasetDataset {
   /// The ID of the dataset containing this table.
   final String datasetId;
-
   /// The ID of the project containing this table.
   final String projectId;
 
@@ -16,7 +16,10 @@ class DatasetAccessDatasetDataset {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId, 'projectId': projectId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'projectId': projectId,
+    };
   }
 
   factory DatasetAccessDatasetDataset.fromMap(Map<String, dynamic> map) {
@@ -26,3 +29,4 @@ class DatasetAccessDatasetDataset {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetFieldFolder {
   final List<String> columns;
   final String description;
@@ -31,3 +32,4 @@ class GetDataSetFieldFolder {
     );
   }
 }
+

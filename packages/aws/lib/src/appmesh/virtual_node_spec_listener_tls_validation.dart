@@ -5,9 +5,7 @@ import 'virtual_node_spec_listener_tls_validation_trust.dart';
 
 class VirtualNodeSpecListenerTlsValidation {
   /// SANs for a TLS validation context.
-  final VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames?
-  subjectAlternativeNames;
-
+  final VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames? subjectAlternativeNames;
   /// TLS validation context trust.
   final VirtualNodeSpecListenerTlsValidationTrust trust;
 
@@ -21,25 +19,16 @@ class VirtualNodeSpecListenerTlsValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames': ?subjectAlternativeNames == null
-          ? null
-          : subjectAlternativeNames!.toMap(),
+      'subjectAlternativeNames': ?subjectAlternativeNames == null ? null : subjectAlternativeNames!.toMap(),
       'trust': trust.toMap(),
     };
   }
 
-  factory VirtualNodeSpecListenerTlsValidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null
-          ? null
-          : VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(
-              (map['subjectAlternativeNames'] as Map).cast<String, dynamic>(),
-            ),
-      trust: VirtualNodeSpecListenerTlsValidationTrust.fromMap(
-        (map['trust'] as Map).cast<String, dynamic>(),
-      ),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>()),
+      trust: VirtualNodeSpecListenerTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

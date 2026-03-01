@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicDelegatedPrefixArgs {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
   final pulumi.Input<int>? allocatablePrefixLength;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
   final pulumi.Input<String> ipCidrRange;
-
   /// If true, the prefix will be live migrated.
   final pulumi.Input<bool>? isLiveMigration;
-
   /// Specifies the mode of this IPv6 PDP. MODE must be one of:
   /// * DELEGATION
   /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
@@ -26,7 +22,6 @@ class PublicDelegatedPrefixArgs {
   /// * INTERNAL_IPV6_SUBNETWORK_CREATION
   /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
   final pulumi.Input<String>? mode;
-
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -34,14 +29,11 @@ class PublicDelegatedPrefixArgs {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   final pulumi.Input<String> parentPrefix;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A region where the prefix will reside.
   final pulumi.Input<String> region;
 
@@ -65,17 +57,16 @@ class PublicDelegatedPrefixArgs {
     required String parentPrefix,
     String? project,
     required String region,
-  }) : allocatablePrefixLength = pulumi.Input.asOptionalInput<int>(
-         allocatablePrefixLength,
-       ),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
-       isLiveMigration = pulumi.Input.asOptionalInput<bool>(isLiveMigration),
-       mode = pulumi.Input.asOptionalInput<String>(mode),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       parentPrefix = pulumi.Input.asInput<String>(parentPrefix),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asInput<String>(region);
+  }) :
+      allocatablePrefixLength = pulumi.Input.asOptionalInput<int>(allocatablePrefixLength),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
+      isLiveMigration = pulumi.Input.asOptionalInput<bool>(isLiveMigration),
+      mode = pulumi.Input.asOptionalInput<String>(mode),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parentPrefix = pulumi.Input.asInput<String>(parentPrefix),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,16 +84,10 @@ class PublicDelegatedPrefixArgs {
 
   factory PublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixArgs(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null
-          ? null
-          : map['allocatablePrefixLength'] as int,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : map['allocatablePrefixLength'] as int,
+      description: map['description'] == null ? null : map['description'] as String,
       ipCidrRange: map['ipCidrRange'] as String,
-      isLiveMigration: map['isLiveMigration'] == null
-          ? null
-          : map['isLiveMigration'] as bool,
+      isLiveMigration: map['isLiveMigration'] == null ? null : map['isLiveMigration'] as bool,
       mode: map['mode'] == null ? null : map['mode'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       parentPrefix: map['parentPrefix'] as String,
@@ -111,3 +96,4 @@ class PublicDelegatedPrefixArgs {
     );
   }
 }
+

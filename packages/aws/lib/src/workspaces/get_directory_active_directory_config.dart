@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectoryActiveDirectoryConfig {
   /// Fully qualified domain name of the AWS Directory Service directory.
   final String domainName;
-
   /// ARN of the Secrets Manager secret that contains the credentials for the service account.
   final String serviceAccountSecretArn;
 
@@ -29,3 +29,4 @@ class GetDirectoryActiveDirectoryConfig {
     );
   }
 }
+

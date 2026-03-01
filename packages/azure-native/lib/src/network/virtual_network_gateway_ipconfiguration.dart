@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'sub_resource.dart';
+
+/// IP configuration for virtual network gateway.
+class VirtualNetworkGatewayIPConfiguration {
+  /// Resource ID.
+  final String? id;
+  /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  final String? name;
+  /// The private IP address allocation method.
+  final String? privateIPAllocationMethod;
+  /// The reference to the public IP resource.
+  final SubResource? publicIPAddress;
+  /// The reference to the subnet resource.
+  final SubResource? subnet;
+
+  /// Creates a new [VirtualNetworkGatewayIPConfiguration].
+  /// [id] Resource ID.
+  /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  /// [privateIPAllocationMethod] The private IP address allocation method.
+  /// [publicIPAddress] The reference to the public IP resource.
+  /// [subnet] The reference to the subnet resource.
+  VirtualNetworkGatewayIPConfiguration({
+    this.id,
+    this.name,
+    this.privateIPAllocationMethod,
+    this.publicIPAddress,
+    this.subnet,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'privateIPAllocationMethod': ?privateIPAllocationMethod,
+      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
+      'subnet': ?subnet == null ? null : subnet!.toMap(),
+    };
+  }
+
+  factory VirtualNetworkGatewayIPConfiguration.fromMap(Map<String, dynamic> map) {
+    return VirtualNetworkGatewayIPConfiguration(
+      id: map['id'] == null ? null : map['id'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
+      publicIPAddress: map['publicIPAddress'] == null ? null : SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
+      subnet: map['subnet'] == null ? null : SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

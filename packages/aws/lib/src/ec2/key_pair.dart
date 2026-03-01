@@ -119,31 +119,22 @@ import 'key_pair_args.dart';
 class KeyPair extends pulumi.CustomResource {
   /// The key pair ARN.
   late final pulumi.Output<String> arn;
-
   /// The MD5 public key fingerprint as specified in section 4 of RFC 4716.
   late final pulumi.Output<String> fingerprint;
-
   /// The name for the key pair. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyName;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `key_name`. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyNamePrefix;
-
   /// The key pair ID.
   late final pulumi.Output<String> keyPairId;
-
   /// The type of key pair.
   late final pulumi.Output<String> keyType;
-
   /// The public key material.
   late final pulumi.Output<String> publicKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -156,11 +147,11 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.fingerprint = registerOutput<String>('fingerprint');
     this.keyName = registerOutput<String>('keyName');

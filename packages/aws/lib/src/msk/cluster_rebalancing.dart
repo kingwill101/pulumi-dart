@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterRebalancing {
   /// The status of intelligent rebalancing. Valid values: `ACTIVE`, `PAUSED`. Default is `ACTIVE` for new Express-based clusters.
   ///
@@ -8,13 +9,20 @@ class ClusterRebalancing {
 
   /// Creates a new [ClusterRebalancing].
   /// [status] The status of intelligent rebalancing. Valid values: `ACTIVE`, `PAUSED`. Default is `ACTIVE` for new Express-based clusters.
-  ClusterRebalancing({required this.status});
+  ClusterRebalancing({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory ClusterRebalancing.fromMap(Map<String, dynamic> map) {
-    return ClusterRebalancing(status: map['status'] as String);
+    return ClusterRebalancing(
+      status: map['status'] as String,
+    );
   }
 }
+

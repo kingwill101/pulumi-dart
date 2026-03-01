@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretArgs {
   /// ARN of the secret to retrieve.
   final pulumi.Input<String>? arn;
-
   /// Name of the secret to retrieve.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tags of the secret.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,10 +26,11 @@ class GetSecretArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +46,8 @@ class GetSecretArgs {
       arn: map['arn'] == null ? null : map['arn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

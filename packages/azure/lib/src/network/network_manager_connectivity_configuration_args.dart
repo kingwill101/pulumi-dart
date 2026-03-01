@@ -1,0 +1,83 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_manager_connectivity_configuration_applies_to_group.dart';
+import 'network_manager_connectivity_configuration_hub.dart';
+
+/// {@template pulumi_network_network_manager_connectivity_configuration_network_manager_connectivity_configuration_args_doc}
+/// The set of arguments for NetworkManagerConnectivityConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_network_network_manager_connectivity_configuration_network_manager_connectivity_configuration_args_doc}
+class NetworkManagerConnectivityConfigurationArgs {
+  /// One or more `applies_to_group` blocks as defined below.
+  final pulumi.Input<List<NetworkManagerConnectivityConfigurationAppliesToGroup>> appliesToGroups;
+  /// Specifies the connectivity topology type. Possible values are `HubAndSpoke` and `Mesh`.
+  final pulumi.Input<String> connectivityTopology;
+  /// Indicates whether to remove current existing Virtual Network Peering in the Connectivity Configuration affected scope. Possible values are `true` and `false`.
+  final pulumi.Input<bool>? deleteExistingPeeringEnabled;
+  /// A description of the Connectivity Configuration.
+  final pulumi.Input<String>? description;
+  /// Indicates whether to global mesh is supported. Possible values are `true` and `false`.
+  final pulumi.Input<bool>? globalMeshEnabled;
+  /// A `hub` block as defined below.
+  final pulumi.Input<NetworkManagerConnectivityConfigurationHub>? hub;
+  /// Specifies the name which should be used for this Network Manager Connectivity Configuration. Changing this forces a new Network Manager Connectivity Configuration to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
+  final pulumi.Input<String> networkManagerId;
+
+  /// Creates a new [NetworkManagerConnectivityConfigurationArgs].
+  /// [appliesToGroups] One or more `applies_to_group` blocks as defined below.
+  /// [connectivityTopology] Specifies the connectivity topology type. Possible values are `HubAndSpoke` and `Mesh`.
+  /// [deleteExistingPeeringEnabled] Indicates whether to remove current existing Virtual Network Peering in the Connectivity Configuration affected scope. Possible values are `true` and `false`.
+  /// [description] A description of the Connectivity Configuration.
+  /// [globalMeshEnabled] Indicates whether to global mesh is supported. Possible values are `true` and `false`.
+  /// [hub] A `hub` block as defined below.
+  /// [name] Specifies the name which should be used for this Network Manager Connectivity Configuration. Changing this forces a new Network Manager Connectivity Configuration to be created.
+  /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
+  NetworkManagerConnectivityConfigurationArgs({
+    required List<NetworkManagerConnectivityConfigurationAppliesToGroup> appliesToGroups,
+    required String connectivityTopology,
+    bool? deleteExistingPeeringEnabled,
+    String? description,
+    bool? globalMeshEnabled,
+    NetworkManagerConnectivityConfigurationHub? hub,
+    String? name,
+    required String networkManagerId,
+  }) :
+      appliesToGroups = pulumi.Input.asInput<List<NetworkManagerConnectivityConfigurationAppliesToGroup>>(appliesToGroups),
+      connectivityTopology = pulumi.Input.asInput<String>(connectivityTopology),
+      deleteExistingPeeringEnabled = pulumi.Input.asOptionalInput<bool>(deleteExistingPeeringEnabled),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      globalMeshEnabled = pulumi.Input.asOptionalInput<bool>(globalMeshEnabled),
+      hub = pulumi.Input.asOptionalInput<NetworkManagerConnectivityConfigurationHub>(hub),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      networkManagerId = pulumi.Input.asInput<String>(networkManagerId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appliesToGroups': pulumi.Input.mapInputValue<List<NetworkManagerConnectivityConfigurationAppliesToGroup>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<NetworkManagerConnectivityConfigurationAppliesToGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectivityTopology': connectivityTopology,
+      'deleteExistingPeeringEnabled': ?deleteExistingPeeringEnabled,
+      'description': ?description,
+      'globalMeshEnabled': ?globalMeshEnabled,
+      'hub': ?pulumi.Input.mapOptionalInputValue<NetworkManagerConnectivityConfigurationHub, Map<String, dynamic>>(hub, (value) => value.toMap()),
+      'name': ?name,
+      'networkManagerId': networkManagerId,
+    };
+  }
+
+  factory NetworkManagerConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return NetworkManagerConnectivityConfigurationArgs(
+      appliesToGroups: pulumi.Input.decodeList<NetworkManagerConnectivityConfigurationAppliesToGroup>(map['appliesToGroups'], (value) => NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap((value as Map).cast<String, dynamic>())),
+      connectivityTopology: map['connectivityTopology'] as String,
+      deleteExistingPeeringEnabled: map['deleteExistingPeeringEnabled'] == null ? null : map['deleteExistingPeeringEnabled'] as bool,
+      description: map['description'] == null ? null : map['description'] as String,
+      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : map['globalMeshEnabled'] as bool,
+      hub: map['hub'] == null ? null : NetworkManagerConnectivityConfigurationHub.fromMap((map['hub'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      networkManagerId: map['networkManagerId'] as String,
+    );
+  }
+}
+

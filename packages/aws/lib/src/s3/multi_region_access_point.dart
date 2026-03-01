@@ -210,22 +210,16 @@ import 'multi_region_access_point_details.dart';
 class MultiRegionAccessPoint extends pulumi.CustomResource {
   /// The AWS account ID for the owner of the buckets for which you want to create a Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// The alias for the Multi-Region Access Point.
   late final pulumi.Output<String> alias;
-
   /// Amazon Resource Name (ARN) of the Multi-Region Access Point.
   late final pulumi.Output<String> arn;
-
   /// A configuration block containing details about the Multi-Region Access Point. See Details Configuration Block below for more details
   late final pulumi.Output<MultiRegionAccessPointDetails> details;
-
   /// The DNS domain name of the S3 Multi-Region Access Point in the format _`alias`_.accesspoint.s3-global.amazonaws.com. For more information, see the documentation on [Multi-Region Access Point Requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRequests.html).
   late final pulumi.Output<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The current status of the Multi-Region Access Point. One of: `READY`, `INCONSISTENT_ACROSS_REGIONS`, `CREATING`, `PARTIALLY_CREATED`, `PARTIALLY_DELETED`, `DELETING`.
   late final pulumi.Output<String> status;
 
@@ -238,11 +232,11 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     MultiRegionAccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accountId = registerOutput<String>('accountId');
     this.alias = registerOutput<String>('alias');
     this.arn = registerOutput<String>('arn');

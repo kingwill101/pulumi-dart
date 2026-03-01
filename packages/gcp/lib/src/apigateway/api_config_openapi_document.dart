@@ -9,17 +9,20 @@ class ApiConfigOpenapiDocument {
 
   /// Creates a new [ApiConfigOpenapiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApiConfigOpenapiDocument({required this.document});
+  ApiConfigOpenapiDocument({
+    required this.document,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'document': document.toMap()};
+    return <String, dynamic>{
+      'document': document.toMap(),
+    };
   }
 
   factory ApiConfigOpenapiDocument.fromMap(Map<String, dynamic> map) {
     return ApiConfigOpenapiDocument(
-      document: ApiConfigOpenapiDocumentDocument.fromMap(
-        (map['document'] as Map).cast<String, dynamic>(),
-      ),
+      document: ApiConfigOpenapiDocumentDocument.fromMap((map['document'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

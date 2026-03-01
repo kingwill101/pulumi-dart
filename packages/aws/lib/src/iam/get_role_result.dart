@@ -7,35 +7,25 @@ import 'get_role_role_last_used.dart';
 class GetRoleResult {
   /// ARN of the role.
   final String arn;
-
   /// Policy document associated with the role.
   final String assumeRolePolicy;
-
   /// Creation date of the role in RFC 3339 format.
   final String createDate;
-
   /// Description for the role.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Maximum session duration.
   final int maxSessionDuration;
   final String name;
-
   /// Path to the role.
   final String path;
-
   /// The ARN of the policy that is used to set the permissions boundary for the role.
   final String permissionsBoundary;
-
   /// Contains information about the last time that an IAM role was used. See `role_last_used` for details.
   final List<GetRoleRoleLastUsed> roleLastUseds;
-
   /// Tags attached to the role.
   final Map<String, String> tags;
-
   /// Stable and unique string identifying the role.
   final String uniqueId;
 
@@ -78,11 +68,7 @@ class GetRoleResult {
       'name': name,
       'path': path,
       'permissionsBoundary': permissionsBoundary,
-      'roleLastUseds':
-          pulumi.Input.encodeList<GetRoleRoleLastUsed, Map<String, dynamic>>(
-            roleLastUseds,
-            (value) => value.toMap(),
-          ),
+      'roleLastUseds': pulumi.Input.encodeList<GetRoleRoleLastUsed, Map<String, dynamic>>(roleLastUseds, (value) => value.toMap()),
       'tags': tags,
       'uniqueId': uniqueId,
     };
@@ -99,13 +85,10 @@ class GetRoleResult {
       name: map['name'] as String,
       path: map['path'] as String,
       permissionsBoundary: map['permissionsBoundary'] as String,
-      roleLastUseds: pulumi.Input.decodeList<GetRoleRoleLastUsed>(
-        map['roleLastUseds'],
-        (value) =>
-            GetRoleRoleLastUsed.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      roleLastUseds: pulumi.Input.decodeList<GetRoleRoleLastUsed>(map['roleLastUseds'], (value) => GetRoleRoleLastUsed.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       uniqueId: map['uniqueId'] as String,
     );
   }
 }
+

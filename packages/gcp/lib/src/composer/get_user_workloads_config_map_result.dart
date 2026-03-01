@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserWorkloadsConfigMap.
 class GetUserWorkloadsConfigMapResult {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   final Map<String, String> data;
   final String environment;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -51,3 +51,4 @@ class GetUserWorkloadsConfigMapResult {
     );
   }
 }
+

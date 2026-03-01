@@ -202,43 +202,30 @@ import 'replication_config_compute_config.dart';
 class ReplicationConfig extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the serverless replication config.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for provisioning an DMS Serverless replication.
   late final pulumi.Output<ReplicationConfigComputeConfig> computeConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Unique identifier that you want to use to create the config.
   late final pulumi.Output<String> replicationConfigIdentifier;
-
   /// An escaped JSON string that are used to provision this replication configuration. For example, [Change processing tuning settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.ChangeProcessingTuning.html)
   late final pulumi.Output<String> replicationSettings;
-
   /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
   late final pulumi.Output<String> replicationType;
-
   /// Unique value or name that you set for a given resource that can be used to construct an Amazon Resource Name (ARN) for that resource. For more information, see [Fine-grained access control using resource names and tags](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.FineGrainedAccess)
   late final pulumi.Output<String> resourceIdentifier;
-
   /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
   late final pulumi.Output<String> sourceEndpointArn;
-
   /// Whether to run or stop the serverless replication, default is false.
   late final pulumi.Output<bool?> startReplication;
-
   /// JSON settings for specifying supplemental data. For more information see [Specifying supplemental data for task settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
   late final pulumi.Output<String?> supplementalSettings;
-
   /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   late final pulumi.Output<String> tableMappings;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   late final pulumi.Output<String> targetEndpointArn;
 
@@ -251,19 +238,15 @@ class ReplicationConfig extends pulumi.CustomResource {
     ReplicationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dms/replicationConfig:ReplicationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dms/replicationConfig:ReplicationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
-    this.computeConfig = registerOutput<ReplicationConfigComputeConfig>(
-      'computeConfig',
-    );
+    this.computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig');
     this.region = registerOutput<String>('region');
-    this.replicationConfigIdentifier = registerOutput<String>(
-      'replicationConfigIdentifier',
-    );
+    this.replicationConfigIdentifier = registerOutput<String>('replicationConfigIdentifier');
     this.replicationSettings = registerOutput<String>('replicationSettings');
     this.replicationType = registerOutput<String>('replicationType');
     this.resourceIdentifier = registerOutput<String>('resourceIdentifier');

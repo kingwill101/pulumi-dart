@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryAssociationRepositoryBitbucket {
   /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
   final String connectionArn;
-
   /// The name of the third party source repository.
   final String name;
-
   /// The username for the account that owns the repository.
   final String owner;
 
@@ -28,9 +27,7 @@ class RepositoryAssociationRepositoryBitbucket {
     };
   }
 
-  factory RepositoryAssociationRepositoryBitbucket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryAssociationRepositoryBitbucket.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepositoryBitbucket(
       connectionArn: map['connectionArn'] as String,
       name: map['name'] as String,
@@ -38,3 +35,4 @@ class RepositoryAssociationRepositoryBitbucket {
     );
   }
 }
+

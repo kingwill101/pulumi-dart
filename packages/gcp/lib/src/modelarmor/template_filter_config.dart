@@ -8,18 +8,13 @@ import 'template_filter_config_sdp_settings.dart';
 class TemplateFilterConfig {
   /// Malicious URI filter settings.
   /// Structure is documented below.
-  final TemplateFilterConfigMaliciousUriFilterSettings?
-  maliciousUriFilterSettings;
-
+  final TemplateFilterConfigMaliciousUriFilterSettings? maliciousUriFilterSettings;
   /// Prompt injection and Jailbreak Filter settings.
   /// Structure is documented below.
-  final TemplateFilterConfigPiAndJailbreakFilterSettings?
-  piAndJailbreakFilterSettings;
-
+  final TemplateFilterConfigPiAndJailbreakFilterSettings? piAndJailbreakFilterSettings;
   /// Responsible AI Filter settings.
   /// Structure is documented below.
   final TemplateFilterConfigRaiSettings? raiSettings;
-
   /// Sensitive Data Protection settings.
   /// Structure is documented below.
   final TemplateFilterConfigSdpSettings? sdpSettings;
@@ -38,12 +33,8 @@ class TemplateFilterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maliciousUriFilterSettings': ?maliciousUriFilterSettings == null
-          ? null
-          : maliciousUriFilterSettings!.toMap(),
-      'piAndJailbreakFilterSettings': ?piAndJailbreakFilterSettings == null
-          ? null
-          : piAndJailbreakFilterSettings!.toMap(),
+      'maliciousUriFilterSettings': ?maliciousUriFilterSettings == null ? null : maliciousUriFilterSettings!.toMap(),
+      'piAndJailbreakFilterSettings': ?piAndJailbreakFilterSettings == null ? null : piAndJailbreakFilterSettings!.toMap(),
       'raiSettings': ?raiSettings == null ? null : raiSettings!.toMap(),
       'sdpSettings': ?sdpSettings == null ? null : sdpSettings!.toMap(),
     };
@@ -51,28 +42,11 @@ class TemplateFilterConfig {
 
   factory TemplateFilterConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null
-          ? null
-          : TemplateFilterConfigMaliciousUriFilterSettings.fromMap(
-              (map['maliciousUriFilterSettings'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null
-          ? null
-          : TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap(
-              (map['piAndJailbreakFilterSettings'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      raiSettings: map['raiSettings'] == null
-          ? null
-          : TemplateFilterConfigRaiSettings.fromMap(
-              (map['raiSettings'] as Map).cast<String, dynamic>(),
-            ),
-      sdpSettings: map['sdpSettings'] == null
-          ? null
-          : TemplateFilterConfigSdpSettings.fromMap(
-              (map['sdpSettings'] as Map).cast<String, dynamic>(),
-            ),
+      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : TemplateFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings'] as Map).cast<String, dynamic>()),
+      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings'] as Map).cast<String, dynamic>()),
+      raiSettings: map['raiSettings'] == null ? null : TemplateFilterConfigRaiSettings.fromMap((map['raiSettings'] as Map).cast<String, dynamic>()),
+      sdpSettings: map['sdpSettings'] == null ? null : TemplateFilterConfigSdpSettings.fromMap((map['sdpSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

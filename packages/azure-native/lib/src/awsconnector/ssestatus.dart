@@ -1,0 +1,20 @@
+/// Property value
+enum SSEStatus {
+  dISABLED("DISABLED"),
+  dISABLING("DISABLING"),
+  eNABLED("ENABLED"),
+  eNABLING("ENABLING");
+
+  const SSEStatus(this.value);
+  final String value;
+
+  static SSEStatus fromValue(String value) {
+    for (final item in SSEStatus.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown SSEStatus value: $value');
+  }
+}
+

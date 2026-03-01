@@ -249,11 +249,9 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   late final pulumi.Output<int?> defaultPort;
-
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -262,15 +260,12 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// Type of network endpoints in this network endpoint group.
   /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
   late final pulumi.Output<String> networkEndpointType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -283,11 +278,11 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     GlobalNetworkEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.defaultPort = registerOutput<int?>('defaultPort');
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

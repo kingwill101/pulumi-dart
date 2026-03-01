@@ -7,26 +7,19 @@ import 'get_snapshot_cluster_configuration.dart';
 class GetSnapshotResult {
   /// ARN of the snapshot.
   final String arn;
-
   /// The configuration of the cluster from which the snapshot was taken.
   final List<GetSnapshotClusterConfiguration> clusterConfigurations;
-
   /// Name of the MemoryDB cluster that this snapshot was taken from.
   final String clusterName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the KMS key used to encrypt the snapshot at rest.
   final String kmsKeyArn;
-
   /// Name of the cluster.
   final String name;
   final String region;
-
   /// Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   final String source;
-
   /// Map of tags assigned to the snapshot.
   final Map<String, String> tags;
 
@@ -55,11 +48,7 @@ class GetSnapshotResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'clusterConfigurations':
-          pulumi.Input.encodeList<
-            GetSnapshotClusterConfiguration,
-            Map<String, dynamic>
-          >(clusterConfigurations, (value) => value.toMap()),
+      'clusterConfigurations': pulumi.Input.encodeList<GetSnapshotClusterConfiguration, Map<String, dynamic>>(clusterConfigurations, (value) => value.toMap()),
       'clusterName': clusterName,
       'id': id,
       'kmsKeyArn': kmsKeyArn,
@@ -73,13 +62,7 @@ class GetSnapshotResult {
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
       arn: map['arn'] as String,
-      clusterConfigurations:
-          pulumi.Input.decodeList<GetSnapshotClusterConfiguration>(
-            map['clusterConfigurations'],
-            (value) => GetSnapshotClusterConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      clusterConfigurations: pulumi.Input.decodeList<GetSnapshotClusterConfiguration>(map['clusterConfigurations'], (value) => GetSnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       clusterName: map['clusterName'] as String,
       id: map['id'] as String,
       kmsKeyArn: map['kmsKeyArn'] as String,
@@ -90,3 +73,4 @@ class GetSnapshotResult {
     );
   }
 }
+

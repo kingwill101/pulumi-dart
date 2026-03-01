@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesParallelProtocol {
+  /// Specifies the type of protocol used for the EGD source backend.
+  final String type;
+
+  /// Creates a new [DomainDevicesParallelProtocol].
+  /// [type] Specifies the type of protocol used for the EGD source backend.
+  DomainDevicesParallelProtocol({
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': type,
+    };
+  }
+
+  factory DomainDevicesParallelProtocol.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesParallelProtocol(
+      type: map['type'] as String,
+    );
+  }
+}
+

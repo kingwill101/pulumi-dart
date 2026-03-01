@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDiscoveredWorkloadWorkloadProperty {
   /// The service project identifier that the underlying cloud resource resides in.
   final String gcpProject;
-
   /// The location of the discovered workload.
   final String location;
-
   /// The location that the underlying resource resides in if it is zonal.
   final String zone;
 
@@ -28,9 +27,7 @@ class GetDiscoveredWorkloadWorkloadProperty {
     };
   }
 
-  factory GetDiscoveredWorkloadWorkloadProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDiscoveredWorkloadWorkloadProperty.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredWorkloadWorkloadProperty(
       gcpProject: map['gcpProject'] as String,
       location: map['location'] as String,
@@ -38,3 +35,4 @@ class GetDiscoveredWorkloadWorkloadProperty {
     );
   }
 }
+

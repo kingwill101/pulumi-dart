@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterConfigurationRouter {
   /// Router platform
   final String platform;
-
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
   /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
@@ -23,13 +23,10 @@ class GetRouterConfigurationRouter {
   /// }
   /// ```
   final String routerTypeIdentifier;
-
   /// Router operating system
   final String software;
-
   /// Router vendor
   final String vendor;
-
   /// Router XSLT Template Name
   final String xsltTemplateName;
   final String xsltTemplateNameForMacSec;
@@ -72,3 +69,4 @@ class GetRouterConfigurationRouter {
     );
   }
 }
+

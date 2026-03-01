@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleGroupNamespaceArgs {
   /// the rule group namespace data that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-Ruler.html).
   final pulumi.Input<String> data;
-
   /// The name of the rule group namespace.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// ID of the prometheus workspace the rule group namespace should be linked to.
   final pulumi.Input<String> workspaceId;
 
@@ -34,11 +30,12 @@ class RuleGroupNamespaceArgs {
     String? region,
     Map<String, String>? tags,
     required String workspaceId,
-  }) : data = pulumi.Input.asInput<String>(data),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) :
+      data = pulumi.Input.asInput<String>(data),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +52,9 @@ class RuleGroupNamespaceArgs {
       data: map['data'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
+

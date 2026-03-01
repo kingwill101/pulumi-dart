@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoadBalancerConnectionLogs {
   /// S3 bucket name to store the logs in.
   final String bucket;
-
   /// Boolean to enable / disable `connection_logs`. Defaults to `false`, even when `bucket` is specified.
   final bool? enabled;
-
   /// S3 bucket prefix. Logs are stored in the root if not configured.
   final String? prefix;
 
@@ -14,7 +13,11 @@ class LoadBalancerConnectionLogs {
   /// [bucket] S3 bucket name to store the logs in.
   /// [enabled] Boolean to enable / disable `connection_logs`. Defaults to `false`, even when `bucket` is specified.
   /// [prefix] S3 bucket prefix. Logs are stored in the root if not configured.
-  LoadBalancerConnectionLogs({required this.bucket, this.enabled, this.prefix});
+  LoadBalancerConnectionLogs({
+    required this.bucket,
+    this.enabled,
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +35,4 @@ class LoadBalancerConnectionLogs {
     );
   }
 }
+

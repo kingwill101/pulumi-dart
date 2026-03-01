@@ -1,0 +1,67 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_sql_backup_short_term_retention_policy_args_doc}
+/// The set of arguments for BackupShortTermRetentionPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_sql_backup_short_term_retention_policy_args_doc}
+class BackupShortTermRetentionPolicyArgs {
+  /// The name of the database.
+  final pulumi.Input<String> databaseName;
+  /// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+  final pulumi.Input<int>? diffBackupIntervalInHours;
+  /// The policy name. Should always be "default".
+  final pulumi.Input<String>? policyName;
+  /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  final pulumi.Input<String> resourceGroupName;
+  /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
+  final pulumi.Input<int>? retentionDays;
+  /// The name of the server.
+  final pulumi.Input<String> serverName;
+
+  /// Creates a new [BackupShortTermRetentionPolicyArgs].
+  /// [databaseName] The name of the database.
+  /// [diffBackupIntervalInHours] The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+  /// [policyName] The policy name. Should always be "default".
+  /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [retentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
+  /// [serverName] The name of the server.
+  BackupShortTermRetentionPolicyArgs({
+    required String databaseName,
+    int? diffBackupIntervalInHours,
+    String? policyName,
+    required String resourceGroupName,
+    int? retentionDays,
+    required String serverName,
+  }) :
+      databaseName = pulumi.Input.asInput<String>(databaseName),
+      diffBackupIntervalInHours = pulumi.Input.asOptionalInput<int>(diffBackupIntervalInHours),
+      policyName = pulumi.Input.asOptionalInput<String>(policyName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
+      serverName = pulumi.Input.asInput<String>(serverName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'databaseName': databaseName,
+      'diffBackupIntervalInHours': ?diffBackupIntervalInHours,
+      'policyName': ?policyName,
+      'resourceGroupName': resourceGroupName,
+      'retentionDays': ?retentionDays,
+      'serverName': serverName,
+    };
+  }
+
+  factory BackupShortTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return BackupShortTermRetentionPolicyArgs(
+      databaseName: map['databaseName'] as String,
+      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : map['diffBackupIntervalInHours'] as int,
+      policyName: map['policyName'] == null ? null : map['policyName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      serverName: map['serverName'] as String,
+    );
+  }
+}
+

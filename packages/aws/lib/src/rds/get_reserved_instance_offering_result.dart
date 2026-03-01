@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReservedInstanceOffering.
 class GetReservedInstanceOfferingResult {
   /// Currency code for the reserved DB instance.
   final String currencyCode;
   final String dbInstanceClass;
   final int duration;
-
   /// Fixed price charged for this reserved DB instance.
   final double fixedPrice;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool multiAz;
-
   /// Unique identifier for the reservation.
   final String offeringId;
   final String offeringType;
@@ -74,3 +72,4 @@ class GetReservedInstanceOfferingResult {
     );
   }
 }
+

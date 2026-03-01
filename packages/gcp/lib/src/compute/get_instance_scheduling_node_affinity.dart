@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceSchedulingNodeAffinity {
   final String key;
   final String operator;
@@ -31,3 +32,4 @@ class GetInstanceSchedulingNodeAffinity {
     );
   }
 }
+

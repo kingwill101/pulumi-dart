@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstanceIpAddress {
   final String ipAddress;
   final String timeToRetire;
@@ -31,3 +32,4 @@ class GetDatabaseInstanceIpAddress {
     );
   }
 }
+

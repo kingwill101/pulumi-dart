@@ -10,14 +10,11 @@ import 'get_route_tables_filter.dart';
 class GetRouteTablesArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetRouteTablesFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired route tables.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// VPC ID that you want to filter from.
   final pulumi.Input<String>? vpcId;
 
@@ -31,27 +28,15 @@ class GetRouteTablesArgs {
     String? region,
     Map<String, String>? tags,
     String? vpcId,
-  }) : filters = pulumi.Input.asOptionalInput<List<GetRouteTablesFilter>>(
-         filters,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetRouteTablesFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetRouteTablesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouteTablesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetRouteTablesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRouteTablesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
       'vpcId': ?vpcId,
@@ -60,19 +45,11 @@ class GetRouteTablesArgs {
 
   factory GetRouteTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTablesArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetRouteTablesFilter>(
-              map['filters'],
-              (value) => GetRouteTablesFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouteTablesFilter>(map['filters'], (value) => GetRouteTablesFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
+

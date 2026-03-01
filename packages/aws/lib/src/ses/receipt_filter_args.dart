@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptFilterArgs {
   /// The IP address or address range to filter, in CIDR notation
   final pulumi.Input<String> cidr;
-
   /// The name of the filter
   final pulumi.Input<String>? name;
-
   /// Block or Allow
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,10 +26,11 @@ class ReceiptFilterArgs {
     String? name,
     required String policy,
     String? region,
-  }) : cidr = pulumi.Input.asInput<String>(cidr),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       policy = pulumi.Input.asInput<String>(policy),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      cidr = pulumi.Input.asInput<String>(cidr),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,3 +50,4 @@ class ReceiptFilterArgs {
     );
   }
 }
+

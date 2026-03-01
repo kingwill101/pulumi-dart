@@ -249,33 +249,25 @@ import 'service_binding_args.dart';
 class ServiceBinding extends pulumi.CustomResource {
   /// Time the ServiceBinding was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Set of label tags associated with the ServiceBinding resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the ServiceBinding resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The full Service Directory Service name of the format
   /// projects/*/locations/*/namespaces/*/services/*
   late final pulumi.Output<String> service;
-
   /// Time the ServiceBinding was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -288,16 +280,14 @@ class ServiceBinding extends pulumi.CustomResource {
     ServiceBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/serviceBinding:ServiceBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/serviceBinding:ServiceBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

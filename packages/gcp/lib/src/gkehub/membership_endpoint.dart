@@ -9,7 +9,9 @@ class MembershipEndpoint {
 
   /// Creates a new [MembershipEndpoint].
   /// [gkeCluster] If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
-  MembershipEndpoint({this.gkeCluster});
+  MembershipEndpoint({
+    this.gkeCluster,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class MembershipEndpoint {
 
   factory MembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return MembershipEndpoint(
-      gkeCluster: map['gkeCluster'] == null
-          ? null
-          : MembershipEndpointGkeCluster.fromMap(
-              (map['gkeCluster'] as Map).cast<String, dynamic>(),
-            ),
+      gkeCluster: map['gkeCluster'] == null ? null : MembershipEndpointGkeCluster.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

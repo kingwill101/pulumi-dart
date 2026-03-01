@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// RegistryEndpoint Artifact Pull Secret authentication properties
+class RegistryEndpointArtifactPullSecretSettingsResponse {
+  /// The name of the kubernetes secret that contains the artifact pull secret.
+  final String secretRef;
+
+  /// Creates a new [RegistryEndpointArtifactPullSecretSettingsResponse].
+  /// [secretRef] The name of the kubernetes secret that contains the artifact pull secret.
+  RegistryEndpointArtifactPullSecretSettingsResponse({
+    required this.secretRef,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'secretRef': secretRef,
+    };
+  }
+
+  factory RegistryEndpointArtifactPullSecretSettingsResponse.fromMap(Map<String, dynamic> map) {
+    return RegistryEndpointArtifactPullSecretSettingsResponse(
+      secretRef: map['secretRef'] as String,
+    );
+  }
+}
+

@@ -8,7 +8,6 @@ class RouterBgp {
   /// Default value is `DEFAULT`.
   /// Possible values are: `DEFAULT`, `CUSTOM`.
   final String? advertiseMode;
-
   /// User-specified list of prefix groups to advertise in custom mode.
   /// This field can only be populated if advertiseMode is CUSTOM and
   /// is advertised to all peers of the router. These groups will be
@@ -16,7 +15,6 @@ class RouterBgp {
   /// blank to advertise no custom groups.
   /// This enum field has the one valid value: ALL_SUBNETS
   final List<String>? advertisedGroups;
-
   /// User-specified list of individual IP ranges to advertise in
   /// custom mode. This field can only be populated if advertiseMode
   /// is CUSTOM and is advertised to all peers of the router. These IP
@@ -24,20 +22,17 @@ class RouterBgp {
   /// Leave this field blank to advertise no custom IP ranges.
   /// Structure is documented below.
   final List<RouterBgpAdvertisedIpRange>? advertisedIpRanges;
-
   /// Local BGP Autonomous System Number (ASN). Must be an RFC6996
   /// private ASN, either 16-bit or 32-bit. The value will be fixed for
   /// this router resource. All VPN tunnels that link to this router
   /// will have the same local ASN.
   final int asn;
-
   /// Explicitly specifies a range of valid BGP Identifiers for this Router.
   /// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
   /// size at least /30, even if the BGP sessions are over IPv6. It must
   /// not overlap with any IPv4 BGP session ranges. Other vendors commonly
   /// call this router ID.
   final String? identifierRange;
-
   /// The interval in seconds between BGP keepalive messages that are sent
   /// to the peer. Hold time is three times the interval at which keepalive
   /// messages are sent, and the hold time is the maximum number of seconds
@@ -69,12 +64,7 @@ class RouterBgp {
     return <String, dynamic>{
       'advertiseMode': ?advertiseMode,
       'advertisedGroups': ?advertisedGroups,
-      'advertisedIpRanges': ?advertisedIpRanges == null
-          ? null
-          : pulumi.Input.encodeList<
-              RouterBgpAdvertisedIpRange,
-              Map<String, dynamic>
-            >(advertisedIpRanges!, (value) => value.toMap()),
+      'advertisedIpRanges': ?advertisedIpRanges == null ? null : pulumi.Input.encodeList<RouterBgpAdvertisedIpRange, Map<String, dynamic>>(advertisedIpRanges!, (value) => value.toMap()),
       'asn': asn,
       'identifierRange': ?identifierRange,
       'keepaliveInterval': ?keepaliveInterval,
@@ -83,27 +73,13 @@ class RouterBgp {
 
   factory RouterBgp.fromMap(Map<String, dynamic> map) {
     return RouterBgp(
-      advertiseMode: map['advertiseMode'] == null
-          ? null
-          : map['advertiseMode'] as String,
-      advertisedGroups: map['advertisedGroups'] == null
-          ? null
-          : (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: map['advertisedIpRanges'] == null
-          ? null
-          : pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(
-              map['advertisedIpRanges'],
-              (value) => RouterBgpAdvertisedIpRange.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      advertiseMode: map['advertiseMode'] == null ? null : map['advertiseMode'] as String,
+      advertisedGroups: map['advertisedGroups'] == null ? null : (map['advertisedGroups'] as List).cast<String>(),
+      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => RouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())),
       asn: map['asn'] as int,
-      identifierRange: map['identifierRange'] == null
-          ? null
-          : map['identifierRange'] as String,
-      keepaliveInterval: map['keepaliveInterval'] == null
-          ? null
-          : map['keepaliveInterval'] as int,
+      identifierRange: map['identifierRange'] == null ? null : map['identifierRange'] as String,
+      keepaliveInterval: map['keepaliveInterval'] == null ? null : map['keepaliveInterval'] as int,
     );
   }
 }
+

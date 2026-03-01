@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCustomModelsModelSummary {
   /// Creation time of the model.
   final String creationTime;
-
   /// The ARN of the custom model.
   final String modelArn;
-
   /// The name of the custom model.
   final String modelName;
 
@@ -36,3 +35,4 @@ class GetCustomModelsModelSummary {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb {
   final double? max;
   final double? min;
@@ -13,15 +14,17 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb(
       max: map['max'] == null ? null : map['max'] as double,
       min: map['min'] == null ? null : map['min'] as double,
     );
   }
 }
+

@@ -8,9 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
   ///
   ///
   /// <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
-  final PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions?
-  amazonS3BucketConditions;
-
+  final PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions? amazonS3BucketConditions;
   /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
   final String? minAge;
 
@@ -24,23 +22,16 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amazonS3BucketConditions': ?amazonS3BucketConditions == null
-          ? null
-          : amazonS3BucketConditions!.toMap(),
+      'amazonS3BucketConditions': ?amazonS3BucketConditions == null ? null : amazonS3BucketConditions!.toMap(),
       'minAge': ?minAge,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetConditions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetConditions(
-      amazonS3BucketConditions: map['amazonS3BucketConditions'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap(
-              (map['amazonS3BucketConditions'] as Map).cast<String, dynamic>(),
-            ),
+      amazonS3BucketConditions: map['amazonS3BucketConditions'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap((map['amazonS3BucketConditions'] as Map).cast<String, dynamic>()),
       minAge: map['minAge'] == null ? null : map['minAge'] as String,
     );
   }
 }
+

@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DeliveryChannelDeliveryChannelFilter {
+  /// An array of effective resource types for the delivery channel.
+  /// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+  /// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+  final List<String>? resourceTypes;
+
+  /// Creates a new [DeliveryChannelDeliveryChannelFilter].
+  /// [resourceTypes] An array of effective resource types for the delivery channel.
+  DeliveryChannelDeliveryChannelFilter({
+    this.resourceTypes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceTypes': ?resourceTypes,
+    };
+  }
+
+  factory DeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
+    return DeliveryChannelDeliveryChannelFilter(
+      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+    );
+  }
+}
+

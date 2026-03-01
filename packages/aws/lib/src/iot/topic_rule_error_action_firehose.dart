@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionFirehose {
   /// The payload that contains a JSON array of records will be sent to Kinesis Firehose via a batch call.
   final bool? batchMode;
-
   /// The delivery stream name.
   final String deliveryStreamName;
-
   /// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
   final String roleArn;
-
   /// A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
   final String? separator;
 
@@ -43,3 +41,4 @@ class TopicRuleErrorActionFirehose {
     );
   }
 }
+

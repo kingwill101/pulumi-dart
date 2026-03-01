@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuntimeTemplateIamBindingCondition {
   final String? description;
   final String expression;
@@ -25,11 +26,10 @@ class RuntimeTemplateIamBindingCondition {
 
   factory RuntimeTemplateIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateIamBindingCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

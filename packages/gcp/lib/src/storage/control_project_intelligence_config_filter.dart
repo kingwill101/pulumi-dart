@@ -8,23 +8,16 @@ import 'control_project_intelligence_config_filter_included_cloud_storage_locati
 class ControlProjectIntelligenceConfigFilter {
   /// Buckets to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets?
-  excludedCloudStorageBuckets;
-
+  final ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets? excludedCloudStorageBuckets;
   /// Locations to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations?
-  excludedCloudStorageLocations;
-
+  final ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations? excludedCloudStorageLocations;
   /// Buckets to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets?
-  includedCloudStorageBuckets;
-
+  final ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets? includedCloudStorageBuckets;
   /// Locations to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations?
-  includedCloudStorageLocations;
+  final ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations? includedCloudStorageLocations;
 
   /// Creates a new [ControlProjectIntelligenceConfigFilter].
   /// [excludedCloudStorageBuckets] Buckets to exclude from the Storage Intelligence plan.
@@ -40,51 +33,20 @@ class ControlProjectIntelligenceConfigFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludedCloudStorageBuckets': ?excludedCloudStorageBuckets == null
-          ? null
-          : excludedCloudStorageBuckets!.toMap(),
-      'excludedCloudStorageLocations': ?excludedCloudStorageLocations == null
-          ? null
-          : excludedCloudStorageLocations!.toMap(),
-      'includedCloudStorageBuckets': ?includedCloudStorageBuckets == null
-          ? null
-          : includedCloudStorageBuckets!.toMap(),
-      'includedCloudStorageLocations': ?includedCloudStorageLocations == null
-          ? null
-          : includedCloudStorageLocations!.toMap(),
+      'excludedCloudStorageBuckets': ?excludedCloudStorageBuckets == null ? null : excludedCloudStorageBuckets!.toMap(),
+      'excludedCloudStorageLocations': ?excludedCloudStorageLocations == null ? null : excludedCloudStorageLocations!.toMap(),
+      'includedCloudStorageBuckets': ?includedCloudStorageBuckets == null ? null : includedCloudStorageBuckets!.toMap(),
+      'includedCloudStorageLocations': ?includedCloudStorageLocations == null ? null : includedCloudStorageLocations!.toMap(),
     };
   }
 
-  factory ControlProjectIntelligenceConfigFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlProjectIntelligenceConfigFilter.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null
-          ? null
-          : ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap(
-              (map['excludedCloudStorageBuckets'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      excludedCloudStorageLocations:
-          map['excludedCloudStorageLocations'] == null
-          ? null
-          : ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(
-              (map['excludedCloudStorageLocations'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null
-          ? null
-          : ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap(
-              (map['includedCloudStorageBuckets'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      includedCloudStorageLocations:
-          map['includedCloudStorageLocations'] == null
-          ? null
-          : ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap(
-              (map['includedCloudStorageLocations'] as Map)
-                  .cast<String, dynamic>(),
-            ),
+      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null ? null : ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((map['excludedCloudStorageBuckets'] as Map).cast<String, dynamic>()),
+      excludedCloudStorageLocations: map['excludedCloudStorageLocations'] == null ? null : ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((map['excludedCloudStorageLocations'] as Map).cast<String, dynamic>()),
+      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null ? null : ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((map['includedCloudStorageBuckets'] as Map).cast<String, dynamic>()),
+      includedCloudStorageLocations: map['includedCloudStorageLocations'] == null ? null : ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((map['includedCloudStorageLocations'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

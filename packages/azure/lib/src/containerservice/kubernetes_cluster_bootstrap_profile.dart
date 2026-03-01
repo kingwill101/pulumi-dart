@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class KubernetesClusterBootstrapProfile {
+  /// The artifact source. The source where the artifacts are downloaded from. Possible values are `Cache` and `Direct`. Defaults to `Direct`.
+  ///
+  /// > **Note:** If the `artifact_source` is set to `Cache` and the `outbound_type` has been specified, the managed ACR and related resources will **not** be automatically deleted and must be removed manually. Please see the product [documentation](https://learn.microsoft.com/azure/aks/concepts-network-isolated#how-a-network-isolated-cluster-works) for more information.
+  final String? artifactSource;
+  /// The resource Id of Azure Container Registry.
+  ///
+  /// > **Note:** The `container_registry_id` requires an ACR with a private link to the cluster. You must manage permissions, cache rules, the associated private link and the private endpoint. Please see the product [documentation](https://learn.microsoft.com/azure/container-registry/container-registry-private-link) for more information on configuring an ACR with a private endpoint.
+  final String? containerRegistryId;
+
+  /// Creates a new [KubernetesClusterBootstrapProfile].
+  /// [artifactSource] The artifact source. The source where the artifacts are downloaded from. Possible values are `Cache` and `Direct`. Defaults to `Direct`.
+  /// [containerRegistryId] The resource Id of Azure Container Registry.
+  KubernetesClusterBootstrapProfile({
+    this.artifactSource,
+    this.containerRegistryId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'artifactSource': ?artifactSource,
+      'containerRegistryId': ?containerRegistryId,
+    };
+  }
+
+  factory KubernetesClusterBootstrapProfile.fromMap(Map<String, dynamic> map) {
+    return KubernetesClusterBootstrapProfile(
+      artifactSource: map['artifactSource'] == null ? null : map['artifactSource'] as String,
+      containerRegistryId: map['containerRegistryId'] == null ? null : map['containerRegistryId'] as String,
+    );
+  }
+}
+

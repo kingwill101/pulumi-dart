@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
   /// The AWS Region code for the first edge location in the association (e.g., `us-east-1`).
   final String edgeLocation;
-
   /// The AWS Region code for the second edge location in the association (e.g., `us-west-2`).
   final String peerEdgeLocation;
-
   /// A set of routing policy names to apply to this edge location pair.
   final List<String> routingPolicyNames;
 
@@ -28,9 +27,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation(
       edgeLocation: map['edgeLocation'] as String,
       peerEdgeLocation: map['peerEdgeLocation'] as String,
@@ -38,3 +35,4 @@ class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
     );
   }
 }
+

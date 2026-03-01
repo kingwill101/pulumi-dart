@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
   final String mountPath;
-
   /// Name of the job definition.
   final String name;
   final bool? readOnly;
@@ -25,9 +25,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
     };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount(
       mountPath: map['mountPath'] as String,
       name: map['name'] as String,
@@ -35,3 +33,4 @@ class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
     );
   }
 }
+

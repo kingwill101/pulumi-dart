@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterconnectAttachmentL2ForwardingGeneveHeader {
   /// VNI is a 24-bit unique virtual network identifier.
   final int? vni;
 
   /// Creates a new [InterconnectAttachmentL2ForwardingGeneveHeader].
   /// [vni] VNI is a 24-bit unique virtual network identifier.
-  InterconnectAttachmentL2ForwardingGeneveHeader({this.vni});
+  InterconnectAttachmentL2ForwardingGeneveHeader({
+    this.vni,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vni': ?vni};
+    return <String, dynamic>{
+      'vni': ?vni,
+    };
   }
 
-  factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingGeneveHeader(
       vni: map['vni'] == null ? null : map['vni'] as int,
     );
   }
 }
+

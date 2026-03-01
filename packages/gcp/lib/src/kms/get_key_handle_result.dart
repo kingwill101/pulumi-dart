@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKeyHandle.
 class GetKeyHandleResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
   final String kmsKey;
-
   /// The location of the KMS Key and KeyHandle.
   final String location;
   final String name;
-
   /// The identifier of the project where KMS KeyHandle is created.
   final String? project;
-
   /// Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   final String resourceTypeSelector;
 
@@ -56,3 +53,4 @@ class GetKeyHandleResult {
     );
   }
 }
+

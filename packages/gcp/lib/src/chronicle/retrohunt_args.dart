@@ -10,13 +10,10 @@ import 'retrohunt_process_interval.dart';
 class RetrohuntArgs {
   /// The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
   final pulumi.Input<String>? retrohuntId;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
-
   /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// Timestamp end (exclusive).
   /// The start must be less than or equal to the end.
@@ -24,11 +21,9 @@ class RetrohuntArgs {
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
   final pulumi.Input<RetrohuntProcessInterval> processInterval;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Rule ID of the rule.
   final pulumi.Input<String> rule;
 
@@ -46,25 +41,20 @@ class RetrohuntArgs {
     required RetrohuntProcessInterval processInterval,
     String? project,
     required String rule,
-  }) : retrohuntId = pulumi.Input.asOptionalInput<String>(retrohuntId),
-       instance = pulumi.Input.asInput<String>(instance),
-       location = pulumi.Input.asInput<String>(location),
-       processInterval = pulumi.Input.asInput<RetrohuntProcessInterval>(
-         processInterval,
-       ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       rule = pulumi.Input.asInput<String>(rule);
+  }) :
+      retrohuntId = pulumi.Input.asOptionalInput<String>(retrohuntId),
+      instance = pulumi.Input.asInput<String>(instance),
+      location = pulumi.Input.asInput<String>(location),
+      processInterval = pulumi.Input.asInput<RetrohuntProcessInterval>(processInterval),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      rule = pulumi.Input.asInput<String>(rule);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'RetrohuntId': ?retrohuntId,
       'instance': instance,
       'location': location,
-      'processInterval':
-          pulumi.Input.mapInputValue<
-            RetrohuntProcessInterval,
-            Map<String, dynamic>
-          >(processInterval, (value) => value.toMap()),
+      'processInterval': pulumi.Input.mapInputValue<RetrohuntProcessInterval, Map<String, dynamic>>(processInterval, (value) => value.toMap()),
       'project': ?project,
       'rule': rule,
     };
@@ -72,16 +62,13 @@ class RetrohuntArgs {
 
   factory RetrohuntArgs.fromMap(Map<String, dynamic> map) {
     return RetrohuntArgs(
-      retrohuntId: map['RetrohuntId'] == null
-          ? null
-          : map['RetrohuntId'] as String,
+      retrohuntId: map['RetrohuntId'] == null ? null : map['RetrohuntId'] as String,
       instance: map['instance'] as String,
       location: map['location'] as String,
-      processInterval: RetrohuntProcessInterval.fromMap(
-        (map['processInterval'] as Map).cast<String, dynamic>(),
-      ),
+      processInterval: RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
       rule: map['rule'] as String,
     );
   }
 }
+

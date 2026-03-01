@@ -9,20 +9,20 @@ class ServiceTemplateSpecContainerEnvValueFrom {
 
   /// Creates a new [ServiceTemplateSpecContainerEnvValueFrom].
   /// [secretKeyRef] Selects a key (version) of a secret in Secret Manager.
-  ServiceTemplateSpecContainerEnvValueFrom({required this.secretKeyRef});
+  ServiceTemplateSpecContainerEnvValueFrom({
+    required this.secretKeyRef,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretKeyRef': secretKeyRef.toMap()};
+    return <String, dynamic>{
+      'secretKeyRef': secretKeyRef.toMap(),
+    };
   }
 
-  factory ServiceTemplateSpecContainerEnvValueFrom.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateSpecContainerEnvValueFrom.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvValueFrom(
-      secretKeyRef:
-          ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(
-            (map['secretKeyRef'] as Map).cast<String, dynamic>(),
-          ),
+      secretKeyRef: ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

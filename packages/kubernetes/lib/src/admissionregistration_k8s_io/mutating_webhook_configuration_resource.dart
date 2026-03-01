@@ -1,0 +1,36 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/object_meta.dart';
+import 'mutating_webhook_admissionregistration_k8s_io_v1beta1.dart';
+import 'mutating_webhook_configuration_admissionregistration_k8s_io_v1beta1_args.dart';
+
+/// MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object. Deprecated in v1.16, planned for removal in v1.19. Use admissionregistration.k8s.io/v1 MutatingWebhookConfiguration instead.
+class MutatingWebhookConfigurationResource extends pulumi.CustomResource {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  late final pulumi.Output<String> apiVersion;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  late final pulumi.Output<String> kind;
+  /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+  late final pulumi.Output<ObjectMeta> metadata;
+  /// Webhooks is a list of webhooks and the affected resources and operations.
+  late final pulumi.Output<List<MutatingWebhookAdmissionregistrationK8sIoV1beta1>> webhooks;
+
+  /// Creates a new [MutatingWebhookConfigurationResource].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [MutatingWebhookConfigurationResource]. {@macro pulumi_admissionregistration_k8s_io_v1beta1_mutating_webhook_configuration_admissionregistration_k8s_io_v1beta1_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  MutatingWebhookConfigurationResource(
+    String name, {
+    MutatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.kind = registerOutput<String>('kind');
+    this.metadata = registerOutput<ObjectMeta>('metadata');
+    this.webhooks = registerOutput<List<MutatingWebhookAdmissionregistrationK8sIoV1beta1>>('webhooks');
+  }
+}

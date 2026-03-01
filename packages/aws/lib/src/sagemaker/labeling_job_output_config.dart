@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LabelingJobOutputConfig {
   /// ID of the key used to encrypt the output data.
   final String? kmsKeyId;
-
   /// S3 location to write output data.
   final String s3OutputPath;
-
   /// SNS output topic ARN.
   final String? snsTopicArn;
 
@@ -32,9 +31,8 @@ class LabelingJobOutputConfig {
     return LabelingJobOutputConfig(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       s3OutputPath: map['s3OutputPath'] as String,
-      snsTopicArn: map['snsTopicArn'] == null
-          ? null
-          : map['snsTopicArn'] as String,
+      snsTopicArn: map['snsTopicArn'] == null ? null : map['snsTopicArn'] as String,
     );
   }
 }
+

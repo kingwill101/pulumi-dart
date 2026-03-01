@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
   /// Record set identifier.
   final String recordSetIdentifier;
-
   /// AWS region.
   final String region;
 
@@ -22,12 +22,11 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet(
       recordSetIdentifier: map['recordSetIdentifier'] as String,
       region: map['region'] as String,
     );
   }
 }
+

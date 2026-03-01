@@ -4,30 +4,24 @@ import 'domain_default_space_settings_custom_file_system_config_efs_file_system_
 
 class DomainDefaultSpaceSettingsCustomFileSystemConfig {
   /// The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
-  final DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig?
-  efsFileSystemConfig;
+  final DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig? efsFileSystemConfig;
 
   /// Creates a new [DomainDefaultSpaceSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfig] The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
-  DomainDefaultSpaceSettingsCustomFileSystemConfig({this.efsFileSystemConfig});
+  DomainDefaultSpaceSettingsCustomFileSystemConfig({
+    this.efsFileSystemConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efsFileSystemConfig': ?efsFileSystemConfig == null
-          ? null
-          : efsFileSystemConfig!.toMap(),
+      'efsFileSystemConfig': ?efsFileSystemConfig == null ? null : efsFileSystemConfig!.toMap(),
     };
   }
 
-  factory DomainDefaultSpaceSettingsCustomFileSystemConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultSpaceSettingsCustomFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsCustomFileSystemConfig(
-      efsFileSystemConfig: map['efsFileSystemConfig'] == null
-          ? null
-          : DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap(
-              (map['efsFileSystemConfig'] as Map).cast<String, dynamic>(),
-            ),
+      efsFileSystemConfig: map['efsFileSystemConfig'] == null ? null : DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((map['efsFileSystemConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

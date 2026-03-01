@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDeviceLocation {
   /// Physical address.
   final String address;
-
   /// Latitude.
   final String latitude;
-
   /// Longitude.
   final String longitude;
 
@@ -36,3 +35,4 @@ class GetDeviceLocation {
     );
   }
 }
+

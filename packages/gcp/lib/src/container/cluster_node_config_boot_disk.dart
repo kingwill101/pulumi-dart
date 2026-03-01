@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigBootDisk {
   /// Type of the disk attached to each node
   /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
   final String? diskType;
-
   /// Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   final int? provisionedIops;
-
   /// Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   final int? provisionedThroughput;
-
   /// Size of the disk attached to each node, specified
   /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
   final int? sizeGb;
@@ -39,13 +37,10 @@ class ClusterNodeConfigBootDisk {
   factory ClusterNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigBootDisk(
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      provisionedIops: map['provisionedIops'] == null
-          ? null
-          : map['provisionedIops'] as int,
-      provisionedThroughput: map['provisionedThroughput'] == null
-          ? null
-          : map['provisionedThroughput'] as int,
+      provisionedIops: map['provisionedIops'] == null ? null : map['provisionedIops'] as int,
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : map['provisionedThroughput'] as int,
       sizeGb: map['sizeGb'] == null ? null : map['sizeGb'] as int,
     );
   }
 }
+

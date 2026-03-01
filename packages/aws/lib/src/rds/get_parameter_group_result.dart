@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getParameterGroup.
 class GetParameterGroupResult {
   /// ARN of the parameter group.
   final String arn;
-
   /// Description of the parameter group.
   final String description;
-
   /// Family of the parameter group.
   final String family;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -54,3 +52,4 @@ class GetParameterGroupResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// The client ID from the OAuth provider.
   final String clientId;
-
   /// The name of the SecretManager secret version resource storing the
   /// client secret.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
@@ -11,15 +11,12 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final String clientSecretVersion;
-
   /// OAuth grant types.
   /// Possible values:
   /// CLIENT_CREDENTIAL
   final String oauthGrantType;
-
   /// The OAuth scopes to grant.
   final List<String>? scopes;
-
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final String tokenEndpoint;
 
@@ -47,17 +44,14 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
     };
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthenticationOauthConfig(
       clientId: map['clientId'] as String,
       clientSecretVersion: map['clientSecretVersion'] as String,
       oauthGrantType: map['oauthGrantType'] as String,
-      scopes: map['scopes'] == null
-          ? null
-          : (map['scopes'] as List).cast<String>(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
       tokenEndpoint: map['tokenEndpoint'] as String,
     );
   }
 }
+

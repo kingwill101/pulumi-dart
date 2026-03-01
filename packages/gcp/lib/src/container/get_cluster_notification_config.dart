@@ -9,26 +9,20 @@ class GetClusterNotificationConfig {
 
   /// Creates a new [GetClusterNotificationConfig].
   /// [pubsubs] Notification config for Cloud Pub/Sub
-  GetClusterNotificationConfig({required this.pubsubs});
+  GetClusterNotificationConfig({
+    required this.pubsubs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsubs':
-          pulumi.Input.encodeList<
-            GetClusterNotificationConfigPubsub,
-            Map<String, dynamic>
-          >(pubsubs, (value) => value.toMap()),
+      'pubsubs': pulumi.Input.encodeList<GetClusterNotificationConfigPubsub, Map<String, dynamic>>(pubsubs, (value) => value.toMap()),
     };
   }
 
   factory GetClusterNotificationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNotificationConfig(
-      pubsubs: pulumi.Input.decodeList<GetClusterNotificationConfigPubsub>(
-        map['pubsubs'],
-        (value) => GetClusterNotificationConfigPubsub.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      pubsubs: pulumi.Input.decodeList<GetClusterNotificationConfigPubsub>(map['pubsubs'], (value) => GetClusterNotificationConfigPubsub.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

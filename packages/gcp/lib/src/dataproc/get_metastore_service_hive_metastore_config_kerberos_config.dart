@@ -5,12 +5,9 @@ import 'get_metastore_service_hive_metastore_config_kerberos_config_keytab.dart'
 
 class GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
   /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
-  final List<GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab>
-  keytabs;
-
+  final List<GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab> keytabs;
   /// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
   final String krb5ConfigGcsUri;
-
   /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
   final String principal;
 
@@ -26,32 +23,18 @@ class GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keytabs':
-          pulumi.Input.encodeList<
-            GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab,
-            Map<String, dynamic>
-          >(keytabs, (value) => value.toMap()),
+      'keytabs': pulumi.Input.encodeList<GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab, Map<String, dynamic>>(keytabs, (value) => value.toMap()),
       'krb5ConfigGcsUri': krb5ConfigGcsUri,
       'principal': principal,
     };
   }
 
-  factory GetMetastoreServiceHiveMetastoreConfigKerberosConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetastoreServiceHiveMetastoreConfigKerberosConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceHiveMetastoreConfigKerberosConfig(
-      keytabs:
-          pulumi.Input.decodeList<
-            GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab
-          >(
-            map['keytabs'],
-            (value) =>
-                GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      keytabs: pulumi.Input.decodeList<GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab>(map['keytabs'], (value) => GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap((value as Map).cast<String, dynamic>())),
       krb5ConfigGcsUri: map['krb5ConfigGcsUri'] as String,
       principal: map['principal'] as String,
     );
   }
 }
+

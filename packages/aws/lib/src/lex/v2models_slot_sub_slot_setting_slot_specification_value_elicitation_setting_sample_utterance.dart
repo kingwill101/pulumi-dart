@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance {
   /// The sample utterance that Amazon Lex uses to build its machine-learning model to recognize intents.
   final String utterance;
@@ -11,14 +12,15 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'utterance': utterance};
+    return <String, dynamic>{
+      'utterance': utterance,
+    };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance(
       utterance: map['utterance'] as String,
     );
   }
 }
+

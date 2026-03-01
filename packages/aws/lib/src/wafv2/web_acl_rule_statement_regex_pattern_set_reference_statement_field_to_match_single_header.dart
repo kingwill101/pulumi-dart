@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
   /// Name of the query header to inspect. This setting must be provided as lower case characters.
   final String name;
@@ -11,14 +12,15 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHead
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader(
       name: map['name'] as String,
     );
   }
 }
+

@@ -9,21 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbArgs {
   /// Health check path of the load balancer. Default value `/`.
   final pulumi.Input<String>? healthCheckPath;
-
   /// Instance port the load balancer will connect to.
   final pulumi.Input<int> instancePort;
-
   /// IP address type of the load balancer. Valid values: `dualstack`, `ipv4`. Default value `dualstack`.
   final pulumi.Input<String>? ipAddressType;
-
   /// Name of the Lightsail load balancer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,12 +36,13 @@ class LbArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  }) : healthCheckPath = pulumi.Input.asOptionalInput<String>(healthCheckPath),
-       instancePort = pulumi.Input.asInput<int>(instancePort),
-       ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      healthCheckPath = pulumi.Input.asOptionalInput<String>(healthCheckPath),
+      instancePort = pulumi.Input.asInput<int>(instancePort),
+      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,18 +57,13 @@ class LbArgs {
 
   factory LbArgs.fromMap(Map<String, dynamic> map) {
     return LbArgs(
-      healthCheckPath: map['healthCheckPath'] == null
-          ? null
-          : map['healthCheckPath'] as String,
+      healthCheckPath: map['healthCheckPath'] == null ? null : map['healthCheckPath'] as String,
       instancePort: map['instancePort'] as int,
-      ipAddressType: map['ipAddressType'] == null
-          ? null
-          : map['ipAddressType'] as String,
+      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

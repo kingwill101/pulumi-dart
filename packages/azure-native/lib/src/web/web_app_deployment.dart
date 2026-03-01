@@ -1,0 +1,72 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'web_app_deployment_args.dart';
+
+/// User credentials used for publishing activity.
+///
+/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+///
+/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:web:WebAppDeployment myresource1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}
+/// ```
+class WebAppDeployment extends pulumi.CustomResource {
+  /// True if deployment is currently active, false if completed and null if not started.
+  late final pulumi.Output<bool?> active;
+  /// Who authored the deployment.
+  late final pulumi.Output<String?> author;
+  /// Author email.
+  late final pulumi.Output<String?> authorEmail;
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Who performed the deployment.
+  late final pulumi.Output<String?> deployer;
+  /// Details on deployment.
+  late final pulumi.Output<String?> details;
+  /// End time.
+  late final pulumi.Output<String?> endTime;
+  /// Kind of resource.
+  late final pulumi.Output<String?> kind;
+  /// Details about deployment status.
+  late final pulumi.Output<String?> message;
+  /// Resource Name.
+  late final pulumi.Output<String> name;
+  /// Start time.
+  late final pulumi.Output<String?> startTime;
+  /// Deployment status.
+  late final pulumi.Output<int?> status;
+  /// Resource type.
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [WebAppDeployment].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [WebAppDeployment]. {@macro pulumi_web_web_app_deployment_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  WebAppDeployment(
+    String name, {
+    WebAppDeploymentArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:web:WebAppDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.active = registerOutput<bool?>('active');
+    this.author = registerOutput<String?>('author');
+    this.authorEmail = registerOutput<String?>('authorEmail');
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.deployer = registerOutput<String?>('deployer');
+    this.details = registerOutput<String?>('details');
+    this.endTime = registerOutput<String?>('endTime');
+    this.kind = registerOutput<String?>('kind');
+    this.message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    this.startTime = registerOutput<String?>('startTime');
+    this.status = registerOutput<int?>('status');
+    this.type = registerOutput<String>('type');
+  }
+}

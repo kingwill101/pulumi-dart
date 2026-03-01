@@ -317,10 +317,8 @@ import 'records_exclusive_timeouts.dart';
 class RecordsExclusive extends pulumi.CustomResource {
   /// A list of all resource record sets associated with the hosted zone.
   /// See `resource_record_set` below.
-  late final pulumi.Output<List<RecordsExclusiveResourceRecordSet>?>
-  resourceRecordSets;
+  late final pulumi.Output<List<RecordsExclusiveResourceRecordSet>?> resourceRecordSets;
   late final pulumi.Output<RecordsExclusiveTimeouts?> timeouts;
-
   /// ID of the hosted zone containing the resource record sets.
   ///
   /// The following arguments are optional:
@@ -335,15 +333,12 @@ class RecordsExclusive extends pulumi.CustomResource {
     RecordsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/recordsExclusive:RecordsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.resourceRecordSets =
-        registerOutput<List<RecordsExclusiveResourceRecordSet>?>(
-          'resourceRecordSets',
-        );
+          'aws:route53/recordsExclusive:RecordsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets');
     this.timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts');
     this.zoneId = registerOutput<String>('zoneId');
   }

@@ -20,14 +20,12 @@ class RepositoryIamBinding extends pulumi.CustomResource {
     RepositoryIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.condition = registerOutput<RepositoryIamBindingCondition?>(
-      'condition',
-    );
+          'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.condition = registerOutput<RepositoryIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.members = registerOutput<List<String>>('members');
     this.project = registerOutput<String>('project');

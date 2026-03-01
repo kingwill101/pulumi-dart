@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReleaseBlueprint {
   final String? engine;
-
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
   final String? package;
-
   /// (Output)
   /// Version metadata if present on the blueprint.
   final String? version;
@@ -15,7 +14,11 @@ class ReleaseBlueprint {
   /// [engine] Optional.
   /// [package] URI to a blueprint used by the Unit (required unless unitKind or release is
   /// [version] (Output)
-  ReleaseBlueprint({this.engine, this.package, this.version});
+  ReleaseBlueprint({
+    this.engine,
+    this.package,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,3 +36,4 @@ class ReleaseBlueprint {
     );
   }
 }
+

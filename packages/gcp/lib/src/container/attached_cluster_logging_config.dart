@@ -9,23 +9,20 @@ class AttachedClusterLoggingConfig {
 
   /// Creates a new [AttachedClusterLoggingConfig].
   /// [componentConfig] The configuration of the logging components
-  AttachedClusterLoggingConfig({this.componentConfig});
+  AttachedClusterLoggingConfig({
+    this.componentConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?componentConfig == null
-          ? null
-          : componentConfig!.toMap(),
+      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
     };
   }
 
   factory AttachedClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null
-          ? null
-          : AttachedClusterLoggingConfigComponentConfig.fromMap(
-              (map['componentConfig'] as Map).cast<String, dynamic>(),
-            ),
+      componentConfig: map['componentConfig'] == null ? null : AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

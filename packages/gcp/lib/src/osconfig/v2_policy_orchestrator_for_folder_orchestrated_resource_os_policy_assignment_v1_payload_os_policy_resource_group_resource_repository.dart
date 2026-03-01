@@ -10,29 +10,22 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// a repo file that will be managed at
   /// `/etc/apt/sources.list.d/google_osconfig.list`.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt?
-  apt;
-
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt? apt;
   /// Represents a Goo package repository. These are added to a repo file
   /// that is managed at
   /// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo?
-  goo;
-
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo? goo;
   /// Represents a single yum package repository. These are added to a
   /// repo file that is managed at
   /// `/etc/yum.repos.d/google_osconfig.repo`.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum?
-  yum;
-
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum? yum;
   /// Represents a single zypper package repository. These are added to a
   /// repo file that is managed at
   /// `/etc/zypp/repos.d/google_osconfig.repo`.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper?
-  zypper;
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper? zypper;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository].
   /// [apt] Represents a single apt package repository. These will be added to
@@ -55,30 +48,13 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository(
-      apt: map['apt'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt.fromMap(
-              (map['apt'] as Map).cast<String, dynamic>(),
-            ),
-      goo: map['goo'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap(
-              (map['goo'] as Map).cast<String, dynamic>(),
-            ),
-      yum: map['yum'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum.fromMap(
-              (map['yum'] as Map).cast<String, dynamic>(),
-            ),
-      zypper: map['zypper'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper.fromMap(
-              (map['zypper'] as Map).cast<String, dynamic>(),
-            ),
+      apt: map['apt'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      goo: map['goo'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap((map['goo'] as Map).cast<String, dynamic>()),
+      yum: map['yum'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: map['zypper'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

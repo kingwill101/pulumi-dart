@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom_property_property_value.dart';
+
+/// {@template pulumi_eds_custom_property_custom_property_args_doc}
+/// The set of arguments for CustomProperty.
+/// {@endtemplate}
+/// {@macro pulumi_eds_custom_property_custom_property_args_doc}
+class CustomPropertyArgs {
+  /// The Custom attribute key.
+  final pulumi.Input<String> propertyKey;
+  /// Custom attribute sets the value of. See `property_values` below.
+  final pulumi.Input<List<CustomPropertyPropertyValue>>? propertyValues;
+
+  /// Creates a new [CustomPropertyArgs].
+  /// [propertyKey] The Custom attribute key.
+  /// [propertyValues] Custom attribute sets the value of. See `property_values` below.
+  CustomPropertyArgs({
+    required String propertyKey,
+    List<CustomPropertyPropertyValue>? propertyValues,
+  }) :
+      propertyKey = pulumi.Input.asInput<String>(propertyKey),
+      propertyValues = pulumi.Input.asOptionalInput<List<CustomPropertyPropertyValue>>(propertyValues);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'propertyKey': propertyKey,
+      'propertyValues': ?pulumi.Input.mapOptionalInputValue<List<CustomPropertyPropertyValue>, List<Map<String, dynamic>>>(propertyValues, (value) => pulumi.Input.encodeList<CustomPropertyPropertyValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory CustomPropertyArgs.fromMap(Map<String, dynamic> map) {
+    return CustomPropertyArgs(
+      propertyKey: map['propertyKey'] as String,
+      propertyValues: map['propertyValues'] == null ? null : pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

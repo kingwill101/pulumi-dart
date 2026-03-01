@@ -9,12 +9,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
   /// Specifying this field to "False" is an error.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
   final bool? daily;
-
   /// The exclusion window occurs on these days of each week in UTC.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
   /// Structure is documented below.
   final BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek? daysOfWeek;
-
   /// Specifies duration of the window in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s". Restrictions for duration based on the
   /// recurrence type to allow some time for backup to happen:
@@ -24,13 +22,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
   /// - days of week includes all seven days of a week: duration < 24 hours
   /// - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
   final String duration;
-
   /// No recurrence. The exclusion window occurs only once and on this date in UTC.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
   /// Structure is documented below.
-  final BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate?
-  singleOccurrenceDate;
-
+  final BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate? singleOccurrenceDate;
   /// Specifies the start time of the window using time of the day in UTC.
   /// Structure is documented below.
   final BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime startTime;
@@ -54,33 +49,19 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
       'daily': ?daily,
       'daysOfWeek': ?daysOfWeek == null ? null : daysOfWeek!.toMap(),
       'duration': duration,
-      'singleOccurrenceDate': ?singleOccurrenceDate == null
-          ? null
-          : singleOccurrenceDate!.toMap(),
+      'singleOccurrenceDate': ?singleOccurrenceDate == null ? null : singleOccurrenceDate!.toMap(),
       'startTime': startTime.toMap(),
     };
   }
 
-  factory BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindow(
       daily: map['daily'] == null ? null : map['daily'] as bool,
-      daysOfWeek: map['daysOfWeek'] == null
-          ? null
-          : BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap(
-              (map['daysOfWeek'] as Map).cast<String, dynamic>(),
-            ),
+      daysOfWeek: map['daysOfWeek'] == null ? null : BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap((map['daysOfWeek'] as Map).cast<String, dynamic>()),
       duration: map['duration'] as String,
-      singleOccurrenceDate: map['singleOccurrenceDate'] == null
-          ? null
-          : BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap(
-              (map['singleOccurrenceDate'] as Map).cast<String, dynamic>(),
-            ),
-      startTime:
-          BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap(
-            (map['startTime'] as Map).cast<String, dynamic>(),
-          ),
+      singleOccurrenceDate: map['singleOccurrenceDate'] == null ? null : BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap((map['singleOccurrenceDate'] as Map).cast<String, dynamic>()),
+      startTime: BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

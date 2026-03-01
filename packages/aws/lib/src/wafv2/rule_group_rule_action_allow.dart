@@ -8,23 +8,20 @@ class RuleGroupRuleActionAllow {
 
   /// Creates a new [RuleGroupRuleActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.
-  RuleGroupRuleActionAllow({this.customRequestHandling});
+  RuleGroupRuleActionAllow({
+    this.customRequestHandling,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null
-          ? null
-          : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
     };
   }
 
   factory RuleGroupRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionAllow(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : RuleGroupRuleActionAllowCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
-            ),
+      customRequestHandling: map['customRequestHandling'] == null ? null : RuleGroupRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

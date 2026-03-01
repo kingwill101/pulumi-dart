@@ -104,28 +104,20 @@ import 'schedule_group_args.dart';
 class ScheduleGroup extends pulumi.CustomResource {
   /// ARN of the schedule group.
   late final pulumi.Output<String> arn;
-
   /// Time at which the schedule group was created.
   late final pulumi.Output<String> creationDate;
-
   /// Time at which the schedule group was last modified.
   late final pulumi.Output<String> lastModificationDate;
-
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the schedule group. Can be `ACTIVE` or `DELETING`.
   late final pulumi.Output<String> state;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -138,11 +130,11 @@ class ScheduleGroup extends pulumi.CustomResource {
     ScheduleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:scheduler/scheduleGroup:ScheduleGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:scheduler/scheduleGroup:ScheduleGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.creationDate = registerOutput<String>('creationDate');
     this.lastModificationDate = registerOutput<String>('lastModificationDate');

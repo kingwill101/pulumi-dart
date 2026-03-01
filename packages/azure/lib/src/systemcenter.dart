@@ -1,0 +1,25 @@
+library module_systemcenter;
+
+export 'systemcenter/functions.dart';
+export 'systemcenter/get_virtual_machine_manager_inventory_items_args.dart';
+export 'systemcenter/get_virtual_machine_manager_inventory_items_inventory_item.dart';
+export 'systemcenter/get_virtual_machine_manager_inventory_items_result.dart';
+export 'systemcenter/virtual_machine_manager_availability_set.dart';
+export 'systemcenter/virtual_machine_manager_availability_set_args.dart';
+export 'systemcenter/virtual_machine_manager_cloud.dart';
+export 'systemcenter/virtual_machine_manager_cloud_args.dart';
+export 'systemcenter/virtual_machine_manager_server.dart';
+export 'systemcenter/virtual_machine_manager_server_args.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_args.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_guest_agent.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_guest_agent_args.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_hardware.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_infrastructure.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_network_interface.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_operating_system.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_template.dart';
+export 'systemcenter/virtual_machine_manager_virtual_machine_template_args.dart';
+export 'systemcenter/virtual_machine_manager_virtual_network.dart';
+export 'systemcenter/virtual_machine_manager_virtual_network_args.dart';

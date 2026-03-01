@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightsReportConfigFrequencyOptionsStartDate {
   /// The day of the month to start generating inventory reports.
   final int day;
-
   /// The month to start generating inventory reports.
   final int month;
-
   /// The year to start generating inventory reports
   final int year;
 
@@ -21,12 +20,14 @@ class InsightsReportConfigFrequencyOptionsStartDate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'day': day, 'month': month, 'year': year};
+    return <String, dynamic>{
+      'day': day,
+      'month': month,
+      'year': year,
+    };
   }
 
-  factory InsightsReportConfigFrequencyOptionsStartDate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsReportConfigFrequencyOptionsStartDate.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigFrequencyOptionsStartDate(
       day: map['day'] as int,
       month: map['month'] as int,
@@ -34,3 +35,4 @@ class InsightsReportConfigFrequencyOptionsStartDate {
     );
   }
 }
+

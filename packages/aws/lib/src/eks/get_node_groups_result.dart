@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNodeGroups.
 class GetNodeGroupsResult {
   final String clusterName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of all node group names in an EKS Cluster.
   final List<String> names;
   final String region;
@@ -41,3 +40,4 @@ class GetNodeGroupsResult {
     );
   }
 }
+

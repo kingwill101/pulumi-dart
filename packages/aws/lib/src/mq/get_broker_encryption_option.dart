@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBrokerEncryptionOption {
   /// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest.
   final String kmsKeyId;
-
   /// Whether to enable an AWS-owned KMS CMK that is not in your account.
   final bool useAwsOwnedKey;
 
@@ -29,3 +29,4 @@ class GetBrokerEncryptionOption {
     );
   }
 }
+

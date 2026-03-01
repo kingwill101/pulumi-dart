@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator {
   /// The number of the guest accelerator cards exposed to this instance.
   final int? acceleratorCount;
-
   /// Full or partial URL of the accelerator type resource to attach to this instance.
   final String? acceleratorType;
 
@@ -22,16 +22,11 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator(
-      acceleratorCount: map['acceleratorCount'] == null
-          ? null
-          : map['acceleratorCount'] as int,
-      acceleratorType: map['acceleratorType'] == null
-          ? null
-          : map['acceleratorType'] as String,
+      acceleratorCount: map['acceleratorCount'] == null ? null : map['acceleratorCount'] as int,
+      acceleratorType: map['acceleratorType'] == null ? null : map['acceleratorType'] as String,
     );
   }
 }
+

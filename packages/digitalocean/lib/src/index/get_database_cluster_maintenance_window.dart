@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetDatabaseClusterMaintenanceWindow {
+  /// The day of the week on which to apply maintenance updates.
+  final String day;
+  /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
+  final String hour;
+
+  /// Creates a new [GetDatabaseClusterMaintenanceWindow].
+  /// [day] The day of the week on which to apply maintenance updates.
+  /// [hour] The hour in UTC at which maintenance updates will be applied in 24 hour format.
+  GetDatabaseClusterMaintenanceWindow({
+    required this.day,
+    required this.hour,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'day': day,
+      'hour': hour,
+    };
+  }
+
+  factory GetDatabaseClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+    return GetDatabaseClusterMaintenanceWindow(
+      day: map['day'] as String,
+      hour: map['hour'] as String,
+    );
+  }
+}
+

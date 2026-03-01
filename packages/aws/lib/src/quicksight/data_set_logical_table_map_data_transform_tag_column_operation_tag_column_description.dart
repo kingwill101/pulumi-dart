@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription {
   /// The text of a description for a column.
   final String? text;
@@ -11,14 +12,15 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': ?text};
+    return <String, dynamic>{
+      'text': ?text,
+    };
   }
 
-  factory DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription(
       text: map['text'] == null ? null : map['text'] as String,
     );
   }
 }
+

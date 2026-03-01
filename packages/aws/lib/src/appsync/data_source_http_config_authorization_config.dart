@@ -5,7 +5,6 @@ import 'data_source_http_config_authorization_config_aws_iam_config.dart';
 class DataSourceHttpConfigAuthorizationConfig {
   /// Authorization type that the HTTP endpoint requires. Default values is `AWS_IAM`.
   final String? authorizationType;
-
   /// Identity and Access Management (IAM) settings. See `aws_iam_config` Block for details.
   final DataSourceHttpConfigAuthorizationConfigAwsIamConfig? awsIamConfig;
 
@@ -24,18 +23,11 @@ class DataSourceHttpConfigAuthorizationConfig {
     };
   }
 
-  factory DataSourceHttpConfigAuthorizationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSourceHttpConfigAuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceHttpConfigAuthorizationConfig(
-      authorizationType: map['authorizationType'] == null
-          ? null
-          : map['authorizationType'] as String,
-      awsIamConfig: map['awsIamConfig'] == null
-          ? null
-          : DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap(
-              (map['awsIamConfig'] as Map).cast<String, dynamic>(),
-            ),
+      authorizationType: map['authorizationType'] == null ? null : map['authorizationType'] as String,
+      awsIamConfig: map['awsIamConfig'] == null ? null : DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap((map['awsIamConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

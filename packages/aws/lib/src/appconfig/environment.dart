@@ -211,32 +211,23 @@ import 'environment_monitor.dart';
 class Environment extends pulumi.CustomResource {
   /// AppConfig application ID. Must be between 4 and 7 characters in length.
   late final pulumi.Output<String> applicationId;
-
   /// ARN of the AppConfig Environment.
   late final pulumi.Output<String> arn;
-
   /// Description of the environment. Can be at most 1024 characters.
   late final pulumi.Output<String> description;
-
   /// AppConfig environment ID.
   late final pulumi.Output<String> environmentId;
-
   /// Set of Amazon CloudWatch alarms to monitor during the deployment process. Maximum of 5. See Monitor below for more details.
   late final pulumi.Output<List<EnvironmentMonitor>?> monitors;
-
   /// Name for the environment. Must be between 1 and 64 characters in length.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
   /// or `ROLLED_BACK`.
   late final pulumi.Output<String> state;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -249,11 +240,11 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appconfig/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appconfig/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String>('description');

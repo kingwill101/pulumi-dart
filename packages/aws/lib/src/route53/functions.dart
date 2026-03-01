@@ -1408,8 +1408,7 @@ Future<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroup(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_route53_get_resolver_firewall_rule_group_association_get_resolver_firewall_rule_group_association_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResolverFirewallRuleGroupAssociationResult>
-getResolverFirewallRuleGroupAssociation(
+Future<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewallRuleGroupAssociation(
   GetResolverFirewallRuleGroupAssociationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3118,7 +3117,10 @@ Future<GetZoneResult> getZone(
 ///   example: ${all.ids}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetZonesResult> getZones({pulumi.InvokeOptions? options}) async {
+Future<GetZonesResult> getZones(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getZones:getZones',

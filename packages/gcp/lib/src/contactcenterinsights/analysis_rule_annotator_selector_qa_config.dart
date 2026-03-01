@@ -9,7 +9,9 @@ class AnalysisRuleAnnotatorSelectorQaConfig {
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfig].
   /// [scorecardList] Container for a list of scorecards.
-  AnalysisRuleAnnotatorSelectorQaConfig({this.scorecardList});
+  AnalysisRuleAnnotatorSelectorQaConfig({
+    this.scorecardList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,15 +19,10 @@ class AnalysisRuleAnnotatorSelectorQaConfig {
     };
   }
 
-  factory AnalysisRuleAnnotatorSelectorQaConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisRuleAnnotatorSelectorQaConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorQaConfig(
-      scorecardList: map['scorecardList'] == null
-          ? null
-          : AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(
-              (map['scorecardList'] as Map).cast<String, dynamic>(),
-            ),
+      scorecardList: map['scorecardList'] == null ? null : AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap((map['scorecardList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

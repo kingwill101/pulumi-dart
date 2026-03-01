@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationPolicyArgs {
   /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   final pulumi.Input<String> constraint;
-
   /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
   final pulumi.Input<String> folder;
 
@@ -19,11 +18,15 @@ class GetOrganizationPolicyArgs {
   GetOrganizationPolicyArgs({
     required String constraint,
     required String folder,
-  }) : constraint = pulumi.Input.asInput<String>(constraint),
-       folder = pulumi.Input.asInput<String>(folder);
+  }) :
+      constraint = pulumi.Input.asInput<String>(constraint),
+      folder = pulumi.Input.asInput<String>(folder);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'constraint': constraint, 'folder': folder};
+    return <String, dynamic>{
+      'constraint': constraint,
+      'folder': folder,
+    };
   }
 
   factory GetOrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +36,4 @@ class GetOrganizationPolicyArgs {
     );
   }
 }
+

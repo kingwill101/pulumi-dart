@@ -6,12 +6,8 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntent {
   /// Name of the intent.
   final String? name;
-
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final List<
-    V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot
-  >?
-  slots;
+  final List<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot>? slots;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntent].
   /// [name] Name of the intent.
@@ -24,31 +20,15 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'slots': ?slots == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot,
-              Map<String, dynamic>
-            >(slots!, (value) => value.toMap()),
+      'slots': ?slots == null ? null : pulumi.Input.encodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot, Map<String, dynamic>>(slots!, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntent(
       name: map['name'] == null ? null : map['name'] as String,
-      slots: map['slots'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot
-            >(
-              map['slots'],
-              (value) =>
-                  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      slots: map['slots'] == null ? null : pulumi.Input.decodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

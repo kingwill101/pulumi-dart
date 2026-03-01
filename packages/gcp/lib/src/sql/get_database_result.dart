@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
   final String charset;
   final String collation;
   final String deletionPolicy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -59,3 +59,4 @@ class GetDatabaseResult {
     );
   }
 }
+

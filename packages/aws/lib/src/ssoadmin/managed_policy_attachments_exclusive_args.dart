@@ -10,15 +10,12 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 class ManagedPolicyAttachmentsExclusiveArgs {
   /// ARN of the SSO Instance.
   final pulumi.Input<String> instanceArn;
-
   /// Set of ARNs of IAM managed policies to attach to the Permission Set.
   final pulumi.Input<List<String>> managedPolicyArns;
-
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<ManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
@@ -35,16 +32,12 @@ class ManagedPolicyAttachmentsExclusiveArgs {
     required String permissionSetArn,
     String? region,
     ManagedPolicyAttachmentsExclusiveTimeouts? timeouts,
-  }) : instanceArn = pulumi.Input.asInput<String>(instanceArn),
-       managedPolicyArns = pulumi.Input.asInput<List<String>>(
-         managedPolicyArns,
-       ),
-       permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       timeouts =
-           pulumi.Input.asOptionalInput<
-             ManagedPolicyAttachmentsExclusiveTimeouts
-           >(timeouts);
+  }) :
+      instanceArn = pulumi.Input.asInput<String>(instanceArn),
+      managedPolicyArns = pulumi.Input.asInput<List<String>>(managedPolicyArns),
+      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<ManagedPolicyAttachmentsExclusiveTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,27 +45,18 @@ class ManagedPolicyAttachmentsExclusiveArgs {
       'managedPolicyArns': managedPolicyArns,
       'permissionSetArn': permissionSetArn,
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedPolicyAttachmentsExclusiveTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ManagedPolicyAttachmentsExclusiveTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
-  factory ManagedPolicyAttachmentsExclusiveArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPolicyAttachmentsExclusiveArgs(
       instanceArn: map['instanceArn'] as String,
       managedPolicyArns: (map['managedPolicyArns'] as List).cast<String>(),
       permissionSetArn: map['permissionSetArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : ManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

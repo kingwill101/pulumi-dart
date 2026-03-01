@@ -10,7 +10,6 @@ import 'vpc_block_public_access_options_timeouts.dart';
 class VpcBlockPublicAccessOptionsArgs {
   /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   final pulumi.Input<String> internetGatewayBlockMode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<VpcBlockPublicAccessOptionsTimeouts>? timeouts;
@@ -23,24 +22,16 @@ class VpcBlockPublicAccessOptionsArgs {
     required String internetGatewayBlockMode,
     String? region,
     VpcBlockPublicAccessOptionsTimeouts? timeouts,
-  }) : internetGatewayBlockMode = pulumi.Input.asInput<String>(
-         internetGatewayBlockMode,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       timeouts =
-           pulumi.Input.asOptionalInput<VpcBlockPublicAccessOptionsTimeouts>(
-             timeouts,
-           );
+  }) :
+      internetGatewayBlockMode = pulumi.Input.asInput<String>(internetGatewayBlockMode),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<VpcBlockPublicAccessOptionsTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'internetGatewayBlockMode': internetGatewayBlockMode,
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            VpcBlockPublicAccessOptionsTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<VpcBlockPublicAccessOptionsTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -48,11 +39,8 @@ class VpcBlockPublicAccessOptionsArgs {
     return VpcBlockPublicAccessOptionsArgs(
       internetGatewayBlockMode: map['internetGatewayBlockMode'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : VpcBlockPublicAccessOptionsTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

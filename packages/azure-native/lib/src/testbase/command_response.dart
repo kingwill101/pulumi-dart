@@ -1,0 +1,105 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The command used in the test
+class CommandResponse {
+  /// The action of the command.
+  final String action;
+  /// Specifies whether to run the command even if a previous command is failed.
+  final bool? alwaysRun;
+  /// Specifies whether to apply update before the command.
+  final bool? applyUpdateBefore;
+  /// The content of the command. The content depends on source type.
+  final String content;
+  /// The type of command content.
+  final String contentType;
+  /// Specifies whether to enroll Intune before the command.
+  final bool? enrollIntuneBefore;
+  /// Specifies whether to install first party applications before running the command.
+  final bool? install1PAppBefore;
+  /// Specifies the max run time of the command.
+  final int? maxRunTime;
+  /// The name of the command.
+  final String name;
+  /// Specifies whether the command is assigned to be executed after in-place upgrade.
+  final bool? postUpgrade;
+  /// Specifies whether the command is assigned to be executed before in-place upgrade.
+  final bool? preUpgrade;
+  /// Specifies whether to restart the VM after the command executed.
+  final bool? restartAfter;
+  /// Specifies whether to run the command in interactive mode.
+  final bool? runAsInteractive;
+  /// Specifies whether to run the command as administrator.
+  final bool? runElevated;
+
+  /// Creates a new [CommandResponse].
+  /// [action] The action of the command.
+  /// [alwaysRun] Specifies whether to run the command even if a previous command is failed.
+  /// [applyUpdateBefore] Specifies whether to apply update before the command.
+  /// [content] The content of the command. The content depends on source type.
+  /// [contentType] The type of command content.
+  /// [enrollIntuneBefore] Specifies whether to enroll Intune before the command.
+  /// [install1PAppBefore] Specifies whether to install first party applications before running the command.
+  /// [maxRunTime] Specifies the max run time of the command.
+  /// [name] The name of the command.
+  /// [postUpgrade] Specifies whether the command is assigned to be executed after in-place upgrade.
+  /// [preUpgrade] Specifies whether the command is assigned to be executed before in-place upgrade.
+  /// [restartAfter] Specifies whether to restart the VM after the command executed.
+  /// [runAsInteractive] Specifies whether to run the command in interactive mode.
+  /// [runElevated] Specifies whether to run the command as administrator.
+  CommandResponse({
+    required this.action,
+    this.alwaysRun,
+    this.applyUpdateBefore,
+    required this.content,
+    required this.contentType,
+    this.enrollIntuneBefore,
+    this.install1PAppBefore,
+    this.maxRunTime,
+    required this.name,
+    this.postUpgrade,
+    this.preUpgrade,
+    this.restartAfter,
+    this.runAsInteractive,
+    this.runElevated,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'action': action,
+      'alwaysRun': ?alwaysRun,
+      'applyUpdateBefore': ?applyUpdateBefore,
+      'content': content,
+      'contentType': contentType,
+      'enrollIntuneBefore': ?enrollIntuneBefore,
+      'install1PAppBefore': ?install1PAppBefore,
+      'maxRunTime': ?maxRunTime,
+      'name': name,
+      'postUpgrade': ?postUpgrade,
+      'preUpgrade': ?preUpgrade,
+      'restartAfter': ?restartAfter,
+      'runAsInteractive': ?runAsInteractive,
+      'runElevated': ?runElevated,
+    };
+  }
+
+  factory CommandResponse.fromMap(Map<String, dynamic> map) {
+    return CommandResponse(
+      action: map['action'] as String,
+      alwaysRun: map['alwaysRun'] == null ? null : map['alwaysRun'] as bool,
+      applyUpdateBefore: map['applyUpdateBefore'] == null ? null : map['applyUpdateBefore'] as bool,
+      content: map['content'] as String,
+      contentType: map['contentType'] as String,
+      enrollIntuneBefore: map['enrollIntuneBefore'] == null ? null : map['enrollIntuneBefore'] as bool,
+      install1PAppBefore: map['install1PAppBefore'] == null ? null : map['install1PAppBefore'] as bool,
+      maxRunTime: map['maxRunTime'] == null ? null : map['maxRunTime'] as int,
+      name: map['name'] as String,
+      postUpgrade: map['postUpgrade'] == null ? null : map['postUpgrade'] as bool,
+      preUpgrade: map['preUpgrade'] == null ? null : map['preUpgrade'] as bool,
+      restartAfter: map['restartAfter'] == null ? null : map['restartAfter'] as bool,
+      runAsInteractive: map['runAsInteractive'] == null ? null : map['runAsInteractive'] as bool,
+      runElevated: map['runElevated'] == null ? null : map['runElevated'] as bool,
+    );
+  }
+}
+

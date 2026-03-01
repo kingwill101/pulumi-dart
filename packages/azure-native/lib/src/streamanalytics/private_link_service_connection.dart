@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A grouping of information about the connection to the remote resource.
+class PrivateLinkServiceConnection {
+  /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
+  final List<String>? groupIds;
+  /// The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
+  final String? privateLinkServiceId;
+
+  /// Creates a new [PrivateLinkServiceConnection].
+  /// [groupIds] The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
+  /// [privateLinkServiceId] The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
+  PrivateLinkServiceConnection({
+    this.groupIds,
+    this.privateLinkServiceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'groupIds': ?groupIds,
+      'privateLinkServiceId': ?privateLinkServiceId,
+    };
+  }
+
+  factory PrivateLinkServiceConnection.fromMap(Map<String, dynamic> map) {
+    return PrivateLinkServiceConnection(
+      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
+      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : map['privateLinkServiceId'] as String,
+    );
+  }
+}
+

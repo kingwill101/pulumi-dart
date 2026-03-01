@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceAttachmentArgs {
   /// Network interface index (int).
   final pulumi.Input<int> deviceIndex;
-
   /// Instance ID to attach.
   final pulumi.Input<String> instanceId;
-
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   final pulumi.Input<int>? networkCardIndex;
-
   /// ENI ID to attach.
   final pulumi.Input<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,11 +30,12 @@ class NetworkInterfaceAttachmentArgs {
     int? networkCardIndex,
     required String networkInterfaceId,
     String? region,
-  }) : deviceIndex = pulumi.Input.asInput<int>(deviceIndex),
-       instanceId = pulumi.Input.asInput<String>(instanceId),
-       networkCardIndex = pulumi.Input.asOptionalInput<int>(networkCardIndex),
-       networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      deviceIndex = pulumi.Input.asInput<int>(deviceIndex),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      networkCardIndex = pulumi.Input.asOptionalInput<int>(networkCardIndex),
+      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +51,10 @@ class NetworkInterfaceAttachmentArgs {
     return NetworkInterfaceAttachmentArgs(
       deviceIndex: map['deviceIndex'] as int,
       instanceId: map['instanceId'] as String,
-      networkCardIndex: map['networkCardIndex'] == null
-          ? null
-          : map['networkCardIndex'] as int,
+      networkCardIndex: map['networkCardIndex'] == null ? null : map['networkCardIndex'] as int,
       networkInterfaceId: map['networkInterfaceId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

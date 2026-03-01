@@ -6,7 +6,6 @@ import 'node_pool_node_config_containerd_config_registry_host_host_client_key.da
 class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
   final NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert cert;
-
   /// Configures the client private key.
   final NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey? key;
 
@@ -25,19 +24,11 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
     };
   }
 
-  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClient(
-      cert:
-          NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
-            (map['cert'] as Map).cast<String, dynamic>(),
-          ),
-      key: map['key'] == null
-          ? null
-          : NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(
-              (map['key'] as Map).cast<String, dynamic>(),
-            ),
+      cert: NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>()),
+      key: map['key'] == null ? null : NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

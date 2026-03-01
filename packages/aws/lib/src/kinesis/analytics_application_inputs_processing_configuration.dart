@@ -8,19 +8,20 @@ class AnalyticsApplicationInputsProcessingConfiguration {
 
   /// Creates a new [AnalyticsApplicationInputsProcessingConfiguration].
   /// [lambda] The Lambda function configuration. See Lambda below for more details.
-  AnalyticsApplicationInputsProcessingConfiguration({required this.lambda});
+  AnalyticsApplicationInputsProcessingConfiguration({
+    required this.lambda,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lambda': lambda.toMap()};
+    return <String, dynamic>{
+      'lambda': lambda.toMap(),
+    };
   }
 
-  factory AnalyticsApplicationInputsProcessingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationInputsProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsProcessingConfiguration(
-      lambda: AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap(
-        (map['lambda'] as Map).cast<String, dynamic>(),
-      ),
+      lambda: AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

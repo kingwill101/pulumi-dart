@@ -1,0 +1,383 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dbcluster_role.dart';
+import 'master_user_secret.dart';
+import 'rds_db_cluster_endpoint.dart';
+import 'read_endpoint.dart';
+import 'scaling_configuration.dart';
+import 'serverless_v2_scaling_configuration.dart';
+import 'tag.dart';
+
+/// Definition of awsRdsDBCluster
+class AwsRdsDBClusterProperties {
+  /// The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster.
+  final int? allocatedStorage;
+  /// Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other AWS services on your behalf.
+  final List<DBClusterRole>? associatedRoles;
+  /// A value that indicates whether minor engine upgrades are applied automatically to the DB cluster during the maintenance window. By default, minor engine upgrades are applied automatically.
+  final bool? autoMinorVersionUpgrade;
+  /// A list of Availability Zones (AZs) where instances in the DB cluster can be created. For information on AWS Regions and Availability Zones, see Choosing the Regions and Availability Zones in the Amazon Aurora User Guide.
+  final List<String>? availabilityZones;
+  /// The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+  final int? backtrackWindow;
+  /// The number of days for which automated backups are retained.
+  final int? backupRetentionPeriod;
+  /// A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default is not to copy them.
+  final bool? copyTagsToSnapshot;
+  /// The name of your database. If you don't provide a name, then Amazon RDS won't create a database in this DB cluster. For naming constraints, see Naming Constraints in the Amazon RDS User Guide.
+  final String? databaseName;
+  /// The Amazon Resource Name (ARN) for the DB cluster.
+  final String? dbClusterArn;
+  /// The DB cluster identifier. This parameter is stored as a lowercase string.
+  final String? dbClusterIdentifier;
+  /// The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge.
+  final String? dbClusterInstanceClass;
+  /// The name of the DB cluster parameter group to associate with this DB cluster.
+  final String? dbClusterParameterGroupName;
+  /// The AWS Region-unique, immutable identifier for the DB cluster.
+  final String? dbClusterResourceId;
+  /// The name of the DB parameter group to apply to all instances of the DB cluster.
+  final String? dbInstanceParameterGroupName;
+  /// A DB subnet group that you want to associate with this DB cluster.
+  final String? dbSubnetGroupName;
+  /// Reserved for future use.
+  final String? dbSystemId;
+  /// A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
+  final bool? deletionProtection;
+  /// The Active Directory directory ID to create the DB cluster in.
+  final String? domain;
+  /// Specify the name of the IAM role to be used when making API calls to the Directory Service.
+  final String? domainIAMRoleName;
+  /// The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide.
+  final List<String>? enableCloudwatchLogsExports;
+  /// Specifies whether to enable this DB cluster to forward write operations to the primary cluster of a global cluster (Aurora global database). By default, write operations are not allowed on Aurora DB clusters that are secondary clusters in an Aurora global database.
+  final bool? enableGlobalWriteForwarding;
+  /// A value that indicates whether to enable the HTTP endpoint for DB cluster. By default, the HTTP endpoint is disabled.
+  final bool? enableHttpEndpoint;
+  /// A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts. By default, mapping is disabled.
+  final bool? enableIAMDatabaseAuthentication;
+  /// Property endpoint
+  final RdsDbClusterEndpoint? endpoint;
+  /// The name of the database engine to be used for this DB cluster. Valid Values: aurora (for MySQL 5.6-compatible Aurora), aurora-mysql (for MySQL 5.7-compatible Aurora), and aurora-postgresql
+  final String? engine;
+  /// The DB engine mode of the DB cluster, either provisioned, serverless, parallelquery, global, or multimaster.
+  final String? engineMode;
+  /// The version number of the database engine to use.
+  final String? engineVersion;
+  /// If you are configuring an Aurora global database cluster and want your Aurora DB cluster to be a secondary member in the global database cluster, specify the global cluster ID of the global database cluster. To define the primary database cluster of the global cluster, use the AWS::RDS::GlobalCluster resource.If you aren't configuring a global database cluster, don't specify this property.
+  final String? globalClusterIdentifier;
+  /// The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for each DB instance in the Multi-AZ DB cluster.
+  final int? iops;
+  /// The Amazon Resource Name (ARN) of the AWS Key Management Service master key that is used to encrypt the database instances in the DB cluster, such as arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef. If you enable the StorageEncrypted property but don't specify this property, the default master key is used. If you specify this property, you must set the StorageEncrypted property to true.
+  final String? kmsKeyId;
+  /// A value that indicates whether to manage the master user password with AWS Secrets Manager.
+  final bool? manageMasterUserPassword;
+  /// The master password for the DB instance.
+  final String? masterUserPassword;
+  /// Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
+  final MasterUserSecret? masterUserSecret;
+  /// The name of the master user for the DB cluster. You must specify MasterUsername, unless you specify SnapshotIdentifier. In that case, don't specify MasterUsername.
+  final String? masterUsername;
+  /// The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off collecting Enhanced Monitoring metrics, specify 0. The default is 0.
+  final int? monitoringInterval;
+  /// The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
+  final String? monitoringRoleArn;
+  /// The network type of the DB cluster.
+  final String? networkType;
+  /// A value that indicates whether to turn on Performance Insights for the DB cluster.
+  final bool? performanceInsightsEnabled;
+  /// The Amazon Web Services KMS key identifier for encryption of Performance Insights data.
+  final String? performanceInsightsKmsKeyId;
+  /// The amount of time, in days, to retain Performance Insights data.
+  final int? performanceInsightsRetentionPeriod;
+  /// The port number on which the instances in the DB cluster accept connections. Default: 3306 if engine is set as aurora or 5432 if set to aurora-postgresql.
+  final int? port;
+  /// The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+  final String? preferredBackupWindow;
+  /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+  final String? preferredMaintenanceWindow;
+  /// A value that indicates whether the DB cluster is publicly accessible.
+  final bool? publiclyAccessible;
+  /// Property readEndpoint
+  final ReadEndpoint? readEndpoint;
+  /// The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created as a Read Replica.
+  final String? replicationSourceIdentifier;
+  /// The date and time to restore the DB cluster to. Value must be a time in Universal Coordinated Time (UTC) format. An example: 2015-03-07T23:45:00Z
+  final String? restoreToTime;
+  /// The type of restore to be performed. You can specify one of the following values:full-copy - The new DB cluster is restored as a full copy of the source DB cluster.copy-on-write - The new DB cluster is restored as a clone of the source DB cluster.
+  final String? restoreType;
+  /// The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster. The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster.
+  final ScalingConfiguration? scalingConfiguration;
+  /// Contains the scaling configuration of an Aurora Serverless v2 DB cluster. Contains the scaling configuration of an Aurora Serverless v2 DB cluster.
+  final ServerlessV2ScalingConfiguration? serverlessV2ScalingConfiguration;
+  /// The identifier for the DB snapshot or DB cluster snapshot to restore from.You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can use only the ARN to specify a DB snapshot.After you restore a DB cluster with a SnapshotIdentifier property, you must specify the same SnapshotIdentifier property for any future updates to the DB cluster. When you specify this property for an update, the DB cluster is not restored from the snapshot again, and the data in the database is not changed. However, if you don't specify the SnapshotIdentifier property, an empty DB cluster is created, and the original DB cluster is deleted. If you specify a property that is different from the previous snapshot restore property, the DB cluster is restored from the specified SnapshotIdentifier property, and the original DB cluster is deleted.
+  final String? snapshotIdentifier;
+  /// The identifier of the source DB cluster from which to restore.
+  final String? sourceDBClusterIdentifier;
+  /// The AWS Region which contains the source DB cluster when replicating a DB cluster. For example, us-east-1.
+  final String? sourceRegion;
+  /// Indicates whether the DB instance is encrypted.If you specify the DBClusterIdentifier, SnapshotIdentifier, or SourceDBInstanceIdentifier property, don't specify this property. The value is inherited from the cluster, snapshot, or source DB instance.
+  final bool? storageEncrypted;
+  /// Specifies the storage throughput value for the DB cluster. This setting applies only to the gp3 storage type.
+  final int? storageThroughput;
+  /// Specifies the storage type to be associated with the DB cluster.
+  final String? storageType;
+  /// An array of key-value pairs to apply to this resource.
+  final List<Tag>? tags;
+  /// A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB cluster is not restored to the latest restorable backup time.
+  final bool? useLatestRestorableTime;
+  /// A list of EC2 VPC security groups to associate with this DB cluster.
+  final List<String>? vpcSecurityGroupIds;
+
+  /// Creates a new [AwsRdsDBClusterProperties].
+  /// [allocatedStorage] The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster.
+  /// [associatedRoles] Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other AWS services on your behalf.
+  /// [autoMinorVersionUpgrade] A value that indicates whether minor engine upgrades are applied automatically to the DB cluster during the maintenance window. By default, minor engine upgrades are applied automatically.
+  /// [availabilityZones] A list of Availability Zones (AZs) where instances in the DB cluster can be created. For information on AWS Regions and Availability Zones, see Choosing the Regions and Availability Zones in the Amazon Aurora User Guide.
+  /// [backtrackWindow] The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+  /// [backupRetentionPeriod] The number of days for which automated backups are retained.
+  /// [copyTagsToSnapshot] A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default is not to copy them.
+  /// [databaseName] The name of your database. If you don't provide a name, then Amazon RDS won't create a database in this DB cluster. For naming constraints, see Naming Constraints in the Amazon RDS User Guide.
+  /// [dbClusterArn] The Amazon Resource Name (ARN) for the DB cluster.
+  /// [dbClusterIdentifier] The DB cluster identifier. This parameter is stored as a lowercase string.
+  /// [dbClusterInstanceClass] The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge.
+  /// [dbClusterParameterGroupName] The name of the DB cluster parameter group to associate with this DB cluster.
+  /// [dbClusterResourceId] The AWS Region-unique, immutable identifier for the DB cluster.
+  /// [dbInstanceParameterGroupName] The name of the DB parameter group to apply to all instances of the DB cluster.
+  /// [dbSubnetGroupName] A DB subnet group that you want to associate with this DB cluster.
+  /// [dbSystemId] Reserved for future use.
+  /// [deletionProtection] A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
+  /// [domain] The Active Directory directory ID to create the DB cluster in.
+  /// [domainIAMRoleName] Specify the name of the IAM role to be used when making API calls to the Directory Service.
+  /// [enableCloudwatchLogsExports] The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide.
+  /// [enableGlobalWriteForwarding] Specifies whether to enable this DB cluster to forward write operations to the primary cluster of a global cluster (Aurora global database). By default, write operations are not allowed on Aurora DB clusters that are secondary clusters in an Aurora global database.
+  /// [enableHttpEndpoint] A value that indicates whether to enable the HTTP endpoint for DB cluster. By default, the HTTP endpoint is disabled.
+  /// [enableIAMDatabaseAuthentication] A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts. By default, mapping is disabled.
+  /// [endpoint] Property endpoint
+  /// [engine] The name of the database engine to be used for this DB cluster. Valid Values: aurora (for MySQL 5.6-compatible Aurora), aurora-mysql (for MySQL 5.7-compatible Aurora), and aurora-postgresql
+  /// [engineMode] The DB engine mode of the DB cluster, either provisioned, serverless, parallelquery, global, or multimaster.
+  /// [engineVersion] The version number of the database engine to use.
+  /// [globalClusterIdentifier] If you are configuring an Aurora global database cluster and want your Aurora DB cluster to be a secondary member in the global database cluster, specify the global cluster ID of the global database cluster. To define the primary database cluster of the global cluster, use the AWS::RDS::GlobalCluster resource.If you aren't configuring a global database cluster, don't specify this property.
+  /// [iops] The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for each DB instance in the Multi-AZ DB cluster.
+  /// [kmsKeyId] The Amazon Resource Name (ARN) of the AWS Key Management Service master key that is used to encrypt the database instances in the DB cluster, such as arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef. If you enable the StorageEncrypted property but don't specify this property, the default master key is used. If you specify this property, you must set the StorageEncrypted property to true.
+  /// [manageMasterUserPassword] A value that indicates whether to manage the master user password with AWS Secrets Manager.
+  /// [masterUserPassword] The master password for the DB instance.
+  /// [masterUserSecret] Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
+  /// [masterUsername] The name of the master user for the DB cluster. You must specify MasterUsername, unless you specify SnapshotIdentifier. In that case, don't specify MasterUsername.
+  /// [monitoringInterval] The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off collecting Enhanced Monitoring metrics, specify 0. The default is 0.
+  /// [monitoringRoleArn] The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
+  /// [networkType] The network type of the DB cluster.
+  /// [performanceInsightsEnabled] A value that indicates whether to turn on Performance Insights for the DB cluster.
+  /// [performanceInsightsKmsKeyId] The Amazon Web Services KMS key identifier for encryption of Performance Insights data.
+  /// [performanceInsightsRetentionPeriod] The amount of time, in days, to retain Performance Insights data.
+  /// [port] The port number on which the instances in the DB cluster accept connections. Default: 3306 if engine is set as aurora or 5432 if set to aurora-postgresql.
+  /// [preferredBackupWindow] The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+  /// [preferredMaintenanceWindow] The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+  /// [publiclyAccessible] A value that indicates whether the DB cluster is publicly accessible.
+  /// [readEndpoint] Property readEndpoint
+  /// [replicationSourceIdentifier] The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created as a Read Replica.
+  /// [restoreToTime] The date and time to restore the DB cluster to. Value must be a time in Universal Coordinated Time (UTC) format. An example: 2015-03-07T23:45:00Z
+  /// [restoreType] The type of restore to be performed. You can specify one of the following values:full-copy - The new DB cluster is restored as a full copy of the source DB cluster.copy-on-write - The new DB cluster is restored as a clone of the source DB cluster.
+  /// [scalingConfiguration] The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster. The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster.
+  /// [serverlessV2ScalingConfiguration] Contains the scaling configuration of an Aurora Serverless v2 DB cluster. Contains the scaling configuration of an Aurora Serverless v2 DB cluster.
+  /// [snapshotIdentifier] The identifier for the DB snapshot or DB cluster snapshot to restore from.You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can use only the ARN to specify a DB snapshot.After you restore a DB cluster with a SnapshotIdentifier property, you must specify the same SnapshotIdentifier property for any future updates to the DB cluster. When you specify this property for an update, the DB cluster is not restored from the snapshot again, and the data in the database is not changed. However, if you don't specify the SnapshotIdentifier property, an empty DB cluster is created, and the original DB cluster is deleted. If you specify a property that is different from the previous snapshot restore property, the DB cluster is restored from the specified SnapshotIdentifier property, and the original DB cluster is deleted.
+  /// [sourceDBClusterIdentifier] The identifier of the source DB cluster from which to restore.
+  /// [sourceRegion] The AWS Region which contains the source DB cluster when replicating a DB cluster. For example, us-east-1.
+  /// [storageEncrypted] Indicates whether the DB instance is encrypted.If you specify the DBClusterIdentifier, SnapshotIdentifier, or SourceDBInstanceIdentifier property, don't specify this property. The value is inherited from the cluster, snapshot, or source DB instance.
+  /// [storageThroughput] Specifies the storage throughput value for the DB cluster. This setting applies only to the gp3 storage type.
+  /// [storageType] Specifies the storage type to be associated with the DB cluster.
+  /// [tags] An array of key-value pairs to apply to this resource.
+  /// [useLatestRestorableTime] A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB cluster is not restored to the latest restorable backup time.
+  /// [vpcSecurityGroupIds] A list of EC2 VPC security groups to associate with this DB cluster.
+  AwsRdsDBClusterProperties({
+    this.allocatedStorage,
+    this.associatedRoles,
+    this.autoMinorVersionUpgrade,
+    this.availabilityZones,
+    this.backtrackWindow,
+    this.backupRetentionPeriod,
+    this.copyTagsToSnapshot,
+    this.databaseName,
+    this.dbClusterArn,
+    this.dbClusterIdentifier,
+    this.dbClusterInstanceClass,
+    this.dbClusterParameterGroupName,
+    this.dbClusterResourceId,
+    this.dbInstanceParameterGroupName,
+    this.dbSubnetGroupName,
+    this.dbSystemId,
+    this.deletionProtection,
+    this.domain,
+    this.domainIAMRoleName,
+    this.enableCloudwatchLogsExports,
+    this.enableGlobalWriteForwarding,
+    this.enableHttpEndpoint,
+    this.enableIAMDatabaseAuthentication,
+    this.endpoint,
+    this.engine,
+    this.engineMode,
+    this.engineVersion,
+    this.globalClusterIdentifier,
+    this.iops,
+    this.kmsKeyId,
+    this.manageMasterUserPassword,
+    this.masterUserPassword,
+    this.masterUserSecret,
+    this.masterUsername,
+    this.monitoringInterval,
+    this.monitoringRoleArn,
+    this.networkType,
+    this.performanceInsightsEnabled,
+    this.performanceInsightsKmsKeyId,
+    this.performanceInsightsRetentionPeriod,
+    this.port,
+    this.preferredBackupWindow,
+    this.preferredMaintenanceWindow,
+    this.publiclyAccessible,
+    this.readEndpoint,
+    this.replicationSourceIdentifier,
+    this.restoreToTime,
+    this.restoreType,
+    this.scalingConfiguration,
+    this.serverlessV2ScalingConfiguration,
+    this.snapshotIdentifier,
+    this.sourceDBClusterIdentifier,
+    this.sourceRegion,
+    this.storageEncrypted,
+    this.storageThroughput,
+    this.storageType,
+    this.tags,
+    this.useLatestRestorableTime,
+    this.vpcSecurityGroupIds,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allocatedStorage': ?allocatedStorage,
+      'associatedRoles': ?associatedRoles == null ? null : pulumi.Input.encodeList<DBClusterRole, Map<String, dynamic>>(associatedRoles!, (value) => value.toMap()),
+      'autoMinorVersionUpgrade': ?autoMinorVersionUpgrade,
+      'availabilityZones': ?availabilityZones,
+      'backtrackWindow': ?backtrackWindow,
+      'backupRetentionPeriod': ?backupRetentionPeriod,
+      'copyTagsToSnapshot': ?copyTagsToSnapshot,
+      'databaseName': ?databaseName,
+      'dbClusterArn': ?dbClusterArn,
+      'dbClusterIdentifier': ?dbClusterIdentifier,
+      'dbClusterInstanceClass': ?dbClusterInstanceClass,
+      'dbClusterParameterGroupName': ?dbClusterParameterGroupName,
+      'dbClusterResourceId': ?dbClusterResourceId,
+      'dbInstanceParameterGroupName': ?dbInstanceParameterGroupName,
+      'dbSubnetGroupName': ?dbSubnetGroupName,
+      'dbSystemId': ?dbSystemId,
+      'deletionProtection': ?deletionProtection,
+      'domain': ?domain,
+      'domainIAMRoleName': ?domainIAMRoleName,
+      'enableCloudwatchLogsExports': ?enableCloudwatchLogsExports,
+      'enableGlobalWriteForwarding': ?enableGlobalWriteForwarding,
+      'enableHttpEndpoint': ?enableHttpEndpoint,
+      'enableIAMDatabaseAuthentication': ?enableIAMDatabaseAuthentication,
+      'endpoint': ?endpoint == null ? null : endpoint!.toMap(),
+      'engine': ?engine,
+      'engineMode': ?engineMode,
+      'engineVersion': ?engineVersion,
+      'globalClusterIdentifier': ?globalClusterIdentifier,
+      'iops': ?iops,
+      'kmsKeyId': ?kmsKeyId,
+      'manageMasterUserPassword': ?manageMasterUserPassword,
+      'masterUserPassword': ?masterUserPassword,
+      'masterUserSecret': ?masterUserSecret == null ? null : masterUserSecret!.toMap(),
+      'masterUsername': ?masterUsername,
+      'monitoringInterval': ?monitoringInterval,
+      'monitoringRoleArn': ?monitoringRoleArn,
+      'networkType': ?networkType,
+      'performanceInsightsEnabled': ?performanceInsightsEnabled,
+      'performanceInsightsKmsKeyId': ?performanceInsightsKmsKeyId,
+      'performanceInsightsRetentionPeriod': ?performanceInsightsRetentionPeriod,
+      'port': ?port,
+      'preferredBackupWindow': ?preferredBackupWindow,
+      'preferredMaintenanceWindow': ?preferredMaintenanceWindow,
+      'publiclyAccessible': ?publiclyAccessible,
+      'readEndpoint': ?readEndpoint == null ? null : readEndpoint!.toMap(),
+      'replicationSourceIdentifier': ?replicationSourceIdentifier,
+      'restoreToTime': ?restoreToTime,
+      'restoreType': ?restoreType,
+      'scalingConfiguration': ?scalingConfiguration == null ? null : scalingConfiguration!.toMap(),
+      'serverlessV2ScalingConfiguration': ?serverlessV2ScalingConfiguration == null ? null : serverlessV2ScalingConfiguration!.toMap(),
+      'snapshotIdentifier': ?snapshotIdentifier,
+      'sourceDBClusterIdentifier': ?sourceDBClusterIdentifier,
+      'sourceRegion': ?sourceRegion,
+      'storageEncrypted': ?storageEncrypted,
+      'storageThroughput': ?storageThroughput,
+      'storageType': ?storageType,
+      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'useLatestRestorableTime': ?useLatestRestorableTime,
+      'vpcSecurityGroupIds': ?vpcSecurityGroupIds,
+    };
+  }
+
+  factory AwsRdsDBClusterProperties.fromMap(Map<String, dynamic> map) {
+    return AwsRdsDBClusterProperties(
+      allocatedStorage: map['allocatedStorage'] == null ? null : map['allocatedStorage'] as int,
+      associatedRoles: map['associatedRoles'] == null ? null : pulumi.Input.decodeList<DBClusterRole>(map['associatedRoles'], (value) => DBClusterRole.fromMap((value as Map).cast<String, dynamic>())),
+      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] == null ? null : map['autoMinorVersionUpgrade'] as bool,
+      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
+      backtrackWindow: map['backtrackWindow'] == null ? null : map['backtrackWindow'] as int,
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : map['backupRetentionPeriod'] as int,
+      copyTagsToSnapshot: map['copyTagsToSnapshot'] == null ? null : map['copyTagsToSnapshot'] as bool,
+      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      dbClusterArn: map['dbClusterArn'] == null ? null : map['dbClusterArn'] as String,
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : map['dbClusterIdentifier'] as String,
+      dbClusterInstanceClass: map['dbClusterInstanceClass'] == null ? null : map['dbClusterInstanceClass'] as String,
+      dbClusterParameterGroupName: map['dbClusterParameterGroupName'] == null ? null : map['dbClusterParameterGroupName'] as String,
+      dbClusterResourceId: map['dbClusterResourceId'] == null ? null : map['dbClusterResourceId'] as String,
+      dbInstanceParameterGroupName: map['dbInstanceParameterGroupName'] == null ? null : map['dbInstanceParameterGroupName'] as String,
+      dbSubnetGroupName: map['dbSubnetGroupName'] == null ? null : map['dbSubnetGroupName'] as String,
+      dbSystemId: map['dbSystemId'] == null ? null : map['dbSystemId'] as String,
+      deletionProtection: map['deletionProtection'] == null ? null : map['deletionProtection'] as bool,
+      domain: map['domain'] == null ? null : map['domain'] as String,
+      domainIAMRoleName: map['domainIAMRoleName'] == null ? null : map['domainIAMRoleName'] as String,
+      enableCloudwatchLogsExports: map['enableCloudwatchLogsExports'] == null ? null : (map['enableCloudwatchLogsExports'] as List).cast<String>(),
+      enableGlobalWriteForwarding: map['enableGlobalWriteForwarding'] == null ? null : map['enableGlobalWriteForwarding'] as bool,
+      enableHttpEndpoint: map['enableHttpEndpoint'] == null ? null : map['enableHttpEndpoint'] as bool,
+      enableIAMDatabaseAuthentication: map['enableIAMDatabaseAuthentication'] == null ? null : map['enableIAMDatabaseAuthentication'] as bool,
+      endpoint: map['endpoint'] == null ? null : RdsDbClusterEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
+      engine: map['engine'] == null ? null : map['engine'] as String,
+      engineMode: map['engineMode'] == null ? null : map['engineMode'] as String,
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : map['globalClusterIdentifier'] as String,
+      iops: map['iops'] == null ? null : map['iops'] as int,
+      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
+      manageMasterUserPassword: map['manageMasterUserPassword'] == null ? null : map['manageMasterUserPassword'] as bool,
+      masterUserPassword: map['masterUserPassword'] == null ? null : map['masterUserPassword'] as String,
+      masterUserSecret: map['masterUserSecret'] == null ? null : MasterUserSecret.fromMap((map['masterUserSecret'] as Map).cast<String, dynamic>()),
+      masterUsername: map['masterUsername'] == null ? null : map['masterUsername'] as String,
+      monitoringInterval: map['monitoringInterval'] == null ? null : map['monitoringInterval'] as int,
+      monitoringRoleArn: map['monitoringRoleArn'] == null ? null : map['monitoringRoleArn'] as String,
+      networkType: map['networkType'] == null ? null : map['networkType'] as String,
+      performanceInsightsEnabled: map['performanceInsightsEnabled'] == null ? null : map['performanceInsightsEnabled'] as bool,
+      performanceInsightsKmsKeyId: map['performanceInsightsKmsKeyId'] == null ? null : map['performanceInsightsKmsKeyId'] as String,
+      performanceInsightsRetentionPeriod: map['performanceInsightsRetentionPeriod'] == null ? null : map['performanceInsightsRetentionPeriod'] as int,
+      port: map['port'] == null ? null : map['port'] as int,
+      preferredBackupWindow: map['preferredBackupWindow'] == null ? null : map['preferredBackupWindow'] as String,
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : map['preferredMaintenanceWindow'] as String,
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : map['publiclyAccessible'] as bool,
+      readEndpoint: map['readEndpoint'] == null ? null : ReadEndpoint.fromMap((map['readEndpoint'] as Map).cast<String, dynamic>()),
+      replicationSourceIdentifier: map['replicationSourceIdentifier'] == null ? null : map['replicationSourceIdentifier'] as String,
+      restoreToTime: map['restoreToTime'] == null ? null : map['restoreToTime'] as String,
+      restoreType: map['restoreType'] == null ? null : map['restoreType'] as String,
+      scalingConfiguration: map['scalingConfiguration'] == null ? null : ScalingConfiguration.fromMap((map['scalingConfiguration'] as Map).cast<String, dynamic>()),
+      serverlessV2ScalingConfiguration: map['serverlessV2ScalingConfiguration'] == null ? null : ServerlessV2ScalingConfiguration.fromMap((map['serverlessV2ScalingConfiguration'] as Map).cast<String, dynamic>()),
+      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : map['snapshotIdentifier'] as String,
+      sourceDBClusterIdentifier: map['sourceDBClusterIdentifier'] == null ? null : map['sourceDBClusterIdentifier'] as String,
+      sourceRegion: map['sourceRegion'] == null ? null : map['sourceRegion'] as String,
+      storageEncrypted: map['storageEncrypted'] == null ? null : map['storageEncrypted'] as bool,
+      storageThroughput: map['storageThroughput'] == null ? null : map['storageThroughput'] as int,
+      storageType: map['storageType'] == null ? null : map['storageType'] as String,
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : map['useLatestRestorableTime'] as bool,
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (map['vpcSecurityGroupIds'] as List).cast<String>(),
+    );
+  }
+}
+

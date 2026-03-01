@@ -124,13 +124,10 @@ import 'bucket_request_payment_configuration_v2_args.dart';
 class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   late final pulumi.Output<String> payer;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -143,11 +140,11 @@ class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
     BucketRequestPaymentConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.payer = registerOutput<String>('payer');

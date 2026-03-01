@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionIAMBindingCondition {
   final String? description;
   final String expression;
@@ -25,11 +26,10 @@ class ConnectionIAMBindingCondition {
 
   factory ConnectionIAMBindingCondition.fromMap(Map<String, dynamic> map) {
     return ConnectionIAMBindingCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

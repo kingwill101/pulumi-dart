@@ -6,7 +6,6 @@ import 'custom_log_source_configuration_provider_identity.dart';
 class CustomLogSourceConfiguration {
   /// The configuration for the Glue Crawler for the third-party custom source.
   final CustomLogSourceConfigurationCrawlerConfiguration crawlerConfiguration;
-
   /// The identity of the log provider for the third-party custom source.
   final CustomLogSourceConfigurationProviderIdentity providerIdentity;
 
@@ -27,13 +26,9 @@ class CustomLogSourceConfiguration {
 
   factory CustomLogSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceConfiguration(
-      crawlerConfiguration:
-          CustomLogSourceConfigurationCrawlerConfiguration.fromMap(
-            (map['crawlerConfiguration'] as Map).cast<String, dynamic>(),
-          ),
-      providerIdentity: CustomLogSourceConfigurationProviderIdentity.fromMap(
-        (map['providerIdentity'] as Map).cast<String, dynamic>(),
-      ),
+      crawlerConfiguration: CustomLogSourceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration'] as Map).cast<String, dynamic>()),
+      providerIdentity: CustomLogSourceConfigurationProviderIdentity.fromMap((map['providerIdentity'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

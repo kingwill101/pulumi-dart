@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPythonPackageArgs {
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
-
   /// The name of the package to fetch. Can optionally include a specific version (e.g., `my_pkg:1.2.3`). If no version is provided, the latest version is used.
   final pulumi.Input<String> packageName;
-
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the repository containing the Python package.
   final pulumi.Input<String> repositoryId;
 
@@ -29,10 +26,11 @@ class GetPythonPackageArgs {
     required String packageName,
     String? project,
     required String repositoryId,
-  }) : location = pulumi.Input.asInput<String>(location),
-       packageName = pulumi.Input.asInput<String>(packageName),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      packageName = pulumi.Input.asInput<String>(packageName),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,3 +50,4 @@ class GetPythonPackageArgs {
     );
   }
 }
+

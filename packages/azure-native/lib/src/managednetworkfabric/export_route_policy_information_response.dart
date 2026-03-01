@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Export Route Policy Configuration.
+class ExportRoutePolicyInformationResponse {
+  /// Export IPv4 Route Policy Id.
+  final String? exportIpv4RoutePolicyId;
+  /// Export IPv6 Route Policy Id.
+  final String? exportIpv6RoutePolicyId;
+
+  /// Creates a new [ExportRoutePolicyInformationResponse].
+  /// [exportIpv4RoutePolicyId] Export IPv4 Route Policy Id.
+  /// [exportIpv6RoutePolicyId] Export IPv6 Route Policy Id.
+  ExportRoutePolicyInformationResponse({
+    this.exportIpv4RoutePolicyId,
+    this.exportIpv6RoutePolicyId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'exportIpv4RoutePolicyId': ?exportIpv4RoutePolicyId,
+      'exportIpv6RoutePolicyId': ?exportIpv6RoutePolicyId,
+    };
+  }
+
+  factory ExportRoutePolicyInformationResponse.fromMap(Map<String, dynamic> map) {
+    return ExportRoutePolicyInformationResponse(
+      exportIpv4RoutePolicyId: map['exportIpv4RoutePolicyId'] == null ? null : map['exportIpv4RoutePolicyId'] as String,
+      exportIpv6RoutePolicyId: map['exportIpv6RoutePolicyId'] == null ? null : map['exportIpv6RoutePolicyId'] as String,
+    );
+  }
+}
+

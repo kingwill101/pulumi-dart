@@ -11,29 +11,23 @@ class GetSecurityGatewayHub {
   /// Creates a new [GetSecurityGatewayHub].
   /// [internetGateways] Internet Gateway configuration.
   /// [region] Required.
-  GetSecurityGatewayHub({required this.internetGateways, required this.region});
+  GetSecurityGatewayHub({
+    required this.internetGateways,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'internetGateways':
-          pulumi.Input.encodeList<
-            GetSecurityGatewayHubInternetGateway,
-            Map<String, dynamic>
-          >(internetGateways, (value) => value.toMap()),
+      'internetGateways': pulumi.Input.encodeList<GetSecurityGatewayHubInternetGateway, Map<String, dynamic>>(internetGateways, (value) => value.toMap()),
       'region': region,
     };
   }
 
   factory GetSecurityGatewayHub.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayHub(
-      internetGateways:
-          pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(
-            map['internetGateways'],
-            (value) => GetSecurityGatewayHubInternetGateway.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      internetGateways: pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(map['internetGateways'], (value) => GetSecurityGatewayHubInternetGateway.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

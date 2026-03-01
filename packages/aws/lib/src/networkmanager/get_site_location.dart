@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSiteLocation {
   /// Address of the location.
   final String address;
-
   /// Latitude of the location.
   final String latitude;
-
   /// Longitude of the location.
   final String longitude;
 
@@ -36,3 +35,4 @@ class GetSiteLocation {
     );
   }
 }
+

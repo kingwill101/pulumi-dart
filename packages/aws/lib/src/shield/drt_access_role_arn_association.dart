@@ -259,14 +259,12 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
     DrtAccessRoleArnAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.roleArn = registerOutput<String>('roleArn');
-    this.timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>(
-      'timeouts',
-    );
+    this.timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
   }
 }

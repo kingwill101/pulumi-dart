@@ -1,0 +1,32 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'command_args.dart';
+
+/// `f5bigip.Command` Run TMSH commands on F5 devices
+///
+/// This resource is helpful to send TMSH command to an BIG-IP node and returns the results read from the device
+class Command extends pulumi.CustomResource {
+  /// The resulting output from the `commands` executed.
+  late final pulumi.Output<List<String>> commandResults;
+  /// The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
+  late final pulumi.Output<List<String>> commands;
+  late final pulumi.Output<String?> when;
+
+  /// Creates a new [Command].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Command]. {@macro pulumi_index_command_command_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Command(
+    String name, {
+    CommandArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:index/command:Command',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.commandResults = registerOutput<List<String>>('commandResults');
+    this.commands = registerOutput<List<String>>('commands');
+    this.when = registerOutput<String?>('when');
+  }
+}

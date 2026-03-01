@@ -20,9 +20,10 @@ class GetClusterIamPolicyArgs {
     required String cluster,
     String? project,
     String? region,
-  }) : cluster = pulumi.Input.asInput<String>(cluster),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      cluster = pulumi.Input.asInput<String>(cluster),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,3 +41,4 @@ class GetClusterIamPolicyArgs {
     );
   }
 }
+

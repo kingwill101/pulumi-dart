@@ -11,11 +11,9 @@ class InstanceSettingsArgs {
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
   final pulumi.Input<InstanceSettingsMetadata>? metadata;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String> zone;
 
@@ -27,19 +25,14 @@ class InstanceSettingsArgs {
     InstanceSettingsMetadata? metadata,
     String? project,
     required String zone,
-  }) : metadata = pulumi.Input.asOptionalInput<InstanceSettingsMetadata>(
-         metadata,
-       ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      metadata = pulumi.Input.asOptionalInput<InstanceSettingsMetadata>(metadata),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceSettingsMetadata,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<InstanceSettingsMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'project': ?project,
       'zone': zone,
     };
@@ -47,13 +40,10 @@ class InstanceSettingsArgs {
 
   factory InstanceSettingsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsArgs(
-      metadata: map['metadata'] == null
-          ? null
-          : InstanceSettingsMetadata.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>(),
-            ),
+      metadata: map['metadata'] == null ? null : InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

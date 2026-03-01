@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'sub_resource.dart';
+
+/// The parameters of a capacity reservation Profile.
+class CapacityReservationProfile {
+  /// Specifies the capacity reservation group resource id that should be used for
+  /// allocating the virtual machine or scaleset vm instances provided enough
+  /// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+  /// for more details.
+  final SubResource? capacityReservationGroup;
+
+  /// Creates a new [CapacityReservationProfile].
+  /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for
+  CapacityReservationProfile({
+    this.capacityReservationGroup,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacityReservationGroup': ?capacityReservationGroup == null ? null : capacityReservationGroup!.toMap(),
+    };
+  }
+
+  factory CapacityReservationProfile.fromMap(Map<String, dynamic> map) {
+    return CapacityReservationProfile(
+      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : SubResource.fromMap((map['capacityReservationGroup'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

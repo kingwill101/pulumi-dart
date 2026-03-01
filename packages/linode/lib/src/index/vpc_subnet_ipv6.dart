@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class VpcSubnetIpv6 {
+  /// The IPv6 range assigned to this subnet.
+  final String? allocatedRange;
+  /// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+  final String? range;
+
+  /// Creates a new [VpcSubnetIpv6].
+  /// [allocatedRange] The IPv6 range assigned to this subnet.
+  /// [range] An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+  VpcSubnetIpv6({
+    this.allocatedRange,
+    this.range,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allocatedRange': ?allocatedRange,
+      'range': ?range,
+    };
+  }
+
+  factory VpcSubnetIpv6.fromMap(Map<String, dynamic> map) {
+    return VpcSubnetIpv6(
+      allocatedRange: map['allocatedRange'] == null ? null : map['allocatedRange'] as String,
+      range: map['range'] == null ? null : map['range'] as String,
+    );
+  }
+}
+

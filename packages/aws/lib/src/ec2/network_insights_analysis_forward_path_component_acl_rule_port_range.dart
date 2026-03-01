@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkInsightsAnalysisForwardPathComponentAclRulePortRange {
   final int? from;
   final int? to;
@@ -13,15 +14,17 @@ class NetworkInsightsAnalysisForwardPathComponentAclRulePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': ?from, 'to': ?to};
+    return <String, dynamic>{
+      'from': ?from,
+      'to': ?to,
+    };
   }
 
-  factory NetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentAclRulePortRange(
       from: map['from'] == null ? null : map['from'] as int,
       to: map['to'] == null ? null : map['to'] as int,
     );
   }
 }
+

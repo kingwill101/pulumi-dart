@@ -1,0 +1,18 @@
+library module_subscription;
+
+export 'subscription/alias.dart';
+export 'subscription/alias_args.dart';
+export 'subscription/functions.dart';
+export 'subscription/get_alias_args.dart';
+export 'subscription/get_alias_result.dart';
+export 'subscription/get_subscription_tar_directory_args.dart';
+export 'subscription/get_subscription_tar_directory_result.dart';
+export 'subscription/put_alias_request_additional_properties.dart';
+export 'subscription/put_alias_request_properties.dart';
+export 'subscription/subscription_alias_response_properties_response.dart';
+export 'subscription/subscription_tar_directory.dart';
+export 'subscription/subscription_tar_directory_args.dart';
+export 'subscription/system_data_response.dart';
+export 'subscription/target_directory_request_properties.dart';
+export 'subscription/target_directory_result_properties_response.dart';
+export 'subscription/workload.dart';

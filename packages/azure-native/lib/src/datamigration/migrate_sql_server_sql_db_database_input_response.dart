@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Database specific information for SQL to Azure SQL DB migration task inputs
+class MigrateSqlServerSqlDbDatabaseInputResponse {
+  /// id of the database
+  final String? id;
+  /// Whether to set database read only before migration
+  final bool? makeSourceDbReadOnly;
+  /// Name of the database
+  final String? name;
+  /// Settings selected for DB schema migration.
+  final dynamic schemaSetting;
+  /// Mapping of source to target tables
+  final Map<String, String>? tableMap;
+  /// Name of target database. Note: Target database will be truncated before starting migration.
+  final String? targetDatabaseName;
+
+  /// Creates a new [MigrateSqlServerSqlDbDatabaseInputResponse].
+  /// [id] id of the database
+  /// [makeSourceDbReadOnly] Whether to set database read only before migration
+  /// [name] Name of the database
+  /// [schemaSetting] Settings selected for DB schema migration.
+  /// [tableMap] Mapping of source to target tables
+  /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
+  MigrateSqlServerSqlDbDatabaseInputResponse({
+    this.id,
+    this.makeSourceDbReadOnly,
+    this.name,
+    this.schemaSetting,
+    this.tableMap,
+    this.targetDatabaseName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'makeSourceDbReadOnly': ?makeSourceDbReadOnly,
+      'name': ?name,
+      'schemaSetting': ?schemaSetting,
+      'tableMap': ?tableMap,
+      'targetDatabaseName': ?targetDatabaseName,
+    };
+  }
+
+  factory MigrateSqlServerSqlDbDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
+    return MigrateSqlServerSqlDbDatabaseInputResponse(
+      id: map['id'] == null ? null : map['id'] as String,
+      makeSourceDbReadOnly: map['makeSourceDbReadOnly'] == null ? null : map['makeSourceDbReadOnly'] as bool,
+      name: map['name'] == null ? null : map['name'] as String,
+      schemaSetting: map['schemaSetting'] == null ? null : map['schemaSetting'],
+      tableMap: map['tableMap'] == null ? null : (map['tableMap'] as Map).cast<String, String>(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : map['targetDatabaseName'] as String,
+    );
+  }
+}
+

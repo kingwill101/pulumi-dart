@@ -5,10 +5,8 @@ import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_con
 class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   /// Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `header_behavior` are `none` and `whitelist`.
   final String? headerBehavior;
-
   /// Object contains a list of header names. See Items for more information.
-  final CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders?
-  headers;
+  final CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders? headers;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig].
   /// [headerBehavior] Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `header_behavior` are `none` and `whitelist`.
@@ -25,18 +23,11 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
     };
   }
 
-  factory CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig(
-      headerBehavior: map['headerBehavior'] == null
-          ? null
-          : map['headerBehavior'] as String,
-      headers: map['headers'] == null
-          ? null
-          : CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap(
-              (map['headers'] as Map).cast<String, dynamic>(),
-            ),
+      headerBehavior: map['headerBehavior'] == null ? null : map['headerBehavior'] as String,
+      headers: map['headers'] == null ? null : CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

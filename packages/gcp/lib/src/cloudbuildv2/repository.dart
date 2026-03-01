@@ -925,30 +925,22 @@ class Repository extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Output only. Server assigned timestamp for when the connection was created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Name of the repository.
   late final pulumi.Output<String> name;
-
   /// The connection for the resource
   late final pulumi.Output<String> parentConnection;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Required. Git Clone HTTPS URI.
   late final pulumi.Output<String> remoteUri;
-
   /// Output only. Server assigned timestamp for when the connection was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -961,16 +953,14 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudbuildv2/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudbuildv2/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

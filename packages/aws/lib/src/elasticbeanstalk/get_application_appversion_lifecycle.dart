@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetApplicationAppversionLifecycle {
   /// Specifies whether delete a version's source bundle from S3 when the application version is deleted.
   final bool deleteSourceFromS3;
-
   /// Number of days to retain an application version.
   final int maxAgeInDays;
-
   /// Maximum number of application versions to retain.
   final int maxCount;
-
   /// ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
   final String serviceRole;
 
@@ -43,3 +41,4 @@ class GetApplicationAppversionLifecycle {
     );
   }
 }
+

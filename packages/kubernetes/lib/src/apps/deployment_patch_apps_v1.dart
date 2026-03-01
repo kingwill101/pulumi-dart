@@ -1,0 +1,68 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/object_meta_patch.dart';
+import 'deployment_patch_args.dart';
+import 'deployment_spec_patch.dart';
+import 'deployment_status_patch.dart';
+
+/// Patch resources are used to modify existing Kubernetes resources by using
+/// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
+/// one patch may be applied to the same resource, and a random FieldManager name will be used for each Patch resource.
+/// Conflicts will result in an error by default, but can be forced using the "pulumi.com/patchForce" annotation. See the
+/// [Server-Side Apply Docs](https://www.pulumi.com/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) for
+/// additional information about using Server-Side Apply to manage Kubernetes resources with Pulumi.
+/// Deployment enables declarative updates for Pods and ReplicaSets.
+///
+/// This resource waits until its status is ready before registering success
+/// for create/update, and populating output properties from the current state of the resource.
+/// The following conditions are used to determine whether the resource creation has
+/// succeeded or failed:
+///
+/// 1. The Deployment has begun to be updated by the Deployment controller. If the current
+/// generation of the Deployment is > 1, then this means that the current generation must
+/// be different from the generation reported by the last outputs.
+/// 2. There exists a ReplicaSet whose revision is equal to the current revision of the
+/// Deployment.
+/// 3. The Deployment's '.status.conditions' has a status of type 'Available' whose 'status'
+/// member is set to 'True'.
+/// 4. If the Deployment has generation > 1, then '.status.conditions' has a status of type
+/// 'Progressing', whose 'status' member is set to 'True', and whose 'reason' is
+/// 'NewReplicaSetAvailable'. For generation <= 1, this status field does not exist,
+/// because it doesn't do a rollout (i.e., it simply creates the Deployment and
+/// corresponding ReplicaSet), and therefore there is no rollout to mark as 'Progressing'.
+///
+/// If the Deployment has not reached a Ready state after 10 minutes, it will
+/// time out and mark the resource update as Failed. You can override the default timeout value
+/// by setting the 'customTimeouts' option on the resource.
+class DeploymentPatchAppsV1 extends pulumi.CustomResource {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  late final pulumi.Output<String?> apiVersion;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  late final pulumi.Output<String?> kind;
+  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  late final pulumi.Output<ObjectMetaPatch?> metadata;
+  /// Specification of the desired behavior of the Deployment.
+  late final pulumi.Output<DeploymentSpecPatch?> spec;
+  /// Most recently observed status of the Deployment.
+  late final pulumi.Output<DeploymentStatusPatch?> status;
+
+  /// Creates a new [DeploymentPatchAppsV1].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [DeploymentPatchAppsV1]. {@macro pulumi_apps_v1_deployment_patch_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  DeploymentPatchAppsV1(
+    String name, {
+    DeploymentPatchArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'kubernetes:apps/v1:DeploymentPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.apiVersion = registerOutput<String?>('apiVersion');
+    this.kind = registerOutput<String?>('kind');
+    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    this.spec = registerOutput<DeploymentSpecPatch?>('spec');
+    this.status = registerOutput<DeploymentStatusPatch?>('status');
+  }
+}

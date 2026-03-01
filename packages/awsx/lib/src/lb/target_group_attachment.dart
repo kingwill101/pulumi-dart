@@ -7,10 +7,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 class TargetGroupAttachment extends pulumi.ComponentResource {
   /// Auto-created Lambda permission, if targeting a Lambda function
   late final pulumi.Output<pulumi_aws_lambda.Permission?> lambdaPermission;
-
   /// Underlying Target Group Attachment resource
-  late final pulumi.Output<pulumi_aws_lb.TargetGroupAttachment>
-  targetGroupAttachment;
+  late final pulumi.Output<pulumi_aws_lb.TargetGroupAttachment> targetGroupAttachment;
 
   /// Creates a new [TargetGroupAttachment].
   /// [name] The Pulumi resource name.
@@ -21,17 +19,12 @@ class TargetGroupAttachment extends pulumi.ComponentResource {
     TargetGroupAttachmentArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:lb:TargetGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-       ) {
-    this.lambdaPermission = registerOutput<pulumi_aws_lambda.Permission?>(
-      'lambdaPermission',
-    );
-    this.targetGroupAttachment =
-        registerOutput<pulumi_aws_lb.TargetGroupAttachment>(
-          'targetGroupAttachment',
-        );
+          'awsx:lb:TargetGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+        ) {
+    this.lambdaPermission = registerOutput<pulumi_aws_lambda.Permission?>('lambdaPermission');
+    this.targetGroupAttachment = registerOutput<pulumi_aws_lb.TargetGroupAttachment>('targetGroupAttachment');
   }
 }

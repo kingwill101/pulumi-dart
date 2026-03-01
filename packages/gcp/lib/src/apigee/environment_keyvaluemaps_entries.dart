@@ -566,10 +566,8 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
   /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
   late final pulumi.Output<String> envKeyvaluemapId;
-
   /// Required. Resource URI that can be used to identify the scope of the key value map entries.
   late final pulumi.Output<String> name;
-
   /// Required. Data or payload that is being retrieved and associated with the unique key.
   late final pulumi.Output<String> value;
 
@@ -582,11 +580,11 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
     EnvironmentKeyvaluemapsEntriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
     this.name = registerOutput<String>('name');
     this.value = registerOutput<String>('value');

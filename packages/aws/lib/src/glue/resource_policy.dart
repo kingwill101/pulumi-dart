@@ -250,10 +250,8 @@ import 'resource_policy_args.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// Indicates that you are using both methods to grant cross-account. Valid values are `TRUE` and `FALSE`. Note the provider will not perform drift detetction on this field as its not return on read.
   late final pulumi.Output<String?> enableHybrid;
-
   /// The policy to be applied to the aws glue data catalog.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -266,11 +264,11 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/resourcePolicy:ResourcePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/resourcePolicy:ResourcePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.enableHybrid = registerOutput<String?>('enableHybrid');
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

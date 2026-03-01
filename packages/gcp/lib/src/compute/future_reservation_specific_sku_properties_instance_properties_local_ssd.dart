@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd {
   /// Specifies the size of the disk in base-2 GB.
   final String? diskSizeGb;
-
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   /// Possible values are: `SCSI`, `NVME`.
   final String? interface;
@@ -23,14 +23,11 @@ class FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd {
     };
   }
 
-  factory FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd(
-      diskSizeGb: map['diskSizeGb'] == null
-          ? null
-          : map['diskSizeGb'] as String,
+      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
       interface: map['interface'] == null ? null : map['interface'] as String,
     );
   }
 }
+

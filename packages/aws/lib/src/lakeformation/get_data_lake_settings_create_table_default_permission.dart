@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataLakeSettingsCreateTableDefaultPermission {
   /// List of permissions granted to the principal.
   final List<String> permissions;
-
   /// Principal who is granted permissions.
   final String principal;
 
@@ -22,12 +22,11 @@ class GetDataLakeSettingsCreateTableDefaultPermission {
     };
   }
 
-  factory GetDataLakeSettingsCreateTableDefaultPermission.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataLakeSettingsCreateTableDefaultPermission.fromMap(Map<String, dynamic> map) {
     return GetDataLakeSettingsCreateTableDefaultPermission(
       permissions: (map['permissions'] as List).cast<String>(),
       principal: map['principal'] as String,
     );
   }
 }
+

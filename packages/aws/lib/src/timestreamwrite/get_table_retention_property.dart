@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableRetentionProperty {
   /// Duration in days in which the data must be stored in magnetic store.
   final int magneticStoreRetentionPeriodInDays;
-
   /// Duration in hours in which the data must be stored in memory store.
   final int memoryStoreRetentionPeriodInHours;
 
@@ -24,10 +24,9 @@ class GetTableRetentionProperty {
 
   factory GetTableRetentionProperty.fromMap(Map<String, dynamic> map) {
     return GetTableRetentionProperty(
-      magneticStoreRetentionPeriodInDays:
-          map['magneticStoreRetentionPeriodInDays'] as int,
-      memoryStoreRetentionPeriodInHours:
-          map['memoryStoreRetentionPeriodInHours'] as int,
+      magneticStoreRetentionPeriodInDays: map['magneticStoreRetentionPeriodInDays'] as int,
+      memoryStoreRetentionPeriodInHours: map['memoryStoreRetentionPeriodInHours'] as int,
     );
   }
 }
+

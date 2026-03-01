@@ -8,17 +8,20 @@ class PolicyDns64Config {
 
   /// Creates a new [PolicyDns64Config].
   /// [scope] The scope to which DNS64 config will be applied to.
-  PolicyDns64Config({required this.scope});
+  PolicyDns64Config({
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope.toMap()};
+    return <String, dynamic>{
+      'scope': scope.toMap(),
+    };
   }
 
   factory PolicyDns64Config.fromMap(Map<String, dynamic> map) {
     return PolicyDns64Config(
-      scope: PolicyDns64ConfigScope.fromMap(
-        (map['scope'] as Map).cast<String, dynamic>(),
-      ),
+      scope: PolicyDns64ConfigScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

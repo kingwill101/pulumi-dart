@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Task properties of the software update configuration.
+class TaskProperties {
+  /// Gets or sets the parameters of the task.
+  final Map<String, String>? parameters;
+  /// Gets or sets the name of the runbook.
+  final String? source;
+
+  /// Creates a new [TaskProperties].
+  /// [parameters] Gets or sets the parameters of the task.
+  /// [source] Gets or sets the name of the runbook.
+  TaskProperties({
+    this.parameters,
+    this.source,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'parameters': ?parameters,
+      'source': ?source,
+    };
+  }
+
+  factory TaskProperties.fromMap(Map<String, dynamic> map) {
+    return TaskProperties(
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      source: map['source'] == null ? null : map['source'] as String,
+    );
+  }
+}
+

@@ -9,17 +9,20 @@ class ProjectFeedFeedOutputConfig {
 
   /// Creates a new [ProjectFeedFeedOutputConfig].
   /// [pubsubDestination] Destination on Cloud Pubsub.
-  ProjectFeedFeedOutputConfig({required this.pubsubDestination});
+  ProjectFeedFeedOutputConfig({
+    required this.pubsubDestination,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pubsubDestination': pubsubDestination.toMap()};
+    return <String, dynamic>{
+      'pubsubDestination': pubsubDestination.toMap(),
+    };
   }
 
   factory ProjectFeedFeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return ProjectFeedFeedOutputConfig(
-      pubsubDestination: ProjectFeedFeedOutputConfigPubsubDestination.fromMap(
-        (map['pubsubDestination'] as Map).cast<String, dynamic>(),
-      ),
+      pubsubDestination: ProjectFeedFeedOutputConfigPubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

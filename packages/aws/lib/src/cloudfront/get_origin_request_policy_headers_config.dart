@@ -18,26 +18,15 @@ class GetOriginRequestPolicyHeadersConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'headerBehavior': headerBehavior,
-      'headers':
-          pulumi.Input.encodeList<
-            GetOriginRequestPolicyHeadersConfigHeader,
-            Map<String, dynamic>
-          >(headers, (value) => value.toMap()),
+      'headers': pulumi.Input.encodeList<GetOriginRequestPolicyHeadersConfigHeader, Map<String, dynamic>>(headers, (value) => value.toMap()),
     };
   }
 
-  factory GetOriginRequestPolicyHeadersConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOriginRequestPolicyHeadersConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyHeadersConfig(
       headerBehavior: map['headerBehavior'] as String,
-      headers:
-          pulumi.Input.decodeList<GetOriginRequestPolicyHeadersConfigHeader>(
-            map['headers'],
-            (value) => GetOriginRequestPolicyHeadersConfigHeader.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      headers: pulumi.Input.decodeList<GetOriginRequestPolicyHeadersConfigHeader>(map['headers'], (value) => GetOriginRequestPolicyHeadersConfigHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

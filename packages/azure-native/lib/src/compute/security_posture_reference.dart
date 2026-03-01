@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
+class SecurityPostureReference {
+  /// The list of virtual machine extension names to exclude when applying the security posture.
+  final List<String>? excludeExtensions;
+  /// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+  final String id;
+  /// Whether the security posture can be overridden by the user.
+  final bool? isOverridable;
+
+  /// Creates a new [SecurityPostureReference].
+  /// [excludeExtensions] The list of virtual machine extension names to exclude when applying the security posture.
+  /// [id] The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+  /// [isOverridable] Whether the security posture can be overridden by the user.
+  SecurityPostureReference({
+    this.excludeExtensions,
+    required this.id,
+    this.isOverridable,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'excludeExtensions': ?excludeExtensions,
+      'id': id,
+      'isOverridable': ?isOverridable,
+    };
+  }
+
+  factory SecurityPostureReference.fromMap(Map<String, dynamic> map) {
+    return SecurityPostureReference(
+      excludeExtensions: map['excludeExtensions'] == null ? null : (map['excludeExtensions'] as List).cast<String>(),
+      id: map['id'] as String,
+      isOverridable: map['isOverridable'] == null ? null : map['isOverridable'] as bool,
+    );
+  }
+}
+

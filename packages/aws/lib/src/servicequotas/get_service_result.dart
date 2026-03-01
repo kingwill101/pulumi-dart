@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Code of the service.
   final String serviceCode;
   final String serviceName;
@@ -40,3 +40,4 @@ class GetServiceResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualNodeSpecListenerTlsCertificateFile {
   /// Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
   final String certificateChain;
-
   /// Private key for a certificate stored on the file system of the virtual node that the proxy is running on. Must be between 1 and 255 characters in length.
   final String privateKey;
 
@@ -22,12 +22,11 @@ class VirtualNodeSpecListenerTlsCertificateFile {
     };
   }
 
-  factory VirtualNodeSpecListenerTlsCertificateFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerTlsCertificateFile.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsCertificateFile(
       certificateChain: map['certificateChain'] as String,
       privateKey: map['privateKey'] as String,
     );
   }
 }
+

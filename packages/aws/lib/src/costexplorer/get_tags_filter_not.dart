@@ -7,10 +7,8 @@ import 'get_tags_filter_not_tags.dart';
 class GetTagsFilterNot {
   /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   final GetTagsFilterNotCostCategory? costCategory;
-
   /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   final GetTagsFilterNotDimension? dimension;
-
   /// Tags that match your request.
   final GetTagsFilterNotTags? tags;
 
@@ -18,7 +16,11 @@ class GetTagsFilterNot {
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   /// [dimension] Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   /// [tags] Tags that match your request.
-  GetTagsFilterNot({this.costCategory, this.dimension, this.tags});
+  GetTagsFilterNot({
+    this.costCategory,
+    this.dimension,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,21 +32,10 @@ class GetTagsFilterNot {
 
   factory GetTagsFilterNot.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterNot(
-      costCategory: map['costCategory'] == null
-          ? null
-          : GetTagsFilterNotCostCategory.fromMap(
-              (map['costCategory'] as Map).cast<String, dynamic>(),
-            ),
-      dimension: map['dimension'] == null
-          ? null
-          : GetTagsFilterNotDimension.fromMap(
-              (map['dimension'] as Map).cast<String, dynamic>(),
-            ),
-      tags: map['tags'] == null
-          ? null
-          : GetTagsFilterNotTags.fromMap(
-              (map['tags'] as Map).cast<String, dynamic>(),
-            ),
+      costCategory: map['costCategory'] == null ? null : GetTagsFilterNotCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
+      dimension: map['dimension'] == null ? null : GetTagsFilterNotDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : GetTagsFilterNotTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

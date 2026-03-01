@@ -9,11 +9,7 @@ class ServicePerimeterDryRunIngressPolicyIngressToOperation {
   /// with `*` specified for the method field will allow all methods AND
   /// permissions for the service specified in `serviceName`.
   /// Structure is documented below.
-  final List<
-    ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector
-  >?
-  methodSelectors;
-
+  final List<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>? methodSelectors;
   /// The name of the API whose methods or permissions the `IngressPolicy` or
   /// `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
   /// field set to `*` will allow all methods AND permissions for all services.
@@ -29,34 +25,16 @@ class ServicePerimeterDryRunIngressPolicyIngressToOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'methodSelectors': ?methodSelectors == null
-          ? null
-          : pulumi.Input.encodeList<
-              ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector,
-              Map<String, dynamic>
-            >(methodSelectors!, (value) => value.toMap()),
+      'methodSelectors': ?methodSelectors == null ? null : pulumi.Input.encodeList<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector, Map<String, dynamic>>(methodSelectors!, (value) => value.toMap()),
       'serviceName': ?serviceName,
     };
   }
 
-  factory ServicePerimeterDryRunIngressPolicyIngressToOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePerimeterDryRunIngressPolicyIngressToOperation.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunIngressPolicyIngressToOperation(
-      methodSelectors: map['methodSelectors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector
-            >(
-              map['methodSelectors'],
-              (value) =>
-                  ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      serviceName: map['serviceName'] == null
-          ? null
-          : map['serviceName'] as String,
+      methodSelectors: map['methodSelectors'] == null ? null : pulumi.Input.decodeList<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>(map['methodSelectors'], (value) => ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector.fromMap((value as Map).cast<String, dynamic>())),
+      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
     );
   }
 }
+

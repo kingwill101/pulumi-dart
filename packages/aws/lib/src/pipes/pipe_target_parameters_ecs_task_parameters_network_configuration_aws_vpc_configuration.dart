@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration {
   /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
   final String? assignPublicIp;
@@ -24,19 +25,12 @@ class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfigurati
     };
   }
 
-  factory PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration(
-      assignPublicIp: map['assignPublicIp'] == null
-          ? null
-          : map['assignPublicIp'] as String,
-      securityGroups: map['securityGroups'] == null
-          ? null
-          : (map['securityGroups'] as List).cast<String>(),
-      subnets: map['subnets'] == null
-          ? null
-          : (map['subnets'] as List).cast<String>(),
+      assignPublicIp: map['assignPublicIp'] == null ? null : map['assignPublicIp'] as String,
+      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
+      subnets: map['subnets'] == null ? null : (map['subnets'] as List).cast<String>(),
     );
   }
 }
+

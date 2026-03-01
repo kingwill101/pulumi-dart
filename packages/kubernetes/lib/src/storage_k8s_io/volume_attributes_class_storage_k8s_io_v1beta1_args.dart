@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/object_meta.dart';
+
+/// {@template pulumi_storage_k8s_io_v1beta1_volume_attributes_class_storage_k8s_io_v1beta1_args_doc}
+/// The set of arguments for VolumeAttributesClass.
+/// {@endtemplate}
+/// {@macro pulumi_storage_k8s_io_v1beta1_volume_attributes_class_storage_k8s_io_v1beta1_args_doc}
+class VolumeAttributesClassStorageK8sIoV1beta1Args {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  final pulumi.Input<String>? apiVersion;
+  /// Name of the CSI driver This field is immutable.
+  final pulumi.Input<String> driverName;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  final pulumi.Input<String>? kind;
+  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final pulumi.Input<ObjectMeta>? metadata;
+  /// parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
+  ///
+  /// This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field.
+  final pulumi.Input<Map<String, String>>? parameters;
+
+  /// Creates a new [VolumeAttributesClassStorageK8sIoV1beta1Args].
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [driverName] Name of the CSI driver This field is immutable.
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [parameters] parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
+  VolumeAttributesClassStorageK8sIoV1beta1Args({
+    String? apiVersion,
+    required String driverName,
+    String? kind,
+    ObjectMeta? metadata,
+    Map<String, String>? parameters,
+  }) :
+      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
+      driverName = pulumi.Input.asInput<String>(driverName),
+      kind = pulumi.Input.asOptionalInput<String>(kind),
+      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
+      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'driverName': driverName,
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'parameters': ?parameters,
+    };
+  }
+
+  factory VolumeAttributesClassStorageK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
+    return VolumeAttributesClassStorageK8sIoV1beta1Args(
+      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
+      driverName: map['driverName'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+    );
+  }
+}
+

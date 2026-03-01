@@ -50,29 +50,16 @@ class GetPlanRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completionWindow': completionWindow,
-      'copyActions':
-          pulumi.Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(
-            copyActions,
-            (value) => value.toMap(),
-          ),
+      'copyActions': pulumi.Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(copyActions, (value) => value.toMap()),
       'enableContinuousBackup': enableContinuousBackup,
-      'lifecycles':
-          pulumi.Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(
-            lifecycles,
-            (value) => value.toMap(),
-          ),
+      'lifecycles': pulumi.Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(lifecycles, (value) => value.toMap()),
       'recoveryPointTags': ?recoveryPointTags,
       'ruleName': ruleName,
-      'scanActions':
-          pulumi.Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(
-            scanActions,
-            (value) => value.toMap(),
-          ),
+      'scanActions': pulumi.Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(scanActions, (value) => value.toMap()),
       'schedule': schedule,
       'scheduleExpressionTimezone': scheduleExpressionTimezone,
       'startWindow': startWindow,
-      'targetLogicallyAirGappedBackupVaultArn':
-          targetLogicallyAirGappedBackupVaultArn,
+      'targetLogicallyAirGappedBackupVaultArn': targetLogicallyAirGappedBackupVaultArn,
       'targetVaultName': targetVaultName,
     };
   }
@@ -80,35 +67,18 @@ class GetPlanRule {
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
       completionWindow: map['completionWindow'] as int,
-      copyActions: pulumi.Input.decodeList<GetPlanRuleCopyAction>(
-        map['copyActions'],
-        (value) => GetPlanRuleCopyAction.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      copyActions: pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions'], (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>())),
       enableContinuousBackup: map['enableContinuousBackup'] as bool,
-      lifecycles: pulumi.Input.decodeList<GetPlanRuleLifecycle>(
-        map['lifecycles'],
-        (value) => GetPlanRuleLifecycle.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      recoveryPointTags: map['recoveryPointTags'] == null
-          ? null
-          : (map['recoveryPointTags'] as Map).cast<String, String>(),
+      lifecycles: pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles'], (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>())),
+      recoveryPointTags: map['recoveryPointTags'] == null ? null : (map['recoveryPointTags'] as Map).cast<String, String>(),
       ruleName: map['ruleName'] as String,
-      scanActions: pulumi.Input.decodeList<GetPlanRuleScanAction>(
-        map['scanActions'],
-        (value) => GetPlanRuleScanAction.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      scanActions: pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions'], (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>())),
       schedule: map['schedule'] as String,
       scheduleExpressionTimezone: map['scheduleExpressionTimezone'] as String,
       startWindow: map['startWindow'] as int,
-      targetLogicallyAirGappedBackupVaultArn:
-          map['targetLogicallyAirGappedBackupVaultArn'] as String,
+      targetLogicallyAirGappedBackupVaultArn: map['targetLogicallyAirGappedBackupVaultArn'] as String,
       targetVaultName: map['targetVaultName'] as String,
     );
   }
 }
+

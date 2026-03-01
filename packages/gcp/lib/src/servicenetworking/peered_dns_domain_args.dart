@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PeeredDnsDomainArgs {
   /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
   final pulumi.Input<String> dnsSuffix;
-
   /// Internal name used for the peered DNS domain.
   final pulumi.Input<String>? name;
-
   /// The network in the consumer project.
   final pulumi.Input<String> network;
-
   /// The producer project number. If not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
   final pulumi.Input<String>? service;
 
@@ -34,11 +30,12 @@ class PeeredDnsDomainArgs {
     required String network,
     String? project,
     String? service,
-  }) : dnsSuffix = pulumi.Input.asInput<String>(dnsSuffix),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       network = pulumi.Input.asInput<String>(network),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       service = pulumi.Input.asOptionalInput<String>(service);
+  }) :
+      dnsSuffix = pulumi.Input.asInput<String>(dnsSuffix),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      network = pulumi.Input.asInput<String>(network),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      service = pulumi.Input.asOptionalInput<String>(service);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,3 +57,4 @@ class PeeredDnsDomainArgs {
     );
   }
 }
+

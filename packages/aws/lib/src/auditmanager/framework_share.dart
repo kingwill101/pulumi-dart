@@ -117,21 +117,16 @@ import 'framework_share_args.dart';
 class FrameworkShare extends pulumi.CustomResource {
   /// Comment from the sender about the share request.
   late final pulumi.Output<String?> comment;
-
   /// Amazon Web Services account of the recipient.
   late final pulumi.Output<String> destinationAccount;
-
   /// Amazon Web Services region of the recipient.
   late final pulumi.Output<String> destinationRegion;
-
   /// Unique identifier for the shared custom framework.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> frameworkId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Status of the share request.
   late final pulumi.Output<String> status;
 
@@ -144,11 +139,11 @@ class FrameworkShare extends pulumi.CustomResource {
     FrameworkShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:auditmanager/frameworkShare:FrameworkShare',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:auditmanager/frameworkShare:FrameworkShare',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.comment = registerOutput<String?>('comment');
     this.destinationAccount = registerOutput<String>('destinationAccount');
     this.destinationRegion = registerOutput<String>('destinationRegion');

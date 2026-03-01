@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTrustProviderAttachmentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the Verified Access instance to attach the Trust Provider to.
   final pulumi.Input<String> verifiedaccessInstanceId;
-
   /// The ID of the Verified Access trust provider.
   final pulumi.Input<String> verifiedaccessTrustProviderId;
 
@@ -24,13 +22,10 @@ class InstanceTrustProviderAttachmentArgs {
     String? region,
     required String verifiedaccessInstanceId,
     required String verifiedaccessTrustProviderId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       verifiedaccessInstanceId = pulumi.Input.asInput<String>(
-         verifiedaccessInstanceId,
-       ),
-       verifiedaccessTrustProviderId = pulumi.Input.asInput<String>(
-         verifiedaccessTrustProviderId,
-       );
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      verifiedaccessInstanceId = pulumi.Input.asInput<String>(verifiedaccessInstanceId),
+      verifiedaccessTrustProviderId = pulumi.Input.asInput<String>(verifiedaccessTrustProviderId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,14 +35,12 @@ class InstanceTrustProviderAttachmentArgs {
     };
   }
 
-  factory InstanceTrustProviderAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTrustProviderAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceTrustProviderAttachmentArgs(
       region: map['region'] == null ? null : map['region'] as String,
       verifiedaccessInstanceId: map['verifiedaccessInstanceId'] as String,
-      verifiedaccessTrustProviderId:
-          map['verifiedaccessTrustProviderId'] as String,
+      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] as String,
     );
   }
 }
+

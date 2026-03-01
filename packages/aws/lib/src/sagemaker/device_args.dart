@@ -10,10 +10,8 @@ import 'device_device.dart';
 class DeviceArgs {
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
   final pulumi.Input<DeviceDevice> device;
-
   /// The name of the Device Fleet.
   final pulumi.Input<String> deviceFleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -25,16 +23,14 @@ class DeviceArgs {
     required DeviceDevice device,
     required String deviceFleetName,
     String? region,
-  }) : device = pulumi.Input.asInput<DeviceDevice>(device),
-       deviceFleetName = pulumi.Input.asInput<String>(deviceFleetName),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      device = pulumi.Input.asInput<DeviceDevice>(device),
+      deviceFleetName = pulumi.Input.asInput<String>(deviceFleetName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'device': pulumi.Input.mapInputValue<DeviceDevice, Map<String, dynamic>>(
-        device,
-        (value) => value.toMap(),
-      ),
+      'device': pulumi.Input.mapInputValue<DeviceDevice, Map<String, dynamic>>(device, (value) => value.toMap()),
       'deviceFleetName': deviceFleetName,
       'region': ?region,
     };
@@ -42,11 +38,10 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      device: DeviceDevice.fromMap(
-        (map['device'] as Map).cast<String, dynamic>(),
-      ),
+      device: DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>()),
       deviceFleetName: map['deviceFleetName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// N-Cross validations are specified by user.
+class CustomNCrossValidations {
+  /// Determines how N-Cross validations value is determined.
+  /// Expected value is 'Custom'.
+  final String mode;
+  /// [Required] N-Cross validations value.
+  final int value;
+
+  /// Creates a new [CustomNCrossValidations].
+  /// [mode] Determines how N-Cross validations value is determined.
+  /// [value] [Required] N-Cross validations value.
+  CustomNCrossValidations({
+    required this.mode,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mode': mode,
+      'value': value,
+    };
+  }
+
+  factory CustomNCrossValidations.fromMap(Map<String, dynamic> map) {
+    return CustomNCrossValidations(
+      mode: map['mode'] as String,
+      value: map['value'] as int,
+    );
+  }
+}
+

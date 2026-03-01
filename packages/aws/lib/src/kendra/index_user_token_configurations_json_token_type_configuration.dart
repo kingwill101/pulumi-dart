@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
   /// The group attribute field. Minimum length of 1. Maximum length of 2048.
   final String groupAttributeField;
-
   /// The user name attribute field. Minimum length of 1. Maximum length of 2048.
   final String userNameAttributeField;
 
@@ -22,12 +22,11 @@ class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
     };
   }
 
-  factory IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexUserTokenConfigurationsJsonTokenTypeConfiguration(
       groupAttributeField: map['groupAttributeField'] as String,
       userNameAttributeField: map['userNameAttributeField'] as String,
     );
   }
 }
+

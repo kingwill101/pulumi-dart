@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Additional information about Azure File Share backup item.
+class AzureFileshareProtectedItemExtendedInfoResponse {
+  /// The oldest backup copy available for this item in the service.
+  final String? oldestRecoveryPoint;
+  /// Indicates consistency of policy object and policy applied to this backup item.
+  final String? policyState;
+  /// Number of available backup copies associated with this backup item.
+  final int? recoveryPointCount;
+  /// Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
+  final String resourceState;
+  /// The resource state sync time for this backup item.
+  final String resourceStateSyncTime;
+
+  /// Creates a new [AzureFileshareProtectedItemExtendedInfoResponse].
+  /// [oldestRecoveryPoint] The oldest backup copy available for this item in the service.
+  /// [policyState] Indicates consistency of policy object and policy applied to this backup item.
+  /// [recoveryPointCount] Number of available backup copies associated with this backup item.
+  /// [resourceState] Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
+  /// [resourceStateSyncTime] The resource state sync time for this backup item.
+  AzureFileshareProtectedItemExtendedInfoResponse({
+    this.oldestRecoveryPoint,
+    this.policyState,
+    this.recoveryPointCount,
+    required this.resourceState,
+    required this.resourceStateSyncTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'oldestRecoveryPoint': ?oldestRecoveryPoint,
+      'policyState': ?policyState,
+      'recoveryPointCount': ?recoveryPointCount,
+      'resourceState': resourceState,
+      'resourceStateSyncTime': resourceStateSyncTime,
+    };
+  }
+
+  factory AzureFileshareProtectedItemExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
+    return AzureFileshareProtectedItemExtendedInfoResponse(
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
+      policyState: map['policyState'] == null ? null : map['policyState'] as String,
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
+      resourceState: map['resourceState'] as String,
+      resourceStateSyncTime: map['resourceStateSyncTime'] as String,
+    );
+  }
+}
+

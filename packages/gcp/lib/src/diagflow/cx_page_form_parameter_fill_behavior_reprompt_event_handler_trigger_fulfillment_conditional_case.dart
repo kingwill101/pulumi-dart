@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase {
   /// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
   /// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
@@ -12,14 +13,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cases': ?cases};
+    return <String, dynamic>{
+      'cases': ?cases,
+    };
   }
 
-  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase(
       cases: map['cases'] == null ? null : map['cases'] as String,
     );
   }
 }
+

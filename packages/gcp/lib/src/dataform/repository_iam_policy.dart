@@ -17,11 +17,11 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
     RepositoryIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.etag = registerOutput<String>('etag');
     this.policyData = registerOutput<String>('policyData');
     this.project = registerOutput<String>('project');

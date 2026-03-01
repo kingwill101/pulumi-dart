@@ -8,19 +8,20 @@ class SessionLoggerLogConfiguration {
 
   /// Creates a new [SessionLoggerLogConfiguration].
   /// [s3] Configuration block for S3 log delivery. See S3 Configuration below.
-  SessionLoggerLogConfiguration({this.s3});
+  SessionLoggerLogConfiguration({
+    this.s3,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3': ?s3 == null ? null : s3!.toMap()};
+    return <String, dynamic>{
+      's3': ?s3 == null ? null : s3!.toMap(),
+    };
   }
 
   factory SessionLoggerLogConfiguration.fromMap(Map<String, dynamic> map) {
     return SessionLoggerLogConfiguration(
-      s3: map['s3'] == null
-          ? null
-          : SessionLoggerLogConfigurationS3.fromMap(
-              (map['s3'] as Map).cast<String, dynamic>(),
-            ),
+      s3: map['s3'] == null ? null : SessionLoggerLogConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

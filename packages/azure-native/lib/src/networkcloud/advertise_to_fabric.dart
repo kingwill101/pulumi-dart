@@ -1,0 +1,18 @@
+/// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+enum AdvertiseToFabric {
+  valueTrue("True"),
+  valueFalse("False");
+
+  const AdvertiseToFabric(this.value);
+  final String value;
+
+  static AdvertiseToFabric fromValue(String value) {
+    for (final item in AdvertiseToFabric.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown AdvertiseToFabric value: $value');
+  }
+}
+

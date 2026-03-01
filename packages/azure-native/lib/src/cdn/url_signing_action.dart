@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'url_signing_action_parameters.dart';
+
+/// Defines the url signing action for the delivery rule.
+class UrlSigningAction {
+  /// The name of the action for the delivery rule.
+  /// Expected value is 'UrlSigning'.
+  final String name;
+  /// Defines the parameters for the action.
+  final UrlSigningActionParameters parameters;
+
+  /// Creates a new [UrlSigningAction].
+  /// [name] The name of the action for the delivery rule.
+  /// [parameters] Defines the parameters for the action.
+  UrlSigningAction({
+    required this.name,
+    required this.parameters,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'parameters': parameters.toMap(),
+    };
+  }
+
+  factory UrlSigningAction.fromMap(Map<String, dynamic> map) {
+    return UrlSigningAction(
+      name: map['name'] as String,
+      parameters: UrlSigningActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

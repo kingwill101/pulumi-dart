@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence {
   /// How frequently data profiles can be updated when the template is modified. Defaults to never.
   /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
@@ -12,14 +13,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTem
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'frequency': ?frequency};
+    return <String, dynamic>{
+      'frequency': ?frequency,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence(
       frequency: map['frequency'] == null ? null : map['frequency'] as String,
     );
   }
 }
+

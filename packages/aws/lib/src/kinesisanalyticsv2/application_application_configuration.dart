@@ -11,32 +11,19 @@ import 'application_application_configuration_vpc_configuration.dart';
 
 class ApplicationApplicationConfiguration {
   /// The code location and type parameters for the application.
-  final ApplicationApplicationConfigurationApplicationCodeConfiguration
-  applicationCodeConfiguration;
-
+  final ApplicationApplicationConfigurationApplicationCodeConfiguration applicationCodeConfiguration;
   /// The encryption configuration for the application. This can be used to encrypt data at rest in the application.
-  final ApplicationApplicationConfigurationApplicationEncryptionConfiguration?
-  applicationEncryptionConfiguration;
-
+  final ApplicationApplicationConfigurationApplicationEncryptionConfiguration? applicationEncryptionConfiguration;
   /// Describes whether snapshots are enabled for a Flink-based application.
-  final ApplicationApplicationConfigurationApplicationSnapshotConfiguration?
-  applicationSnapshotConfiguration;
-
+  final ApplicationApplicationConfigurationApplicationSnapshotConfiguration? applicationSnapshotConfiguration;
   /// Describes execution properties for a Flink-based application.
-  final ApplicationApplicationConfigurationEnvironmentProperties?
-  environmentProperties;
-
+  final ApplicationApplicationConfigurationEnvironmentProperties? environmentProperties;
   /// The configuration of a Flink-based application.
-  final ApplicationApplicationConfigurationFlinkApplicationConfiguration?
-  flinkApplicationConfiguration;
-
+  final ApplicationApplicationConfigurationFlinkApplicationConfiguration? flinkApplicationConfiguration;
   /// Describes the starting properties for a Flink-based application.
   final ApplicationApplicationConfigurationRunConfiguration? runConfiguration;
-
   /// The configuration of a SQL-based application.
-  final ApplicationApplicationConfigurationSqlApplicationConfiguration?
-  sqlApplicationConfiguration;
-
+  final ApplicationApplicationConfigurationSqlApplicationConfiguration? sqlApplicationConfiguration;
   /// The VPC configuration of a Flink-based application.
   final ApplicationApplicationConfigurationVpcConfiguration? vpcConfiguration;
 
@@ -63,83 +50,27 @@ class ApplicationApplicationConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationCodeConfiguration': applicationCodeConfiguration.toMap(),
-      'applicationEncryptionConfiguration':
-          ?applicationEncryptionConfiguration == null
-          ? null
-          : applicationEncryptionConfiguration!.toMap(),
-      'applicationSnapshotConfiguration':
-          ?applicationSnapshotConfiguration == null
-          ? null
-          : applicationSnapshotConfiguration!.toMap(),
-      'environmentProperties': ?environmentProperties == null
-          ? null
-          : environmentProperties!.toMap(),
-      'flinkApplicationConfiguration': ?flinkApplicationConfiguration == null
-          ? null
-          : flinkApplicationConfiguration!.toMap(),
-      'runConfiguration': ?runConfiguration == null
-          ? null
-          : runConfiguration!.toMap(),
-      'sqlApplicationConfiguration': ?sqlApplicationConfiguration == null
-          ? null
-          : sqlApplicationConfiguration!.toMap(),
-      'vpcConfiguration': ?vpcConfiguration == null
-          ? null
-          : vpcConfiguration!.toMap(),
+      'applicationEncryptionConfiguration': ?applicationEncryptionConfiguration == null ? null : applicationEncryptionConfiguration!.toMap(),
+      'applicationSnapshotConfiguration': ?applicationSnapshotConfiguration == null ? null : applicationSnapshotConfiguration!.toMap(),
+      'environmentProperties': ?environmentProperties == null ? null : environmentProperties!.toMap(),
+      'flinkApplicationConfiguration': ?flinkApplicationConfiguration == null ? null : flinkApplicationConfiguration!.toMap(),
+      'runConfiguration': ?runConfiguration == null ? null : runConfiguration!.toMap(),
+      'sqlApplicationConfiguration': ?sqlApplicationConfiguration == null ? null : sqlApplicationConfiguration!.toMap(),
+      'vpcConfiguration': ?vpcConfiguration == null ? null : vpcConfiguration!.toMap(),
     };
   }
 
-  factory ApplicationApplicationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfiguration(
-      applicationCodeConfiguration:
-          ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap(
-            (map['applicationCodeConfiguration'] as Map)
-                .cast<String, dynamic>(),
-          ),
-      applicationEncryptionConfiguration:
-          map['applicationEncryptionConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap(
-              (map['applicationEncryptionConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      applicationSnapshotConfiguration:
-          map['applicationSnapshotConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(
-              (map['applicationSnapshotConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      environmentProperties: map['environmentProperties'] == null
-          ? null
-          : ApplicationApplicationConfigurationEnvironmentProperties.fromMap(
-              (map['environmentProperties'] as Map).cast<String, dynamic>(),
-            ),
-      flinkApplicationConfiguration:
-          map['flinkApplicationConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap(
-              (map['flinkApplicationConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      runConfiguration: map['runConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationRunConfiguration.fromMap(
-              (map['runConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      sqlApplicationConfiguration: map['sqlApplicationConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap(
-              (map['sqlApplicationConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      vpcConfiguration: map['vpcConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationVpcConfiguration.fromMap(
-              (map['vpcConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      applicationCodeConfiguration: ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap((map['applicationCodeConfiguration'] as Map).cast<String, dynamic>()),
+      applicationEncryptionConfiguration: map['applicationEncryptionConfiguration'] == null ? null : ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap((map['applicationEncryptionConfiguration'] as Map).cast<String, dynamic>()),
+      applicationSnapshotConfiguration: map['applicationSnapshotConfiguration'] == null ? null : ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap((map['applicationSnapshotConfiguration'] as Map).cast<String, dynamic>()),
+      environmentProperties: map['environmentProperties'] == null ? null : ApplicationApplicationConfigurationEnvironmentProperties.fromMap((map['environmentProperties'] as Map).cast<String, dynamic>()),
+      flinkApplicationConfiguration: map['flinkApplicationConfiguration'] == null ? null : ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap((map['flinkApplicationConfiguration'] as Map).cast<String, dynamic>()),
+      runConfiguration: map['runConfiguration'] == null ? null : ApplicationApplicationConfigurationRunConfiguration.fromMap((map['runConfiguration'] as Map).cast<String, dynamic>()),
+      sqlApplicationConfiguration: map['sqlApplicationConfiguration'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap((map['sqlApplicationConfiguration'] as Map).cast<String, dynamic>()),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ApplicationApplicationConfigurationVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

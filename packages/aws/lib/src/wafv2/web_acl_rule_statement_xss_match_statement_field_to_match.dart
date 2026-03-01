@@ -15,49 +15,30 @@ import 'web_acl_rule_statement_xss_match_statement_field_to_match_uri_fragment.d
 class WebAclRuleStatementXssMatchStatementFieldToMatch {
   /// Inspect all query arguments.
   final Map<String, dynamic>? allQueryArguments;
-
   /// Inspect the request body, which immediately follows the request headers. See `body` below for details.
   final WebAclRuleStatementXssMatchStatementFieldToMatchBody? body;
-
   /// Inspect the cookies in the web request. See `cookies` below for details.
   final WebAclRuleStatementXssMatchStatementFieldToMatchCookies? cookies;
-
   /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See `header_order` below for details.
-  final List<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder>?
-  headerOrders;
-
+  final List<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder>? headerOrders;
   /// Inspect the request headers. See `headers` below for details.
   final List<WebAclRuleStatementXssMatchStatementFieldToMatchHeader>? headers;
-
   /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  final WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint?
-  ja3Fingerprint;
-
+  final WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint? ja3Fingerprint;
   /// Inspect the JA3 fingerprint. See `ja4_fingerprint` below for details.
-  final WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint?
-  ja4Fingerprint;
-
+  final WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint? ja4Fingerprint;
   /// Inspect the request body as JSON. See `json_body` for details.
   final WebAclRuleStatementXssMatchStatementFieldToMatchJsonBody? jsonBody;
-
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
   final Map<String, dynamic>? method;
-
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
   final Map<String, dynamic>? queryString;
-
   /// Inspect a single header. See `single_header` below for details.
-  final WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader?
-  singleHeader;
-
+  final WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader? singleHeader;
   /// Inspect a single query argument. See `single_query_argument` below for details.
-  final WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument?
-  singleQueryArgument;
-
+  final WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
-  final WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment?
-  uriFragment;
-
+  final WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
   final Map<String, dynamic>? uriPath;
 
@@ -98,114 +79,37 @@ class WebAclRuleStatementXssMatchStatementFieldToMatch {
       'allQueryArguments': ?allQueryArguments,
       'body': ?body == null ? null : body!.toMap(),
       'cookies': ?cookies == null ? null : cookies!.toMap(),
-      'headerOrders': ?headerOrders == null
-          ? null
-          : pulumi.Input.encodeList<
-              WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder,
-              Map<String, dynamic>
-            >(headerOrders!, (value) => value.toMap()),
-      'headers': ?headers == null
-          ? null
-          : pulumi.Input.encodeList<
-              WebAclRuleStatementXssMatchStatementFieldToMatchHeader,
-              Map<String, dynamic>
-            >(headers!, (value) => value.toMap()),
-      'ja3Fingerprint': ?ja3Fingerprint == null
-          ? null
-          : ja3Fingerprint!.toMap(),
-      'ja4Fingerprint': ?ja4Fingerprint == null
-          ? null
-          : ja4Fingerprint!.toMap(),
+      'headerOrders': ?headerOrders == null ? null : pulumi.Input.encodeList<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(headerOrders!, (value) => value.toMap()),
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<WebAclRuleStatementXssMatchStatementFieldToMatchHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'ja3Fingerprint': ?ja3Fingerprint == null ? null : ja3Fingerprint!.toMap(),
+      'ja4Fingerprint': ?ja4Fingerprint == null ? null : ja4Fingerprint!.toMap(),
       'jsonBody': ?jsonBody == null ? null : jsonBody!.toMap(),
       'method': ?method,
       'queryString': ?queryString,
       'singleHeader': ?singleHeader == null ? null : singleHeader!.toMap(),
-      'singleQueryArgument': ?singleQueryArgument == null
-          ? null
-          : singleQueryArgument!.toMap(),
+      'singleQueryArgument': ?singleQueryArgument == null ? null : singleQueryArgument!.toMap(),
       'uriFragment': ?uriFragment == null ? null : uriFragment!.toMap(),
       'uriPath': ?uriPath,
     };
   }
 
-  factory WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatementFieldToMatch(
-      allQueryArguments: map['allQueryArguments'] == null
-          ? null
-          : (map['allQueryArguments'] as Map).cast<String, dynamic>(),
-      body: map['body'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchBody.fromMap(
-              (map['body'] as Map).cast<String, dynamic>(),
-            ),
-      cookies: map['cookies'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchCookies.fromMap(
-              (map['cookies'] as Map).cast<String, dynamic>(),
-            ),
-      headerOrders: map['headerOrders'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder
-            >(
-              map['headerOrders'],
-              (value) =>
-                  WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              WebAclRuleStatementXssMatchStatementFieldToMatchHeader
-            >(
-              map['headers'],
-              (value) =>
-                  WebAclRuleStatementXssMatchStatementFieldToMatchHeader.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      ja3Fingerprint: map['ja3Fingerprint'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap(
-              (map['ja3Fingerprint'] as Map).cast<String, dynamic>(),
-            ),
-      ja4Fingerprint: map['ja4Fingerprint'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint.fromMap(
-              (map['ja4Fingerprint'] as Map).cast<String, dynamic>(),
-            ),
-      jsonBody: map['jsonBody'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchJsonBody.fromMap(
-              (map['jsonBody'] as Map).cast<String, dynamic>(),
-            ),
-      method: map['method'] == null
-          ? null
-          : (map['method'] as Map).cast<String, dynamic>(),
-      queryString: map['queryString'] == null
-          ? null
-          : (map['queryString'] as Map).cast<String, dynamic>(),
-      singleHeader: map['singleHeader'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap(
-              (map['singleHeader'] as Map).cast<String, dynamic>(),
-            ),
-      singleQueryArgument: map['singleQueryArgument'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument.fromMap(
-              (map['singleQueryArgument'] as Map).cast<String, dynamic>(),
-            ),
-      uriFragment: map['uriFragment'] == null
-          ? null
-          : WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap(
-              (map['uriFragment'] as Map).cast<String, dynamic>(),
-            ),
-      uriPath: map['uriPath'] == null
-          ? null
-          : (map['uriPath'] as Map).cast<String, dynamic>(),
+      allQueryArguments: map['allQueryArguments'] == null ? null : (map['allQueryArguments'] as Map).cast<String, dynamic>(),
+      body: map['body'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchBody.fromMap((map['body'] as Map).cast<String, dynamic>()),
+      cookies: map['cookies'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
+      headerOrders: map['headerOrders'] == null ? null : pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder>(map['headerOrders'], (value) => WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementFieldToMatchHeader>(map['headers'], (value) => WebAclRuleStatementXssMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>())),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>()),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>()),
+      jsonBody: map['jsonBody'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody'] as Map).cast<String, dynamic>()),
+      method: map['method'] == null ? null : (map['method'] as Map).cast<String, dynamic>(),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as Map).cast<String, dynamic>(),
+      singleHeader: map['singleHeader'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>()),
+      singleQueryArgument: map['singleQueryArgument'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument'] as Map).cast<String, dynamic>()),
+      uriFragment: map['uriFragment'] == null ? null : WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment'] as Map).cast<String, dynamic>()),
+      uriPath: map['uriPath'] == null ? null : (map['uriPath'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

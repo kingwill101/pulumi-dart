@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem {
   /// he content type for a field-level encryption content type-profile mapping. Valid value is `application/x-www-form-urlencoded`.
   final String contentType;
-
   /// The format for a field-level encryption content type-profile mapping. Valid value is `URLEncoded`.
   final String format;
   final String? profileId;
@@ -26,9 +26,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem 
     };
   }
 
-  factory FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem(
       contentType: map['contentType'] as String,
       format: map['format'] as String,
@@ -36,3 +34,4 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem 
     );
   }
 }
+

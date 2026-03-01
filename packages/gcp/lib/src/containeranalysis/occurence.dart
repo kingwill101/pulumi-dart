@@ -476,35 +476,27 @@ class Occurence extends pulumi.CustomResource {
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
   late final pulumi.Output<OccurenceAttestation> attestation;
-
   /// The time when the repository was created.
   late final pulumi.Output<String> createTime;
-
   /// The note kind which explicitly denotes which of the occurrence
   /// details are specified. This field can be used as a filter in list
   /// requests.
   late final pulumi.Output<String> kind;
-
   /// The name of the occurrence.
   late final pulumi.Output<String> name;
-
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
   late final pulumi.Output<String> noteName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A description of actions that can be taken to remedy the note.
   late final pulumi.Output<String?> remediation;
-
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
   late final pulumi.Output<String> resourceUri;
-
   /// The time when the repository was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -517,11 +509,11 @@ class Occurence extends pulumi.CustomResource {
     OccurenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:containeranalysis/occurence:Occurence',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:containeranalysis/occurence:Occurence',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.attestation = registerOutput<OccurenceAttestation>('attestation');
     this.createTime = registerOutput<String>('createTime');
     this.kind = registerOutput<String>('kind');

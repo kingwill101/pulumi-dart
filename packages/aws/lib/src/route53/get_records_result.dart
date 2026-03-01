@@ -8,7 +8,6 @@ class GetRecordsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
-
   /// The resource records sets.
   final List<GetRecordsResourceRecordSet> resourceRecordSets;
   final String zoneId;
@@ -29,11 +28,7 @@ class GetRecordsResult {
     return <String, dynamic>{
       'id': id,
       'nameRegex': ?nameRegex,
-      'resourceRecordSets':
-          pulumi.Input.encodeList<
-            GetRecordsResourceRecordSet,
-            Map<String, dynamic>
-          >(resourceRecordSets, (value) => value.toMap()),
+      'resourceRecordSets': pulumi.Input.encodeList<GetRecordsResourceRecordSet, Map<String, dynamic>>(resourceRecordSets, (value) => value.toMap()),
       'zoneId': zoneId,
     };
   }
@@ -42,13 +37,9 @@ class GetRecordsResult {
     return GetRecordsResult(
       id: map['id'] as String,
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(
-        map['resourceRecordSets'],
-        (value) => GetRecordsResourceRecordSet.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(map['resourceRecordSets'], (value) => GetRecordsResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())),
       zoneId: map['zoneId'] as String,
     );
   }
 }
+

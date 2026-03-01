@@ -7,7 +7,6 @@ class GetAiIndexMetadataConfigAlgorithmConfig {
   /// Configuration options for using brute force search, which simply implements the
   /// standard linear search in the database for each query.
   final List<Map<String, dynamic>> bruteForceConfigs;
-
   /// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
   /// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
   final List<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig> treeAhConfigs;
@@ -23,30 +22,15 @@ class GetAiIndexMetadataConfigAlgorithmConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bruteForceConfigs': bruteForceConfigs,
-      'treeAhConfigs':
-          pulumi.Input.encodeList<
-            GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig,
-            Map<String, dynamic>
-          >(treeAhConfigs, (value) => value.toMap()),
+      'treeAhConfigs': pulumi.Input.encodeList<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig, Map<String, dynamic>>(treeAhConfigs, (value) => value.toMap()),
     };
   }
 
-  factory GetAiIndexMetadataConfigAlgorithmConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAiIndexMetadataConfigAlgorithmConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfigAlgorithmConfig(
-      bruteForceConfigs: (map['bruteForceConfigs'] as List)
-          .cast<Map<String, dynamic>>(),
-      treeAhConfigs:
-          pulumi.Input.decodeList<
-            GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig
-          >(
-            map['treeAhConfigs'],
-            (value) =>
-                GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      bruteForceConfigs: (map['bruteForceConfigs'] as List).cast<Map<String, dynamic>>(),
+      treeAhConfigs: pulumi.Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig>(map['treeAhConfigs'], (value) => GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

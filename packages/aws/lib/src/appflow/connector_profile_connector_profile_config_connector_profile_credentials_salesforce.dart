@@ -4,15 +4,12 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce {
   final String? accessToken;
-
   /// The secret manager ARN, which contains the client ID and client secret of the connected app.
   final String? clientCredentialsArn;
-
   /// A JSON web token (JWT) that authorizes access to Salesforce records.
   final String? jwtToken;
   final String? oauth2GrantType;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest?
-  oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest? oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce].
@@ -42,28 +39,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforc
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce(
-      accessToken: map['accessToken'] == null
-          ? null
-          : map['accessToken'] as String,
-      clientCredentialsArn: map['clientCredentialsArn'] == null
-          ? null
-          : map['clientCredentialsArn'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
+      clientCredentialsArn: map['clientCredentialsArn'] == null ? null : map['clientCredentialsArn'] as String,
       jwtToken: map['jwtToken'] == null ? null : map['jwtToken'] as String,
-      oauth2GrantType: map['oauth2GrantType'] == null
-          ? null
-          : map['oauth2GrantType'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap(
-              (map['oauthRequest'] as Map).cast<String, dynamic>(),
-            ),
-      refreshToken: map['refreshToken'] == null
-          ? null
-          : map['refreshToken'] as String,
+      oauth2GrantType: map['oauth2GrantType'] == null ? null : map['oauth2GrantType'] as String,
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
     );
   }
 }
+

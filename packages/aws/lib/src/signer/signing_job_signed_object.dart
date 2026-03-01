@@ -8,29 +8,20 @@ class SigningJobSignedObject {
 
   /// Creates a new [SigningJobSignedObject].
   /// [s3s] Optional.
-  SigningJobSignedObject({this.s3s});
+  SigningJobSignedObject({
+    this.s3s,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3s': ?s3s == null
-          ? null
-          : pulumi.Input.encodeList<
-              SigningJobSignedObjectS3,
-              Map<String, dynamic>
-            >(s3s!, (value) => value.toMap()),
+      's3s': ?s3s == null ? null : pulumi.Input.encodeList<SigningJobSignedObjectS3, Map<String, dynamic>>(s3s!, (value) => value.toMap()),
     };
   }
 
   factory SigningJobSignedObject.fromMap(Map<String, dynamic> map) {
     return SigningJobSignedObject(
-      s3s: map['s3s'] == null
-          ? null
-          : pulumi.Input.decodeList<SigningJobSignedObjectS3>(
-              map['s3s'],
-              (value) => SigningJobSignedObjectS3.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      s3s: map['s3s'] == null ? null : pulumi.Input.decodeList<SigningJobSignedObjectS3>(map['s3s'], (value) => SigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

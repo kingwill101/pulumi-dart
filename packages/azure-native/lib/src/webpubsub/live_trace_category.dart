@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Live trace category configuration of a Microsoft.SignalRService resource.
+class LiveTraceCategory {
+  /// Indicates whether or the live trace category is enabled.
+  /// Available values: true, false.
+  /// Case insensitive.
+  final String? enabled;
+  /// Gets or sets the live trace category's name.
+  /// Available values: ConnectivityLogs, MessagingLogs.
+  /// Case insensitive.
+  final String? name;
+
+  /// Creates a new [LiveTraceCategory].
+  /// [enabled] Indicates whether or the live trace category is enabled.
+  /// [name] Gets or sets the live trace category's name.
+  LiveTraceCategory({
+    this.enabled,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'name': ?name,
+    };
+  }
+
+  factory LiveTraceCategory.fromMap(Map<String, dynamic> map) {
+    return LiveTraceCategory(
+      enabled: map['enabled'] == null ? null : map['enabled'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

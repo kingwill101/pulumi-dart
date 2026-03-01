@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy {
   /// A KeyAccessJustificationsPolicy specifies zero or more allowed
   /// AccessReason values for encrypt, decrypt, and sign operations on a
@@ -14,16 +15,15 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAccessReasons': ?allowedAccessReasons};
+    return <String, dynamic>{
+      'allowedAccessReasons': ?allowedAccessReasons,
+    };
   }
 
-  factory ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy(
-      allowedAccessReasons: map['allowedAccessReasons'] == null
-          ? null
-          : (map['allowedAccessReasons'] as List).cast<String>(),
+      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : (map['allowedAccessReasons'] as List).cast<String>(),
     );
   }
 }
+

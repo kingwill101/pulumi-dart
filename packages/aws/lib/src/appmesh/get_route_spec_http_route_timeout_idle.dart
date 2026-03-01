@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecHttpRouteTimeoutIdle {
   final String unit;
   final int value;
@@ -7,10 +8,16 @@ class GetRouteSpecHttpRouteTimeoutIdle {
   /// Creates a new [GetRouteSpecHttpRouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecHttpRouteTimeoutIdle({required this.unit, required this.value});
+  GetRouteSpecHttpRouteTimeoutIdle({
+    required this.unit,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory GetRouteSpecHttpRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class GetRouteSpecHttpRouteTimeoutIdle {
     );
   }
 }
+

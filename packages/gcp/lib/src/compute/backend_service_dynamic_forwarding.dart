@@ -9,23 +9,20 @@ class BackendServiceDynamicForwarding {
 
   /// Creates a new [BackendServiceDynamicForwarding].
   /// [ipPortSelection] IP:PORT based dynamic forwarding configuration.
-  BackendServiceDynamicForwarding({this.ipPortSelection});
+  BackendServiceDynamicForwarding({
+    this.ipPortSelection,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipPortSelection': ?ipPortSelection == null
-          ? null
-          : ipPortSelection!.toMap(),
+      'ipPortSelection': ?ipPortSelection == null ? null : ipPortSelection!.toMap(),
     };
   }
 
   factory BackendServiceDynamicForwarding.fromMap(Map<String, dynamic> map) {
     return BackendServiceDynamicForwarding(
-      ipPortSelection: map['ipPortSelection'] == null
-          ? null
-          : BackendServiceDynamicForwardingIpPortSelection.fromMap(
-              (map['ipPortSelection'] as Map).cast<String, dynamic>(),
-            ),
+      ipPortSelection: map['ipPortSelection'] == null ? null : BackendServiceDynamicForwardingIpPortSelection.fromMap((map['ipPortSelection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

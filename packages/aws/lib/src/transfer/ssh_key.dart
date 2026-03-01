@@ -508,14 +508,11 @@ import 'ssh_key_args.dart';
 class SshKey extends pulumi.CustomResource {
   /// The public key portion of an SSH key pair.
   late final pulumi.Output<String> body;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
   late final pulumi.Output<String> sshKeyId;
-
   /// The name of the user account that is assigned to one or more servers.
   late final pulumi.Output<String> userName;
 
@@ -523,13 +520,16 @@ class SshKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SshKey]. {@macro pulumi_transfer_ssh_key_ssh_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SshKey(String name, {SshKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:transfer/sshKey:SshKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  SshKey(
+    String name, {
+    SshKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:transfer/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.body = registerOutput<String>('body');
     this.region = registerOutput<String>('region');
     this.serverId = registerOutput<String>('serverId');

@@ -4698,27 +4698,20 @@ class CxPage extends pulumi.CustomResource {
   /// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
   /// Structure is documented below.
   late final pulumi.Output<CxPageAdvancedSettings?> advancedSettings;
-
   /// The human-readable name of the page, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// The fulfillment to call when the session is entering the page.
   /// Structure is documented below.
   late final pulumi.Output<CxPageEntryFulfillment?> entryFulfillment;
-
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
   /// Structure is documented below.
   late final pulumi.Output<List<CxPageEventHandler>?> eventHandlers;
-
   /// The form associated with the page, used for collecting parameters relevant to the page.
   /// Structure is documented below.
   late final pulumi.Output<CxPageForm?> form;
-
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  late final pulumi.Output<CxPageKnowledgeConnectorSettings?>
-  knowledgeConnectorSettings;
-
+  late final pulumi.Output<CxPageKnowledgeConnectorSettings?> knowledgeConnectorSettings;
   /// The language of the following fields in page:
   /// Page.entry_fulfillment.messages
   /// Page.entry_fulfillment.conditional_cases
@@ -4732,21 +4725,17 @@ class CxPage extends pulumi.CustomResource {
   /// Page.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
   late final pulumi.Output<String?> languageCode;
-
   /// The unique identifier of the page.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
   late final pulumi.Output<String> name;
-
   /// The flow to create a page for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
   late final pulumi.Output<String?> parent;
-
   /// Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
   /// If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
   /// If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
   /// Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
   late final pulumi.Output<List<String>?> transitionRouteGroups;
-
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
   /// When we are in a certain page, the TransitionRoutes are evalauted in the following order:
   /// TransitionRoutes defined in the page with intent specified.
@@ -4762,36 +4751,26 @@ class CxPage extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [CxPage]. {@macro pulumi_diagflow_cx_page_cx_page_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  CxPage(String name, {CxPageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:diagflow/cxPage:CxPage',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    this.advancedSettings = registerOutput<CxPageAdvancedSettings?>(
-      'advancedSettings',
-    );
+  CxPage(
+    String name, {
+    CxPageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:diagflow/cxPage:CxPage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.advancedSettings = registerOutput<CxPageAdvancedSettings?>('advancedSettings');
     this.displayName = registerOutput<String>('displayName');
-    this.entryFulfillment = registerOutput<CxPageEntryFulfillment?>(
-      'entryFulfillment',
-    );
-    this.eventHandlers = registerOutput<List<CxPageEventHandler>?>(
-      'eventHandlers',
-    );
+    this.entryFulfillment = registerOutput<CxPageEntryFulfillment?>('entryFulfillment');
+    this.eventHandlers = registerOutput<List<CxPageEventHandler>?>('eventHandlers');
     this.form = registerOutput<CxPageForm?>('form');
-    this.knowledgeConnectorSettings =
-        registerOutput<CxPageKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-        );
+    this.knowledgeConnectorSettings = registerOutput<CxPageKnowledgeConnectorSettings?>('knowledgeConnectorSettings');
     this.languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
     this.parent = registerOutput<String?>('parent');
-    this.transitionRouteGroups = registerOutput<List<String>?>(
-      'transitionRouteGroups',
-    );
-    this.transitionRoutes = registerOutput<List<CxPageTransitionRoute>?>(
-      'transitionRoutes',
-    );
+    this.transitionRouteGroups = registerOutput<List<String>?>('transitionRouteGroups');
+    this.transitionRoutes = registerOutput<List<CxPageTransitionRoute>?>('transitionRoutes');
   }
 }

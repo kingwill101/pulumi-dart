@@ -18,31 +18,22 @@ class DrtAccessRoleArnAssociationArgs {
   DrtAccessRoleArnAssociationArgs({
     required String roleArn,
     DrtAccessRoleArnAssociationTimeouts? timeouts,
-  }) : roleArn = pulumi.Input.asInput<String>(roleArn),
-       timeouts =
-           pulumi.Input.asOptionalInput<DrtAccessRoleArnAssociationTimeouts>(
-             timeouts,
-           );
+  }) :
+      roleArn = pulumi.Input.asInput<String>(roleArn),
+      timeouts = pulumi.Input.asOptionalInput<DrtAccessRoleArnAssociationTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'roleArn': roleArn,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DrtAccessRoleArnAssociationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DrtAccessRoleArnAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory DrtAccessRoleArnAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DrtAccessRoleArnAssociationArgs(
       roleArn: map['roleArn'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : DrtAccessRoleArnAssociationTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : DrtAccessRoleArnAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -10,9 +10,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 class FirewallTransitGatewayAttachmentAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  final pulumi.Input<FirewallTransitGatewayAttachmentAccepterTimeouts>?
-  timeouts;
-
+  final pulumi.Input<FirewallTransitGatewayAttachmentAccepterTimeouts>? timeouts;
   /// The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
   final pulumi.Input<String> transitGatewayAttachmentId;
 
@@ -24,38 +22,25 @@ class FirewallTransitGatewayAttachmentAccepterArgs {
     String? region,
     FirewallTransitGatewayAttachmentAccepterTimeouts? timeouts,
     required String transitGatewayAttachmentId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       timeouts =
-           pulumi.Input.asOptionalInput<
-             FirewallTransitGatewayAttachmentAccepterTimeouts
-           >(timeouts),
-       transitGatewayAttachmentId = pulumi.Input.asInput<String>(
-         transitGatewayAttachmentId,
-       );
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<FirewallTransitGatewayAttachmentAccepterTimeouts>(timeouts),
+      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirewallTransitGatewayAttachmentAccepterTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<FirewallTransitGatewayAttachmentAccepterTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'transitGatewayAttachmentId': transitGatewayAttachmentId,
     };
   }
 
-  factory FirewallTransitGatewayAttachmentAccepterArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallTransitGatewayAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return FirewallTransitGatewayAttachmentAccepterArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       transitGatewayAttachmentId: map['transitGatewayAttachmentId'] as String,
     );
   }
 }
+

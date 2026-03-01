@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerAccessLogs {
   final String bucket;
   final String bucketPrefix;
@@ -36,3 +37,4 @@ class GetLoadBalancerAccessLogs {
     );
   }
 }
+

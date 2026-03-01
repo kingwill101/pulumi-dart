@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiEventConfigAuthProviderOpenidConnectConfig {
   /// TTL in seconds for the authentication token.
   final int? authTtl;
-
   /// Client ID for the OpenID Connect provider.
   final String? clientId;
-
   /// TTL in seconds for the issued at time.
   final int? iatTtl;
-
   /// Issuer URL for the OpenID Connect provider.
   final String issuer;
 
@@ -34,9 +32,7 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
     };
   }
 
-  factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderOpenidConnectConfig(
       authTtl: map['authTtl'] == null ? null : map['authTtl'] as int,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
@@ -45,3 +41,4 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
     );
   }
 }
+

@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserSshKey.
 class GetUserSshKeyResult {
   final String encoding;
-
   /// MD5 message digest of the SSH public key.
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// SSH public key.
   final String publicKey;
   final String sshPublicKeyId;
-
   /// Status of the SSH public key. Active means that the key can be used for authentication with an CodeCommit repository. Inactive means that the key cannot be used.
   final String status;
   final String username;
@@ -60,3 +57,4 @@ class GetUserSshKeyResult {
     );
   }
 }
+

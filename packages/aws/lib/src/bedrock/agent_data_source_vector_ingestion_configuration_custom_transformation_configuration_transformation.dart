@@ -5,10 +5,8 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation {
   /// When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
   final String stepToApply;
-
   /// The lambda function that processes documents.
-  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction?
-  transformationFunction;
+  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction? transformationFunction;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation].
   /// [stepToApply] When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
@@ -21,22 +19,15 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'stepToApply': stepToApply,
-      'transformationFunction': ?transformationFunction == null
-          ? null
-          : transformationFunction!.toMap(),
+      'transformationFunction': ?transformationFunction == null ? null : transformationFunction!.toMap(),
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation(
       stepToApply: map['stepToApply'] as String,
-      transformationFunction: map['transformationFunction'] == null
-          ? null
-          : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction.fromMap(
-              (map['transformationFunction'] as Map).cast<String, dynamic>(),
-            ),
+      transformationFunction: map['transformationFunction'] == null ? null : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction.fromMap((map['transformationFunction'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

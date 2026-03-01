@@ -18,34 +18,16 @@ class GetListenerDefaultAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedResponses':
-          pulumi.Input.encodeList<
-            GetListenerDefaultActionFixedResponse,
-            Map<String, dynamic>
-          >(fixedResponses, (value) => value.toMap()),
-      'forwards':
-          pulumi.Input.encodeList<
-            GetListenerDefaultActionForward,
-            Map<String, dynamic>
-          >(forwards, (value) => value.toMap()),
+      'fixedResponses': pulumi.Input.encodeList<GetListenerDefaultActionFixedResponse, Map<String, dynamic>>(fixedResponses, (value) => value.toMap()),
+      'forwards': pulumi.Input.encodeList<GetListenerDefaultActionForward, Map<String, dynamic>>(forwards, (value) => value.toMap()),
     };
   }
 
   factory GetListenerDefaultAction.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultAction(
-      fixedResponses:
-          pulumi.Input.decodeList<GetListenerDefaultActionFixedResponse>(
-            map['fixedResponses'],
-            (value) => GetListenerDefaultActionFixedResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      forwards: pulumi.Input.decodeList<GetListenerDefaultActionForward>(
-        map['forwards'],
-        (value) => GetListenerDefaultActionForward.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      fixedResponses: pulumi.Input.decodeList<GetListenerDefaultActionFixedResponse>(map['fixedResponses'], (value) => GetListenerDefaultActionFixedResponse.fromMap((value as Map).cast<String, dynamic>())),
+      forwards: pulumi.Input.decodeList<GetListenerDefaultActionForward>(map['forwards'], (value) => GetListenerDefaultActionForward.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -3,8 +3,7 @@
 import 'agent_prompt_variant_template_configuration_chat_message_content_cache_point.dart';
 
 class AgentPromptVariantTemplateConfigurationChatMessageContent {
-  final AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint?
-  cachePoint;
+  final AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint? cachePoint;
   final String? text;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessageContent].
@@ -22,16 +21,11 @@ class AgentPromptVariantTemplateConfigurationChatMessageContent {
     };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatMessageContent(
-      cachePoint: map['cachePoint'] == null
-          ? null
-          : AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint.fromMap(
-              (map['cachePoint'] as Map).cast<String, dynamic>(),
-            ),
+      cachePoint: map['cachePoint'] == null ? null : AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
       text: map['text'] == null ? null : map['text'] as String,
     );
   }
 }
+

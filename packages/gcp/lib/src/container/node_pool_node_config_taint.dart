@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigTaint {
   /// Effect for taint.
   final String effect;
-
   /// Key for taint.
   final String key;
-
   /// Value for taint.
   final String value;
 
@@ -21,7 +20,11 @@ class NodePoolNodeConfigTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory NodePoolNodeConfigTaint.fromMap(Map<String, dynamic> map) {
@@ -32,3 +35,4 @@ class NodePoolNodeConfigTaint {
     );
   }
 }
+

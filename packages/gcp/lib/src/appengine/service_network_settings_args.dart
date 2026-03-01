@@ -11,11 +11,9 @@ class ServiceNetworkSettingsArgs {
   /// Ingress settings for this service. Will apply to all versions.
   /// Structure is documented below.
   final pulumi.Input<ServiceNetworkSettingsNetworkSettings> networkSettings;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the service these settings apply to.
   final pulumi.Input<String> service;
 
@@ -27,20 +25,14 @@ class ServiceNetworkSettingsArgs {
     required ServiceNetworkSettingsNetworkSettings networkSettings,
     String? project,
     required String service,
-  }) : networkSettings =
-           pulumi.Input.asInput<ServiceNetworkSettingsNetworkSettings>(
-             networkSettings,
-           ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       service = pulumi.Input.asInput<String>(service);
+  }) :
+      networkSettings = pulumi.Input.asInput<ServiceNetworkSettingsNetworkSettings>(networkSettings),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkSettings':
-          pulumi.Input.mapInputValue<
-            ServiceNetworkSettingsNetworkSettings,
-            Map<String, dynamic>
-          >(networkSettings, (value) => value.toMap()),
+      'networkSettings': pulumi.Input.mapInputValue<ServiceNetworkSettingsNetworkSettings, Map<String, dynamic>>(networkSettings, (value) => value.toMap()),
       'project': ?project,
       'service': service,
     };
@@ -48,11 +40,10 @@ class ServiceNetworkSettingsArgs {
 
   factory ServiceNetworkSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsArgs(
-      networkSettings: ServiceNetworkSettingsNetworkSettings.fromMap(
-        (map['networkSettings'] as Map).cast<String, dynamic>(),
-      ),
+      networkSettings: ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
       service: map['service'] as String,
     );
   }
 }
+

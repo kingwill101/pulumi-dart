@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VoiceConnectorStreamingMediaInsightsConfiguration {
   /// The media insights configuration that will be invoked by the Voice Connector.
   final String? configurationArn;
-
   /// When `true`, the media insights configuration is not enabled. Defaults to `false`.
   final bool? disabled;
 
@@ -22,14 +22,11 @@ class VoiceConnectorStreamingMediaInsightsConfiguration {
     };
   }
 
-  factory VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingMediaInsightsConfiguration(
-      configurationArn: map['configurationArn'] == null
-          ? null
-          : map['configurationArn'] as String,
+      configurationArn: map['configurationArn'] == null ? null : map['configurationArn'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
     );
   }
 }
+

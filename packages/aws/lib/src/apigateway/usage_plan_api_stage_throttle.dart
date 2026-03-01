@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UsagePlanApiStageThrottle {
   /// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
   final int? burstLimit;
-
   /// Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
   final String path;
-
   /// The API request steady-state rate limit.
   final double? rateLimit;
 
@@ -36,3 +35,4 @@ class UsagePlanApiStageThrottle {
     );
   }
 }
+

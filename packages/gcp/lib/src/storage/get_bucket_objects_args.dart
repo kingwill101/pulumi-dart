@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectsArgs {
   /// The name of the containing bucket.
   final pulumi.Input<String> bucket;
-
   /// A glob pattern used to filter results (for example, `foo*bar`).
   final pulumi.Input<String>? matchGlob;
-
   /// Filter results to include only objects whose names begin with this prefix.
   final pulumi.Input<String>? prefix;
 
@@ -24,9 +22,10 @@ class GetBucketObjectsArgs {
     required String bucket,
     String? matchGlob,
     String? prefix,
-  }) : bucket = pulumi.Input.asInput<String>(bucket),
-       matchGlob = pulumi.Input.asOptionalInput<String>(matchGlob),
-       prefix = pulumi.Input.asOptionalInput<String>(prefix);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      matchGlob = pulumi.Input.asOptionalInput<String>(matchGlob),
+      prefix = pulumi.Input.asOptionalInput<String>(prefix);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class GetBucketObjectsArgs {
     );
   }
 }
+

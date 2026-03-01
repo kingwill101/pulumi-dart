@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAccessConfig {
   /// The authentication mode for the cluster. Valid values are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
   final String? authenticationMode;
-
   /// Whether or not to bootstrap the access config values to the cluster. Default is `true`.
   final bool? bootstrapClusterCreatorAdminPermissions;
 
@@ -18,20 +18,15 @@ class ClusterAccessConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationMode': ?authenticationMode,
-      'bootstrapClusterCreatorAdminPermissions':
-          ?bootstrapClusterCreatorAdminPermissions,
+      'bootstrapClusterCreatorAdminPermissions': ?bootstrapClusterCreatorAdminPermissions,
     };
   }
 
   factory ClusterAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAccessConfig(
-      authenticationMode: map['authenticationMode'] == null
-          ? null
-          : map['authenticationMode'] as String,
-      bootstrapClusterCreatorAdminPermissions:
-          map['bootstrapClusterCreatorAdminPermissions'] == null
-          ? null
-          : map['bootstrapClusterCreatorAdminPermissions'] as bool,
+      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
+      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : map['bootstrapClusterCreatorAdminPermissions'] as bool,
     );
   }
 }
+

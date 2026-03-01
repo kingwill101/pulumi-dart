@@ -7,16 +7,12 @@ import 'topic_rule_timestream_timestamp.dart';
 class TopicRuleTimestream {
   /// The name of an Amazon Timestream database.
   final String databaseName;
-
   /// Configuration blocks with metadata attributes of the time series that are written in each measure record. Nested arguments below.
   final List<TopicRuleTimestreamDimension> dimensions;
-
   /// The ARN of the role that grants permission to write to the Amazon Timestream database table.
   final String roleArn;
-
   /// The name of the database table into which to write the measure records.
   final String tableName;
-
   /// Configuration block specifying an application-defined value to replace the default value assigned to the Timestream record's timestamp in the time column. Nested arguments below.
   final TopicRuleTimestreamTimestamp? timestamp;
 
@@ -37,11 +33,7 @@ class TopicRuleTimestream {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseName': databaseName,
-      'dimensions':
-          pulumi.Input.encodeList<
-            TopicRuleTimestreamDimension,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.encodeList<TopicRuleTimestreamDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
       'roleArn': roleArn,
       'tableName': tableName,
       'timestamp': ?timestamp == null ? null : timestamp!.toMap(),
@@ -51,19 +43,11 @@ class TopicRuleTimestream {
   factory TopicRuleTimestream.fromMap(Map<String, dynamic> map) {
     return TopicRuleTimestream(
       databaseName: map['databaseName'] as String,
-      dimensions: pulumi.Input.decodeList<TopicRuleTimestreamDimension>(
-        map['dimensions'],
-        (value) => TopicRuleTimestreamDimension.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dimensions: pulumi.Input.decodeList<TopicRuleTimestreamDimension>(map['dimensions'], (value) => TopicRuleTimestreamDimension.fromMap((value as Map).cast<String, dynamic>())),
       roleArn: map['roleArn'] as String,
       tableName: map['tableName'] as String,
-      timestamp: map['timestamp'] == null
-          ? null
-          : TopicRuleTimestreamTimestamp.fromMap(
-              (map['timestamp'] as Map).cast<String, dynamic>(),
-            ),
+      timestamp: map['timestamp'] == null ? null : TopicRuleTimestreamTimestamp.fromMap((map['timestamp'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

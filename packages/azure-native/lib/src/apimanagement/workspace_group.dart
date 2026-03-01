@@ -1,0 +1,327 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'workspace_group_args.dart';
+
+/// Contract details.
+///
+/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+///
+/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### ApiManagementCreateWorkspaceGroup
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var workspaceGroup = new AzureNative.ApiManagement.WorkspaceGroup("workspaceGroup", new()
+///     {
+///         DisplayName = "temp group",
+///         GroupId = "tempgroup",
+///         ResourceGroupName = "rg1",
+///         ServiceName = "apimService1",
+///         WorkspaceId = "wks1",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	apimanagement "github.com/pulumi/pulumi-azure-native-sdk/apimanagement/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := apimanagement.NewWorkspaceGroup(ctx, "workspaceGroup", &apimanagement.WorkspaceGroupArgs{
+/// 			DisplayName:       pulumi.String("temp group"),
+/// 			GroupId:           pulumi.String("tempgroup"),
+/// 			ResourceGroupName: pulumi.String("rg1"),
+/// 			ServiceName:       pulumi.String("apimService1"),
+/// 			WorkspaceId:       pulumi.String("wks1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.apimanagement.WorkspaceGroup;
+/// import com.pulumi.azurenative.apimanagement.WorkspaceGroupArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var workspaceGroup = new WorkspaceGroup("workspaceGroup", WorkspaceGroupArgs.builder()
+///             .displayName("temp group")
+///             .groupId("tempgroup")
+///             .resourceGroupName("rg1")
+///             .serviceName("apimService1")
+///             .workspaceId("wks1")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const workspaceGroup = new azure_native.apimanagement.WorkspaceGroup("workspaceGroup", {
+///     displayName: "temp group",
+///     groupId: "tempgroup",
+///     resourceGroupName: "rg1",
+///     serviceName: "apimService1",
+///     workspaceId: "wks1",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// workspace_group = azure_native.apimanagement.WorkspaceGroup("workspaceGroup",
+///     display_name="temp group",
+///     group_id="tempgroup",
+///     resource_group_name="rg1",
+///     service_name="apimService1",
+///     workspace_id="wks1")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   workspaceGroup:
+///     type: azure-native:apimanagement:WorkspaceGroup
+///     properties:
+///       displayName: temp group
+///       groupId: tempgroup
+///       resourceGroupName: rg1
+///       serviceName: apimService1
+///       workspaceId: wks1
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### ApiManagementCreateWorkspaceGroupExternal
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var workspaceGroup = new AzureNative.ApiManagement.WorkspaceGroup("workspaceGroup", new()
+///     {
+///         Description = "new group to test",
+///         DisplayName = "NewGroup (samiraad.onmicrosoft.com)",
+///         ExternalId = "aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d",
+///         GroupId = "aadGroup",
+///         ResourceGroupName = "rg1",
+///         ServiceName = "apimService1",
+///         Type = AzureNative.ApiManagement.GroupType.External,
+///         WorkspaceId = "wks1",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	apimanagement "github.com/pulumi/pulumi-azure-native-sdk/apimanagement/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := apimanagement.NewWorkspaceGroup(ctx, "workspaceGroup", &apimanagement.WorkspaceGroupArgs{
+/// 			Description:       pulumi.String("new group to test"),
+/// 			DisplayName:       pulumi.String("NewGroup (samiraad.onmicrosoft.com)"),
+/// 			ExternalId:        pulumi.String("aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d"),
+/// 			GroupId:           pulumi.String("aadGroup"),
+/// 			ResourceGroupName: pulumi.String("rg1"),
+/// 			ServiceName:       pulumi.String("apimService1"),
+/// 			Type:              apimanagement.GroupTypeExternal,
+/// 			WorkspaceId:       pulumi.String("wks1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.apimanagement.WorkspaceGroup;
+/// import com.pulumi.azurenative.apimanagement.WorkspaceGroupArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var workspaceGroup = new WorkspaceGroup("workspaceGroup", WorkspaceGroupArgs.builder()
+///             .description("new group to test")
+///             .displayName("NewGroup (samiraad.onmicrosoft.com)")
+///             .externalId("aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d")
+///             .groupId("aadGroup")
+///             .resourceGroupName("rg1")
+///             .serviceName("apimService1")
+///             .type("external")
+///             .workspaceId("wks1")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const workspaceGroup = new azure_native.apimanagement.WorkspaceGroup("workspaceGroup", {
+///     description: "new group to test",
+///     displayName: "NewGroup (samiraad.onmicrosoft.com)",
+///     externalId: "aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d",
+///     groupId: "aadGroup",
+///     resourceGroupName: "rg1",
+///     serviceName: "apimService1",
+///     type: azure_native.apimanagement.GroupType.External,
+///     workspaceId: "wks1",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// workspace_group = azure_native.apimanagement.WorkspaceGroup("workspaceGroup",
+///     description="new group to test",
+///     display_name="NewGroup (samiraad.onmicrosoft.com)",
+///     external_id="aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d",
+///     group_id="aadGroup",
+///     resource_group_name="rg1",
+///     service_name="apimService1",
+///     type=azure_native.apimanagement.GroupType.EXTERNAL,
+///     workspace_id="wks1")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   workspaceGroup:
+///     type: azure-native:apimanagement:WorkspaceGroup
+///     properties:
+///       description: new group to test
+///       displayName: NewGroup (samiraad.onmicrosoft.com)
+///       externalId: aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d
+///       groupId: aadGroup
+///       resourceGroupName: rg1
+///       serviceName: apimService1
+///       type: external
+///       workspaceId: wks1
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:apimanagement:WorkspaceGroup aadGroup /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}
+/// ```
+class WorkspaceGroup extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
+  late final pulumi.Output<bool> builtIn;
+  /// Group description. Can contain HTML formatting tags.
+  late final pulumi.Output<String?> description;
+  /// Group name.
+  late final pulumi.Output<String> displayName;
+  /// For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
+  late final pulumi.Output<String?> externalId;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [WorkspaceGroup].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [WorkspaceGroup]. {@macro pulumi_apimanagement_workspace_group_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  WorkspaceGroup(
+    String name, {
+    WorkspaceGroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:apimanagement:WorkspaceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.builtIn = registerOutput<bool>('builtIn');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.externalId = registerOutput<String?>('externalId');
+    this.name = registerOutput<String>('name');
+    this.type = registerOutput<String>('type');
+  }
+}

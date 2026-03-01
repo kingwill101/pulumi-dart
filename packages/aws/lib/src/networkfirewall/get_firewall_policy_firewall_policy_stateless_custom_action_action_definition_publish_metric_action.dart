@@ -4,10 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_firewall_policy_firewall_policy_stateless_custom_action_action_definition_publish_metric_action_dimension.dart';
 
 class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction {
-  final List<
-    GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension
-  >
-  dimensions;
+  final List<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension> dimensions;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction].
   /// [dimensions] Required.
@@ -17,28 +14,14 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublis
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions':
-          pulumi.Input.encodeList<
-            GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
     };
   }
 
-  factory GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction(
-      dimensions:
-          pulumi.Input.decodeList<
-            GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension
-          >(
-            map['dimensions'],
-            (value) =>
-                GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      dimensions: pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension>(map['dimensions'], (value) => GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

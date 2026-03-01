@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// A description for the group.
   final pulumi.Input<String>? description;
-
   /// A name for the group.
   final pulumi.Input<String> groupName;
-
   /// The namespace. Currently, you should set this to `default`.
   final pulumi.Input<String>? namespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,11 +30,12 @@ class GroupArgs {
     required String groupName,
     String? namespace,
     String? region,
-  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       groupName = pulumi.Input.asInput<String>(groupName),
-       namespace = pulumi.Input.asOptionalInput<String>(namespace),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      groupName = pulumi.Input.asInput<String>(groupName),
+      namespace = pulumi.Input.asOptionalInput<String>(namespace),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,15 +49,12 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      awsAccountId: map['awsAccountId'] == null
-          ? null
-          : map['awsAccountId'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       groupName: map['groupName'] as String,
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

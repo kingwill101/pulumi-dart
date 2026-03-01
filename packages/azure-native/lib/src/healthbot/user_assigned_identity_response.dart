@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The details of the user assigned managed identity used by the Video Analyzer resource.
+class UserAssignedIdentityResponse {
+  /// The client ID of user assigned identity.
+  final String clientId;
+  /// The principal ID of user assigned identity.
+  final String principalId;
+
+  /// Creates a new [UserAssignedIdentityResponse].
+  /// [clientId] The client ID of user assigned identity.
+  /// [principalId] The principal ID of user assigned identity.
+  UserAssignedIdentityResponse({
+    required this.clientId,
+    required this.principalId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientId': clientId,
+      'principalId': principalId,
+    };
+  }
+
+  factory UserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
+    return UserAssignedIdentityResponse(
+      clientId: map['clientId'] as String,
+      principalId: map['principalId'] as String,
+    );
+  }
+}
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSite.
 class GetSiteResult {
   /// AWS Account identifier.
   final String accountId;
-
   /// Description.
   final String description;
   final String id;
@@ -45,3 +45,4 @@ class GetSiteResult {
     );
   }
 }
+

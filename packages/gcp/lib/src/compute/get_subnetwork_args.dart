@@ -10,15 +10,12 @@ class GetSubnetworkArgs {
   /// The name of the subnetwork. One of `name` or `self_link`
   /// must be specified.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
-
   /// The self link of the subnetwork. If `self_link` is
   /// specified, `name`, `project`, and `region` are ignored.
   final pulumi.Input<String>? selfLink;
@@ -33,10 +30,11 @@ class GetSubnetworkArgs {
     String? project,
     String? region,
     String? selfLink,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,3 +54,4 @@ class GetSubnetworkArgs {
     );
   }
 }
+

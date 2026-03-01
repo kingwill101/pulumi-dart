@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInterfaceAssociation {
   /// Allocation ID.
   final String allocationId;
-
   /// Association ID.
   final String associationId;
-
   /// Carrier IP address associated with the network interface. This attribute is only set when the network interface is in a subnet which is associated with a Wavelength Zone.
   final String carrierIp;
-
   /// Customer-owned IP address.
   final String customerOwnedIp;
-
   /// ID of the Elastic IP address owner.
   final String ipOwnerId;
-
   /// Public DNS name.
   final String publicDnsName;
-
   /// Address of the Elastic IP address bound to the network interface.
   final String publicIp;
 
@@ -64,3 +59,4 @@ class GetNetworkInterfaceAssociation {
     );
   }
 }
+

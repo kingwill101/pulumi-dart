@@ -24,7 +24,6 @@ class GetJobResult {
   final int executionCount;
   final String expireTime;
   final String generation;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -115,18 +114,10 @@ class GetJobResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': annotations,
-      'binaryAuthorizations':
-          pulumi.Input.encodeList<
-            GetJobBinaryAuthorization,
-            Map<String, dynamic>
-          >(binaryAuthorizations, (value) => value.toMap()),
+      'binaryAuthorizations': pulumi.Input.encodeList<GetJobBinaryAuthorization, Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap()),
       'client': client,
       'clientVersion': clientVersion,
-      'conditions':
-          pulumi.Input.encodeList<GetJobCondition, Map<String, dynamic>>(
-            conditions,
-            (value) => value.toMap(),
-          ),
+      'conditions': pulumi.Input.encodeList<GetJobCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
       'createTime': createTime,
       'creator': creator,
       'deleteTime': deleteTime,
@@ -140,11 +131,7 @@ class GetJobResult {
       'id': id,
       'labels': labels,
       'lastModifier': lastModifier,
-      'latestCreatedExecutions':
-          pulumi.Input.encodeList<
-            GetJobLatestCreatedExecution,
-            Map<String, dynamic>
-          >(latestCreatedExecutions, (value) => value.toMap()),
+      'latestCreatedExecutions': pulumi.Input.encodeList<GetJobLatestCreatedExecution, Map<String, dynamic>>(latestCreatedExecutions, (value) => value.toMap()),
       'launchStage': launchStage,
       'location': ?location,
       'name': name,
@@ -154,16 +141,8 @@ class GetJobResult {
       'reconciling': reconciling,
       'runExecutionToken': runExecutionToken,
       'startExecutionToken': startExecutionToken,
-      'templates':
-          pulumi.Input.encodeList<GetJobTemplate, Map<String, dynamic>>(
-            templates,
-            (value) => value.toMap(),
-          ),
-      'terminalConditions':
-          pulumi.Input.encodeList<
-            GetJobTerminalCondition,
-            Map<String, dynamic>
-          >(terminalConditions, (value) => value.toMap()),
+      'templates': pulumi.Input.encodeList<GetJobTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'terminalConditions': pulumi.Input.encodeList<GetJobTerminalCondition, Map<String, dynamic>>(terminalConditions, (value) => value.toMap()),
       'uid': uid,
       'updateTime': updateTime,
     };
@@ -172,25 +151,15 @@ class GetJobResult {
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      binaryAuthorizations: pulumi.Input.decodeList<GetJobBinaryAuthorization>(
-        map['binaryAuthorizations'],
-        (value) => GetJobBinaryAuthorization.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      binaryAuthorizations: pulumi.Input.decodeList<GetJobBinaryAuthorization>(map['binaryAuthorizations'], (value) => GetJobBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())),
       client: map['client'] as String,
       clientVersion: map['clientVersion'] as String,
-      conditions: pulumi.Input.decodeList<GetJobCondition>(
-        map['conditions'],
-        (value) =>
-            GetJobCondition.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      conditions: pulumi.Input.decodeList<GetJobCondition>(map['conditions'], (value) => GetJobCondition.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       deleteTime: map['deleteTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
-          .cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       etag: map['etag'] as String,
       executionCount: map['executionCount'] as int,
@@ -199,13 +168,7 @@ class GetJobResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       lastModifier: map['lastModifier'] as String,
-      latestCreatedExecutions:
-          pulumi.Input.decodeList<GetJobLatestCreatedExecution>(
-            map['latestCreatedExecutions'],
-            (value) => GetJobLatestCreatedExecution.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      latestCreatedExecutions: pulumi.Input.decodeList<GetJobLatestCreatedExecution>(map['latestCreatedExecutions'], (value) => GetJobLatestCreatedExecution.fromMap((value as Map).cast<String, dynamic>())),
       launchStage: map['launchStage'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] as String,
@@ -215,19 +178,11 @@ class GetJobResult {
       reconciling: map['reconciling'] as bool,
       runExecutionToken: map['runExecutionToken'] as String,
       startExecutionToken: map['startExecutionToken'] as String,
-      templates: pulumi.Input.decodeList<GetJobTemplate>(
-        map['templates'],
-        (value) =>
-            GetJobTemplate.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      terminalConditions: pulumi.Input.decodeList<GetJobTerminalCondition>(
-        map['terminalConditions'],
-        (value) => GetJobTerminalCondition.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      templates: pulumi.Input.decodeList<GetJobTemplate>(map['templates'], (value) => GetJobTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      terminalConditions: pulumi.Input.decodeList<GetJobTerminalCondition>(map['terminalConditions'], (value) => GetJobTerminalCondition.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

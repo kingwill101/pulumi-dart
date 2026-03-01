@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NotificationConfigStreamingConfig {
   /// Expression that defines the filter to apply across create/update
   /// events of assets or findings as specified by the event type. The
@@ -24,13 +25,20 @@ class NotificationConfigStreamingConfig {
 
   /// Creates a new [NotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  NotificationConfigStreamingConfig({required this.filter});
+  NotificationConfigStreamingConfig({
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter};
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
   factory NotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
-    return NotificationConfigStreamingConfig(filter: map['filter'] as String);
+    return NotificationConfigStreamingConfig(
+      filter: map['filter'] as String,
+    );
   }
 }
+

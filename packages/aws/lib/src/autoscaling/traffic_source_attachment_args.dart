@@ -10,10 +10,8 @@ import 'traffic_source_attachment_traffic_source.dart';
 class TrafficSourceAttachmentArgs {
   /// The name of the Auto Scaling group.
   final pulumi.Input<String> autoscalingGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The unique identifiers of a traffic sources.
   final pulumi.Input<TrafficSourceAttachmentTrafficSource>? trafficSource;
 
@@ -25,24 +23,16 @@ class TrafficSourceAttachmentArgs {
     required String autoscalingGroupName,
     String? region,
     TrafficSourceAttachmentTrafficSource? trafficSource,
-  }) : autoscalingGroupName = pulumi.Input.asInput<String>(
-         autoscalingGroupName,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       trafficSource =
-           pulumi.Input.asOptionalInput<TrafficSourceAttachmentTrafficSource>(
-             trafficSource,
-           );
+  }) :
+      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      trafficSource = pulumi.Input.asOptionalInput<TrafficSourceAttachmentTrafficSource>(trafficSource);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalingGroupName': autoscalingGroupName,
       'region': ?region,
-      'trafficSource':
-          ?pulumi.Input.mapOptionalInputValue<
-            TrafficSourceAttachmentTrafficSource,
-            Map<String, dynamic>
-          >(trafficSource, (value) => value.toMap()),
+      'trafficSource': ?pulumi.Input.mapOptionalInputValue<TrafficSourceAttachmentTrafficSource, Map<String, dynamic>>(trafficSource, (value) => value.toMap()),
     };
   }
 
@@ -50,11 +40,8 @@ class TrafficSourceAttachmentArgs {
     return TrafficSourceAttachmentArgs(
       autoscalingGroupName: map['autoscalingGroupName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      trafficSource: map['trafficSource'] == null
-          ? null
-          : TrafficSourceAttachmentTrafficSource.fromMap(
-              (map['trafficSource'] as Map).cast<String, dynamic>(),
-            ),
+      trafficSource: map['trafficSource'] == null ? null : TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

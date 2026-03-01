@@ -1,45 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteTableRoute {
   /// ID of the Carrier Gateway.
   final String carrierGatewayId;
-
   /// CIDR block of the route.
   final String cidrBlock;
-
   /// ARN of the core network.
   final String coreNetworkArn;
-
   /// The ID of a managed prefix list destination of the route.
   final String destinationPrefixListId;
-
   /// ID of the Egress Only Internet Gateway.
   final String egressOnlyGatewayId;
-
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
   final String gatewayId;
-
   /// EC2 instance ID.
   final String instanceId;
-
   /// IPv6 CIDR block of the route.
   final String ipv6CidrBlock;
-
   /// Local Gateway ID.
   final String localGatewayId;
-
   /// NAT Gateway ID.
   final String natGatewayId;
-
   /// ID of the elastic network interface (eni) to use.
   final String networkInterfaceId;
-
   /// EC2 Transit Gateway ID.
   final String transitGatewayId;
-
   /// VPC Endpoint ID.
   final String vpcEndpointId;
-
   /// VPC Peering ID.
   final String vpcPeeringConnectionId;
 
@@ -113,3 +101,4 @@ class GetRouteTableRoute {
     );
   }
 }
+

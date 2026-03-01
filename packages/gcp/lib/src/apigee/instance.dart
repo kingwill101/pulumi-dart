@@ -1427,26 +1427,20 @@ class Instance extends pulumi.CustomResource {
   /// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAccessLoggingConfig?> accessLoggingConfig;
-
   /// Optional. Customer accept list represents the list of projects (id/number) on customer
   /// side that can privately connect to the service attachment. It is an optional field
   /// which the customers can provide during the instance creation. By default, the customer
   /// project associated with the Apigee organization will be included to the list.
   late final pulumi.Output<List<String>> consumerAcceptLists;
-
   /// Description of the instance.
   late final pulumi.Output<String?> description;
-
   /// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
   /// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
   late final pulumi.Output<String?> diskEncryptionKeyName;
-
   /// Display name of the instance.
   late final pulumi.Output<String?> displayName;
-
   /// Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
   late final pulumi.Output<String> host;
-
   /// IP range represents the customer-provided CIDR block of length 22 that will be used for
   /// the Apigee instance creation. This optional range, if provided, should be freely
   /// available as part of larger named range the customer has allocated to the Service
@@ -1455,24 +1449,18 @@ class Instance extends pulumi.CustomResource {
   /// for configuring their firewall needs to allow traffic from Apigee.
   /// Input format: "a.b.c.d/22"
   late final pulumi.Output<String?> ipRange;
-
   /// Required. Compute Engine location where the instance resides.
   late final pulumi.Output<String> location;
-
   /// Resource ID of the instance.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// The size of the CIDR block range that will be reserved by the instance. For valid values,
   /// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
   late final pulumi.Output<String> peeringCidrRange;
-
   /// Output only. Port number of the exposed Apigee endpoint.
   late final pulumi.Output<String> port;
-
   /// Output only. Resource name of the service attachment created for the instance in
   /// the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
   /// forward traffic to this service attachment using the PSC endpoints.
@@ -1487,21 +1475,15 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.accessLoggingConfig = registerOutput<InstanceAccessLoggingConfig?>(
-      'accessLoggingConfig',
-    );
-    this.consumerAcceptLists = registerOutput<List<String>>(
-      'consumerAcceptLists',
-    );
+          'gcp:apigee/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.accessLoggingConfig = registerOutput<InstanceAccessLoggingConfig?>('accessLoggingConfig');
+    this.consumerAcceptLists = registerOutput<List<String>>('consumerAcceptLists');
     this.description = registerOutput<String?>('description');
-    this.diskEncryptionKeyName = registerOutput<String?>(
-      'diskEncryptionKeyName',
-    );
+    this.diskEncryptionKeyName = registerOutput<String?>('diskEncryptionKeyName');
     this.displayName = registerOutput<String?>('displayName');
     this.host = registerOutput<String>('host');
     this.ipRange = registerOutput<String?>('ipRange');

@@ -4,8 +4,7 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow {
   /// Custom handling for allowed requests. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling?
-  customRequestHandling;
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Custom handling for allowed requests. See below.
@@ -15,21 +14,14 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null
-          ? null
-          : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
-            ),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,14 +5,9 @@ import 'get_task_definition_volume_fsx_windows_file_server_volume_configuration_
 
 class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
   /// Configuration block for authorization for the Amazon FSx for Windows File Server file system detailed below.
-  final List<
-    GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig
-  >
-  authorizationConfigs;
-
+  final List<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig> authorizationConfigs;
   /// The Amazon FSx for Windows File Server file system ID to use.
   final String fileSystemId;
-
   /// The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
   final String rootDirectory;
 
@@ -28,32 +23,18 @@ class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationConfigs':
-          pulumi.Input.encodeList<
-            GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig,
-            Map<String, dynamic>
-          >(authorizationConfigs, (value) => value.toMap()),
+      'authorizationConfigs': pulumi.Input.encodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig, Map<String, dynamic>>(authorizationConfigs, (value) => value.toMap()),
       'fileSystemId': fileSystemId,
       'rootDirectory': rootDirectory,
     };
   }
 
-  factory GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration(
-      authorizationConfigs:
-          pulumi.Input.decodeList<
-            GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig
-          >(
-            map['authorizationConfigs'],
-            (value) =>
-                GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      authorizationConfigs: pulumi.Input.decodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs'], (value) => GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>())),
       fileSystemId: map['fileSystemId'] as String,
       rootDirectory: map['rootDirectory'] as String,
     );
   }
 }
+

@@ -1,0 +1,20 @@
+library module_quantum;
+
+export 'quantum/api_key_response.dart';
+export 'quantum/functions.dart';
+export 'quantum/get_workspace_args.dart';
+export 'quantum/get_workspace_result.dart';
+export 'quantum/list_workspace_keys_args.dart';
+export 'quantum/list_workspace_keys_result.dart';
+export 'quantum/managed_service_identity.dart';
+export 'quantum/managed_service_identity_response.dart';
+export 'quantum/managed_service_identity_type.dart';
+export 'quantum/provider.dart';
+export 'quantum/provider_response.dart';
+export 'quantum/provider_status.dart';
+export 'quantum/system_data_response.dart';
+export 'quantum/user_assigned_identity_response.dart';
+export 'quantum/workspace.dart';
+export 'quantum/workspace_args.dart';
+export 'quantum/workspace_resource_properties.dart';
+export 'quantum/workspace_resource_properties_response.dart';

@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
+  /// The target network segment of the local VPC.
+  final String localDestinationCidr;
+  /// The ID of the next-hop instance in the local VPC.
+  final String localNextHopInstanceId;
+
+  /// Creates a new [GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList].
+  /// [localDestinationCidr] The target network segment of the local VPC.
+  /// [localNextHopInstanceId] The ID of the next-hop instance in the local VPC.
+  GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList({
+    required this.localDestinationCidr,
+    required this.localNextHopInstanceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'localDestinationCidr': localDestinationCidr,
+      'localNextHopInstanceId': localNextHopInstanceId,
+    };
+  }
+
+  factory GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList.fromMap(Map<String, dynamic> map) {
+    return GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList(
+      localDestinationCidr: map['localDestinationCidr'] as String,
+      localNextHopInstanceId: map['localNextHopInstanceId'] as String,
+    );
+  }
+}
+

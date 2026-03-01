@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableTableConstraintsForeignKeyColumnReferences {
   /// The column in the primary key that are
   /// referenced by the referencingColumn
   final String referencedColumn;
-
   /// The column that composes the foreign key.
   final String referencingColumn;
 
@@ -23,12 +23,11 @@ class TableTableConstraintsForeignKeyColumnReferences {
     };
   }
 
-  factory TableTableConstraintsForeignKeyColumnReferences.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableTableConstraintsForeignKeyColumnReferences.fromMap(Map<String, dynamic> map) {
     return TableTableConstraintsForeignKeyColumnReferences(
       referencedColumn: map['referencedColumn'] as String,
       referencingColumn: map['referencingColumn'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWorkloadIdentityPoolProviderOidc {
   /// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
   /// requests are rejected if the token audience does not match one of the configured
@@ -14,10 +15,8 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// '''
   final List<String> allowedAudiences;
-
   /// The OIDC issuer URL.
   final String issuerUri;
-
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
   /// use the 'jwks_uri' from the discovery document fetched from the
@@ -61,9 +60,7 @@ class GetWorkloadIdentityPoolProviderOidc {
     };
   }
 
-  factory GetWorkloadIdentityPoolProviderOidc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderOidc(
       allowedAudiences: (map['allowedAudiences'] as List).cast<String>(),
       issuerUri: map['issuerUri'] as String,
@@ -71,3 +68,4 @@ class GetWorkloadIdentityPoolProviderOidc {
     );
   }
 }
+

@@ -1,63 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
   final String accountAccessType;
-
   /// ARN of the Grafana workspace.
   final String arn;
-
   /// (Required) Authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   final List<String> authenticationProviders;
-
   /// Creation date of the Grafana workspace.
   final String createdDate;
-
   /// Data sources for the workspace.
   final List<String> dataSources;
-
   /// Workspace description.
   final String description;
-
   /// Endpoint of the Grafana workspace.
   final String endpoint;
-
   /// Version of Grafana running on the workspace.
   final String grafanaVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Last updated date of the Grafana workspace.
   final String lastUpdatedDate;
-
   /// Grafana workspace name.
   final String name;
-
   /// The notification destinations.
   final List<String> notificationDestinations;
-
   /// The role name that the workspace uses to access resources through Amazon Organizations.
   final String organizationRoleName;
-
   /// The Amazon Organizations organizational units that the workspace is authorized to use data sources from.
   final List<String> organizationalUnits;
-
   /// Permission type of the workspace.
   final String permissionType;
   final String region;
-
   /// IAM role ARN that the workspace assumes.
   final String roleArn;
   final String samlConfigurationStatus;
-
   /// AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   final String stackSetName;
-
   /// Status of the Grafana workspace.
   final String status;
-
   /// Tags assigned to the resource
   final Map<String, String> tags;
   final String workspaceId;
@@ -141,8 +124,7 @@ class GetWorkspaceResult {
     return GetWorkspaceResult(
       accountAccessType: map['accountAccessType'] as String,
       arn: map['arn'] as String,
-      authenticationProviders: (map['authenticationProviders'] as List)
-          .cast<String>(),
+      authenticationProviders: (map['authenticationProviders'] as List).cast<String>(),
       createdDate: map['createdDate'] as String,
       dataSources: (map['dataSources'] as List).cast<String>(),
       description: map['description'] as String,
@@ -151,8 +133,7 @@ class GetWorkspaceResult {
       id: map['id'] as String,
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       name: map['name'] as String,
-      notificationDestinations: (map['notificationDestinations'] as List)
-          .cast<String>(),
+      notificationDestinations: (map['notificationDestinations'] as List).cast<String>(),
       organizationRoleName: map['organizationRoleName'] as String,
       organizationalUnits: (map['organizationalUnits'] as List).cast<String>(),
       permissionType: map['permissionType'] as String,
@@ -166,3 +147,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

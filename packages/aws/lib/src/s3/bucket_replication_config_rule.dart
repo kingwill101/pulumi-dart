@@ -8,32 +8,21 @@ import 'bucket_replication_config_rule_source_selection_criteria.dart';
 
 class BucketReplicationConfigRule {
   /// Whether delete markers are replicated. This argument is only valid with V2 replication configurations (i.e., when `filter` is used)documented below.
-  final BucketReplicationConfigRuleDeleteMarkerReplication?
-  deleteMarkerReplication;
-
+  final BucketReplicationConfigRuleDeleteMarkerReplication? deleteMarkerReplication;
   /// Specifies the destination for the rule. See below.
   final BucketReplicationConfigRuleDestination destination;
-
   /// Replicate existing objects in the source bucket according to the rule configurations. See below.
-  final BucketReplicationConfigRuleExistingObjectReplication?
-  existingObjectReplication;
-
+  final BucketReplicationConfigRuleExistingObjectReplication? existingObjectReplication;
   /// Filter that identifies subset of objects to which the replication rule applies. See below. If not specified, the `rule` will default to using `prefix`.
   final BucketReplicationConfigRuleFilter? filter;
-
   /// Unique identifier for the rule. Must be less than or equal to 255 characters in length.
   final String? id;
-
   /// Object key name prefix identifying one or more objects to which the rule applies. Must be less than or equal to 1024 characters in length. Defaults to an empty string (`""`) if `filter` is not specified.
   final String? prefix;
-
   /// Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
   final int? priority;
-
   /// Specifies special object selection criteria. See below.
-  final BucketReplicationConfigRuleSourceSelectionCriteria?
-  sourceSelectionCriteria;
-
+  final BucketReplicationConfigRuleSourceSelectionCriteria? sourceSelectionCriteria;
   /// Status of the rule. Either `"Enabled"` or `"Disabled"`. The rule is ignored if status is not "Enabled".
   final String status;
 
@@ -61,53 +50,30 @@ class BucketReplicationConfigRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deleteMarkerReplication': ?deleteMarkerReplication == null
-          ? null
-          : deleteMarkerReplication!.toMap(),
+      'deleteMarkerReplication': ?deleteMarkerReplication == null ? null : deleteMarkerReplication!.toMap(),
       'destination': destination.toMap(),
-      'existingObjectReplication': ?existingObjectReplication == null
-          ? null
-          : existingObjectReplication!.toMap(),
+      'existingObjectReplication': ?existingObjectReplication == null ? null : existingObjectReplication!.toMap(),
       'filter': ?filter == null ? null : filter!.toMap(),
       'id': ?id,
       'prefix': ?prefix,
       'priority': ?priority,
-      'sourceSelectionCriteria': ?sourceSelectionCriteria == null
-          ? null
-          : sourceSelectionCriteria!.toMap(),
+      'sourceSelectionCriteria': ?sourceSelectionCriteria == null ? null : sourceSelectionCriteria!.toMap(),
       'status': status,
     };
   }
 
   factory BucketReplicationConfigRule.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRule(
-      deleteMarkerReplication: map['deleteMarkerReplication'] == null
-          ? null
-          : BucketReplicationConfigRuleDeleteMarkerReplication.fromMap(
-              (map['deleteMarkerReplication'] as Map).cast<String, dynamic>(),
-            ),
-      destination: BucketReplicationConfigRuleDestination.fromMap(
-        (map['destination'] as Map).cast<String, dynamic>(),
-      ),
-      existingObjectReplication: map['existingObjectReplication'] == null
-          ? null
-          : BucketReplicationConfigRuleExistingObjectReplication.fromMap(
-              (map['existingObjectReplication'] as Map).cast<String, dynamic>(),
-            ),
-      filter: map['filter'] == null
-          ? null
-          : BucketReplicationConfigRuleFilter.fromMap(
-              (map['filter'] as Map).cast<String, dynamic>(),
-            ),
+      deleteMarkerReplication: map['deleteMarkerReplication'] == null ? null : BucketReplicationConfigRuleDeleteMarkerReplication.fromMap((map['deleteMarkerReplication'] as Map).cast<String, dynamic>()),
+      destination: BucketReplicationConfigRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      existingObjectReplication: map['existingObjectReplication'] == null ? null : BucketReplicationConfigRuleExistingObjectReplication.fromMap((map['existingObjectReplication'] as Map).cast<String, dynamic>()),
+      filter: map['filter'] == null ? null : BucketReplicationConfigRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
       id: map['id'] == null ? null : map['id'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       priority: map['priority'] == null ? null : map['priority'] as int,
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null
-          ? null
-          : BucketReplicationConfigRuleSourceSelectionCriteria.fromMap(
-              (map['sourceSelectionCriteria'] as Map).cast<String, dynamic>(),
-            ),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : BucketReplicationConfigRuleSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
     );
   }
 }
+

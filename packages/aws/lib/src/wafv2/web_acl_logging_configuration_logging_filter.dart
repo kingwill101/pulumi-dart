@@ -6,7 +6,6 @@ import 'web_acl_logging_configuration_logging_filter_filter.dart';
 class WebAclLoggingConfigurationLoggingFilter {
   /// Default handling for logs that don't match any of the specified filtering conditions. Valid values for `default_behavior` are `KEEP` or `DROP`.
   final String defaultBehavior;
-
   /// Filter(s) that you want to apply to the logs. See Filter below for more details.
   final List<WebAclLoggingConfigurationLoggingFilterFilter> filters;
 
@@ -21,27 +20,15 @@ class WebAclLoggingConfigurationLoggingFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultBehavior': defaultBehavior,
-      'filters':
-          pulumi.Input.encodeList<
-            WebAclLoggingConfigurationLoggingFilterFilter,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'filters': pulumi.Input.encodeList<WebAclLoggingConfigurationLoggingFilterFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
     };
   }
 
-  factory WebAclLoggingConfigurationLoggingFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclLoggingConfigurationLoggingFilter.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilter(
       defaultBehavior: map['defaultBehavior'] as String,
-      filters:
-          pulumi
-              .Input.decodeList<WebAclLoggingConfigurationLoggingFilterFilter>(
-            map['filters'],
-            (value) => WebAclLoggingConfigurationLoggingFilterFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      filters: pulumi.Input.decodeList<WebAclLoggingConfigurationLoggingFilterFilter>(map['filters'], (value) => WebAclLoggingConfigurationLoggingFilterFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

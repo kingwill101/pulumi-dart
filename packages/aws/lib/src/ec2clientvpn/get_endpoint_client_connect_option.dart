@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointClientConnectOption {
   final bool enabled;
   final String lambdaFunctionArn;
@@ -26,3 +27,4 @@ class GetEndpointClientConnectOption {
     );
   }
 }
+

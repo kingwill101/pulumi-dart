@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceTemplateSchedulingGracefulShutdownMaxDuration {
   /// Span of time that's a fraction of a second at nanosecond
   /// resolution. Durations less than one second are represented with a 0
   /// `seconds` field and a positive `nanos` field. Must be from 0 to
   /// 999,999,999 inclusive.
   final int? nanos;
-
   /// Span of time at a resolution of a second.
   /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
   final int seconds;
@@ -20,15 +20,17 @@ class InstanceTemplateSchedulingGracefulShutdownMaxDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': seconds,
+    };
   }
 
-  factory InstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateSchedulingGracefulShutdownMaxDuration(
       nanos: map['nanos'] == null ? null : map['nanos'] as int,
       seconds: map['seconds'] as int,
     );
   }
 }
+

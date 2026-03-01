@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouterPeerMd5AuthenticationKey {
   /// Value of the key.
   final String key;
-
   /// Name of this BGP peer. The name must be 1-63 characters long,
   /// and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which
@@ -15,10 +15,16 @@ class RouterPeerMd5AuthenticationKey {
   /// Creates a new [RouterPeerMd5AuthenticationKey].
   /// [key] Value of the key.
   /// [name] Name of this BGP peer. The name must be 1-63 characters long,
-  RouterPeerMd5AuthenticationKey({required this.key, required this.name});
+  RouterPeerMd5AuthenticationKey({
+    required this.key,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
   factory RouterPeerMd5AuthenticationKey.fromMap(Map<String, dynamic> map) {
@@ -28,3 +34,4 @@ class RouterPeerMd5AuthenticationKey {
     );
   }
 }
+

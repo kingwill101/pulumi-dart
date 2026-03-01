@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet {
   /// The name of a Cloud Storage bucket.
   final String bucketName;
-
   /// A list of regular expressions matching file paths to exclude. All files in the bucket that match at
   /// least one of these regular expressions will be excluded from the scan.
   final List<String>? excludeRegexes;
-
   /// A list of regular expressions matching file paths to include. All files in the bucket
   /// that match at least one of these regular expressions will be included in the set of files,
   /// except for those that also match an item in excludeRegex. Leaving this field empty will
@@ -32,17 +31,12 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(
       bucketName: map['bucketName'] as String,
-      excludeRegexes: map['excludeRegexes'] == null
-          ? null
-          : (map['excludeRegexes'] as List).cast<String>(),
-      includeRegexes: map['includeRegexes'] == null
-          ? null
-          : (map['includeRegexes'] as List).cast<String>(),
+      excludeRegexes: map['excludeRegexes'] == null ? null : (map['excludeRegexes'] as List).cast<String>(),
+      includeRegexes: map['includeRegexes'] == null ? null : (map['includeRegexes'] as List).cast<String>(),
     );
   }
 }
+

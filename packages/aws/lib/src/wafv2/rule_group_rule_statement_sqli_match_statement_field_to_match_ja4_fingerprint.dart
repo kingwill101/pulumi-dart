@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint {
   /// The match status to assign to the web request if the request doesn't have a JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
   final String fallbackBehavior;
@@ -11,14 +12,15 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': fallbackBehavior,
+    };
   }
 
-  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint(
       fallbackBehavior: map['fallbackBehavior'] as String,
     );
   }
 }
+

@@ -10,11 +10,9 @@ class AppCheckPlayIntegrityConfigArgs {
   /// The ID of an
   /// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
   final pulumi.Input<String> appId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -28,9 +26,10 @@ class AppCheckPlayIntegrityConfigArgs {
     required String appId,
     String? project,
     String? tokenTtl,
-  }) : appId = pulumi.Input.asInput<String>(appId),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,3 +47,4 @@ class AppCheckPlayIntegrityConfigArgs {
     );
   }
 }
+

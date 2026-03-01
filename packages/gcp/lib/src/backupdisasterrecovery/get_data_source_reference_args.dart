@@ -10,7 +10,6 @@ class GetDataSourceReferenceArgs {
   /// - (Required) The id of the data source reference.
   final pulumi.Input<String> dataSourceReferenceId;
   final pulumi.Input<String> location;
-
   /// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -22,11 +21,10 @@ class GetDataSourceReferenceArgs {
     required String dataSourceReferenceId,
     required String location,
     String? project,
-  }) : dataSourceReferenceId = pulumi.Input.asInput<String>(
-         dataSourceReferenceId,
-       ),
-       location = pulumi.Input.asInput<String>(location),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      dataSourceReferenceId = pulumi.Input.asInput<String>(dataSourceReferenceId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +42,4 @@ class GetDataSourceReferenceArgs {
     );
   }
 }
+

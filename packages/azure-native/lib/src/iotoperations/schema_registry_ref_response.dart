@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The reference to the Schema Registry for this AIO Instance.
+class SchemaRegistryRefResponse {
+  /// The resource ID of the Schema Registry.
+  final String resourceId;
+
+  /// Creates a new [SchemaRegistryRefResponse].
+  /// [resourceId] The resource ID of the Schema Registry.
+  SchemaRegistryRefResponse({
+    required this.resourceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
+  }
+
+  factory SchemaRegistryRefResponse.fromMap(Map<String, dynamic> map) {
+    return SchemaRegistryRefResponse(
+      resourceId: map['resourceId'] as String,
+    );
+  }
+}
+

@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// Description of the constraint.
   final pulumi.Input<String>? description;
-
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
   final pulumi.Input<String> parameters;
-
   /// Portfolio identifier.
   final pulumi.Input<String> portfolioId;
-
   /// Product identifier.
   final pulumi.Input<String> productId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:
@@ -46,13 +40,14 @@ class ConstraintArgs {
     required String productId,
     String? region,
     required String type,
-  }) : acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       parameters = pulumi.Input.asInput<String>(parameters),
-       portfolioId = pulumi.Input.asInput<String>(portfolioId),
-       productId = pulumi.Input.asInput<String>(productId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       type = pulumi.Input.asInput<String>(type);
+  }) :
+      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      parameters = pulumi.Input.asInput<String>(parameters),
+      portfolioId = pulumi.Input.asInput<String>(portfolioId),
+      productId = pulumi.Input.asInput<String>(productId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +63,8 @@ class ConstraintArgs {
 
   factory ConstraintArgs.fromMap(Map<String, dynamic> map) {
     return ConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       parameters: map['parameters'] as String,
       portfolioId: map['portfolioId'] as String,
       productId: map['productId'] as String,
@@ -82,3 +73,4 @@ class ConstraintArgs {
     );
   }
 }
+

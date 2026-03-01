@@ -8,7 +8,6 @@ class GetBackendServiceLocalityLbPolicy {
   /// The configuration for a custom policy implemented by the user and
   /// deployed with the client.
   final List<GetBackendServiceLocalityLbPolicyCustomPolicy> customPolicies;
-
   /// The configuration for a built-in load balancing policy.
   final List<GetBackendServiceLocalityLbPolicyPolicy> policies;
 
@@ -22,36 +21,16 @@ class GetBackendServiceLocalityLbPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPolicies':
-          pulumi.Input.encodeList<
-            GetBackendServiceLocalityLbPolicyCustomPolicy,
-            Map<String, dynamic>
-          >(customPolicies, (value) => value.toMap()),
-      'policies':
-          pulumi.Input.encodeList<
-            GetBackendServiceLocalityLbPolicyPolicy,
-            Map<String, dynamic>
-          >(policies, (value) => value.toMap()),
+      'customPolicies': pulumi.Input.encodeList<GetBackendServiceLocalityLbPolicyCustomPolicy, Map<String, dynamic>>(customPolicies, (value) => value.toMap()),
+      'policies': pulumi.Input.encodeList<GetBackendServiceLocalityLbPolicyPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
     };
   }
 
   factory GetBackendServiceLocalityLbPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceLocalityLbPolicy(
-      customPolicies:
-          pulumi
-              .Input.decodeList<GetBackendServiceLocalityLbPolicyCustomPolicy>(
-            map['customPolicies'],
-            (value) => GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      policies:
-          pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicyPolicy>(
-            map['policies'],
-            (value) => GetBackendServiceLocalityLbPolicyPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      customPolicies: pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicyCustomPolicy>(map['customPolicies'], (value) => GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      policies: pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicyPolicy>(map['policies'], (value) => GetBackendServiceLocalityLbPolicyPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

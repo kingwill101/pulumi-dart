@@ -6,10 +6,8 @@ import 'get_catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 class GetCatalogTableStorageDescriptorSchemaReference {
   /// Configuration block that contains schema identity fields. See `schema_id` below.
   final List<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId> schemaIds;
-
   /// Unique ID assigned to a version of the schema.
   final String schemaVersionId;
-
   /// Version number of the schema.
   final int schemaVersionNumber;
 
@@ -25,32 +23,18 @@ class GetCatalogTableStorageDescriptorSchemaReference {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemaIds':
-          pulumi.Input.encodeList<
-            GetCatalogTableStorageDescriptorSchemaReferenceSchemaId,
-            Map<String, dynamic>
-          >(schemaIds, (value) => value.toMap()),
+      'schemaIds': pulumi.Input.encodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId, Map<String, dynamic>>(schemaIds, (value) => value.toMap()),
       'schemaVersionId': schemaVersionId,
       'schemaVersionNumber': schemaVersionNumber,
     };
   }
 
-  factory GetCatalogTableStorageDescriptorSchemaReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCatalogTableStorageDescriptorSchemaReference.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSchemaReference(
-      schemaIds:
-          pulumi.Input.decodeList<
-            GetCatalogTableStorageDescriptorSchemaReferenceSchemaId
-          >(
-            map['schemaIds'],
-            (value) =>
-                GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      schemaIds: pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds'], (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>())),
       schemaVersionId: map['schemaVersionId'] as String,
       schemaVersionNumber: map['schemaVersionNumber'] as int,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketV2ReplicationConfigurationRuleDestinationMetric {
   /// Threshold within which objects are to be replicated. The only valid value is `15`.
   final int? minutes;
-
   /// Status of replication metrics. Either `Enabled` or `Disabled`.
   final String? status;
 
@@ -16,15 +16,17 @@ class BucketV2ReplicationConfigurationRuleDestinationMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minutes': ?minutes, 'status': ?status};
+    return <String, dynamic>{
+      'minutes': ?minutes,
+      'status': ?status,
+    };
   }
 
-  factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleDestinationMetric(
       minutes: map['minutes'] == null ? null : map['minutes'] as int,
       status: map['status'] == null ? null : map['status'] as String,
     );
   }
 }
+

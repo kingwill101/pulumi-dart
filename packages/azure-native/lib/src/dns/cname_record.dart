@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A CNAME record.
+class CnameRecord {
+  /// The canonical name for this CNAME record.
+  final String? cname;
+
+  /// Creates a new [CnameRecord].
+  /// [cname] The canonical name for this CNAME record.
+  CnameRecord({
+    this.cname,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cname': ?cname,
+    };
+  }
+
+  factory CnameRecord.fromMap(Map<String, dynamic> map) {
+    return CnameRecord(
+      cname: map['cname'] == null ? null : map['cname'] as String,
+    );
+  }
+}
+

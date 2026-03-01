@@ -4,9 +4,7 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_collection_
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex {
   /// The AWS account regex
-  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex?
-  awsAccountRegex;
-
+  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex? awsAccountRegex;
   /// Regex to test the bucket name against. If empty, all buckets match.
   final String? bucketNameRegex;
 
@@ -20,25 +18,16 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsAccountRegex': ?awsAccountRegex == null
-          ? null
-          : awsAccountRegex!.toMap(),
+      'awsAccountRegex': ?awsAccountRegex == null ? null : awsAccountRegex!.toMap(),
       'bucketNameRegex': ?bucketNameRegex,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex(
-      awsAccountRegex: map['awsAccountRegex'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex.fromMap(
-              (map['awsAccountRegex'] as Map).cast<String, dynamic>(),
-            ),
-      bucketNameRegex: map['bucketNameRegex'] == null
-          ? null
-          : map['bucketNameRegex'] as String,
+      awsAccountRegex: map['awsAccountRegex'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex.fromMap((map['awsAccountRegex'] as Map).cast<String, dynamic>()),
+      bucketNameRegex: map['bucketNameRegex'] == null ? null : map['bucketNameRegex'] as String,
     );
   }
 }
+

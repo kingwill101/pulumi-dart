@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterceptDeploymentGroupLocation {
   /// The cloud location of the deployment group, currently restricted to `global`.
   final String? location;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -15,10 +15,16 @@ class InterceptDeploymentGroupLocation {
   /// Creates a new [InterceptDeploymentGroupLocation].
   /// [location] The cloud location of the deployment group, currently restricted to `global`.
   /// [state] (Output)
-  InterceptDeploymentGroupLocation({this.location, this.state});
+  InterceptDeploymentGroupLocation({
+    this.location,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'state': ?state};
+    return <String, dynamic>{
+      'location': ?location,
+      'state': ?state,
+    };
   }
 
   factory InterceptDeploymentGroupLocation.fromMap(Map<String, dynamic> map) {
@@ -28,3 +34,4 @@ class InterceptDeploymentGroupLocation {
     );
   }
 }
+

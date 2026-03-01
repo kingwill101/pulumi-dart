@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamedQueryArgs {
   /// The plain language name for the query. Maximum length of 128.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The workgroup to which the query belongs. Defaults to `primary`.
   final pulumi.Input<String>? workgroup;
 
@@ -20,8 +18,12 @@ class GetNamedQueryArgs {
   /// [name] The plain language name for the query. Maximum length of 128.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] The workgroup to which the query belongs. Defaults to `primary`.
-  GetNamedQueryArgs({required String name, String? region, String? workgroup})
-    : name = pulumi.Input.asInput<String>(name),
+  GetNamedQueryArgs({
+    required String name,
+    String? region,
+    String? workgroup,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region),
       workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
 
@@ -41,3 +43,4 @@ class GetNamedQueryArgs {
     );
   }
 }
+

@@ -267,7 +267,6 @@ class ProjectMetadata extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -281,11 +280,11 @@ class ProjectMetadata extends pulumi.CustomResource {
     ProjectMetadataArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/projectMetadata:ProjectMetadata',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/projectMetadata:ProjectMetadata',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.metadata = registerOutput<Map<String, String>>('metadata');
     this.project = registerOutput<String>('project');
   }

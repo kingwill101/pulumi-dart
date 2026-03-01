@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings {
   /// The amount of time (in milliseconds) that no input is detected. After that time, an input failover will occur.
   final int? inputLossThresholdMsec;
@@ -11,16 +12,15 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inputLossThresholdMsec': ?inputLossThresholdMsec};
+    return <String, dynamic>{
+      'inputLossThresholdMsec': ?inputLossThresholdMsec,
+    };
   }
 
-  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings(
-      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null
-          ? null
-          : map['inputLossThresholdMsec'] as int,
+      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : map['inputLossThresholdMsec'] as int,
     );
   }
 }
+

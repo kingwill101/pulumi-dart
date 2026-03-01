@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingControlArgs {
   /// ARN of the cluster in which this routing control will reside.
   final pulumi.Input<String> clusterArn;
-
   /// ARN of the control panel in which this routing control will reside.
   final pulumi.Input<String>? controlPanelArn;
-
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
@@ -26,9 +24,10 @@ class RoutingControlArgs {
     required String clusterArn,
     String? controlPanelArn,
     String? name,
-  }) : clusterArn = pulumi.Input.asInput<String>(clusterArn),
-       controlPanelArn = pulumi.Input.asOptionalInput<String>(controlPanelArn),
-       name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      clusterArn = pulumi.Input.asInput<String>(clusterArn),
+      controlPanelArn = pulumi.Input.asOptionalInput<String>(controlPanelArn),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +40,9 @@ class RoutingControlArgs {
   factory RoutingControlArgs.fromMap(Map<String, dynamic> map) {
     return RoutingControlArgs(
       clusterArn: map['clusterArn'] as String,
-      controlPanelArn: map['controlPanelArn'] == null
-          ? null
-          : map['controlPanelArn'] as String,
+      controlPanelArn: map['controlPanelArn'] == null ? null : map['controlPanelArn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

@@ -11,29 +11,20 @@ class AppHostingTrafficCurrent {
 
   /// Creates a new [AppHostingTrafficCurrent].
   /// [splits] (Output)
-  AppHostingTrafficCurrent({this.splits});
+  AppHostingTrafficCurrent({
+    this.splits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'splits': ?splits == null
-          ? null
-          : pulumi.Input.encodeList<
-              AppHostingTrafficCurrentSplit,
-              Map<String, dynamic>
-            >(splits!, (value) => value.toMap()),
+      'splits': ?splits == null ? null : pulumi.Input.encodeList<AppHostingTrafficCurrentSplit, Map<String, dynamic>>(splits!, (value) => value.toMap()),
     };
   }
 
   factory AppHostingTrafficCurrent.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficCurrent(
-      splits: map['splits'] == null
-          ? null
-          : pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(
-              map['splits'],
-              (value) => AppHostingTrafficCurrentSplit.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      splits: map['splits'] == null ? null : pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(map['splits'], (value) => AppHostingTrafficCurrentSplit.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

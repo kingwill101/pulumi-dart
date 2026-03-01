@@ -10,7 +10,6 @@ class EnvGroupAttachmentArgs {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
   final pulumi.Input<String> envgroupId;
-
   /// The resource ID of the environment.
   final pulumi.Input<String> environment;
 
@@ -20,8 +19,9 @@ class EnvGroupAttachmentArgs {
   EnvGroupAttachmentArgs({
     required String envgroupId,
     required String environment,
-  }) : envgroupId = pulumi.Input.asInput<String>(envgroupId),
-       environment = pulumi.Input.asInput<String>(environment);
+  }) :
+      envgroupId = pulumi.Input.asInput<String>(envgroupId),
+      environment = pulumi.Input.asInput<String>(environment);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,3 +37,4 @@ class EnvGroupAttachmentArgs {
     );
   }
 }
+

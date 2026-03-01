@@ -5,10 +5,7 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling {
   /// The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  final List<
-    WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader
-  >
-  insertHeaders;
+  final List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader> insertHeaders;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
@@ -18,28 +15,14 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders':
-          pulumi.Input.encodeList<
-            WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader,
-            Map<String, dynamic>
-          >(insertHeaders, (value) => value.toMap()),
+      'insertHeaders': pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling(
-      insertHeaders:
-          pulumi.Input.decodeList<
-            WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader
-          >(
-            map['insertHeaders'],
-            (value) =>
-                WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      insertHeaders: pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

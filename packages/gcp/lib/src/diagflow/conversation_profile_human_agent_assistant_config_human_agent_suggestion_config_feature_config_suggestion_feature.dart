@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature {
   /// Type of Human Agent Assistant API feature to request.
   final String? type;
@@ -11,14 +12,15 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature(
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

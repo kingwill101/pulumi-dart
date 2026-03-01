@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   /// The product-generated identifier for a related finding.
   final String id;
-
   /// The ARN of the product that generated a related finding.
   final String productArn;
 
@@ -16,15 +16,17 @@ class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'productArn': productArn};
+    return <String, dynamic>{
+      'id': id,
+      'productArn': productArn,
+    };
   }
 
-  factory AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateRelatedFinding(
       id: map['id'] as String,
       productArn: map['productArn'] as String,
     );
   }
 }
+

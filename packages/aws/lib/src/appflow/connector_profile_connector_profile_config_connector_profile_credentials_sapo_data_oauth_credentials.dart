@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest?
-  oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest? oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials].
@@ -34,23 +33,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials(
-      accessToken: map['accessToken'] == null
-          ? null
-          : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap(
-              (map['oauthRequest'] as Map).cast<String, dynamic>(),
-            ),
-      refreshToken: map['refreshToken'] == null
-          ? null
-          : map['refreshToken'] as String,
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
     );
   }
 }
+

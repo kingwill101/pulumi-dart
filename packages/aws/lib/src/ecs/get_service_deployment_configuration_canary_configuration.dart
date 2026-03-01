@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceDeploymentConfigurationCanaryConfiguration {
   /// Time to wait before shifting remaining traffic
   final String canaryBakeTimeInMinutes;
-
   /// Percentage of traffic to route to canary deployment
   final double canaryPercent;
 
@@ -22,12 +22,11 @@ class GetServiceDeploymentConfigurationCanaryConfiguration {
     };
   }
 
-  factory GetServiceDeploymentConfigurationCanaryConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceDeploymentConfigurationCanaryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationCanaryConfiguration(
       canaryBakeTimeInMinutes: map['canaryBakeTimeInMinutes'] as String,
       canaryPercent: map['canaryPercent'] as double,
     );
   }
 }
+

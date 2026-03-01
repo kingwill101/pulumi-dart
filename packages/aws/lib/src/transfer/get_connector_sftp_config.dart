@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectorSftpConfig {
   /// List of the public portions of the host keys that are used to identify the servers the connector is connected to.
   final List<String> trustedHostKeys;
-
   /// Identifier for the secret in AWS Secrets Manager that contains the SFTP user's private key, and/or password.
   final String userSecretId;
 
@@ -29,3 +29,4 @@ class GetConnectorSftpConfig {
     );
   }
 }
+

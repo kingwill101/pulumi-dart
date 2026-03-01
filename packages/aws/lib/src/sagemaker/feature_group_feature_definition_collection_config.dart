@@ -7,7 +7,9 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfig].
   /// [vectorConfig] Optional.
-  FeatureGroupFeatureDefinitionCollectionConfig({this.vectorConfig});
+  FeatureGroupFeatureDefinitionCollectionConfig({
+    this.vectorConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -15,15 +17,10 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
     };
   }
 
-  factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfig(
-      vectorConfig: map['vectorConfig'] == null
-          ? null
-          : FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(
-              (map['vectorConfig'] as Map).cast<String, dynamic>(),
-            ),
+      vectorConfig: map['vectorConfig'] == null ? null : FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

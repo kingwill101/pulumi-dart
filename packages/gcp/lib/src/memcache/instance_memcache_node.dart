@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceMemcacheNode {
   /// (Output)
   /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
   final String? host;
-
   /// (Output)
   /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
   final String? nodeId;
-
   /// (Output)
   /// The port number of the Memcached server on this node.
   final int? port;
-
   /// (Output)
   /// Current state of the Memcached node.
   final String? state;
-
   /// (Output)
   /// Location (GCP Zone) for the Memcached node.
   final String? zone;
@@ -55,3 +52,4 @@ class InstanceMemcacheNode {
     );
   }
 }
+

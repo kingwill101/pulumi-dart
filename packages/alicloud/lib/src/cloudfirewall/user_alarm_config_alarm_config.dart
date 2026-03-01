@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class UserAlarmConfigAlarmConfig {
+  /// The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+  final String? alarmHour;
+  /// The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+  final String? alarmNotify;
+  /// The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+  final String? alarmPeriod;
+  /// The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+  final String? alarmType;
+  /// The alarm notification message.
+  final String? alarmValue;
+  /// The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+  final String? alarmWeekDay;
+
+  /// Creates a new [UserAlarmConfigAlarmConfig].
+  /// [alarmHour] The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+  /// [alarmNotify] The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+  /// [alarmPeriod] The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+  /// [alarmType] The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+  /// [alarmValue] The alarm notification message.
+  /// [alarmWeekDay] The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+  UserAlarmConfigAlarmConfig({
+    this.alarmHour,
+    this.alarmNotify,
+    this.alarmPeriod,
+    this.alarmType,
+    this.alarmValue,
+    this.alarmWeekDay,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'alarmHour': ?alarmHour,
+      'alarmNotify': ?alarmNotify,
+      'alarmPeriod': ?alarmPeriod,
+      'alarmType': ?alarmType,
+      'alarmValue': ?alarmValue,
+      'alarmWeekDay': ?alarmWeekDay,
+    };
+  }
+
+  factory UserAlarmConfigAlarmConfig.fromMap(Map<String, dynamic> map) {
+    return UserAlarmConfigAlarmConfig(
+      alarmHour: map['alarmHour'] == null ? null : map['alarmHour'] as String,
+      alarmNotify: map['alarmNotify'] == null ? null : map['alarmNotify'] as String,
+      alarmPeriod: map['alarmPeriod'] == null ? null : map['alarmPeriod'] as String,
+      alarmType: map['alarmType'] == null ? null : map['alarmType'] as String,
+      alarmValue: map['alarmValue'] == null ? null : map['alarmValue'] as String,
+      alarmWeekDay: map['alarmWeekDay'] == null ? null : map['alarmWeekDay'] as String,
+    );
+  }
+}
+

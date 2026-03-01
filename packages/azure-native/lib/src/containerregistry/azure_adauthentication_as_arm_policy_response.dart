@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The policy for using ARM audience token for a container registry.
+class AzureADAuthenticationAsArmPolicyResponse {
+  /// The value that indicates whether the policy is enabled or not.
+  final String? status;
+
+  /// Creates a new [AzureADAuthenticationAsArmPolicyResponse].
+  /// [status] The value that indicates whether the policy is enabled or not.
+  AzureADAuthenticationAsArmPolicyResponse({
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'status': ?status,
+    };
+  }
+
+  factory AzureADAuthenticationAsArmPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return AzureADAuthenticationAsArmPolicyResponse(
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}
+

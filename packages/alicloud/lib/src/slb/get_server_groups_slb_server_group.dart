@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_server_groups_slb_server_group_server.dart';
+
+class GetServerGroupsSlbServerGroup {
+  /// VServer group ID.
+  final String id;
+  /// VServer group name.
+  final String name;
+  /// ECS instances associated to the group. Each element contains the following attributes:
+  final List<GetServerGroupsSlbServerGroupServer> servers;
+
+  /// Creates a new [GetServerGroupsSlbServerGroup].
+  /// [id] VServer group ID.
+  /// [name] VServer group name.
+  /// [servers] ECS instances associated to the group. Each element contains the following attributes:
+  GetServerGroupsSlbServerGroup({
+    required this.id,
+    required this.name,
+    required this.servers,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'servers': pulumi.Input.encodeList<GetServerGroupsSlbServerGroupServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+    };
+  }
+
+  factory GetServerGroupsSlbServerGroup.fromMap(Map<String, dynamic> map) {
+    return GetServerGroupsSlbServerGroup(
+      id: map['id'] as String,
+      name: map['name'] as String,
+      servers: pulumi.Input.decodeList<GetServerGroupsSlbServerGroupServer>(map['servers'], (value) => GetServerGroupsSlbServerGroupServer.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

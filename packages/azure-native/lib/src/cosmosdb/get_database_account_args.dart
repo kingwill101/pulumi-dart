@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cosmosdb_get_database_account_args_doc}
+/// Arguments for getDatabaseAccount.
+/// {@endtemplate}
+/// {@macro pulumi_cosmosdb_get_database_account_args_doc}
+class GetDatabaseAccountArgs {
+  /// Cosmos DB database account name.
+  final pulumi.Input<String> accountName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetDatabaseAccountArgs].
+  /// [accountName] Cosmos DB database account name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  GetDatabaseAccountArgs({
+    required String accountName,
+    required String resourceGroupName,
+  }) :
+      accountName = pulumi.Input.asInput<String>(accountName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountName': accountName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetDatabaseAccountArgs.fromMap(Map<String, dynamic> map) {
+    return GetDatabaseAccountArgs(
+      accountName: map['accountName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+    );
+  }
+}
+

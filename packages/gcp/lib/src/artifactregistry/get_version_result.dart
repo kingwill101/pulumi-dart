@@ -7,26 +7,20 @@ import 'get_version_related_tag.dart';
 class GetVersionResult {
   /// Client specified annotations.
   final Map<String, String> annotations;
-
   /// The time, as a RFC 3339 string, this package was created.
   final String createTime;
-
   /// Description of the version, as specified in its metadata.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
   final String name;
   final String packageName;
   final String? project;
-
   /// A list of related tags. Will contain up to 100 tags that reference this version.
   final List<GetVersionRelatedTag> relatedTags;
   final String repositoryId;
-
   /// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
   final String updateTime;
   final String versionName;
@@ -72,11 +66,7 @@ class GetVersionResult {
       'name': name,
       'packageName': packageName,
       'project': ?project,
-      'relatedTags':
-          pulumi.Input.encodeList<GetVersionRelatedTag, Map<String, dynamic>>(
-            relatedTags,
-            (value) => value.toMap(),
-          ),
+      'relatedTags': pulumi.Input.encodeList<GetVersionRelatedTag, Map<String, dynamic>>(relatedTags, (value) => value.toMap()),
       'repositoryId': repositoryId,
       'updateTime': updateTime,
       'versionName': versionName,
@@ -94,12 +84,7 @@ class GetVersionResult {
       name: map['name'] as String,
       packageName: map['packageName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      relatedTags: pulumi.Input.decodeList<GetVersionRelatedTag>(
-        map['relatedTags'],
-        (value) => GetVersionRelatedTag.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      relatedTags: pulumi.Input.decodeList<GetVersionRelatedTag>(map['relatedTags'], (value) => GetVersionRelatedTag.fromMap((value as Map).cast<String, dynamic>())),
       repositoryId: map['repositoryId'] as String,
       updateTime: map['updateTime'] as String,
       versionName: map['versionName'] as String,
@@ -107,3 +92,4 @@ class GetVersionResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? clientCertificateTlsAuth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final String? saslScram512Auth;
 
@@ -22,16 +22,11 @@ class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
     };
   }
 
-  factory PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersManagedStreamingKafkaParametersCredentials(
-      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null
-          ? null
-          : map['clientCertificateTlsAuth'] as String,
-      saslScram512Auth: map['saslScram512Auth'] == null
-          ? null
-          : map['saslScram512Auth'] as String,
+      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : map['clientCertificateTlsAuth'] as String,
+      saslScram512Auth: map['saslScram512Auth'] == null ? null : map['saslScram512Auth'] as String,
     );
   }
 }
+

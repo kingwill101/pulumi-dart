@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of LastRunErrorStatusCodeEnumValue
+class LastRunErrorStatusCodeEnumValueResponse {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [LastRunErrorStatusCodeEnumValueResponse].
+  /// [value] Property value
+  LastRunErrorStatusCodeEnumValueResponse({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory LastRunErrorStatusCodeEnumValueResponse.fromMap(Map<String, dynamic> map) {
+    return LastRunErrorStatusCodeEnumValueResponse(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

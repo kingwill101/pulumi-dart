@@ -7,15 +7,12 @@ class GetInstanceFileShare {
   /// File share capacity in GiB. This must be at least 1024 GiB
   /// for the standard tier, or 2560 GiB for the premium tier.
   final int capacityGb;
-
   /// The name of a Filestore instance.
   ///
   /// - - -
   final String name;
-
   /// Nfs Export Options. There is a limit of 10 export options per file share.
   final List<GetInstanceFileShareNfsExportOption> nfsExportOptions;
-
   /// The resource name of the backup, in the format
   /// projects/{projectId}/locations/{locationId}/backups/{backupId},
   /// that this file share has been restored from.
@@ -37,11 +34,7 @@ class GetInstanceFileShare {
     return <String, dynamic>{
       'capacityGb': capacityGb,
       'name': name,
-      'nfsExportOptions':
-          pulumi.Input.encodeList<
-            GetInstanceFileShareNfsExportOption,
-            Map<String, dynamic>
-          >(nfsExportOptions, (value) => value.toMap()),
+      'nfsExportOptions': pulumi.Input.encodeList<GetInstanceFileShareNfsExportOption, Map<String, dynamic>>(nfsExportOptions, (value) => value.toMap()),
       'sourceBackup': sourceBackup,
     };
   }
@@ -50,14 +43,9 @@ class GetInstanceFileShare {
     return GetInstanceFileShare(
       capacityGb: map['capacityGb'] as int,
       name: map['name'] as String,
-      nfsExportOptions:
-          pulumi.Input.decodeList<GetInstanceFileShareNfsExportOption>(
-            map['nfsExportOptions'],
-            (value) => GetInstanceFileShareNfsExportOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      nfsExportOptions: pulumi.Input.decodeList<GetInstanceFileShareNfsExportOption>(map['nfsExportOptions'], (value) => GetInstanceFileShareNfsExportOption.fromMap((value as Map).cast<String, dynamic>())),
       sourceBackup: map['sourceBackup'] as String,
     );
   }
 }
+

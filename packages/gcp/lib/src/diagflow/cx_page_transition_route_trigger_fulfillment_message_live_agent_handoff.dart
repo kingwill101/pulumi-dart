@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
   /// Custom metadata. Dialogflow doesn't impose any structure on this.
   final String? metadata;
@@ -11,14 +12,15 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': ?metadata};
+    return <String, dynamic>{
+      'metadata': ?metadata,
+    };
   }
 
-  factory CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(
       metadata: map['metadata'] == null ? null : map['metadata'] as String,
     );
   }
 }
+

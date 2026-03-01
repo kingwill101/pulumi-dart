@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames {
+  /// A list of alternative DNS names (FQDNs) identified by the Certificate.
+  final List<String>? dnsNames;
+  /// A list of email addresses identified by this Certificate.
+  final List<String>? emails;
+  /// A list of User Principal Names identified by the Certificate.
+  final List<String>? upns;
+
+  /// Creates a new [CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames].
+  /// [dnsNames] A list of alternative DNS names (FQDNs) identified by the Certificate.
+  /// [emails] A list of email addresses identified by this Certificate.
+  /// [upns] A list of User Principal Names identified by the Certificate.
+  CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames({
+    this.dnsNames,
+    this.emails,
+    this.upns,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dnsNames': ?dnsNames,
+      'emails': ?emails,
+      'upns': ?upns,
+    };
+  }
+
+  factory CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
+    return CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames(
+      dnsNames: map['dnsNames'] == null ? null : (map['dnsNames'] as List).cast<String>(),
+      emails: map['emails'] == null ? null : (map['emails'] as List).cast<String>(),
+      upns: map['upns'] == null ? null : (map['upns'] as List).cast<String>(),
+    );
+  }
+}
+

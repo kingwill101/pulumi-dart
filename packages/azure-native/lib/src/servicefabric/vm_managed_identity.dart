@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Identities for the virtual machine scale set under the node type.
+class VmManagedIdentity {
+  /// The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+  final List<String>? userAssignedIdentities;
+
+  /// Creates a new [VmManagedIdentity].
+  /// [userAssignedIdentities] The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+  VmManagedIdentity({
+    this.userAssignedIdentities,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'userAssignedIdentities': ?userAssignedIdentities,
+    };
+  }
+
+  factory VmManagedIdentity.fromMap(Map<String, dynamic> map) {
+    return VmManagedIdentity(
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+    );
+  }
+}
+

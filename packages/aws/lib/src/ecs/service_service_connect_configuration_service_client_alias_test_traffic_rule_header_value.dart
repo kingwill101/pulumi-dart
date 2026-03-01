@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue {
   /// Exact string value to match in the header.
   final String exact;
@@ -11,14 +12,15 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderV
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact};
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue(
       exact: map['exact'] as String,
     );
   }
 }
+

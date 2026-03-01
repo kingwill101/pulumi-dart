@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetApplicationProvidersApplicationProviderDisplayData {
   /// Description of the application provider.
   final String description;
-
   /// Name of the application provider.
   final String displayName;
-
   /// URL that points to an icon that represents the application provider.
   final String iconUrl;
 
@@ -28,9 +27,7 @@ class GetApplicationProvidersApplicationProviderDisplayData {
     };
   }
 
-  factory GetApplicationProvidersApplicationProviderDisplayData.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationProvidersApplicationProviderDisplayData.fromMap(Map<String, dynamic> map) {
     return GetApplicationProvidersApplicationProviderDisplayData(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
@@ -38,3 +35,4 @@ class GetApplicationProvidersApplicationProviderDisplayData {
     );
   }
 }
+

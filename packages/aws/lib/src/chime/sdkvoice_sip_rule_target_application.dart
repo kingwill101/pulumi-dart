@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SdkvoiceSipRuleTargetApplication {
   /// The AWS Region of the target application.
   final String awsRegion;
-
   /// Priority of the SIP media application in the target list.
   final int priority;
-
   /// The SIP media application ID.
   final String sipMediaApplicationId;
 
@@ -36,3 +35,4 @@ class SdkvoiceSipRuleTargetApplication {
     );
   }
 }
+

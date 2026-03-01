@@ -1,0 +1,118 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'integration_connection_type.dart';
+import 'integration_passthrough_behavior.dart';
+import 'integration_type.dart';
+
+class Target {
+  /// The (id) of the VpcLink used for the integration when connectionType=VPC_LINK and undefined,
+  /// otherwise.
+  final String? connectionId;
+  /// The type of the network connection to the integration endpoint. The valid value is `INTERNET`
+  /// for connections through the public routable internet or `VPC_LINK` for private connections
+  /// between API Gateway and a network load balancer in a VPC. The default value is `INTERNET`.
+  final IntegrationConnectionType? connectionType;
+  /// Specifies the integration's HTTP method type.  Currently, the only supported type is 'ANY'.
+  final String? httpMethod;
+  /// Specifies how the method request body of an unmapped content type will be passed through the
+  /// integration request to the back end without transformation.
+  ///
+  /// The valid value is one of the following:
+  ///
+  /// * `WHEN_NO_MATCH`: passes the method request body through the integration request to the back end
+  /// without transformation when the method request content type does not match any content type
+  /// associated with the mapping templates defined in the integration request.
+  ///
+  /// * `WHEN_NO_TEMPLATES`: passes the method request body through the integration request to the back
+  /// end without transformation when no mapping template is defined in the integration request. If
+  /// a template is defined when this option is selected, the method request of an unmapped
+  /// content-type will be rejected with an HTTP 415 Unsupported Media Type response.
+  ///
+  /// * `NEVER`: rejects the method request with an HTTP 415 Unsupported Media Type response when
+  /// either the method request content type does not match any content type associated with the
+  /// mapping templates defined in the integration request or no mapping template is defined in the
+  /// integration request.
+  ///
+  /// Defaults to `WHEN_NO_MATCH` if unspecified.
+  final IntegrationPassthroughBehavior? passthroughBehaviour;
+  /// Specifies an API method integration type. The valid value is one of the following:
+  ///
+  /// * `aws`: for integrating the API method request with an AWS service action, including the Lambda
+  /// function-invoking action. With the Lambda function-invoking action, this is referred to as
+  /// the Lambda custom integration. With any other AWS service action, this is known as AWS
+  /// integration.
+  ///
+  /// * `aws_proxy`: for integrating the API method request with the Lambda function-invoking action
+  /// with the client request passed through as-is. This integration is also referred to as the
+  /// Lambda proxy integration.
+  ///
+  /// * `http`: for integrating the API method request with an HTTP endpoint, including a private HTTP
+  /// endpoint within a VPC. This integration is also referred to as the HTTP custom integration.
+  ///
+  /// * `http_proxy`: for integrating the API method request with an HTTP endpoint, including a private
+  /// HTTP endpoint within a VPC, with the client request passed through as-is. This is also
+  /// referred to as the HTTP proxy integration.
+  ///
+  /// * `mock`: for integrating the API method request with API Gateway as a "loop-back" endpoint
+  /// without invoking any backend.
+  final IntegrationType type;
+  /// Specifies Uniform Resource Identifier (URI) of the integration endpoint.
+  ///
+  /// For HTTP or HTTP_PROXY integrations, the URI must be a fully formed, encoded HTTP(S) URL
+  /// according to the RFC-3986 specification, for either standard integration, where
+  /// connectionType is not VPC_LINK, or private integration, where connectionType is VPC_LINK. For
+  /// a private HTTP integration, the URI is not used for routing.
+  ///
+  /// For AWS or AWS_PROXY integrations, the URI is of the form
+  /// arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}. Here,
+  /// {Region} is the API Gateway region (e.g., us-east-1); {service} is the name of the integrated
+  /// AWS service (e.g., s3); and {subdomain} is a designated subdomain supported by certain AWS
+  /// service for fast host-name lookup. action can be used for an AWS service action-based API,
+  /// using an Action={name}&{p1}={v1}&p2={v2}... query string. The ensuing {service_api} refers to
+  /// a supported action {name} plus any required input parameters. Alternatively, path can be used
+  /// for an AWS service path-based API. The ensuing service_api refers to the path to an AWS
+  /// service resource, including the region of the integrated AWS service, if applicable. For
+  /// example, for integration with the S3 API of GetObject, the uri can be either
+  /// arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key} or
+  /// arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}.
+  final String? uri;
+
+  /// Creates a new [Target].
+  /// [connectionId] The (id) of the VpcLink used for the integration when connectionType=VPC_LINK and undefined,
+  /// [connectionType] The type of the network connection to the integration endpoint. The valid value is `INTERNET`
+  /// [httpMethod] Specifies the integration's HTTP method type.  Currently, the only supported type is 'ANY'.
+  /// [passthroughBehaviour] Specifies how the method request body of an unmapped content type will be passed through the
+  /// [type] Specifies an API method integration type. The valid value is one of the following:
+  /// [uri] Specifies Uniform Resource Identifier (URI) of the integration endpoint.
+  Target({
+    this.connectionId,
+    this.connectionType,
+    this.httpMethod,
+    this.passthroughBehaviour,
+    required this.type,
+    this.uri,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'connectionId': ?connectionId,
+      'connectionType': ?connectionType == null ? null : connectionType!.value,
+      'httpMethod': ?httpMethod,
+      'passthroughBehaviour': ?passthroughBehaviour == null ? null : passthroughBehaviour!.value,
+      'type': type.value,
+      'uri': ?uri,
+    };
+  }
+
+  factory Target.fromMap(Map<String, dynamic> map) {
+    return Target(
+      connectionId: map['connectionId'] == null ? null : map['connectionId'] as String,
+      connectionType: map['connectionType'] == null ? null : IntegrationConnectionType.fromValue(map['connectionType'] as String),
+      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as String,
+      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour'] as String),
+      type: IntegrationType.fromValue(map['type'] as String),
+      uri: map['uri'] == null ? null : map['uri'] as String,
+    );
+  }
+}
+

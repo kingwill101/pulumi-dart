@@ -18,75 +18,52 @@ import 'get_cluster_zonal_shift_config.dart';
 class GetClusterResult {
   /// Configuration block for access config.
   final List<GetClusterAccessConfig> accessConfigs;
-
   /// ARN of the cluster.
   final String arn;
-
   /// Nested attribute containing `certificate-authority-data` for your cluster.
   final List<GetClusterCertificateAuthority> certificateAuthorities;
-
   /// The ID of your local Amazon EKS cluster on the AWS Outpost. This attribute isn't available for an AWS EKS cluster on AWS cloud.
   final String clusterId;
-
   /// Nested attribute containing compute capability configuration for EKS Auto Mode enabled cluster.
   final List<GetClusterComputeConfig> computeConfigs;
-
   /// Configuration block for the control plane scaling tier. See [EKS Provisioned Control Plane](https://docs.aws.amazon.com/eks/latest/userguide/eks-provisioned-control-plane-getting-started.html) for more information.
   final List<GetClusterControlPlaneScalingConfig> controlPlaneScalingConfigs;
-
   /// Unix epoch time stamp in seconds for when the cluster was created.
   final String createdAt;
-
   /// Whether deletion protection for the cluster is enabled.
   final bool deletionProtection;
-
   /// The enabled control plane logs.
   final List<String> enabledClusterLogTypes;
-
   /// Endpoint for your Kubernetes API server.
   final String endpoint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks.Cluster` resource documentation.
   final List<GetClusterIdentity> identities;
-
   /// Nested list containing Kubernetes Network Configuration.
   final List<GetClusterKubernetesNetworkConfig> kubernetesNetworkConfigs;
   final String name;
-
   /// Contains Outpost Configuration.
   final List<GetClusterOutpostConfig> outpostConfigs;
-
   /// Platform version for the cluster.
   final String platformVersion;
   final String region;
-
   /// Contains remote network configuration for EKS Hybrid Nodes.
   final List<GetClusterRemoteNetworkConfig> remoteNetworkConfigs;
-
   /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf.
   final String roleArn;
-
   /// Status of the EKS cluster. One of `CREATING`, `ACTIVE`, `DELETING`, `FAILED`.
   final String status;
-
   /// Contains storage configuration for EKS Auto Mode enabled cluster.
   final List<GetClusterStorageConfig> storageConfigs;
-
   /// Key-value map of resource tags.
   final Map<String, String> tags;
-
   /// Configuration block for the support policy to use for the cluster.
   final List<GetClusterUpgradePolicy> upgradePolicies;
-
   /// Kubernetes server version for the cluster.
   final String version;
-
   /// Nested list containing VPC configuration for the cluster.
   final GetClusterVpcConfig vpcConfig;
-
   /// Contains Zonal Shift Configuration.
   final List<GetClusterZonalShiftConfig> zonalShiftConfigs;
 
@@ -148,168 +125,64 @@ class GetClusterResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs':
-          pulumi.Input.encodeList<GetClusterAccessConfig, Map<String, dynamic>>(
-            accessConfigs,
-            (value) => value.toMap(),
-          ),
+      'accessConfigs': pulumi.Input.encodeList<GetClusterAccessConfig, Map<String, dynamic>>(accessConfigs, (value) => value.toMap()),
       'arn': arn,
-      'certificateAuthorities':
-          pulumi.Input.encodeList<
-            GetClusterCertificateAuthority,
-            Map<String, dynamic>
-          >(certificateAuthorities, (value) => value.toMap()),
+      'certificateAuthorities': pulumi.Input.encodeList<GetClusterCertificateAuthority, Map<String, dynamic>>(certificateAuthorities, (value) => value.toMap()),
       'clusterId': clusterId,
-      'computeConfigs':
-          pulumi.Input.encodeList<
-            GetClusterComputeConfig,
-            Map<String, dynamic>
-          >(computeConfigs, (value) => value.toMap()),
-      'controlPlaneScalingConfigs':
-          pulumi.Input.encodeList<
-            GetClusterControlPlaneScalingConfig,
-            Map<String, dynamic>
-          >(controlPlaneScalingConfigs, (value) => value.toMap()),
+      'computeConfigs': pulumi.Input.encodeList<GetClusterComputeConfig, Map<String, dynamic>>(computeConfigs, (value) => value.toMap()),
+      'controlPlaneScalingConfigs': pulumi.Input.encodeList<GetClusterControlPlaneScalingConfig, Map<String, dynamic>>(controlPlaneScalingConfigs, (value) => value.toMap()),
       'createdAt': createdAt,
       'deletionProtection': deletionProtection,
       'enabledClusterLogTypes': enabledClusterLogTypes,
       'endpoint': endpoint,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetClusterIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
-      'kubernetesNetworkConfigs':
-          pulumi.Input.encodeList<
-            GetClusterKubernetesNetworkConfig,
-            Map<String, dynamic>
-          >(kubernetesNetworkConfigs, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetClusterIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'kubernetesNetworkConfigs': pulumi.Input.encodeList<GetClusterKubernetesNetworkConfig, Map<String, dynamic>>(kubernetesNetworkConfigs, (value) => value.toMap()),
       'name': name,
-      'outpostConfigs':
-          pulumi.Input.encodeList<
-            GetClusterOutpostConfig,
-            Map<String, dynamic>
-          >(outpostConfigs, (value) => value.toMap()),
+      'outpostConfigs': pulumi.Input.encodeList<GetClusterOutpostConfig, Map<String, dynamic>>(outpostConfigs, (value) => value.toMap()),
       'platformVersion': platformVersion,
       'region': region,
-      'remoteNetworkConfigs':
-          pulumi.Input.encodeList<
-            GetClusterRemoteNetworkConfig,
-            Map<String, dynamic>
-          >(remoteNetworkConfigs, (value) => value.toMap()),
+      'remoteNetworkConfigs': pulumi.Input.encodeList<GetClusterRemoteNetworkConfig, Map<String, dynamic>>(remoteNetworkConfigs, (value) => value.toMap()),
       'roleArn': roleArn,
       'status': status,
-      'storageConfigs':
-          pulumi.Input.encodeList<
-            GetClusterStorageConfig,
-            Map<String, dynamic>
-          >(storageConfigs, (value) => value.toMap()),
+      'storageConfigs': pulumi.Input.encodeList<GetClusterStorageConfig, Map<String, dynamic>>(storageConfigs, (value) => value.toMap()),
       'tags': tags,
-      'upgradePolicies':
-          pulumi.Input.encodeList<
-            GetClusterUpgradePolicy,
-            Map<String, dynamic>
-          >(upgradePolicies, (value) => value.toMap()),
+      'upgradePolicies': pulumi.Input.encodeList<GetClusterUpgradePolicy, Map<String, dynamic>>(upgradePolicies, (value) => value.toMap()),
       'version': version,
       'vpcConfig': vpcConfig.toMap(),
-      'zonalShiftConfigs':
-          pulumi.Input.encodeList<
-            GetClusterZonalShiftConfig,
-            Map<String, dynamic>
-          >(zonalShiftConfigs, (value) => value.toMap()),
+      'zonalShiftConfigs': pulumi.Input.encodeList<GetClusterZonalShiftConfig, Map<String, dynamic>>(zonalShiftConfigs, (value) => value.toMap()),
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      accessConfigs: pulumi.Input.decodeList<GetClusterAccessConfig>(
-        map['accessConfigs'],
-        (value) => GetClusterAccessConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accessConfigs: pulumi.Input.decodeList<GetClusterAccessConfig>(map['accessConfigs'], (value) => GetClusterAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
-      certificateAuthorities:
-          pulumi.Input.decodeList<GetClusterCertificateAuthority>(
-            map['certificateAuthorities'],
-            (value) => GetClusterCertificateAuthority.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      certificateAuthorities: pulumi.Input.decodeList<GetClusterCertificateAuthority>(map['certificateAuthorities'], (value) => GetClusterCertificateAuthority.fromMap((value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
-      computeConfigs: pulumi.Input.decodeList<GetClusterComputeConfig>(
-        map['computeConfigs'],
-        (value) => GetClusterComputeConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      controlPlaneScalingConfigs:
-          pulumi.Input.decodeList<GetClusterControlPlaneScalingConfig>(
-            map['controlPlaneScalingConfigs'],
-            (value) => GetClusterControlPlaneScalingConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      computeConfigs: pulumi.Input.decodeList<GetClusterComputeConfig>(map['computeConfigs'], (value) => GetClusterComputeConfig.fromMap((value as Map).cast<String, dynamic>())),
+      controlPlaneScalingConfigs: pulumi.Input.decodeList<GetClusterControlPlaneScalingConfig>(map['controlPlaneScalingConfigs'], (value) => GetClusterControlPlaneScalingConfig.fromMap((value as Map).cast<String, dynamic>())),
       createdAt: map['createdAt'] as String,
       deletionProtection: map['deletionProtection'] as bool,
-      enabledClusterLogTypes: (map['enabledClusterLogTypes'] as List)
-          .cast<String>(),
+      enabledClusterLogTypes: (map['enabledClusterLogTypes'] as List).cast<String>(),
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetClusterIdentity>(
-        map['identities'],
-        (value) =>
-            GetClusterIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      kubernetesNetworkConfigs:
-          pulumi.Input.decodeList<GetClusterKubernetesNetworkConfig>(
-            map['kubernetesNetworkConfigs'],
-            (value) => GetClusterKubernetesNetworkConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      identities: pulumi.Input.decodeList<GetClusterIdentity>(map['identities'], (value) => GetClusterIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      kubernetesNetworkConfigs: pulumi.Input.decodeList<GetClusterKubernetesNetworkConfig>(map['kubernetesNetworkConfigs'], (value) => GetClusterKubernetesNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      outpostConfigs: pulumi.Input.decodeList<GetClusterOutpostConfig>(
-        map['outpostConfigs'],
-        (value) => GetClusterOutpostConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outpostConfigs: pulumi.Input.decodeList<GetClusterOutpostConfig>(map['outpostConfigs'], (value) => GetClusterOutpostConfig.fromMap((value as Map).cast<String, dynamic>())),
       platformVersion: map['platformVersion'] as String,
       region: map['region'] as String,
-      remoteNetworkConfigs:
-          pulumi.Input.decodeList<GetClusterRemoteNetworkConfig>(
-            map['remoteNetworkConfigs'],
-            (value) => GetClusterRemoteNetworkConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      remoteNetworkConfigs: pulumi.Input.decodeList<GetClusterRemoteNetworkConfig>(map['remoteNetworkConfigs'], (value) => GetClusterRemoteNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
       roleArn: map['roleArn'] as String,
       status: map['status'] as String,
-      storageConfigs: pulumi.Input.decodeList<GetClusterStorageConfig>(
-        map['storageConfigs'],
-        (value) => GetClusterStorageConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      storageConfigs: pulumi.Input.decodeList<GetClusterStorageConfig>(map['storageConfigs'], (value) => GetClusterStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
-      upgradePolicies: pulumi.Input.decodeList<GetClusterUpgradePolicy>(
-        map['upgradePolicies'],
-        (value) => GetClusterUpgradePolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      upgradePolicies: pulumi.Input.decodeList<GetClusterUpgradePolicy>(map['upgradePolicies'], (value) => GetClusterUpgradePolicy.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
-      vpcConfig: GetClusterVpcConfig.fromMap(
-        (map['vpcConfig'] as Map).cast<String, dynamic>(),
-      ),
-      zonalShiftConfigs: pulumi.Input.decodeList<GetClusterZonalShiftConfig>(
-        map['zonalShiftConfigs'],
-        (value) => GetClusterZonalShiftConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      vpcConfig: GetClusterVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>()),
+      zonalShiftConfigs: pulumi.Input.decodeList<GetClusterZonalShiftConfig>(map['zonalShiftConfigs'], (value) => GetClusterZonalShiftConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,0 +1,86 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'auth_credential_response.dart';
+import 'identity_properties_response.dart';
+import 'system_data_response.dart';
+
+/// Result data returned by getCredentialSet.
+class GetCredentialSetResult {
+  /// List of authentication credentials stored for an upstream.
+  /// Usually consists of a primary and an optional secondary credential.
+  final List<AuthCredentialResponse>? authCredentials;
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// The creation date of credential store resource.
+  final String creationDate;
+  /// The resource ID.
+  final String id;
+  /// Identities associated with the resource. This is used to access the KeyVault secrets.
+  final IdentityPropertiesResponse? identity;
+  /// The credentials are stored for this upstream or login server.
+  final String? loginServer;
+  /// The name of the resource.
+  final String name;
+  /// Provisioning state of the resource.
+  final String provisioningState;
+  /// Metadata pertaining to creation and last modification of the resource.
+  final SystemDataResponse systemData;
+  /// The type of the resource.
+  final String type;
+
+  /// Creates a new [GetCredentialSetResult].
+  /// [authCredentials] List of authentication credentials stored for an upstream.
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [creationDate] The creation date of credential store resource.
+  /// [id] The resource ID.
+  /// [identity] Identities associated with the resource. This is used to access the KeyVault secrets.
+  /// [loginServer] The credentials are stored for this upstream or login server.
+  /// [name] The name of the resource.
+  /// [provisioningState] Provisioning state of the resource.
+  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [type] The type of the resource.
+  GetCredentialSetResult({
+    this.authCredentials,
+    required this.azureApiVersion,
+    required this.creationDate,
+    required this.id,
+    this.identity,
+    this.loginServer,
+    required this.name,
+    required this.provisioningState,
+    required this.systemData,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authCredentials': ?authCredentials == null ? null : pulumi.Input.encodeList<AuthCredentialResponse, Map<String, dynamic>>(authCredentials!, (value) => value.toMap()),
+      'azureApiVersion': azureApiVersion,
+      'creationDate': creationDate,
+      'id': id,
+      'identity': ?identity == null ? null : identity!.toMap(),
+      'loginServer': ?loginServer,
+      'name': name,
+      'provisioningState': provisioningState,
+      'systemData': systemData.toMap(),
+      'type': type,
+    };
+  }
+
+  factory GetCredentialSetResult.fromMap(Map<String, dynamic> map) {
+    return GetCredentialSetResult(
+      authCredentials: map['authCredentials'] == null ? null : pulumi.Input.decodeList<AuthCredentialResponse>(map['authCredentials'], (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureApiVersion: map['azureApiVersion'] as String,
+      creationDate: map['creationDate'] as String,
+      id: map['id'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      loginServer: map['loginServer'] == null ? null : map['loginServer'] as String,
+      name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+    );
+  }
+}
+

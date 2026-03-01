@@ -1,0 +1,263 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'identity_properties_response.dart';
+import 'server_group_cluster_auth_config_response.dart';
+import 'server_group_cluster_data_encryption_response.dart';
+import 'server_group_cluster_maintenance_window_response.dart';
+import 'server_name_item_response.dart';
+import 'simple_private_endpoint_connection_response.dart';
+import 'system_data_response.dart';
+
+/// Result data returned by getServerGroupCluster.
+class GetServerGroupClusterResult {
+  /// Indicates whether the cluster was created using AAD authentication.
+  final String aadAuthEnabled;
+  /// The administrator's login name of the servers in the cluster.
+  final String administratorLogin;
+  /// Authentication configuration of a cluster.
+  final ServerGroupClusterAuthConfigResponse? authConfig;
+  /// The Azure API version of the resource.
+  final String azureApiVersion;
+  /// The Citus extension version on all cluster servers.
+  final String? citusVersion;
+  /// If public access is enabled on coordinator.
+  final bool? coordinatorEnablePublicIpAccess;
+  /// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
+  final String? coordinatorServerEdition;
+  /// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  final int? coordinatorStorageQuotaInMb;
+  /// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  final int? coordinatorVCores;
+  /// The data encryption properties of a cluster.
+  final ServerGroupClusterDataEncryptionResponse? dataEncryption;
+  /// The database name of the cluster. Only one database per cluster is supported.
+  final String? databaseName;
+  /// The earliest restore point time (ISO8601 format) for the cluster.
+  final String earliestRestoreTime;
+  /// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
+  final bool? enableGeoBackup;
+  /// If high availability (HA) is enabled or not for the cluster.
+  final bool? enableHa;
+  /// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
+  final bool? enableShardsOnCoordinator;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  final String id;
+  /// Describes the identity of the cluster.
+  final IdentityPropertiesResponse? identity;
+  /// The geo-location where the resource lives
+  final String location;
+  /// Maintenance window of a cluster.
+  final ServerGroupClusterMaintenanceWindowResponse? maintenanceWindow;
+  /// The name of the resource
+  final String name;
+  /// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
+  final int? nodeCount;
+  /// If public access is enabled on worker nodes.
+  final bool? nodeEnablePublicIpAccess;
+  /// The edition of a node server (default: MemoryOptimized).
+  final String? nodeServerEdition;
+  /// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  final int? nodeStorageQuotaInMb;
+  /// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  final int? nodeVCores;
+  /// Indicates whether the cluster was created with a password or using AAD authentication.
+  final String passwordEnabled;
+  /// Date and time in UTC (ISO8601 format) for cluster restore.
+  final String? pointInTimeUTC;
+  /// The major PostgreSQL version on all cluster servers.
+  final String? postgresqlVersion;
+  /// Preferred primary availability zone (AZ) for all cluster servers.
+  final String? preferredPrimaryZone;
+  /// The private endpoint connections for a cluster.
+  final List<SimplePrivateEndpointConnectionResponse> privateEndpointConnections;
+  /// Provisioning state of the cluster
+  final String provisioningState;
+  /// The array of read replica clusters.
+  final List<String> readReplicas;
+  /// The list of server names in the cluster
+  final List<ServerNameItemResponse> serverNames;
+  /// The Azure region of source cluster for read replica clusters.
+  final String? sourceLocation;
+  /// The resource id of source cluster for read replica clusters.
+  final String? sourceResourceId;
+  /// A state of a cluster/server that is visible to user.
+  final String state;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
+  final Map<String, String>? tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String type;
+
+  /// Creates a new [GetServerGroupClusterResult].
+  /// [aadAuthEnabled] Indicates whether the cluster was created using AAD authentication.
+  /// [administratorLogin] The administrator's login name of the servers in the cluster.
+  /// [authConfig] Authentication configuration of a cluster.
+  /// [azureApiVersion] The Azure API version of the resource.
+  /// [citusVersion] The Citus extension version on all cluster servers.
+  /// [coordinatorEnablePublicIpAccess] If public access is enabled on coordinator.
+  /// [coordinatorServerEdition] The edition of a coordinator server (default: GeneralPurpose). Required for creation.
+  /// [coordinatorStorageQuotaInMb] The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  /// [coordinatorVCores] The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  /// [dataEncryption] The data encryption properties of a cluster.
+  /// [databaseName] The database name of the cluster. Only one database per cluster is supported.
+  /// [earliestRestoreTime] The earliest restore point time (ISO8601 format) for the cluster.
+  /// [enableGeoBackup] If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
+  /// [enableHa] If high availability (HA) is enabled or not for the cluster.
+  /// [enableShardsOnCoordinator] If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [identity] Describes the identity of the cluster.
+  /// [location] The geo-location where the resource lives
+  /// [maintenanceWindow] Maintenance window of a cluster.
+  /// [name] The name of the resource
+  /// [nodeCount] Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
+  /// [nodeEnablePublicIpAccess] If public access is enabled on worker nodes.
+  /// [nodeServerEdition] The edition of a node server (default: MemoryOptimized).
+  /// [nodeStorageQuotaInMb] The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  /// [nodeVCores] The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
+  /// [passwordEnabled] Indicates whether the cluster was created with a password or using AAD authentication.
+  /// [pointInTimeUTC] Date and time in UTC (ISO8601 format) for cluster restore.
+  /// [postgresqlVersion] The major PostgreSQL version on all cluster servers.
+  /// [preferredPrimaryZone] Preferred primary availability zone (AZ) for all cluster servers.
+  /// [privateEndpointConnections] The private endpoint connections for a cluster.
+  /// [provisioningState] Provisioning state of the cluster
+  /// [readReplicas] The array of read replica clusters.
+  /// [serverNames] The list of server names in the cluster
+  /// [sourceLocation] The Azure region of source cluster for read replica clusters.
+  /// [sourceResourceId] The resource id of source cluster for read replica clusters.
+  /// [state] A state of a cluster/server that is visible to user.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  GetServerGroupClusterResult({
+    required this.aadAuthEnabled,
+    required this.administratorLogin,
+    this.authConfig,
+    required this.azureApiVersion,
+    this.citusVersion,
+    this.coordinatorEnablePublicIpAccess,
+    this.coordinatorServerEdition,
+    this.coordinatorStorageQuotaInMb,
+    this.coordinatorVCores,
+    this.dataEncryption,
+    this.databaseName,
+    required this.earliestRestoreTime,
+    this.enableGeoBackup,
+    this.enableHa,
+    this.enableShardsOnCoordinator,
+    required this.id,
+    this.identity,
+    required this.location,
+    this.maintenanceWindow,
+    required this.name,
+    this.nodeCount,
+    this.nodeEnablePublicIpAccess,
+    this.nodeServerEdition,
+    this.nodeStorageQuotaInMb,
+    this.nodeVCores,
+    required this.passwordEnabled,
+    this.pointInTimeUTC,
+    this.postgresqlVersion,
+    this.preferredPrimaryZone,
+    required this.privateEndpointConnections,
+    required this.provisioningState,
+    required this.readReplicas,
+    required this.serverNames,
+    this.sourceLocation,
+    this.sourceResourceId,
+    required this.state,
+    required this.systemData,
+    this.tags,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'aadAuthEnabled': aadAuthEnabled,
+      'administratorLogin': administratorLogin,
+      'authConfig': ?authConfig == null ? null : authConfig!.toMap(),
+      'azureApiVersion': azureApiVersion,
+      'citusVersion': ?citusVersion,
+      'coordinatorEnablePublicIpAccess': ?coordinatorEnablePublicIpAccess,
+      'coordinatorServerEdition': ?coordinatorServerEdition,
+      'coordinatorStorageQuotaInMb': ?coordinatorStorageQuotaInMb,
+      'coordinatorVCores': ?coordinatorVCores,
+      'dataEncryption': ?dataEncryption == null ? null : dataEncryption!.toMap(),
+      'databaseName': ?databaseName,
+      'earliestRestoreTime': earliestRestoreTime,
+      'enableGeoBackup': ?enableGeoBackup,
+      'enableHa': ?enableHa,
+      'enableShardsOnCoordinator': ?enableShardsOnCoordinator,
+      'id': id,
+      'identity': ?identity == null ? null : identity!.toMap(),
+      'location': location,
+      'maintenanceWindow': ?maintenanceWindow == null ? null : maintenanceWindow!.toMap(),
+      'name': name,
+      'nodeCount': ?nodeCount,
+      'nodeEnablePublicIpAccess': ?nodeEnablePublicIpAccess,
+      'nodeServerEdition': ?nodeServerEdition,
+      'nodeStorageQuotaInMb': ?nodeStorageQuotaInMb,
+      'nodeVCores': ?nodeVCores,
+      'passwordEnabled': passwordEnabled,
+      'pointInTimeUTC': ?pointInTimeUTC,
+      'postgresqlVersion': ?postgresqlVersion,
+      'preferredPrimaryZone': ?preferredPrimaryZone,
+      'privateEndpointConnections': pulumi.Input.encodeList<SimplePrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'provisioningState': provisioningState,
+      'readReplicas': readReplicas,
+      'serverNames': pulumi.Input.encodeList<ServerNameItemResponse, Map<String, dynamic>>(serverNames, (value) => value.toMap()),
+      'sourceLocation': ?sourceLocation,
+      'sourceResourceId': ?sourceResourceId,
+      'state': state,
+      'systemData': systemData.toMap(),
+      'tags': ?tags,
+      'type': type,
+    };
+  }
+
+  factory GetServerGroupClusterResult.fromMap(Map<String, dynamic> map) {
+    return GetServerGroupClusterResult(
+      aadAuthEnabled: map['aadAuthEnabled'] as String,
+      administratorLogin: map['administratorLogin'] as String,
+      authConfig: map['authConfig'] == null ? null : ServerGroupClusterAuthConfigResponse.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
+      azureApiVersion: map['azureApiVersion'] as String,
+      citusVersion: map['citusVersion'] == null ? null : map['citusVersion'] as String,
+      coordinatorEnablePublicIpAccess: map['coordinatorEnablePublicIpAccess'] == null ? null : map['coordinatorEnablePublicIpAccess'] as bool,
+      coordinatorServerEdition: map['coordinatorServerEdition'] == null ? null : map['coordinatorServerEdition'] as String,
+      coordinatorStorageQuotaInMb: map['coordinatorStorageQuotaInMb'] == null ? null : map['coordinatorStorageQuotaInMb'] as int,
+      coordinatorVCores: map['coordinatorVCores'] == null ? null : map['coordinatorVCores'] as int,
+      dataEncryption: map['dataEncryption'] == null ? null : ServerGroupClusterDataEncryptionResponse.fromMap((map['dataEncryption'] as Map).cast<String, dynamic>()),
+      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      earliestRestoreTime: map['earliestRestoreTime'] as String,
+      enableGeoBackup: map['enableGeoBackup'] == null ? null : map['enableGeoBackup'] as bool,
+      enableHa: map['enableHa'] == null ? null : map['enableHa'] as bool,
+      enableShardsOnCoordinator: map['enableShardsOnCoordinator'] == null ? null : map['enableShardsOnCoordinator'] as bool,
+      id: map['id'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      location: map['location'] as String,
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : ServerGroupClusterMaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
+      name: map['name'] as String,
+      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
+      nodeEnablePublicIpAccess: map['nodeEnablePublicIpAccess'] == null ? null : map['nodeEnablePublicIpAccess'] as bool,
+      nodeServerEdition: map['nodeServerEdition'] == null ? null : map['nodeServerEdition'] as String,
+      nodeStorageQuotaInMb: map['nodeStorageQuotaInMb'] == null ? null : map['nodeStorageQuotaInMb'] as int,
+      nodeVCores: map['nodeVCores'] == null ? null : map['nodeVCores'] as int,
+      passwordEnabled: map['passwordEnabled'] as String,
+      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : map['pointInTimeUTC'] as String,
+      postgresqlVersion: map['postgresqlVersion'] == null ? null : map['postgresqlVersion'] as String,
+      preferredPrimaryZone: map['preferredPrimaryZone'] == null ? null : map['preferredPrimaryZone'] as String,
+      privateEndpointConnections: pulumi.Input.decodeList<SimplePrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => SimplePrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      provisioningState: map['provisioningState'] as String,
+      readReplicas: (map['readReplicas'] as List).cast<String>(),
+      serverNames: pulumi.Input.decodeList<ServerNameItemResponse>(map['serverNames'], (value) => ServerNameItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sourceLocation: map['sourceLocation'] == null ? null : map['sourceLocation'] as String,
+      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
+      state: map['state'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      type: map['type'] as String,
+    );
+  }
+}
+

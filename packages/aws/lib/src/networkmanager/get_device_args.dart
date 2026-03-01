@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceArgs {
   /// ID of the device.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
-
   /// Key-value tags for the device.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,9 +22,10 @@ class GetDeviceArgs {
     required String deviceId,
     required String globalNetworkId,
     Map<String, String>? tags,
-  }) : deviceId = pulumi.Input.asInput<String>(deviceId),
-       globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      deviceId = pulumi.Input.asInput<String>(deviceId),
+      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +39,8 @@ class GetDeviceArgs {
     return GetDeviceArgs(
       deviceId: map['deviceId'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

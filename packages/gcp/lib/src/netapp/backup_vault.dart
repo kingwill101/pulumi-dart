@@ -160,54 +160,39 @@ import 'backup_vault_backup_retention_policy.dart';
 class BackupVault extends pulumi.CustomResource {
   /// Region in which backup is stored.
   late final pulumi.Output<String?> backupRegion;
-
   /// Backup retention policy defining the retention of the backups.
   /// Structure is documented below.
-  late final pulumi.Output<BackupVaultBackupRetentionPolicy?>
-  backupRetentionPolicy;
-
+  late final pulumi.Output<BackupVaultBackupRetentionPolicy?> backupRetentionPolicy;
   /// Type of the backup vault to be created. Default is IN_REGION.
   /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
   late final pulumi.Output<String> backupVaultType;
-
   /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the Backup vault created in backup region.
   late final pulumi.Output<String> destinationBackupVault;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location (region) of the backup vault.
   late final pulumi.Output<String> location;
-
   /// The resource name of the backup vault. Needs to be unique per location.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Name of the Backup vault created in source region.
   late final pulumi.Output<String> sourceBackupVault;
-
   /// Region in which the backup vault is created.
   late final pulumi.Output<String> sourceRegion;
-
   /// The state of the Backup Vault.
   late final pulumi.Output<String> state;
 
@@ -220,25 +205,18 @@ class BackupVault extends pulumi.CustomResource {
     BackupVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:netapp/backupVault:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:netapp/backupVault:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.backupRegion = registerOutput<String?>('backupRegion');
-    this.backupRetentionPolicy =
-        registerOutput<BackupVaultBackupRetentionPolicy?>(
-          'backupRetentionPolicy',
-        );
+    this.backupRetentionPolicy = registerOutput<BackupVaultBackupRetentionPolicy?>('backupRetentionPolicy');
     this.backupVaultType = registerOutput<String>('backupVaultType');
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.destinationBackupVault = registerOutput<String>(
-      'destinationBackupVault',
-    );
-    this.effectiveLabels = registerOutput<Map<String, String>>(
-      'effectiveLabels',
-    );
+    this.destinationBackupVault = registerOutput<String>('destinationBackupVault');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

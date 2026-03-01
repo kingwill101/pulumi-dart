@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class BackendCircuitBreakerRuleFailureConditionStatusCodeRange {
+  /// Specifies the maximum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
+  final int max;
+  /// Specifies the minimum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
+  final int min;
+
+  /// Creates a new [BackendCircuitBreakerRuleFailureConditionStatusCodeRange].
+  /// [max] Specifies the maximum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
+  /// [min] Specifies the minimum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
+  BackendCircuitBreakerRuleFailureConditionStatusCodeRange({
+    required this.max,
+    required this.min,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
+  }
+
+  factory BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap(Map<String, dynamic> map) {
+    return BackendCircuitBreakerRuleFailureConditionStatusCodeRange(
+      max: map['max'] as int,
+      min: map['min'] as int,
+    );
+  }
+}
+

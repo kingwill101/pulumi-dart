@@ -382,9 +382,7 @@ import 'application_url_dispatch_rules_dispatch_rule.dart';
 class ApplicationUrlDispatchRules extends pulumi.CustomResource {
   /// Rules to match an HTTP request and dispatch that request to a service.
   /// Structure is documented below.
-  late final pulumi.Output<List<ApplicationUrlDispatchRulesDispatchRule>>
-  dispatchRules;
-
+  late final pulumi.Output<List<ApplicationUrlDispatchRulesDispatchRule>> dispatchRules;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -398,15 +396,12 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     ApplicationUrlDispatchRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.dispatchRules =
-        registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>(
-          'dispatchRules',
-        );
+          'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules');
     this.project = registerOutput<String>('project');
   }
 }

@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionNetwork {
   /// List of ports, or port pairs, to forward from the virtual machine to the application container.
   final List<String>? forwardedPorts;
-
   /// Prevent instances from receiving an ephemeral external IP address.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final String? instanceIpMode;
-
   /// Tag to apply to the instance during creation.
   final String? instanceTag;
-
   /// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
   final String name;
-
   /// Enable session affinity.
   final bool? sessionAffinity;
-
   /// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
   /// If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
   /// If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
@@ -53,22 +49,13 @@ class FlexibleAppVersionNetwork {
 
   factory FlexibleAppVersionNetwork.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionNetwork(
-      forwardedPorts: map['forwardedPorts'] == null
-          ? null
-          : (map['forwardedPorts'] as List).cast<String>(),
-      instanceIpMode: map['instanceIpMode'] == null
-          ? null
-          : map['instanceIpMode'] as String,
-      instanceTag: map['instanceTag'] == null
-          ? null
-          : map['instanceTag'] as String,
+      forwardedPorts: map['forwardedPorts'] == null ? null : (map['forwardedPorts'] as List).cast<String>(),
+      instanceIpMode: map['instanceIpMode'] == null ? null : map['instanceIpMode'] as String,
+      instanceTag: map['instanceTag'] == null ? null : map['instanceTag'] as String,
       name: map['name'] as String,
-      sessionAffinity: map['sessionAffinity'] == null
-          ? null
-          : map['sessionAffinity'] as bool,
-      subnetwork: map['subnetwork'] == null
-          ? null
-          : map['subnetwork'] as String,
+      sessionAffinity: map['sessionAffinity'] == null ? null : map['sessionAffinity'] as bool,
+      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
     );
   }
 }
+

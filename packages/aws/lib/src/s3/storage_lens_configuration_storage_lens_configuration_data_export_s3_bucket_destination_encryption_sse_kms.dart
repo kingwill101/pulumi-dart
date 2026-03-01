@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms {
   /// KMS key ARN.
   final String keyId;
@@ -11,14 +12,15 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyId': keyId};
+    return <String, dynamic>{
+      'keyId': keyId,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms(
       keyId: map['keyId'] as String,
     );
   }
 }
+

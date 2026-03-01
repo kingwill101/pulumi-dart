@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventDestinationCloudwatchDestination {
   /// The default value for the event
   final String defaultValue;
-
   /// The name for the dimension
   final String dimensionName;
-
   /// The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
   final String valueSource;
 
@@ -28,9 +27,7 @@ class EventDestinationCloudwatchDestination {
     };
   }
 
-  factory EventDestinationCloudwatchDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventDestinationCloudwatchDestination.fromMap(Map<String, dynamic> map) {
     return EventDestinationCloudwatchDestination(
       defaultValue: map['defaultValue'] as String,
       dimensionName: map['dimensionName'] as String,
@@ -38,3 +35,4 @@ class EventDestinationCloudwatchDestination {
     );
   }
 }
+

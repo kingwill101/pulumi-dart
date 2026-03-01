@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceFromTemplateScratchDisk {
   /// Name with which the attached disk is accessible under /dev/disk/by-id/
   final String? deviceName;
-
   /// The disk interface used for attaching this disk. One of SCSI or NVME.
   final String interface;
-
   /// The size of the disk in gigabytes. One of 375 or 3000.
   final int? size;
 
@@ -30,11 +29,10 @@ class InstanceFromTemplateScratchDisk {
 
   factory InstanceFromTemplateScratchDisk.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateScratchDisk(
-      deviceName: map['deviceName'] == null
-          ? null
-          : map['deviceName'] as String,
+      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
       interface: map['interface'] as String,
       size: map['size'] == null ? null : map['size'] as int,
     );
   }
 }
+

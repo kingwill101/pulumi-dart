@@ -5,13 +5,9 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStep {
   /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
-  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepDialogAction?
-  dialogAction;
-
+  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepDialogAction? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
-  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepIntent?
-  intent;
-
+  final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepIntent? intent;
   /// Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
   final Map<String, String>? sessionAttributes;
 
@@ -33,23 +29,12 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
     };
   }
 
-  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStep.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStep.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStep(
-      dialogAction: map['dialogAction'] == null
-          ? null
-          : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepDialogAction.fromMap(
-              (map['dialogAction'] as Map).cast<String, dynamic>(),
-            ),
-      intent: map['intent'] == null
-          ? null
-          : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepIntent.fromMap(
-              (map['intent'] as Map).cast<String, dynamic>(),
-            ),
-      sessionAttributes: map['sessionAttributes'] == null
-          ? null
-          : (map['sessionAttributes'] as Map).cast<String, String>(),
+      dialogAction: map['dialogAction'] == null ? null : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepDialogAction.fromMap((map['dialogAction'] as Map).cast<String, dynamic>()),
+      intent: map['intent'] == null ? null : V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchNextStepIntent.fromMap((map['intent'] as Map).cast<String, dynamic>()),
+      sessionAttributes: map['sessionAttributes'] == null ? null : (map['sessionAttributes'] as Map).cast<String, String>(),
     );
   }
 }
+

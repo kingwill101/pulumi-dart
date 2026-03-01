@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKeyRingIamPolicy.
 class GetKeyRingIamPolicyResult {
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyRingId;
-
   /// (Computed) The policy data
   final String policyData;
 
@@ -42,3 +41,4 @@ class GetKeyRingIamPolicyResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
   /// The utilization triggering the scale-in operation in percent.
   final int scaleIn;
-
   /// The utilization triggering the scale-out operation in percent.
   final int scaleOut;
 
@@ -16,15 +16,17 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorage
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scaleIn': scaleIn, 'scaleOut': scaleOut};
+    return <String, dynamic>{
+      'scaleIn': scaleIn,
+      'scaleOut': scaleOut,
+    };
   }
 
-  factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold(
       scaleIn: map['scaleIn'] as int,
       scaleOut: map['scaleOut'] as int,
     );
   }
 }
+

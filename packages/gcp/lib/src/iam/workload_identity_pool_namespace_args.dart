@@ -9,21 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadIdentityPoolNamespaceArgs {
   /// A description of the namespace. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
-
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
   final pulumi.Input<bool>? disabled;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   final pulumi.Input<String> workloadIdentityPoolId;
-
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -45,15 +41,12 @@ class WorkloadIdentityPoolNamespaceArgs {
     String? project,
     required String workloadIdentityPoolId,
     required String workloadIdentityPoolNamespaceId,
-  }) : description = pulumi.Input.asOptionalInput<String>(description),
-       disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       workloadIdentityPoolId = pulumi.Input.asInput<String>(
-         workloadIdentityPoolId,
-       ),
-       workloadIdentityPoolNamespaceId = pulumi.Input.asInput<String>(
-         workloadIdentityPoolNamespaceId,
-       );
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId),
+      workloadIdentityPoolNamespaceId = pulumi.Input.asInput<String>(workloadIdentityPoolNamespaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +60,12 @@ class WorkloadIdentityPoolNamespaceArgs {
 
   factory WorkloadIdentityPoolNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceArgs(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       project: map['project'] == null ? null : map['project'] as String,
       workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
-      workloadIdentityPoolNamespaceId:
-          map['workloadIdentityPoolNamespaceId'] as String,
+      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] as String,
     );
   }
 }
+

@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_policy_managed_rule_override_exclusion.dart';
+import 'firewall_policy_managed_rule_override_rule.dart';
+
+class FirewallPolicyManagedRuleOverride {
+  /// One or more `exclusion` blocks as defined below.
+  final List<FirewallPolicyManagedRuleOverrideExclusion>? exclusions;
+  /// The managed rule group to override.
+  final String ruleGroupName;
+  /// One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
+  final List<FirewallPolicyManagedRuleOverrideRule>? rules;
+
+  /// Creates a new [FirewallPolicyManagedRuleOverride].
+  /// [exclusions] One or more `exclusion` blocks as defined below.
+  /// [ruleGroupName] The managed rule group to override.
+  /// [rules] One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
+  FirewallPolicyManagedRuleOverride({
+    this.exclusions,
+    required this.ruleGroupName,
+    this.rules,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+      'ruleGroupName': ruleGroupName,
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+    };
+  }
+
+  factory FirewallPolicyManagedRuleOverride.fromMap(Map<String, dynamic> map) {
+    return FirewallPolicyManagedRuleOverride(
+      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideExclusion>(map['exclusions'], (value) => FirewallPolicyManagedRuleOverrideExclusion.fromMap((value as Map).cast<String, dynamic>())),
+      ruleGroupName: map['ruleGroupName'] as String,
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideRule>(map['rules'], (value) => FirewallPolicyManagedRuleOverrideRule.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

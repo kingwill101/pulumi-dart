@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstanceProfiles.
 class GetInstanceProfilesResult {
   /// Set of ARNs of instance profiles.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of IAM instance profile names.
   final List<String> names;
-
   /// Set of IAM instance profile paths.
   final List<String> paths;
   final String roleName;
@@ -49,3 +47,4 @@ class GetInstanceProfilesResult {
     );
   }
 }
+

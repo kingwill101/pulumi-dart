@@ -7,16 +7,13 @@ class ServicePerimetersServicePerimeter {
   /// (Output)
   /// Time the AccessPolicy was created in UTC.
   final String? createTime;
-
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final String? description;
-
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final String name;
-
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
   /// and restricted services. Every resource can be in at most
@@ -34,27 +31,22 @@ class ServicePerimetersServicePerimeter {
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
   final String? perimeterType;
-
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
   final ServicePerimetersServicePerimeterSpec? spec;
-
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
   final ServicePerimetersServicePerimeterStatus? status;
-
   /// Human readable title. Must be unique within the Policy.
   final String title;
-
   /// (Output)
   /// Time the AccessPolicy was updated in UTC.
   final String? updateTime;
-
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
   /// Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -104,33 +96,16 @@ class ServicePerimetersServicePerimeter {
 
   factory ServicePerimetersServicePerimeter.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeter(
-      createTime: map['createTime'] == null
-          ? null
-          : map['createTime'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      createTime: map['createTime'] == null ? null : map['createTime'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] as String,
-      perimeterType: map['perimeterType'] == null
-          ? null
-          : map['perimeterType'] as String,
-      spec: map['spec'] == null
-          ? null
-          : ServicePerimetersServicePerimeterSpec.fromMap(
-              (map['spec'] as Map).cast<String, dynamic>(),
-            ),
-      status: map['status'] == null
-          ? null
-          : ServicePerimetersServicePerimeterStatus.fromMap(
-              (map['status'] as Map).cast<String, dynamic>(),
-            ),
+      perimeterType: map['perimeterType'] == null ? null : map['perimeterType'] as String,
+      spec: map['spec'] == null ? null : ServicePerimetersServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : ServicePerimetersServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
       title: map['title'] as String,
-      updateTime: map['updateTime'] == null
-          ? null
-          : map['updateTime'] as String,
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null
-          ? null
-          : map['useExplicitDryRunSpec'] as bool,
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : map['useExplicitDryRunSpec'] as bool,
     );
   }
 }
+

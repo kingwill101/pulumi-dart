@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_integrationspaces_list_application_business_process_development_artifacts_args_doc}
+/// Arguments for listApplicationBusinessProcessDevelopmentArtifacts.
+/// {@endtemplate}
+/// {@macro pulumi_integrationspaces_list_application_business_process_development_artifacts_args_doc}
+class ListApplicationBusinessProcessDevelopmentArtifactsArgs {
+  /// The name of the Application
+  final pulumi.Input<String> applicationName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the space
+  final pulumi.Input<String> spaceName;
+
+  /// Creates a new [ListApplicationBusinessProcessDevelopmentArtifactsArgs].
+  /// [applicationName] The name of the Application
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [spaceName] The name of the space
+  ListApplicationBusinessProcessDevelopmentArtifactsArgs({
+    required String applicationName,
+    required String resourceGroupName,
+    required String spaceName,
+  }) :
+      applicationName = pulumi.Input.asInput<String>(applicationName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      spaceName = pulumi.Input.asInput<String>(spaceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationName': applicationName,
+      'resourceGroupName': resourceGroupName,
+      'spaceName': spaceName,
+    };
+  }
+
+  factory ListApplicationBusinessProcessDevelopmentArtifactsArgs.fromMap(Map<String, dynamic> map) {
+    return ListApplicationBusinessProcessDevelopmentArtifactsArgs(
+      applicationName: map['applicationName'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      spaceName: map['spaceName'] as String,
+    );
+  }
+}
+

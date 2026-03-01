@@ -11,34 +11,25 @@ import 'asset_resource_spec.dart';
 class AssetArgs {
   /// The zone for the resource
   final pulumi.Input<String> dataplexZone;
-
   /// Optional. Description of the asset.
   final pulumi.Input<String>? description;
-
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
   final pulumi.Input<AssetDiscoverySpec> discoverySpec;
-
   /// Optional. User friendly display name.
   final pulumi.Input<String>? displayName;
-
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The lake for the resource
   final pulumi.Input<String> lake;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The name of the asset.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
   final pulumi.Input<AssetResourceSpec> resourceSpec;
 
@@ -64,62 +55,46 @@ class AssetArgs {
     String? name,
     String? project,
     required AssetResourceSpec resourceSpec,
-  }) : dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       discoverySpec = pulumi.Input.asInput<AssetDiscoverySpec>(discoverySpec),
-       displayName = pulumi.Input.asOptionalInput<String>(displayName),
-       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       lake = pulumi.Input.asInput<String>(lake),
-       location = pulumi.Input.asInput<String>(location),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       resourceSpec = pulumi.Input.asInput<AssetResourceSpec>(resourceSpec);
+  }) :
+      dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      discoverySpec = pulumi.Input.asInput<AssetDiscoverySpec>(discoverySpec),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      lake = pulumi.Input.asInput<String>(lake),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      resourceSpec = pulumi.Input.asInput<AssetResourceSpec>(resourceSpec);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataplexZone': dataplexZone,
       'description': ?description,
-      'discoverySpec':
-          pulumi.Input.mapInputValue<AssetDiscoverySpec, Map<String, dynamic>>(
-            discoverySpec,
-            (value) => value.toMap(),
-          ),
+      'discoverySpec': pulumi.Input.mapInputValue<AssetDiscoverySpec, Map<String, dynamic>>(discoverySpec, (value) => value.toMap()),
       'displayName': ?displayName,
       'labels': ?labels,
       'lake': lake,
       'location': location,
       'name': ?name,
       'project': ?project,
-      'resourceSpec':
-          pulumi.Input.mapInputValue<AssetResourceSpec, Map<String, dynamic>>(
-            resourceSpec,
-            (value) => value.toMap(),
-          ),
+      'resourceSpec': pulumi.Input.mapInputValue<AssetResourceSpec, Map<String, dynamic>>(resourceSpec, (value) => value.toMap()),
     };
   }
 
   factory AssetArgs.fromMap(Map<String, dynamic> map) {
     return AssetArgs(
       dataplexZone: map['dataplexZone'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      discoverySpec: AssetDiscoverySpec.fromMap(
-        (map['discoverySpec'] as Map).cast<String, dynamic>(),
-      ),
-      displayName: map['displayName'] == null
-          ? null
-          : map['displayName'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      discoverySpec: AssetDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       lake: map['lake'] as String,
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      resourceSpec: AssetResourceSpec.fromMap(
-        (map['resourceSpec'] as Map).cast<String, dynamic>(),
-      ),
+      resourceSpec: AssetResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

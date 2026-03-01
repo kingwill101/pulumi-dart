@@ -1,58 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSavingsPlan.
 class GetSavingsPlanResult {
   /// The hourly commitment amount.
   final String commitment;
-
   /// The currency of the Savings Plan.
   final String currency;
   final String description;
-
   /// The EC2 instance family for the Savings Plan.
   final String ec2InstanceFamily;
-
   /// The end time of the Savings Plan.
   final String end;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the offering.
   final String offeringId;
-
   /// The payment option for the Savings Plan.
   final String paymentOption;
   final List<String> productTypes;
   final String purchaseTime;
-
   /// The recurring payment amount.
   final String recurringPaymentAmount;
-
   /// The AWS Region.
   final String region;
   final String returnableUntil;
-
   /// The ARN of the Savings Plan.
   final String savingsPlanArn;
   final String savingsPlanId;
   final String savingsPlanOfferingId;
-
   /// The type of Savings Plan.
   final String savingsPlanType;
-
   /// The start time of the Savings Plan.
   final String start;
-
   /// The current state of the Savings Plan.
   final String state;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// The duration of the term, in seconds.
   final int termDurationInSeconds;
-
   /// The up-front payment amount.
   final String upfrontPaymentAmount;
 
@@ -158,3 +144,4 @@ class GetSavingsPlanResult {
     );
   }
 }
+

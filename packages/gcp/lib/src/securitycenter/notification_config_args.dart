@@ -10,18 +10,14 @@ import 'notification_config_streaming_config.dart';
 class NotificationConfigArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
   final pulumi.Input<String> organization;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   final pulumi.Input<String> pubsubTopic;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
   final pulumi.Input<NotificationConfigStreamingConfig> streamingConfig;
@@ -38,12 +34,12 @@ class NotificationConfigArgs {
     required String organization,
     required String pubsubTopic,
     required NotificationConfigStreamingConfig streamingConfig,
-  }) : configId = pulumi.Input.asInput<String>(configId),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       organization = pulumi.Input.asInput<String>(organization),
-       pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
-       streamingConfig = pulumi
-           .Input.asInput<NotificationConfigStreamingConfig>(streamingConfig);
+  }) :
+      configId = pulumi.Input.asInput<String>(configId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      organization = pulumi.Input.asInput<String>(organization),
+      pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
+      streamingConfig = pulumi.Input.asInput<NotificationConfigStreamingConfig>(streamingConfig);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,25 +47,18 @@ class NotificationConfigArgs {
       'description': ?description,
       'organization': organization,
       'pubsubTopic': pubsubTopic,
-      'streamingConfig':
-          pulumi.Input.mapInputValue<
-            NotificationConfigStreamingConfig,
-            Map<String, dynamic>
-          >(streamingConfig, (value) => value.toMap()),
+      'streamingConfig': pulumi.Input.mapInputValue<NotificationConfigStreamingConfig, Map<String, dynamic>>(streamingConfig, (value) => value.toMap()),
     };
   }
 
   factory NotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return NotificationConfigArgs(
       configId: map['configId'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       organization: map['organization'] as String,
       pubsubTopic: map['pubsubTopic'] as String,
-      streamingConfig: NotificationConfigStreamingConfig.fromMap(
-        (map['streamingConfig'] as Map).cast<String, dynamic>(),
-      ),
+      streamingConfig: NotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

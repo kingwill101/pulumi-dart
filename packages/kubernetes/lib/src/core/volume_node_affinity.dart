@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'node_selector.dart';
+
+/// VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.
+class VolumeNodeAffinity {
+  /// required specifies hard node constraints that must be met.
+  final NodeSelector? required;
+
+  /// Creates a new [VolumeNodeAffinity].
+  /// [required] required specifies hard node constraints that must be met.
+  VolumeNodeAffinity({
+    this.required,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'required': ?required == null ? null : required!.toMap(),
+    };
+  }
+
+  factory VolumeNodeAffinity.fromMap(Map<String, dynamic> map) {
+    return VolumeNodeAffinity(
+      required: map['required'] == null ? null : NodeSelector.fromMap((map['required'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

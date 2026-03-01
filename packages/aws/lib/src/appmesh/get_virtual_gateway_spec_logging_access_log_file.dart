@@ -17,29 +17,16 @@ class GetVirtualGatewaySpecLoggingAccessLogFile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'formats':
-          pulumi.Input.encodeList<
-            GetVirtualGatewaySpecLoggingAccessLogFileFormat,
-            Map<String, dynamic>
-          >(formats, (value) => value.toMap()),
+      'formats': pulumi.Input.encodeList<GetVirtualGatewaySpecLoggingAccessLogFileFormat, Map<String, dynamic>>(formats, (value) => value.toMap()),
       'path': path,
     };
   }
 
-  factory GetVirtualGatewaySpecLoggingAccessLogFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecLoggingAccessLogFile.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecLoggingAccessLogFile(
-      formats:
-          pulumi.Input.decodeList<
-            GetVirtualGatewaySpecLoggingAccessLogFileFormat
-          >(
-            map['formats'],
-            (value) => GetVirtualGatewaySpecLoggingAccessLogFileFormat.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      formats: pulumi.Input.decodeList<GetVirtualGatewaySpecLoggingAccessLogFileFormat>(map['formats'], (value) => GetVirtualGatewaySpecLoggingAccessLogFileFormat.fromMap((value as Map).cast<String, dynamic>())),
       path: map['path'] as String,
     );
   }
 }
+

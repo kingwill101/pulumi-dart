@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Data type for Microsoft Defender for Threat Intelligence Premium data connector.
+class PremiumMdtiDataConnectorDataTypesConnector {
+  /// Describe whether this data type connection is enabled or not.
+  final String state;
+
+  /// Creates a new [PremiumMdtiDataConnectorDataTypesConnector].
+  /// [state] Describe whether this data type connection is enabled or not.
+  PremiumMdtiDataConnectorDataTypesConnector({
+    required this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': state,
+    };
+  }
+
+  factory PremiumMdtiDataConnectorDataTypesConnector.fromMap(Map<String, dynamic> map) {
+    return PremiumMdtiDataConnectorDataTypesConnector(
+      state: map['state'] as String,
+    );
+  }
+}
+

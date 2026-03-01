@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'private_link_service_connection_state.dart';
+
+/// The Private Endpoint Connection resource.
+class PrivateEndpointConnection {
+  /// A collection of information about the state of the connection between service consumer and provider.
+  final PrivateLinkServiceConnectionState privateLinkServiceConnectionState;
+
+  /// Creates a new [PrivateEndpointConnection].
+  /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
+  PrivateEndpointConnection({
+    required this.privateLinkServiceConnectionState,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'privateLinkServiceConnectionState': privateLinkServiceConnectionState.toMap(),
+    };
+  }
+
+  factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
+    return PrivateEndpointConnection(
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

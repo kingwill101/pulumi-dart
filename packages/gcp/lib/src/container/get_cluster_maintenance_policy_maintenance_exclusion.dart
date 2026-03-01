@@ -6,10 +6,8 @@ import 'get_cluster_maintenance_policy_maintenance_exclusion_exclusion_option.da
 class GetClusterMaintenancePolicyMaintenanceExclusion {
   final String endTime;
   final String exclusionName;
-
   /// Maintenance exclusion related options.
-  final List<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption>
-  exclusionOptions;
+  final List<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption> exclusionOptions;
   final String startTime;
 
   /// Creates a new [GetClusterMaintenancePolicyMaintenanceExclusion].
@@ -28,32 +26,18 @@ class GetClusterMaintenancePolicyMaintenanceExclusion {
     return <String, dynamic>{
       'endTime': endTime,
       'exclusionName': exclusionName,
-      'exclusionOptions':
-          pulumi.Input.encodeList<
-            GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption,
-            Map<String, dynamic>
-          >(exclusionOptions, (value) => value.toMap()),
+      'exclusionOptions': pulumi.Input.encodeList<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption, Map<String, dynamic>>(exclusionOptions, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
 
-  factory GetClusterMaintenancePolicyMaintenanceExclusion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMaintenancePolicyMaintenanceExclusion.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyMaintenanceExclusion(
       endTime: map['endTime'] as String,
       exclusionName: map['exclusionName'] as String,
-      exclusionOptions:
-          pulumi.Input.decodeList<
-            GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption
-          >(
-            map['exclusionOptions'],
-            (value) =>
-                GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      exclusionOptions: pulumi.Input.decodeList<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption>(map['exclusionOptions'], (value) => GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption.fromMap((value as Map).cast<String, dynamic>())),
       startTime: map['startTime'] as String,
     );
   }
 }
+

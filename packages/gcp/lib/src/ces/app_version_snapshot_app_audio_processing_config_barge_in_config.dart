@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
   /// (Output)
   /// If enabled, the agent will adapt its next response based on the assumption
@@ -15,16 +16,15 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bargeInAwareness': ?bargeInAwareness};
+    return <String, dynamic>{
+      'bargeInAwareness': ?bargeInAwareness,
+    };
   }
 
-  factory AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppAudioProcessingConfigBargeInConfig(
-      bargeInAwareness: map['bargeInAwareness'] == null
-          ? null
-          : map['bargeInAwareness'] as bool,
+      bargeInAwareness: map['bargeInAwareness'] == null ? null : map['bargeInAwareness'] as bool,
     );
   }
 }
+

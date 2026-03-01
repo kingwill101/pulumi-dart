@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecoveryGroupArgs {
   /// List of cell arns to add as nested fault domains within this recovery group
   final pulumi.Input<List<String>>? cells;
-
   /// A unique name describing the recovery group.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> recoveryGroupName;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -26,9 +24,10 @@ class RecoveryGroupArgs {
     List<String>? cells,
     required String recoveryGroupName,
     Map<String, String>? tags,
-  }) : cells = pulumi.Input.asOptionalInput<List<String>>(cells),
-       recoveryGroupName = pulumi.Input.asInput<String>(recoveryGroupName),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      cells = pulumi.Input.asOptionalInput<List<String>>(cells),
+      recoveryGroupName = pulumi.Input.asInput<String>(recoveryGroupName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,13 +39,10 @@ class RecoveryGroupArgs {
 
   factory RecoveryGroupArgs.fromMap(Map<String, dynamic> map) {
     return RecoveryGroupArgs(
-      cells: map['cells'] == null
-          ? null
-          : (map['cells'] as List).cast<String>(),
+      cells: map['cells'] == null ? null : (map['cells'] as List).cast<String>(),
       recoveryGroupName: map['recoveryGroupName'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

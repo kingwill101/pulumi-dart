@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FloorsettingFilterConfigRaiSettingsRaiFilter {
   /// Possible values:
   /// LOW_AND_ABOVE
   /// MEDIUM_AND_ABOVE
   /// HIGH
   final String? confidenceLevel;
-
   /// Possible values:
   /// SEXUALLY_EXPLICIT
   /// HATE_SPEECH
@@ -29,14 +29,11 @@ class FloorsettingFilterConfigRaiSettingsRaiFilter {
     };
   }
 
-  factory FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettingsRaiFilter(
-      confidenceLevel: map['confidenceLevel'] == null
-          ? null
-          : map['confidenceLevel'] as String,
+      confidenceLevel: map['confidenceLevel'] == null ? null : map['confidenceLevel'] as String,
       filterType: map['filterType'] as String,
     );
   }
 }
+

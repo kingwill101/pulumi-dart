@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of OriginGroupMember
+class OriginGroupMember {
+  /// The ID for an origin in an origin group.
+  final String? originId;
+
+  /// Creates a new [OriginGroupMember].
+  /// [originId] The ID for an origin in an origin group.
+  OriginGroupMember({
+    this.originId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'originId': ?originId,
+    };
+  }
+
+  factory OriginGroupMember.fromMap(Map<String, dynamic> map) {
+    return OriginGroupMember(
+      originId: map['originId'] == null ? null : map['originId'] as String,
+    );
+  }
+}
+

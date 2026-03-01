@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VMwareClusterStorage {
   /// Whether or not to deploy vSphere CSI components in the VMware User Cluster.
   /// Enabled by default.
@@ -7,10 +8,14 @@ class VMwareClusterStorage {
 
   /// Creates a new [VMwareClusterStorage].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware User Cluster.
-  VMwareClusterStorage({required this.vsphereCsiDisabled});
+  VMwareClusterStorage({
+    required this.vsphereCsiDisabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vsphereCsiDisabled': vsphereCsiDisabled};
+    return <String, dynamic>{
+      'vsphereCsiDisabled': vsphereCsiDisabled,
+    };
   }
 
   factory VMwareClusterStorage.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class VMwareClusterStorage {
     );
   }
 }
+

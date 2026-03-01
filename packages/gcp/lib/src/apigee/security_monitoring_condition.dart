@@ -464,33 +464,24 @@ import 'security_monitoring_condition_args.dart';
 class SecurityMonitoringCondition extends pulumi.CustomResource {
   /// Resource ID of the security monitoring condition.
   late final pulumi.Output<String> conditionId;
-
   /// The timestamp at which this profile was created.
   late final pulumi.Output<String> createTime;
-
   /// A nested object resource.
   late final pulumi.Output<Map<String, dynamic>?> includeAllResources;
-
   /// Name of the security monitoring condition resource,
   /// in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// ID of security profile of the security monitoring condition.
   late final pulumi.Output<String> profile;
-
   /// ID of security profile of the security monitoring condition.
   late final pulumi.Output<String> scope;
-
   /// Total number of deployed resources within scope.
   late final pulumi.Output<int> totalDeployedResources;
-
   /// Total number of monitored resources within this condition.
   late final pulumi.Output<int> totalMonitoredResources;
-
   /// The timestamp at which this profile was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -503,24 +494,20 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
     SecurityMonitoringConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.conditionId = registerOutput<String>('conditionId');
     this.createTime = registerOutput<String>('createTime');
-    this.includeAllResources = registerOutput<Map<String, dynamic>?>(
-      'includeAllResources',
-    );
+    this.includeAllResources = registerOutput<Map<String, dynamic>?>('includeAllResources');
     this.name = registerOutput<String>('name');
     this.orgId = registerOutput<String>('orgId');
     this.profile = registerOutput<String>('profile');
     this.scope = registerOutput<String>('scope');
     this.totalDeployedResources = registerOutput<int>('totalDeployedResources');
-    this.totalMonitoredResources = registerOutput<int>(
-      'totalMonitoredResources',
-    );
+    this.totalMonitoredResources = registerOutput<int>('totalMonitoredResources');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

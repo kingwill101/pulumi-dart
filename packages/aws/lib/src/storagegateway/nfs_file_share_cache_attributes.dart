@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NfsFileShareCacheAttributes {
   /// Refreshes a file share's cache by using Time To Live (TTL).
   /// TTL is the length of time since the last refresh after which access to the directory would cause the file gateway
@@ -8,7 +9,9 @@ class NfsFileShareCacheAttributes {
 
   /// Creates a new [NfsFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  NfsFileShareCacheAttributes({this.cacheStaleTimeoutInSeconds});
+  NfsFileShareCacheAttributes({
+    this.cacheStaleTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +21,8 @@ class NfsFileShareCacheAttributes {
 
   factory NfsFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return NfsFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null
-          ? null
-          : map['cacheStaleTimeoutInSeconds'] as int,
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : map['cacheStaleTimeoutInSeconds'] as int,
     );
   }
 }
+

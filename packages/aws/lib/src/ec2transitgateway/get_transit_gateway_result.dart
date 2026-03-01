@@ -7,54 +7,38 @@ import 'get_transit_gateway_filter.dart';
 class GetTransitGatewayResult {
   /// Private Autonomous System Number (ASN) for the Amazon side of a BGP session
   final int amazonSideAsn;
-
   /// EC2 Transit Gateway ARN
   final String arn;
-
   /// Identifier of the default association route table
   final String associationDefaultRouteTableId;
-
   /// Whether resource attachment requests are automatically accepted
   final String autoAcceptSharedAttachments;
-
   /// Whether resource attachments are automatically associated with the default association route table
   final String defaultRouteTableAssociation;
-
   /// Whether resource attachments automatically propagate routes to the default propagation route table
   final String defaultRouteTablePropagation;
-
   /// Description of the EC2 Transit Gateway
   final String description;
-
   /// Whether DNS support is enabled
   final String dnsSupport;
-
   /// Whether encryption support for VPC Encryption Control is enabled.
   final String encryptionSupport;
   final List<GetTransitGatewayFilter>? filters;
-
   /// EC2 Transit Gateway identifier
   final String id;
-
   /// Whether Multicast support is enabled
   final String multicastSupport;
-
   /// Identifier of the AWS account that owns the EC2 Transit Gateway
   final String ownerId;
-
   /// Identifier of the default propagation route table
   final String propagationDefaultRouteTableId;
   final String region;
-
   /// Whether Security Group Referencing Support is enabled
   final String securityGroupReferencingSupport;
-
   /// Key-value tags for the EC2 Transit Gateway
   final Map<String, String> tags;
-
   /// The list of associated CIDR blocks
   final List<String> transitGatewayCidrBlocks;
-
   /// Whether VPN Equal Cost Multipath Protocol support is enabled
   final String vpnEcmpSupport;
 
@@ -111,12 +95,7 @@ class GetTransitGatewayResult {
       'description': description,
       'dnsSupport': dnsSupport,
       'encryptionSupport': encryptionSupport,
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              GetTransitGatewayFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetTransitGatewayFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'multicastSupport': multicastSupport,
       'ownerId': ownerId,
@@ -133,36 +112,24 @@ class GetTransitGatewayResult {
     return GetTransitGatewayResult(
       amazonSideAsn: map['amazonSideAsn'] as int,
       arn: map['arn'] as String,
-      associationDefaultRouteTableId:
-          map['associationDefaultRouteTableId'] as String,
+      associationDefaultRouteTableId: map['associationDefaultRouteTableId'] as String,
       autoAcceptSharedAttachments: map['autoAcceptSharedAttachments'] as String,
-      defaultRouteTableAssociation:
-          map['defaultRouteTableAssociation'] as String,
-      defaultRouteTablePropagation:
-          map['defaultRouteTablePropagation'] as String,
+      defaultRouteTableAssociation: map['defaultRouteTableAssociation'] as String,
+      defaultRouteTablePropagation: map['defaultRouteTablePropagation'] as String,
       description: map['description'] as String,
       dnsSupport: map['dnsSupport'] as String,
       encryptionSupport: map['encryptionSupport'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetTransitGatewayFilter>(
-              map['filters'],
-              (value) => GetTransitGatewayFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTransitGatewayFilter>(map['filters'], (value) => GetTransitGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       multicastSupport: map['multicastSupport'] as String,
       ownerId: map['ownerId'] as String,
-      propagationDefaultRouteTableId:
-          map['propagationDefaultRouteTableId'] as String,
+      propagationDefaultRouteTableId: map['propagationDefaultRouteTableId'] as String,
       region: map['region'] as String,
-      securityGroupReferencingSupport:
-          map['securityGroupReferencingSupport'] as String,
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayCidrBlocks: (map['transitGatewayCidrBlocks'] as List)
-          .cast<String>(),
+      transitGatewayCidrBlocks: (map['transitGatewayCidrBlocks'] as List).cast<String>(),
       vpnEcmpSupport: map['vpnEcmpSupport'] as String,
     );
   }
 }
+

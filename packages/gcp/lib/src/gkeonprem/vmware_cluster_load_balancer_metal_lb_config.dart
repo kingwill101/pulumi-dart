@@ -12,32 +12,20 @@ class VMwareClusterLoadBalancerMetalLbConfig {
 
   /// Creates a new [VMwareClusterLoadBalancerMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer
-  VMwareClusterLoadBalancerMetalLbConfig({required this.addressPools});
+  VMwareClusterLoadBalancerMetalLbConfig({
+    required this.addressPools,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressPools':
-          pulumi.Input.encodeList<
-            VMwareClusterLoadBalancerMetalLbConfigAddressPool,
-            Map<String, dynamic>
-          >(addressPools, (value) => value.toMap()),
+      'addressPools': pulumi.Input.encodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool, Map<String, dynamic>>(addressPools, (value) => value.toMap()),
     };
   }
 
-  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerMetalLbConfig(
-      addressPools:
-          pulumi.Input.decodeList<
-            VMwareClusterLoadBalancerMetalLbConfigAddressPool
-          >(
-            map['addressPools'],
-            (value) =>
-                VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      addressPools: pulumi.Input.decodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool>(map['addressPools'], (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

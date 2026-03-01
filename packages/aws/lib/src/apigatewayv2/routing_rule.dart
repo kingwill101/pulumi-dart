@@ -254,24 +254,18 @@ import 'routing_rule_condition.dart';
 class RoutingRule extends pulumi.CustomResource {
   /// Configuration of resulting action based on matching routing rules condition. See below.
   late final pulumi.Output<List<RoutingRuleAction>> actions;
-
   /// Conditions configuration. See below.
   late final pulumi.Output<List<RoutingRuleCondition>> conditions;
-
   /// Domain name. Must be between 1 and 512 characters in length.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-
   /// The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   late final pulumi.Output<int> priority;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the Routing Rule.
   late final pulumi.Output<String> routingRuleArn;
-
   /// ID of the Routing Rule.
   late final pulumi.Output<String> routingRuleId;
 
@@ -284,11 +278,11 @@ class RoutingRule extends pulumi.CustomResource {
     RoutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigatewayv2/routingRule:RoutingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigatewayv2/routingRule:RoutingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.actions = registerOutput<List<RoutingRuleAction>>('actions');
     this.conditions = registerOutput<List<RoutingRuleCondition>>('conditions');
     this.domainName = registerOutput<String>('domainName');

@@ -7,28 +7,21 @@ import 'get_customer_gateway_filter.dart';
 class GetCustomerGatewayResult {
   /// ARN of the customer gateway.
   final String arn;
-
   /// Gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
   final int bgpAsn;
-
   /// Gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
   final int bgpAsnExtended;
-
   /// ARN for the customer gateway certificate.
   final String certificateArn;
-
   /// Name for the customer gateway device.
   final String deviceName;
   final List<GetCustomerGatewayFilter>? filters;
   final String id;
-
   /// IP address of the gateway's Internet-routable external interface.
   final String ipAddress;
   final String region;
-
   /// Map of key-value pairs assigned to the gateway.
   final Map<String, String> tags;
-
   /// Type of customer gateway. The only type AWS supports at this time is "ipsec.1".
   final String type;
 
@@ -65,12 +58,7 @@ class GetCustomerGatewayResult {
       'bgpAsnExtended': bgpAsnExtended,
       'certificateArn': certificateArn,
       'deviceName': deviceName,
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              GetCustomerGatewayFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetCustomerGatewayFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
       'id': id,
       'ipAddress': ipAddress,
       'region': region,
@@ -86,14 +74,7 @@ class GetCustomerGatewayResult {
       bgpAsnExtended: map['bgpAsnExtended'] as int,
       certificateArn: map['certificateArn'] as String,
       deviceName: map['deviceName'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetCustomerGatewayFilter>(
-              map['filters'],
-              (value) => GetCustomerGatewayFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCustomerGatewayFilter>(map['filters'], (value) => GetCustomerGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddress: map['ipAddress'] as String,
       region: map['region'] as String,
@@ -102,3 +83,4 @@ class GetCustomerGatewayResult {
     );
   }
 }
+

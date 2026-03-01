@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
   /// Words or phrases defining the dictionary. The dictionary must contain at least one
   /// phrase and every phrase must contain at least 2 characters that are letters or digits.
@@ -12,14 +13,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'words': words};
+    return <String, dynamic>{
+      'words': words,
+    };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(
       words: (map['words'] as List).cast<String>(),
     );
   }
 }
+

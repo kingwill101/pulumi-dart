@@ -208,26 +208,17 @@ import 'control_folder_intelligence_config_trial_config.dart';
 class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
   late final pulumi.Output<String> editionConfig;
-
   /// The Intelligence config that is effective for the resource.
   /// Structure is documented below.
-  late final pulumi.Output<
-    List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>
-  >
-  effectiveIntelligenceConfigs;
-
+  late final pulumi.Output<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>> effectiveIntelligenceConfigs;
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
   late final pulumi.Output<ControlFolderIntelligenceConfigFilter?> filter;
-
   /// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   late final pulumi.Output<String> name;
-
   /// The trial configuration of the Storage Intelligence resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<ControlFolderIntelligenceConfigTrialConfig>>
-  trialConfigs;
-
+  late final pulumi.Output<List<ControlFolderIntelligenceConfigTrialConfig>> trialConfigs;
   /// The time at which the Storage Intelligence Config resource is last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -240,24 +231,16 @@ class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
     ControlFolderIntelligenceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.editionConfig = registerOutput<String>('editionConfig');
-    this.effectiveIntelligenceConfigs =
-        registerOutput<
-          List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>
-        >('effectiveIntelligenceConfigs');
-    this.filter = registerOutput<ControlFolderIntelligenceConfigFilter?>(
-      'filter',
-    );
+    this.effectiveIntelligenceConfigs = registerOutput<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs');
+    this.filter = registerOutput<ControlFolderIntelligenceConfigFilter?>('filter');
     this.name = registerOutput<String>('name');
-    this.trialConfigs =
-        registerOutput<List<ControlFolderIntelligenceConfigTrialConfig>>(
-          'trialConfigs',
-        );
+    this.trialConfigs = registerOutput<List<ControlFolderIntelligenceConfigTrialConfig>>('trialConfigs');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

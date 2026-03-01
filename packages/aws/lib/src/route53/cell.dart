@@ -100,21 +100,16 @@ import 'cell_args.dart';
 class Cell extends pulumi.CustomResource {
   /// ARN of the cell
   late final pulumi.Output<String> arn;
-
   /// Unique name describing the cell.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> cellName;
-
   /// List of cell arns to add as nested fault domains within this cell.
   late final pulumi.Output<List<String>?> cells;
-
   /// List of readiness scopes (recovery groups or cells) that contain this cell.
   late final pulumi.Output<List<String>> parentReadinessScopes;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -122,19 +117,20 @@ class Cell extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cell]. {@macro pulumi_route53_recovery_readiness_cell_cell_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cell(String name, {CellArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:route53recoveryreadiness/cell:Cell',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cell(
+    String name, {
+    CellArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:route53recoveryreadiness/cell:Cell',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.cellName = registerOutput<String>('cellName');
     this.cells = registerOutput<List<String>?>('cells');
-    this.parentReadinessScopes = registerOutput<List<String>>(
-      'parentReadinessScopes',
-    );
+    this.parentReadinessScopes = registerOutput<List<String>>('parentReadinessScopes');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

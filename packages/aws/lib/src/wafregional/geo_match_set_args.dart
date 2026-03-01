@@ -10,10 +10,8 @@ import 'geo_match_set_geo_match_constraint.dart';
 class GeoMatchSetArgs {
   /// The Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
   final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
-
   /// The name or description of the Geo Match Set.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -25,27 +23,14 @@ class GeoMatchSetArgs {
     List<GeoMatchSetGeoMatchConstraint>? geoMatchConstraints,
     String? name,
     String? region,
-  }) : geoMatchConstraints =
-           pulumi.Input.asOptionalInput<List<GeoMatchSetGeoMatchConstraint>>(
-             geoMatchConstraints,
-           ),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      geoMatchConstraints = pulumi.Input.asOptionalInput<List<GeoMatchSetGeoMatchConstraint>>(geoMatchConstraints),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoMatchConstraints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GeoMatchSetGeoMatchConstraint>,
-            List<Map<String, dynamic>>
-          >(
-            geoMatchConstraints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GeoMatchSetGeoMatchConstraint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'geoMatchConstraints': ?pulumi.Input.mapOptionalInputValue<List<GeoMatchSetGeoMatchConstraint>, List<Map<String, dynamic>>>(geoMatchConstraints, (value) => pulumi.Input.encodeList<GeoMatchSetGeoMatchConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'region': ?region,
     };
@@ -53,16 +38,10 @@ class GeoMatchSetArgs {
 
   factory GeoMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return GeoMatchSetArgs(
-      geoMatchConstraints: map['geoMatchConstraints'] == null
-          ? null
-          : pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(
-              map['geoMatchConstraints'],
-              (value) => GeoMatchSetGeoMatchConstraint.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints'], (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

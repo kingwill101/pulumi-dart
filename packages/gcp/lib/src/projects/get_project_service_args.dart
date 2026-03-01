@@ -10,7 +10,6 @@ class GetProjectServiceArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the Google Platform project service.
   ///
   /// - - -
@@ -19,12 +18,18 @@ class GetProjectServiceArgs {
   /// Creates a new [GetProjectServiceArgs].
   /// [project] The project in which the resource belongs. If it
   /// [service] The name of the Google Platform project service.
-  GetProjectServiceArgs({String? project, required String service})
-    : project = pulumi.Input.asOptionalInput<String>(project),
+  GetProjectServiceArgs({
+    String? project,
+    required String service,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
       service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'service': service};
+    return <String, dynamic>{
+      'project': ?project,
+      'service': service,
+    };
   }
 
   factory GetProjectServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -34,3 +39,4 @@ class GetProjectServiceArgs {
     );
   }
 }
+

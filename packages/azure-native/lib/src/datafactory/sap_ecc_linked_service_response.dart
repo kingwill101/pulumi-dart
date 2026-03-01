@@ -1,0 +1,86 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'azure_key_vault_secret_reference_response.dart';
+import 'integration_runtime_reference_response.dart';
+import 'parameter_specification_response.dart';
+
+/// Linked service for SAP ERP Central Component(SAP ECC).
+class SapEccLinkedServiceResponse {
+  /// List of tags that can be used for describing the linked service.
+  final List<dynamic>? annotations;
+  /// The integration runtime reference.
+  final IntegrationRuntimeReferenceResponse? connectVia;
+  /// Linked service description.
+  final String? description;
+  /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Either encryptedCredential or username/password must be provided. Type: string.
+  final String? encryptedCredential;
+  /// Parameters for linked service.
+  final Map<String, ParameterSpecificationResponse>? parameters;
+  /// The password for Basic authentication.
+  final AzureKeyVaultSecretReferenceResponse? password;
+  /// Type of linked service.
+  /// Expected value is 'SapEcc'.
+  final String type;
+  /// The URL of SAP ECC OData API. For example, '[https://hostname:port/sap/opu/odata/sap/servicename/]'. Type: string (or Expression with resultType string).
+  final dynamic url;
+  /// The username for Basic authentication. Type: string (or Expression with resultType string).
+  final dynamic username;
+  /// Version of the linked service.
+  final String? version;
+
+  /// Creates a new [SapEccLinkedServiceResponse].
+  /// [annotations] List of tags that can be used for describing the linked service.
+  /// [connectVia] The integration runtime reference.
+  /// [description] Linked service description.
+  /// [encryptedCredential] The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Either encryptedCredential or username/password must be provided. Type: string.
+  /// [parameters] Parameters for linked service.
+  /// [password] The password for Basic authentication.
+  /// [type] Type of linked service.
+  /// [url] The URL of SAP ECC OData API. For example, '[https://hostname:port/sap/opu/odata/sap/servicename/]'. Type: string (or Expression with resultType string).
+  /// [username] The username for Basic authentication. Type: string (or Expression with resultType string).
+  /// [version] Version of the linked service.
+  SapEccLinkedServiceResponse({
+    this.annotations,
+    this.connectVia,
+    this.description,
+    this.encryptedCredential,
+    this.parameters,
+    this.password,
+    required this.type,
+    required this.url,
+    this.username,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'description': ?description,
+      'encryptedCredential': ?encryptedCredential,
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'password': ?password == null ? null : password!.toMap(),
+      'type': type,
+      'url': url,
+      'username': ?username,
+      'version': ?version,
+    };
+  }
+
+  factory SapEccLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
+    return SapEccLinkedServiceResponse(
+      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
+      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+      url: map['url'],
+      username: map['username'] == null ? null : map['username'],
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The properties of the billing role assignment.
+class BillingRoleAssignmentProperties {
+  /// The object id of the user to whom the role was assigned.
+  final String? principalId;
+  /// The principal PUID of the user to whom the role was assigned.
+  final String? principalPuid;
+  /// The principal tenant id of the user to whom the role was assigned.
+  final String? principalTenantId;
+  /// The ID of the role definition.
+  final String roleDefinitionId;
+  /// The scope at which the role was assigned.
+  final String? scope;
+  /// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+  final String? userAuthenticationType;
+  /// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+  final String? userEmailAddress;
+
+  /// Creates a new [BillingRoleAssignmentProperties].
+  /// [principalId] The object id of the user to whom the role was assigned.
+  /// [principalPuid] The principal PUID of the user to whom the role was assigned.
+  /// [principalTenantId] The principal tenant id of the user to whom the role was assigned.
+  /// [roleDefinitionId] The ID of the role definition.
+  /// [scope] The scope at which the role was assigned.
+  /// [userAuthenticationType] The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+  /// [userEmailAddress] The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+  BillingRoleAssignmentProperties({
+    this.principalId,
+    this.principalPuid,
+    this.principalTenantId,
+    required this.roleDefinitionId,
+    this.scope,
+    this.userAuthenticationType,
+    this.userEmailAddress,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'principalId': ?principalId,
+      'principalPuid': ?principalPuid,
+      'principalTenantId': ?principalTenantId,
+      'roleDefinitionId': roleDefinitionId,
+      'scope': ?scope,
+      'userAuthenticationType': ?userAuthenticationType,
+      'userEmailAddress': ?userEmailAddress,
+    };
+  }
+
+  factory BillingRoleAssignmentProperties.fromMap(Map<String, dynamic> map) {
+    return BillingRoleAssignmentProperties(
+      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      principalPuid: map['principalPuid'] == null ? null : map['principalPuid'] as String,
+      principalTenantId: map['principalTenantId'] == null ? null : map['principalTenantId'] as String,
+      roleDefinitionId: map['roleDefinitionId'] as String,
+      scope: map['scope'] == null ? null : map['scope'] as String,
+      userAuthenticationType: map['userAuthenticationType'] == null ? null : map['userAuthenticationType'] as String,
+      userEmailAddress: map['userEmailAddress'] == null ? null : map['userEmailAddress'] as String,
+    );
+  }
+}
+

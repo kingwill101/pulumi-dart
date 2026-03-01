@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVPNGateway.
 class GetVPNGatewayResult {
   /// Description of this VPN gateway.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The network of this VPN gateway.
   final String network;
   final String project;
-
   /// Region of this VPN gateway.
   final String region;
-
   /// The URI of the resource.
   final String selfLink;
 
@@ -61,3 +58,4 @@ class GetVPNGatewayResult {
     );
   }
 }
+

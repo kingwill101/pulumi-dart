@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryRepositoryArgs {
   /// The project ID that this repository is attached to.  If not provided, provider project will be used instead.
   final pulumi.Input<String>? project;
-
   /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetRegistryRepositoryArgs].
   /// [project] The project ID that this repository is attached to.  If not provided, provider project will be used instead.
   /// [region] The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
-  GetRegistryRepositoryArgs({String? project, String? region})
-    : project = pulumi.Input.asOptionalInput<String>(project),
+  GetRegistryRepositoryArgs({
+    String? project,
+    String? region,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'region': ?region};
+    return <String, dynamic>{
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetRegistryRepositoryArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetRegistryRepositoryArgs {
     );
   }
 }
+

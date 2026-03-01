@@ -17,11 +17,11 @@ class TargetIamPolicy extends pulumi.CustomResource {
     TargetIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

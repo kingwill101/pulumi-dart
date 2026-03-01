@@ -10,22 +10,16 @@ import 'get_route_table_filter.dart';
 class GetRouteTableArgs {
   /// Configuration block. Detailed below.
   final pulumi.Input<List<GetRouteTableFilter>>? filters;
-
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
   final pulumi.Input<String>? gatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the specific Route Table to retrieve.
   final pulumi.Input<String>? routeTableId;
-
   /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
   final pulumi.Input<String>? subnetId;
-
   /// Map of tags, each pair of which must exactly match a pair on the desired Route Table.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// ID of the VPC that the desired Route Table belongs to.
   final pulumi.Input<String>? vpcId;
 
@@ -45,30 +39,18 @@ class GetRouteTableArgs {
     String? subnetId,
     Map<String, String>? tags,
     String? vpcId,
-  }) : filters = pulumi.Input.asOptionalInput<List<GetRouteTableFilter>>(
-         filters,
-       ),
-       gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-       subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetRouteTableFilter>>(filters),
+      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
+      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetRouteTableFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouteTableFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetRouteTableFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRouteTableFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gatewayId': ?gatewayId,
       'region': ?region,
       'routeTableId': ?routeTableId,
@@ -80,24 +62,14 @@ class GetRouteTableArgs {
 
   factory GetRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetRouteTableFilter>(
-              map['filters'],
-              (value) => GetRouteTableFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouteTableFilter>(map['filters'], (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())),
       gatewayId: map['gatewayId'] == null ? null : map['gatewayId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      routeTableId: map['routeTableId'] == null
-          ? null
-          : map['routeTableId'] as String,
+      routeTableId: map['routeTableId'] == null ? null : map['routeTableId'] as String,
       subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
+

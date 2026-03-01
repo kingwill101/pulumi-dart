@@ -6,16 +6,10 @@ import 'get_network_insights_analysis_forward_path_component_inbound_header_sour
 
 class GetNetworkInsightsAnalysisForwardPathComponentInboundHeader {
   final List<String> destinationAddresses;
-  final List<
-    GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange
-  >
-  destinationPortRanges;
+  final List<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange> destinationPortRanges;
   final String protocol;
   final List<String> sourceAddresses;
-  final List<
-    GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange
-  >
-  sourcePortRanges;
+  final List<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange> sourcePortRanges;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentInboundHeader].
   /// [destinationAddresses] Required.
@@ -34,49 +28,21 @@ class GetNetworkInsightsAnalysisForwardPathComponentInboundHeader {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddresses': destinationAddresses,
-      'destinationPortRanges':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange,
-            Map<String, dynamic>
-          >(destinationPortRanges, (value) => value.toMap()),
+      'destinationPortRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange, Map<String, dynamic>>(destinationPortRanges, (value) => value.toMap()),
       'protocol': protocol,
       'sourceAddresses': sourceAddresses,
-      'sourcePortRanges':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange,
-            Map<String, dynamic>
-          >(sourcePortRanges, (value) => value.toMap()),
+      'sourcePortRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange, Map<String, dynamic>>(sourcePortRanges, (value) => value.toMap()),
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentInboundHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentInboundHeader.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentInboundHeader(
-      destinationAddresses: (map['destinationAddresses'] as List)
-          .cast<String>(),
-      destinationPortRanges:
-          pulumi.Input.decodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange
-          >(
-            map['destinationPortRanges'],
-            (value) =>
-                GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      destinationAddresses: (map['destinationAddresses'] as List).cast<String>(),
+      destinationPortRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange>(map['destinationPortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] as String,
       sourceAddresses: (map['sourceAddresses'] as List).cast<String>(),
-      sourcePortRanges:
-          pulumi.Input.decodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange
-          >(
-            map['sourcePortRanges'],
-            (value) =>
-                GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      sourcePortRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange>(map['sourcePortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Recovery plan manual action details.
+class RecoveryPlanManualActionDetails {
+  /// The manual action description.
+  final String? description;
+  /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
+  /// Expected value is 'ManualActionDetails'.
+  final String instanceType;
+
+  /// Creates a new [RecoveryPlanManualActionDetails].
+  /// [description] The manual action description.
+  /// [instanceType] Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
+  RecoveryPlanManualActionDetails({
+    this.description,
+    required this.instanceType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'instanceType': instanceType,
+    };
+  }
+
+  factory RecoveryPlanManualActionDetails.fromMap(Map<String, dynamic> map) {
+    return RecoveryPlanManualActionDetails(
+      description: map['description'] == null ? null : map['description'] as String,
+      instanceType: map['instanceType'] as String,
+    );
+  }
+}
+

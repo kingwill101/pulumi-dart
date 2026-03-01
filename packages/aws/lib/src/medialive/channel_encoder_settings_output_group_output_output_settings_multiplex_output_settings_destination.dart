@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination {
   /// Reference ID for the destination.
   final String destinationRefId;
@@ -11,14 +12,15 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettin
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'destinationRefId': destinationRefId};
+    return <String, dynamic>{
+      'destinationRefId': destinationRefId,
+    };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination(
       destinationRefId: map['destinationRefId'] as String,
     );
   }
 }
+

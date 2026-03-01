@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// DataLake Local Storage details.
+class DataLakeLocalStorageResponse {
+  /// Volume name to write to.
+  final String volumeName;
+
+  /// Creates a new [DataLakeLocalStorageResponse].
+  /// [volumeName] Volume name to write to.
+  DataLakeLocalStorageResponse({
+    required this.volumeName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'volumeName': volumeName,
+    };
+  }
+
+  factory DataLakeLocalStorageResponse.fromMap(Map<String, dynamic> map) {
+    return DataLakeLocalStorageResponse(
+      volumeName: map['volumeName'] as String,
+    );
+  }
+}
+

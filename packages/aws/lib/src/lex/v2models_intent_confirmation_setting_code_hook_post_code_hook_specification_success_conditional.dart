@@ -7,16 +7,10 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional {
   /// Whether a conditional branch is active. When active is false, the conditions are not evaluated.
   final bool active;
-
   /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditional_branch`.
-  final List<
-    V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch
-  >?
-  conditionalBranches;
-
+  final List<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch>? conditionalBranches;
   /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `default_branch`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch?
-  defaultBranch;
+  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch? defaultBranch;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional].
   /// [active] Whether a conditional branch is active. When active is false, the conditions are not evaluated.
@@ -31,37 +25,17 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessC
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': active,
-      'conditionalBranches': ?conditionalBranches == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch,
-              Map<String, dynamic>
-            >(conditionalBranches!, (value) => value.toMap()),
+      'conditionalBranches': ?conditionalBranches == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch, Map<String, dynamic>>(conditionalBranches!, (value) => value.toMap()),
       'defaultBranch': ?defaultBranch == null ? null : defaultBranch!.toMap(),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional(
       active: map['active'] as bool,
-      conditionalBranches: map['conditionalBranches'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch
-            >(
-              map['conditionalBranches'],
-              (value) =>
-                  V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      defaultBranch: map['defaultBranch'] == null
-          ? null
-          : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap(
-              (map['defaultBranch'] as Map).cast<String, dynamic>(),
-            ),
+      conditionalBranches: map['conditionalBranches'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>())),
+      defaultBranch: map['defaultBranch'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

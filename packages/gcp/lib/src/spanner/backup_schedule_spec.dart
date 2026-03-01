@@ -9,7 +9,9 @@ class BackupScheduleSpec {
 
   /// Creates a new [BackupScheduleSpec].
   /// [cronSpec] Cron style schedule specification..
-  BackupScheduleSpec({this.cronSpec});
+  BackupScheduleSpec({
+    this.cronSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class BackupScheduleSpec {
 
   factory BackupScheduleSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpec(
-      cronSpec: map['cronSpec'] == null
-          ? null
-          : BackupScheduleSpecCronSpec.fromMap(
-              (map['cronSpec'] as Map).cast<String, dynamic>(),
-            ),
+      cronSpec: map['cronSpec'] == null ? null : BackupScheduleSpecCronSpec.fromMap((map['cronSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

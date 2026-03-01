@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketLifecycleConfigurationRuleNoncurrentVersionTransition {
   /// Number of noncurrent versions Amazon S3 will retain. Must be a non-zero positive integer.
   final int? newerNoncurrentVersions;
-
   /// Number of days an object is noncurrent before Amazon S3 can perform the associated action.
   final int noncurrentDays;
-
   /// Class of storage used to store the object. Valid Values: `GLACIER`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `DEEP_ARCHIVE`, `GLACIER_IR`.
   final String storageClass;
 
@@ -28,15 +27,12 @@ class BucketLifecycleConfigurationRuleNoncurrentVersionTransition {
     };
   }
 
-  factory BucketLifecycleConfigurationRuleNoncurrentVersionTransition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketLifecycleConfigurationRuleNoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleNoncurrentVersionTransition(
-      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null
-          ? null
-          : map['newerNoncurrentVersions'] as int,
+      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : map['newerNoncurrentVersions'] as int,
       noncurrentDays: map['noncurrentDays'] as int,
       storageClass: map['storageClass'] as String,
     );
   }
 }
+

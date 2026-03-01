@@ -14,16 +14,16 @@ class PolicyDocument {
   /// [id] Optional.
   /// [statement] Required.
   /// [version] Required.
-  PolicyDocument({this.id, required this.statement, required this.version});
+  PolicyDocument({
+    this.id,
+    required this.statement,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'Id': ?id,
-      'Statement':
-          pulumi.Input.encodeList<PolicyStatement, Map<String, dynamic>>(
-            statement,
-            (value) => value.toMap(),
-          ),
+      'Statement': pulumi.Input.encodeList<PolicyStatement, Map<String, dynamic>>(statement, (value) => value.toMap()),
       'Version': version.value,
     };
   }
@@ -31,12 +31,9 @@ class PolicyDocument {
   factory PolicyDocument.fromMap(Map<String, dynamic> map) {
     return PolicyDocument(
       id: map['Id'] == null ? null : map['Id'] as String,
-      statement: pulumi.Input.decodeList<PolicyStatement>(
-        map['Statement'],
-        (value) =>
-            PolicyStatement.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      statement: pulumi.Input.decodeList<PolicyStatement>(map['Statement'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>())),
       version: PolicyDocumentVersion.fromValue(map['Version'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExternalVpnGatewayInterface {
   /// The numeric ID for this interface. Allowed values are based on the redundancy type
   /// of this external VPN gateway
@@ -7,13 +8,11 @@ class ExternalVpnGatewayInterface {
   /// * `0, 1 - TWO_IPS_REDUNDANCY`
   /// * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
   final int? id;
-
   /// IP address of the interface in the external VPN gateway.
   /// Only IPv4 is supported. This IP address can be either from
   /// your on-premise gateway or another Cloud provider's VPN gateway,
   /// it cannot be an IP address from Google Compute Engine.
   final String? ipAddress;
-
   /// IPv6 address of the interface in the external VPN gateway. This IPv6
   /// address can be either from your on-premise gateway or another Cloud
   /// provider's VPN gateway, it cannot be an IP address from Google Compute
@@ -26,7 +25,11 @@ class ExternalVpnGatewayInterface {
   /// [id] The numeric ID for this interface. Allowed values are based on the redundancy type
   /// [ipAddress] IP address of the interface in the external VPN gateway.
   /// [ipv6Address] IPv6 address of the interface in the external VPN gateway. This IPv6
-  ExternalVpnGatewayInterface({this.id, this.ipAddress, this.ipv6Address});
+  ExternalVpnGatewayInterface({
+    this.id,
+    this.ipAddress,
+    this.ipv6Address,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +43,8 @@ class ExternalVpnGatewayInterface {
     return ExternalVpnGatewayInterface(
       id: map['id'] == null ? null : map['id'] as int,
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipv6Address: map['ipv6Address'] == null
-          ? null
-          : map['ipv6Address'] as String,
+      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
     );
   }
 }
+

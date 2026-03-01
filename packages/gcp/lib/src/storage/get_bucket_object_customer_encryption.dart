@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketObjectCustomerEncryption {
   /// The encryption algorithm. Default: AES256
   final String encryptionAlgorithm;
-
   /// Base64 encoded customer supplied encryption key.
   final String encryptionKey;
 
@@ -29,3 +29,4 @@ class GetBucketObjectCustomerEncryption {
     );
   }
 }
+

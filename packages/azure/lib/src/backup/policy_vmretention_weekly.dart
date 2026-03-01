@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class PolicyVMRetentionWeekly {
+  /// The number of weekly backups to keep. Must be between `1` and `9999`
+  final int count;
+  /// The weekday backups to retain. Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+  final List<String> weekdays;
+
+  /// Creates a new [PolicyVMRetentionWeekly].
+  /// [count] The number of weekly backups to keep. Must be between `1` and `9999`
+  /// [weekdays] The weekday backups to retain. Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+  PolicyVMRetentionWeekly({
+    required this.count,
+    required this.weekdays,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': count,
+      'weekdays': weekdays,
+    };
+  }
+
+  factory PolicyVMRetentionWeekly.fromMap(Map<String, dynamic> map) {
+    return PolicyVMRetentionWeekly(
+      count: map['count'] as int,
+      weekdays: (map['weekdays'] as List).cast<String>(),
+    );
+  }
+}
+

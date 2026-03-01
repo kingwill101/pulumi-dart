@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class SshPublicKey {
+  /// The SSH public key data.
+  final String keyData;
+
+  /// Creates a new [SshPublicKey].
+  /// [keyData] The SSH public key data.
+  SshPublicKey({
+    required this.keyData,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'keyData': keyData,
+    };
+  }
+
+  factory SshPublicKey.fromMap(Map<String, dynamic> map) {
+    return SshPublicKey(
+      keyData: map['keyData'] as String,
+    );
+  }
+}
+

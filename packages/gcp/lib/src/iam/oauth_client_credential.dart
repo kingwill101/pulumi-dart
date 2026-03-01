@@ -237,32 +237,25 @@ class OauthClientCredential extends pulumi.CustomResource {
   /// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> clientSecret;
-
   /// Whether the OauthClientCredential is disabled. You cannot use a
   /// disabled OauthClientCredential.
   late final pulumi.Output<bool?> disabled;
-
   /// A user-specified display name of the OauthClientCredential.
   /// Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Immutable. Identifier. The resource name of the OauthClientCredential.
   /// Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   late final pulumi.Output<String> name;
-
   /// Required. The ID to use for the OauthClientCredential, which becomes the
   /// final component of the resource name. This value should be 4-32 characters,
   /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
   /// reserved for use by Google, and may not be specified.
   late final pulumi.Output<String> oauthClientCredentialId;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> oauthclient;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -276,19 +269,17 @@ class OauthClientCredential extends pulumi.CustomResource {
     OauthClientCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/oauthClientCredential:OauthClientCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/oauthClientCredential:OauthClientCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.clientSecret = registerOutput<String>('clientSecret');
     this.disabled = registerOutput<bool?>('disabled');
     this.displayName = registerOutput<String?>('displayName');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.oauthClientCredentialId = registerOutput<String>(
-      'oauthClientCredentialId',
-    );
+    this.oauthClientCredentialId = registerOutput<String>('oauthClientCredentialId');
     this.oauthclient = registerOutput<String>('oauthclient');
     this.project = registerOutput<String>('project');
   }

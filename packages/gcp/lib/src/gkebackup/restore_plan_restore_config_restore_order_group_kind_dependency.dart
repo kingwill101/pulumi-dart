@@ -7,14 +7,11 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
   /// The requiring group kind requires that the satisfying
   /// group kind be restored first.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring
-  requiring;
-
+  final RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring requiring;
   /// The satisfying group kind must be restored first
   /// in order to satisfy the dependency.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying
-  satisfying;
+  final RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying satisfying;
 
   /// Creates a new [RestorePlanRestoreConfigRestoreOrderGroupKindDependency].
   /// [requiring] The requiring group kind requires that the satisfying
@@ -31,18 +28,11 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
     };
   }
 
-  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigRestoreOrderGroupKindDependency(
-      requiring:
-          RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap(
-            (map['requiring'] as Map).cast<String, dynamic>(),
-          ),
-      satisfying:
-          RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying.fromMap(
-            (map['satisfying'] as Map).cast<String, dynamic>(),
-          ),
+      requiring: RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap((map['requiring'] as Map).cast<String, dynamic>()),
+      satisfying: RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying.fromMap((map['satisfying'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureGroupThroughputConfig {
   final int? provisionedReadCapacityUnits;
   final int? provisionedWriteCapacityUnits;
@@ -25,16 +26,10 @@ class FeatureGroupThroughputConfig {
 
   factory FeatureGroupThroughputConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupThroughputConfig(
-      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null
-          ? null
-          : map['provisionedReadCapacityUnits'] as int,
-      provisionedWriteCapacityUnits:
-          map['provisionedWriteCapacityUnits'] == null
-          ? null
-          : map['provisionedWriteCapacityUnits'] as int,
-      throughputMode: map['throughputMode'] == null
-          ? null
-          : map['throughputMode'] as String,
+      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null ? null : map['provisionedReadCapacityUnits'] as int,
+      provisionedWriteCapacityUnits: map['provisionedWriteCapacityUnits'] == null ? null : map['provisionedWriteCapacityUnits'] as int,
+      throughputMode: map['throughputMode'] == null ? null : map['throughputMode'] as String,
     );
   }
 }
+

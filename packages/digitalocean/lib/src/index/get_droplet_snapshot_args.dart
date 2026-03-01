@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_get_droplet_snapshot_get_droplet_snapshot_args_doc}
+/// Arguments for getDropletSnapshot.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_droplet_snapshot_get_droplet_snapshot_args_doc}
+class GetDropletSnapshotArgs {
+  /// If more than one result is returned, use the most recent Droplet snapshot.
+  ///
+  /// > **NOTE:** If more or less than a single match is returned by the search,
+  /// Terraform will fail. Ensure that your search is specific enough to return
+  /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+  final pulumi.Input<bool>? mostRecent;
+  /// The name of the Droplet snapshot.
+  final pulumi.Input<String>? name;
+  /// A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+  final pulumi.Input<String>? nameRegex;
+  /// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetDropletSnapshotArgs].
+  /// [mostRecent] If more than one result is returned, use the most recent Droplet snapshot.
+  /// [name] The name of the Droplet snapshot.
+  /// [nameRegex] A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+  /// [region] A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+  GetDropletSnapshotArgs({
+    bool? mostRecent,
+    String? name,
+    String? nameRegex,
+    String? region,
+  }) :
+      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'mostRecent': ?mostRecent,
+      'name': ?name,
+      'nameRegex': ?nameRegex,
+      'region': ?region,
+    };
+  }
+
+  factory GetDropletSnapshotArgs.fromMap(Map<String, dynamic> map) {
+    return GetDropletSnapshotArgs(
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      name: map['name'] == null ? null : map['name'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}
+

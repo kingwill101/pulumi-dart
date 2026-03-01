@@ -8,12 +8,10 @@ import 'get_table_global_secondary_index_warm_throughput.dart';
 class GetTableGlobalSecondaryIndex {
   final String hashKey;
   final List<GetTableGlobalSecondaryIndexKeySchema> keySchemas;
-
   /// Name of the DynamoDB table.
   final String name;
   final List<String> nonKeyAttributes;
-  final List<GetTableGlobalSecondaryIndexOnDemandThroughput>
-  onDemandThroughputs;
+  final List<GetTableGlobalSecondaryIndexOnDemandThroughput> onDemandThroughputs;
   final String projectionType;
   final String rangeKey;
   final int readCapacity;
@@ -47,26 +45,14 @@ class GetTableGlobalSecondaryIndex {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hashKey': hashKey,
-      'keySchemas':
-          pulumi.Input.encodeList<
-            GetTableGlobalSecondaryIndexKeySchema,
-            Map<String, dynamic>
-          >(keySchemas, (value) => value.toMap()),
+      'keySchemas': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexKeySchema, Map<String, dynamic>>(keySchemas, (value) => value.toMap()),
       'name': name,
       'nonKeyAttributes': nonKeyAttributes,
-      'onDemandThroughputs':
-          pulumi.Input.encodeList<
-            GetTableGlobalSecondaryIndexOnDemandThroughput,
-            Map<String, dynamic>
-          >(onDemandThroughputs, (value) => value.toMap()),
+      'onDemandThroughputs': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexOnDemandThroughput, Map<String, dynamic>>(onDemandThroughputs, (value) => value.toMap()),
       'projectionType': projectionType,
       'rangeKey': rangeKey,
       'readCapacity': readCapacity,
-      'warmThroughputs':
-          pulumi.Input.encodeList<
-            GetTableGlobalSecondaryIndexWarmThroughput,
-            Map<String, dynamic>
-          >(warmThroughputs, (value) => value.toMap()),
+      'warmThroughputs': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexWarmThroughput, Map<String, dynamic>>(warmThroughputs, (value) => value.toMap()),
       'writeCapacity': writeCapacity,
     };
   }
@@ -74,34 +60,16 @@ class GetTableGlobalSecondaryIndex {
   factory GetTableGlobalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndex(
       hashKey: map['hashKey'] as String,
-      keySchemas:
-          pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(
-            map['keySchemas'],
-            (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      keySchemas: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       nonKeyAttributes: (map['nonKeyAttributes'] as List).cast<String>(),
-      onDemandThroughputs:
-          pulumi
-              .Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(
-            map['onDemandThroughputs'],
-            (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      onDemandThroughputs: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs'], (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>())),
       projectionType: map['projectionType'] as String,
       rangeKey: map['rangeKey'] as String,
       readCapacity: map['readCapacity'] as int,
-      warmThroughputs:
-          pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(
-            map['warmThroughputs'],
-            (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      warmThroughputs: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs'], (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>())),
       writeCapacity: map['writeCapacity'] as int,
     );
   }
 }
+

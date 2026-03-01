@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAcceleratorAttribute {
   final bool flowLogsEnabled;
   final String flowLogsS3Bucket;
@@ -31,3 +32,4 @@ class GetAcceleratorAttribute {
     );
   }
 }
+

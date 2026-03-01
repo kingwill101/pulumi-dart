@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector {
   final Map<String, String>? customProperties;
   final String entityName;
@@ -19,14 +20,11 @@ class FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector {
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector(
-      customProperties: map['customProperties'] == null
-          ? null
-          : (map['customProperties'] as Map).cast<String, String>(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties'] as Map).cast<String, String>(),
       entityName: map['entityName'] as String,
     );
   }
 }
+

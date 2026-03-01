@@ -227,19 +227,14 @@ import 'bucket_object_lock_configuration_rule.dart';
 class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   late final pulumi.Output<String?> objectLockEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   late final pulumi.Output<BucketObjectLockConfigurationRule?> rule;
-
   /// This argument is deprecated and no longer needed to enable Object Lock.
   /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   late final pulumi.Output<String?> token;
@@ -253,11 +248,11 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     BucketObjectLockConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.objectLockEnabled = registerOutput<String?>('objectLockEnabled');

@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
   /// Defines whether instances have integrity monitoring enabled.
   ///
   /// - - -
   final bool? enableIntegrityMonitoring;
-
   /// Defines whether instances have Secure Boot enabled.
   final bool? enableSecureBoot;
-
   /// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
   final bool? enableVtpm;
 
@@ -30,17 +29,12 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
     };
   }
 
-  factory ClusterClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
       enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
     );
   }
 }
+

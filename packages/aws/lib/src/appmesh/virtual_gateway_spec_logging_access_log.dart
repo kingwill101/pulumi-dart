@@ -8,19 +8,20 @@ class VirtualGatewaySpecLoggingAccessLog {
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLog].
   /// [file] File object to send virtual gateway access logs to.
-  VirtualGatewaySpecLoggingAccessLog({this.file});
+  VirtualGatewaySpecLoggingAccessLog({
+    this.file,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'file': ?file == null ? null : file!.toMap()};
+    return <String, dynamic>{
+      'file': ?file == null ? null : file!.toMap(),
+    };
   }
 
   factory VirtualGatewaySpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLoggingAccessLog(
-      file: map['file'] == null
-          ? null
-          : VirtualGatewaySpecLoggingAccessLogFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
+      file: map['file'] == null ? null : VirtualGatewaySpecLoggingAccessLogFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

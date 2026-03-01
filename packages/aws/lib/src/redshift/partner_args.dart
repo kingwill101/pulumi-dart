@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerArgs {
   /// The Amazon Web Services account ID that owns the cluster.
   final pulumi.Input<String> accountId;
-
   /// The cluster identifier of the cluster that receives data from the partner.
   final pulumi.Input<String> clusterIdentifier;
-
   /// The name of the database that receives data from the partner.
   final pulumi.Input<String> databaseName;
-
   /// The name of the partner that is authorized to send data.
   final pulumi.Input<String> partnerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,11 +30,12 @@ class PartnerArgs {
     required String databaseName,
     required String partnerName,
     String? region,
-  }) : accountId = pulumi.Input.asInput<String>(accountId),
-       clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-       databaseName = pulumi.Input.asInput<String>(databaseName),
-       partnerName = pulumi.Input.asInput<String>(partnerName),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
+      databaseName = pulumi.Input.asInput<String>(databaseName),
+      partnerName = pulumi.Input.asInput<String>(partnerName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,3 +57,4 @@ class PartnerArgs {
     );
   }
 }
+

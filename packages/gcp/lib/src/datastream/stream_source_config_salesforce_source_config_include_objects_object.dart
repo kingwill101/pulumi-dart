@@ -6,9 +6,7 @@ import 'stream_source_config_salesforce_source_config_include_objects_object_fie
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
   /// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// Structure is documented below.
-  final List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>?
-  fields;
-
+  final List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>? fields;
   /// Name of object in Salesforce Org.
   final String? objectName;
 
@@ -22,34 +20,16 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?fields == null
-          ? null
-          : pulumi.Input.encodeList<
-              StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField,
-              Map<String, dynamic>
-            >(fields!, (value) => value.toMap()),
+      'fields': ?fields == null ? null : pulumi.Input.encodeList<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
       'objectName': ?objectName,
     };
   }
 
-  factory StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject(
-      fields: map['fields'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField
-            >(
-              map['fields'],
-              (value) =>
-                  StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      objectName: map['objectName'] == null
-          ? null
-          : map['objectName'] as String,
+      fields: map['fields'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>(map['fields'], (value) => StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField.fromMap((value as Map).cast<String, dynamic>())),
+      objectName: map['objectName'] == null ? null : map['objectName'] as String,
     );
   }
 }
+

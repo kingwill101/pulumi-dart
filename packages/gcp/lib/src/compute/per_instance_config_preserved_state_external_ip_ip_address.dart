@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PerInstanceConfigPreservedStateExternalIpIpAddress {
   /// The URL of the reservation for this IP address.
   final String? address;
 
   /// Creates a new [PerInstanceConfigPreservedStateExternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  PerInstanceConfigPreservedStateExternalIpIpAddress({this.address});
+  PerInstanceConfigPreservedStateExternalIpIpAddress({
+    this.address,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address};
+    return <String, dynamic>{
+      'address': ?address,
+    };
   }
 
-  factory PerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigPreservedStateExternalIpIpAddress(
       address: map['address'] == null ? null : map['address'] as String,
     );
   }
 }
+

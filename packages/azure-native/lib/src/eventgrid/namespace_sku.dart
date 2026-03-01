@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Represents available Sku pricing tiers.
+class NamespaceSku {
+  /// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+  /// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+  /// max allowed capacity is 20.
+  final int? capacity;
+  /// The name of the SKU.
+  final String? name;
+
+  /// Creates a new [NamespaceSku].
+  /// [capacity] Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+  /// [name] The name of the SKU.
+  NamespaceSku({
+    this.capacity,
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': ?name,
+    };
+  }
+
+  factory NamespaceSku.fromMap(Map<String, dynamic> map) {
+    return NamespaceSku(
+      capacity: map['capacity'] == null ? null : map['capacity'] as int,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}
+

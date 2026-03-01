@@ -169,11 +169,11 @@ class OrganizationsFeatures extends pulumi.CustomResource {
     OrganizationsFeaturesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/organizationsFeatures:OrganizationsFeatures',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/organizationsFeatures:OrganizationsFeatures',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
   }
 }

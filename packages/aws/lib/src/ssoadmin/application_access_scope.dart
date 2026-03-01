@@ -181,13 +181,10 @@ import 'application_access_scope_args.dart';
 class ApplicationAccessScope extends pulumi.CustomResource {
   /// Specifies the ARN of the application with the access scope with the targets to add or update.
   late final pulumi.Output<String> applicationArn;
-
   /// Specifies an array list of ARNs that represent the authorized targets for this access scope.
   late final pulumi.Output<List<String>?> authorizedTargets;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the name of the access scope to be associated with the specified targets.
   ///
   /// The following arguments are optional:
@@ -202,11 +199,11 @@ class ApplicationAccessScope extends pulumi.CustomResource {
     ApplicationAccessScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/applicationAccessScope:ApplicationAccessScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/applicationAccessScope:ApplicationAccessScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.applicationArn = registerOutput<String>('applicationArn');
     this.authorizedTargets = registerOutput<List<String>?>('authorizedTargets');
     this.region = registerOutput<String>('region');

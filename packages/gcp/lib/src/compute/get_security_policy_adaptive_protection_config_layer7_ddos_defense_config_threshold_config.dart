@@ -11,13 +11,9 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   final double detectionAbsoluteQps;
   final double detectionLoadThreshold;
   final double detectionRelativeToBaselineQps;
-
   /// The name of the security policy. Provide either this or a `self_link`.
   final String name;
-  final List<
-    GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
-  >
-  trafficGranularityConfigs;
+  final List<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig> trafficGranularityConfigs;
 
   /// Creates a new [GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig].
   /// [autoDeployConfidenceThreshold] Required.
@@ -45,46 +41,28 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
     return <String, dynamic>{
       'autoDeployConfidenceThreshold': autoDeployConfidenceThreshold,
       'autoDeployExpirationSec': autoDeployExpirationSec,
-      'autoDeployImpactedBaselineThreshold':
-          autoDeployImpactedBaselineThreshold,
+      'autoDeployImpactedBaselineThreshold': autoDeployImpactedBaselineThreshold,
       'autoDeployLoadThreshold': autoDeployLoadThreshold,
       'detectionAbsoluteQps': detectionAbsoluteQps,
       'detectionLoadThreshold': detectionLoadThreshold,
       'detectionRelativeToBaselineQps': detectionRelativeToBaselineQps,
       'name': name,
-      'trafficGranularityConfigs':
-          pulumi.Input.encodeList<
-            GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
-            Map<String, dynamic>
-          >(trafficGranularityConfigs, (value) => value.toMap()),
+      'trafficGranularityConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig, Map<String, dynamic>>(trafficGranularityConfigs, (value) => value.toMap()),
     };
   }
 
-  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
-      autoDeployConfidenceThreshold:
-          map['autoDeployConfidenceThreshold'] as double,
+      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] as double,
       autoDeployExpirationSec: map['autoDeployExpirationSec'] as int,
-      autoDeployImpactedBaselineThreshold:
-          map['autoDeployImpactedBaselineThreshold'] as double,
+      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] as double,
       autoDeployLoadThreshold: map['autoDeployLoadThreshold'] as double,
       detectionAbsoluteQps: map['detectionAbsoluteQps'] as double,
       detectionLoadThreshold: map['detectionLoadThreshold'] as double,
-      detectionRelativeToBaselineQps:
-          map['detectionRelativeToBaselineQps'] as double,
+      detectionRelativeToBaselineQps: map['detectionRelativeToBaselineQps'] as double,
       name: map['name'] as String,
-      trafficGranularityConfigs:
-          pulumi.Input.decodeList<
-            GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
-          >(
-            map['trafficGranularityConfigs'],
-            (value) =>
-                GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      trafficGranularityConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(map['trafficGranularityConfigs'], (value) => GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

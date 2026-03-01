@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayPeeringArgs {
   /// ID of a core network.
   final pulumi.Input<String> coreNetworkId;
-
   /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
@@ -26,9 +24,10 @@ class TransitGatewayPeeringArgs {
     required String coreNetworkId,
     Map<String, String>? tags,
     required String transitGatewayArn,
-  }) : coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       transitGatewayArn = pulumi.Input.asInput<String>(transitGatewayArn);
+  }) :
+      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      transitGatewayArn = pulumi.Input.asInput<String>(transitGatewayArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +40,9 @@ class TransitGatewayPeeringArgs {
   factory TransitGatewayPeeringArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringArgs(
       coreNetworkId: map['coreNetworkId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       transitGatewayArn: map['transitGatewayArn'] as String,
     );
   }
 }
+

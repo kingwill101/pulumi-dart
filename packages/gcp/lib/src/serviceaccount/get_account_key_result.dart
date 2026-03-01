@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccountKey.
 class GetAccountKeyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyAlgorithm;
   final String name;
-
   /// The public key, base64 encoded
   final String publicKey;
   final String? publicKeyType;
@@ -41,9 +41,8 @@ class GetAccountKeyResult {
       keyAlgorithm: map['keyAlgorithm'] as String,
       name: map['name'] as String,
       publicKey: map['publicKey'] as String,
-      publicKeyType: map['publicKeyType'] == null
-          ? null
-          : map['publicKeyType'] as String,
+      publicKeyType: map['publicKeyType'] == null ? null : map['publicKeyType'] as String,
     );
   }
 }
+

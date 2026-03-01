@@ -13,7 +13,6 @@ class AccountIamBindingArgs {
   /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
   final pulumi.Input<String> billingAccountId;
   final pulumi.Input<AccountIamBindingCondition>? condition;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -21,7 +20,6 @@ class AccountIamBindingArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>> members;
-
   /// The role that should be applied. Only one
   /// `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -39,21 +37,16 @@ class AccountIamBindingArgs {
     AccountIamBindingCondition? condition,
     required List<String> members,
     required String role,
-  }) : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-       condition = pulumi.Input.asOptionalInput<AccountIamBindingCondition>(
-         condition,
-       ),
-       members = pulumi.Input.asInput<List<String>>(members),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+      condition = pulumi.Input.asOptionalInput<AccountIamBindingCondition>(condition),
+      members = pulumi.Input.asInput<List<String>>(members),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'billingAccountId': billingAccountId,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            AccountIamBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<AccountIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'members': members,
       'role': role,
     };
@@ -62,13 +55,10 @@ class AccountIamBindingArgs {
   factory AccountIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AccountIamBindingArgs(
       billingAccountId: map['billingAccountId'] as String,
-      condition: map['condition'] == null
-          ? null
-          : AccountIamBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : AccountIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       members: (map['members'] as List).cast<String>(),
       role: map['role'] as String,
     );
   }
 }
+

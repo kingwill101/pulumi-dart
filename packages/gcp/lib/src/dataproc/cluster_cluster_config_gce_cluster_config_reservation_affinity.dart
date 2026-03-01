@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigGceClusterConfigReservationAffinity {
   /// Corresponds to the type of reservation consumption.
   final String? consumeReservationType;
-
   /// Corresponds to the label key of reservation resource.
   final String? key;
-
   /// Corresponds to the label values of reservation resource.
   final List<String>? values;
 
@@ -28,17 +27,12 @@ class ClusterClusterConfigGceClusterConfigReservationAffinity {
     };
   }
 
-  factory ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] == null
-          ? null
-          : map['consumeReservationType'] as String,
+      consumeReservationType: map['consumeReservationType'] == null ? null : map['consumeReservationType'] as String,
       key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null
-          ? null
-          : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

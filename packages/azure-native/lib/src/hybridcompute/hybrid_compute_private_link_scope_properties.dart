@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Properties that define a Azure Arc PrivateLinkScope resource.
+class HybridComputePrivateLinkScopeProperties {
+  /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
+  final String? publicNetworkAccess;
+
+  /// Creates a new [HybridComputePrivateLinkScopeProperties].
+  /// [publicNetworkAccess] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
+  HybridComputePrivateLinkScopeProperties({
+    this.publicNetworkAccess,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'publicNetworkAccess': ?publicNetworkAccess,
+    };
+  }
+
+  factory HybridComputePrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
+    return HybridComputePrivateLinkScopeProperties(
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+    );
+  }
+}
+

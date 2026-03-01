@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
   final String bucketName;
 
@@ -10,14 +11,15 @@ class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketName': bucketName};
+    return <String, dynamic>{
+      'bucketName': bucketName,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3(
       bucketName: map['bucketName'] as String,
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+class RunCommandManagedIdentityResponse {
+  /// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+  final String? clientId;
+  /// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+  final String? objectId;
+
+  /// Creates a new [RunCommandManagedIdentityResponse].
+  /// [clientId] Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+  /// [objectId] Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+  RunCommandManagedIdentityResponse({
+    this.clientId,
+    this.objectId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'objectId': ?objectId,
+    };
+  }
+
+  factory RunCommandManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
+    return RunCommandManagedIdentityResponse(
+      clientId: map['clientId'] == null ? null : map['clientId'] as String,
+      objectId: map['objectId'] == null ? null : map['objectId'] as String,
+    );
+  }
+}
+

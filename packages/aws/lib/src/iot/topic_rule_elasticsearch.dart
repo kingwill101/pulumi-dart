@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleElasticsearch {
   /// The endpoint of your Elasticsearch domain.
   final String endpoint;
-
   /// The unique identifier for the document you are storing.
   final String id;
-
   /// The Elasticsearch index where you want to store your data.
   final String index;
-
   /// The IAM role ARN that has access to Elasticsearch.
   final String roleArn;
-
   /// The type of document you are storing.
   final String type;
 
@@ -50,3 +47,4 @@ class TopicRuleElasticsearch {
     );
   }
 }
+

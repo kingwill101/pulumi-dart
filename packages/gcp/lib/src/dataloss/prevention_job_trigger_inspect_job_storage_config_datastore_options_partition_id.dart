@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   final String? namespaceId;
-
   /// The ID of the project to which the entities belong.
   final String projectId;
 
@@ -22,14 +22,11 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-      namespaceId: map['namespaceId'] == null
-          ? null
-          : map['namespaceId'] as String,
+      namespaceId: map['namespaceId'] == null ? null : map['namespaceId'] as String,
       projectId: map['projectId'] as String,
     );
   }
 }
+

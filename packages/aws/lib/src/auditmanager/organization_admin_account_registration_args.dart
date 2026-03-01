@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationAdminAccountRegistrationArgs {
   /// Identifier for the organization administrator account.
   final pulumi.Input<String> adminAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,8 +18,9 @@ class OrganizationAdminAccountRegistrationArgs {
   OrganizationAdminAccountRegistrationArgs({
     required String adminAccountId,
     String? region,
-  }) : adminAccountId = pulumi.Input.asInput<String>(adminAccountId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      adminAccountId = pulumi.Input.asInput<String>(adminAccountId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,12 +29,11 @@ class OrganizationAdminAccountRegistrationArgs {
     };
   }
 
-  factory OrganizationAdminAccountRegistrationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationAdminAccountRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountRegistrationArgs(
       adminAccountId: map['adminAccountId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

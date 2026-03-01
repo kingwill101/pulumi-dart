@@ -7,11 +7,9 @@ class BareMetalClusterValidationCheck {
   /// (Output)
   /// Options used for the validation check.
   final String? options;
-
   /// (Output)
   /// The scenario when the preflight checks were run..
   final String? scenario;
-
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
@@ -21,18 +19,17 @@ class BareMetalClusterValidationCheck {
   /// [options] (Output)
   /// [scenario] (Output)
   /// [statuses] (Output)
-  BareMetalClusterValidationCheck({this.options, this.scenario, this.statuses});
+  BareMetalClusterValidationCheck({
+    this.options,
+    this.scenario,
+    this.statuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'options': ?options,
       'scenario': ?scenario,
-      'statuses': ?statuses == null
-          ? null
-          : pulumi.Input.encodeList<
-              BareMetalClusterValidationCheckStatus,
-              Map<String, dynamic>
-            >(statuses!, (value) => value.toMap()),
+      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<BareMetalClusterValidationCheckStatus, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
     };
   }
 
@@ -40,14 +37,8 @@ class BareMetalClusterValidationCheck {
     return BareMetalClusterValidationCheck(
       options: map['options'] == null ? null : map['options'] as String,
       scenario: map['scenario'] == null ? null : map['scenario'] as String,
-      statuses: map['statuses'] == null
-          ? null
-          : pulumi.Input.decodeList<BareMetalClusterValidationCheckStatus>(
-              map['statuses'],
-              (value) => BareMetalClusterValidationCheckStatus.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<BareMetalClusterValidationCheckStatus>(map['statuses'], (value) => BareMetalClusterValidationCheckStatus.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

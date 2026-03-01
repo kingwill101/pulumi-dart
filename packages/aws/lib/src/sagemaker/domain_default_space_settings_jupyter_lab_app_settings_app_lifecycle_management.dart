@@ -4,8 +4,7 @@ import 'domain_default_space_settings_jupyter_lab_app_settings_app_lifecycle_man
 
 class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  final DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?
-  idleSettings;
+  final DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings? idleSettings;
 
   /// Creates a new [DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
@@ -19,15 +18,10 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
     };
   }
 
-  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null
-          ? null
-          : DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
-              (map['idleSettings'] as Map).cast<String, dynamic>(),
-            ),
+      idleSettings: map['idleSettings'] == null ? null : DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

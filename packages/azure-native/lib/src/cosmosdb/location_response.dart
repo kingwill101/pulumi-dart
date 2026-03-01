@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A region in which the Azure Cosmos DB database account is deployed.
+class LocationResponse {
+  /// The connection endpoint for the specific region. Example: https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
+  final String documentEndpoint;
+  /// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+  final int? failoverPriority;
+  /// The unique identifier of the region within the database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+  final String id;
+  /// Flag to indicate whether or not this region is an AvailabilityZone region
+  final bool? isZoneRedundant;
+  /// The name of the region.
+  final String? locationName;
+  /// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
+  final String provisioningState;
+
+  /// Creates a new [LocationResponse].
+  /// [documentEndpoint] The connection endpoint for the specific region. Example: https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
+  /// [failoverPriority] The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+  /// [id] The unique identifier of the region within the database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+  /// [isZoneRedundant] Flag to indicate whether or not this region is an AvailabilityZone region
+  /// [locationName] The name of the region.
+  /// [provisioningState] The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
+  LocationResponse({
+    required this.documentEndpoint,
+    this.failoverPriority,
+    required this.id,
+    this.isZoneRedundant,
+    this.locationName,
+    required this.provisioningState,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'documentEndpoint': documentEndpoint,
+      'failoverPriority': ?failoverPriority,
+      'id': id,
+      'isZoneRedundant': ?isZoneRedundant,
+      'locationName': ?locationName,
+      'provisioningState': provisioningState,
+    };
+  }
+
+  factory LocationResponse.fromMap(Map<String, dynamic> map) {
+    return LocationResponse(
+      documentEndpoint: map['documentEndpoint'] as String,
+      failoverPriority: map['failoverPriority'] == null ? null : map['failoverPriority'] as int,
+      id: map['id'] as String,
+      isZoneRedundant: map['isZoneRedundant'] == null ? null : map['isZoneRedundant'] as bool,
+      locationName: map['locationName'] == null ? null : map['locationName'] as String,
+      provisioningState: map['provisioningState'] as String,
+    );
+  }
+}
+

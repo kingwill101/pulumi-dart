@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceTemplateReservationAffinitySpecificReservation {
   /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
   final String key;
-
   /// Corresponds to the label values of a reservation resource.
   final List<String> values;
 
@@ -16,15 +16,17 @@ class InstanceTemplateReservationAffinitySpecificReservation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'values': values};
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
-  factory InstanceTemplateReservationAffinitySpecificReservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateReservationAffinitySpecificReservation.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateReservationAffinitySpecificReservation(
       key: map['key'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverFirewallRuleGroupArgs {
   /// The ID of the rule group.
   final pulumi.Input<String> firewallRuleGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,8 +18,9 @@ class GetResolverFirewallRuleGroupArgs {
   GetResolverFirewallRuleGroupArgs({
     required String firewallRuleGroupId,
     String? region,
-  }) : firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,3 +36,4 @@ class GetResolverFirewallRuleGroupArgs {
     );
   }
 }
+

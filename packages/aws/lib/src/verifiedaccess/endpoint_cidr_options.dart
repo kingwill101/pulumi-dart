@@ -24,11 +24,7 @@ class EndpointCidrOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidr': cidr,
-      'portRanges':
-          pulumi.Input.encodeList<
-            EndpointCidrOptionsPortRange,
-            Map<String, dynamic>
-          >(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.encodeList<EndpointCidrOptionsPortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
       'protocol': ?protocol,
       'subnetIds': ?subnetIds,
     };
@@ -37,16 +33,10 @@ class EndpointCidrOptions {
   factory EndpointCidrOptions.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptions(
       cidr: map['cidr'] as String,
-      portRanges: pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(
-        map['portRanges'],
-        (value) => EndpointCidrOptionsPortRange.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      portRanges: pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(map['portRanges'], (value) => EndpointCidrOptionsPortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      subnetIds: map['subnetIds'] == null
-          ? null
-          : (map['subnetIds'] as List).cast<String>(),
+      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
     );
   }
 }
+

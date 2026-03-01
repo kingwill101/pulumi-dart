@@ -12,18 +12,15 @@ class ScopeArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
   /// labels (`namespace_labels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
   final pulumi.Input<Map<String, String>>? namespaceLabels;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The client-provided identifier of the scope.
   final pulumi.Input<String> scopeId;
 
@@ -37,12 +34,11 @@ class ScopeArgs {
     Map<String, String>? namespaceLabels,
     String? project,
     required String scopeId,
-  }) : labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-       namespaceLabels = pulumi.Input.asOptionalInput<Map<String, String>>(
-         namespaceLabels,
-       ),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       scopeId = pulumi.Input.asInput<String>(scopeId);
+  }) :
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      namespaceLabels = pulumi.Input.asOptionalInput<Map<String, String>>(namespaceLabels),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      scopeId = pulumi.Input.asInput<String>(scopeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,14 +51,11 @@ class ScopeArgs {
 
   factory ScopeArgs.fromMap(Map<String, dynamic> map) {
     return ScopeArgs(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
-      namespaceLabels: map['namespaceLabels'] == null
-          ? null
-          : (map['namespaceLabels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : (map['namespaceLabels'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
       scopeId: map['scopeId'] as String,
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupUser {
   /// User ARN.
   final String arn;
-
   /// Path to the IAM user.
   final String path;
-
   /// Stable and unique string identifying the IAM user.
   final String userId;
-
   /// Name of the IAM user.
   final String userName;
 
@@ -43,3 +41,4 @@ class GetGroupUser {
     );
   }
 }
+

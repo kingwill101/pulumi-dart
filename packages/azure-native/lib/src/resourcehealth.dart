@@ -1,0 +1,10 @@
+library module_resourcehealth;
+
+export 'resourcehealth/event_impacted_resource_response.dart';
+export 'resourcehealth/functions.dart';
+export 'resourcehealth/key_value_item_response.dart';
+export 'resourcehealth/list_security_advisory_impacted_resource_by_subscription_id_and_event_id_args.dart';
+export 'resourcehealth/list_security_advisory_impacted_resource_by_subscription_id_and_event_id_result.dart';
+export 'resourcehealth/list_security_advisory_impacted_resource_by_tenant_id_and_event_id_args.dart';
+export 'resourcehealth/list_security_advisory_impacted_resource_by_tenant_id_and_event_id_result.dart';
+export 'resourcehealth/system_data_response.dart';

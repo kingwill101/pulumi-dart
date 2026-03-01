@@ -15,57 +15,30 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_rege
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch {
   /// Inspect all query arguments.
   final Map<String, dynamic>? allQueryArguments;
-
   /// Inspect the request body, which immediately follows the request headers.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody?
-  body;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody? body;
   /// Inspect the cookies in the web request. See Cookies below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies?
-  cookies;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies? cookies;
   /// Inspect the request headers. See Header Order below for details.
-  final List<
-    RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder
-  >?
-  headerOrders;
-
+  final List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
-  final List<
-    RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader
-  >?
-  headers;
-
+  final List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader>? headers;
   /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint?
-  ja3Fingerprint;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint? ja3Fingerprint;
   /// Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint?
-  ja4Fingerprint;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody?
-  jsonBody;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody? jsonBody;
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
   final Map<String, dynamic>? method;
-
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
   final Map<String, dynamic>? queryString;
-
   /// Inspect a single header. See Single Header below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader?
-  singleHeader;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument?
-  singleQueryArgument;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
-  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment?
-  uriFragment;
-
+  final RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
   final Map<String, dynamic>? uriPath;
 
@@ -106,114 +79,37 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatem
       'allQueryArguments': ?allQueryArguments,
       'body': ?body == null ? null : body!.toMap(),
       'cookies': ?cookies == null ? null : cookies!.toMap(),
-      'headerOrders': ?headerOrders == null
-          ? null
-          : pulumi.Input.encodeList<
-              RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder,
-              Map<String, dynamic>
-            >(headerOrders!, (value) => value.toMap()),
-      'headers': ?headers == null
-          ? null
-          : pulumi.Input.encodeList<
-              RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader,
-              Map<String, dynamic>
-            >(headers!, (value) => value.toMap()),
-      'ja3Fingerprint': ?ja3Fingerprint == null
-          ? null
-          : ja3Fingerprint!.toMap(),
-      'ja4Fingerprint': ?ja4Fingerprint == null
-          ? null
-          : ja4Fingerprint!.toMap(),
+      'headerOrders': ?headerOrders == null ? null : pulumi.Input.encodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(headerOrders!, (value) => value.toMap()),
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'ja3Fingerprint': ?ja3Fingerprint == null ? null : ja3Fingerprint!.toMap(),
+      'ja4Fingerprint': ?ja4Fingerprint == null ? null : ja4Fingerprint!.toMap(),
       'jsonBody': ?jsonBody == null ? null : jsonBody!.toMap(),
       'method': ?method,
       'queryString': ?queryString,
       'singleHeader': ?singleHeader == null ? null : singleHeader!.toMap(),
-      'singleQueryArgument': ?singleQueryArgument == null
-          ? null
-          : singleQueryArgument!.toMap(),
+      'singleQueryArgument': ?singleQueryArgument == null ? null : singleQueryArgument!.toMap(),
       'uriFragment': ?uriFragment == null ? null : uriFragment!.toMap(),
       'uriPath': ?uriPath,
     };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch(
-      allQueryArguments: map['allQueryArguments'] == null
-          ? null
-          : (map['allQueryArguments'] as Map).cast<String, dynamic>(),
-      body: map['body'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody.fromMap(
-              (map['body'] as Map).cast<String, dynamic>(),
-            ),
-      cookies: map['cookies'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies.fromMap(
-              (map['cookies'] as Map).cast<String, dynamic>(),
-            ),
-      headerOrders: map['headerOrders'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder
-            >(
-              map['headerOrders'],
-              (value) =>
-                  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader
-            >(
-              map['headers'],
-              (value) =>
-                  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      ja3Fingerprint: map['ja3Fingerprint'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap(
-              (map['ja3Fingerprint'] as Map).cast<String, dynamic>(),
-            ),
-      ja4Fingerprint: map['ja4Fingerprint'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint.fromMap(
-              (map['ja4Fingerprint'] as Map).cast<String, dynamic>(),
-            ),
-      jsonBody: map['jsonBody'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody.fromMap(
-              (map['jsonBody'] as Map).cast<String, dynamic>(),
-            ),
-      method: map['method'] == null
-          ? null
-          : (map['method'] as Map).cast<String, dynamic>(),
-      queryString: map['queryString'] == null
-          ? null
-          : (map['queryString'] as Map).cast<String, dynamic>(),
-      singleHeader: map['singleHeader'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader.fromMap(
-              (map['singleHeader'] as Map).cast<String, dynamic>(),
-            ),
-      singleQueryArgument: map['singleQueryArgument'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap(
-              (map['singleQueryArgument'] as Map).cast<String, dynamic>(),
-            ),
-      uriFragment: map['uriFragment'] == null
-          ? null
-          : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment.fromMap(
-              (map['uriFragment'] as Map).cast<String, dynamic>(),
-            ),
-      uriPath: map['uriPath'] == null
-          ? null
-          : (map['uriPath'] as Map).cast<String, dynamic>(),
+      allQueryArguments: map['allQueryArguments'] == null ? null : (map['allQueryArguments'] as Map).cast<String, dynamic>(),
+      body: map['body'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody.fromMap((map['body'] as Map).cast<String, dynamic>()),
+      cookies: map['cookies'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
+      headerOrders: map['headerOrders'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder>(map['headerOrders'], (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader>(map['headers'], (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>())),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>()),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>()),
+      jsonBody: map['jsonBody'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody'] as Map).cast<String, dynamic>()),
+      method: map['method'] == null ? null : (map['method'] as Map).cast<String, dynamic>(),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as Map).cast<String, dynamic>(),
+      singleHeader: map['singleHeader'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>()),
+      singleQueryArgument: map['singleQueryArgument'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument'] as Map).cast<String, dynamic>()),
+      uriFragment: map['uriFragment'] == null ? null : RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment'] as Map).cast<String, dynamic>()),
+      uriPath: map['uriPath'] == null ? null : (map['uriPath'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

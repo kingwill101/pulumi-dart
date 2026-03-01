@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailActionRespondImmediatelyResponse {
   /// Whether the response is disabled. Disabled responses are not used by the
   /// agent.
   final bool? disabled;
-
   /// Text for the agent to respond with.
   final String text;
 
@@ -17,15 +17,17 @@ class GuardrailActionRespondImmediatelyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': ?disabled, 'text': text};
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'text': text,
+    };
   }
 
-  factory GuardrailActionRespondImmediatelyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuardrailActionRespondImmediatelyResponse.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediatelyResponse(
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       text: map['text'] as String,
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiEventConfigAuthProviderCognitoConfig {
   /// Regular expression for matching the client ID.
   final String? appIdClientRegex;
-
   /// AWS region where the user pool is located.
   final String awsRegion;
-
   /// ID of the Cognito user pool.
   final String userPoolId;
 
@@ -28,15 +27,12 @@ class ApiEventConfigAuthProviderCognitoConfig {
     };
   }
 
-  factory ApiEventConfigAuthProviderCognitoConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiEventConfigAuthProviderCognitoConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderCognitoConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null
-          ? null
-          : map['appIdClientRegex'] as String,
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : map['appIdClientRegex'] as String,
       awsRegion: map['awsRegion'] as String,
       userPoolId: map['userPoolId'] as String,
     );
   }
 }
+

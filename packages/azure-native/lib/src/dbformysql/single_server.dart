@@ -1,0 +1,861 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resource_identity_response.dart';
+import 'server_private_endpoint_connection_response.dart';
+import 'single_server_args.dart';
+import 'sku_response.dart';
+import 'storage_profile_response.dart';
+
+/// Represents a server.
+///
+/// Uses Azure REST API version 2017-12-01.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Create a database as a point in time restore
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var singleServer = new AzureNative.DBforMySQL.SingleServer("singleServer", new()
+///     {
+///         Location = "brazilsouth",
+///         Properties = new AzureNative.DBforMySQL.Inputs.ServerPropertiesForRestoreArgs
+///         {
+///             CreateMode = "PointInTimeRestore",
+///             RestorePointInTime = "2017-12-14T00:00:37.467Z",
+///             SourceServerId = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///         },
+///         ResourceGroupName = "TargetResourceGroup",
+///         ServerName = "targetserver",
+///         Sku = new AzureNative.DBforMySQL.Inputs.SkuArgs
+///         {
+///             Capacity = 2,
+///             Family = "Gen5",
+///             Name = "GP_Gen5_2",
+///             Tier = AzureNative.DBforMySQL.SingleServerSkuTier.GeneralPurpose,
+///         },
+///         Tags =
+///         {
+///             { "ElasticServer", "1" },
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	dbformysql "github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dbformysql.NewSingleServer(ctx, "singleServer", &dbformysql.SingleServerArgs{
+/// 			Location: pulumi.String("brazilsouth"),
+/// 			Properties: &dbformysql.ServerPropertiesForRestoreArgs{
+/// 				CreateMode:         pulumi.String("PointInTimeRestore"),
+/// 				RestorePointInTime: pulumi.String("2017-12-14T00:00:37.467Z"),
+/// 				SourceServerId:     pulumi.String("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("TargetResourceGroup"),
+/// 			ServerName:        pulumi.String("targetserver"),
+/// 			Sku: &dbformysql.SkuArgs{
+/// 				Capacity: pulumi.Int(2),
+/// 				Family:   pulumi.String("Gen5"),
+/// 				Name:     pulumi.String("GP_Gen5_2"),
+/// 				Tier:     pulumi.String(dbformysql.SingleServerSkuTierGeneralPurpose),
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"ElasticServer": pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.dbformysql.SingleServer;
+/// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
+///             .location("brazilsouth")
+///             .properties(ServerPropertiesForRestoreArgs.builder()
+///                 .createMode("PointInTimeRestore")
+///                 .restorePointInTime("2017-12-14T00:00:37.467Z")
+///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver")
+///                 .build())
+///             .resourceGroupName("TargetResourceGroup")
+///             .serverName("targetserver")
+///             .sku(SkuArgs.builder()
+///                 .capacity(2)
+///                 .family("Gen5")
+///                 .name("GP_Gen5_2")
+///                 .tier("GeneralPurpose")
+///                 .build())
+///             .tags(Map.of("ElasticServer", "1"))
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const singleServer = new azure_native.dbformysql.SingleServer("singleServer", {
+///     location: "brazilsouth",
+///     properties: {
+///         createMode: "PointInTimeRestore",
+///         restorePointInTime: "2017-12-14T00:00:37.467Z",
+///         sourceServerId: "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///     },
+///     resourceGroupName: "TargetResourceGroup",
+///     serverName: "targetserver",
+///     sku: {
+///         capacity: 2,
+///         family: "Gen5",
+///         name: "GP_Gen5_2",
+///         tier: azure_native.dbformysql.SingleServerSkuTier.GeneralPurpose,
+///     },
+///     tags: {
+///         ElasticServer: "1",
+///     },
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// single_server = azure_native.dbformysql.SingleServer("singleServer",
+///     location="brazilsouth",
+///     properties={
+///         "create_mode": "PointInTimeRestore",
+///         "restore_point_in_time": "2017-12-14T00:00:37.467Z",
+///         "source_server_id": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///     },
+///     resource_group_name="TargetResourceGroup",
+///     server_name="targetserver",
+///     sku={
+///         "capacity": 2,
+///         "family": "Gen5",
+///         "name": "GP_Gen5_2",
+///         "tier": azure_native.dbformysql.SingleServerSkuTier.GENERAL_PURPOSE,
+///     },
+///     tags={
+///         "ElasticServer": "1",
+///     })
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   singleServer:
+///     type: azure-native:dbformysql:SingleServer
+///     properties:
+///       location: brazilsouth
+///       properties:
+///         createMode: PointInTimeRestore
+///         restorePointInTime: 2017-12-14T00:00:37.467Z
+///         sourceServerId: /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver
+///       resourceGroupName: TargetResourceGroup
+///       serverName: targetserver
+///       sku:
+///         capacity: 2
+///         family: Gen5
+///         name: GP_Gen5_2
+///         tier: GeneralPurpose
+///       tags:
+///         ElasticServer: '1'
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### Create a new server
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var singleServer = new AzureNative.DBforMySQL.SingleServer("singleServer", new()
+///     {
+///         Location = "westus",
+///         Properties = new AzureNative.DBforMySQL.Inputs.ServerPropertiesForDefaultCreateArgs
+///         {
+///             AdministratorLogin = "cloudsa",
+///             AdministratorLoginPassword = "<administratorLoginPassword>",
+///             CreateMode = "Default",
+///             SslEnforcement = AzureNative.DBforMySQL.SslEnforcementEnum.Enabled,
+///             StorageProfile = new AzureNative.DBforMySQL.Inputs.StorageProfileArgs
+///             {
+///                 BackupRetentionDays = 7,
+///                 GeoRedundantBackup = AzureNative.DBforMySQL.GeoRedundantBackup.Enabled,
+///                 StorageMB = 128000,
+///             },
+///         },
+///         ResourceGroupName = "testrg",
+///         ServerName = "mysqltestsvc4",
+///         Sku = new AzureNative.DBforMySQL.Inputs.SkuArgs
+///         {
+///             Capacity = 2,
+///             Family = "Gen5",
+///             Name = "GP_Gen5_2",
+///             Tier = AzureNative.DBforMySQL.SingleServerSkuTier.GeneralPurpose,
+///         },
+///         Tags =
+///         {
+///             { "ElasticServer", "1" },
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	dbformysql "github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dbformysql.NewSingleServer(ctx, "singleServer", &dbformysql.SingleServerArgs{
+/// 			Location: pulumi.String("westus"),
+/// 			Properties: &dbformysql.ServerPropertiesForDefaultCreateArgs{
+/// 				AdministratorLogin:         pulumi.String("cloudsa"),
+/// 				AdministratorLoginPassword: pulumi.String("<administratorLoginPassword>"),
+/// 				CreateMode:                 pulumi.String("Default"),
+/// 				SslEnforcement:             dbformysql.SslEnforcementEnumEnabled,
+/// 				StorageProfile: &dbformysql.StorageProfileArgs{
+/// 					BackupRetentionDays: pulumi.Int(7),
+/// 					GeoRedundantBackup:  pulumi.String(dbformysql.GeoRedundantBackupEnabled),
+/// 					StorageMB:           pulumi.Int(128000),
+/// 				},
+/// 			},
+/// 			ResourceGroupName: pulumi.String("testrg"),
+/// 			ServerName:        pulumi.String("mysqltestsvc4"),
+/// 			Sku: &dbformysql.SkuArgs{
+/// 				Capacity: pulumi.Int(2),
+/// 				Family:   pulumi.String("Gen5"),
+/// 				Name:     pulumi.String("GP_Gen5_2"),
+/// 				Tier:     pulumi.String(dbformysql.SingleServerSkuTierGeneralPurpose),
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"ElasticServer": pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.dbformysql.SingleServer;
+/// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
+///             .location("westus")
+///             .properties(ServerPropertiesForDefaultCreateArgs.builder()
+///                 .administratorLogin("cloudsa")
+///                 .administratorLoginPassword("<administratorLoginPassword>")
+///                 .createMode("Default")
+///                 .sslEnforcement("Enabled")
+///                 .storageProfile(StorageProfileArgs.builder()
+///                     .backupRetentionDays(7)
+///                     .geoRedundantBackup("Enabled")
+///                     .storageMB(128000)
+///                     .build())
+///                 .build())
+///             .resourceGroupName("testrg")
+///             .serverName("mysqltestsvc4")
+///             .sku(SkuArgs.builder()
+///                 .capacity(2)
+///                 .family("Gen5")
+///                 .name("GP_Gen5_2")
+///                 .tier("GeneralPurpose")
+///                 .build())
+///             .tags(Map.of("ElasticServer", "1"))
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const singleServer = new azure_native.dbformysql.SingleServer("singleServer", {
+///     location: "westus",
+///     properties: {
+///         administratorLogin: "cloudsa",
+///         administratorLoginPassword: "<administratorLoginPassword>",
+///         createMode: "Default",
+///         sslEnforcement: azure_native.dbformysql.SslEnforcementEnum.Enabled,
+///         storageProfile: {
+///             backupRetentionDays: 7,
+///             geoRedundantBackup: azure_native.dbformysql.GeoRedundantBackup.Enabled,
+///             storageMB: 128000,
+///         },
+///     },
+///     resourceGroupName: "testrg",
+///     serverName: "mysqltestsvc4",
+///     sku: {
+///         capacity: 2,
+///         family: "Gen5",
+///         name: "GP_Gen5_2",
+///         tier: azure_native.dbformysql.SingleServerSkuTier.GeneralPurpose,
+///     },
+///     tags: {
+///         ElasticServer: "1",
+///     },
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// single_server = azure_native.dbformysql.SingleServer("singleServer",
+///     location="westus",
+///     properties={
+///         "administrator_login": "cloudsa",
+///         "administrator_login_password": "<administratorLoginPassword>",
+///         "create_mode": "Default",
+///         "ssl_enforcement": azure_native.dbformysql.SslEnforcementEnum.ENABLED,
+///         "storage_profile": {
+///             "backup_retention_days": 7,
+///             "geo_redundant_backup": azure_native.dbformysql.GeoRedundantBackup.ENABLED,
+///             "storage_mb": 128000,
+///         },
+///     },
+///     resource_group_name="testrg",
+///     server_name="mysqltestsvc4",
+///     sku={
+///         "capacity": 2,
+///         "family": "Gen5",
+///         "name": "GP_Gen5_2",
+///         "tier": azure_native.dbformysql.SingleServerSkuTier.GENERAL_PURPOSE,
+///     },
+///     tags={
+///         "ElasticServer": "1",
+///     })
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   singleServer:
+///     type: azure-native:dbformysql:SingleServer
+///     properties:
+///       location: westus
+///       properties:
+///         administratorLogin: cloudsa
+///         administratorLoginPassword: <administratorLoginPassword>
+///         createMode: Default
+///         sslEnforcement: Enabled
+///         storageProfile:
+///           backupRetentionDays: 7
+///           geoRedundantBackup: Enabled
+///           storageMB: 128000
+///       resourceGroupName: testrg
+///       serverName: mysqltestsvc4
+///       sku:
+///         capacity: 2
+///         family: Gen5
+///         name: GP_Gen5_2
+///         tier: GeneralPurpose
+///       tags:
+///         ElasticServer: '1'
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### Create a replica server
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var singleServer = new AzureNative.DBforMySQL.SingleServer("singleServer", new()
+///     {
+///         Location = "westus",
+///         Properties = new AzureNative.DBforMySQL.Inputs.ServerPropertiesForReplicaArgs
+///         {
+///             CreateMode = "Replica",
+///             SourceServerId = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver",
+///         },
+///         ResourceGroupName = "TargetResourceGroup",
+///         ServerName = "targetserver",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	dbformysql "github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dbformysql.NewSingleServer(ctx, "singleServer", &dbformysql.SingleServerArgs{
+/// 			Location: pulumi.String("westus"),
+/// 			Properties: &dbformysql.ServerPropertiesForReplicaArgs{
+/// 				CreateMode:     pulumi.String("Replica"),
+/// 				SourceServerId: pulumi.String("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver"),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("TargetResourceGroup"),
+/// 			ServerName:        pulumi.String("targetserver"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.dbformysql.SingleServer;
+/// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
+///             .location("westus")
+///             .properties(ServerPropertiesForReplicaArgs.builder()
+///                 .createMode("Replica")
+///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver")
+///                 .build())
+///             .resourceGroupName("TargetResourceGroup")
+///             .serverName("targetserver")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const singleServer = new azure_native.dbformysql.SingleServer("singleServer", {
+///     location: "westus",
+///     properties: {
+///         createMode: "Replica",
+///         sourceServerId: "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver",
+///     },
+///     resourceGroupName: "TargetResourceGroup",
+///     serverName: "targetserver",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// single_server = azure_native.dbformysql.SingleServer("singleServer",
+///     location="westus",
+///     properties={
+///         "create_mode": "Replica",
+///         "source_server_id": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver",
+///     },
+///     resource_group_name="TargetResourceGroup",
+///     server_name="targetserver")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   singleServer:
+///     type: azure-native:dbformysql:SingleServer
+///     properties:
+///       location: westus
+///       properties:
+///         createMode: Replica
+///         sourceServerId: /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver
+///       resourceGroupName: TargetResourceGroup
+///       serverName: targetserver
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### Create a server as a geo restore
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var singleServer = new AzureNative.DBforMySQL.SingleServer("singleServer", new()
+///     {
+///         Location = "westus",
+///         Properties = new AzureNative.DBforMySQL.Inputs.ServerPropertiesForGeoRestoreArgs
+///         {
+///             CreateMode = "GeoRestore",
+///             SourceServerId = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///         },
+///         ResourceGroupName = "TargetResourceGroup",
+///         ServerName = "targetserver",
+///         Sku = new AzureNative.DBforMySQL.Inputs.SkuArgs
+///         {
+///             Capacity = 2,
+///             Family = "Gen5",
+///             Name = "GP_Gen5_2",
+///             Tier = AzureNative.DBforMySQL.SingleServerSkuTier.GeneralPurpose,
+///         },
+///         Tags =
+///         {
+///             { "ElasticServer", "1" },
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	dbformysql "github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dbformysql.NewSingleServer(ctx, "singleServer", &dbformysql.SingleServerArgs{
+/// 			Location: pulumi.String("westus"),
+/// 			Properties: &dbformysql.ServerPropertiesForGeoRestoreArgs{
+/// 				CreateMode:     pulumi.String("GeoRestore"),
+/// 				SourceServerId: pulumi.String("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("TargetResourceGroup"),
+/// 			ServerName:        pulumi.String("targetserver"),
+/// 			Sku: &dbformysql.SkuArgs{
+/// 				Capacity: pulumi.Int(2),
+/// 				Family:   pulumi.String("Gen5"),
+/// 				Name:     pulumi.String("GP_Gen5_2"),
+/// 				Tier:     pulumi.String(dbformysql.SingleServerSkuTierGeneralPurpose),
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"ElasticServer": pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.dbformysql.SingleServer;
+/// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
+///             .location("westus")
+///             .properties(ServerPropertiesForGeoRestoreArgs.builder()
+///                 .createMode("GeoRestore")
+///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver")
+///                 .build())
+///             .resourceGroupName("TargetResourceGroup")
+///             .serverName("targetserver")
+///             .sku(SkuArgs.builder()
+///                 .capacity(2)
+///                 .family("Gen5")
+///                 .name("GP_Gen5_2")
+///                 .tier("GeneralPurpose")
+///                 .build())
+///             .tags(Map.of("ElasticServer", "1"))
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const singleServer = new azure_native.dbformysql.SingleServer("singleServer", {
+///     location: "westus",
+///     properties: {
+///         createMode: "GeoRestore",
+///         sourceServerId: "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///     },
+///     resourceGroupName: "TargetResourceGroup",
+///     serverName: "targetserver",
+///     sku: {
+///         capacity: 2,
+///         family: "Gen5",
+///         name: "GP_Gen5_2",
+///         tier: azure_native.dbformysql.SingleServerSkuTier.GeneralPurpose,
+///     },
+///     tags: {
+///         ElasticServer: "1",
+///     },
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// single_server = azure_native.dbformysql.SingleServer("singleServer",
+///     location="westus",
+///     properties={
+///         "create_mode": "GeoRestore",
+///         "source_server_id": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver",
+///     },
+///     resource_group_name="TargetResourceGroup",
+///     server_name="targetserver",
+///     sku={
+///         "capacity": 2,
+///         "family": "Gen5",
+///         "name": "GP_Gen5_2",
+///         "tier": azure_native.dbformysql.SingleServerSkuTier.GENERAL_PURPOSE,
+///     },
+///     tags={
+///         "ElasticServer": "1",
+///     })
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   singleServer:
+///     type: azure-native:dbformysql:SingleServer
+///     properties:
+///       location: westus
+///       properties:
+///         createMode: GeoRestore
+///         sourceServerId: /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver
+///       resourceGroupName: TargetResourceGroup
+///       serverName: targetserver
+///       sku:
+///         capacity: 2
+///         family: Gen5
+///         name: GP_Gen5_2
+///         tier: GeneralPurpose
+///       tags:
+///         ElasticServer: '1'
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:dbformysql:SingleServer targetserver /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}
+/// ```
+class SingleServer extends pulumi.CustomResource {
+  /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+  late final pulumi.Output<String?> administratorLogin;
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Status showing whether the server data encryption is enabled with customer-managed keys.
+  late final pulumi.Output<String> byokEnforcement;
+  /// Earliest restore point creation time (ISO8601 format)
+  late final pulumi.Output<String?> earliestRestoreDate;
+  /// The fully qualified domain name of a server.
+  late final pulumi.Output<String?> fullyQualifiedDomainName;
+  /// The Azure Active Directory identity of the server.
+  late final pulumi.Output<ResourceIdentityResponse?> identity;
+  /// Status showing whether the server enabled infrastructure encryption.
+  late final pulumi.Output<String?> infrastructureEncryption;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The master server id of a replica server.
+  late final pulumi.Output<String?> masterServerId;
+  /// Enforce a minimal Tls version for the server.
+  late final pulumi.Output<String?> minimalTlsVersion;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// List of private endpoint connections on a server
+  late final pulumi.Output<List<ServerPrivateEndpointConnectionResponse>> privateEndpointConnections;
+  /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  late final pulumi.Output<String?> publicNetworkAccess;
+  /// The maximum number of replicas that a master server can have.
+  late final pulumi.Output<int?> replicaCapacity;
+  /// The replication role of the server.
+  late final pulumi.Output<String?> replicationRole;
+  /// The SKU (pricing tier) of the server.
+  late final pulumi.Output<SkuResponse?> sku;
+  /// Enable ssl enforcement or not when connect to server.
+  late final pulumi.Output<String?> sslEnforcement;
+  /// Storage profile of a server.
+  late final pulumi.Output<StorageProfileResponse?> storageProfile;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+  /// A state of a server that is visible to user.
+  late final pulumi.Output<String?> userVisibleState;
+  /// Server version.
+  late final pulumi.Output<String?> version;
+
+  /// Creates a new [SingleServer].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [SingleServer]. {@macro pulumi_dbformysql_single_server_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  SingleServer(
+    String name, {
+    SingleServerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:dbformysql:SingleServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.administratorLogin = registerOutput<String?>('administratorLogin');
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.byokEnforcement = registerOutput<String>('byokEnforcement');
+    this.earliestRestoreDate = registerOutput<String?>('earliestRestoreDate');
+    this.fullyQualifiedDomainName = registerOutput<String?>('fullyQualifiedDomainName');
+    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
+    this.infrastructureEncryption = registerOutput<String?>('infrastructureEncryption');
+    this.location = registerOutput<String>('location');
+    this.masterServerId = registerOutput<String?>('masterServerId');
+    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    this.name = registerOutput<String>('name');
+    this.privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections');
+    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    this.replicaCapacity = registerOutput<int?>('replicaCapacity');
+    this.replicationRole = registerOutput<String?>('replicationRole');
+    this.sku = registerOutput<SkuResponse?>('sku');
+    this.sslEnforcement = registerOutput<String?>('sslEnforcement');
+    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+    this.userVisibleState = registerOutput<String?>('userVisibleState');
+    this.version = registerOutput<String?>('version');
+  }
+}

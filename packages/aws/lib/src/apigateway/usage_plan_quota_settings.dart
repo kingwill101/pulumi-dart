@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UsagePlanQuotaSettings {
   /// Maximum number of requests that can be made in a given time period.
   final int limit;
-
   /// Number of requests subtracted from the given limit in the initial time period.
   final int? offset;
-
   /// Time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
   final String period;
 
@@ -36,3 +35,4 @@ class UsagePlanQuotaSettings {
     );
   }
 }
+

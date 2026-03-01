@@ -10,27 +10,20 @@ class TriggerBuildAvailableSecrets {
 
   /// Creates a new [TriggerBuildAvailableSecrets].
   /// [secretManagers] Pairs a secret environment variable with a SecretVersion in Secret Manager.
-  TriggerBuildAvailableSecrets({required this.secretManagers});
+  TriggerBuildAvailableSecrets({
+    required this.secretManagers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretManagers':
-          pulumi.Input.encodeList<
-            TriggerBuildAvailableSecretsSecretManager,
-            Map<String, dynamic>
-          >(secretManagers, (value) => value.toMap()),
+      'secretManagers': pulumi.Input.encodeList<TriggerBuildAvailableSecretsSecretManager, Map<String, dynamic>>(secretManagers, (value) => value.toMap()),
     };
   }
 
   factory TriggerBuildAvailableSecrets.fromMap(Map<String, dynamic> map) {
     return TriggerBuildAvailableSecrets(
-      secretManagers:
-          pulumi.Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(
-            map['secretManagers'],
-            (value) => TriggerBuildAvailableSecretsSecretManager.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      secretManagers: pulumi.Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(map['secretManagers'], (value) => TriggerBuildAvailableSecretsSecretManager.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -334,13 +334,10 @@ class VpcServiceControls extends pulumi.CustomResource {
   /// Desired VPC Service Controls state service producer VPC network, as
   /// described at the top of this page.
   late final pulumi.Output<bool> enabled;
-
   /// The network that the consumer is using to connect with services.
   late final pulumi.Output<String> network;
-
   /// The id of the Google Cloud project containing the consumer network.
   late final pulumi.Output<String?> project;
-
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.
@@ -355,11 +352,11 @@ class VpcServiceControls extends pulumi.CustomResource {
     VpcServiceControlsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.enabled = registerOutput<bool>('enabled');
     this.network = registerOutput<String>('network');
     this.project = registerOutput<String?>('project');

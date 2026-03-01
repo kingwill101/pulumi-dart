@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
   final int minutes;
 
@@ -10,14 +11,15 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minutes': minutes};
+    return <String, dynamic>{
+      'minutes': minutes,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime(
       minutes: map['minutes'] as int,
     );
   }
 }
+

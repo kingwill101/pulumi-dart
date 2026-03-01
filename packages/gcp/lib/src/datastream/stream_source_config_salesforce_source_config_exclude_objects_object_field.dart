@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
   /// Field name.
   final String? name;
@@ -11,14 +12,15 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField(
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

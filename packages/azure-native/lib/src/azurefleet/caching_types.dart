@@ -1,0 +1,21 @@
+/// Specifies the caching requirements. Possible values are: **None,**
+/// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+/// storage. ReadOnly for Premium storage.**
+enum CachingTypes {
+  none("None"),
+  readOnly("ReadOnly"),
+  readWrite("ReadWrite");
+
+  const CachingTypes(this.value);
+  final String value;
+
+  static CachingTypes fromValue(String value) {
+    for (final item in CachingTypes.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown CachingTypes value: $value');
+  }
+}
+

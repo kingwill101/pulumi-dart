@@ -10,29 +10,20 @@ class VirtualRouterSpec {
 
   /// Creates a new [VirtualRouterSpec].
   /// [listeners] Listeners that the virtual router is expected to receive inbound traffic from.
-  VirtualRouterSpec({this.listeners});
+  VirtualRouterSpec({
+    this.listeners,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listeners': ?listeners == null
-          ? null
-          : pulumi.Input.encodeList<
-              VirtualRouterSpecListener,
-              Map<String, dynamic>
-            >(listeners!, (value) => value.toMap()),
+      'listeners': ?listeners == null ? null : pulumi.Input.encodeList<VirtualRouterSpecListener, Map<String, dynamic>>(listeners!, (value) => value.toMap()),
     };
   }
 
   factory VirtualRouterSpec.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpec(
-      listeners: map['listeners'] == null
-          ? null
-          : pulumi.Input.decodeList<VirtualRouterSpecListener>(
-              map['listeners'],
-              (value) => VirtualRouterSpecListener.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      listeners: map['listeners'] == null ? null : pulumi.Input.decodeList<VirtualRouterSpecListener>(map['listeners'], (value) => VirtualRouterSpecListener.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

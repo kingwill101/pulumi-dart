@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizeVpcEndpointAccessArgs {
   /// AWS account ID to grant access to.
   final pulumi.Input<String> account;
-
   /// Name of OpenSearch Service domain to provide access to.
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,9 +22,10 @@ class AuthorizeVpcEndpointAccessArgs {
     required String account,
     required String domainName,
     String? region,
-  }) : account = pulumi.Input.asInput<String>(account),
-       domainName = pulumi.Input.asInput<String>(domainName),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      account = pulumi.Input.asInput<String>(account),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,3 +43,4 @@ class AuthorizeVpcEndpointAccessArgs {
     );
   }
 }
+

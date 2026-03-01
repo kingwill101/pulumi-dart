@@ -1,0 +1,75 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../core/node_selector.dart';
+import 'device_resource_k8s_io_v1alpha3.dart';
+import 'resource_pool_resource_k8s_io_v1alpha3.dart';
+
+/// ResourceSliceSpec contains the information published by the driver in one ResourceSlice.
+class ResourceSliceSpecResourceK8sIoV1alpha3 {
+  /// AllNodes indicates that all nodes have access to the resources in the pool.
+  ///
+  /// Exactly one of NodeName, NodeSelector and AllNodes must be set.
+  final bool? allNodes;
+  /// Devices lists some or all of the devices in this pool.
+  ///
+  /// Must not have more than 128 entries.
+  final List<DeviceResourceK8sIoV1alpha3>? devices;
+  /// Driver identifies the DRA driver providing the capacity information. A field selector can be used to list only ResourceSlice objects with a certain driver name.
+  ///
+  /// Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. This field is immutable.
+  final String driver;
+  /// NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.
+  ///
+  /// This field can be used to limit access from nodes to ResourceSlices with the same node name. It also indicates to autoscalers that adding new nodes of the same type as some old node might also make new resources available.
+  ///
+  /// Exactly one of NodeName, NodeSelector and AllNodes must be set. This field is immutable.
+  final String? nodeName;
+  /// NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.
+  ///
+  /// Must use exactly one term.
+  ///
+  /// Exactly one of NodeName, NodeSelector and AllNodes must be set.
+  final NodeSelector? nodeSelector;
+  /// Pool describes the pool that this ResourceSlice belongs to.
+  final ResourcePoolResourceK8sIoV1alpha3 pool;
+
+  /// Creates a new [ResourceSliceSpecResourceK8sIoV1alpha3].
+  /// [allNodes] AllNodes indicates that all nodes have access to the resources in the pool.
+  /// [devices] Devices lists some or all of the devices in this pool.
+  /// [driver] Driver identifies the DRA driver providing the capacity information. A field selector can be used to list only ResourceSlice objects with a certain driver name.
+  /// [nodeName] NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.
+  /// [nodeSelector] NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.
+  /// [pool] Pool describes the pool that this ResourceSlice belongs to.
+  ResourceSliceSpecResourceK8sIoV1alpha3({
+    this.allNodes,
+    this.devices,
+    required this.driver,
+    this.nodeName,
+    this.nodeSelector,
+    required this.pool,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allNodes': ?allNodes,
+      'devices': ?devices == null ? null : pulumi.Input.encodeList<DeviceResourceK8sIoV1alpha3, Map<String, dynamic>>(devices!, (value) => value.toMap()),
+      'driver': driver,
+      'nodeName': ?nodeName,
+      'nodeSelector': ?nodeSelector == null ? null : nodeSelector!.toMap(),
+      'pool': pool.toMap(),
+    };
+  }
+
+  factory ResourceSliceSpecResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
+    return ResourceSliceSpecResourceK8sIoV1alpha3(
+      allNodes: map['allNodes'] == null ? null : map['allNodes'] as bool,
+      devices: map['devices'] == null ? null : pulumi.Input.decodeList<DeviceResourceK8sIoV1alpha3>(map['devices'], (value) => DeviceResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>())),
+      driver: map['driver'] as String,
+      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
+      nodeSelector: map['nodeSelector'] == null ? null : NodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>()),
+      pool: ResourcePoolResourceK8sIoV1alpha3.fromMap((map['pool'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

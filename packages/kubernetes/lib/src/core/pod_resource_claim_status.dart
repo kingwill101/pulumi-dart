@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// PodResourceClaimStatus is stored in the PodStatus for each PodResourceClaim which references a ResourceClaimTemplate. It stores the generated name for the corresponding ResourceClaim.
+class PodResourceClaimStatus {
+  /// Name uniquely identifies this resource claim inside the pod. This must match the name of an entry in pod.spec.resourceClaims, which implies that the string must be a DNS_LABEL.
+  final String name;
+  /// ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod. If this is unset, then generating a ResourceClaim was not necessary. The pod.spec.resourceClaims entry can be ignored in this case.
+  final String? resourceClaimName;
+
+  /// Creates a new [PodResourceClaimStatus].
+  /// [name] Name uniquely identifies this resource claim inside the pod. This must match the name of an entry in pod.spec.resourceClaims, which implies that the string must be a DNS_LABEL.
+  /// [resourceClaimName] ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod. If this is unset, then generating a ResourceClaim was not necessary. The pod.spec.resourceClaims entry can be ignored in this case.
+  PodResourceClaimStatus({
+    required this.name,
+    this.resourceClaimName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'resourceClaimName': ?resourceClaimName,
+    };
+  }
+
+  factory PodResourceClaimStatus.fromMap(Map<String, dynamic> map) {
+    return PodResourceClaimStatus(
+      name: map['name'] as String,
+      resourceClaimName: map['resourceClaimName'] == null ? null : map['resourceClaimName'] as String,
+    );
+  }
+}
+

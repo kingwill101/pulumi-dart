@@ -19,9 +19,10 @@ class GetStoragePoolTypesArgs {
     String? project,
     required String storagePoolType,
     required String zone,
-  }) : project = pulumi.Input.asOptionalInput<String>(project),
-       storagePoolType = pulumi.Input.asInput<String>(storagePoolType),
-       zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      storagePoolType = pulumi.Input.asInput<String>(storagePoolType),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,3 +40,4 @@ class GetStoragePoolTypesArgs {
     );
   }
 }
+

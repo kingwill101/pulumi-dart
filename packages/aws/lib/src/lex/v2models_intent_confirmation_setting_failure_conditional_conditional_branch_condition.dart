@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition {
   /// Expression string that is evaluated.
   final String expressionString;
@@ -11,14 +12,15 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondit
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expressionString': expressionString};
+    return <String, dynamic>{
+      'expressionString': expressionString,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition(
       expressionString: map['expressionString'] as String,
     );
   }
 }
+

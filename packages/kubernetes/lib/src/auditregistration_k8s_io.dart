@@ -1,0 +1,23 @@
+library module_auditregistration_k8s_io;
+
+export 'auditregistration_k8s_io/audit_sink.dart';
+export 'auditregistration_k8s_io/audit_sink_args.dart';
+export 'auditregistration_k8s_io/audit_sink_auditregistration_k8s_io_v1alpha1.dart';
+export 'auditregistration_k8s_io/audit_sink_list.dart';
+export 'auditregistration_k8s_io/audit_sink_list_args.dart';
+export 'auditregistration_k8s_io/audit_sink_list_auditregistration_k8s_io_v1alpha1.dart';
+export 'auditregistration_k8s_io/audit_sink_patch.dart';
+export 'auditregistration_k8s_io/audit_sink_patch_args.dart';
+export 'auditregistration_k8s_io/audit_sink_patch_auditregistration_k8s_io_v1alpha1.dart';
+export 'auditregistration_k8s_io/audit_sink_spec.dart';
+export 'auditregistration_k8s_io/audit_sink_spec_patch.dart';
+export 'auditregistration_k8s_io/policy.dart';
+export 'auditregistration_k8s_io/policy_patch.dart';
+export 'auditregistration_k8s_io/service_reference.dart';
+export 'auditregistration_k8s_io/service_reference_patch.dart';
+export 'auditregistration_k8s_io/webhook.dart';
+export 'auditregistration_k8s_io/webhook_client_config.dart';
+export 'auditregistration_k8s_io/webhook_client_config_patch.dart';
+export 'auditregistration_k8s_io/webhook_patch.dart';
+export 'auditregistration_k8s_io/webhook_throttle_config.dart';
+export 'auditregistration_k8s_io/webhook_throttle_config_patch.dart';

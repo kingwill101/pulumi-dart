@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalysisRuleAnnotatorSelectorSummarizationConfig {
   /// Resource name of the Dialogflow conversation profile.
   /// Format:
   /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
   final String? conversationProfile;
-
   /// Default summarization model to be used.
   /// Possible values:
   /// SUMMARIZATION_MODEL_UNSPECIFIED
@@ -29,16 +29,11 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
     };
   }
 
-  factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorSummarizationConfig(
-      conversationProfile: map['conversationProfile'] == null
-          ? null
-          : map['conversationProfile'] as String,
-      summarizationModel: map['summarizationModel'] == null
-          ? null
-          : map['summarizationModel'] as String,
+      conversationProfile: map['conversationProfile'] == null ? null : map['conversationProfile'] as String,
+      summarizationModel: map['summarizationModel'] == null ? null : map['summarizationModel'] as String,
     );
   }
 }
+

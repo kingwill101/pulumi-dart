@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogGroupsArgs {
   /// Group prefix of the Cloudwatch log groups to list
   final pulumi.Input<String>? logGroupNamePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetLogGroupsArgs].
   /// [logGroupNamePrefix] Group prefix of the Cloudwatch log groups to list
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLogGroupsArgs({String? logGroupNamePrefix, String? region})
-    : logGroupNamePrefix = pulumi.Input.asOptionalInput<String>(
-        logGroupNamePrefix,
-      ),
+  GetLogGroupsArgs({
+    String? logGroupNamePrefix,
+    String? region,
+  }) :
+      logGroupNamePrefix = pulumi.Input.asOptionalInput<String>(logGroupNamePrefix),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
@@ -31,10 +31,9 @@ class GetLogGroupsArgs {
 
   factory GetLogGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogGroupsArgs(
-      logGroupNamePrefix: map['logGroupNamePrefix'] == null
-          ? null
-          : map['logGroupNamePrefix'] as String,
+      logGroupNamePrefix: map['logGroupNamePrefix'] == null ? null : map['logGroupNamePrefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterconnectGroupIntent {
   /// The reliability the user intends this group to be capable of, in terms
   /// of the Interconnect product SLAs.
@@ -8,17 +9,20 @@ class InterconnectGroupIntent {
 
   /// Creates a new [InterconnectGroupIntent].
   /// [topologyCapability] The reliability the user intends this group to be capable of, in terms
-  InterconnectGroupIntent({this.topologyCapability});
+  InterconnectGroupIntent({
+    this.topologyCapability,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topologyCapability': ?topologyCapability};
+    return <String, dynamic>{
+      'topologyCapability': ?topologyCapability,
+    };
   }
 
   factory InterconnectGroupIntent.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupIntent(
-      topologyCapability: map['topologyCapability'] == null
-          ? null
-          : map['topologyCapability'] as String,
+      topologyCapability: map['topologyCapability'] == null ? null : map['topologyCapability'] as String,
     );
   }
 }
+

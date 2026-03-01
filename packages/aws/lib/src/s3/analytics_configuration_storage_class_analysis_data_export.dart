@@ -4,9 +4,7 @@ import 'analytics_configuration_storage_class_analysis_data_export_destination.d
 
 class AnalyticsConfigurationStorageClassAnalysisDataExport {
   /// Specifies the destination for the exported analytics data (documented below).
-  final AnalyticsConfigurationStorageClassAnalysisDataExportDestination
-  destination;
-
+  final AnalyticsConfigurationStorageClassAnalysisDataExportDestination destination;
   /// Schema version of exported analytics data. Allowed values: `V_1`. Default value: `V_1`.
   final String? outputSchemaVersion;
 
@@ -25,17 +23,11 @@ class AnalyticsConfigurationStorageClassAnalysisDataExport {
     };
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExport(
-      destination:
-          AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap(
-            (map['destination'] as Map).cast<String, dynamic>(),
-          ),
-      outputSchemaVersion: map['outputSchemaVersion'] == null
-          ? null
-          : map['outputSchemaVersion'] as String,
+      destination: AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : map['outputSchemaVersion'] as String,
     );
   }
 }
+

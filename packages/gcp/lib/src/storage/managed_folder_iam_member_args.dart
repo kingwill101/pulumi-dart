@@ -10,14 +10,11 @@ import 'managed_folder_iam_member_condition.dart';
 class ManagedFolderIamMemberArgs {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> bucket;
-
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<ManagedFolderIamMemberCondition>? condition;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> managedFolder;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -30,7 +27,6 @@ class ManagedFolderIamMemberArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   final pulumi.Input<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -48,21 +44,17 @@ class ManagedFolderIamMemberArgs {
     required String managedFolder,
     required String member,
     required String role,
-  }) : bucket = pulumi.Input.asInput<String>(bucket),
-       condition = pulumi
-           .Input.asOptionalInput<ManagedFolderIamMemberCondition>(condition),
-       managedFolder = pulumi.Input.asInput<String>(managedFolder),
-       member = pulumi.Input.asInput<String>(member),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      condition = pulumi.Input.asOptionalInput<ManagedFolderIamMemberCondition>(condition),
+      managedFolder = pulumi.Input.asInput<String>(managedFolder),
+      member = pulumi.Input.asInput<String>(member),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedFolderIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<ManagedFolderIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'managedFolder': managedFolder,
       'member': member,
       'role': role,
@@ -72,14 +64,11 @@ class ManagedFolderIamMemberArgs {
   factory ManagedFolderIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamMemberArgs(
       bucket: map['bucket'] as String,
-      condition: map['condition'] == null
-          ? null
-          : ManagedFolderIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>(),
-            ),
+      condition: map['condition'] == null ? null : ManagedFolderIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       managedFolder: map['managedFolder'] as String,
       member: map['member'] as String,
       role: map['role'] as String,
     );
   }
 }
+

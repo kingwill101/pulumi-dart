@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LbCertificateDomainValidationRecord {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
   final String? domainName;
@@ -28,22 +29,13 @@ class LbCertificateDomainValidationRecord {
     };
   }
 
-  factory LbCertificateDomainValidationRecord.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LbCertificateDomainValidationRecord.fromMap(Map<String, dynamic> map) {
     return LbCertificateDomainValidationRecord(
-      domainName: map['domainName'] == null
-          ? null
-          : map['domainName'] as String,
-      resourceRecordName: map['resourceRecordName'] == null
-          ? null
-          : map['resourceRecordName'] as String,
-      resourceRecordType: map['resourceRecordType'] == null
-          ? null
-          : map['resourceRecordType'] as String,
-      resourceRecordValue: map['resourceRecordValue'] == null
-          ? null
-          : map['resourceRecordValue'] as String,
+      domainName: map['domainName'] == null ? null : map['domainName'] as String,
+      resourceRecordName: map['resourceRecordName'] == null ? null : map['resourceRecordName'] as String,
+      resourceRecordType: map['resourceRecordType'] == null ? null : map['resourceRecordType'] as String,
+      resourceRecordValue: map['resourceRecordValue'] == null ? null : map['resourceRecordValue'] as String,
     );
   }
 }
+

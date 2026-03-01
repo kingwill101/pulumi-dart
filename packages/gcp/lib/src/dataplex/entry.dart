@@ -2212,40 +2212,29 @@ class Entry extends pulumi.CustomResource {
   /// The aspects that are attached to the entry.
   /// Structure is documented below.
   late final pulumi.Output<List<EntryAspect>?> aspects;
-
   /// The time when the Entry was created in Dataplex.
   late final pulumi.Output<String> createTime;
-
   /// The entry group id of the entry group the entry will be created in.
   late final pulumi.Output<String?> entryGroupId;
-
   /// The entry id of the entry.
   late final pulumi.Output<String?> entryId;
-
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<EntryEntrySource> entrySource;
-
   /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
   late final pulumi.Output<String> entryType;
-
   /// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
   /// The maximum size of the field is 4000 characters.
   late final pulumi.Output<String?> fullyQualifiedName;
-
   /// The location where entry will be created.
   late final pulumi.Output<String?> location;
-
   /// The relative resource name of the entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
   late final pulumi.Output<String> name;
-
   /// The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
   late final pulumi.Output<String?> parentEntry;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The time when the entry was last updated in Dataplex.
   late final pulumi.Output<String> updateTime;
 
@@ -2253,13 +2242,16 @@ class Entry extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Entry]. {@macro pulumi_dataplex_entry_entry_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Entry(String name, {EntryArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:dataplex/entry:Entry',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Entry(
+    String name, {
+    EntryArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:dataplex/entry:Entry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.aspects = registerOutput<List<EntryAspect>?>('aspects');
     this.createTime = registerOutput<String>('createTime');
     this.entryGroupId = registerOutput<String?>('entryGroupId');

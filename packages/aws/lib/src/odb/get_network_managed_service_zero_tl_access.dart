@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkManagedServiceZeroTlAccess {
   final String cidr;
-
   /// The status of the network resource.
   final String status;
 
@@ -15,15 +15,17 @@ class GetNetworkManagedServiceZeroTlAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': cidr, 'status': status};
+    return <String, dynamic>{
+      'cidr': cidr,
+      'status': status,
+    };
   }
 
-  factory GetNetworkManagedServiceZeroTlAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkManagedServiceZeroTlAccess.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceZeroTlAccess(
       cidr: map['cidr'] as String,
       status: map['status'] as String,
     );
   }
 }
+

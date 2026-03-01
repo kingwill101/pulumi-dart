@@ -10,16 +10,13 @@ class RolePolicyArgs {
   /// The name of the role policy.
   /// If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix.
   /// Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// The inline policy document.
   /// This is a JSON formatted string.
   /// For more information about building IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide
   final pulumi.Input<String> policy;
-
   /// The name of the IAM role to attach to the policy.
   final pulumi.Input<String> role;
 
@@ -33,10 +30,11 @@ class RolePolicyArgs {
     String? namePrefix,
     required String policy,
     required String role,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-       policy = pulumi.Input.asInput<String>(policy),
-       role = pulumi.Input.asInput<String>(role);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+      policy = pulumi.Input.asInput<String>(policy),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +48,10 @@ class RolePolicyArgs {
   factory RolePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyArgs(
       name: map['name'] == null ? null : map['name'] as String,
-      namePrefix: map['namePrefix'] == null
-          ? null
-          : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       policy: map['policy'] as String,
       role: map['role'] as String,
     );
   }
 }
+

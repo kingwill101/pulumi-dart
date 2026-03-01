@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings {
   final String? audioRenditionSets;
   final String? nielsenId3Behavior;
@@ -23,19 +24,12 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings(
-      audioRenditionSets: map['audioRenditionSets'] == null
-          ? null
-          : map['audioRenditionSets'] as String,
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null
-          ? null
-          : map['nielsenId3Behavior'] as String,
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null
-          ? null
-          : map['timedMetadataBehavior'] as String,
+      audioRenditionSets: map['audioRenditionSets'] == null ? null : map['audioRenditionSets'] as String,
+      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : map['nielsenId3Behavior'] as String,
+      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : map['timedMetadataBehavior'] as String,
     );
   }
 }
+

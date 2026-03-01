@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of ImageTypeValuesEnumValue
+class ImageTypeValuesEnumValueResponse {
+  /// Property value
+  final String? value;
+
+  /// Creates a new [ImageTypeValuesEnumValueResponse].
+  /// [value] Property value
+  ImageTypeValuesEnumValueResponse({
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'value': ?value,
+    };
+  }
+
+  factory ImageTypeValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
+    return ImageTypeValuesEnumValueResponse(
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

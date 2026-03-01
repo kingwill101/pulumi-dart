@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppTimeZoneSetting {
   /// (Output)
   /// The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
@@ -7,17 +8,20 @@ class AppVersionSnapshotAppTimeZoneSetting {
 
   /// Creates a new [AppVersionSnapshotAppTimeZoneSetting].
   /// [timeZone] (Output)
-  AppVersionSnapshotAppTimeZoneSetting({this.timeZone});
+  AppVersionSnapshotAppTimeZoneSetting({
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'timeZone': ?timeZone};
+    return <String, dynamic>{
+      'timeZone': ?timeZone,
+    };
   }
 
-  factory AppVersionSnapshotAppTimeZoneSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppTimeZoneSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppTimeZoneSetting(
       timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
     );
   }
 }
+

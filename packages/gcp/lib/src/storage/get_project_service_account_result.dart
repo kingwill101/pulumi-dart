@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProjectServiceAccount.
 class GetProjectServiceAccountResult {
   /// The email address of the service account. This value is often used to refer to the service account
   /// in order to grant IAM permissions.
   final String emailAddress;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
   final String member;
   final String project;
@@ -44,9 +43,8 @@ class GetProjectServiceAccountResult {
       id: map['id'] as String,
       member: map['member'] as String,
       project: map['project'] as String,
-      userProject: map['userProject'] == null
-          ? null
-          : map['userProject'] as String,
+      userProject: map['userProject'] == null ? null : map['userProject'] as String,
     );
   }
 }
+

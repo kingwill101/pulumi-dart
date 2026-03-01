@@ -7,12 +7,10 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
   /// A representation of a Datastore kind.
   /// Structure is documented below.
   final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind;
-
   /// Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
   /// is always by project and namespace, however the namespace ID may be empty.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId
-  partitionId;
+  final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptions].
   /// [kind] A representation of a Datastore kind.
@@ -29,18 +27,11 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(
-      kind:
-          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind.fromMap(
-            (map['kind'] as Map).cast<String, dynamic>(),
-          ),
-      partitionId:
-          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(
-            (map['partitionId'] as Map).cast<String, dynamic>(),
-          ),
+      kind: PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind.fromMap((map['kind'] as Map).cast<String, dynamic>()),
+      partitionId: PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap((map['partitionId'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

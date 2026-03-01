@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatabaseEncryptionConfiguration {
   /// Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
   final String encryptionOption;
-
   /// KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
   final String? kmsKey;
 
@@ -29,3 +29,4 @@ class DatabaseEncryptionConfiguration {
     );
   }
 }
+

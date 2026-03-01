@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
   /// The output type of the delegated device info.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
@@ -12,16 +13,15 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputType': ?outputType};
+    return <String, dynamic>{
+      'outputType': ?outputType,
+    };
   }
 
-  factory SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo(
-      outputType: map['outputType'] == null
-          ? null
-          : map['outputType'] as String,
+      outputType: map['outputType'] == null ? null : map['outputType'] as String,
     );
   }
 }
+

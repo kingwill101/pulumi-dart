@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class WorkloadStatusConfigAutomaticRuleRollup {
+  /// The rollup strategy that is applied to a group of entities.
+  final String strategy;
+  /// Type of threshold defined for the rule. This is an optional field that only applies when strategy is WORST_STATUS_WINS. Use a threshold to roll up the worst status only after a certain amount of entities are not operational.
+  final String? thresholdType;
+  /// Threshold value defined for the rule. This optional field is used in combination with thresholdType. If the threshold type is null, the threshold value will be ignored.
+  final int? thresholdValue;
+
+  /// Creates a new [WorkloadStatusConfigAutomaticRuleRollup].
+  /// [strategy] The rollup strategy that is applied to a group of entities.
+  /// [thresholdType] Type of threshold defined for the rule. This is an optional field that only applies when strategy is WORST_STATUS_WINS. Use a threshold to roll up the worst status only after a certain amount of entities are not operational.
+  /// [thresholdValue] Threshold value defined for the rule. This optional field is used in combination with thresholdType. If the threshold type is null, the threshold value will be ignored.
+  WorkloadStatusConfigAutomaticRuleRollup({
+    required this.strategy,
+    this.thresholdType,
+    this.thresholdValue,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'strategy': strategy,
+      'thresholdType': ?thresholdType,
+      'thresholdValue': ?thresholdValue,
+    };
+  }
+
+  factory WorkloadStatusConfigAutomaticRuleRollup.fromMap(Map<String, dynamic> map) {
+    return WorkloadStatusConfigAutomaticRuleRollup(
+      strategy: map['strategy'] as String,
+      thresholdType: map['thresholdType'] == null ? null : map['thresholdType'] as String,
+      thresholdValue: map['thresholdValue'] == null ? null : map['thresholdValue'] as int,
+    );
+  }
+}
+

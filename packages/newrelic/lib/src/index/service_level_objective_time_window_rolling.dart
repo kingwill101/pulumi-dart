@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ServiceLevelObjectiveTimeWindowRolling {
+  /// Valid values are `1`, `7` and `28`.
+  final int count;
+  /// The only supported value is `DAY`.
+  final String unit;
+
+  /// Creates a new [ServiceLevelObjectiveTimeWindowRolling].
+  /// [count] Valid values are `1`, `7` and `28`.
+  /// [unit] The only supported value is `DAY`.
+  ServiceLevelObjectiveTimeWindowRolling({
+    required this.count,
+    required this.unit,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': count,
+      'unit': unit,
+    };
+  }
+
+  factory ServiceLevelObjectiveTimeWindowRolling.fromMap(Map<String, dynamic> map) {
+    return ServiceLevelObjectiveTimeWindowRolling(
+      count: map['count'] as int,
+      unit: map['unit'] as String,
+    );
+  }
+}
+

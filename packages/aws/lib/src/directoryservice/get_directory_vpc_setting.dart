@@ -1,11 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectoryVpcSetting {
   final List<String> availabilityZones;
-
   /// Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
   final List<String> subnetIds;
-
   /// ID of the VPC that the connector is in.
   final String vpcId;
 
@@ -35,3 +34,4 @@ class GetDirectoryVpcSetting {
     );
   }
 }
+

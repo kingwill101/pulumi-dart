@@ -12,7 +12,6 @@ class GetConnectivityTestRunArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,12 +19,18 @@ class GetConnectivityTestRunArgs {
   /// Creates a new [GetConnectivityTestRunArgs].
   /// [name] Unique name for the connectivity test.
   /// [project] The ID of the project in which the resource belongs.
-  GetConnectivityTestRunArgs({required String name, String? project})
-    : name = pulumi.Input.asInput<String>(name),
+  GetConnectivityTestRunArgs({
+    required String name,
+    String? project,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'project': ?project};
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetConnectivityTestRunArgs.fromMap(Map<String, dynamic> map) {
@@ -35,3 +40,4 @@ class GetConnectivityTestRunArgs {
     );
   }
 }
+

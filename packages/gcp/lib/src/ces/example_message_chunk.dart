@@ -10,22 +10,17 @@ class ExampleMessageChunk {
   /// agent.
   /// Structure is documented below.
   final ExampleMessageChunkAgentTransfer? agentTransfer;
-
   /// Represents an image input or output in the conversation.
   /// Structure is documented below.
   final ExampleMessageChunkImage? image;
-
   /// Text data.
   final String? text;
-
   /// Request for the client or the agent to execute the specified tool.
   /// Structure is documented below.
   final ExampleMessageChunkToolCall? toolCall;
-
   /// The execution result of a specific tool from the client or the agent.
   /// Structure is documented below.
   final ExampleMessageChunkToolResponse? toolResponse;
-
   /// A struct represents variables that were updated in the conversation,
   /// keyed by variable names.
   final String? updatedVariables;
@@ -59,30 +54,13 @@ class ExampleMessageChunk {
 
   factory ExampleMessageChunk.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunk(
-      agentTransfer: map['agentTransfer'] == null
-          ? null
-          : ExampleMessageChunkAgentTransfer.fromMap(
-              (map['agentTransfer'] as Map).cast<String, dynamic>(),
-            ),
-      image: map['image'] == null
-          ? null
-          : ExampleMessageChunkImage.fromMap(
-              (map['image'] as Map).cast<String, dynamic>(),
-            ),
+      agentTransfer: map['agentTransfer'] == null ? null : ExampleMessageChunkAgentTransfer.fromMap((map['agentTransfer'] as Map).cast<String, dynamic>()),
+      image: map['image'] == null ? null : ExampleMessageChunkImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
       text: map['text'] == null ? null : map['text'] as String,
-      toolCall: map['toolCall'] == null
-          ? null
-          : ExampleMessageChunkToolCall.fromMap(
-              (map['toolCall'] as Map).cast<String, dynamic>(),
-            ),
-      toolResponse: map['toolResponse'] == null
-          ? null
-          : ExampleMessageChunkToolResponse.fromMap(
-              (map['toolResponse'] as Map).cast<String, dynamic>(),
-            ),
-      updatedVariables: map['updatedVariables'] == null
-          ? null
-          : map['updatedVariables'] as String,
+      toolCall: map['toolCall'] == null ? null : ExampleMessageChunkToolCall.fromMap((map['toolCall'] as Map).cast<String, dynamic>()),
+      toolResponse: map['toolResponse'] == null ? null : ExampleMessageChunkToolResponse.fromMap((map['toolResponse'] as Map).cast<String, dynamic>()),
+      updatedVariables: map['updatedVariables'] == null ? null : map['updatedVariables'] as String,
     );
   }
 }
+

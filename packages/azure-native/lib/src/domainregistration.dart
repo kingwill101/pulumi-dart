@@ -1,0 +1,22 @@
+library module_domainregistration;
+
+export 'domainregistration/address.dart';
+export 'domainregistration/contact.dart';
+export 'domainregistration/dns_type.dart';
+export 'domainregistration/domain.dart';
+export 'domainregistration/domain_args.dart';
+export 'domainregistration/domain_ownership_identifier.dart';
+export 'domainregistration/domain_ownership_identifier_args.dart';
+export 'domainregistration/domain_purchase_consent.dart';
+export 'domainregistration/functions.dart';
+export 'domainregistration/get_domain_args.dart';
+export 'domainregistration/get_domain_ownership_identifier_args.dart';
+export 'domainregistration/get_domain_ownership_identifier_result.dart';
+export 'domainregistration/get_domain_result.dart';
+export 'domainregistration/host_name_response.dart';
+export 'domainregistration/list_domain_recommendations_args.dart';
+export 'domainregistration/list_domain_recommendations_result.dart';
+export 'domainregistration/list_top_level_domain_agreements_args.dart';
+export 'domainregistration/list_top_level_domain_agreements_result.dart';
+export 'domainregistration/name_identifier_response.dart';
+export 'domainregistration/tld_legal_agreement_response.dart';

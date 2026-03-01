@@ -6,12 +6,8 @@ import 'v2models_intent_initial_response_setting_conditional_conditional_branch_
 class V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent {
   /// Name of the intent.
   final String? name;
-
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final List<
-    V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot
-  >?
-  slots;
+  final List<V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot>? slots;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent].
   /// [name] Name of the intent.
@@ -24,31 +20,15 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIn
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'slots': ?slots == null
-          ? null
-          : pulumi.Input.encodeList<
-              V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot,
-              Map<String, dynamic>
-            >(slots!, (value) => value.toMap()),
+      'slots': ?slots == null ? null : pulumi.Input.encodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot, Map<String, dynamic>>(slots!, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent(
       name: map['name'] == null ? null : map['name'] as String,
-      slots: map['slots'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot
-            >(
-              map['slots'],
-              (value) =>
-                  V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      slots: map['slots'] == null ? null : pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

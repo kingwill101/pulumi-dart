@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNatGatewayRegionalNatGatewayAddress {
   /// Allocation ID of the Elastic IP address.
   final String allocationId;
-
   /// Association ID of the Elastic IP address.
   final String associationId;
-
   /// Availability Zone where this specific NAT gateway configuration is active.
   final String availabilityZone;
-
   /// Availability Zone ID where this specific NAT gateway configuration is active
   final String availabilityZoneId;
-
   /// ID of the network interface.
   final String networkInterfaceId;
-
   /// Public IP address.
   final String publicIp;
-
   /// Status of the NAT gateway address.
   final String status;
 
@@ -52,9 +47,7 @@ class GetNatGatewayRegionalNatGatewayAddress {
     };
   }
 
-  factory GetNatGatewayRegionalNatGatewayAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNatGatewayRegionalNatGatewayAddress.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayRegionalNatGatewayAddress(
       allocationId: map['allocationId'] as String,
       associationId: map['associationId'] as String,
@@ -66,3 +59,4 @@ class GetNatGatewayRegionalNatGatewayAddress {
     );
   }
 }
+

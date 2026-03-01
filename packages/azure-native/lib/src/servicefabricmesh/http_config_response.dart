@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'http_host_config_response.dart';
+
+/// Describes the http configuration for external connectivity for this network.
+class HttpConfigResponse {
+  /// description for routing.
+  final List<HttpHostConfigResponse> hosts;
+  /// http gateway config name.
+  final String name;
+  /// Specifies the port at which the service endpoint below needs to be exposed.
+  final int port;
+
+  /// Creates a new [HttpConfigResponse].
+  /// [hosts] description for routing.
+  /// [name] http gateway config name.
+  /// [port] Specifies the port at which the service endpoint below needs to be exposed.
+  HttpConfigResponse({
+    required this.hosts,
+    required this.name,
+    required this.port,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'hosts': pulumi.Input.encodeList<HttpHostConfigResponse, Map<String, dynamic>>(hosts, (value) => value.toMap()),
+      'name': name,
+      'port': port,
+    };
+  }
+
+  factory HttpConfigResponse.fromMap(Map<String, dynamic> map) {
+    return HttpConfigResponse(
+      hosts: pulumi.Input.decodeList<HttpHostConfigResponse>(map['hosts'], (value) => HttpHostConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] as String,
+      port: map['port'] as int,
+    );
+  }
+}
+

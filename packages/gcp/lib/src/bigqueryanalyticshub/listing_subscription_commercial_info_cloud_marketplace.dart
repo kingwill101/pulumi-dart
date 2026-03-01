@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListingSubscriptionCommercialInfoCloudMarketplace {
   /// (Output)
   /// Resource name of the Marketplace Order.
@@ -7,17 +8,20 @@ class ListingSubscriptionCommercialInfoCloudMarketplace {
 
   /// Creates a new [ListingSubscriptionCommercialInfoCloudMarketplace].
   /// [order] (Output)
-  ListingSubscriptionCommercialInfoCloudMarketplace({this.order});
+  ListingSubscriptionCommercialInfoCloudMarketplace({
+    this.order,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'order': ?order};
+    return <String, dynamic>{
+      'order': ?order,
+    };
   }
 
-  factory ListingSubscriptionCommercialInfoCloudMarketplace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListingSubscriptionCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionCommercialInfoCloudMarketplace(
       order: map['order'] == null ? null : map['order'] as String,
     );
   }
 }
+

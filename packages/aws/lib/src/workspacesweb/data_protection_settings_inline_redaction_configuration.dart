@@ -6,18 +6,12 @@ import 'data_protection_settings_inline_redaction_configuration_inline_redaction
 class DataProtectionSettingsInlineRedactionConfiguration {
   /// The global confidence level for the inline redaction configuration. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
   final int? globalConfidenceLevel;
-
   /// The global enforced URL configuration for the inline redaction configuration.
   final List<String>? globalEnforcedUrls;
-
   /// The global exempt URL configuration for the inline redaction configuration.
   final List<String>? globalExemptUrls;
-
   /// The inline redaction patterns to be enabled for the inline redaction configuration. Detailed below.
-  final List<
-    DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern
-  >
-  inlineRedactionPatterns;
+  final List<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern> inlineRedactionPatterns;
 
   /// Creates a new [DataProtectionSettingsInlineRedactionConfiguration].
   /// [globalConfidenceLevel] The global confidence level for the inline redaction configuration. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
@@ -36,37 +30,17 @@ class DataProtectionSettingsInlineRedactionConfiguration {
       'globalConfidenceLevel': ?globalConfidenceLevel,
       'globalEnforcedUrls': ?globalEnforcedUrls,
       'globalExemptUrls': ?globalExemptUrls,
-      'inlineRedactionPatterns':
-          pulumi.Input.encodeList<
-            DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern,
-            Map<String, dynamic>
-          >(inlineRedactionPatterns, (value) => value.toMap()),
+      'inlineRedactionPatterns': pulumi.Input.encodeList<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern, Map<String, dynamic>>(inlineRedactionPatterns, (value) => value.toMap()),
     };
   }
 
-  factory DataProtectionSettingsInlineRedactionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataProtectionSettingsInlineRedactionConfiguration.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfiguration(
-      globalConfidenceLevel: map['globalConfidenceLevel'] == null
-          ? null
-          : map['globalConfidenceLevel'] as int,
-      globalEnforcedUrls: map['globalEnforcedUrls'] == null
-          ? null
-          : (map['globalEnforcedUrls'] as List).cast<String>(),
-      globalExemptUrls: map['globalExemptUrls'] == null
-          ? null
-          : (map['globalExemptUrls'] as List).cast<String>(),
-      inlineRedactionPatterns:
-          pulumi.Input.decodeList<
-            DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern
-          >(
-            map['inlineRedactionPatterns'],
-            (value) =>
-                DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      globalConfidenceLevel: map['globalConfidenceLevel'] == null ? null : map['globalConfidenceLevel'] as int,
+      globalEnforcedUrls: map['globalEnforcedUrls'] == null ? null : (map['globalEnforcedUrls'] as List).cast<String>(),
+      globalExemptUrls: map['globalExemptUrls'] == null ? null : (map['globalExemptUrls'] as List).cast<String>(),
+      inlineRedactionPatterns: pulumi.Input.decodeList<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern>(map['inlineRedactionPatterns'], (value) => DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

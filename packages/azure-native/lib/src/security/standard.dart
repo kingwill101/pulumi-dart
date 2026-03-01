@@ -1,0 +1,263 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'standard_args.dart';
+import 'standard_component_properties_response.dart';
+import 'system_data_response.dart';
+
+/// Security Standard on a resource
+///
+/// Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### Create a security standard on a specified scope
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var standard = new AzureNative.Security.Standard("standard", new()
+///     {
+///         Category = "SecurityCenter",
+///         Components = new[]
+///         {
+///             new AzureNative.Security.Inputs.StandardComponentPropertiesArgs
+///             {
+///                 Key = "1195afff-c881-495e-9bc5-1486211ae03f",
+///             },
+///             new AzureNative.Security.Inputs.StandardComponentPropertiesArgs
+///             {
+///                 Key = "dbd0cb49-b563-45e7-9724-889e799fa648",
+///             },
+///         },
+///         Description = "description of Azure Test Security Standard 1",
+///         DisplayName = "Azure Test Security Standard 1",
+///         ResourceGroupName = "myResourceGroup",
+///         StandardId = "8bb8be0a-6010-4789-812f-e4d661c4ed0e",
+///         SupportedClouds = new[]
+///         {
+///             AzureNative.Security.StandardSupportedClouds.GCP,
+///         },
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	security "github.com/pulumi/pulumi-azure-native-sdk/security/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := security.NewStandard(ctx, "standard", &security.StandardArgs{
+/// 			Category: pulumi.String("SecurityCenter"),
+/// 			Components: security.StandardComponentPropertiesArray{
+/// 				&security.StandardComponentPropertiesArgs{
+/// 					Key: pulumi.String("1195afff-c881-495e-9bc5-1486211ae03f"),
+/// 				},
+/// 				&security.StandardComponentPropertiesArgs{
+/// 					Key: pulumi.String("dbd0cb49-b563-45e7-9724-889e799fa648"),
+/// 				},
+/// 			},
+/// 			Description:       pulumi.String("description of Azure Test Security Standard 1"),
+/// 			DisplayName:       pulumi.String("Azure Test Security Standard 1"),
+/// 			ResourceGroupName: pulumi.String("myResourceGroup"),
+/// 			StandardId:        pulumi.String("8bb8be0a-6010-4789-812f-e4d661c4ed0e"),
+/// 			SupportedClouds: security.StandardSupportedCloudsArray{
+/// 				security.StandardSupportedCloudsGCP,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.security.Standard;
+/// import com.pulumi.azurenative.security.StandardArgs;
+/// import com.pulumi.azurenative.security.inputs.StandardComponentPropertiesArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var standard = new Standard("standard", StandardArgs.builder()
+///             .category("SecurityCenter")
+///             .components(
+///                 StandardComponentPropertiesArgs.builder()
+///                     .key("1195afff-c881-495e-9bc5-1486211ae03f")
+///                     .build(),
+///                 StandardComponentPropertiesArgs.builder()
+///                     .key("dbd0cb49-b563-45e7-9724-889e799fa648")
+///                     .build())
+///             .description("description of Azure Test Security Standard 1")
+///             .displayName("Azure Test Security Standard 1")
+///             .resourceGroupName("myResourceGroup")
+///             .standardId("8bb8be0a-6010-4789-812f-e4d661c4ed0e")
+///             .supportedClouds("GCP")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const standard = new azure_native.security.Standard("standard", {
+///     category: "SecurityCenter",
+///     components: [
+///         {
+///             key: "1195afff-c881-495e-9bc5-1486211ae03f",
+///         },
+///         {
+///             key: "dbd0cb49-b563-45e7-9724-889e799fa648",
+///         },
+///     ],
+///     description: "description of Azure Test Security Standard 1",
+///     displayName: "Azure Test Security Standard 1",
+///     resourceGroupName: "myResourceGroup",
+///     standardId: "8bb8be0a-6010-4789-812f-e4d661c4ed0e",
+///     supportedClouds: [azure_native.security.StandardSupportedClouds.GCP],
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// standard = azure_native.security.Standard("standard",
+///     category="SecurityCenter",
+///     components=[
+///         {
+///             "key": "1195afff-c881-495e-9bc5-1486211ae03f",
+///         },
+///         {
+///             "key": "dbd0cb49-b563-45e7-9724-889e799fa648",
+///         },
+///     ],
+///     description="description of Azure Test Security Standard 1",
+///     display_name="Azure Test Security Standard 1",
+///     resource_group_name="myResourceGroup",
+///     standard_id="8bb8be0a-6010-4789-812f-e4d661c4ed0e",
+///     supported_clouds=[azure_native.security.StandardSupportedClouds.GCP])
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   standard:
+///     type: azure-native:security:Standard
+///     properties:
+///       category: SecurityCenter
+///       components:
+///         - key: 1195afff-c881-495e-9bc5-1486211ae03f
+///         - key: dbd0cb49-b563-45e7-9724-889e799fa648
+///       description: description of Azure Test Security Standard 1
+///       displayName: Azure Test Security Standard 1
+///       resourceGroupName: myResourceGroup
+///       standardId: 8bb8be0a-6010-4789-812f-e4d661c4ed0e
+///       supportedClouds:
+///         - GCP
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:security:Standard 8bb8be0a-6010-4789-812f-e4d661c4ed0e /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/standards/{standardId}
+/// ```
+class Standard extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// category of the standard provided
+  late final pulumi.Output<String?> category;
+  /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
+  late final pulumi.Output<List<StandardComponentPropertiesResponse>?> components;
+  /// description of the standard
+  late final pulumi.Output<String?> description;
+  /// display name of the standard, equivalent to the standardId
+  late final pulumi.Output<String?> displayName;
+  /// Entity tag is used for comparing two or more entities from the same requested resource.
+  late final pulumi.Output<String?> etag;
+  /// Kind of the resource
+  late final pulumi.Output<String?> kind;
+  /// Location where the resource is stored
+  late final pulumi.Output<String?> location;
+  /// Resource name
+  late final pulumi.Output<String> name;
+  /// standard type (Custom or BuiltIn only currently)
+  late final pulumi.Output<String> standardType;
+  /// List of all standard supported clouds.
+  late final pulumi.Output<List<String>?> supportedClouds;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// A list of key value pairs that describe the resource.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// Resource type
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [Standard].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Standard]. {@macro pulumi_security_standard_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Standard(
+    String name, {
+    StandardArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:security:Standard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.category = registerOutput<String?>('category');
+    this.components = registerOutput<List<StandardComponentPropertiesResponse>?>('components');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.etag = registerOutput<String?>('etag');
+    this.kind = registerOutput<String?>('kind');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.standardType = registerOutput<String>('standardType');
+    this.supportedClouds = registerOutput<List<String>?>('supportedClouds');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

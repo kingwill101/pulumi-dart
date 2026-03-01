@@ -137,29 +137,23 @@ class Catalog extends pulumi.CustomResource {
   /// "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits.
   late final pulumi.Output<String> createTime;
-
   /// Output only. The deletion time of the catalog. Only set after the catalog
   /// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   late final pulumi.Output<String> deleteTime;
-
   /// Output only. The time when this catalog is considered expired. Only set
   /// after the catalog is deleted. Only set after the catalog is deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits.
   late final pulumi.Output<String> expireTime;
-
   /// The geographic location where the Catalog should reside.
   late final pulumi.Output<String> location;
-
   /// The name of the Catalog. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Output only. The last modification time of the catalog. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits.
@@ -174,11 +168,11 @@ class Catalog extends pulumi.CustomResource {
     CatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:biglake/catalog:Catalog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:biglake/catalog:Catalog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.expireTime = registerOutput<String>('expireTime');

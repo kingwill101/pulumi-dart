@@ -24,7 +24,6 @@ class GetDatabaseInstanceResult {
   final String encryptionKeyName;
   final String finalBackupDescription;
   final String firstIpAddress;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceType;
@@ -33,8 +32,7 @@ class GetDatabaseInstanceResult {
   final String masterInstanceName;
   final String name;
   final int nodeCount;
-  final List<GetDatabaseInstancePointInTimeRestoreContext>
-  pointInTimeRestoreContexts;
+  final List<GetDatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
   final String privateIpAddress;
   final String? project;
   final String pscServiceAttachmentLink;
@@ -130,165 +128,80 @@ class GetDatabaseInstanceResult {
     return <String, dynamic>{
       'availableMaintenanceVersions': availableMaintenanceVersions,
       'backupdrBackup': backupdrBackup,
-      'clones':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceClone,
-            Map<String, dynamic>
-          >(clones, (value) => value.toMap()),
+      'clones': pulumi.Input.encodeList<GetDatabaseInstanceClone, Map<String, dynamic>>(clones, (value) => value.toMap()),
       'connectionName': connectionName,
       'databaseVersion': databaseVersion,
       'deletionProtection': deletionProtection,
       'dnsName': dnsName,
-      'dnsNames':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceDnsName,
-            Map<String, dynamic>
-          >(dnsNames, (value) => value.toMap()),
+      'dnsNames': pulumi.Input.encodeList<GetDatabaseInstanceDnsName, Map<String, dynamic>>(dnsNames, (value) => value.toMap()),
       'encryptionKeyName': encryptionKeyName,
       'finalBackupDescription': finalBackupDescription,
       'firstIpAddress': firstIpAddress,
       'id': id,
       'instanceType': instanceType,
-      'ipAddresses':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceIpAddress,
-            Map<String, dynamic>
-          >(ipAddresses, (value) => value.toMap()),
+      'ipAddresses': pulumi.Input.encodeList<GetDatabaseInstanceIpAddress, Map<String, dynamic>>(ipAddresses, (value) => value.toMap()),
       'maintenanceVersion': maintenanceVersion,
       'masterInstanceName': masterInstanceName,
       'name': name,
       'nodeCount': nodeCount,
-      'pointInTimeRestoreContexts':
-          pulumi.Input.encodeList<
-            GetDatabaseInstancePointInTimeRestoreContext,
-            Map<String, dynamic>
-          >(pointInTimeRestoreContexts, (value) => value.toMap()),
+      'pointInTimeRestoreContexts': pulumi.Input.encodeList<GetDatabaseInstancePointInTimeRestoreContext, Map<String, dynamic>>(pointInTimeRestoreContexts, (value) => value.toMap()),
       'privateIpAddress': privateIpAddress,
       'project': ?project,
       'pscServiceAttachmentLink': pscServiceAttachmentLink,
       'publicIpAddress': publicIpAddress,
       'region': region,
-      'replicaConfigurations':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceReplicaConfiguration,
-            Map<String, dynamic>
-          >(replicaConfigurations, (value) => value.toMap()),
+      'replicaConfigurations': pulumi.Input.encodeList<GetDatabaseInstanceReplicaConfiguration, Map<String, dynamic>>(replicaConfigurations, (value) => value.toMap()),
       'replicaNames': replicaNames,
-      'replicationClusters':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceReplicationCluster,
-            Map<String, dynamic>
-          >(replicationClusters, (value) => value.toMap()),
-      'restoreBackupContexts':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceRestoreBackupContext,
-            Map<String, dynamic>
-          >(restoreBackupContexts, (value) => value.toMap()),
+      'replicationClusters': pulumi.Input.encodeList<GetDatabaseInstanceReplicationCluster, Map<String, dynamic>>(replicationClusters, (value) => value.toMap()),
+      'restoreBackupContexts': pulumi.Input.encodeList<GetDatabaseInstanceRestoreBackupContext, Map<String, dynamic>>(restoreBackupContexts, (value) => value.toMap()),
       'rootPassword': rootPassword,
       'rootPasswordWo': rootPasswordWo,
       'rootPasswordWoVersion': rootPasswordWoVersion,
       'selfLink': selfLink,
-      'serverCaCerts':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceServerCaCert,
-            Map<String, dynamic>
-          >(serverCaCerts, (value) => value.toMap()),
+      'serverCaCerts': pulumi.Input.encodeList<GetDatabaseInstanceServerCaCert, Map<String, dynamic>>(serverCaCerts, (value) => value.toMap()),
       'serviceAccountEmailAddress': serviceAccountEmailAddress,
-      'settings':
-          pulumi.Input.encodeList<
-            GetDatabaseInstanceSetting,
-            Map<String, dynamic>
-          >(settings, (value) => value.toMap()),
+      'settings': pulumi.Input.encodeList<GetDatabaseInstanceSetting, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory GetDatabaseInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceResult(
-      availableMaintenanceVersions:
-          (map['availableMaintenanceVersions'] as List).cast<String>(),
+      availableMaintenanceVersions: (map['availableMaintenanceVersions'] as List).cast<String>(),
       backupdrBackup: map['backupdrBackup'] as String,
-      clones: pulumi.Input.decodeList<GetDatabaseInstanceClone>(
-        map['clones'],
-        (value) => GetDatabaseInstanceClone.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clones: pulumi.Input.decodeList<GetDatabaseInstanceClone>(map['clones'], (value) => GetDatabaseInstanceClone.fromMap((value as Map).cast<String, dynamic>())),
       connectionName: map['connectionName'] as String,
       databaseVersion: map['databaseVersion'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       dnsName: map['dnsName'] as String,
-      dnsNames: pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(
-        map['dnsNames'],
-        (value) => GetDatabaseInstanceDnsName.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dnsNames: pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(map['dnsNames'], (value) => GetDatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())),
       encryptionKeyName: map['encryptionKeyName'] as String,
       finalBackupDescription: map['finalBackupDescription'] as String,
       firstIpAddress: map['firstIpAddress'] as String,
       id: map['id'] as String,
       instanceType: map['instanceType'] as String,
-      ipAddresses: pulumi.Input.decodeList<GetDatabaseInstanceIpAddress>(
-        map['ipAddresses'],
-        (value) => GetDatabaseInstanceIpAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ipAddresses: pulumi.Input.decodeList<GetDatabaseInstanceIpAddress>(map['ipAddresses'], (value) => GetDatabaseInstanceIpAddress.fromMap((value as Map).cast<String, dynamic>())),
       maintenanceVersion: map['maintenanceVersion'] as String,
       masterInstanceName: map['masterInstanceName'] as String,
       name: map['name'] as String,
       nodeCount: map['nodeCount'] as int,
-      pointInTimeRestoreContexts:
-          pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(
-            map['pointInTimeRestoreContexts'],
-            (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      pointInTimeRestoreContexts: pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(map['pointInTimeRestoreContexts'], (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>())),
       privateIpAddress: map['privateIpAddress'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pscServiceAttachmentLink: map['pscServiceAttachmentLink'] as String,
       publicIpAddress: map['publicIpAddress'] as String,
       region: map['region'] as String,
-      replicaConfigurations:
-          pulumi.Input.decodeList<GetDatabaseInstanceReplicaConfiguration>(
-            map['replicaConfigurations'],
-            (value) => GetDatabaseInstanceReplicaConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      replicaConfigurations: pulumi.Input.decodeList<GetDatabaseInstanceReplicaConfiguration>(map['replicaConfigurations'], (value) => GetDatabaseInstanceReplicaConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       replicaNames: (map['replicaNames'] as List).cast<String>(),
-      replicationClusters:
-          pulumi.Input.decodeList<GetDatabaseInstanceReplicationCluster>(
-            map['replicationClusters'],
-            (value) => GetDatabaseInstanceReplicationCluster.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      restoreBackupContexts:
-          pulumi.Input.decodeList<GetDatabaseInstanceRestoreBackupContext>(
-            map['restoreBackupContexts'],
-            (value) => GetDatabaseInstanceRestoreBackupContext.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      replicationClusters: pulumi.Input.decodeList<GetDatabaseInstanceReplicationCluster>(map['replicationClusters'], (value) => GetDatabaseInstanceReplicationCluster.fromMap((value as Map).cast<String, dynamic>())),
+      restoreBackupContexts: pulumi.Input.decodeList<GetDatabaseInstanceRestoreBackupContext>(map['restoreBackupContexts'], (value) => GetDatabaseInstanceRestoreBackupContext.fromMap((value as Map).cast<String, dynamic>())),
       rootPassword: map['rootPassword'] as String,
       rootPasswordWo: map['rootPasswordWo'] as String,
       rootPasswordWoVersion: map['rootPasswordWoVersion'] as String,
       selfLink: map['selfLink'] as String,
-      serverCaCerts: pulumi.Input.decodeList<GetDatabaseInstanceServerCaCert>(
-        map['serverCaCerts'],
-        (value) => GetDatabaseInstanceServerCaCert.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      serverCaCerts: pulumi.Input.decodeList<GetDatabaseInstanceServerCaCert>(map['serverCaCerts'], (value) => GetDatabaseInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())),
       serviceAccountEmailAddress: map['serviceAccountEmailAddress'] as String,
-      settings: pulumi.Input.decodeList<GetDatabaseInstanceSetting>(
-        map['settings'],
-        (value) => GetDatabaseInstanceSetting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      settings: pulumi.Input.decodeList<GetDatabaseInstanceSetting>(map['settings'], (value) => GetDatabaseInstanceSetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

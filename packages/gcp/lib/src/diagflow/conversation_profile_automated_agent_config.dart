@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConversationProfileAutomatedAgentConfig {
   /// ID of the Dialogflow agent environment to use.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
   final String agent;
-
   /// Configure lifetime of the Dialogflow session.
   final String? sessionTtl;
 
@@ -17,17 +17,17 @@ class ConversationProfileAutomatedAgentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'agent': agent, 'sessionTtl': ?sessionTtl};
+    return <String, dynamic>{
+      'agent': agent,
+      'sessionTtl': ?sessionTtl,
+    };
   }
 
-  factory ConversationProfileAutomatedAgentConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileAutomatedAgentConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileAutomatedAgentConfig(
       agent: map['agent'] as String,
-      sessionTtl: map['sessionTtl'] == null
-          ? null
-          : map['sessionTtl'] as String,
+      sessionTtl: map['sessionTtl'] == null ? null : map['sessionTtl'] as String,
     );
   }
 }
+

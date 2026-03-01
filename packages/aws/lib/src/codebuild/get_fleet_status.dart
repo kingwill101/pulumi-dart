@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFleetStatus {
   /// Additional information about a compute fleet.
   final String context;
-
   /// Message associated with the status of a compute fleet.
   final String message;
-
   /// Status code of the compute fleet.
   final String statusCode;
 
@@ -36,3 +35,4 @@ class GetFleetStatus {
     );
   }
 }
+

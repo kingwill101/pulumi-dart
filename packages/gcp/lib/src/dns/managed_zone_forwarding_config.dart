@@ -12,27 +12,20 @@ class ManagedZoneForwardingConfig {
 
   /// Creates a new [ManagedZoneForwardingConfig].
   /// [targetNameServers] List of target name servers to forward to. Cloud DNS will
-  ManagedZoneForwardingConfig({required this.targetNameServers});
+  ManagedZoneForwardingConfig({
+    required this.targetNameServers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetNameServers':
-          pulumi.Input.encodeList<
-            ManagedZoneForwardingConfigTargetNameServer,
-            Map<String, dynamic>
-          >(targetNameServers, (value) => value.toMap()),
+      'targetNameServers': pulumi.Input.encodeList<ManagedZoneForwardingConfigTargetNameServer, Map<String, dynamic>>(targetNameServers, (value) => value.toMap()),
     };
   }
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
-      targetNameServers:
-          pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(
-            map['targetNameServers'],
-            (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      targetNameServers: pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

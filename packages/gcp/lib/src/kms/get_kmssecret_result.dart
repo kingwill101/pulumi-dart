@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKMSSecret.
 class GetKMSSecretResult {
   final String? additionalAuthenticatedData;
   final String ciphertext;
   final String cryptoKey;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Contains the result of decrypting the provided ciphertext.
   final String plaintext;
 
@@ -38,9 +37,7 @@ class GetKMSSecretResult {
 
   factory GetKMSSecretResult.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretResult(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null
-          ? null
-          : map['additionalAuthenticatedData'] as String,
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : map['additionalAuthenticatedData'] as String,
       ciphertext: map['ciphertext'] as String,
       cryptoKey: map['cryptoKey'] as String,
       id: map['id'] as String,
@@ -48,3 +45,4 @@ class GetKMSSecretResult {
     );
   }
 }
+

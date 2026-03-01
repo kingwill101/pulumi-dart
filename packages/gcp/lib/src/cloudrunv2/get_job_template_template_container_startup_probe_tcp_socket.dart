@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobTemplateTemplateContainerStartupProbeTcpSocket {
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -7,17 +8,20 @@ class GetJobTemplateTemplateContainerStartupProbeTcpSocket {
 
   /// Creates a new [GetJobTemplateTemplateContainerStartupProbeTcpSocket].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  GetJobTemplateTemplateContainerStartupProbeTcpSocket({required this.port});
+  GetJobTemplateTemplateContainerStartupProbeTcpSocket({
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port};
+    return <String, dynamic>{
+      'port': port,
+    };
   }
 
-  factory GetJobTemplateTemplateContainerStartupProbeTcpSocket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobTemplateTemplateContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateContainerStartupProbeTcpSocket(
       port: map['port'] as int,
     );
   }
 }
+

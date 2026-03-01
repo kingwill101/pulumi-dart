@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResolverEndpointFilter {
   final String name;
   final List<String> values;
@@ -7,10 +8,16 @@ class GetResolverEndpointFilter {
   /// Creates a new [GetResolverEndpointFilter].
   /// [name] Required.
   /// [values] Required.
-  GetResolverEndpointFilter({required this.name, required this.values});
+  GetResolverEndpointFilter({
+    required this.name,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetResolverEndpointFilter.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class GetResolverEndpointFilter {
     );
   }
 }
+

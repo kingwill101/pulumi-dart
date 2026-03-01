@@ -165,13 +165,10 @@ import 'vpc_endpoint_vpc_options.dart';
 class VpcEndpoint extends pulumi.CustomResource {
   /// Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
   late final pulumi.Output<String> domainArn;
-
   /// The connection endpoint ID for connecting to the domain.
   late final pulumi.Output<String> endpoint;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Options to specify the subnets and security groups for the endpoint.
   late final pulumi.Output<VpcEndpointVpcOptions> vpcOptions;
 
@@ -184,11 +181,11 @@ class VpcEndpoint extends pulumi.CustomResource {
     VpcEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/vpcEndpoint:VpcEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/vpcEndpoint:VpcEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.domainArn = registerOutput<String>('domainArn');
     this.endpoint = registerOutput<String>('endpoint');
     this.region = registerOutput<String>('region');

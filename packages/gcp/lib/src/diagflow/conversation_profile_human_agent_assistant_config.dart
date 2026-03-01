@@ -8,24 +8,17 @@ import 'conversation_profile_human_agent_assistant_config_notification_config.da
 class ConversationProfileHumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
   /// Structure is documented below.
-  final ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig?
-  endUserSuggestionConfig;
-
+  final ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig? endUserSuggestionConfig;
   /// Configuration for agent assistance of human agent participant.
   /// Structure is documented below.
-  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig?
-  humanAgentSuggestionConfig;
-
+  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig? humanAgentSuggestionConfig;
   /// desc
   /// Structure is documented below.
-  final ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig?
-  messageAnalysisConfig;
-
+  final ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig? messageAnalysisConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
   /// Structure is documented below.
-  final ConversationProfileHumanAgentAssistantConfigNotificationConfig?
-  notificationConfig;
+  final ConversationProfileHumanAgentAssistantConfigNotificationConfig? notificationConfig;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfig].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant.
@@ -41,46 +34,20 @@ class ConversationProfileHumanAgentAssistantConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endUserSuggestionConfig': ?endUserSuggestionConfig == null
-          ? null
-          : endUserSuggestionConfig!.toMap(),
-      'humanAgentSuggestionConfig': ?humanAgentSuggestionConfig == null
-          ? null
-          : humanAgentSuggestionConfig!.toMap(),
-      'messageAnalysisConfig': ?messageAnalysisConfig == null
-          ? null
-          : messageAnalysisConfig!.toMap(),
-      'notificationConfig': ?notificationConfig == null
-          ? null
-          : notificationConfig!.toMap(),
+      'endUserSuggestionConfig': ?endUserSuggestionConfig == null ? null : endUserSuggestionConfig!.toMap(),
+      'humanAgentSuggestionConfig': ?humanAgentSuggestionConfig == null ? null : humanAgentSuggestionConfig!.toMap(),
+      'messageAnalysisConfig': ?messageAnalysisConfig == null ? null : messageAnalysisConfig!.toMap(),
+      'notificationConfig': ?notificationConfig == null ? null : notificationConfig!.toMap(),
     };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfig(
-      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null
-          ? null
-          : ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig.fromMap(
-              (map['endUserSuggestionConfig'] as Map).cast<String, dynamic>(),
-            ),
-      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null
-          ? null
-          : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig.fromMap(
-              (map['humanAgentSuggestionConfig'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      messageAnalysisConfig: map['messageAnalysisConfig'] == null
-          ? null
-          : ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap(
-              (map['messageAnalysisConfig'] as Map).cast<String, dynamic>(),
-            ),
-      notificationConfig: map['notificationConfig'] == null
-          ? null
-          : ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap(
-              (map['notificationConfig'] as Map).cast<String, dynamic>(),
-            ),
+      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>()),
+      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>()),
+      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>()),
+      notificationConfig: map['notificationConfig'] == null ? null : ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

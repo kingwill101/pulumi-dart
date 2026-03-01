@@ -662,31 +662,22 @@ import 'layer_version_permission_args.dart';
 class LayerVersionPermission extends pulumi.CustomResource {
   /// Action that will be allowed. `lambda:GetLayerVersion` is the standard value for layer access.
   late final pulumi.Output<String> action;
-
   /// Name or ARN of the Lambda Layer.
   late final pulumi.Output<String> layerName;
-
   /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
   late final pulumi.Output<String?> organizationId;
-
   /// Full Lambda Layer Permission policy.
   late final pulumi.Output<String> policy;
-
   /// AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
   late final pulumi.Output<String> principal;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Unique identifier for the current revision of the policy.
   late final pulumi.Output<String> revisionId;
-
   /// Whether to retain the permission when the resource is destroyed. Default is `false`.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// Unique identifier for the permission statement.
   late final pulumi.Output<String> statementId;
-
   /// Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
   ///
   /// The following arguments are optional:
@@ -701,11 +692,11 @@ class LayerVersionPermission extends pulumi.CustomResource {
     LayerVersionPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/layerVersionPermission:LayerVersionPermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/layerVersionPermission:LayerVersionPermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.action = registerOutput<String>('action');
     this.layerName = registerOutput<String>('layerName');
     this.organizationId = registerOutput<String?>('organizationId');

@@ -10,34 +10,20 @@ class SecurityPolicyRulePreconfiguredWafConfig {
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] An exclusion to apply during preconfigured WAF evaluation.
-  SecurityPolicyRulePreconfiguredWafConfig({this.exclusions});
+  SecurityPolicyRulePreconfiguredWafConfig({
+    this.exclusions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': ?exclusions == null
-          ? null
-          : pulumi.Input.encodeList<
-              SecurityPolicyRulePreconfiguredWafConfigExclusion,
-              Map<String, dynamic>
-            >(exclusions!, (value) => value.toMap()),
+      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
     };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfig(
-      exclusions: map['exclusions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              SecurityPolicyRulePreconfiguredWafConfigExclusion
-            >(
-              map['exclusions'],
-              (value) =>
-                  SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
   /// PEM certificate of the PKI used for validation. Must only contain one
   /// ca certificate(either root or intermediate cert).
@@ -12,14 +13,15 @@ class GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': pemCertificate,
+    };
   }
 
-  factory GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa(
       pemCertificate: map['pemCertificate'] as String,
     );
   }
 }
+

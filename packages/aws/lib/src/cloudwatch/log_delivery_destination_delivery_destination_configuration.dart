@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogDeliveryDestinationDeliveryDestinationConfiguration {
   /// The ARN of the AWS destination that this delivery destination represents. Required when `delivery_destination_configuration` is specified.
   final String? destinationResourceArn;
@@ -11,16 +12,15 @@ class LogDeliveryDestinationDeliveryDestinationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'destinationResourceArn': ?destinationResourceArn};
+    return <String, dynamic>{
+      'destinationResourceArn': ?destinationResourceArn,
+    };
   }
 
-  factory LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationDeliveryDestinationConfiguration(
-      destinationResourceArn: map['destinationResourceArn'] == null
-          ? null
-          : map['destinationResourceArn'] as String,
+      destinationResourceArn: map['destinationResourceArn'] == null ? null : map['destinationResourceArn'] as String,
     );
   }
 }
+

@@ -8,22 +8,17 @@ class ToolsetOpenApiToolset {
   /// Authentication information required for API calls.
   /// Structure is documented below.
   final ToolsetOpenApiToolsetApiAuthentication? apiAuthentication;
-
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
   final bool? ignoreUnknownFields;
-
   /// The OpenAPI schema of the toolset.
   final String openApiSchema;
-
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
   final ToolsetOpenApiToolsetServiceDirectoryConfig? serviceDirectoryConfig;
-
   /// The TLS configuration.
   /// Structure is documented below.
   final ToolsetOpenApiToolsetTlsConfig? tlsConfig;
-
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -51,14 +46,10 @@ class ToolsetOpenApiToolset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiAuthentication': ?apiAuthentication == null
-          ? null
-          : apiAuthentication!.toMap(),
+      'apiAuthentication': ?apiAuthentication == null ? null : apiAuthentication!.toMap(),
       'ignoreUnknownFields': ?ignoreUnknownFields,
       'openApiSchema': openApiSchema,
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null
-          ? null
-          : serviceDirectoryConfig!.toMap(),
+      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
       'tlsConfig': ?tlsConfig == null ? null : tlsConfig!.toMap(),
       'url': ?url,
     };
@@ -66,26 +57,13 @@ class ToolsetOpenApiToolset {
 
   factory ToolsetOpenApiToolset.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolset(
-      apiAuthentication: map['apiAuthentication'] == null
-          ? null
-          : ToolsetOpenApiToolsetApiAuthentication.fromMap(
-              (map['apiAuthentication'] as Map).cast<String, dynamic>(),
-            ),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null
-          ? null
-          : map['ignoreUnknownFields'] as bool,
+      apiAuthentication: map['apiAuthentication'] == null ? null : ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication'] as Map).cast<String, dynamic>()),
+      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : map['ignoreUnknownFields'] as bool,
       openApiSchema: map['openApiSchema'] as String,
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null
-          ? null
-          : ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(
-              (map['serviceDirectoryConfig'] as Map).cast<String, dynamic>(),
-            ),
-      tlsConfig: map['tlsConfig'] == null
-          ? null
-          : ToolsetOpenApiToolsetTlsConfig.fromMap(
-              (map['tlsConfig'] as Map).cast<String, dynamic>(),
-            ),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
+      tlsConfig: map['tlsConfig'] == null ? null : ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>()),
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
+

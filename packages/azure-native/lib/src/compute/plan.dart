@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
+class Plan {
+  /// The plan ID.
+  final String? name;
+  /// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+  final String? product;
+  /// The promotion code.
+  final String? promotionCode;
+  /// The publisher ID.
+  final String? publisher;
+
+  /// Creates a new [Plan].
+  /// [name] The plan ID.
+  /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+  /// [promotionCode] The promotion code.
+  /// [publisher] The publisher ID.
+  Plan({
+    this.name,
+    this.product,
+    this.promotionCode,
+    this.publisher,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'product': ?product,
+      'promotionCode': ?promotionCode,
+      'publisher': ?publisher,
+    };
+  }
+
+  factory Plan.fromMap(Map<String, dynamic> map) {
+    return Plan(
+      name: map['name'] == null ? null : map['name'] as String,
+      product: map['product'] == null ? null : map['product'] as String,
+      promotionCode: map['promotionCode'] == null ? null : map['promotionCode'] as String,
+      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+    );
+  }
+}
+

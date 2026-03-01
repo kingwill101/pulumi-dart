@@ -10,15 +10,12 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter {
   /// (all resources of all types matching previous filtering parameters
   /// will be candidates for transformation).
   /// Structure is documented below.
-  final List<RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind>?
-  groupKinds;
-
+  final List<RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind>? groupKinds;
   /// This is a JSONPath expression that matches specific fields of
   /// candidate resources and it operates as a filtering parameter
   /// (resources that are not matched with this expression will not
   /// be candidates for transformation).
   final String? jsonPath;
-
   /// (Filtering parameter) Any resource subject to transformation must
   /// be contained within one of the listed Kubernetes Namespace in the
   /// Backup. If this field is not provided, no namespace filtering will
@@ -40,36 +37,18 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupKinds': ?groupKinds == null
-          ? null
-          : pulumi.Input.encodeList<
-              RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind,
-              Map<String, dynamic>
-            >(groupKinds!, (value) => value.toMap()),
+      'groupKinds': ?groupKinds == null ? null : pulumi.Input.encodeList<RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind, Map<String, dynamic>>(groupKinds!, (value) => value.toMap()),
       'jsonPath': ?jsonPath,
       'namespaces': ?namespaces,
     };
   }
 
-  factory RestorePlanRestoreConfigTransformationRuleResourceFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigTransformationRuleResourceFilter.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigTransformationRuleResourceFilter(
-      groupKinds: map['groupKinds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind
-            >(
-              map['groupKinds'],
-              (value) =>
-                  RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      groupKinds: map['groupKinds'] == null ? null : pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind>(map['groupKinds'], (value) => RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind.fromMap((value as Map).cast<String, dynamic>())),
       jsonPath: map['jsonPath'] == null ? null : map['jsonPath'] as String,
-      namespaces: map['namespaces'] == null
-          ? null
-          : (map['namespaces'] as List).cast<String>(),
+      namespaces: map['namespaces'] == null ? null : (map['namespaces'] as List).cast<String>(),
     );
   }
 }
+

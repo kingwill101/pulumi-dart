@@ -8,14 +8,11 @@ class PreventionDiscoveryConfigTargetBigQueryTarget {
   /// How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetBigQueryTargetCadence? cadence;
-
   /// In addition to matching the filter, these conditions must be true before a profile is generated
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetBigQueryTargetConditions? conditions;
-
   /// Tables that match this filter will not have profiles created.
   final Map<String, dynamic>? disabled;
-
   /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetBigQueryTargetFilter? filter;
@@ -41,28 +38,13 @@ class PreventionDiscoveryConfigTargetBigQueryTarget {
     };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetBigQueryTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTarget(
-      cadence: map['cadence'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(
-              (map['cadence'] as Map).cast<String, dynamic>(),
-            ),
-      conditions: map['conditions'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetBigQueryTargetConditions.fromMap(
-              (map['conditions'] as Map).cast<String, dynamic>(),
-            ),
-      disabled: map['disabled'] == null
-          ? null
-          : (map['disabled'] as Map).cast<String, dynamic>(),
-      filter: map['filter'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetBigQueryTargetFilter.fromMap(
-              (map['filter'] as Map).cast<String, dynamic>(),
-            ),
+      cadence: map['cadence'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap((map['cadence'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as Map).cast<String, dynamic>(),
+      filter: map['filter'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

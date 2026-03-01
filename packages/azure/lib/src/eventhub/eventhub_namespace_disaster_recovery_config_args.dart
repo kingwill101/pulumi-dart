@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_eventhub_eventhub_namespace_disaster_recovery_config_eventhub_namespace_disaster_recovery_config_args_doc}
+/// The set of arguments for EventhubNamespaceDisasterRecoveryConfig.
+/// {@endtemplate}
+/// {@macro pulumi_eventhub_eventhub_namespace_disaster_recovery_config_eventhub_namespace_disaster_recovery_config_args_doc}
+class EventhubNamespaceDisasterRecoveryConfigArgs {
+  /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
+  final pulumi.Input<String> namespaceName;
+  /// The ID of the EventHub Namespace to replicate to.
+  final pulumi.Input<String> partnerNamespaceId;
+  /// The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [EventhubNamespaceDisasterRecoveryConfigArgs].
+  /// [name] Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
+  /// [namespaceName] Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
+  /// [partnerNamespaceId] The ID of the EventHub Namespace to replicate to.
+  /// [resourceGroupName] The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
+  EventhubNamespaceDisasterRecoveryConfigArgs({
+    String? name,
+    required String namespaceName,
+    required String partnerNamespaceId,
+    required String resourceGroupName,
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namespaceName = pulumi.Input.asInput<String>(namespaceName),
+      partnerNamespaceId = pulumi.Input.asInput<String>(partnerNamespaceId),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'namespaceName': namespaceName,
+      'partnerNamespaceId': partnerNamespaceId,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory EventhubNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
+    return EventhubNamespaceDisasterRecoveryConfigArgs(
+      name: map['name'] == null ? null : map['name'] as String,
+      namespaceName: map['namespaceName'] as String,
+      partnerNamespaceId: map['partnerNamespaceId'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+    );
+  }
+}
+

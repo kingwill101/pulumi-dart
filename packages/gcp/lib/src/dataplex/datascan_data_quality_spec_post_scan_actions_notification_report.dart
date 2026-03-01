@@ -6,19 +6,14 @@ import 'datascan_data_quality_spec_post_scan_actions_notification_report_score_t
 class DatascanDataQualitySpecPostScanActionsNotificationReport {
   /// This trigger is triggered whenever a scan job run ends, regardless of the result.
   final Map<String, dynamic>? jobEndTrigger;
-
   /// This trigger is triggered when the scan job itself fails, regardless of the result.
   final Map<String, dynamic>? jobFailureTrigger;
-
   /// The individuals or groups who are designated to receive notifications upon triggers.
   /// Structure is documented below.
-  final DatascanDataQualitySpecPostScanActionsNotificationReportRecipients
-  recipients;
-
+  final DatascanDataQualitySpecPostScanActionsNotificationReportRecipients recipients;
   /// This trigger is triggered when the DQ score in the job result is less than a specified input score.
   /// Structure is documented below.
-  final DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger?
-  scoreThresholdTrigger;
+  final DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger? scoreThresholdTrigger;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReport].
   /// [jobEndTrigger] This trigger is triggered whenever a scan job run ends, regardless of the result.
@@ -37,31 +32,17 @@ class DatascanDataQualitySpecPostScanActionsNotificationReport {
       'jobEndTrigger': ?jobEndTrigger,
       'jobFailureTrigger': ?jobFailureTrigger,
       'recipients': recipients.toMap(),
-      'scoreThresholdTrigger': ?scoreThresholdTrigger == null
-          ? null
-          : scoreThresholdTrigger!.toMap(),
+      'scoreThresholdTrigger': ?scoreThresholdTrigger == null ? null : scoreThresholdTrigger!.toMap(),
     };
   }
 
-  factory DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReport(
-      jobEndTrigger: map['jobEndTrigger'] == null
-          ? null
-          : (map['jobEndTrigger'] as Map).cast<String, dynamic>(),
-      jobFailureTrigger: map['jobFailureTrigger'] == null
-          ? null
-          : (map['jobFailureTrigger'] as Map).cast<String, dynamic>(),
-      recipients:
-          DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap(
-            (map['recipients'] as Map).cast<String, dynamic>(),
-          ),
-      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null
-          ? null
-          : DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(
-              (map['scoreThresholdTrigger'] as Map).cast<String, dynamic>(),
-            ),
+      jobEndTrigger: map['jobEndTrigger'] == null ? null : (map['jobEndTrigger'] as Map).cast<String, dynamic>(),
+      jobFailureTrigger: map['jobFailureTrigger'] == null ? null : (map['jobFailureTrigger'] as Map).cast<String, dynamic>(),
+      recipients: DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap((map['recipients'] as Map).cast<String, dynamic>()),
+      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null ? null : DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap((map['scoreThresholdTrigger'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

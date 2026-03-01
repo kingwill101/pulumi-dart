@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecListenerHealthCheck {
   final int healthyThreshold;
   final int intervalMillis;
@@ -39,9 +40,7 @@ class GetVirtualGatewaySpecListenerHealthCheck {
     };
   }
 
-  factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerHealthCheck(
       healthyThreshold: map['healthyThreshold'] as int,
       intervalMillis: map['intervalMillis'] as int,
@@ -53,3 +52,4 @@ class GetVirtualGatewaySpecListenerHealthCheck {
     );
   }
 }
+

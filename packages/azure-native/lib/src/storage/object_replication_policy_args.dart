@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'object_replication_policy_properties_metrics.dart';
+import 'object_replication_policy_rule.dart';
+
+/// {@template pulumi_storage_object_replication_policy_args_doc}
+/// The set of arguments for ObjectReplicationPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_storage_object_replication_policy_args_doc}
+class ObjectReplicationPolicyArgs {
+  /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  final pulumi.Input<String> accountName;
+  /// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
+  final pulumi.Input<String> destinationAccount;
+  /// Optional. The object replication policy metrics feature options.
+  final pulumi.Input<ObjectReplicationPolicyPropertiesMetrics>? metrics;
+  /// For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  final pulumi.Input<String>? objectReplicationPolicyId;
+  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The storage account object replication rules.
+  final pulumi.Input<List<ObjectReplicationPolicyRule>>? rules;
+  /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
+  final pulumi.Input<String> sourceAccount;
+
+  /// Creates a new [ObjectReplicationPolicyArgs].
+  /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  /// [destinationAccount] Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
+  /// [metrics] Optional. The object replication policy metrics feature options.
+  /// [objectReplicationPolicyId] For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [rules] The storage account object replication rules.
+  /// [sourceAccount] Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
+  ObjectReplicationPolicyArgs({
+    required String accountName,
+    required String destinationAccount,
+    ObjectReplicationPolicyPropertiesMetrics? metrics,
+    String? objectReplicationPolicyId,
+    required String resourceGroupName,
+    List<ObjectReplicationPolicyRule>? rules,
+    required String sourceAccount,
+  }) :
+      accountName = pulumi.Input.asInput<String>(accountName),
+      destinationAccount = pulumi.Input.asInput<String>(destinationAccount),
+      metrics = pulumi.Input.asOptionalInput<ObjectReplicationPolicyPropertiesMetrics>(metrics),
+      objectReplicationPolicyId = pulumi.Input.asOptionalInput<String>(objectReplicationPolicyId),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      rules = pulumi.Input.asOptionalInput<List<ObjectReplicationPolicyRule>>(rules),
+      sourceAccount = pulumi.Input.asInput<String>(sourceAccount);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountName': accountName,
+      'destinationAccount': destinationAccount,
+      'metrics': ?pulumi.Input.mapOptionalInputValue<ObjectReplicationPolicyPropertiesMetrics, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'objectReplicationPolicyId': ?objectReplicationPolicyId,
+      'resourceGroupName': resourceGroupName,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ObjectReplicationPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ObjectReplicationPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceAccount': sourceAccount,
+    };
+  }
+
+  factory ObjectReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return ObjectReplicationPolicyArgs(
+      accountName: map['accountName'] as String,
+      destinationAccount: map['destinationAccount'] as String,
+      metrics: map['metrics'] == null ? null : ObjectReplicationPolicyPropertiesMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>()),
+      objectReplicationPolicyId: map['objectReplicationPolicyId'] == null ? null : map['objectReplicationPolicyId'] as String,
+      resourceGroupName: map['resourceGroupName'] as String,
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ObjectReplicationPolicyRule>(map['rules'], (value) => ObjectReplicationPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      sourceAccount: map['sourceAccount'] as String,
+    );
+  }
+}
+

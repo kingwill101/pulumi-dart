@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../meta/object_meta.dart';
+
+/// VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.
+class VolumeAttributesClassStorageK8sIoV1alpha1 {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  final String? apiVersion;
+  /// Name of the CSI driver This field is immutable.
+  final String driverName;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  final String? kind;
+  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final ObjectMeta? metadata;
+  /// parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
+  ///
+  /// This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field.
+  final Map<String, String>? parameters;
+
+  /// Creates a new [VolumeAttributesClassStorageK8sIoV1alpha1].
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [driverName] Name of the CSI driver This field is immutable.
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [parameters] parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
+  VolumeAttributesClassStorageK8sIoV1alpha1({
+    this.apiVersion,
+    required this.driverName,
+    this.kind,
+    this.metadata,
+    this.parameters,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'driverName': driverName,
+      'kind': ?kind,
+      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'parameters': ?parameters,
+    };
+  }
+
+  factory VolumeAttributesClassStorageK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+    return VolumeAttributesClassStorageK8sIoV1alpha1(
+      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
+      driverName: map['driverName'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+    );
+  }
+}
+

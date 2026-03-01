@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'premium_mdti_data_connector_data_types_response_connector.dart';
+
+/// The available data types for Microsoft Defender for Threat Intelligence Premium data connector.
+class PremiumMdtiDataConnectorDataTypesResponse {
+  /// Data type for Microsoft Defender for Threat Intelligence Premium data connector.
+  final PremiumMdtiDataConnectorDataTypesResponseConnector connector;
+
+  /// Creates a new [PremiumMdtiDataConnectorDataTypesResponse].
+  /// [connector] Data type for Microsoft Defender for Threat Intelligence Premium data connector.
+  PremiumMdtiDataConnectorDataTypesResponse({
+    required this.connector,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'connector': connector.toMap(),
+    };
+  }
+
+  factory PremiumMdtiDataConnectorDataTypesResponse.fromMap(Map<String, dynamic> map) {
+    return PremiumMdtiDataConnectorDataTypesResponse(
+      connector: PremiumMdtiDataConnectorDataTypesResponseConnector.fromMap((map['connector'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

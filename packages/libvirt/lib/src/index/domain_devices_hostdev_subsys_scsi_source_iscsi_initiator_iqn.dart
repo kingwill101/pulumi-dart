@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn {
+  /// Sets the name for the iSCSI initiator's IQN.
+  final String name;
+
+  /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn].
+  /// [name] Sets the name for the iSCSI initiator's IQN.
+  DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap(Map<String, dynamic> map) {
+    return DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn(
+      name: map['name'] as String,
+    );
+  }
+}
+

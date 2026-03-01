@@ -6,12 +6,10 @@ import 'get_instance_template_scheduling_graceful_shutdown_max_duration.dart';
 class GetInstanceTemplateSchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
   final bool enabled;
-
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
   /// transitions to the STOPPING state.
-  final List<GetInstanceTemplateSchedulingGracefulShutdownMaxDuration>
-  maxDurations;
+  final List<GetInstanceTemplateSchedulingGracefulShutdownMaxDuration> maxDurations;
 
   /// Creates a new [GetInstanceTemplateSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
@@ -24,29 +22,15 @@ class GetInstanceTemplateSchedulingGracefulShutdown {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'maxDurations':
-          pulumi.Input.encodeList<
-            GetInstanceTemplateSchedulingGracefulShutdownMaxDuration,
-            Map<String, dynamic>
-          >(maxDurations, (value) => value.toMap()),
+      'maxDurations': pulumi.Input.encodeList<GetInstanceTemplateSchedulingGracefulShutdownMaxDuration, Map<String, dynamic>>(maxDurations, (value) => value.toMap()),
     };
   }
 
-  factory GetInstanceTemplateSchedulingGracefulShutdown.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTemplateSchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateSchedulingGracefulShutdown(
       enabled: map['enabled'] as bool,
-      maxDurations:
-          pulumi.Input.decodeList<
-            GetInstanceTemplateSchedulingGracefulShutdownMaxDuration
-          >(
-            map['maxDurations'],
-            (value) =>
-                GetInstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      maxDurations: pulumi.Input.decodeList<GetInstanceTemplateSchedulingGracefulShutdownMaxDuration>(map['maxDurations'], (value) => GetInstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apimanagement_workspace_api_version_set_workspace_api_version_set_args_doc}
+/// The set of arguments for WorkspaceApiVersionSet.
+/// {@endtemplate}
+/// {@macro pulumi_apimanagement_workspace_api_version_set_workspace_api_version_set_args_doc}
+class WorkspaceApiVersionSetArgs {
+  /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
+  final pulumi.Input<String> apiManagementWorkspaceId;
+  /// Specifies the description of the API Management Workspace API Version Set.
+  final pulumi.Input<String>? description;
+  /// Specifies the display name of the API Management Workspace API Version Set.
+  final pulumi.Input<String> displayName;
+  /// Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the name of the header to read from inbound requests to determine the API version.
+  final pulumi.Input<String>? versionHeaderName;
+  /// Specifies the name of the query string parameter to read from inbound requests to determine the API version.
+  final pulumi.Input<String>? versionQueryName;
+  /// Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
+  final pulumi.Input<String> versioningScheme;
+
+  /// Creates a new [WorkspaceApiVersionSetArgs].
+  /// [apiManagementWorkspaceId] Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
+  /// [description] Specifies the description of the API Management Workspace API Version Set.
+  /// [displayName] Specifies the display name of the API Management Workspace API Version Set.
+  /// [name] Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
+  /// [versionHeaderName] Specifies the name of the header to read from inbound requests to determine the API version.
+  /// [versionQueryName] Specifies the name of the query string parameter to read from inbound requests to determine the API version.
+  /// [versioningScheme] Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
+  WorkspaceApiVersionSetArgs({
+    required String apiManagementWorkspaceId,
+    String? description,
+    required String displayName,
+    String? name,
+    String? versionHeaderName,
+    String? versionQueryName,
+    required String versioningScheme,
+  }) :
+      apiManagementWorkspaceId = pulumi.Input.asInput<String>(apiManagementWorkspaceId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      versionHeaderName = pulumi.Input.asOptionalInput<String>(versionHeaderName),
+      versionQueryName = pulumi.Input.asOptionalInput<String>(versionQueryName),
+      versioningScheme = pulumi.Input.asInput<String>(versioningScheme);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiManagementWorkspaceId': apiManagementWorkspaceId,
+      'description': ?description,
+      'displayName': displayName,
+      'name': ?name,
+      'versionHeaderName': ?versionHeaderName,
+      'versionQueryName': ?versionQueryName,
+      'versioningScheme': versioningScheme,
+    };
+  }
+
+  factory WorkspaceApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
+    return WorkspaceApiVersionSetArgs(
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      versionHeaderName: map['versionHeaderName'] == null ? null : map['versionHeaderName'] as String,
+      versionQueryName: map['versionQueryName'] == null ? null : map['versionQueryName'] as String,
+      versioningScheme: map['versioningScheme'] as String,
+    );
+  }
+}
+

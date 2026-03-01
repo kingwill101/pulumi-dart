@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetThesaurusArgs {
   /// Identifier of the index that contains the Thesaurus.
   final pulumi.Input<String> indexId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Metadata that helps organize the Thesaurus you create.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Identifier of the Thesaurus.
   final pulumi.Input<String> thesaurusId;
 
@@ -29,10 +26,11 @@ class GetThesaurusArgs {
     String? region,
     Map<String, String>? tags,
     required String thesaurusId,
-  }) : indexId = pulumi.Input.asInput<String>(indexId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       thesaurusId = pulumi.Input.asInput<String>(thesaurusId);
+  }) :
+      indexId = pulumi.Input.asInput<String>(indexId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      thesaurusId = pulumi.Input.asInput<String>(thesaurusId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +45,9 @@ class GetThesaurusArgs {
     return GetThesaurusArgs(
       indexId: map['indexId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       thesaurusId: map['thesaurusId'] as String,
     );
   }
 }
+

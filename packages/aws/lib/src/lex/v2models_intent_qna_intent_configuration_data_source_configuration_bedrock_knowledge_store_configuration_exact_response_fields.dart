@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields {
   /// Field name for the answer.
   final String? answerField;
@@ -11,16 +12,15 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'answerField': ?answerField};
+    return <String, dynamic>{
+      'answerField': ?answerField,
+    };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields(
-      answerField: map['answerField'] == null
-          ? null
-          : map['answerField'] as String,
+      answerField: map['answerField'] == null ? null : map['answerField'] as String,
     );
   }
 }
+

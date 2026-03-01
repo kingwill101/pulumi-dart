@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentAfterToolCallback {
   /// Human-readable description of the callback.
   final String? description;
-
   /// Whether the callback is disabled. Disabled callbacks are ignored by the
   /// agent.
   final bool? disabled;
-
   /// The python code to execute for the callback.
   final String pythonCode;
 
@@ -31,11 +30,10 @@ class AgentAfterToolCallback {
 
   factory AgentAfterToolCallback.fromMap(Map<String, dynamic> map) {
     return AgentAfterToolCallback(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       pythonCode: map['pythonCode'] as String,
     );
   }
 }
+

@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class GetDeploymentFrontendPrivate {
+  /// The method of allocating the private IP to the NGINX Deployment.
+  final String allocationMethod;
+  /// The list of Public IP Resource IDs for this NGINX Deployment.
+  final String ipAddress;
+  /// The subnet resource ID of the NGINX Deployment.
+  final String subnetId;
+
+  /// Creates a new [GetDeploymentFrontendPrivate].
+  /// [allocationMethod] The method of allocating the private IP to the NGINX Deployment.
+  /// [ipAddress] The list of Public IP Resource IDs for this NGINX Deployment.
+  /// [subnetId] The subnet resource ID of the NGINX Deployment.
+  GetDeploymentFrontendPrivate({
+    required this.allocationMethod,
+    required this.ipAddress,
+    required this.subnetId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allocationMethod': allocationMethod,
+      'ipAddress': ipAddress,
+      'subnetId': subnetId,
+    };
+  }
+
+  factory GetDeploymentFrontendPrivate.fromMap(Map<String, dynamic> map) {
+    return GetDeploymentFrontendPrivate(
+      allocationMethod: map['allocationMethod'] as String,
+      ipAddress: map['ipAddress'] as String,
+      subnetId: map['subnetId'] as String,
+    );
+  }
+}
+

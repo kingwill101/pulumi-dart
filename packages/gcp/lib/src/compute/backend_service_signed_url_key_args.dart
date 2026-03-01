@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceSignedUrlKeyArgs {
   /// The backend service this signed URL key belongs.
   final pulumi.Input<String> backendService;
-
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> keyValue;
-
   /// Name of the signed URL key.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -32,10 +29,11 @@ class BackendServiceSignedUrlKeyArgs {
     required String keyValue,
     String? name,
     String? project,
-  }) : backendService = pulumi.Input.asInput<String>(backendService),
-       keyValue = pulumi.Input.asInput<String>(keyValue),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backendService = pulumi.Input.asInput<String>(backendService),
+      keyValue = pulumi.Input.asInput<String>(keyValue),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,3 +53,4 @@ class BackendServiceSignedUrlKeyArgs {
     );
   }
 }
+

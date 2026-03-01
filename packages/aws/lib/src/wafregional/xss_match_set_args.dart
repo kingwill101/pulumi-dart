@@ -10,10 +10,8 @@ import 'xss_match_set_xss_match_tuple.dart';
 class XssMatchSetArgs {
   /// The name of the set
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
   final pulumi.Input<List<XssMatchSetXssMatchTuple>>? xssMatchTuples;
 
@@ -25,29 +23,16 @@ class XssMatchSetArgs {
     String? name,
     String? region,
     List<XssMatchSetXssMatchTuple>? xssMatchTuples,
-  }) : name = pulumi.Input.asOptionalInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       xssMatchTuples =
-           pulumi.Input.asOptionalInput<List<XssMatchSetXssMatchTuple>>(
-             xssMatchTuples,
-           );
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      xssMatchTuples = pulumi.Input.asOptionalInput<List<XssMatchSetXssMatchTuple>>(xssMatchTuples);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'xssMatchTuples':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<XssMatchSetXssMatchTuple>,
-            List<Map<String, dynamic>>
-          >(
-            xssMatchTuples,
-            (value) =>
-                pulumi.Input.encodeList<
-                  XssMatchSetXssMatchTuple,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'xssMatchTuples': ?pulumi.Input.mapOptionalInputValue<List<XssMatchSetXssMatchTuple>, List<Map<String, dynamic>>>(xssMatchTuples, (value) => pulumi.Input.encodeList<XssMatchSetXssMatchTuple, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -55,14 +40,8 @@ class XssMatchSetArgs {
     return XssMatchSetArgs(
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      xssMatchTuples: map['xssMatchTuples'] == null
-          ? null
-          : pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(
-              map['xssMatchTuples'],
-              (value) => XssMatchSetXssMatchTuple.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      xssMatchTuples: map['xssMatchTuples'] == null ? null : pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples'], (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

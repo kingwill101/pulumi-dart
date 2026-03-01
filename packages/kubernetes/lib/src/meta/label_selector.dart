@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_selector_requirement.dart';
+
+/// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+class LabelSelector {
+  /// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+  final List<LabelSelectorRequirement>? matchExpressions;
+  /// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+  final Map<String, String>? matchLabels;
+
+  /// Creates a new [LabelSelector].
+  /// [matchExpressions] matchExpressions is a list of label selector requirements. The requirements are ANDed.
+  /// [matchLabels] matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+  LabelSelector({
+    this.matchExpressions,
+    this.matchLabels,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'matchExpressions': ?matchExpressions == null ? null : pulumi.Input.encodeList<LabelSelectorRequirement, Map<String, dynamic>>(matchExpressions!, (value) => value.toMap()),
+      'matchLabels': ?matchLabels,
+    };
+  }
+
+  factory LabelSelector.fromMap(Map<String, dynamic> map) {
+    return LabelSelector(
+      matchExpressions: map['matchExpressions'] == null ? null : pulumi.Input.decodeList<LabelSelectorRequirement>(map['matchExpressions'], (value) => LabelSelectorRequirement.fromMap((value as Map).cast<String, dynamic>())),
+      matchLabels: map['matchLabels'] == null ? null : (map['matchLabels'] as Map).cast<String, String>(),
+    );
+  }
+}
+

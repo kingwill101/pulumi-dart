@@ -6,14 +6,12 @@ import 'get_tags_tag.dart';
 /// Result data returned by getTags.
 class GetTagsResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String packageName;
   final String? project;
   final String repositoryId;
-
   /// A list of all retrieved Artifact Registry tags. Structure is defined below.
   final List<GetTagsTag> tags;
 
@@ -43,10 +41,7 @@ class GetTagsResult {
       'packageName': packageName,
       'project': ?project,
       'repositoryId': repositoryId,
-      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(
-        tags,
-        (value) => value.toMap(),
-      ),
+      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
@@ -58,10 +53,8 @@ class GetTagsResult {
       packageName: map['packageName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       repositoryId: map['repositoryId'] as String,
-      tags: pulumi.Input.decodeList<GetTagsTag>(
-        map['tags'],
-        (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      tags: pulumi.Input.decodeList<GetTagsTag>(map['tags'], (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

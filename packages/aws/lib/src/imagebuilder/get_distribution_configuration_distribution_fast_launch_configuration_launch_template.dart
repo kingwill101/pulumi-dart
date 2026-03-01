@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate {
   /// ID of the Amazon EC2 launch template.
   final String launchTemplateId;
-
   /// The name of the launch template to use for faster launching for a Windows AMI.
   final String launchTemplateName;
-
   /// The version of the launch template to use for faster launching for a Windows AMI.
   final String launchTemplateVersion;
 
@@ -28,9 +27,7 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTempl
     };
   }
 
-  factory GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate(
       launchTemplateId: map['launchTemplateId'] as String,
       launchTemplateName: map['launchTemplateName'] as String,
@@ -38,3 +35,4 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTempl
     );
   }
 }
+

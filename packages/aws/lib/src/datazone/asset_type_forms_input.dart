@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssetTypeFormsInput {
   final String mapBlockKey;
   final bool? required;
@@ -36,3 +37,4 @@ class AssetTypeFormsInput {
     );
   }
 }
+

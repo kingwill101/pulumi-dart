@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute {
   /// The name of the HTTP endpoint common attribute.
   final String name;
-
   /// The value of the HTTP endpoint common attribute.
   final String value;
 
@@ -16,15 +16,17 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonA
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

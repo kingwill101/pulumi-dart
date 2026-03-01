@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchPathsArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// Product identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> productId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,9 +24,10 @@ class GetLaunchPathsArgs {
     String? acceptLanguage,
     required String productId,
     String? region,
-  }) : acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-       productId = pulumi.Input.asInput<String>(productId),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
+      productId = pulumi.Input.asInput<String>(productId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,11 +39,10 @@ class GetLaunchPathsArgs {
 
   factory GetLaunchPathsArgs.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsArgs(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
       productId: map['productId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

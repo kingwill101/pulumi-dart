@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactArgs {
   /// The email address to send notifications to. This does not need to be a Google account.
   final pulumi.Input<String> email;
-
   /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
   final pulumi.Input<String> languageTag;
-
   /// The categories of notifications that the contact will receive communications for.
   final pulumi.Input<List<String>> notificationCategorySubscriptions;
-
   /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
   final pulumi.Input<String> parent;
 
@@ -29,12 +26,11 @@ class ContactArgs {
     required String languageTag,
     required List<String> notificationCategorySubscriptions,
     required String parent,
-  }) : email = pulumi.Input.asInput<String>(email),
-       languageTag = pulumi.Input.asInput<String>(languageTag),
-       notificationCategorySubscriptions = pulumi.Input.asInput<List<String>>(
-         notificationCategorySubscriptions,
-       ),
-       parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      email = pulumi.Input.asInput<String>(email),
+      languageTag = pulumi.Input.asInput<String>(languageTag),
+      notificationCategorySubscriptions = pulumi.Input.asInput<List<String>>(notificationCategorySubscriptions),
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,9 +45,9 @@ class ContactArgs {
     return ContactArgs(
       email: map['email'] as String,
       languageTag: map['languageTag'] as String,
-      notificationCategorySubscriptions:
-          (map['notificationCategorySubscriptions'] as List).cast<String>(),
+      notificationCategorySubscriptions: (map['notificationCategorySubscriptions'] as List).cast<String>(),
       parent: map['parent'] as String,
     );
   }
 }
+

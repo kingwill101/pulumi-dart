@@ -34,11 +34,15 @@ class GetNetblockIPRangesArgs {
 
   /// Creates a new [GetNetblockIPRangesArgs].
   /// [rangeType] The type of range for which to provide results.
-  GetNetblockIPRangesArgs({String? rangeType})
-    : rangeType = pulumi.Input.asOptionalInput<String>(rangeType);
+  GetNetblockIPRangesArgs({
+    String? rangeType,
+  }) :
+      rangeType = pulumi.Input.asOptionalInput<String>(rangeType);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rangeType': ?rangeType};
+    return <String, dynamic>{
+      'rangeType': ?rangeType,
+    };
   }
 
   factory GetNetblockIPRangesArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +51,4 @@ class GetNetblockIPRangesArgs {
     );
   }
 }
+

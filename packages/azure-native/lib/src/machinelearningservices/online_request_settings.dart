@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Online deployment scoring requests configuration.
+class OnlineRequestSettings {
+  /// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+  final int? maxConcurrentRequestsPerInstance;
+  /// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
+  /// Defaults to 500ms.
+  /// (Now increase `request_timeout_ms` to account for any networking/queue delays)
+  final String? maxQueueWait;
+  /// The scoring timeout in ISO 8601 format.
+  /// Defaults to 5000ms.
+  final String? requestTimeout;
+
+  /// Creates a new [OnlineRequestSettings].
+  /// [maxConcurrentRequestsPerInstance] The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+  /// [maxQueueWait] (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
+  /// [requestTimeout] The scoring timeout in ISO 8601 format.
+  OnlineRequestSettings({
+    this.maxConcurrentRequestsPerInstance,
+    this.maxQueueWait,
+    this.requestTimeout,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'maxConcurrentRequestsPerInstance': ?maxConcurrentRequestsPerInstance,
+      'maxQueueWait': ?maxQueueWait,
+      'requestTimeout': ?requestTimeout,
+    };
+  }
+
+  factory OnlineRequestSettings.fromMap(Map<String, dynamic> map) {
+    return OnlineRequestSettings(
+      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : map['maxConcurrentRequestsPerInstance'] as int,
+      maxQueueWait: map['maxQueueWait'] == null ? null : map['maxQueueWait'] as String,
+      requestTimeout: map['requestTimeout'] == null ? null : map['requestTimeout'] as String,
+    );
+  }
+}
+

@@ -12,14 +12,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// plaintext would be used as is for encryption.
   /// Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext?
-  context;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext? context;
   /// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey?
-  cryptoKey;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey? cryptoKey;
   /// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
   /// For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
   /// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
@@ -29,8 +25,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// *   be unable to parse the surrogate and result in an error
   /// Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType?
-  surrogateInfoType;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType? surrogateInfoType;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig].
   /// [context] A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
@@ -46,31 +41,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     return <String, dynamic>{
       'context': ?context == null ? null : context!.toMap(),
       'cryptoKey': ?cryptoKey == null ? null : cryptoKey!.toMap(),
-      'surrogateInfoType': ?surrogateInfoType == null
-          ? null
-          : surrogateInfoType!.toMap(),
+      'surrogateInfoType': ?surrogateInfoType == null ? null : surrogateInfoType!.toMap(),
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig(
-      context: map['context'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext.fromMap(
-              (map['context'] as Map).cast<String, dynamic>(),
-            ),
-      cryptoKey: map['cryptoKey'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey.fromMap(
-              (map['cryptoKey'] as Map).cast<String, dynamic>(),
-            ),
-      surrogateInfoType: map['surrogateInfoType'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType.fromMap(
-              (map['surrogateInfoType'] as Map).cast<String, dynamic>(),
-            ),
+      context: map['context'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext.fromMap((map['context'] as Map).cast<String, dynamic>()),
+      cryptoKey: map['cryptoKey'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>()),
+      surrogateInfoType: map['surrogateInfoType'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType.fromMap((map['surrogateInfoType'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

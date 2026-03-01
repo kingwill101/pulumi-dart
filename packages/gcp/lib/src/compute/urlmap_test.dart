@@ -6,27 +6,21 @@ import 'urlmap_test_header.dart';
 class URLMapTest {
   /// Description of this test case.
   final String? description;
-
   /// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
   /// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
   /// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
   /// expectedOutputUrl is optional when service is specified.
   final String? expectedOutputUrl;
-
   /// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
   /// expectedRedirectResponseCode cannot be set when service is set.
   final int? expectedRedirectResponseCode;
-
   /// HTTP headers for this request.
   /// Structure is documented below.
   final List<URLMapTestHeader>? headers;
-
   /// Host portion of the URL.
   final String host;
-
   /// Path portion of the URL.
   final String path;
-
   /// The backend service or backend bucket link that should be matched by this test.
   final String? service;
 
@@ -53,12 +47,7 @@ class URLMapTest {
       'description': ?description,
       'expectedOutputUrl': ?expectedOutputUrl,
       'expectedRedirectResponseCode': ?expectedRedirectResponseCode,
-      'headers': ?headers == null
-          ? null
-          : pulumi.Input.encodeList<URLMapTestHeader, Map<String, dynamic>>(
-              headers!,
-              (value) => value.toMap(),
-            ),
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<URLMapTestHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
       'host': host,
       'path': path,
       'service': ?service,
@@ -67,26 +56,14 @@ class URLMapTest {
 
   factory URLMapTest.fromMap(Map<String, dynamic> map) {
     return URLMapTest(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      expectedOutputUrl: map['expectedOutputUrl'] == null
-          ? null
-          : map['expectedOutputUrl'] as String,
-      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null
-          ? null
-          : map['expectedRedirectResponseCode'] as int,
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<URLMapTestHeader>(
-              map['headers'],
-              (value) => URLMapTestHeader.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      description: map['description'] == null ? null : map['description'] as String,
+      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : map['expectedOutputUrl'] as String,
+      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : map['expectedRedirectResponseCode'] as int,
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<URLMapTestHeader>(map['headers'], (value) => URLMapTestHeader.fromMap((value as Map).cast<String, dynamic>())),
       host: map['host'] as String,
       path: map['path'] as String,
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

@@ -5,11 +5,8 @@ import 'agent_knowledge_base_storage_configuration_opensearch_serverless_configu
 class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   /// ARN of the OpenSearch Service vector store.
   final String collectionArn;
-
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping
-  fieldMapping;
-
+  final AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping fieldMapping;
   /// Name of the vector store.
   final String vectorIndexName;
 
@@ -31,16 +28,12 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration(
       collectionArn: map['collectionArn'] as String,
-      fieldMapping:
-          AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap(
-            (map['fieldMapping'] as Map).cast<String, dynamic>(),
-          ),
+      fieldMapping: AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
       vectorIndexName: map['vectorIndexName'] as String,
     );
   }
 }
+

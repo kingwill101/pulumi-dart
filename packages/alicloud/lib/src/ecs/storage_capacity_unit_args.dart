@@ -1,0 +1,69 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_ecs_storage_capacity_unit_storage_capacity_unit_args_doc}
+/// The set of arguments for StorageCapacityUnit.
+/// {@endtemplate}
+/// {@macro pulumi_ecs_storage_capacity_unit_storage_capacity_unit_args_doc}
+class StorageCapacityUnitArgs {
+  /// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
+  final pulumi.Input<int> capacity;
+  /// The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+  final pulumi.Input<String>? description;
+  /// The validity period of the Storage Capacity Unit. Default value: `1`.
+  /// * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
+  /// * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
+  final pulumi.Input<int>? period;
+  /// The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
+  final pulumi.Input<String>? periodUnit;
+  /// The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
+  final pulumi.Input<String>? startTime;
+  /// The name of the Storage Capacity Unit.
+  final pulumi.Input<String>? storageCapacityUnitName;
+
+  /// Creates a new [StorageCapacityUnitArgs].
+  /// [capacity] The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
+  /// [description] The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+  /// [period] The validity period of the Storage Capacity Unit. Default value: `1`.
+  /// [periodUnit] The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
+  /// [startTime] The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
+  /// [storageCapacityUnitName] The name of the Storage Capacity Unit.
+  StorageCapacityUnitArgs({
+    required int capacity,
+    String? description,
+    int? period,
+    String? periodUnit,
+    String? startTime,
+    String? storageCapacityUnitName,
+  }) :
+      capacity = pulumi.Input.asInput<int>(capacity),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      period = pulumi.Input.asOptionalInput<int>(period),
+      periodUnit = pulumi.Input.asOptionalInput<String>(periodUnit),
+      startTime = pulumi.Input.asOptionalInput<String>(startTime),
+      storageCapacityUnitName = pulumi.Input.asOptionalInput<String>(storageCapacityUnitName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacity': capacity,
+      'description': ?description,
+      'period': ?period,
+      'periodUnit': ?periodUnit,
+      'startTime': ?startTime,
+      'storageCapacityUnitName': ?storageCapacityUnitName,
+    };
+  }
+
+  factory StorageCapacityUnitArgs.fromMap(Map<String, dynamic> map) {
+    return StorageCapacityUnitArgs(
+      capacity: map['capacity'] as int,
+      description: map['description'] == null ? null : map['description'] as String,
+      period: map['period'] == null ? null : map['period'] as int,
+      periodUnit: map['periodUnit'] == null ? null : map['periodUnit'] as String,
+      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      storageCapacityUnitName: map['storageCapacityUnitName'] == null ? null : map['storageCapacityUnitName'] as String,
+    );
+  }
+}
+

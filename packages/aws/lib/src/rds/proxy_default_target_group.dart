@@ -18,17 +18,12 @@ import 'proxy_default_target_group_connection_pool_config.dart';
 class ProxyDefaultTargetGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) representing the target group.
   late final pulumi.Output<String> arn;
-
   /// The settings that determine the size and behavior of the connection pool for the target group.
-  late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig>
-  connectionPoolConfig;
-
+  late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig> connectionPoolConfig;
   /// Name of the RDS DB Proxy.
   late final pulumi.Output<String> dbProxyName;
-
   /// The name of the default target group.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -41,16 +36,13 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     ProxyDefaultTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
-    this.connectionPoolConfig =
-        registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
-          'connectionPoolConfig',
-        );
+    this.connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig');
     this.dbProxyName = registerOutput<String>('dbProxyName');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

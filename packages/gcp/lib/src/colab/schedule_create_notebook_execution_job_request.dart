@@ -5,8 +5,7 @@ import 'schedule_create_notebook_execution_job_request_notebook_execution_job.da
 class ScheduleCreateNotebookExecutionJobRequest {
   /// The NotebookExecutionJob to create.
   /// Structure is documented below.
-  final ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
-  notebookExecutionJob;
+  final ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequest].
   /// [notebookExecutionJob] The NotebookExecutionJob to create.
@@ -20,14 +19,10 @@ class ScheduleCreateNotebookExecutionJobRequest {
     };
   }
 
-  factory ScheduleCreateNotebookExecutionJobRequest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduleCreateNotebookExecutionJobRequest.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequest(
-      notebookExecutionJob:
-          ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap(
-            (map['notebookExecutionJob'] as Map).cast<String, dynamic>(),
-          ),
+      notebookExecutionJob: ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap((map['notebookExecutionJob'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

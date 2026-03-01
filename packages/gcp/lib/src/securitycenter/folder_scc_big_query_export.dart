@@ -266,20 +266,16 @@ import 'folder_scc_big_query_export_args.dart';
 class FolderSccBigQueryExport extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> bigQueryExportId;
-
   /// The time at which the BigQuery export was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   late final pulumi.Output<String> dataset;
-
   /// The description of the export (max of 1024 characters).
   late final pulumi.Output<String> description;
-
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -300,22 +296,17 @@ class FolderSccBigQueryExport extends pulumi.CustomResource {
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
   late final pulumi.Output<String> filter;
-
   /// The folder where Cloud Security Command Center Big Query Export
   /// Config lives in.
   late final pulumi.Output<String> folder;
-
   /// Email address of the user who last edited the BigQuery export.
   late final pulumi.Output<String> mostRecentEditor;
-
   /// The resource name of this export, in the format
   /// `projects/{{project}}/bigQueryExports/{{big_query_export_id}}`.
   /// This field is provided in responses, and is ignored when provided in create requests.
   late final pulumi.Output<String> name;
-
   /// The service account that needs permission to create table and upload data to the BigQuery dataset.
   late final pulumi.Output<String> principal;
-
   /// The most recent time at which the BigQuery export was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -330,11 +321,11 @@ class FolderSccBigQueryExport extends pulumi.CustomResource {
     FolderSccBigQueryExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.bigQueryExportId = registerOutput<String>('bigQueryExportId');
     this.createTime = registerOutput<String>('createTime');
     this.dataset = registerOutput<String>('dataset');

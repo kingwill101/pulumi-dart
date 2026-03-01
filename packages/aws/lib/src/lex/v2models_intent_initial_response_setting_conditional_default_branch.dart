@@ -5,12 +5,9 @@ import 'v2models_intent_initial_response_setting_conditional_default_branch_resp
 
 class V2modelsIntentInitialResponseSettingConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep?
-  nextStep;
-
+  final V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse?
-  response;
+  final V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse? response;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
@@ -27,20 +24,11 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranch {
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingConditionalDefaultBranch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep.fromMap(
-              (map['nextStep'] as Map).cast<String, dynamic>(),
-            ),
-      response: map['response'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse.fromMap(
-              (map['response'] as Map).cast<String, dynamic>(),
-            ),
+      nextStep: map['nextStep'] == null ? null : V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
+      response: map['response'] == null ? null : V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Open authentication policy claim.
+class OpenAuthenticationPolicyClaimResponse {
+  /// The name of the claim.
+  final String? name;
+  /// The value of the claim.
+  final String? value;
+
+  /// Creates a new [OpenAuthenticationPolicyClaimResponse].
+  /// [name] The name of the claim.
+  /// [value] The value of the claim.
+  OpenAuthenticationPolicyClaimResponse({
+    this.name,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
+  }
+
+  factory OpenAuthenticationPolicyClaimResponse.fromMap(Map<String, dynamic> map) {
+    return OpenAuthenticationPolicyClaimResponse(
+      name: map['name'] == null ? null : map['name'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

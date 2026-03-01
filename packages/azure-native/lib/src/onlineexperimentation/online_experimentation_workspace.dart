@@ -1,0 +1,64 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_service_identity_response.dart';
+import 'online_experimentation_workspace_args.dart';
+import 'online_experimentation_workspace_properties_response.dart';
+import 'online_experimentation_workspace_sku_response.dart';
+import 'system_data_response.dart';
+
+/// An online experimentation workspace resource.
+///
+/// Uses Azure REST API version 2025-05-31-preview.
+///
+/// Other available API versions: 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native onlineexperimentation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:onlineexperimentation:OnlineExperimentationWorkspace expworkspace7 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OnlineExperimentation/workspaces/{workspaceName}
+/// ```
+class OnlineExperimentationWorkspace extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The managed service identities assigned to this resource.
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// The resource-specific properties for this resource.
+  late final pulumi.Output<OnlineExperimentationWorkspacePropertiesResponse> properties;
+  /// The SKU (Stock Keeping Unit) assigned to this resource.
+  late final pulumi.Output<OnlineExperimentationWorkspaceSkuResponse?> sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
+
+  /// Creates a new [OnlineExperimentationWorkspace].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [OnlineExperimentationWorkspace]. {@macro pulumi_onlineexperimentation_online_experimentation_workspace_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  OnlineExperimentationWorkspace(
+    String name, {
+    OnlineExperimentationWorkspaceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:onlineexperimentation:OnlineExperimentationWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.properties = registerOutput<OnlineExperimentationWorkspacePropertiesResponse>('properties');
+    this.sku = registerOutput<OnlineExperimentationWorkspaceSkuResponse?>('sku');
+    this.systemData = registerOutput<SystemDataResponse>('systemData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+  }
+}

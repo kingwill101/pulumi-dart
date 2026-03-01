@@ -111,12 +111,10 @@ import 'tenant_resource_association_args.dart';
 class TenantResourceAssociation extends pulumi.CustomResource {
   /// AWS region for SESv2 operations. If not specified, the default provider region is used.
   late final pulumi.Output<String> region;
-
   /// ARN of the SES resource to associate with the tenant.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceArn;
-
   /// Name of SES Tenant.
   late final pulumi.Output<String> tenantName;
 
@@ -129,11 +127,11 @@ class TenantResourceAssociation extends pulumi.CustomResource {
     TenantResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');
     this.tenantName = registerOutput<String>('tenantName');

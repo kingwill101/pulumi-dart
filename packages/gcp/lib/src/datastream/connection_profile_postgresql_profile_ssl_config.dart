@@ -7,14 +7,11 @@ class ConnectionProfilePostgresqlProfileSslConfig {
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and both the server identity and the client identity will be authenticated.
   /// Structure is documented below.
-  final ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification?
-  serverAndClientVerification;
-
+  final ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification? serverAndClientVerification;
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and the server identity will be authenticated.
   /// Structure is documented below.
-  final ConnectionProfilePostgresqlProfileSslConfigServerVerification?
-  serverVerification;
+  final ConnectionProfilePostgresqlProfileSslConfigServerVerification? serverVerification;
 
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfig].
   /// [serverAndClientVerification] If this field is set, the communication will be encrypted with TLS encryption
@@ -26,30 +23,16 @@ class ConnectionProfilePostgresqlProfileSslConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverAndClientVerification': ?serverAndClientVerification == null
-          ? null
-          : serverAndClientVerification!.toMap(),
-      'serverVerification': ?serverVerification == null
-          ? null
-          : serverVerification!.toMap(),
+      'serverAndClientVerification': ?serverAndClientVerification == null ? null : serverAndClientVerification!.toMap(),
+      'serverVerification': ?serverVerification == null ? null : serverVerification!.toMap(),
     };
   }
 
-  factory ConnectionProfilePostgresqlProfileSslConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionProfilePostgresqlProfileSslConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresqlProfileSslConfig(
-      serverAndClientVerification: map['serverAndClientVerification'] == null
-          ? null
-          : ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap(
-              (map['serverAndClientVerification'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      serverVerification: map['serverVerification'] == null
-          ? null
-          : ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap(
-              (map['serverVerification'] as Map).cast<String, dynamic>(),
-            ),
+      serverAndClientVerification: map['serverAndClientVerification'] == null ? null : ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap((map['serverAndClientVerification'] as Map).cast<String, dynamic>()),
+      serverVerification: map['serverVerification'] == null ? null : ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap((map['serverVerification'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

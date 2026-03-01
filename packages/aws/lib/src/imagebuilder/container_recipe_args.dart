@@ -12,49 +12,34 @@ import 'container_recipe_target_repository.dart';
 class ContainerRecipeArgs {
   /// Ordered configuration block(s) with components for the container recipe. Detailed below.
   final pulumi.Input<List<ContainerRecipeComponent>> components;
-
   /// The type of the container to create. Valid values: `DOCKER`.
   final pulumi.Input<String> containerType;
-
   /// The description of the container recipe.
   final pulumi.Input<String>? description;
-
   /// The Dockerfile template used to build the image as an inline data blob.
   final pulumi.Input<String>? dockerfileTemplateData;
-
   /// The Amazon S3 URI for the Dockerfile that will be used to build the container image.
   final pulumi.Input<String>? dockerfileTemplateUri;
-
   /// Configuration block used to configure an instance for building and testing container images. Detailed below.
-  final pulumi.Input<ContainerRecipeInstanceConfiguration>?
-  instanceConfiguration;
-
+  final pulumi.Input<ContainerRecipeInstanceConfiguration>? instanceConfiguration;
   /// The KMS key used to encrypt the container image.
   final pulumi.Input<String>? kmsKeyId;
-
   /// The name of the container recipe.
   final pulumi.Input<String>? name;
-
   /// The base image for the container recipe.
   final pulumi.Input<String> parentImage;
-
   /// Specifies the operating system platform when you use a custom base image.
   final pulumi.Input<String>? platformOverride;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags for the container recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The destination repository for the container image. Detailed below.
   final pulumi.Input<ContainerRecipeTargetRepository> targetRepository;
-
   /// Version of the container recipe.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> version;
-
   /// The working directory to be used during build and test workflows.
   final pulumi.Input<String>? workingDirectory;
 
@@ -90,71 +75,38 @@ class ContainerRecipeArgs {
     required ContainerRecipeTargetRepository targetRepository,
     required String version,
     String? workingDirectory,
-  }) : components = pulumi.Input.asInput<List<ContainerRecipeComponent>>(
-         components,
-       ),
-       containerType = pulumi.Input.asInput<String>(containerType),
-       description = pulumi.Input.asOptionalInput<String>(description),
-       dockerfileTemplateData = pulumi.Input.asOptionalInput<String>(
-         dockerfileTemplateData,
-       ),
-       dockerfileTemplateUri = pulumi.Input.asOptionalInput<String>(
-         dockerfileTemplateUri,
-       ),
-       instanceConfiguration =
-           pulumi.Input.asOptionalInput<ContainerRecipeInstanceConfiguration>(
-             instanceConfiguration,
-           ),
-       kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       parentImage = pulumi.Input.asInput<String>(parentImage),
-       platformOverride = pulumi.Input.asOptionalInput<String>(
-         platformOverride,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       targetRepository = pulumi.Input.asInput<ContainerRecipeTargetRepository>(
-         targetRepository,
-       ),
-       version = pulumi.Input.asInput<String>(version),
-       workingDirectory = pulumi.Input.asOptionalInput<String>(
-         workingDirectory,
-       );
+  }) :
+      components = pulumi.Input.asInput<List<ContainerRecipeComponent>>(components),
+      containerType = pulumi.Input.asInput<String>(containerType),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      dockerfileTemplateData = pulumi.Input.asOptionalInput<String>(dockerfileTemplateData),
+      dockerfileTemplateUri = pulumi.Input.asOptionalInput<String>(dockerfileTemplateUri),
+      instanceConfiguration = pulumi.Input.asOptionalInput<ContainerRecipeInstanceConfiguration>(instanceConfiguration),
+      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parentImage = pulumi.Input.asInput<String>(parentImage),
+      platformOverride = pulumi.Input.asOptionalInput<String>(platformOverride),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      targetRepository = pulumi.Input.asInput<ContainerRecipeTargetRepository>(targetRepository),
+      version = pulumi.Input.asInput<String>(version),
+      workingDirectory = pulumi.Input.asOptionalInput<String>(workingDirectory);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'components':
-          pulumi.Input.mapInputValue<
-            List<ContainerRecipeComponent>,
-            List<Map<String, dynamic>>
-          >(
-            components,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerRecipeComponent,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'components': pulumi.Input.mapInputValue<List<ContainerRecipeComponent>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<ContainerRecipeComponent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'containerType': containerType,
       'description': ?description,
       'dockerfileTemplateData': ?dockerfileTemplateData,
       'dockerfileTemplateUri': ?dockerfileTemplateUri,
-      'instanceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerRecipeInstanceConfiguration,
-            Map<String, dynamic>
-          >(instanceConfiguration, (value) => value.toMap()),
+      'instanceConfiguration': ?pulumi.Input.mapOptionalInputValue<ContainerRecipeInstanceConfiguration, Map<String, dynamic>>(instanceConfiguration, (value) => value.toMap()),
       'kmsKeyId': ?kmsKeyId,
       'name': ?name,
       'parentImage': parentImage,
       'platformOverride': ?platformOverride,
       'region': ?region,
       'tags': ?tags,
-      'targetRepository':
-          pulumi.Input.mapInputValue<
-            ContainerRecipeTargetRepository,
-            Map<String, dynamic>
-          >(targetRepository, (value) => value.toMap()),
+      'targetRepository': pulumi.Input.mapInputValue<ContainerRecipeTargetRepository, Map<String, dynamic>>(targetRepository, (value) => value.toMap()),
       'version': version,
       'workingDirectory': ?workingDirectory,
     };
@@ -162,44 +114,22 @@ class ContainerRecipeArgs {
 
   factory ContainerRecipeArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeArgs(
-      components: pulumi.Input.decodeList<ContainerRecipeComponent>(
-        map['components'],
-        (value) => ContainerRecipeComponent.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      components: pulumi.Input.decodeList<ContainerRecipeComponent>(map['components'], (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
       containerType: map['containerType'] as String,
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
-      dockerfileTemplateData: map['dockerfileTemplateData'] == null
-          ? null
-          : map['dockerfileTemplateData'] as String,
-      dockerfileTemplateUri: map['dockerfileTemplateUri'] == null
-          ? null
-          : map['dockerfileTemplateUri'] as String,
-      instanceConfiguration: map['instanceConfiguration'] == null
-          ? null
-          : ContainerRecipeInstanceConfiguration.fromMap(
-              (map['instanceConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      description: map['description'] == null ? null : map['description'] as String,
+      dockerfileTemplateData: map['dockerfileTemplateData'] == null ? null : map['dockerfileTemplateData'] as String,
+      dockerfileTemplateUri: map['dockerfileTemplateUri'] == null ? null : map['dockerfileTemplateUri'] as String,
+      instanceConfiguration: map['instanceConfiguration'] == null ? null : ContainerRecipeInstanceConfiguration.fromMap((map['instanceConfiguration'] as Map).cast<String, dynamic>()),
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       parentImage: map['parentImage'] as String,
-      platformOverride: map['platformOverride'] == null
-          ? null
-          : map['platformOverride'] as String,
+      platformOverride: map['platformOverride'] == null ? null : map['platformOverride'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      targetRepository: ContainerRecipeTargetRepository.fromMap(
-        (map['targetRepository'] as Map).cast<String, dynamic>(),
-      ),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      targetRepository: ContainerRecipeTargetRepository.fromMap((map['targetRepository'] as Map).cast<String, dynamic>()),
       version: map['version'] as String,
-      workingDirectory: map['workingDirectory'] == null
-          ? null
-          : map['workingDirectory'] as String,
+      workingDirectory: map['workingDirectory'] == null ? null : map['workingDirectory'] as String,
     );
   }
 }
+

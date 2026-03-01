@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// UserSubject holds detailed information for user-kind subject.
+class UserSubject {
+  /// `name` is the username that matches, or "*" to match all usernames. Required.
+  final String name;
+
+  /// Creates a new [UserSubject].
+  /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
+  UserSubject({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory UserSubject.fromMap(Map<String, dynamic> map) {
+    return UserSubject(
+      name: map['name'] as String,
+    );
+  }
+}
+

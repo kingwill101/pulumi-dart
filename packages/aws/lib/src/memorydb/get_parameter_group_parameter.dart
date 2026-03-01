@@ -1,19 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetParameterGroupParameter {
   /// Name of the parameter group.
   final String name;
-
   /// Value of the parameter.
   final String value;
 
   /// Creates a new [GetParameterGroupParameter].
   /// [name] Name of the parameter group.
   /// [value] Value of the parameter.
-  GetParameterGroupParameter({required this.name, required this.value});
+  GetParameterGroupParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GetParameterGroupParameter.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class GetParameterGroupParameter {
     );
   }
 }
+

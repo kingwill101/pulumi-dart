@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationConfigurationArgs {
   /// Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   final pulumi.Input<bool> autoEnable;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [OrganizationConfigurationArgs].
   /// [autoEnable] Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationArgs({required bool autoEnable, String? region})
-    : autoEnable = pulumi.Input.asInput<bool>(autoEnable),
+  OrganizationConfigurationArgs({
+    required bool autoEnable,
+    String? region,
+  }) :
+      autoEnable = pulumi.Input.asInput<bool>(autoEnable),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'autoEnable': autoEnable, 'region': ?region};
+    return <String, dynamic>{
+      'autoEnable': autoEnable,
+      'region': ?region,
+    };
   }
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class OrganizationConfigurationArgs {
     );
   }
 }
+

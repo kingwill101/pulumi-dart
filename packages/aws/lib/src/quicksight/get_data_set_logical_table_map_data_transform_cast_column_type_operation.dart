@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   final String columnName;
   final String format;
@@ -23,9 +24,7 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation(
       columnName: map['columnName'] as String,
       format: map['format'] as String,
@@ -33,3 +32,4 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     );
   }
 }
+

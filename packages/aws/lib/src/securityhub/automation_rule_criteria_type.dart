@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutomationRuleCriteriaType {
   final String comparison;
   final String value;
@@ -7,10 +8,16 @@ class AutomationRuleCriteriaType {
   /// Creates a new [AutomationRuleCriteriaType].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaType({required this.comparison, required this.value});
+  AutomationRuleCriteriaType({
+    required this.comparison,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory AutomationRuleCriteriaType.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class AutomationRuleCriteriaType {
     );
   }
 }
+

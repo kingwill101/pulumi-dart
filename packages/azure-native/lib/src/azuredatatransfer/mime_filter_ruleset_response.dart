@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'mime_type_filter_response.dart';
+
+/// Rules for filtering files based on Media types (f.k.a MIME types).
+class MimeFilterRulesetResponse {
+  /// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+  final List<MimeTypeFilterResponse>? filters;
+  /// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+  final String? type;
+
+  /// Creates a new [MimeFilterRulesetResponse].
+  /// [filters] Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+  /// [type] Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+  MimeFilterRulesetResponse({
+    this.filters,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<MimeTypeFilterResponse, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'type': ?type,
+    };
+  }
+
+  factory MimeFilterRulesetResponse.fromMap(Map<String, dynamic> map) {
+    return MimeFilterRulesetResponse(
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<MimeTypeFilterResponse>(map['filters'], (value) => MimeTypeFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}
+

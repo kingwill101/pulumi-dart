@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualNodeSpecListenerConnectionPoolHttp {
   /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster. Minimum value of `1`.
   final int maxConnections;
-
   /// Number of overflowing requests after `max_connections` Envoy will queue to upstream cluster. Minimum value of `1`.
   final int? maxPendingRequests;
 
@@ -22,14 +22,11 @@ class VirtualNodeSpecListenerConnectionPoolHttp {
     };
   }
 
-  factory VirtualNodeSpecListenerConnectionPoolHttp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerConnectionPoolHttp(
       maxConnections: map['maxConnections'] as int,
-      maxPendingRequests: map['maxPendingRequests'] == null
-          ? null
-          : map['maxPendingRequests'] as int,
+      maxPendingRequests: map['maxPendingRequests'] == null ? null : map['maxPendingRequests'] as int,
     );
   }
 }
+

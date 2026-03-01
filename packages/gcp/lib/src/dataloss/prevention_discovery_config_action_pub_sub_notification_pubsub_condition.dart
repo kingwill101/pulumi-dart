@@ -5,8 +5,7 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
   /// An expression
   /// Structure is documented below.
-  final PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions?
-  expressions;
+  final PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions? expressions;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition].
   /// [expressions] An expression
@@ -20,15 +19,10 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition(
-      expressions: map['expressions'] == null
-          ? null
-          : PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap(
-              (map['expressions'] as Map).cast<String, dynamic>(),
-            ),
+      expressions: map['expressions'] == null ? null : PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

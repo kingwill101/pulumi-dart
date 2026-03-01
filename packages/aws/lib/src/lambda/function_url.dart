@@ -328,30 +328,22 @@ import 'function_url_cors.dart';
 class FunctionUrl extends pulumi.CustomResource {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
   late final pulumi.Output<String> authorizationType;
-
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
   late final pulumi.Output<FunctionUrlCors?> cors;
-
   /// ARN of the Lambda function.
   late final pulumi.Output<String> functionArn;
-
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> functionName;
-
   /// HTTP URL endpoint for the function in the format `https://<url_id>.lambda-url.<region>.on.aws/`.
   late final pulumi.Output<String> functionUrl;
-
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
   late final pulumi.Output<String?> invokeMode;
-
   /// Alias name or `$LATEST`.
   late final pulumi.Output<String?> qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Generated ID for the endpoint.
   late final pulumi.Output<String> urlId;
 
@@ -364,11 +356,11 @@ class FunctionUrl extends pulumi.CustomResource {
     FunctionUrlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/functionUrl:FunctionUrl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/functionUrl:FunctionUrl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.authorizationType = registerOutput<String>('authorizationType');
     this.cors = registerOutput<FunctionUrlCors?>('cors');
     this.functionArn = registerOutput<String>('functionArn');

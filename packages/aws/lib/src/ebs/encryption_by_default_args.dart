@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionByDefaultArgs {
   /// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [EncryptionByDefaultArgs].
   /// [enabled] Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EncryptionByDefaultArgs({bool? enabled, String? region})
-    : enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+  EncryptionByDefaultArgs({
+    bool? enabled,
+    String? region,
+  }) :
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'region': ?region};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'region': ?region,
+    };
   }
 
   factory EncryptionByDefaultArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class EncryptionByDefaultArgs {
     );
   }
 }
+

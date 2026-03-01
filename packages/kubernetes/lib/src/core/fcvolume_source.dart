@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.
+class FCVolumeSource {
+  /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  final String? fsType;
+  /// lun is Optional: FC target lun number
+  final int? lun;
+  /// readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+  final bool? readOnly;
+  /// targetWWNs is Optional: FC target worldwide names (WWNs)
+  final List<String>? targetWWNs;
+  /// wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
+  final List<String>? wwids;
+
+  /// Creates a new [FCVolumeSource].
+  /// [fsType] fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  /// [lun] lun is Optional: FC target lun number
+  /// [readOnly] readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+  /// [targetWWNs] targetWWNs is Optional: FC target worldwide names (WWNs)
+  /// [wwids] wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
+  FCVolumeSource({
+    this.fsType,
+    this.lun,
+    this.readOnly,
+    this.targetWWNs,
+    this.wwids,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'fsType': ?fsType,
+      'lun': ?lun,
+      'readOnly': ?readOnly,
+      'targetWWNs': ?targetWWNs,
+      'wwids': ?wwids,
+    };
+  }
+
+  factory FCVolumeSource.fromMap(Map<String, dynamic> map) {
+    return FCVolumeSource(
+      fsType: map['fsType'] == null ? null : map['fsType'] as String,
+      lun: map['lun'] == null ? null : map['lun'] as int,
+      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      targetWWNs: map['targetWWNs'] == null ? null : (map['targetWWNs'] as List).cast<String>(),
+      wwids: map['wwids'] == null ? null : (map['wwids'] as List).cast<String>(),
+    );
+  }
+}
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFirehoseDeliveryStream.
 class GetFirehoseDeliveryStreamResult {
   /// ARN of the Kinesis Firehose Delivery Stream (same as `id`).
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -40,3 +40,4 @@ class GetFirehoseDeliveryStreamResult {
     );
   }
 }
+

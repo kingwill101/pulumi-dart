@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketMetadataConfigurationMetadataConfigurationDestination {
   /// ARN of the table bucket where the metadata configuration is stored.
   final String tableBucketArn;
-
   /// Type of the table bucket where the metadata configuration is stored.
   final String tableBucketType;
-
   /// Namespace in the table bucket where the metadata tables for the metadata configuration are stored.
   final String tableNamespace;
 
@@ -28,9 +27,7 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
     };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketMetadataConfigurationMetadataConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationDestination(
       tableBucketArn: map['tableBucketArn'] as String,
       tableBucketType: map['tableBucketType'] as String,
@@ -38,3 +35,4 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
     );
   }
 }
+

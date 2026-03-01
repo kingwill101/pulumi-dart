@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'estimated_vmprice_response.dart';
+
+/// The estimated price info for using a VM.
+class EstimatedVMPricesResponse {
+  /// Three lettered code specifying the currency of the VM price. Example: USD
+  final String billingCurrency;
+  /// The unit of time measurement for the specified VM price. Example: OneHour
+  final String unitOfMeasure;
+  /// The list of estimated prices for using a VM of a particular OS type, tier, etc.
+  final List<EstimatedVMPriceResponse> values;
+
+  /// Creates a new [EstimatedVMPricesResponse].
+  /// [billingCurrency] Three lettered code specifying the currency of the VM price. Example: USD
+  /// [unitOfMeasure] The unit of time measurement for the specified VM price. Example: OneHour
+  /// [values] The list of estimated prices for using a VM of a particular OS type, tier, etc.
+  EstimatedVMPricesResponse({
+    required this.billingCurrency,
+    required this.unitOfMeasure,
+    required this.values,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'billingCurrency': billingCurrency,
+      'unitOfMeasure': unitOfMeasure,
+      'values': pulumi.Input.encodeList<EstimatedVMPriceResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+    };
+  }
+
+  factory EstimatedVMPricesResponse.fromMap(Map<String, dynamic> map) {
+    return EstimatedVMPricesResponse(
+      billingCurrency: map['billingCurrency'] as String,
+      unitOfMeasure: map['unitOfMeasure'] as String,
+      values: pulumi.Input.decodeList<EstimatedVMPriceResponse>(map['values'], (value) => EstimatedVMPriceResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

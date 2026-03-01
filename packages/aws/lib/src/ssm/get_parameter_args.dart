@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParameterArgs {
   /// Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether to return decrypted `SecureString` value. Defaults to `true`.
   final pulumi.Input<bool>? withDecryption;
 
@@ -20,8 +18,12 @@ class GetParameterArgs {
   /// [name] Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [withDecryption] Whether to return decrypted `SecureString` value. Defaults to `true`.
-  GetParameterArgs({required String name, String? region, bool? withDecryption})
-    : name = pulumi.Input.asInput<String>(name),
+  GetParameterArgs({
+    required String name,
+    String? region,
+    bool? withDecryption,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region),
       withDecryption = pulumi.Input.asOptionalInput<bool>(withDecryption);
 
@@ -37,9 +39,8 @@ class GetParameterArgs {
     return GetParameterArgs(
       name: map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      withDecryption: map['withDecryption'] == null
-          ? null
-          : map['withDecryption'] as bool,
+      withDecryption: map['withDecryption'] == null ? null : map['withDecryption'] as bool,
     );
   }
 }
+

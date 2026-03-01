@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceSchedulingNodeAffinity {
   /// The key for the node affinity label.
   final String key;
-
   /// The operator. Can be `IN` for node-affinities
   /// or `NOT_IN` for anti-affinities.
   final String operator;
-
   /// The values for the node affinity label.
   final List<String> values;
 
@@ -37,3 +36,4 @@ class InstanceSchedulingNodeAffinity {
     );
   }
 }
+

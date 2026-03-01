@@ -1,18 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableSchemaDefinitionStaticColumn {
   /// The name of the static column.
   final String name;
 
   /// Creates a new [TableSchemaDefinitionStaticColumn].
   /// [name] The name of the static column.
-  TableSchemaDefinitionStaticColumn({required this.name});
+  TableSchemaDefinitionStaticColumn({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory TableSchemaDefinitionStaticColumn.fromMap(Map<String, dynamic> map) {
-    return TableSchemaDefinitionStaticColumn(name: map['name'] as String);
+    return TableSchemaDefinitionStaticColumn(
+      name: map['name'] as String,
+    );
   }
 }
+

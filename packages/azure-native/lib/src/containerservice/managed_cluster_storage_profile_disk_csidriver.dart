@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// AzureDisk CSI Driver settings for the storage profile.
+class ManagedClusterStorageProfileDiskCSIDriver {
+  /// Whether to enable AzureDisk CSI Driver. The default value is true.
+  final bool? enabled;
+
+  /// Creates a new [ManagedClusterStorageProfileDiskCSIDriver].
+  /// [enabled] Whether to enable AzureDisk CSI Driver. The default value is true.
+  ManagedClusterStorageProfileDiskCSIDriver({
+    this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
+  }
+
+  factory ManagedClusterStorageProfileDiskCSIDriver.fromMap(Map<String, dynamic> map) {
+    return ManagedClusterStorageProfileDiskCSIDriver(
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+    );
+  }
+}
+

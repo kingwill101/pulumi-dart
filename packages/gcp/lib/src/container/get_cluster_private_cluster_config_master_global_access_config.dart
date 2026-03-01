@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
   /// Whether the cluster master is accessible globally or not.
   final bool enabled;
@@ -11,14 +12,15 @@ class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPrivateClusterConfigMasterGlobalAccessConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

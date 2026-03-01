@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociationArgs {
   /// ARN of the license configuration.
   final pulumi.Input<String> licenseConfigurationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the resource associated with the license configuration.
   final pulumi.Input<String> resourceArn;
 
@@ -24,11 +22,10 @@ class AssociationArgs {
     required String licenseConfigurationArn,
     String? region,
     required String resourceArn,
-  }) : licenseConfigurationArn = pulumi.Input.asInput<String>(
-         licenseConfigurationArn,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourceArn = pulumi.Input.asInput<String>(resourceArn);
+  }) :
+      licenseConfigurationArn = pulumi.Input.asInput<String>(licenseConfigurationArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceArn = pulumi.Input.asInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,3 +43,4 @@ class AssociationArgs {
     );
   }
 }
+

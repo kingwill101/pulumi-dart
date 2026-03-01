@@ -7,7 +7,6 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   /// install when false: `dpkg -i package` - install when true: `apt-get update
   /// && apt-get -y install package.deb`
   final bool? pullDeps;
-
   /// A deb package. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource source;
@@ -21,18 +20,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pullDeps': ?pullDeps, 'source': source.toMap()};
+    return <String, dynamic>{
+      'pullDeps': ?pullDeps,
+      'source': source.toMap(),
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(
       pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source:
-          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource.fromMap(
-            (map['source'] as Map).cast<String, dynamic>(),
-          ),
+      source: OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

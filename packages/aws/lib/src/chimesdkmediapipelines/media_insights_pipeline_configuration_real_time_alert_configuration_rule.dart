@@ -6,17 +6,11 @@ import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
   /// Configuration for an issue detection rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration?
-  issueDetectionConfiguration;
-
+  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration? issueDetectionConfiguration;
   /// Configuration for a keyword match rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration?
-  keywordMatchConfiguration;
-
+  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration? keywordMatchConfiguration;
   /// Configuration for a sentiment rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration?
-  sentimentConfiguration;
-
+  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration? sentimentConfiguration;
   /// Rule type.
   final String type;
 
@@ -34,40 +28,20 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issueDetectionConfiguration': ?issueDetectionConfiguration == null
-          ? null
-          : issueDetectionConfiguration!.toMap(),
-      'keywordMatchConfiguration': ?keywordMatchConfiguration == null
-          ? null
-          : keywordMatchConfiguration!.toMap(),
-      'sentimentConfiguration': ?sentimentConfiguration == null
-          ? null
-          : sentimentConfiguration!.toMap(),
+      'issueDetectionConfiguration': ?issueDetectionConfiguration == null ? null : issueDetectionConfiguration!.toMap(),
+      'keywordMatchConfiguration': ?keywordMatchConfiguration == null ? null : keywordMatchConfiguration!.toMap(),
+      'sentimentConfiguration': ?sentimentConfiguration == null ? null : sentimentConfiguration!.toMap(),
       'type': type,
     };
   }
 
-  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule(
-      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null
-          ? null
-          : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap(
-              (map['issueDetectionConfiguration'] as Map)
-                  .cast<String, dynamic>(),
-            ),
-      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null
-          ? null
-          : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap(
-              (map['keywordMatchConfiguration'] as Map).cast<String, dynamic>(),
-            ),
-      sentimentConfiguration: map['sentimentConfiguration'] == null
-          ? null
-          : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(
-              (map['sentimentConfiguration'] as Map).cast<String, dynamic>(),
-            ),
+      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap((map['issueDetectionConfiguration'] as Map).cast<String, dynamic>()),
+      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap((map['keywordMatchConfiguration'] as Map).cast<String, dynamic>()),
+      sentimentConfiguration: map['sentimentConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap((map['sentimentConfiguration'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

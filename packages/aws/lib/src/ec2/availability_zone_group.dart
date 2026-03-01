@@ -111,10 +111,8 @@ import 'availability_zone_group_args.dart';
 class AvailabilityZoneGroup extends pulumi.CustomResource {
   /// Name of the Availability Zone Group.
   late final pulumi.Output<String> groupName;
-
   /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   late final pulumi.Output<String> optInStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -127,11 +125,11 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
     AvailabilityZoneGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.groupName = registerOutput<String>('groupName');
     this.optInStatus = registerOutput<String>('optInStatus');
     this.region = registerOutput<String>('region');

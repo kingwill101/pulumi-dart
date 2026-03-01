@@ -726,10 +726,8 @@ import 'target_grpc_proxy_args.dart';
 class TargetGrpcProxy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Fingerprint of this resource. A hash of the contents stored in
   /// this object. This field is used in optimistic locking. This field
   /// will be ignored when inserting a TargetGrpcProxy. An up-to-date
@@ -738,7 +736,6 @@ class TargetGrpcProxy extends pulumi.CustomResource {
   /// 412 conditionNotMet. To see the latest fingerprint, make a get()
   /// request to retrieve the TargetGrpcProxy. A base64-encoded string.
   late final pulumi.Output<String> fingerprint;
-
   /// Name of the resource. Provided by the client when the resource
   /// is created. The name must be 1-63 characters long, and comply
   /// with RFC1035. Specifically, the name must be 1-63 characters long
@@ -747,22 +744,17 @@ class TargetGrpcProxy extends pulumi.CustomResource {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Server-defined URL with id for the resource.
   late final pulumi.Output<String> selfLinkWithId;
-
   /// URL to the UrlMap resource that defines the mapping from URL to
   /// the BackendService. The protocol field in the BackendService
   /// must be set to GRPC.
   late final pulumi.Output<String?> urlMap;
-
   /// If true, indicates that the BackendServices referenced by
   /// the urlMap may be accessed by gRPC applications without using
   /// a sidecar proxy. This will enable configuration checks on urlMap
@@ -784,11 +776,11 @@ class TargetGrpcProxy extends pulumi.CustomResource {
     TargetGrpcProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/targetGrpcProxy:TargetGrpcProxy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/targetGrpcProxy:TargetGrpcProxy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.fingerprint = registerOutput<String>('fingerprint');

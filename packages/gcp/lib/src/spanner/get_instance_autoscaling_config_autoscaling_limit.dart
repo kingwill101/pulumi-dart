@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceAutoscalingConfigAutoscalingLimit {
   /// Specifies maximum number of nodes allocated to the instance. If set, this number
   /// should be greater than or equal to min_nodes.
   final int maxNodes;
-
   /// Specifies maximum number of processing units allocated to the instance.
   /// If set, this number should be multiples of 1000 and be greater than or equal to
   /// min_processing_units.
   final int maxProcessingUnits;
-
   /// Specifies number of nodes allocated to the instance. If set, this number
   /// should be greater than or equal to 1.
   final int minNodes;
-
   /// Specifies minimum number of processing units allocated to the instance.
   /// If set, this number should be multiples of 1000.
   final int minProcessingUnits;
@@ -39,9 +37,7 @@ class GetInstanceAutoscalingConfigAutoscalingLimit {
     };
   }
 
-  factory GetInstanceAutoscalingConfigAutoscalingLimit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceAutoscalingConfigAutoscalingLimit.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAutoscalingLimit(
       maxNodes: map['maxNodes'] as int,
       maxProcessingUnits: map['maxProcessingUnits'] as int,
@@ -50,3 +46,4 @@ class GetInstanceAutoscalingConfigAutoscalingLimit {
     );
   }
 }
+

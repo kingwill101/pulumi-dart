@@ -1760,22 +1760,15 @@ import 'resource_policy_workload_policy.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
-
   /// Replication consistency group for asynchronous disk replication.
   /// Structure is documented below.
-  late final pulumi.Output<ResourcePolicyDiskConsistencyGroupPolicy?>
-  diskConsistencyGroupPolicy;
-
+  late final pulumi.Output<ResourcePolicyDiskConsistencyGroupPolicy?> diskConsistencyGroupPolicy;
   /// Resource policy for instances used for placement configuration.
   /// Structure is documented below.
-  late final pulumi.Output<ResourcePolicyGroupPlacementPolicy?>
-  groupPlacementPolicy;
-
+  late final pulumi.Output<ResourcePolicyGroupPlacementPolicy?> groupPlacementPolicy;
   /// Resource policy for scheduling instance operations.
   /// Structure is documented below.
-  late final pulumi.Output<ResourcePolicyInstanceSchedulePolicy?>
-  instanceSchedulePolicy;
-
+  late final pulumi.Output<ResourcePolicyInstanceSchedulePolicy?> instanceSchedulePolicy;
   /// The name of the resource, provided by the client when initially creating
   /// the resource. The resource name must be 1-63 characters long, and comply
   /// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -1784,22 +1777,16 @@ class ResourcePolicy extends pulumi.CustomResource {
   /// must be a dash, lowercase letter, or digit, except the last character,
   /// which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where resource policy resides.
   late final pulumi.Output<String> region;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Policy for creating snapshots of persistent disks.
   /// Structure is documented below.
-  late final pulumi.Output<ResourcePolicySnapshotSchedulePolicy?>
-  snapshotSchedulePolicy;
-
+  late final pulumi.Output<ResourcePolicySnapshotSchedulePolicy?> snapshotSchedulePolicy;
   /// Represents the workload policy.
   /// Structure is documented below.
   late final pulumi.Output<ResourcePolicyWorkloadPolicy?> workloadPolicy;
@@ -1813,34 +1800,20 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resourcePolicy:ResourcePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resourcePolicy:ResourcePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.description = registerOutput<String?>('description');
-    this.diskConsistencyGroupPolicy =
-        registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>(
-          'diskConsistencyGroupPolicy',
-        );
-    this.groupPlacementPolicy =
-        registerOutput<ResourcePolicyGroupPlacementPolicy?>(
-          'groupPlacementPolicy',
-        );
-    this.instanceSchedulePolicy =
-        registerOutput<ResourcePolicyInstanceSchedulePolicy?>(
-          'instanceSchedulePolicy',
-        );
+    this.diskConsistencyGroupPolicy = registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>('diskConsistencyGroupPolicy');
+    this.groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>('groupPlacementPolicy');
+    this.instanceSchedulePolicy = registerOutput<ResourcePolicyInstanceSchedulePolicy?>('instanceSchedulePolicy');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');
     this.selfLink = registerOutput<String>('selfLink');
-    this.snapshotSchedulePolicy =
-        registerOutput<ResourcePolicySnapshotSchedulePolicy?>(
-          'snapshotSchedulePolicy',
-        );
-    this.workloadPolicy = registerOutput<ResourcePolicyWorkloadPolicy?>(
-      'workloadPolicy',
-    );
+    this.snapshotSchedulePolicy = registerOutput<ResourcePolicySnapshotSchedulePolicy?>('snapshotSchedulePolicy');
+    this.workloadPolicy = registerOutput<ResourcePolicyWorkloadPolicy?>('workloadPolicy');
   }
 }

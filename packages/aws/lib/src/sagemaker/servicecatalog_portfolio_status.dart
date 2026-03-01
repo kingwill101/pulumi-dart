@@ -102,7 +102,6 @@ import 'servicecatalog_portfolio_status_args.dart';
 class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   late final pulumi.Output<String> status;
 
@@ -115,11 +114,11 @@ class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
     ServicecatalogPortfolioStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.region = registerOutput<String>('region');
     this.status = registerOutput<String>('status');
   }

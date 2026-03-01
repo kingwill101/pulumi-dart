@@ -7,21 +7,16 @@ import 'vmware_node_pool_config_vsphere_config.dart';
 class VMwareNodePoolConfig {
   /// VMware disk size to be used during creation.
   final int? bootDiskSizeGb;
-
   /// The number of CPUs for each node in the node pool.
   final int? cpus;
-
   /// Allow node pool traffic to be load balanced. Only works for clusters with
   /// MetalLB load balancers.
   final bool? enableLoadBalancer;
-
   /// The OS image name in vCenter, only valid when using Windows.
   final String? image;
-
   /// The OS image to be used for each node in a node pool.
   /// Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
   final String imageType;
-
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node.
   /// These will added in addition to any default label(s) that
   /// Kubernetes may apply to the node.
@@ -29,17 +24,13 @@ class VMwareNodePoolConfig {
   /// the Kubernetes version -- it's best to assume the behavior is undefined
   /// and conflicts should be avoided.
   final Map<String, String>? labels;
-
   /// The megabytes of memory for each node in the node pool.
   final int? memoryMb;
-
   /// The number of nodes in the node pool.
   final int? replicas;
-
   /// The initial taints assigned to nodes of this node pool.
   /// Structure is documented below.
   final List<VMwareNodePoolConfigTaint>? taints;
-
   /// Specifies the vSphere config for node pool.
   /// Structure is documented below.
   final VMwareNodePoolConfigVsphereConfig? vsphereConfig;
@@ -78,45 +69,24 @@ class VMwareNodePoolConfig {
       'labels': ?labels,
       'memoryMb': ?memoryMb,
       'replicas': ?replicas,
-      'taints': ?taints == null
-          ? null
-          : pulumi.Input.encodeList<
-              VMwareNodePoolConfigTaint,
-              Map<String, dynamic>
-            >(taints!, (value) => value.toMap()),
+      'taints': ?taints == null ? null : pulumi.Input.encodeList<VMwareNodePoolConfigTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
       'vsphereConfig': ?vsphereConfig == null ? null : vsphereConfig!.toMap(),
     };
   }
 
   factory VMwareNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null
-          ? null
-          : map['bootDiskSizeGb'] as int,
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : map['bootDiskSizeGb'] as int,
       cpus: map['cpus'] == null ? null : map['cpus'] as int,
-      enableLoadBalancer: map['enableLoadBalancer'] == null
-          ? null
-          : map['enableLoadBalancer'] as bool,
+      enableLoadBalancer: map['enableLoadBalancer'] == null ? null : map['enableLoadBalancer'] as bool,
       image: map['image'] == null ? null : map['image'] as String,
       imageType: map['imageType'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       memoryMb: map['memoryMb'] == null ? null : map['memoryMb'] as int,
       replicas: map['replicas'] == null ? null : map['replicas'] as int,
-      taints: map['taints'] == null
-          ? null
-          : pulumi.Input.decodeList<VMwareNodePoolConfigTaint>(
-              map['taints'],
-              (value) => VMwareNodePoolConfigTaint.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      vsphereConfig: map['vsphereConfig'] == null
-          ? null
-          : VMwareNodePoolConfigVsphereConfig.fromMap(
-              (map['vsphereConfig'] as Map).cast<String, dynamic>(),
-            ),
+      taints: map['taints'] == null ? null : pulumi.Input.decodeList<VMwareNodePoolConfigTaint>(map['taints'], (value) => VMwareNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>())),
+      vsphereConfig: map['vsphereConfig'] == null ? null : VMwareNodePoolConfigVsphereConfig.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

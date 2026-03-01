@@ -16,25 +16,20 @@ class ServiceArgs {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   final pulumi.Input<bool>? autogenerateRevisionName;
-
   /// The location of the cloud run instance. eg us-central1
   final pulumi.Input<String> location;
-
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   /// Structure is documented below.
   final pulumi.Input<ServiceMetadata>? metadata;
-
   /// Name must be unique within a Google Cloud project and region.
   /// Is required when creating resources. Name is primarily intended
   /// for creation idempotence and configuration definition. Cannot be updated.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -46,7 +41,6 @@ class ServiceArgs {
   /// responsible for materializing the container image from source.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplate>? template;
-
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
@@ -68,73 +62,37 @@ class ServiceArgs {
     String? project,
     ServiceTemplate? template,
     List<ServiceTraffic>? traffics,
-  }) : autogenerateRevisionName = pulumi.Input.asOptionalInput<bool>(
-         autogenerateRevisionName,
-       ),
-       location = pulumi.Input.asInput<String>(location),
-       metadata = pulumi.Input.asOptionalInput<ServiceMetadata>(metadata),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       template = pulumi.Input.asOptionalInput<ServiceTemplate>(template),
-       traffics = pulumi.Input.asOptionalInput<List<ServiceTraffic>>(traffics);
+  }) :
+      autogenerateRevisionName = pulumi.Input.asOptionalInput<bool>(autogenerateRevisionName),
+      location = pulumi.Input.asInput<String>(location),
+      metadata = pulumi.Input.asOptionalInput<ServiceMetadata>(metadata),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      template = pulumi.Input.asOptionalInput<ServiceTemplate>(template),
+      traffics = pulumi.Input.asOptionalInput<List<ServiceTraffic>>(traffics);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autogenerateRevisionName': ?autogenerateRevisionName,
       'location': location,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceMetadata,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ServiceMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
-      'template':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceTemplate,
-            Map<String, dynamic>
-          >(template, (value) => value.toMap()),
-      'traffics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServiceTraffic>,
-            List<Map<String, dynamic>>
-          >(
-            traffics,
-            (value) =>
-                pulumi.Input.encodeList<ServiceTraffic, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'template': ?pulumi.Input.mapOptionalInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'traffics': ?pulumi.Input.mapOptionalInputValue<List<ServiceTraffic>, List<Map<String, dynamic>>>(traffics, (value) => pulumi.Input.encodeList<ServiceTraffic, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      autogenerateRevisionName: map['autogenerateRevisionName'] == null
-          ? null
-          : map['autogenerateRevisionName'] as bool,
+      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : map['autogenerateRevisionName'] as bool,
       location: map['location'] as String,
-      metadata: map['metadata'] == null
-          ? null
-          : ServiceMetadata.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>(),
-            ),
+      metadata: map['metadata'] == null ? null : ServiceMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      template: map['template'] == null
-          ? null
-          : ServiceTemplate.fromMap(
-              (map['template'] as Map).cast<String, dynamic>(),
-            ),
-      traffics: map['traffics'] == null
-          ? null
-          : pulumi.Input.decodeList<ServiceTraffic>(
-              map['traffics'],
-              (value) => ServiceTraffic.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      template: map['template'] == null ? null : ServiceTemplate.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      traffics: map['traffics'] == null ? null : pulumi.Input.decodeList<ServiceTraffic>(map['traffics'], (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

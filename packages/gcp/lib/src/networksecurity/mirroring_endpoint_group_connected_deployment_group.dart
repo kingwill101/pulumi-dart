@@ -8,7 +8,6 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
   final List<MirroringEndpointGroupConnectedDeploymentGroupLocation>? locations;
-
   /// (Output)
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -18,36 +17,23 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
   /// Creates a new [MirroringEndpointGroupConnectedDeploymentGroup].
   /// [locations] (Output)
   /// [name] (Output)
-  MirroringEndpointGroupConnectedDeploymentGroup({this.locations, this.name});
+  MirroringEndpointGroupConnectedDeploymentGroup({
+    this.locations,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locations': ?locations == null
-          ? null
-          : pulumi.Input.encodeList<
-              MirroringEndpointGroupConnectedDeploymentGroupLocation,
-              Map<String, dynamic>
-            >(locations!, (value) => value.toMap()),
+      'locations': ?locations == null ? null : pulumi.Input.encodeList<MirroringEndpointGroupConnectedDeploymentGroupLocation, Map<String, dynamic>>(locations!, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory MirroringEndpointGroupConnectedDeploymentGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MirroringEndpointGroupConnectedDeploymentGroup.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupConnectedDeploymentGroup(
-      locations: map['locations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              MirroringEndpointGroupConnectedDeploymentGroupLocation
-            >(
-              map['locations'],
-              (value) =>
-                  MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
+      locations: map['locations'] == null ? null : pulumi.Input.decodeList<MirroringEndpointGroupConnectedDeploymentGroupLocation>(map['locations'], (value) => MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class TrunkSubPort {
+  /// The ID of the port to be made a subport of the trunk.
+  final String portId;
+  /// The numeric id of the subport segment.
+  final int segmentationId;
+  /// The segmentation technology to use, e.g., "vlan".
+  final String segmentationType;
+
+  /// Creates a new [TrunkSubPort].
+  /// [portId] The ID of the port to be made a subport of the trunk.
+  /// [segmentationId] The numeric id of the subport segment.
+  /// [segmentationType] The segmentation technology to use, e.g., "vlan".
+  TrunkSubPort({
+    required this.portId,
+    required this.segmentationId,
+    required this.segmentationType,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'portId': portId,
+      'segmentationId': segmentationId,
+      'segmentationType': segmentationType,
+    };
+  }
+
+  factory TrunkSubPort.fromMap(Map<String, dynamic> map) {
+    return TrunkSubPort(
+      portId: map['portId'] as String,
+      segmentationId: map['segmentationId'] as int,
+      segmentationType: map['segmentationType'] as String,
+    );
+  }
+}
+

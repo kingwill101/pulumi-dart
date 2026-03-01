@@ -5,16 +5,12 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 class V2modelsIntentInitialResponseSettingCodeHook {
   /// Whether a dialog code hook is used when the intent is activated.
   final bool active;
-
   /// Whether a Lambda function should be invoked for the dialog.
   final bool enableCodeHookInvocation;
-
   /// Label that indicates the dialog step from which the dialog code hook is happening.
   final String? invocationLabel;
-
   /// Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See `post_code_hook_specification`.
-  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification?
-  postCodeHookSpecification;
+  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification? postCodeHookSpecification;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHook].
   /// [active] Whether a dialog code hook is used when the intent is activated.
@@ -33,26 +29,17 @@ class V2modelsIntentInitialResponseSettingCodeHook {
       'active': active,
       'enableCodeHookInvocation': enableCodeHookInvocation,
       'invocationLabel': ?invocationLabel,
-      'postCodeHookSpecification': ?postCodeHookSpecification == null
-          ? null
-          : postCodeHookSpecification!.toMap(),
+      'postCodeHookSpecification': ?postCodeHookSpecification == null ? null : postCodeHookSpecification!.toMap(),
     };
   }
 
-  factory V2modelsIntentInitialResponseSettingCodeHook.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingCodeHook.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHook(
       active: map['active'] as bool,
       enableCodeHookInvocation: map['enableCodeHookInvocation'] as bool,
-      invocationLabel: map['invocationLabel'] == null
-          ? null
-          : map['invocationLabel'] as String,
-      postCodeHookSpecification: map['postCodeHookSpecification'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification.fromMap(
-              (map['postCodeHookSpecification'] as Map).cast<String, dynamic>(),
-            ),
+      invocationLabel: map['invocationLabel'] == null ? null : map['invocationLabel'] as String,
+      postCodeHookSpecification: map['postCodeHookSpecification'] == null ? null : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification.fromMap((map['postCodeHookSpecification'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

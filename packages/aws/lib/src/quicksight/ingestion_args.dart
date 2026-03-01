@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// ID of the dataset used in the ingestion.
   final pulumi.Input<String> dataSetId;
-
   /// ID for the ingestion.
   final pulumi.Input<String> ingestionId;
-
   /// Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> ingestionType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,11 +32,12 @@ class IngestionArgs {
     required String ingestionId,
     required String ingestionType,
     String? region,
-  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-       dataSetId = pulumi.Input.asInput<String>(dataSetId),
-       ingestionId = pulumi.Input.asInput<String>(ingestionId),
-       ingestionType = pulumi.Input.asInput<String>(ingestionType),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      dataSetId = pulumi.Input.asInput<String>(dataSetId),
+      ingestionId = pulumi.Input.asInput<String>(ingestionId),
+      ingestionType = pulumi.Input.asInput<String>(ingestionType),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,9 +51,7 @@ class IngestionArgs {
 
   factory IngestionArgs.fromMap(Map<String, dynamic> map) {
     return IngestionArgs(
-      awsAccountId: map['awsAccountId'] == null
-          ? null
-          : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
       dataSetId: map['dataSetId'] as String,
       ingestionId: map['ingestionId'] as String,
       ingestionType: map['ingestionType'] as String,
@@ -64,3 +59,4 @@ class IngestionArgs {
     );
   }
 }
+

@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'storage_discovery_scope_response.dart';
+
+/// Storage Discovery Workspace Properties
+class StorageDiscoveryWorkspacePropertiesResponse {
+  /// The description of the storage discovery workspace
+  final String? description;
+  /// The status of the last operation.
+  final String provisioningState;
+  /// The scopes of the storage discovery workspace.
+  final List<StorageDiscoveryScopeResponse> scopes;
+  /// The storage discovery sku
+  final String? sku;
+  /// The view level storage discovery data estate
+  final List<String> workspaceRoots;
+
+  /// Creates a new [StorageDiscoveryWorkspacePropertiesResponse].
+  /// [description] The description of the storage discovery workspace
+  /// [provisioningState] The status of the last operation.
+  /// [scopes] The scopes of the storage discovery workspace.
+  /// [sku] The storage discovery sku
+  /// [workspaceRoots] The view level storage discovery data estate
+  StorageDiscoveryWorkspacePropertiesResponse({
+    this.description,
+    required this.provisioningState,
+    required this.scopes,
+    this.sku,
+    required this.workspaceRoots,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'provisioningState': provisioningState,
+      'scopes': pulumi.Input.encodeList<StorageDiscoveryScopeResponse, Map<String, dynamic>>(scopes, (value) => value.toMap()),
+      'sku': ?sku,
+      'workspaceRoots': workspaceRoots,
+    };
+  }
+
+  factory StorageDiscoveryWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return StorageDiscoveryWorkspacePropertiesResponse(
+      description: map['description'] == null ? null : map['description'] as String,
+      provisioningState: map['provisioningState'] as String,
+      scopes: pulumi.Input.decodeList<StorageDiscoveryScopeResponse>(map['scopes'], (value) => StorageDiscoveryScopeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sku: map['sku'] == null ? null : map['sku'] as String,
+      workspaceRoots: (map['workspaceRoots'] as List).cast<String>(),
+    );
+  }
+}
+

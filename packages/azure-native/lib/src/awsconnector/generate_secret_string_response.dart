@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of GenerateSecretString
+class GenerateSecretStringResponse {
+  /// A string of the characters that you don't want in the password.
+  final String? excludeCharacters;
+  /// Specifies whether to exclude lowercase letters from the password. If you don't include this switch, the password can contain lowercase letters.
+  final bool? excludeLowercase;
+  /// Specifies whether to exclude numbers from the password. If you don't include this switch, the password can contain numbers.
+  final bool? excludeNumbers;
+  /// Specifies whether to exclude the following punctuation characters from the password: ``! ' # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~``. If you don't include this switch, the password can contain punctuation.
+  final bool? excludePunctuation;
+  /// Specifies whether to exclude uppercase letters from the password. If you don't include this switch, the password can contain uppercase letters.
+  final bool? excludeUppercase;
+  /// The JSON key name for the key/value pair, where the value is the generated password. This pair is added to the JSON structure specified by the ``SecretStringTemplate`` parameter. If you specify this parameter, then you must also specify ``SecretStringTemplate``.
+  final String? generateStringKey;
+  /// Specifies whether to include the space character. If you include this switch, the password can contain space characters.
+  final bool? includeSpace;
+  /// The length of the password. If you don't include this parameter, the default length is 32 characters.
+  final int? passwordLength;
+  /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation. If you don't include this switch, the password contains at least one of every character type.
+  final bool? requireEachIncludedType;
+  /// A template that the generated string must match. When you make a change to this property, a new secret version is created.
+  final String? secretStringTemplate;
+
+  /// Creates a new [GenerateSecretStringResponse].
+  /// [excludeCharacters] A string of the characters that you don't want in the password.
+  /// [excludeLowercase] Specifies whether to exclude lowercase letters from the password. If you don't include this switch, the password can contain lowercase letters.
+  /// [excludeNumbers] Specifies whether to exclude numbers from the password. If you don't include this switch, the password can contain numbers.
+  /// [excludePunctuation] Specifies whether to exclude the following punctuation characters from the password: ``! ' # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~``. If you don't include this switch, the password can contain punctuation.
+  /// [excludeUppercase] Specifies whether to exclude uppercase letters from the password. If you don't include this switch, the password can contain uppercase letters.
+  /// [generateStringKey] The JSON key name for the key/value pair, where the value is the generated password. This pair is added to the JSON structure specified by the ``SecretStringTemplate`` parameter. If you specify this parameter, then you must also specify ``SecretStringTemplate``.
+  /// [includeSpace] Specifies whether to include the space character. If you include this switch, the password can contain space characters.
+  /// [passwordLength] The length of the password. If you don't include this parameter, the default length is 32 characters.
+  /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation. If you don't include this switch, the password contains at least one of every character type.
+  /// [secretStringTemplate] A template that the generated string must match. When you make a change to this property, a new secret version is created.
+  GenerateSecretStringResponse({
+    this.excludeCharacters,
+    this.excludeLowercase,
+    this.excludeNumbers,
+    this.excludePunctuation,
+    this.excludeUppercase,
+    this.generateStringKey,
+    this.includeSpace,
+    this.passwordLength,
+    this.requireEachIncludedType,
+    this.secretStringTemplate,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'excludeCharacters': ?excludeCharacters,
+      'excludeLowercase': ?excludeLowercase,
+      'excludeNumbers': ?excludeNumbers,
+      'excludePunctuation': ?excludePunctuation,
+      'excludeUppercase': ?excludeUppercase,
+      'generateStringKey': ?generateStringKey,
+      'includeSpace': ?includeSpace,
+      'passwordLength': ?passwordLength,
+      'requireEachIncludedType': ?requireEachIncludedType,
+      'secretStringTemplate': ?secretStringTemplate,
+    };
+  }
+
+  factory GenerateSecretStringResponse.fromMap(Map<String, dynamic> map) {
+    return GenerateSecretStringResponse(
+      excludeCharacters: map['excludeCharacters'] == null ? null : map['excludeCharacters'] as String,
+      excludeLowercase: map['excludeLowercase'] == null ? null : map['excludeLowercase'] as bool,
+      excludeNumbers: map['excludeNumbers'] == null ? null : map['excludeNumbers'] as bool,
+      excludePunctuation: map['excludePunctuation'] == null ? null : map['excludePunctuation'] as bool,
+      excludeUppercase: map['excludeUppercase'] == null ? null : map['excludeUppercase'] as bool,
+      generateStringKey: map['generateStringKey'] == null ? null : map['generateStringKey'] as String,
+      includeSpace: map['includeSpace'] == null ? null : map['includeSpace'] as bool,
+      passwordLength: map['passwordLength'] == null ? null : map['passwordLength'] as int,
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : map['requireEachIncludedType'] as bool,
+      secretStringTemplate: map['secretStringTemplate'] == null ? null : map['secretStringTemplate'] as String,
+    );
+  }
+}
+

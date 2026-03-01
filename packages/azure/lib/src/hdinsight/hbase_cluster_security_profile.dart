@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class HBaseClusterSecurityProfile {
+  /// The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
+  final String aaddsResourceId;
+  /// A list of the distinguished names for the cluster user groups. Changing this forces a new resource to be created.
+  final List<String>? clusterUsersGroupDns;
+  /// The name of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  final String domainName;
+  /// The user password of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  final String domainUserPassword;
+  /// The username of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  final String domainUsername;
+  /// A list of the LDAPS URLs to communicate with the Azure Active Directory. Changing this forces a new resource to be created.
+  final List<String> ldapsUrls;
+  /// The User Assigned Identity for the HDInsight Cluster. Changing this forces a new resource to be created.
+  final String msiResourceId;
+
+  /// Creates a new [HBaseClusterSecurityProfile].
+  /// [aaddsResourceId] The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
+  /// [clusterUsersGroupDns] A list of the distinguished names for the cluster user groups. Changing this forces a new resource to be created.
+  /// [domainName] The name of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  /// [domainUserPassword] The user password of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  /// [domainUsername] The username of the Azure Active Directory Domain. Changing this forces a new resource to be created.
+  /// [ldapsUrls] A list of the LDAPS URLs to communicate with the Azure Active Directory. Changing this forces a new resource to be created.
+  /// [msiResourceId] The User Assigned Identity for the HDInsight Cluster. Changing this forces a new resource to be created.
+  HBaseClusterSecurityProfile({
+    required this.aaddsResourceId,
+    this.clusterUsersGroupDns,
+    required this.domainName,
+    required this.domainUserPassword,
+    required this.domainUsername,
+    required this.ldapsUrls,
+    required this.msiResourceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'aaddsResourceId': aaddsResourceId,
+      'clusterUsersGroupDns': ?clusterUsersGroupDns,
+      'domainName': domainName,
+      'domainUserPassword': domainUserPassword,
+      'domainUsername': domainUsername,
+      'ldapsUrls': ldapsUrls,
+      'msiResourceId': msiResourceId,
+    };
+  }
+
+  factory HBaseClusterSecurityProfile.fromMap(Map<String, dynamic> map) {
+    return HBaseClusterSecurityProfile(
+      aaddsResourceId: map['aaddsResourceId'] as String,
+      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : (map['clusterUsersGroupDns'] as List).cast<String>(),
+      domainName: map['domainName'] as String,
+      domainUserPassword: map['domainUserPassword'] as String,
+      domainUsername: map['domainUsername'] as String,
+      ldapsUrls: (map['ldapsUrls'] as List).cast<String>(),
+      msiResourceId: map['msiResourceId'] as String,
+    );
+  }
+}
+

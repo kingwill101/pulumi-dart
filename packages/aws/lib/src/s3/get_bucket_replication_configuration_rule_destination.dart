@@ -7,21 +7,13 @@ import 'get_bucket_replication_configuration_rule_destination_metric.dart';
 import 'get_bucket_replication_configuration_rule_destination_replication_time.dart';
 
 class GetBucketReplicationConfigurationRuleDestination {
-  final List<
-    GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation
-  >
-  accessControlTranslations;
+  final List<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation> accessControlTranslations;
   final String account;
-
   /// The name of the bucket to get the replication configuration for.
   final String bucket;
-  final List<
-    GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration
-  >
-  encryptionConfigurations;
+  final List<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration> encryptionConfigurations;
   final List<GetBucketReplicationConfigurationRuleDestinationMetric> metrics;
-  final List<GetBucketReplicationConfigurationRuleDestinationReplicationTime>
-  replicationTimes;
+  final List<GetBucketReplicationConfigurationRuleDestinationReplicationTime> replicationTimes;
   final String storageClass;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestination].
@@ -44,79 +36,26 @@ class GetBucketReplicationConfigurationRuleDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessControlTranslations':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation,
-            Map<String, dynamic>
-          >(accessControlTranslations, (value) => value.toMap()),
+      'accessControlTranslations': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation, Map<String, dynamic>>(accessControlTranslations, (value) => value.toMap()),
       'account': account,
       'bucket': bucket,
-      'encryptionConfigurations':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration,
-            Map<String, dynamic>
-          >(encryptionConfigurations, (value) => value.toMap()),
-      'metrics':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleDestinationMetric,
-            Map<String, dynamic>
-          >(metrics, (value) => value.toMap()),
-      'replicationTimes':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleDestinationReplicationTime,
-            Map<String, dynamic>
-          >(replicationTimes, (value) => value.toMap()),
+      'encryptionConfigurations': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfigurations, (value) => value.toMap()),
+      'metrics': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationMetric, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'replicationTimes': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTime, Map<String, dynamic>>(replicationTimes, (value) => value.toMap()),
       'storageClass': storageClass,
     };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleDestination.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestination(
-      accessControlTranslations:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation
-          >(
-            map['accessControlTranslations'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      accessControlTranslations: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation>(map['accessControlTranslations'], (value) => GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((value as Map).cast<String, dynamic>())),
       account: map['account'] as String,
       bucket: map['bucket'] as String,
-      encryptionConfigurations:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration
-          >(
-            map['encryptionConfigurations'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      metrics:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleDestinationMetric
-          >(
-            map['metrics'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      replicationTimes:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleDestinationReplicationTime
-          >(
-            map['replicationTimes'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      encryptionConfigurations: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      metrics: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationMetric>(map['metrics'], (value) => GetBucketReplicationConfigurationRuleDestinationMetric.fromMap((value as Map).cast<String, dynamic>())),
+      replicationTimes: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTime>(map['replicationTimes'], (value) => GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap((value as Map).cast<String, dynamic>())),
       storageClass: map['storageClass'] as String,
     );
   }
 }
+

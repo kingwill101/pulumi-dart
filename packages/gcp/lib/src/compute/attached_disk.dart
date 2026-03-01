@@ -235,19 +235,16 @@ class AttachedDisk extends pulumi.CustomResource {
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
   late final pulumi.Output<String> deviceName;
-
   /// `name` or `self_link` of the disk that will be attached.
   ///
   ///
   /// - - -
   late final pulumi.Output<String> disk;
-
   /// `name` or `self_link` of the compute instance that the disk will be attached to.
   /// If the `self_link` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
   late final pulumi.Output<String> instance;
-
   /// The disk interface used for attaching this disk.
   ///
   /// This field is only used for specific cases, please don't specify
@@ -258,7 +255,6 @@ class AttachedDisk extends pulumi.CustomResource {
   /// "SCSI"
   /// "NVME"
   late final pulumi.Output<String?> interface;
-
   /// The mode in which to attach this disk, either READ_WRITE or
   /// READ_ONLY. If not specified, the default is to attach the disk in
   /// READ_WRITE mode.
@@ -267,11 +263,9 @@ class AttachedDisk extends pulumi.CustomResource {
   /// "READ_ONLY"
   /// "READ_WRITE"
   late final pulumi.Output<String?> mode;
-
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// `self_link` the project defined in the link will take precedence.
   late final pulumi.Output<String> project;
-
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
   /// `self_link` the zone defined in the link will take precedence.
   late final pulumi.Output<String> zone;
@@ -285,11 +279,11 @@ class AttachedDisk extends pulumi.CustomResource {
     AttachedDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/attachedDisk:AttachedDisk',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/attachedDisk:AttachedDisk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.deviceName = registerOutput<String>('deviceName');
     this.disk = registerOutput<String>('disk');
     this.instance = registerOutput<String>('instance');

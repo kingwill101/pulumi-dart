@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
   final int? hours;
-
   /// Minutes of hour of day. Currently, only the value 0 is supported.
   final int? minutes;
-
   /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
   final int? nanos;
-
   /// Seconds of minutes of the time. Currently, only the value 0 is supported.
   final int? seconds;
 
@@ -34,9 +32,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
     };
   }
 
-  factory ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(
       hours: map['hours'] == null ? null : map['hours'] as int,
       minutes: map['minutes'] == null ? null : map['minutes'] as int,
@@ -45,3 +41,4 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
     );
   }
 }
+

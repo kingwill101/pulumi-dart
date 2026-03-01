@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxAgentGenAppBuilderSettings {
   /// The full name of the Gen App Builder engine related to this agent if there is one.
   /// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
@@ -7,13 +8,20 @@ class CxAgentGenAppBuilderSettings {
 
   /// Creates a new [CxAgentGenAppBuilderSettings].
   /// [engine] The full name of the Gen App Builder engine related to this agent if there is one.
-  CxAgentGenAppBuilderSettings({required this.engine});
+  CxAgentGenAppBuilderSettings({
+    required this.engine,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'engine': engine};
+    return <String, dynamic>{
+      'engine': engine,
+    };
   }
 
   factory CxAgentGenAppBuilderSettings.fromMap(Map<String, dynamic> map) {
-    return CxAgentGenAppBuilderSettings(engine: map['engine'] as String);
+    return CxAgentGenAppBuilderSettings(
+      engine: map['engine'] as String,
+    );
   }
 }
+

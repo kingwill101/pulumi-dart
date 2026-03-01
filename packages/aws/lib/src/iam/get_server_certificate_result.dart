@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerCertificate.
 class GetServerCertificateResult {
   /// is set to the ARN of the IAM Server Certificate
   final String arn;
-
   /// is the public key certificate (PEM-encoded). This is useful when [configuring back-end instance authentication](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html) policy for load balancer
   final String certificateBody;
-
   /// is the public key certificate chain (PEM-encoded) if exists, empty otherwise
   final String certificateChain;
-
   /// is set to the expiration date of the IAM Server Certificate
   final String expirationDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? latest;
   final String name;
   final String? namePrefix;
-
   /// is set to the path of the IAM Server Certificate
   final String path;
   final String? pathPrefix;
-
   /// is the date when the server certificate was uploaded
   final String uploadDate;
 
@@ -78,14 +73,11 @@ class GetServerCertificateResult {
       id: map['id'] as String,
       latest: map['latest'] == null ? null : map['latest'] as bool,
       name: map['name'] as String,
-      namePrefix: map['namePrefix'] == null
-          ? null
-          : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       path: map['path'] as String,
-      pathPrefix: map['pathPrefix'] == null
-          ? null
-          : map['pathPrefix'] as String,
+      pathPrefix: map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
       uploadDate: map['uploadDate'] as String,
     );
   }
 }
+

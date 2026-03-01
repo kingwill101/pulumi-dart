@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_esa_kv_kv_args_doc}
+/// The set of arguments for Kv.
+/// {@endtemplate}
+/// {@macro pulumi_esa_kv_kv_args_doc}
+class KvArgs {
+  /// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
+  final pulumi.Input<int>? expiration;
+  /// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+  final pulumi.Input<int>? expirationTtl;
+  /// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+  final pulumi.Input<bool>? isbase;
+  /// kv
+  final pulumi.Input<String> key;
+  /// The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
+  final pulumi.Input<String> namespace;
+  /// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+  final pulumi.Input<String>? url;
+  /// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
+  final pulumi.Input<String>? value;
+
+  /// Creates a new [KvArgs].
+  /// [expiration] The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
+  /// [expirationTtl] The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+  /// [isbase] The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+  /// [key] kv
+  /// [namespace] The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
+  /// [url] The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+  /// [value] The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
+  KvArgs({
+    int? expiration,
+    int? expirationTtl,
+    bool? isbase,
+    required String key,
+    required String namespace,
+    String? url,
+    String? value,
+  }) :
+      expiration = pulumi.Input.asOptionalInput<int>(expiration),
+      expirationTtl = pulumi.Input.asOptionalInput<int>(expirationTtl),
+      isbase = pulumi.Input.asOptionalInput<bool>(isbase),
+      key = pulumi.Input.asInput<String>(key),
+      namespace = pulumi.Input.asInput<String>(namespace),
+      url = pulumi.Input.asOptionalInput<String>(url),
+      value = pulumi.Input.asOptionalInput<String>(value);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'expiration': ?expiration,
+      'expirationTtl': ?expirationTtl,
+      'isbase': ?isbase,
+      'key': key,
+      'namespace': namespace,
+      'url': ?url,
+      'value': ?value,
+    };
+  }
+
+  factory KvArgs.fromMap(Map<String, dynamic> map) {
+    return KvArgs(
+      expiration: map['expiration'] == null ? null : map['expiration'] as int,
+      expirationTtl: map['expirationTtl'] == null ? null : map['expirationTtl'] as int,
+      isbase: map['isbase'] == null ? null : map['isbase'] as bool,
+      key: map['key'] as String,
+      namespace: map['namespace'] as String,
+      url: map['url'] == null ? null : map['url'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

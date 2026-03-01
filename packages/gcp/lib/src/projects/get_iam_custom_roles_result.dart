@@ -8,7 +8,6 @@ class GetIamCustomRolesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
-
   /// A list of all retrieved custom roles roles. Structure is defined below.
   final List<GetIamCustomRolesRole> roles;
   final bool? showDeleted;
@@ -32,11 +31,7 @@ class GetIamCustomRolesResult {
     return <String, dynamic>{
       'id': id,
       'project': ?project,
-      'roles':
-          pulumi.Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(
-            roles,
-            (value) => value.toMap(),
-          ),
+      'roles': pulumi.Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
       'showDeleted': ?showDeleted,
       'view': ?view,
     };
@@ -46,16 +41,10 @@ class GetIamCustomRolesResult {
     return GetIamCustomRolesResult(
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(
-        map['roles'],
-        (value) => GetIamCustomRolesRole.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      showDeleted: map['showDeleted'] == null
-          ? null
-          : map['showDeleted'] as bool,
+      roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(map['roles'], (value) => GetIamCustomRolesRole.fromMap((value as Map).cast<String, dynamic>())),
+      showDeleted: map['showDeleted'] == null ? null : map['showDeleted'] as bool,
       view: map['view'] == null ? null : map['view'] as String,
     );
   }
 }
+

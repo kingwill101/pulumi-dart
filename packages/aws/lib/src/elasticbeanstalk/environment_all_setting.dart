@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentAllSetting {
   /// A unique name for this Environment. This name is used
   /// in the application URL
@@ -38,3 +39,4 @@ class EnvironmentAllSetting {
     );
   }
 }
+

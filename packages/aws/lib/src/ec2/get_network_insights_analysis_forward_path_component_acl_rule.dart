@@ -6,8 +6,7 @@ import 'get_network_insights_analysis_forward_path_component_acl_rule_port_range
 class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
   final String cidr;
   final bool egress;
-  final List<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>
-  portRanges;
+  final List<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange> portRanges;
   final String protocol;
   final String ruleAction;
   final int ruleNumber;
@@ -32,36 +31,22 @@ class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
     return <String, dynamic>{
       'cidr': cidr,
       'egress': egress,
-      'portRanges':
-          pulumi.Input.encodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange,
-            Map<String, dynamic>
-          >(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
       'protocol': protocol,
       'ruleAction': ruleAction,
       'ruleNumber': ruleNumber,
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentAclRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentAclRule.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentAclRule(
       cidr: map['cidr'] as String,
       egress: map['egress'] as bool,
-      portRanges:
-          pulumi.Input.decodeList<
-            GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange
-          >(
-            map['portRanges'],
-            (value) =>
-                GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      portRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] as String,
       ruleAction: map['ruleAction'] as String,
       ruleNumber: map['ruleNumber'] as int,
     );
   }
 }
+

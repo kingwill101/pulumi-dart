@@ -10,30 +10,20 @@ class GetSecretsSecretReplicationUserManaged {
 
   /// Creates a new [GetSecretsSecretReplicationUserManaged].
   /// [replicas] The list of Replicas for this Secret.
-  GetSecretsSecretReplicationUserManaged({required this.replicas});
+  GetSecretsSecretReplicationUserManaged({
+    required this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas':
-          pulumi.Input.encodeList<
-            GetSecretsSecretReplicationUserManagedReplica,
-            Map<String, dynamic>
-          >(replicas, (value) => value.toMap()),
+      'replicas': pulumi.Input.encodeList<GetSecretsSecretReplicationUserManagedReplica, Map<String, dynamic>>(replicas, (value) => value.toMap()),
     };
   }
 
-  factory GetSecretsSecretReplicationUserManaged.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecretsSecretReplicationUserManaged.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecretReplicationUserManaged(
-      replicas:
-          pulumi
-              .Input.decodeList<GetSecretsSecretReplicationUserManagedReplica>(
-            map['replicas'],
-            (value) => GetSecretsSecretReplicationUserManagedReplica.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      replicas: pulumi.Input.decodeList<GetSecretsSecretReplicationUserManagedReplica>(map['replicas'], (value) => GetSecretsSecretReplicationUserManagedReplica.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

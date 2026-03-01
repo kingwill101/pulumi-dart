@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MLTransformInputRecordTable {
   /// A unique identifier for the AWS Glue Data Catalog.
   final String? catalogId;
-
   /// The name of the connection to the AWS Glue Data Catalog.
   final String? connectionName;
-
   /// A database name in the AWS Glue Data Catalog.
   final String databaseName;
-
   /// A table name in the AWS Glue Data Catalog.
   final String tableName;
 
@@ -37,11 +35,10 @@ class MLTransformInputRecordTable {
   factory MLTransformInputRecordTable.fromMap(Map<String, dynamic> map) {
     return MLTransformInputRecordTable(
       catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      connectionName: map['connectionName'] == null
-          ? null
-          : map['connectionName'] as String,
+      connectionName: map['connectionName'] == null ? null : map['connectionName'] as String,
       databaseName: map['databaseName'] as String,
       tableName: map['tableName'] as String,
     );
   }
 }
+

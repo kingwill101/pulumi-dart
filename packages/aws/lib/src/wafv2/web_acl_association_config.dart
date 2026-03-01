@@ -9,29 +9,20 @@ class WebAclAssociationConfig {
 
   /// Creates a new [WebAclAssociationConfig].
   /// [requestBodies] Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
-  WebAclAssociationConfig({this.requestBodies});
+  WebAclAssociationConfig({
+    this.requestBodies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestBodies': ?requestBodies == null
-          ? null
-          : pulumi.Input.encodeList<
-              WebAclAssociationConfigRequestBody,
-              Map<String, dynamic>
-            >(requestBodies!, (value) => value.toMap()),
+      'requestBodies': ?requestBodies == null ? null : pulumi.Input.encodeList<WebAclAssociationConfigRequestBody, Map<String, dynamic>>(requestBodies!, (value) => value.toMap()),
     };
   }
 
   factory WebAclAssociationConfig.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfig(
-      requestBodies: map['requestBodies'] == null
-          ? null
-          : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(
-              map['requestBodies'],
-              (value) => WebAclAssociationConfigRequestBody.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      requestBodies: map['requestBodies'] == null ? null : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies'], (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

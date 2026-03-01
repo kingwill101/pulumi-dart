@@ -10,7 +10,6 @@ import 'get_peering_attachments_filter.dart';
 class GetPeeringAttachmentsArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
   final pulumi.Input<List<GetPeeringAttachmentsFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,39 +19,22 @@ class GetPeeringAttachmentsArgs {
   GetPeeringAttachmentsArgs({
     List<GetPeeringAttachmentsFilter>? filters,
     String? region,
-  }) : filters = pulumi
-           .Input.asOptionalInput<List<GetPeeringAttachmentsFilter>>(filters),
-       region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetPeeringAttachmentsFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetPeeringAttachmentsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetPeeringAttachmentsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetPeeringAttachmentsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetPeeringAttachmentsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
     };
   }
 
   factory GetPeeringAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringAttachmentsArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetPeeringAttachmentsFilter>(
-              map['filters'],
-              (value) => GetPeeringAttachmentsFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPeeringAttachmentsFilter>(map['filters'], (value) => GetPeeringAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,11 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentLoggingConfigurationDagProcessingLogs {
   final String? cloudWatchLogGroupArn;
-
   /// Enabling or disabling the collection of logs
   final bool? enabled;
-
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
   final String? logLevel;
 
@@ -27,15 +26,12 @@ class EnvironmentLoggingConfigurationDagProcessingLogs {
     };
   }
 
-  factory EnvironmentLoggingConfigurationDagProcessingLogs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentLoggingConfigurationDagProcessingLogs.fromMap(Map<String, dynamic> map) {
     return EnvironmentLoggingConfigurationDagProcessingLogs(
-      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null
-          ? null
-          : map['cloudWatchLogGroupArn'] as String,
+      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : map['cloudWatchLogGroupArn'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
     );
   }
 }
+

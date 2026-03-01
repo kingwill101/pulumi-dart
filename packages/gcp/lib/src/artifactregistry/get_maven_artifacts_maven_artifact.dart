@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMavenArtifactsMavenArtifact {
   /// The name of the artifact to fetch.
   final String artifactId;
-
   /// The time the artifact was created.
   final String createTime;
-
   /// Group ID for the artifact.
   final String groupId;
-
   /// The fully qualified name of the fetched artifact. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
   /// ```
   final String name;
-
   /// URL to access the pom file of the artifact.
   final String pomUri;
-
   /// The time the artifact was last updated.
   final String updateTime;
-
   /// The version of the Maven artifact.
   final String version;
 
@@ -67,3 +62,4 @@ class GetMavenArtifactsMavenArtifact {
     );
   }
 }
+

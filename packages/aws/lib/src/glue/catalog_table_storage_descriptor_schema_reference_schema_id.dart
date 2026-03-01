@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// Name of the schema registry that contains the schema. Must be provided when `schema_name` is specified and conflicts with `schema_arn`.
   final String? registryName;
-
   /// ARN of the schema. One of `schema_arn` or `schema_name` has to be provided.
   final String? schemaArn;
-
   /// Name of the schema. One of `schema_arn` or `schema_name` has to be provided.
   final String? schemaName;
 
@@ -28,17 +27,12 @@ class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
     };
   }
 
-  factory CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSchemaReferenceSchemaId(
-      registryName: map['registryName'] == null
-          ? null
-          : map['registryName'] as String,
+      registryName: map['registryName'] == null ? null : map['registryName'] as String,
       schemaArn: map['schemaArn'] == null ? null : map['schemaArn'] as String,
-      schemaName: map['schemaName'] == null
-          ? null
-          : map['schemaName'] as String,
+      schemaName: map['schemaName'] == null ? null : map['schemaName'] as String,
     );
   }
 }
+

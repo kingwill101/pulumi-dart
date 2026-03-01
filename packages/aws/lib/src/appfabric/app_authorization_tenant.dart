@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppAuthorizationTenant {
   /// The display name of the tenant.
   final String tenantDisplayName;
-
   /// The ID of the application tenant.
   final String tenantIdentifier;
 
@@ -29,3 +29,4 @@ class AppAuthorizationTenant {
     );
   }
 }
+

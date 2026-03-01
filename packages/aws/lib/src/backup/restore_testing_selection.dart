@@ -286,29 +286,20 @@ import 'restore_testing_selection_protected_resource_conditions.dart';
 class RestoreTestingSelection extends pulumi.CustomResource {
   /// The ARN of the IAM role.
   late final pulumi.Output<String> iamRoleArn;
-
   /// The name of the backup restore testing selection.
   late final pulumi.Output<String> name;
-
   /// The ARNs for the protected resources.
   late final pulumi.Output<List<String>> protectedResourceArns;
-
   /// The conditions for the protected resource.
-  late final pulumi.Output<RestoreTestingSelectionProtectedResourceConditions?>
-  protectedResourceConditions;
-
+  late final pulumi.Output<RestoreTestingSelectionProtectedResourceConditions?> protectedResourceConditions;
   /// The type of the protected resource.
   late final pulumi.Output<String> protectedResourceType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
   late final pulumi.Output<Map<String, String>> restoreMetadataOverrides;
-
   /// The name of the restore testing plan.
   late final pulumi.Output<String> restoreTestingPlanName;
-
   /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   late final pulumi.Output<int> validationWindowHours;
 
@@ -321,30 +312,19 @@ class RestoreTestingSelection extends pulumi.CustomResource {
     RestoreTestingSelectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/restoreTestingSelection:RestoreTestingSelection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/restoreTestingSelection:RestoreTestingSelection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    this.protectedResourceArns = registerOutput<List<String>>(
-      'protectedResourceArns',
-    );
-    this.protectedResourceConditions =
-        registerOutput<RestoreTestingSelectionProtectedResourceConditions?>(
-          'protectedResourceConditions',
-        );
-    this.protectedResourceType = registerOutput<String>(
-      'protectedResourceType',
-    );
+    this.protectedResourceArns = registerOutput<List<String>>('protectedResourceArns');
+    this.protectedResourceConditions = registerOutput<RestoreTestingSelectionProtectedResourceConditions?>('protectedResourceConditions');
+    this.protectedResourceType = registerOutput<String>('protectedResourceType');
     this.region = registerOutput<String>('region');
-    this.restoreMetadataOverrides = registerOutput<Map<String, String>>(
-      'restoreMetadataOverrides',
-    );
-    this.restoreTestingPlanName = registerOutput<String>(
-      'restoreTestingPlanName',
-    );
+    this.restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides');
+    this.restoreTestingPlanName = registerOutput<String>('restoreTestingPlanName');
     this.validationWindowHours = registerOutput<int>('validationWindowHours');
   }
 }

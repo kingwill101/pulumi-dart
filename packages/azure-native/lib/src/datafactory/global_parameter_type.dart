@@ -1,0 +1,22 @@
+/// Global Parameter type.
+enum GlobalParameterType {
+  valueObject("Object"),
+  valueString("String"),
+  valueInt("Int"),
+  valueFloat("Float"),
+  valueBool("Bool"),
+  valueArray("Array");
+
+  const GlobalParameterType(this.value);
+  final String value;
+
+  static GlobalParameterType fromValue(String value) {
+    for (final item in GlobalParameterType.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown GlobalParameterType value: $value');
+  }
+}
+

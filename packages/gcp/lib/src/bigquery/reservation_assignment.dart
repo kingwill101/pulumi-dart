@@ -191,23 +191,17 @@ import 'reservation_assignment_args.dart';
 class ReservationAssignment extends pulumi.CustomResource {
   /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
   late final pulumi.Output<String> assignee;
-
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
   late final pulumi.Output<String> jobType;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Output only. The resource name of the assignment.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The reservation for the resource
   late final pulumi.Output<String> reservation;
-
   /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
   late final pulumi.Output<String> state;
@@ -221,11 +215,11 @@ class ReservationAssignment extends pulumi.CustomResource {
     ReservationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/reservationAssignment:ReservationAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:bigquery/reservationAssignment:ReservationAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.assignee = registerOutput<String>('assignee');
     this.jobType = registerOutput<String>('jobType');
     this.location = registerOutput<String>('location');

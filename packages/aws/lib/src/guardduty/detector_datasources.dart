@@ -8,11 +8,9 @@ class DetectorDatasources {
   /// Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
   /// See Kubernetes and Kubernetes Audit Logs below for more details.
   final DetectorDatasourcesKubernetes? kubernetes;
-
   /// Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html).
   /// See Malware Protection, Scan EC2 instance with findings and EBS volumes below for more details.
   final DetectorDatasourcesMalwareProtection? malwareProtection;
-
   /// Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
   /// See S3 Logs below for more details.
   final DetectorDatasourcesS3Logs? s3Logs;
@@ -21,35 +19,26 @@ class DetectorDatasources {
   /// [kubernetes] Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
   /// [malwareProtection] Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html).
   /// [s3Logs] Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  DetectorDatasources({this.kubernetes, this.malwareProtection, this.s3Logs});
+  DetectorDatasources({
+    this.kubernetes,
+    this.malwareProtection,
+    this.s3Logs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kubernetes': ?kubernetes == null ? null : kubernetes!.toMap(),
-      'malwareProtection': ?malwareProtection == null
-          ? null
-          : malwareProtection!.toMap(),
+      'malwareProtection': ?malwareProtection == null ? null : malwareProtection!.toMap(),
       's3Logs': ?s3Logs == null ? null : s3Logs!.toMap(),
     };
   }
 
   factory DetectorDatasources.fromMap(Map<String, dynamic> map) {
     return DetectorDatasources(
-      kubernetes: map['kubernetes'] == null
-          ? null
-          : DetectorDatasourcesKubernetes.fromMap(
-              (map['kubernetes'] as Map).cast<String, dynamic>(),
-            ),
-      malwareProtection: map['malwareProtection'] == null
-          ? null
-          : DetectorDatasourcesMalwareProtection.fromMap(
-              (map['malwareProtection'] as Map).cast<String, dynamic>(),
-            ),
-      s3Logs: map['s3Logs'] == null
-          ? null
-          : DetectorDatasourcesS3Logs.fromMap(
-              (map['s3Logs'] as Map).cast<String, dynamic>(),
-            ),
+      kubernetes: map['kubernetes'] == null ? null : DetectorDatasourcesKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
+      malwareProtection: map['malwareProtection'] == null ? null : DetectorDatasourcesMalwareProtection.fromMap((map['malwareProtection'] as Map).cast<String, dynamic>()),
+      s3Logs: map['s3Logs'] == null ? null : DetectorDatasourcesS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

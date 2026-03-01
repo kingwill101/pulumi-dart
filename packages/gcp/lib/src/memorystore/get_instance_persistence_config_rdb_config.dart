@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstancePersistenceConfigRdbConfig {
   /// Optional. Period between RDB snapshots.
   /// Possible values:
@@ -8,7 +9,6 @@ class GetInstancePersistenceConfigRdbConfig {
   /// TWELVE_HOURS
   /// TWENTY_FOUR_HOURS
   final String rdbSnapshotPeriod;
-
   /// Optional. Time that the first snapshot was/will be attempted, and to which future
   /// snapshots will be aligned. If not provided, the current time will be
   /// used.
@@ -29,12 +29,11 @@ class GetInstancePersistenceConfigRdbConfig {
     };
   }
 
-  factory GetInstancePersistenceConfigRdbConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancePersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePersistenceConfigRdbConfig(
       rdbSnapshotPeriod: map['rdbSnapshotPeriod'] as String,
       rdbSnapshotStartTime: map['rdbSnapshotStartTime'] as String,
     );
   }
 }
+

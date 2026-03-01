@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
   /// S3 bucket name containing the CA certificates bundle.
   final String bucket;
-
   /// S3 object key for the CA certificates bundle.
   final String key;
-
   /// AWS region of the S3 bucket.
   final String region;
-
   /// S3 object version ID for the CA certificates bundle.
   final String? version;
 
@@ -34,9 +32,7 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
     };
   }
 
-  factory TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap(Map<String, dynamic> map) {
     return TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location(
       bucket: map['bucket'] as String,
       key: map['key'] as String,
@@ -45,3 +41,4 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
     );
   }
 }
+

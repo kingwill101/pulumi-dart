@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EntryBigqueryTableSpecViewSpec {
   /// (Output)
   /// The query that defines the table view.
@@ -7,10 +8,14 @@ class EntryBigqueryTableSpecViewSpec {
 
   /// Creates a new [EntryBigqueryTableSpecViewSpec].
   /// [viewQuery] (Output)
-  EntryBigqueryTableSpecViewSpec({this.viewQuery});
+  EntryBigqueryTableSpecViewSpec({
+    this.viewQuery,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'viewQuery': ?viewQuery};
+    return <String, dynamic>{
+      'viewQuery': ?viewQuery,
+    };
   }
 
   factory EntryBigqueryTableSpecViewSpec.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class EntryBigqueryTableSpecViewSpec {
     );
   }
 }
+

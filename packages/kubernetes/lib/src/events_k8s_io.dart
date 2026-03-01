@@ -1,0 +1,24 @@
+library module_events_k8s_io;
+
+export 'events_k8s_io/event.dart';
+export 'events_k8s_io/event_args.dart';
+export 'events_k8s_io/event_events_k8s_io_v1.dart';
+export 'events_k8s_io/event_events_k8s_io_v1beta1.dart';
+export 'events_k8s_io/event_events_k8s_io_v1beta1_args.dart';
+export 'events_k8s_io/event_list.dart';
+export 'events_k8s_io/event_list_args.dart';
+export 'events_k8s_io/event_list_events_k8s_io_v1.dart';
+export 'events_k8s_io/event_list_events_k8s_io_v1beta1.dart';
+export 'events_k8s_io/event_list_events_k8s_io_v1beta1_args.dart';
+export 'events_k8s_io/event_list_resource.dart';
+export 'events_k8s_io/event_patch.dart';
+export 'events_k8s_io/event_patch_args.dart';
+export 'events_k8s_io/event_patch_events_k8s_io_v1.dart';
+export 'events_k8s_io/event_patch_events_k8s_io_v1beta1.dart';
+export 'events_k8s_io/event_patch_events_k8s_io_v1beta1_args.dart';
+export 'events_k8s_io/event_patch_resource.dart';
+export 'events_k8s_io/event_resource.dart';
+export 'events_k8s_io/event_series.dart';
+export 'events_k8s_io/event_series_events_k8s_io_v1beta1.dart';
+export 'events_k8s_io/event_series_patch.dart';
+export 'events_k8s_io/event_series_patch_events_k8s_io_v1beta1.dart';

@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'azure_dev_ops_org_properties_response.dart';
+import 'system_data_response.dart';
+
+/// Azure DevOps Organization resource.
+class AzureDevOpsOrgResponse {
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  final String id;
+  /// The name of the resource
+  final String name;
+  /// Azure DevOps Organization properties.
+  final AzureDevOpsOrgPropertiesResponse? properties;
+  /// Metadata pertaining to creation and last modification of the resource.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String type;
+
+  /// Creates a new [AzureDevOpsOrgResponse].
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
+  /// [properties] Azure DevOps Organization properties.
+  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  AzureDevOpsOrgResponse({
+    required this.id,
+    required this.name,
+    this.properties,
+    required this.systemData,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'properties': ?properties == null ? null : properties!.toMap(),
+      'systemData': systemData.toMap(),
+      'type': type,
+    };
+  }
+
+  factory AzureDevOpsOrgResponse.fromMap(Map<String, dynamic> map) {
+    return AzureDevOpsOrgResponse(
+      id: map['id'] as String,
+      name: map['name'] as String,
+      properties: map['properties'] == null ? null : AzureDevOpsOrgPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      type: map['type'] as String,
+    );
+  }
+}
+

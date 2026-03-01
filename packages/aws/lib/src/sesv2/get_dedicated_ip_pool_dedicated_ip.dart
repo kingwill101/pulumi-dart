@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDedicatedIpPoolDedicatedIp {
   /// IPv4 address.
   final String ip;
-
   /// Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   final int warmupPercentage;
-
   /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
   final String warmupStatus;
 
@@ -36,3 +35,4 @@ class GetDedicatedIpPoolDedicatedIp {
     );
   }
 }
+

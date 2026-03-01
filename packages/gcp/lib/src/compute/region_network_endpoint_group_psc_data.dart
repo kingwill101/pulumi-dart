@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionNetworkEndpointGroupPscData {
   /// The PSC producer port to use when consumer PSC NEG connects to a producer. If
   /// this flag isn't specified for a PSC NEG with endpoint type
@@ -9,17 +10,20 @@ class RegionNetworkEndpointGroupPscData {
 
   /// Creates a new [RegionNetworkEndpointGroupPscData].
   /// [producerPort] The PSC producer port to use when consumer PSC NEG connects to a producer. If
-  RegionNetworkEndpointGroupPscData({this.producerPort});
+  RegionNetworkEndpointGroupPscData({
+    this.producerPort,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'producerPort': ?producerPort};
+    return <String, dynamic>{
+      'producerPort': ?producerPort,
+    };
   }
 
   factory RegionNetworkEndpointGroupPscData.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupPscData(
-      producerPort: map['producerPort'] == null
-          ? null
-          : map['producerPort'] as String,
+      producerPort: map['producerPort'] == null ? null : map['producerPort'] as String,
     );
   }
 }
+

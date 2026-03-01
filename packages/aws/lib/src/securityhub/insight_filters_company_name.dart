@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersCompanyName {
   final String comparison;
   final String value;
@@ -7,10 +8,16 @@ class InsightFiltersCompanyName {
   /// Creates a new [InsightFiltersCompanyName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersCompanyName({required this.comparison, required this.value});
+  InsightFiltersCompanyName({
+    required this.comparison,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersCompanyName.fromMap(Map<String, dynamic> map) {
@@ -20,3 +27,4 @@ class InsightFiltersCompanyName {
     );
   }
 }
+

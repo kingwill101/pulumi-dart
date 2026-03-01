@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MacsecKeyAssociationArgs {
   /// The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `ckn`.
   final pulumi.Input<String>? cak;
-
   /// The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `cak`.
   final pulumi.Input<String>? ckn;
-
   /// The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
   final pulumi.Input<String> connectionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   ///
   /// > **Note:** `ckn` and `cak` are mutually exclusive with `secret_arn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secret_arn`. If you use the `secret_arn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
@@ -36,11 +32,12 @@ class MacsecKeyAssociationArgs {
     required String connectionId,
     String? region,
     String? secretArn,
-  }) : cak = pulumi.Input.asOptionalInput<String>(cak),
-       ckn = pulumi.Input.asOptionalInput<String>(ckn),
-       connectionId = pulumi.Input.asInput<String>(connectionId),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       secretArn = pulumi.Input.asOptionalInput<String>(secretArn);
+  }) :
+      cak = pulumi.Input.asOptionalInput<String>(cak),
+      ckn = pulumi.Input.asOptionalInput<String>(ckn),
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secretArn = pulumi.Input.asOptionalInput<String>(secretArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,3 +59,4 @@ class MacsecKeyAssociationArgs {
     );
   }
 }
+

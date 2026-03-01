@@ -1,0 +1,82 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'virtual_machine_scale_set_managed_disk_parameters_response.dart';
+
+/// Describes a virtual machine scale set data disk.
+class VirtualMachineScaleSetDataDiskResponse {
+  /// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+  final String? caching;
+  /// The create option.
+  final String createOption;
+  /// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+  final String? deleteOption;
+  /// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+  final double? diskIOPSReadWrite;
+  /// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+  final double? diskMBpsReadWrite;
+  /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+  final int? diskSizeGB;
+  /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  final int lun;
+  /// The managed disk parameters.
+  final VirtualMachineScaleSetManagedDiskParametersResponse? managedDisk;
+  /// The disk name.
+  final String? name;
+  /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+  final bool? writeAcceleratorEnabled;
+
+  /// Creates a new [VirtualMachineScaleSetDataDiskResponse].
+  /// [caching] Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+  /// [createOption] The create option.
+  /// [deleteOption] Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+  /// [diskIOPSReadWrite] Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+  /// [diskMBpsReadWrite] Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+  /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+  /// [lun] Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  /// [managedDisk] The managed disk parameters.
+  /// [name] The disk name.
+  /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
+  VirtualMachineScaleSetDataDiskResponse({
+    this.caching,
+    required this.createOption,
+    this.deleteOption,
+    this.diskIOPSReadWrite,
+    this.diskMBpsReadWrite,
+    this.diskSizeGB,
+    required this.lun,
+    this.managedDisk,
+    this.name,
+    this.writeAcceleratorEnabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'caching': ?caching,
+      'createOption': createOption,
+      'deleteOption': ?deleteOption,
+      'diskIOPSReadWrite': ?diskIOPSReadWrite,
+      'diskMBpsReadWrite': ?diskMBpsReadWrite,
+      'diskSizeGB': ?diskSizeGB,
+      'lun': lun,
+      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
+      'name': ?name,
+      'writeAcceleratorEnabled': ?writeAcceleratorEnabled,
+    };
+  }
+
+  factory VirtualMachineScaleSetDataDiskResponse.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineScaleSetDataDiskResponse(
+      caching: map['caching'] == null ? null : map['caching'] as String,
+      createOption: map['createOption'] as String,
+      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
+      diskIOPSReadWrite: map['diskIOPSReadWrite'] == null ? null : map['diskIOPSReadWrite'] as double,
+      diskMBpsReadWrite: map['diskMBpsReadWrite'] == null ? null : map['diskMBpsReadWrite'] as double,
+      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
+      lun: map['lun'] as int,
+      managedDisk: map['managedDisk'] == null ? null : VirtualMachineScaleSetManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+    );
+  }
+}
+

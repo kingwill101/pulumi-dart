@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionIAMMemberCondition {
   final String? description;
   final String expression;
@@ -25,11 +26,10 @@ class ConnectionIAMMemberCondition {
 
   factory ConnectionIAMMemberCondition.fromMap(Map<String, dynamic> map) {
     return ConnectionIAMMemberCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseKeyWafSettings {
   /// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
   final String wafFeature;
-
   /// The WAF service that uses this key. Possible values: CA, FASTLY
   final String wafService;
 
@@ -29,3 +29,4 @@ class EnterpriseKeyWafSettings {
     );
   }
 }
+

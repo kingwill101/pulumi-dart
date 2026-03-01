@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpotFleetRequestLaunchSpecificationRootBlockDevice {
   final bool? deleteOnTermination;
   final bool? encrypted;
@@ -39,21 +40,16 @@ class SpotFleetRequestLaunchSpecificationRootBlockDevice {
     };
   }
 
-  factory SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchSpecificationRootBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null
-          ? null
-          : map['deleteOnTermination'] as bool,
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
       encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
       iops: map['iops'] == null ? null : map['iops'] as int,
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       throughput: map['throughput'] == null ? null : map['throughput'] as int,
       volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null
-          ? null
-          : map['volumeType'] as String,
+      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
     );
   }
 }
+

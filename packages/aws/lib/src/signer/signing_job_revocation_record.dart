@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SigningJobRevocationRecord {
   final String? reason;
   final String? revokedAt;
@@ -9,7 +10,11 @@ class SigningJobRevocationRecord {
   /// [reason] Optional.
   /// [revokedAt] Optional.
   /// [revokedBy] Optional.
-  SigningJobRevocationRecord({this.reason, this.revokedAt, this.revokedBy});
+  SigningJobRevocationRecord({
+    this.reason,
+    this.revokedAt,
+    this.revokedBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,3 +32,4 @@ class SigningJobRevocationRecord {
     );
   }
 }
+

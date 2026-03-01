@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class NotificationDestinationAuthBasic {
+  /// Specifies an authentication password for use with a destination.
+  final String password;
+  /// The username of the basic auth.
+  final String user;
+
+  /// Creates a new [NotificationDestinationAuthBasic].
+  /// [password] Specifies an authentication password for use with a destination.
+  /// [user] The username of the basic auth.
+  NotificationDestinationAuthBasic({
+    required this.password,
+    required this.user,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'password': password,
+      'user': user,
+    };
+  }
+
+  factory NotificationDestinationAuthBasic.fromMap(Map<String, dynamic> map) {
+    return NotificationDestinationAuthBasic(
+      password: map['password'] as String,
+      user: map['user'] as String,
+    );
+  }
+}
+

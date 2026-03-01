@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExperimentTemplateActionParameter {
   /// Parameter name.
   final String key;
-
   /// Parameter value.
   ///
   /// For a list of parameters supported by each action, see [AWS FIS actions reference](https://docs.aws.amazon.com/fis/latest/userguide/fis-actions-reference.html).
@@ -12,10 +12,16 @@ class ExperimentTemplateActionParameter {
   /// Creates a new [ExperimentTemplateActionParameter].
   /// [key] Parameter name.
   /// [value] Parameter value.
-  ExperimentTemplateActionParameter({required this.key, required this.value});
+  ExperimentTemplateActionParameter({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory ExperimentTemplateActionParameter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +31,4 @@ class ExperimentTemplateActionParameter {
     );
   }
 }
+

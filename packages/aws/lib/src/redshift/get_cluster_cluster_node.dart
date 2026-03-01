@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterClusterNode {
   /// Whether the node is a leader node or a compute node
   final String nodeRole;
-
   /// Private IP address of a node within a cluster
   final String privateIpAddress;
-
   /// Public IP address of a node within a cluster
   final String publicIpAddress;
 
@@ -36,3 +35,4 @@ class GetClusterClusterNode {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage {
   /// Bandwidth percentage for a specific traffic class.
   final int? percentage;
-
   /// Enum representing the various traffic classes offered by AAI.
   /// Default value is `TC_UNSPECIFIED`.
   /// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -24,14 +24,11 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
     };
   }
 
-  factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage(
       percentage: map['percentage'] == null ? null : map['percentage'] as int,
-      trafficClass: map['trafficClass'] == null
-          ? null
-          : map['trafficClass'] as String,
+      trafficClass: map['trafficClass'] == null ? null : map['trafficClass'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
   final bool enabled;
 
@@ -10,14 +11,15 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

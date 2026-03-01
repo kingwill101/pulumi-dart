@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWindowsFileSystemAuditLogConfiguration {
   final String auditLogDestination;
   final String fileAccessAuditLogLevel;
@@ -23,14 +24,12 @@ class GetWindowsFileSystemAuditLogConfiguration {
     };
   }
 
-  factory GetWindowsFileSystemAuditLogConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFileSystemAuditLogConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemAuditLogConfiguration(
       auditLogDestination: map['auditLogDestination'] as String,
       fileAccessAuditLogLevel: map['fileAccessAuditLogLevel'] as String,
-      fileShareAccessAuditLogLevel:
-          map['fileShareAccessAuditLogLevel'] as String,
+      fileShareAccessAuditLogLevel: map['fileShareAccessAuditLogLevel'] as String,
     );
   }
 }
+

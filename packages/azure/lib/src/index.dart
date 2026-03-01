@@ -1,0 +1,22 @@
+library module_index;
+
+export 'index/provider_features.dart';
+export 'index/provider_features_api_management.dart';
+export 'index/provider_features_app_configuration.dart';
+export 'index/provider_features_application_insights.dart';
+export 'index/provider_features_cognitive_account.dart';
+export 'index/provider_features_databricks_workspace.dart';
+export 'index/provider_features_key_vault.dart';
+export 'index/provider_features_log_analytics_workspace.dart';
+export 'index/provider_features_machine_learning.dart';
+export 'index/provider_features_managed_disk.dart';
+export 'index/provider_features_netapp.dart';
+export 'index/provider_features_postgresql_flexible_server.dart';
+export 'index/provider_features_recovery_service.dart';
+export 'index/provider_features_recovery_services_vaults.dart';
+export 'index/provider_features_resource_group.dart';
+export 'index/provider_features_storage.dart';
+export 'index/provider_features_subscription.dart';
+export 'index/provider_features_template_deployment.dart';
+export 'index/provider_features_virtual_machine.dart';
+export 'index/provider_features_virtual_machine_scale_set.dart';

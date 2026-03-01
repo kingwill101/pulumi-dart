@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceUserMetadata {
   /// Number of additional Developer Users to allocate to the Looker Instance.
   final int? additionalDeveloperUserCount;
-
   /// Number of additional Standard Users to allocate to the Looker Instance.
   final int? additionalStandardUserCount;
-
   /// Number of additional Viewer Users to allocate to the Looker Instance.
   final int? additionalViewerUserCount;
 
@@ -30,15 +29,10 @@ class InstanceUserMetadata {
 
   factory InstanceUserMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceUserMetadata(
-      additionalDeveloperUserCount: map['additionalDeveloperUserCount'] == null
-          ? null
-          : map['additionalDeveloperUserCount'] as int,
-      additionalStandardUserCount: map['additionalStandardUserCount'] == null
-          ? null
-          : map['additionalStandardUserCount'] as int,
-      additionalViewerUserCount: map['additionalViewerUserCount'] == null
-          ? null
-          : map['additionalViewerUserCount'] as int,
+      additionalDeveloperUserCount: map['additionalDeveloperUserCount'] == null ? null : map['additionalDeveloperUserCount'] as int,
+      additionalStandardUserCount: map['additionalStandardUserCount'] == null ? null : map['additionalStandardUserCount'] as int,
+      additionalViewerUserCount: map['additionalViewerUserCount'] == null ? null : map['additionalViewerUserCount'] as int,
     );
   }
 }
+

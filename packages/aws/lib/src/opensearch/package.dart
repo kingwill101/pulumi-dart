@@ -233,23 +233,17 @@ import 'package_package_source.dart';
 class Package extends pulumi.CustomResource {
   /// The current version of the package.
   late final pulumi.Output<String> availablePackageVersion;
-
   /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   late final pulumi.Output<String?> engineVersion;
-
   /// Description of the package.
   late final pulumi.Output<String?> packageDescription;
   late final pulumi.Output<String> packageId;
-
   /// Unique name for the package.
   late final pulumi.Output<String> packageName;
-
   /// Configuration block for the package source options.
   late final pulumi.Output<PackagePackageSource> packageSource;
-
   /// The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
   late final pulumi.Output<String> packageType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -262,14 +256,12 @@ class Package extends pulumi.CustomResource {
     PackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/package:Package',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.availablePackageVersion = registerOutput<String>(
-      'availablePackageVersion',
-    );
+          'aws:opensearch/package:Package',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.availablePackageVersion = registerOutput<String>('availablePackageVersion');
     this.engineVersion = registerOutput<String?>('engineVersion');
     this.packageDescription = registerOutput<String?>('packageDescription');
     this.packageId = registerOutput<String>('packageId');

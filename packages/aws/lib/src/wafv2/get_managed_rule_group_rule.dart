@@ -6,35 +6,29 @@ import 'get_managed_rule_group_rule_action.dart';
 class GetManagedRuleGroupRule {
   /// Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
   final List<GetManagedRuleGroupRuleAction> actions;
-
   /// Managed rule group name.
   final String name;
 
   /// Creates a new [GetManagedRuleGroupRule].
   /// [actions] Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
   /// [name] Managed rule group name.
-  GetManagedRuleGroupRule({required this.actions, required this.name});
+  GetManagedRuleGroupRule({
+    required this.actions,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          pulumi.Input.encodeList<
-            GetManagedRuleGroupRuleAction,
-            Map<String, dynamic>
-          >(actions, (value) => value.toMap()),
+      'actions': pulumi.Input.encodeList<GetManagedRuleGroupRuleAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GetManagedRuleGroupRule.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRule(
-      actions: pulumi.Input.decodeList<GetManagedRuleGroupRuleAction>(
-        map['actions'],
-        (value) => GetManagedRuleGroupRuleAction.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      actions: pulumi.Input.decodeList<GetManagedRuleGroupRuleAction>(map['actions'], (value) => GetManagedRuleGroupRuleAction.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }
 }
+

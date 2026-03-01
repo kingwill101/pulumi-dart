@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold {
   /// (Output)
   /// The success threshold for individual tool invocation parameter
@@ -14,19 +15,14 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'toolInvocationParameterCorrectnessThreshold':
-          ?toolInvocationParameterCorrectnessThreshold,
+      'toolInvocationParameterCorrectnessThreshold': ?toolInvocationParameterCorrectnessThreshold,
     };
   }
 
-  factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold(
-      toolInvocationParameterCorrectnessThreshold:
-          map['toolInvocationParameterCorrectnessThreshold'] == null
-          ? null
-          : map['toolInvocationParameterCorrectnessThreshold'] as double,
+      toolInvocationParameterCorrectnessThreshold: map['toolInvocationParameterCorrectnessThreshold'] == null ? null : map['toolInvocationParameterCorrectnessThreshold'] as double,
     );
   }
 }
+

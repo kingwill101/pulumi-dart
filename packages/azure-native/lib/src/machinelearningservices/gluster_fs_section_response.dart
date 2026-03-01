@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Data specific to GlusterFS.
+class GlusterFsSectionResponse {
+  /// The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
+  final String serverAddress;
+  /// The name of the created GlusterFS volume.
+  final String volumeName;
+
+  /// Creates a new [GlusterFsSectionResponse].
+  /// [serverAddress] The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
+  /// [volumeName] The name of the created GlusterFS volume.
+  GlusterFsSectionResponse({
+    required this.serverAddress,
+    required this.volumeName,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'serverAddress': serverAddress,
+      'volumeName': volumeName,
+    };
+  }
+
+  factory GlusterFsSectionResponse.fromMap(Map<String, dynamic> map) {
+    return GlusterFsSectionResponse(
+      serverAddress: map['serverAddress'] as String,
+      volumeName: map['volumeName'] as String,
+    );
+  }
+}
+

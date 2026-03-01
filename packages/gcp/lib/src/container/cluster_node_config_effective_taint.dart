@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigEffectiveTaint {
   /// Effect for taint.
   final String? effect;
-
   /// Key for taint.
   final String? key;
-
   /// Value for taint.
   final String? value;
 
@@ -14,10 +13,18 @@ class ClusterNodeConfigEffectiveTaint {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  ClusterNodeConfigEffectiveTaint({this.effect, this.key, this.value});
+  ClusterNodeConfigEffectiveTaint({
+    this.effect,
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': ?effect, 'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'effect': ?effect,
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory ClusterNodeConfigEffectiveTaint.fromMap(Map<String, dynamic> map) {
@@ -28,3 +35,4 @@ class ClusterNodeConfigEffectiveTaint {
     );
   }
 }
+

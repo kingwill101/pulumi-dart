@@ -26,8 +26,7 @@ import 'get_launch_template_tag_specification.dart';
 class GetLaunchTemplateResult {
   final String arn;
   final List<GetLaunchTemplateBlockDeviceMapping> blockDeviceMappings;
-  final List<GetLaunchTemplateCapacityReservationSpecification>
-  capacityReservationSpecifications;
+  final List<GetLaunchTemplateCapacityReservationSpecification> capacityReservationSpecifications;
   final List<GetLaunchTemplateCpuOption> cpuOptions;
   final List<GetLaunchTemplateCreditSpecification> creditSpecifications;
   final int defaultVersion;
@@ -39,7 +38,6 @@ class GetLaunchTemplateResult {
   final List<GetLaunchTemplateFilter>? filters;
   final List<GetLaunchTemplateHibernationOption> hibernationOptions;
   final List<GetLaunchTemplateIamInstanceProfile> iamInstanceProfiles;
-
   /// ID of the launch template.
   final String id;
   final String imageId;
@@ -56,8 +54,7 @@ class GetLaunchTemplateResult {
   final List<GetLaunchTemplateMonitoring> monitorings;
   final String name;
   final List<GetLaunchTemplateNetworkInterface> networkInterfaces;
-  final List<GetLaunchTemplateNetworkPerformanceOption>
-  networkPerformanceOptions;
+  final List<GetLaunchTemplateNetworkPerformanceOption> networkPerformanceOptions;
   final List<GetLaunchTemplatePlacement> placements;
   final List<GetLaunchTemplatePrivateDnsNameOption> privateDnsNameOptions;
   final String ramDiskId;
@@ -156,123 +153,42 @@ class GetLaunchTemplateResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'blockDeviceMappings':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateBlockDeviceMapping,
-            Map<String, dynamic>
-          >(blockDeviceMappings, (value) => value.toMap()),
-      'capacityReservationSpecifications':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateCapacityReservationSpecification,
-            Map<String, dynamic>
-          >(capacityReservationSpecifications, (value) => value.toMap()),
-      'cpuOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateCpuOption,
-            Map<String, dynamic>
-          >(cpuOptions, (value) => value.toMap()),
-      'creditSpecifications':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateCreditSpecification,
-            Map<String, dynamic>
-          >(creditSpecifications, (value) => value.toMap()),
+      'blockDeviceMappings': pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMapping, Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap()),
+      'capacityReservationSpecifications': pulumi.Input.encodeList<GetLaunchTemplateCapacityReservationSpecification, Map<String, dynamic>>(capacityReservationSpecifications, (value) => value.toMap()),
+      'cpuOptions': pulumi.Input.encodeList<GetLaunchTemplateCpuOption, Map<String, dynamic>>(cpuOptions, (value) => value.toMap()),
+      'creditSpecifications': pulumi.Input.encodeList<GetLaunchTemplateCreditSpecification, Map<String, dynamic>>(creditSpecifications, (value) => value.toMap()),
       'defaultVersion': defaultVersion,
       'description': description,
       'disableApiStop': disableApiStop,
       'disableApiTermination': disableApiTermination,
       'ebsOptimized': ebsOptimized,
-      'enclaveOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateEnclaveOption,
-            Map<String, dynamic>
-          >(enclaveOptions, (value) => value.toMap()),
-      'filters': ?filters == null
-          ? null
-          : pulumi.Input.encodeList<
-              GetLaunchTemplateFilter,
-              Map<String, dynamic>
-            >(filters!, (value) => value.toMap()),
-      'hibernationOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateHibernationOption,
-            Map<String, dynamic>
-          >(hibernationOptions, (value) => value.toMap()),
-      'iamInstanceProfiles':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateIamInstanceProfile,
-            Map<String, dynamic>
-          >(iamInstanceProfiles, (value) => value.toMap()),
+      'enclaveOptions': pulumi.Input.encodeList<GetLaunchTemplateEnclaveOption, Map<String, dynamic>>(enclaveOptions, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLaunchTemplateFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'hibernationOptions': pulumi.Input.encodeList<GetLaunchTemplateHibernationOption, Map<String, dynamic>>(hibernationOptions, (value) => value.toMap()),
+      'iamInstanceProfiles': pulumi.Input.encodeList<GetLaunchTemplateIamInstanceProfile, Map<String, dynamic>>(iamInstanceProfiles, (value) => value.toMap()),
       'id': id,
       'imageId': imageId,
       'instanceInitiatedShutdownBehavior': instanceInitiatedShutdownBehavior,
-      'instanceMarketOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateInstanceMarketOption,
-            Map<String, dynamic>
-          >(instanceMarketOptions, (value) => value.toMap()),
-      'instanceRequirements':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateInstanceRequirement,
-            Map<String, dynamic>
-          >(instanceRequirements, (value) => value.toMap()),
+      'instanceMarketOptions': pulumi.Input.encodeList<GetLaunchTemplateInstanceMarketOption, Map<String, dynamic>>(instanceMarketOptions, (value) => value.toMap()),
+      'instanceRequirements': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirement, Map<String, dynamic>>(instanceRequirements, (value) => value.toMap()),
       'instanceType': instanceType,
       'kernelId': kernelId,
       'keyName': keyName,
       'latestVersion': latestVersion,
-      'licenseSpecifications':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateLicenseSpecification,
-            Map<String, dynamic>
-          >(licenseSpecifications, (value) => value.toMap()),
-      'maintenanceOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateMaintenanceOption,
-            Map<String, dynamic>
-          >(maintenanceOptions, (value) => value.toMap()),
-      'metadataOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateMetadataOption,
-            Map<String, dynamic>
-          >(metadataOptions, (value) => value.toMap()),
-      'monitorings':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateMonitoring,
-            Map<String, dynamic>
-          >(monitorings, (value) => value.toMap()),
+      'licenseSpecifications': pulumi.Input.encodeList<GetLaunchTemplateLicenseSpecification, Map<String, dynamic>>(licenseSpecifications, (value) => value.toMap()),
+      'maintenanceOptions': pulumi.Input.encodeList<GetLaunchTemplateMaintenanceOption, Map<String, dynamic>>(maintenanceOptions, (value) => value.toMap()),
+      'metadataOptions': pulumi.Input.encodeList<GetLaunchTemplateMetadataOption, Map<String, dynamic>>(metadataOptions, (value) => value.toMap()),
+      'monitorings': pulumi.Input.encodeList<GetLaunchTemplateMonitoring, Map<String, dynamic>>(monitorings, (value) => value.toMap()),
       'name': name,
-      'networkInterfaces':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateNetworkInterface,
-            Map<String, dynamic>
-          >(networkInterfaces, (value) => value.toMap()),
-      'networkPerformanceOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateNetworkPerformanceOption,
-            Map<String, dynamic>
-          >(networkPerformanceOptions, (value) => value.toMap()),
-      'placements':
-          pulumi.Input.encodeList<
-            GetLaunchTemplatePlacement,
-            Map<String, dynamic>
-          >(placements, (value) => value.toMap()),
-      'privateDnsNameOptions':
-          pulumi.Input.encodeList<
-            GetLaunchTemplatePrivateDnsNameOption,
-            Map<String, dynamic>
-          >(privateDnsNameOptions, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.encodeList<GetLaunchTemplateNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkPerformanceOptions': pulumi.Input.encodeList<GetLaunchTemplateNetworkPerformanceOption, Map<String, dynamic>>(networkPerformanceOptions, (value) => value.toMap()),
+      'placements': pulumi.Input.encodeList<GetLaunchTemplatePlacement, Map<String, dynamic>>(placements, (value) => value.toMap()),
+      'privateDnsNameOptions': pulumi.Input.encodeList<GetLaunchTemplatePrivateDnsNameOption, Map<String, dynamic>>(privateDnsNameOptions, (value) => value.toMap()),
       'ramDiskId': ramDiskId,
       'region': region,
-      'secondaryInterfaces':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateSecondaryInterface,
-            Map<String, dynamic>
-          >(secondaryInterfaces, (value) => value.toMap()),
+      'secondaryInterfaces': pulumi.Input.encodeList<GetLaunchTemplateSecondaryInterface, Map<String, dynamic>>(secondaryInterfaces, (value) => value.toMap()),
       'securityGroupNames': securityGroupNames,
-      'tagSpecifications':
-          pulumi.Input.encodeList<
-            GetLaunchTemplateTagSpecification,
-            Map<String, dynamic>
-          >(tagSpecifications, (value) => value.toMap()),
+      'tagSpecifications': pulumi.Input.encodeList<GetLaunchTemplateTagSpecification, Map<String, dynamic>>(tagSpecifications, (value) => value.toMap()),
       'tags': tags,
       'userData': userData,
       'vpcSecurityGroupIds': vpcSecurityGroupIds,
@@ -282,165 +198,46 @@ class GetLaunchTemplateResult {
   factory GetLaunchTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateResult(
       arn: map['arn'] as String,
-      blockDeviceMappings:
-          pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMapping>(
-            map['blockDeviceMappings'],
-            (value) => GetLaunchTemplateBlockDeviceMapping.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      capacityReservationSpecifications:
-          pulumi.Input.decodeList<
-            GetLaunchTemplateCapacityReservationSpecification
-          >(
-            map['capacityReservationSpecifications'],
-            (value) =>
-                GetLaunchTemplateCapacityReservationSpecification.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      cpuOptions: pulumi.Input.decodeList<GetLaunchTemplateCpuOption>(
-        map['cpuOptions'],
-        (value) => GetLaunchTemplateCpuOption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      creditSpecifications:
-          pulumi.Input.decodeList<GetLaunchTemplateCreditSpecification>(
-            map['creditSpecifications'],
-            (value) => GetLaunchTemplateCreditSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      blockDeviceMappings: pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMapping>(map['blockDeviceMappings'], (value) => GetLaunchTemplateBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
+      capacityReservationSpecifications: pulumi.Input.decodeList<GetLaunchTemplateCapacityReservationSpecification>(map['capacityReservationSpecifications'], (value) => GetLaunchTemplateCapacityReservationSpecification.fromMap((value as Map).cast<String, dynamic>())),
+      cpuOptions: pulumi.Input.decodeList<GetLaunchTemplateCpuOption>(map['cpuOptions'], (value) => GetLaunchTemplateCpuOption.fromMap((value as Map).cast<String, dynamic>())),
+      creditSpecifications: pulumi.Input.decodeList<GetLaunchTemplateCreditSpecification>(map['creditSpecifications'], (value) => GetLaunchTemplateCreditSpecification.fromMap((value as Map).cast<String, dynamic>())),
       defaultVersion: map['defaultVersion'] as int,
       description: map['description'] as String,
       disableApiStop: map['disableApiStop'] as bool,
       disableApiTermination: map['disableApiTermination'] as bool,
       ebsOptimized: map['ebsOptimized'] as String,
-      enclaveOptions: pulumi.Input.decodeList<GetLaunchTemplateEnclaveOption>(
-        map['enclaveOptions'],
-        (value) => GetLaunchTemplateEnclaveOption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetLaunchTemplateFilter>(
-              map['filters'],
-              (value) => GetLaunchTemplateFilter.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      hibernationOptions:
-          pulumi.Input.decodeList<GetLaunchTemplateHibernationOption>(
-            map['hibernationOptions'],
-            (value) => GetLaunchTemplateHibernationOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      iamInstanceProfiles:
-          pulumi.Input.decodeList<GetLaunchTemplateIamInstanceProfile>(
-            map['iamInstanceProfiles'],
-            (value) => GetLaunchTemplateIamInstanceProfile.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      enclaveOptions: pulumi.Input.decodeList<GetLaunchTemplateEnclaveOption>(map['enclaveOptions'], (value) => GetLaunchTemplateEnclaveOption.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLaunchTemplateFilter>(map['filters'], (value) => GetLaunchTemplateFilter.fromMap((value as Map).cast<String, dynamic>())),
+      hibernationOptions: pulumi.Input.decodeList<GetLaunchTemplateHibernationOption>(map['hibernationOptions'], (value) => GetLaunchTemplateHibernationOption.fromMap((value as Map).cast<String, dynamic>())),
+      iamInstanceProfiles: pulumi.Input.decodeList<GetLaunchTemplateIamInstanceProfile>(map['iamInstanceProfiles'], (value) => GetLaunchTemplateIamInstanceProfile.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       imageId: map['imageId'] as String,
-      instanceInitiatedShutdownBehavior:
-          map['instanceInitiatedShutdownBehavior'] as String,
-      instanceMarketOptions:
-          pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOption>(
-            map['instanceMarketOptions'],
-            (value) => GetLaunchTemplateInstanceMarketOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      instanceRequirements:
-          pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirement>(
-            map['instanceRequirements'],
-            (value) => GetLaunchTemplateInstanceRequirement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      instanceInitiatedShutdownBehavior: map['instanceInitiatedShutdownBehavior'] as String,
+      instanceMarketOptions: pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOption>(map['instanceMarketOptions'], (value) => GetLaunchTemplateInstanceMarketOption.fromMap((value as Map).cast<String, dynamic>())),
+      instanceRequirements: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirement>(map['instanceRequirements'], (value) => GetLaunchTemplateInstanceRequirement.fromMap((value as Map).cast<String, dynamic>())),
       instanceType: map['instanceType'] as String,
       kernelId: map['kernelId'] as String,
       keyName: map['keyName'] as String,
       latestVersion: map['latestVersion'] as int,
-      licenseSpecifications:
-          pulumi.Input.decodeList<GetLaunchTemplateLicenseSpecification>(
-            map['licenseSpecifications'],
-            (value) => GetLaunchTemplateLicenseSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      maintenanceOptions:
-          pulumi.Input.decodeList<GetLaunchTemplateMaintenanceOption>(
-            map['maintenanceOptions'],
-            (value) => GetLaunchTemplateMaintenanceOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      metadataOptions: pulumi.Input.decodeList<GetLaunchTemplateMetadataOption>(
-        map['metadataOptions'],
-        (value) => GetLaunchTemplateMetadataOption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      monitorings: pulumi.Input.decodeList<GetLaunchTemplateMonitoring>(
-        map['monitorings'],
-        (value) => GetLaunchTemplateMonitoring.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      licenseSpecifications: pulumi.Input.decodeList<GetLaunchTemplateLicenseSpecification>(map['licenseSpecifications'], (value) => GetLaunchTemplateLicenseSpecification.fromMap((value as Map).cast<String, dynamic>())),
+      maintenanceOptions: pulumi.Input.decodeList<GetLaunchTemplateMaintenanceOption>(map['maintenanceOptions'], (value) => GetLaunchTemplateMaintenanceOption.fromMap((value as Map).cast<String, dynamic>())),
+      metadataOptions: pulumi.Input.decodeList<GetLaunchTemplateMetadataOption>(map['metadataOptions'], (value) => GetLaunchTemplateMetadataOption.fromMap((value as Map).cast<String, dynamic>())),
+      monitorings: pulumi.Input.decodeList<GetLaunchTemplateMonitoring>(map['monitorings'], (value) => GetLaunchTemplateMonitoring.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networkInterfaces:
-          pulumi.Input.decodeList<GetLaunchTemplateNetworkInterface>(
-            map['networkInterfaces'],
-            (value) => GetLaunchTemplateNetworkInterface.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      networkPerformanceOptions:
-          pulumi.Input.decodeList<GetLaunchTemplateNetworkPerformanceOption>(
-            map['networkPerformanceOptions'],
-            (value) => GetLaunchTemplateNetworkPerformanceOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      placements: pulumi.Input.decodeList<GetLaunchTemplatePlacement>(
-        map['placements'],
-        (value) => GetLaunchTemplatePlacement.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      privateDnsNameOptions:
-          pulumi.Input.decodeList<GetLaunchTemplatePrivateDnsNameOption>(
-            map['privateDnsNameOptions'],
-            (value) => GetLaunchTemplatePrivateDnsNameOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      networkInterfaces: pulumi.Input.decodeList<GetLaunchTemplateNetworkInterface>(map['networkInterfaces'], (value) => GetLaunchTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkPerformanceOptions: pulumi.Input.decodeList<GetLaunchTemplateNetworkPerformanceOption>(map['networkPerformanceOptions'], (value) => GetLaunchTemplateNetworkPerformanceOption.fromMap((value as Map).cast<String, dynamic>())),
+      placements: pulumi.Input.decodeList<GetLaunchTemplatePlacement>(map['placements'], (value) => GetLaunchTemplatePlacement.fromMap((value as Map).cast<String, dynamic>())),
+      privateDnsNameOptions: pulumi.Input.decodeList<GetLaunchTemplatePrivateDnsNameOption>(map['privateDnsNameOptions'], (value) => GetLaunchTemplatePrivateDnsNameOption.fromMap((value as Map).cast<String, dynamic>())),
       ramDiskId: map['ramDiskId'] as String,
       region: map['region'] as String,
-      secondaryInterfaces:
-          pulumi.Input.decodeList<GetLaunchTemplateSecondaryInterface>(
-            map['secondaryInterfaces'],
-            (value) => GetLaunchTemplateSecondaryInterface.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      secondaryInterfaces: pulumi.Input.decodeList<GetLaunchTemplateSecondaryInterface>(map['secondaryInterfaces'], (value) => GetLaunchTemplateSecondaryInterface.fromMap((value as Map).cast<String, dynamic>())),
       securityGroupNames: (map['securityGroupNames'] as List).cast<String>(),
-      tagSpecifications:
-          pulumi.Input.decodeList<GetLaunchTemplateTagSpecification>(
-            map['tagSpecifications'],
-            (value) => GetLaunchTemplateTagSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      tagSpecifications: pulumi.Input.decodeList<GetLaunchTemplateTagSpecification>(map['tagSpecifications'], (value) => GetLaunchTemplateTagSpecification.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       userData: map['userData'] as String,
       vpcSecurityGroupIds: (map['vpcSecurityGroupIds'] as List).cast<String>(),
     );
   }
 }
+

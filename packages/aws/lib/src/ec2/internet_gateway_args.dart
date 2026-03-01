@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternetGatewayArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// > **Note:** It's recommended to denote that the AWS Instance or Elastic IP depends on the Internet Gateway. For example:
@@ -130,7 +129,6 @@ class InternetGatewayArgs {
   ///         - ${gw}
   /// ```
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The VPC ID to create in.  See the aws.ec2.InternetGatewayAttachment resource for an alternate way to attach an Internet Gateway to a VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -142,21 +140,25 @@ class InternetGatewayArgs {
     String? region,
     Map<String, String>? tags,
     String? vpcId,
-  }) : region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region, 'tags': ?tags, 'vpcId': ?vpcId};
+    return <String, dynamic>{
+      'region': ?region,
+      'tags': ?tags,
+      'vpcId': ?vpcId,
+    };
   }
 
   factory InternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
+

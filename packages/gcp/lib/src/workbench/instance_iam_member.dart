@@ -20,11 +20,11 @@ class InstanceIamMember extends pulumi.CustomResource {
     InstanceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:workbench/instanceIamMember:InstanceIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:workbench/instanceIamMember:InstanceIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<InstanceIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

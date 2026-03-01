@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointKinesisSetting {
   final bool includeControlDetails;
   final bool includeNullAndEmpty;
@@ -66,3 +67,4 @@ class GetEndpointKinesisSetting {
     );
   }
 }
+

@@ -10,46 +10,33 @@ import 'get_input_source.dart';
 class GetInputResult {
   /// ARN of the Input.
   final String arn;
-
   /// Channels attached to Input.
   final List<String> attachedChannels;
   final List<GetInputDestination> destinations;
   final String id;
-
   /// The input class.
   final String inputClass;
-
   /// Settings for the devices.
   final List<GetInputInputDevice> inputDevices;
-
   /// A list of IDs for all Inputs which are partners of this one.
   final List<String> inputPartnerIds;
-
   /// Source type of the input.
   final String inputSourceType;
-
   /// A list of the MediaConnect Flows.
   final List<GetInputMediaConnectFlow> mediaConnectFlows;
-
   /// Name of the input.
   final String name;
   final String region;
-
   /// The ARN of the role this input assumes during and after creation.
   final String roleArn;
-
   /// List of input security groups.
   final List<String> securityGroups;
-
   /// The source URLs for a PULL-type input.
   final List<GetInputSource> sources;
-
   /// The state of the input.
   final String state;
-
   /// A map of tags assigned to the Input.
   final Map<String, String> tags;
-
   /// The type of the input.
   final String type;
 
@@ -95,33 +82,18 @@ class GetInputResult {
     return <String, dynamic>{
       'arn': arn,
       'attachedChannels': attachedChannels,
-      'destinations':
-          pulumi.Input.encodeList<GetInputDestination, Map<String, dynamic>>(
-            destinations,
-            (value) => value.toMap(),
-          ),
+      'destinations': pulumi.Input.encodeList<GetInputDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
       'id': id,
       'inputClass': inputClass,
-      'inputDevices':
-          pulumi.Input.encodeList<GetInputInputDevice, Map<String, dynamic>>(
-            inputDevices,
-            (value) => value.toMap(),
-          ),
+      'inputDevices': pulumi.Input.encodeList<GetInputInputDevice, Map<String, dynamic>>(inputDevices, (value) => value.toMap()),
       'inputPartnerIds': inputPartnerIds,
       'inputSourceType': inputSourceType,
-      'mediaConnectFlows':
-          pulumi.Input.encodeList<
-            GetInputMediaConnectFlow,
-            Map<String, dynamic>
-          >(mediaConnectFlows, (value) => value.toMap()),
+      'mediaConnectFlows': pulumi.Input.encodeList<GetInputMediaConnectFlow, Map<String, dynamic>>(mediaConnectFlows, (value) => value.toMap()),
       'name': name,
       'region': region,
       'roleArn': roleArn,
       'securityGroups': securityGroups,
-      'sources': pulumi.Input.encodeList<GetInputSource, Map<String, dynamic>>(
-        sources,
-        (value) => value.toMap(),
-      ),
+      'sources': pulumi.Input.encodeList<GetInputSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
       'state': state,
       'tags': tags,
       'type': type,
@@ -132,38 +104,22 @@ class GetInputResult {
     return GetInputResult(
       arn: map['arn'] as String,
       attachedChannels: (map['attachedChannels'] as List).cast<String>(),
-      destinations: pulumi.Input.decodeList<GetInputDestination>(
-        map['destinations'],
-        (value) =>
-            GetInputDestination.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      destinations: pulumi.Input.decodeList<GetInputDestination>(map['destinations'], (value) => GetInputDestination.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       inputClass: map['inputClass'] as String,
-      inputDevices: pulumi.Input.decodeList<GetInputInputDevice>(
-        map['inputDevices'],
-        (value) =>
-            GetInputInputDevice.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      inputDevices: pulumi.Input.decodeList<GetInputInputDevice>(map['inputDevices'], (value) => GetInputInputDevice.fromMap((value as Map).cast<String, dynamic>())),
       inputPartnerIds: (map['inputPartnerIds'] as List).cast<String>(),
       inputSourceType: map['inputSourceType'] as String,
-      mediaConnectFlows: pulumi.Input.decodeList<GetInputMediaConnectFlow>(
-        map['mediaConnectFlows'],
-        (value) => GetInputMediaConnectFlow.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      mediaConnectFlows: pulumi.Input.decodeList<GetInputMediaConnectFlow>(map['mediaConnectFlows'], (value) => GetInputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
-      sources: pulumi.Input.decodeList<GetInputSource>(
-        map['sources'],
-        (value) =>
-            GetInputSource.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      sources: pulumi.Input.decodeList<GetInputSource>(map['sources'], (value) => GetInputSource.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
+

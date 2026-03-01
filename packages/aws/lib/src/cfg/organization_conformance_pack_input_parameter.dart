@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationConformancePackInputParameter {
   /// The input key.
   final String parameterName;
-
   /// The input value.
   final String parameterValue;
 
@@ -22,12 +22,11 @@ class OrganizationConformancePackInputParameter {
     };
   }
 
-  factory OrganizationConformancePackInputParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationConformancePackInputParameter.fromMap(Map<String, dynamic> map) {
     return OrganizationConformancePackInputParameter(
       parameterName: map['parameterName'] as String,
       parameterValue: map['parameterValue'] as String,
     );
   }
 }
+

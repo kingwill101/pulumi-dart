@@ -6,20 +6,13 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement {
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch?
-  fieldToMatch;
-
+  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch? fieldToMatch;
   /// Area within the portion of a web request that you want AWS WAF to search for `search_string`. Valid values include the following: `EXACTLY`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CONTAINS_WORD`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchStatement.html) for more information.
   final String positionalConstraint;
-
   /// String value that you want AWS WAF to search for. AWS WAF searches only in the part of web requests that you designate for inspection in `field_to_match`. The maximum length of the value is 50 bytes.
   final String searchString;
-
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final List<
-    WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation
-  >
-  textTransformations;
+  final List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation> textTransformations;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement].
   /// [fieldToMatch] Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
@@ -38,35 +31,17 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchSta
       'fieldToMatch': ?fieldToMatch == null ? null : fieldToMatch!.toMap(),
       'positionalConstraint': positionalConstraint,
       'searchString': searchString,
-      'textTransformations':
-          pulumi.Input.encodeList<
-            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation,
-            Map<String, dynamic>
-          >(textTransformations, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch.fromMap(
-              (map['fieldToMatch'] as Map).cast<String, dynamic>(),
-            ),
+      fieldToMatch: map['fieldToMatch'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
       searchString: map['searchString'] as String,
-      textTransformations:
-          pulumi.Input.decodeList<
-            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation
-          >(
-            map['textTransformations'],
-            (value) =>
-                WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

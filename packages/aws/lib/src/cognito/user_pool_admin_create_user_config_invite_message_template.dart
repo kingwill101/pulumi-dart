@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   final String? emailMessage;
-
   /// Subject line for email messages.
   final String? emailSubject;
-
   /// Message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   final String? smsMessage;
 
@@ -28,19 +27,12 @@ class UserPoolAdminCreateUserConfigInviteMessageTemplate {
     };
   }
 
-  factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return UserPoolAdminCreateUserConfigInviteMessageTemplate(
-      emailMessage: map['emailMessage'] == null
-          ? null
-          : map['emailMessage'] as String,
-      emailSubject: map['emailSubject'] == null
-          ? null
-          : map['emailSubject'] as String,
-      smsMessage: map['smsMessage'] == null
-          ? null
-          : map['smsMessage'] as String,
+      emailMessage: map['emailMessage'] == null ? null : map['emailMessage'] as String,
+      emailSubject: map['emailSubject'] == null ? null : map['emailSubject'] as String,
+      smsMessage: map['smsMessage'] == null ? null : map['smsMessage'] as String,
     );
   }
 }
+

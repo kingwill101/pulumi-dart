@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Definition of KeyValuePair
+class KeyValuePair {
+  /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
+  final String? name;
+  /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
+  final String? value;
+
+  /// Creates a new [KeyValuePair].
+  /// [name] The name of the key-value pair. For environment variables, this is the name of the environment variable.
+  /// [value] The value of the key-value pair. For environment variables, this is the value of the environment variable.
+  KeyValuePair({
+    this.name,
+    this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
+  }
+
+  factory KeyValuePair.fromMap(Map<String, dynamic> map) {
+    return KeyValuePair(
+      name: map['name'] == null ? null : map['name'] as String,
+      value: map['value'] == null ? null : map['value'] as String,
+    );
+  }
+}
+

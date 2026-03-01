@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class LoadBalancerHealthcheck {
+  /// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
+  final int? checkIntervalSeconds;
+  /// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+  final int? healthyThreshold;
+  /// The path on the backend Droplets to which the Load Balancer instance will send a request.
+  final String? path;
+  /// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+  final int port;
+  /// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
+  final String protocol;
+  /// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+  final int? responseTimeoutSeconds;
+  /// The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+  final int? unhealthyThreshold;
+
+  /// Creates a new [LoadBalancerHealthcheck].
+  /// [checkIntervalSeconds] The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
+  /// [healthyThreshold] The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+  /// [path] The path on the backend Droplets to which the Load Balancer instance will send a request.
+  /// [port] An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+  /// [protocol] The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
+  /// [responseTimeoutSeconds] The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+  /// [unhealthyThreshold] The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+  LoadBalancerHealthcheck({
+    this.checkIntervalSeconds,
+    this.healthyThreshold,
+    this.path,
+    required this.port,
+    required this.protocol,
+    this.responseTimeoutSeconds,
+    this.unhealthyThreshold,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'checkIntervalSeconds': ?checkIntervalSeconds,
+      'healthyThreshold': ?healthyThreshold,
+      'path': ?path,
+      'port': port,
+      'protocol': protocol,
+      'responseTimeoutSeconds': ?responseTimeoutSeconds,
+      'unhealthyThreshold': ?unhealthyThreshold,
+    };
+  }
+
+  factory LoadBalancerHealthcheck.fromMap(Map<String, dynamic> map) {
+    return LoadBalancerHealthcheck(
+      checkIntervalSeconds: map['checkIntervalSeconds'] == null ? null : map['checkIntervalSeconds'] as int,
+      healthyThreshold: map['healthyThreshold'] == null ? null : map['healthyThreshold'] as int,
+      path: map['path'] == null ? null : map['path'] as String,
+      port: map['port'] as int,
+      protocol: map['protocol'] as String,
+      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : map['responseTimeoutSeconds'] as int,
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : map['unhealthyThreshold'] as int,
+    );
+  }
+}
+

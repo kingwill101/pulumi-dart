@@ -1,0 +1,3 @@
+library pulumi_azure_native_iotoperationsorchestrator;
+
+export 'package:pulumi_azure_native/src/iotoperationsorchestrator.dart';

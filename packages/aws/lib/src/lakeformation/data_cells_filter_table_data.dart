@@ -6,25 +6,18 @@ import 'data_cells_filter_table_data_row_filter.dart';
 class DataCellsFilterTableData {
   /// A list of column names and/or nested column attributes.
   final List<String>? columnNames;
-
   /// A wildcard with exclusions. See Column Wildcard below for details.
   final DataCellsFilterTableDataColumnWildcard? columnWildcard;
-
   /// The name of the database.
   final String databaseName;
-
   /// The name of the data cells filter.
   final String name;
-
   /// A PartiQL predicate. See Row Filter below for details.
   final DataCellsFilterTableDataRowFilter rowFilter;
-
   /// The ID of the Data Catalog.
   final String tableCatalogId;
-
   /// The name of the table.
   final String tableName;
-
   /// ID of the data cells filter version.
   final String? versionId;
 
@@ -51,9 +44,7 @@ class DataCellsFilterTableData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columnNames': ?columnNames,
-      'columnWildcard': ?columnWildcard == null
-          ? null
-          : columnWildcard!.toMap(),
+      'columnWildcard': ?columnWildcard == null ? null : columnWildcard!.toMap(),
       'databaseName': databaseName,
       'name': name,
       'rowFilter': rowFilter.toMap(),
@@ -65,22 +56,15 @@ class DataCellsFilterTableData {
 
   factory DataCellsFilterTableData.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableData(
-      columnNames: map['columnNames'] == null
-          ? null
-          : (map['columnNames'] as List).cast<String>(),
-      columnWildcard: map['columnWildcard'] == null
-          ? null
-          : DataCellsFilterTableDataColumnWildcard.fromMap(
-              (map['columnWildcard'] as Map).cast<String, dynamic>(),
-            ),
+      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
+      columnWildcard: map['columnWildcard'] == null ? null : DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>()),
       databaseName: map['databaseName'] as String,
       name: map['name'] as String,
-      rowFilter: DataCellsFilterTableDataRowFilter.fromMap(
-        (map['rowFilter'] as Map).cast<String, dynamic>(),
-      ),
+      rowFilter: DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter'] as Map).cast<String, dynamic>()),
       tableCatalogId: map['tableCatalogId'] as String,
       tableName: map['tableName'] as String,
       versionId: map['versionId'] == null ? null : map['versionId'] as String,
     );
   }
 }
+

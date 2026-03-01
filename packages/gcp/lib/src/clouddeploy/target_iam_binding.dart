@@ -20,11 +20,11 @@ class TargetIamBinding extends pulumi.CustomResource {
     TargetIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.condition = registerOutput<TargetIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

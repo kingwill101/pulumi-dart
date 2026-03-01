@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRoute.
 class GetRouteResult {
   final String carrierGatewayId;
@@ -9,7 +10,6 @@ class GetRouteResult {
   final String destinationPrefixListId;
   final String egressOnlyGatewayId;
   final String gatewayId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -99,3 +99,4 @@ class GetRouteResult {
     );
   }
 }
+

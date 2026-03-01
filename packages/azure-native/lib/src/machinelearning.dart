@@ -1,0 +1,11 @@
+library module_machinelearning;
+
+export 'machinelearning/functions.dart';
+export 'machinelearning/get_workspace_args.dart';
+export 'machinelearning/get_workspace_result.dart';
+export 'machinelearning/list_workspace_keys_args.dart';
+export 'machinelearning/list_workspace_keys_result.dart';
+export 'machinelearning/sku.dart';
+export 'machinelearning/sku_response.dart';
+export 'machinelearning/workspace.dart';
+export 'machinelearning/workspace_args.dart';

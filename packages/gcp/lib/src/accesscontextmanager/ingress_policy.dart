@@ -22,10 +22,8 @@ import 'ingress_policy_args.dart';
 class IngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> ingressPolicyName;
-
   /// A GCP resource that is inside of the service perimeter.
   late final pulumi.Output<String> resource;
 
@@ -38,11 +36,11 @@ class IngressPolicy extends pulumi.CustomResource {
     IngressPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/ingressPolicy:IngressPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/ingressPolicy:IngressPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.ingressPolicyName = registerOutput<String>('ingressPolicyName');
     this.resource = registerOutput<String>('resource');

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMigrationSource {
   /// The host and port of the on-premises instance in host:port format
   final String hostPort;
-
   /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
   final String referenceId;
-
   /// Type of migration source.
   final String sourceType;
 
@@ -36,3 +35,4 @@ class GetClusterMigrationSource {
     );
   }
 }
+

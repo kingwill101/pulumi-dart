@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJa3Fingerprint {
   /// The match status to assign to the web request if the request doesn't have a JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
   final String fallbackBehavior;
@@ -11,14 +12,15 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatemen
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': fallbackBehavior,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJa3Fingerprint(
       fallbackBehavior: map['fallbackBehavior'] as String,
     );
   }
 }
+

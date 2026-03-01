@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class HciDeploymentSettingScaleUnitPhysicalNode {
+  /// Specifies the IPv4 address assigned to each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
+  final String ipv4Address;
+  /// The NETBIOS name of each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
+  final String name;
+
+  /// Creates a new [HciDeploymentSettingScaleUnitPhysicalNode].
+  /// [ipv4Address] Specifies the IPv4 address assigned to each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [name] The NETBIOS name of each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
+  HciDeploymentSettingScaleUnitPhysicalNode({
+    required this.ipv4Address,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ipv4Address': ipv4Address,
+      'name': name,
+    };
+  }
+
+  factory HciDeploymentSettingScaleUnitPhysicalNode.fromMap(Map<String, dynamic> map) {
+    return HciDeploymentSettingScaleUnitPhysicalNode(
+      ipv4Address: map['ipv4Address'] as String,
+      name: map['name'] as String,
+    );
+  }
+}
+

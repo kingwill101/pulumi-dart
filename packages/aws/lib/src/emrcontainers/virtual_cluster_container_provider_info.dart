@@ -8,19 +8,20 @@ class VirtualClusterContainerProviderInfo {
 
   /// Creates a new [VirtualClusterContainerProviderInfo].
   /// [eksInfo] Nested list containing EKS-specific information about the cluster where the EMR Containers cluster is running
-  VirtualClusterContainerProviderInfo({required this.eksInfo});
+  VirtualClusterContainerProviderInfo({
+    required this.eksInfo,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eksInfo': eksInfo.toMap()};
+    return <String, dynamic>{
+      'eksInfo': eksInfo.toMap(),
+    };
   }
 
-  factory VirtualClusterContainerProviderInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualClusterContainerProviderInfo.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProviderInfo(
-      eksInfo: VirtualClusterContainerProviderInfoEksInfo.fromMap(
-        (map['eksInfo'] as Map).cast<String, dynamic>(),
-      ),
+      eksInfo: VirtualClusterContainerProviderInfoEksInfo.fromMap((map['eksInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

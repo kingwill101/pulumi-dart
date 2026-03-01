@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Information about a VM from which a formula is to be created.
+class FormulaPropertiesFromVmResponse {
+  /// The identifier of the VM from which a formula is to be created.
+  final String? labVmId;
+
+  /// Creates a new [FormulaPropertiesFromVmResponse].
+  /// [labVmId] The identifier of the VM from which a formula is to be created.
+  FormulaPropertiesFromVmResponse({
+    this.labVmId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'labVmId': ?labVmId,
+    };
+  }
+
+  factory FormulaPropertiesFromVmResponse.fromMap(Map<String, dynamic> map) {
+    return FormulaPropertiesFromVmResponse(
+      labVmId: map['labVmId'] == null ? null : map['labVmId'] as String,
+    );
+  }
+}
+

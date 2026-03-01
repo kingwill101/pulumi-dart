@@ -9,7 +9,9 @@ class ClusterStateInfo {
 
   /// Creates a new [ClusterStateInfo].
   /// [updateInfo] A nested object resource.
-  ClusterStateInfo({this.updateInfo});
+  ClusterStateInfo({
+    this.updateInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class ClusterStateInfo {
 
   factory ClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfo(
-      updateInfo: map['updateInfo'] == null
-          ? null
-          : ClusterStateInfoUpdateInfo.fromMap(
-              (map['updateInfo'] as Map).cast<String, dynamic>(),
-            ),
+      updateInfo: map['updateInfo'] == null ? null : ClusterStateInfoUpdateInfo.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

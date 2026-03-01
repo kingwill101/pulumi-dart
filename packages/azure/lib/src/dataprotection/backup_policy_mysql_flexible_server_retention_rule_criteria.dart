@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class BackupPolicyMysqlFlexibleServerRetentionRuleCriteria {
+  /// Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.
+  final String? absoluteCriteria;
+  /// Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`. Changing this forces a new resource to be created.
+  final List<String>? daysOfWeeks;
+  /// Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new resource to be created.
+  final List<String>? monthsOfYears;
+  /// Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new resource to be created.
+  final List<String>? scheduledBackupTimes;
+  /// Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** When not using `absolute_criteria`, you must use exactly one of `days_of_month` or `days_of_week`. Regarding the remaining two properties, `weeks_of_month` and `months_of_year`, you may use either, both, or neither. If you would like to set multiple intervals, you may do so by using multiple `retention_rule` blocks.
+  final List<String>? weeksOfMonths;
+
+  /// Creates a new [BackupPolicyMysqlFlexibleServerRetentionRuleCriteria].
+  /// [absoluteCriteria] Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.
+  /// [daysOfWeeks] Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`. Changing this forces a new resource to be created.
+  /// [monthsOfYears] Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new resource to be created.
+  /// [scheduledBackupTimes] Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new resource to be created.
+  /// [weeksOfMonths] Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new resource to be created.
+  BackupPolicyMysqlFlexibleServerRetentionRuleCriteria({
+    this.absoluteCriteria,
+    this.daysOfWeeks,
+    this.monthsOfYears,
+    this.scheduledBackupTimes,
+    this.weeksOfMonths,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'absoluteCriteria': ?absoluteCriteria,
+      'daysOfWeeks': ?daysOfWeeks,
+      'monthsOfYears': ?monthsOfYears,
+      'scheduledBackupTimes': ?scheduledBackupTimes,
+      'weeksOfMonths': ?weeksOfMonths,
+    };
+  }
+
+  factory BackupPolicyMysqlFlexibleServerRetentionRuleCriteria.fromMap(Map<String, dynamic> map) {
+    return BackupPolicyMysqlFlexibleServerRetentionRuleCriteria(
+      absoluteCriteria: map['absoluteCriteria'] == null ? null : map['absoluteCriteria'] as String,
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : (map['daysOfWeeks'] as List).cast<String>(),
+      monthsOfYears: map['monthsOfYears'] == null ? null : (map['monthsOfYears'] as List).cast<String>(),
+      scheduledBackupTimes: map['scheduledBackupTimes'] == null ? null : (map['scheduledBackupTimes'] as List).cast<String>(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : (map['weeksOfMonths'] as List).cast<String>(),
+    );
+  }
+}
+

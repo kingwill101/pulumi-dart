@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
   /// The event action. Valid values are `BLOCK` or `NO_ACTION`.
   final String eventAction;
@@ -11,14 +12,15 @@ class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventAction': eventAction};
+    return <String, dynamic>{
+      'eventAction': eventAction,
+    };
   }
 
-  factory RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationCompromisedCredentialsRiskConfigurationActions(
       eventAction: map['eventAction'] as String,
     );
   }
 }
+

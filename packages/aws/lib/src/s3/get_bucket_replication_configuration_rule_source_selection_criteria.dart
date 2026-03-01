@@ -5,14 +5,8 @@ import 'get_bucket_replication_configuration_rule_source_selection_criteria_repl
 import 'get_bucket_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object.dart';
 
 class GetBucketReplicationConfigurationRuleSourceSelectionCriteria {
-  final List<
-    GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification
-  >
-  replicaModifications;
-  final List<
-    GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject
-  >
-  sseKmsEncryptedObjects;
+  final List<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification> replicaModifications;
+  final List<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject> sseKmsEncryptedObjects;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteria].
   /// [replicaModifications] Required.
@@ -24,43 +18,16 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicaModifications':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification,
-            Map<String, dynamic>
-          >(replicaModifications, (value) => value.toMap()),
-      'sseKmsEncryptedObjects':
-          pulumi.Input.encodeList<
-            GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject,
-            Map<String, dynamic>
-          >(sseKmsEncryptedObjects, (value) => value.toMap()),
+      'replicaModifications': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification, Map<String, dynamic>>(replicaModifications, (value) => value.toMap()),
+      'sseKmsEncryptedObjects': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject, Map<String, dynamic>>(sseKmsEncryptedObjects, (value) => value.toMap()),
     };
   }
 
-  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleSourceSelectionCriteria(
-      replicaModifications:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification
-          >(
-            map['replicaModifications'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      sseKmsEncryptedObjects:
-          pulumi.Input.decodeList<
-            GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject
-          >(
-            map['sseKmsEncryptedObjects'],
-            (value) =>
-                GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      replicaModifications: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification>(map['replicaModifications'], (value) => GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification.fromMap((value as Map).cast<String, dynamic>())),
+      sseKmsEncryptedObjects: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>(map['sseKmsEncryptedObjects'], (value) => GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

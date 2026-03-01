@@ -7,31 +7,19 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties {
   /// Specifies accelerator type and count.
   /// Structure is documented below.
-  final List<
-    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator
-  >?
-  guestAccelerators;
-
+  final List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>? guestAccelerators;
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
   /// Structure is documented below.
-  final List<
-    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd
-  >?
-  localSsds;
-
+  final List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>? localSsds;
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   final String? locationHint;
-
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
   final String? machineType;
-
   /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
   final int? maintenanceFreezeDurationHours;
-
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
   /// Possible values are: `PERIODIC`.
   final String? maintenanceInterval;
-
   /// Minimum cpu platform the reservation.
   final String? minCpuPlatform;
 
@@ -55,18 +43,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guestAccelerators': ?guestAccelerators == null
-          ? null
-          : pulumi.Input.encodeList<
-              FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator,
-              Map<String, dynamic>
-            >(guestAccelerators!, (value) => value.toMap()),
-      'localSsds': ?localSsds == null
-          ? null
-          : pulumi.Input.encodeList<
-              FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd,
-              Map<String, dynamic>
-            >(localSsds!, (value) => value.toMap()),
+      'guestAccelerators': ?guestAccelerators == null ? null : pulumi.Input.encodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator, Map<String, dynamic>>(guestAccelerators!, (value) => value.toMap()),
+      'localSsds': ?localSsds == null ? null : pulumi.Input.encodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd, Map<String, dynamic>>(localSsds!, (value) => value.toMap()),
       'locationHint': ?locationHint,
       'machineType': ?machineType,
       'maintenanceFreezeDurationHours': ?maintenanceFreezeDurationHours,
@@ -75,48 +53,16 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties(
-      guestAccelerators: map['guestAccelerators'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator
-            >(
-              map['guestAccelerators'],
-              (value) =>
-                  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      localSsds: map['localSsds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-              FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd
-            >(
-              map['localSsds'],
-              (value) =>
-                  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap(
-                    (value as Map).cast<String, dynamic>(),
-                  ),
-            ),
-      locationHint: map['locationHint'] == null
-          ? null
-          : map['locationHint'] as String,
-      machineType: map['machineType'] == null
-          ? null
-          : map['machineType'] as String,
-      maintenanceFreezeDurationHours:
-          map['maintenanceFreezeDurationHours'] == null
-          ? null
-          : map['maintenanceFreezeDurationHours'] as int,
-      maintenanceInterval: map['maintenanceInterval'] == null
-          ? null
-          : map['maintenanceInterval'] as String,
-      minCpuPlatform: map['minCpuPlatform'] == null
-          ? null
-          : map['minCpuPlatform'] as String,
+      guestAccelerators: map['guestAccelerators'] == null ? null : pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>(map['guestAccelerators'], (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
+      localSsds: map['localSsds'] == null ? null : pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>(map['localSsds'], (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap((value as Map).cast<String, dynamic>())),
+      locationHint: map['locationHint'] == null ? null : map['locationHint'] as String,
+      machineType: map['machineType'] == null ? null : map['machineType'] as String,
+      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : map['maintenanceFreezeDurationHours'] as int,
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : map['maintenanceInterval'] as String,
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : map['minCpuPlatform'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetComputeEnvironmentUpdatePolicy {
   final int jobExecutionTimeoutMinutes;
   final bool terminateJobsOnUpdate;
@@ -26,3 +27,4 @@ class GetComputeEnvironmentUpdatePolicy {
     );
   }
 }
+

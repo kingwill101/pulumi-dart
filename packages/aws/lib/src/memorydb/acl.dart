@@ -128,25 +128,18 @@ import 'acl_args.dart';
 class Acl extends pulumi.CustomResource {
   /// The ARN of the ACL.
   late final pulumi.Output<String> arn;
-
   /// The minimum engine version supported by the ACL.
   late final pulumi.Output<String> minimumEngineVersion;
-
   /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Set of MemoryDB user names to be included in this ACL.
   late final pulumi.Output<List<String>?> userNames;
 
@@ -154,13 +147,16 @@ class Acl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Acl]. {@macro pulumi_memorydb_acl_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Acl(String name, {AclArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:memorydb/acl:Acl',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Acl(
+    String name, {
+    AclArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:memorydb/acl:Acl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.arn = registerOutput<String>('arn');
     this.minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     this.name = registerOutput<String>('name');

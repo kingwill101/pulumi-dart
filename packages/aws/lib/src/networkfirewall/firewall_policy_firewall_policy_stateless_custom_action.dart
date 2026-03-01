@@ -4,9 +4,7 @@ import 'firewall_policy_firewall_policy_stateless_custom_action_action_definitio
 
 class FirewallPolicyFirewallPolicyStatelessCustomAction {
   /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
-  final FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition
-  actionDefinition;
-
+  final FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition actionDefinition;
   /// A friendly name of the custom action.
   final String actionName;
 
@@ -25,15 +23,11 @@ class FirewallPolicyFirewallPolicyStatelessCustomAction {
     };
   }
 
-  factory FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatelessCustomAction(
-      actionDefinition:
-          FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap(
-            (map['actionDefinition'] as Map).cast<String, dynamic>(),
-          ),
+      actionDefinition: FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((map['actionDefinition'] as Map).cast<String, dynamic>()),
       actionName: map['actionName'] as String,
     );
   }
 }
+

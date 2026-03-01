@@ -5,14 +5,10 @@ import 'endpoint_configuration_async_inference_config_output_config_notification
 class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   /// KMS key that SageMaker AI uses to encrypt the asynchronous inference output in S3.
   final String? kmsKeyId;
-
   /// Configuration for notifications of inference results for asynchronous inference.
-  final EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig?
-  notificationConfig;
-
+  final EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig? notificationConfig;
   /// S3 location to upload failure inference responses to.
   final String? s3FailurePath;
-
   /// S3 location to upload inference responses to.
   final String s3OutputPath;
 
@@ -31,28 +27,19 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kmsKeyId': ?kmsKeyId,
-      'notificationConfig': ?notificationConfig == null
-          ? null
-          : notificationConfig!.toMap(),
+      'notificationConfig': ?notificationConfig == null ? null : notificationConfig!.toMap(),
       's3FailurePath': ?s3FailurePath,
       's3OutputPath': s3OutputPath,
     };
   }
 
-  factory EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigOutputConfig(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      notificationConfig: map['notificationConfig'] == null
-          ? null
-          : EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap(
-              (map['notificationConfig'] as Map).cast<String, dynamic>(),
-            ),
-      s3FailurePath: map['s3FailurePath'] == null
-          ? null
-          : map['s3FailurePath'] as String,
+      notificationConfig: map['notificationConfig'] == null ? null : EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>()),
+      s3FailurePath: map['s3FailurePath'] == null ? null : map['s3FailurePath'] as String,
       s3OutputPath: map['s3OutputPath'] as String,
     );
   }
 }
+

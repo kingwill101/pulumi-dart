@@ -10,17 +10,13 @@ import 'deployment_timeouts.dart';
 class DeploymentArgs {
   /// Application to deploy.
   final pulumi.Input<String> applicationId;
-
   /// Version to application to deploy
   final pulumi.Input<int> applicationVersion;
-
   /// Environment to deploy application to.
   final pulumi.Input<String> environmentId;
   final pulumi.Input<bool>? forceStop;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Start the application once deployed.
   final pulumi.Input<bool> start;
   final pulumi.Input<DeploymentTimeouts>? timeouts;
@@ -41,13 +37,14 @@ class DeploymentArgs {
     String? region,
     required bool start,
     DeploymentTimeouts? timeouts,
-  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
-       applicationVersion = pulumi.Input.asInput<int>(applicationVersion),
-       environmentId = pulumi.Input.asInput<String>(environmentId),
-       forceStop = pulumi.Input.asOptionalInput<bool>(forceStop),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       start = pulumi.Input.asInput<bool>(start),
-       timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      applicationVersion = pulumi.Input.asInput<int>(applicationVersion),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      forceStop = pulumi.Input.asOptionalInput<bool>(forceStop),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      start = pulumi.Input.asInput<bool>(start),
+      timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +54,7 @@ class DeploymentArgs {
       'forceStop': ?forceStop,
       'region': ?region,
       'start': start,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DeploymentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -73,11 +66,8 @@ class DeploymentArgs {
       forceStop: map['forceStop'] == null ? null : map['forceStop'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       start: map['start'] as bool,
-      timeouts: map['timeouts'] == null
-          ? null
-          : DeploymentTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>(),
-            ),
+      timeouts: map['timeouts'] == null ? null : DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

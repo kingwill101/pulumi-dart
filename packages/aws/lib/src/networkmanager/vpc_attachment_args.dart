@@ -10,19 +10,14 @@ import 'vpc_attachment_options.dart';
 class VpcAttachmentArgs {
   /// ID of a core network for the VPC attachment.
   final pulumi.Input<String> coreNetworkId;
-
   /// Options for the VPC attachment. See below.
   final pulumi.Input<VpcAttachmentOptions>? options;
-
   /// The routing policy label to apply to the VPC attachment for traffic routing decisions. Maximum length of 256 characters.
   final pulumi.Input<String>? routingPolicyLabel;
-
   /// Subnet ARNs of the VPC attachment.
   final pulumi.Input<List<String>> subnetArns;
-
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// ARN of the VPC.
   ///
   /// The following arguments are optional:
@@ -42,23 +37,18 @@ class VpcAttachmentArgs {
     required List<String> subnetArns,
     Map<String, String>? tags,
     required String vpcArn,
-  }) : coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-       options = pulumi.Input.asOptionalInput<VpcAttachmentOptions>(options),
-       routingPolicyLabel = pulumi.Input.asOptionalInput<String>(
-         routingPolicyLabel,
-       ),
-       subnetArns = pulumi.Input.asInput<List<String>>(subnetArns),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       vpcArn = pulumi.Input.asInput<String>(vpcArn);
+  }) :
+      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
+      options = pulumi.Input.asOptionalInput<VpcAttachmentOptions>(options),
+      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
+      subnetArns = pulumi.Input.asInput<List<String>>(subnetArns),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcArn = pulumi.Input.asInput<String>(vpcArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'coreNetworkId': coreNetworkId,
-      'options':
-          ?pulumi.Input.mapOptionalInputValue<
-            VpcAttachmentOptions,
-            Map<String, dynamic>
-          >(options, (value) => value.toMap()),
+      'options': ?pulumi.Input.mapOptionalInputValue<VpcAttachmentOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
       'routingPolicyLabel': ?routingPolicyLabel,
       'subnetArns': subnetArns,
       'tags': ?tags,
@@ -69,19 +59,12 @@ class VpcAttachmentArgs {
   factory VpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentArgs(
       coreNetworkId: map['coreNetworkId'] as String,
-      options: map['options'] == null
-          ? null
-          : VpcAttachmentOptions.fromMap(
-              (map['options'] as Map).cast<String, dynamic>(),
-            ),
-      routingPolicyLabel: map['routingPolicyLabel'] == null
-          ? null
-          : map['routingPolicyLabel'] as String,
+      options: map['options'] == null ? null : VpcAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : map['routingPolicyLabel'] as String,
       subnetArns: (map['subnetArns'] as List).cast<String>(),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vpcArn: map['vpcArn'] as String,
     );
   }
 }
+

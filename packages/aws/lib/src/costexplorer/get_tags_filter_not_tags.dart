@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTagsFilterNotTags {
   final String? key;
   final List<String>? matchOptions;
@@ -9,7 +10,11 @@ class GetTagsFilterNotTags {
   /// [key] Optional.
   /// [matchOptions] Optional.
   /// [values] Optional.
-  GetTagsFilterNotTags({this.key, this.matchOptions, this.values});
+  GetTagsFilterNotTags({
+    this.key,
+    this.matchOptions,
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,12 +27,9 @@ class GetTagsFilterNotTags {
   factory GetTagsFilterNotTags.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterNotTags(
       key: map['key'] == null ? null : map['key'] as String,
-      matchOptions: map['matchOptions'] == null
-          ? null
-          : (map['matchOptions'] as List).cast<String>(),
-      values: map['values'] == null
-          ? null
-          : (map['values'] as List).cast<String>(),
+      matchOptions: map['matchOptions'] == null ? null : (map['matchOptions'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv {
   /// Indicates if the CSV data has a header.
   final bool? header;
@@ -11,14 +12,15 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'header': ?header};
+    return <String, dynamic>{
+      'header': ?header,
+    };
   }
 
-  factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv(
       header: map['header'] == null ? null : map['header'] as bool,
     );
   }
 }
+

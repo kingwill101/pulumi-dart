@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceCapacityProviderStrategy {
   /// Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
   final int? base;
-
   /// Short name of the capacity provider.
   final String capacityProvider;
-
   /// Relative percentage of the total number of launched tasks that should use the specified capacity provider.
   final int? weight;
 
@@ -36,3 +35,4 @@ class ServiceCapacityProviderStrategy {
     );
   }
 }
+

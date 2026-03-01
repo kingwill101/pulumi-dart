@@ -8,45 +8,33 @@ import 'ai_endpoint_with_model_garden_deployment_model_config_container_spec_hea
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
   /// ExecAction specifies a command to execute.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec?
-  exec;
-
+  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec? exec;
   /// Number of consecutive failures before the probe is considered failed.
   /// Defaults to 3. Minimum value is 1.
   /// Maps to Kubernetes probe argument 'failureThreshold'.
   final int? failureThreshold;
-
   /// GrpcAction checks the health of a container using a gRPC service.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc?
-  grpc;
-
+  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc? grpc;
   /// HttpGetAction describes an action based on HTTP Get requests.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet?
-  httpGet;
-
+  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet? httpGet;
   /// Number of seconds to wait before starting the probe. Defaults to 0.
   /// Minimum value is 0.
   /// Maps to Kubernetes probe argument 'initialDelaySeconds'.
   final int? initialDelaySeconds;
-
   /// How often (in seconds) to perform the probe. Default to 10 seconds.
   /// Minimum value is 1. Must be less than timeout_seconds.
   /// Maps to Kubernetes probe argument 'periodSeconds'.
   final int? periodSeconds;
-
   /// Number of consecutive successes before the probe is considered successful.
   /// Defaults to 1. Minimum value is 1.
   /// Maps to Kubernetes probe argument 'successThreshold'.
   final int? successThreshold;
-
   /// TcpSocketAction probes the health of a container by opening a TCP socket
   /// connection.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket?
-  tcpSocket;
-
+  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket? tcpSocket;
   /// Number of seconds after which the probe times out. Defaults to 1 second.
   /// Minimum value is 1. Must be greater or equal to period_seconds.
   /// Maps to Kubernetes probe argument 'timeoutSeconds'.
@@ -88,45 +76,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe(
-      exec: map['exec'] == null
-          ? null
-          : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec.fromMap(
-              (map['exec'] as Map).cast<String, dynamic>(),
-            ),
-      failureThreshold: map['failureThreshold'] == null
-          ? null
-          : map['failureThreshold'] as int,
-      grpc: map['grpc'] == null
-          ? null
-          : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc.fromMap(
-              (map['grpc'] as Map).cast<String, dynamic>(),
-            ),
-      httpGet: map['httpGet'] == null
-          ? null
-          : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet.fromMap(
-              (map['httpGet'] as Map).cast<String, dynamic>(),
-            ),
-      initialDelaySeconds: map['initialDelaySeconds'] == null
-          ? null
-          : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null
-          ? null
-          : map['periodSeconds'] as int,
-      successThreshold: map['successThreshold'] == null
-          ? null
-          : map['successThreshold'] as int,
-      tcpSocket: map['tcpSocket'] == null
-          ? null
-          : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket.fromMap(
-              (map['tcpSocket'] as Map).cast<String, dynamic>(),
-            ),
-      timeoutSeconds: map['timeoutSeconds'] == null
-          ? null
-          : map['timeoutSeconds'] as int,
+      exec: map['exec'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec.fromMap((map['exec'] as Map).cast<String, dynamic>()),
+      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
+      grpc: map['grpc'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>()),
+      httpGet: map['httpGet'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
+      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
+      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
+      tcpSocket: map['tcpSocket'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>()),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
     );
   }
 }
+

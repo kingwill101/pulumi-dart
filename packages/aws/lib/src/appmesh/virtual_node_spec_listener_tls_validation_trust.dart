@@ -6,14 +6,16 @@ import 'virtual_node_spec_listener_tls_validation_trust_sds.dart';
 class VirtualNodeSpecListenerTlsValidationTrust {
   /// TLS validation context trust for a local file certificate.
   final VirtualNodeSpecListenerTlsValidationTrustFile? file;
-
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final VirtualNodeSpecListenerTlsValidationTrustSds? sds;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationTrust].
   /// [file] TLS validation context trust for a local file certificate.
   /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualNodeSpecListenerTlsValidationTrust({this.file, this.sds});
+  VirtualNodeSpecListenerTlsValidationTrust({
+    this.file,
+    this.sds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class VirtualNodeSpecListenerTlsValidationTrust {
     };
   }
 
-  factory VirtualNodeSpecListenerTlsValidationTrust.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationTrust(
-      file: map['file'] == null
-          ? null
-          : VirtualNodeSpecListenerTlsValidationTrustFile.fromMap(
-              (map['file'] as Map).cast<String, dynamic>(),
-            ),
-      sds: map['sds'] == null
-          ? null
-          : VirtualNodeSpecListenerTlsValidationTrustSds.fromMap(
-              (map['sds'] as Map).cast<String, dynamic>(),
-            ),
+      file: map['file'] == null ? null : VirtualNodeSpecListenerTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
+      sds: map['sds'] == null ? null : VirtualNodeSpecListenerTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

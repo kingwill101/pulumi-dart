@@ -9,27 +9,20 @@ class GetClusterStorageConfig {
 
   /// Creates a new [GetClusterStorageConfig].
   /// [blockStorages] Contains block storage configuration for EKS Auto Mode enabled cluster.
-  GetClusterStorageConfig({required this.blockStorages});
+  GetClusterStorageConfig({
+    required this.blockStorages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blockStorages':
-          pulumi.Input.encodeList<
-            GetClusterStorageConfigBlockStorage,
-            Map<String, dynamic>
-          >(blockStorages, (value) => value.toMap()),
+      'blockStorages': pulumi.Input.encodeList<GetClusterStorageConfigBlockStorage, Map<String, dynamic>>(blockStorages, (value) => value.toMap()),
     };
   }
 
   factory GetClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterStorageConfig(
-      blockStorages:
-          pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(
-            map['blockStorages'],
-            (value) => GetClusterStorageConfigBlockStorage.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      blockStorages: pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(map['blockStorages'], (value) => GetClusterStorageConfigBlockStorage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

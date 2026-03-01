@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitOperationUpgradeInputVariable {
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
@@ -7,10 +8,8 @@ class UnitOperationUpgradeInputVariable {
   /// INT
   /// BOOL
   final String? type;
-
   /// String encoded value for the variable.
   final String? value;
-
   /// Name of the variable from actuation configs.
   final String variable;
 
@@ -40,3 +39,4 @@ class UnitOperationUpgradeInputVariable {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationInteractiveConfiguration {
   /// Enables an Apache Livy endpoint that you can connect to and run interactive jobs.
   final bool? livyEndpointEnabled;
-
   /// Enables you to connect an application to Amazon EMR Studio to run interactive workloads in a notebook.
   final bool? studioEnabled;
 
@@ -22,16 +22,11 @@ class ApplicationInteractiveConfiguration {
     };
   }
 
-  factory ApplicationInteractiveConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationInteractiveConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInteractiveConfiguration(
-      livyEndpointEnabled: map['livyEndpointEnabled'] == null
-          ? null
-          : map['livyEndpointEnabled'] as bool,
-      studioEnabled: map['studioEnabled'] == null
-          ? null
-          : map['studioEnabled'] as bool,
+      livyEndpointEnabled: map['livyEndpointEnabled'] == null ? null : map['livyEndpointEnabled'] as bool,
+      studioEnabled: map['studioEnabled'] == null ? null : map['studioEnabled'] as bool,
     );
   }
 }
+

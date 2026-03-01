@@ -8,18 +8,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
-
   /// A Cloud Storage object. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs? gcs;
-
   /// A local path within the VM to use.
   final String? localPath;
-
   /// A generic remote file. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote?
-  remote;
+  final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote? remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource].
   /// [allowInsecure] Defaults to false. When false, files are
@@ -42,24 +38,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(
-      allowInsecure: map['allowInsecure'] == null
-          ? null
-          : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs.fromMap(
-              (map['gcs'] as Map).cast<String, dynamic>(),
-            ),
+      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote.fromMap(
-              (map['remote'] as Map).cast<String, dynamic>(),
-            ),
+      remote: map['remote'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,48 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServer.
 class GetServerResult {
   /// ARN of Transfer Server.
   final String arn;
-
   /// ARN of any certificate.
   final String certificate;
-
   /// The domain of the storage system that is used for file transfers.
   final String domain;
-
   /// Endpoint of the Transfer Server (e.g., `s-12345678.server.transfer.REGION.amazonaws.com`).
   final String endpoint;
-
   /// Type of endpoint that the server is connected to.
   final String endpointType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice.
   final String identityProviderType;
-
   /// ARN of the IAM role used to authenticate the user account with an `identity_provider_type` of `API_GATEWAY`.
   final String invocationRole;
-
   /// ARN of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
   final String loggingRole;
-
   /// File transfer protocol or protocols over which your file transfer protocol client can connect to your server's endpoint.
   final List<String> protocols;
   final String region;
-
   /// The name of the security policy that is attached to the server.
   final String securityPolicyName;
   final String serverId;
-
   /// A set of ARNs of destinations that will receive structured logs from the transfer server such as CloudWatch Log Group ARNs.
   final List<String> structuredLogDestinations;
-
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
   final String url;
 
@@ -118,10 +106,10 @@ class GetServerResult {
       region: map['region'] as String,
       securityPolicyName: map['securityPolicyName'] as String,
       serverId: map['serverId'] as String,
-      structuredLogDestinations: (map['structuredLogDestinations'] as List)
-          .cast<String>(),
+      structuredLogDestinations: (map['structuredLogDestinations'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
       url: map['url'] as String,
     );
   }
 }
+

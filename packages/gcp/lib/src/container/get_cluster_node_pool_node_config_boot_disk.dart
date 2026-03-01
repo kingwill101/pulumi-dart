@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNodeConfigBootDisk {
   /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
   final String diskType;
-
   /// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
   final int provisionedIops;
-
   /// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
   final int provisionedThroughput;
-
   /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
   final int sizeGb;
 
@@ -34,9 +32,7 @@ class GetClusterNodePoolNodeConfigBootDisk {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigBootDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigBootDisk(
       diskType: map['diskType'] as String,
       provisionedIops: map['provisionedIops'] as int,
@@ -45,3 +41,4 @@ class GetClusterNodePoolNodeConfigBootDisk {
     );
   }
 }
+

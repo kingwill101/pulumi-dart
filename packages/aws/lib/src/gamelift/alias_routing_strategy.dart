@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AliasRoutingStrategy {
   /// ID of the GameLift Fleet to point the alias to.
   final String? fleetId;
-
   /// Message text to be used with the `TERMINAL` routing strategy.
   final String? message;
-
   /// Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
   final String type;
 
@@ -14,7 +13,11 @@ class AliasRoutingStrategy {
   /// [fleetId] ID of the GameLift Fleet to point the alias to.
   /// [message] Message text to be used with the `TERMINAL` routing strategy.
   /// [type] Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
-  AliasRoutingStrategy({this.fleetId, this.message, required this.type});
+  AliasRoutingStrategy({
+    this.fleetId,
+    this.message,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +35,4 @@ class AliasRoutingStrategy {
     );
   }
 }
+

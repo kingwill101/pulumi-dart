@@ -8,7 +8,6 @@ class VmwareAdminClusterStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
   /// Structure is documented below.
   final List<VmwareAdminClusterStatusCondition>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the admin cluster
   /// controller. The error message can be temporary as the admin cluster
@@ -20,33 +19,23 @@ class VmwareAdminClusterStatus {
   /// Creates a new [VmwareAdminClusterStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VmwareAdminClusterStatus({this.conditions, this.errorMessage});
+  VmwareAdminClusterStatus({
+    this.conditions,
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null
-          ? null
-          : pulumi.Input.encodeList<
-              VmwareAdminClusterStatusCondition,
-              Map<String, dynamic>
-            >(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<VmwareAdminClusterStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
       'errorMessage': ?errorMessage,
     };
   }
 
   factory VmwareAdminClusterStatus.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<VmwareAdminClusterStatusCondition>(
-              map['conditions'],
-              (value) => VmwareAdminClusterStatusCondition.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
-      errorMessage: map['errorMessage'] == null
-          ? null
-          : map['errorMessage'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<VmwareAdminClusterStatusCondition>(map['conditions'], (value) => VmwareAdminClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
     );
   }
 }
+

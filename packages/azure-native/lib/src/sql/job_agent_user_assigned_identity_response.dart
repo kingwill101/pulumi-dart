@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Azure Active Directory identity configuration for a resource.
+class JobAgentUserAssignedIdentityResponse {
+  /// The Azure Active Directory client id.
+  final String clientId;
+  /// The Azure Active Directory principal id.
+  final String principalId;
+
+  /// Creates a new [JobAgentUserAssignedIdentityResponse].
+  /// [clientId] The Azure Active Directory client id.
+  /// [principalId] The Azure Active Directory principal id.
+  JobAgentUserAssignedIdentityResponse({
+    required this.clientId,
+    required this.principalId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientId': clientId,
+      'principalId': principalId,
+    };
+  }
+
+  factory JobAgentUserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
+    return JobAgentUserAssignedIdentityResponse(
+      clientId: map['clientId'] as String,
+      principalId: map['principalId'] as String,
+    );
+  }
+}
+

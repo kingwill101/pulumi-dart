@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPlanRuleLifecycle {
   final int coldStorageAfter;
   final int deleteAfter;
@@ -19,8 +20,7 @@ class GetPlanRuleLifecycle {
     return <String, dynamic>{
       'coldStorageAfter': coldStorageAfter,
       'deleteAfter': deleteAfter,
-      'optInToArchiveForSupportedResources':
-          optInToArchiveForSupportedResources,
+      'optInToArchiveForSupportedResources': optInToArchiveForSupportedResources,
     };
   }
 
@@ -28,8 +28,8 @@ class GetPlanRuleLifecycle {
     return GetPlanRuleLifecycle(
       coldStorageAfter: map['coldStorageAfter'] as int,
       deleteAfter: map['deleteAfter'] as int,
-      optInToArchiveForSupportedResources:
-          map['optInToArchiveForSupportedResources'] as bool,
+      optInToArchiveForSupportedResources: map['optInToArchiveForSupportedResources'] as bool,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
   /// A human readable description of the diff, showing the actual output vs expected output.
   final String? description;
-
   /// The type of diff.
   /// * INTENT: The intent.
   /// * PAGE: The page.
@@ -22,17 +22,17 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description, 'type': ?type};
+    return <String, dynamic>{
+      'description': ?description,
+      'type': ?type,
+    };
   }
 
-  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

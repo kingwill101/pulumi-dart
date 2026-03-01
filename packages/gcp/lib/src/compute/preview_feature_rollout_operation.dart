@@ -9,7 +9,9 @@ class PreviewFeatureRolloutOperation {
 
   /// Creates a new [PreviewFeatureRolloutOperation].
   /// [rolloutInput] The input for the rollout operation.
-  PreviewFeatureRolloutOperation({this.rolloutInput});
+  PreviewFeatureRolloutOperation({
+    this.rolloutInput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class PreviewFeatureRolloutOperation {
 
   factory PreviewFeatureRolloutOperation.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperation(
-      rolloutInput: map['rolloutInput'] == null
-          ? null
-          : PreviewFeatureRolloutOperationRolloutInput.fromMap(
-              (map['rolloutInput'] as Map).cast<String, dynamic>(),
-            ),
+      rolloutInput: map['rolloutInput'] == null ? null : PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

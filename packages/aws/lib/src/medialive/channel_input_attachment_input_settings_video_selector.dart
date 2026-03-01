@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelInputAttachmentInputSettingsVideoSelector {
   final String? colorSpace;
   final String? colorSpaceUsage;
@@ -19,16 +20,11 @@ class ChannelInputAttachmentInputSettingsVideoSelector {
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsVideoSelector(
-      colorSpace: map['colorSpace'] == null
-          ? null
-          : map['colorSpace'] as String,
-      colorSpaceUsage: map['colorSpaceUsage'] == null
-          ? null
-          : map['colorSpaceUsage'] as String,
+      colorSpace: map['colorSpace'] == null ? null : map['colorSpace'] as String,
+      colorSpaceUsage: map['colorSpaceUsage'] == null ? null : map['colorSpaceUsage'] as String,
     );
   }
 }
+

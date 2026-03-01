@@ -9,20 +9,20 @@ class OrganizationConfigurationDatasourcesKubernetes {
 
   /// Creates a new [OrganizationConfigurationDatasourcesKubernetes].
   /// [auditLogs] Enable Kubernetes Audit Logs Monitoring automatically for new member accounts. [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  OrganizationConfigurationDatasourcesKubernetes({required this.auditLogs});
+  OrganizationConfigurationDatasourcesKubernetes({
+    required this.auditLogs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'auditLogs': auditLogs.toMap()};
+    return <String, dynamic>{
+      'auditLogs': auditLogs.toMap(),
+    };
   }
 
-  factory OrganizationConfigurationDatasourcesKubernetes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationConfigurationDatasourcesKubernetes.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasourcesKubernetes(
-      auditLogs:
-          OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(
-            (map['auditLogs'] as Map).cast<String, dynamic>(),
-          ),
+      auditLogs: OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

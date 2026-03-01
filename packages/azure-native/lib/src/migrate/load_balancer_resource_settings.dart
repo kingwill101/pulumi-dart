@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'lbbackend_address_pool_resource_settings.dart';
+import 'lbfrontend_ipconfiguration_resource_settings.dart';
+
+/// Defines the load balancer resource settings.
+class LoadBalancerResourceSettings {
+  /// Gets or sets the backend address pools of the load balancer.
+  final List<LBBackendAddressPoolResourceSettings>? backendAddressPools;
+  /// Gets or sets the frontend IP configurations of the load balancer.
+  final List<LBFrontendIPConfigurationResourceSettings>? frontendIPConfigurations;
+  /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+  /// Expected value is 'Microsoft.Network/loadBalancers'.
+  final String resourceType;
+  /// Gets or sets load balancer sku (Basic/Standard).
+  final String? sku;
+  /// Gets or sets the Resource tags.
+  final Map<String, String>? tags;
+  /// Gets or sets the target resource group name.
+  final String? targetResourceGroupName;
+  /// Gets or sets the target Resource name.
+  final String? targetResourceName;
+  /// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+  /// precedence only if frontend IP configurations settings are not present.
+  final String? zones;
+
+  /// Creates a new [LoadBalancerResourceSettings].
+  /// [backendAddressPools] Gets or sets the backend address pools of the load balancer.
+  /// [frontendIPConfigurations] Gets or sets the frontend IP configurations of the load balancer.
+  /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+  /// [sku] Gets or sets load balancer sku (Basic/Standard).
+  /// [tags] Gets or sets the Resource tags.
+  /// [targetResourceGroupName] Gets or sets the target resource group name.
+  /// [targetResourceName] Gets or sets the target Resource name.
+  /// [zones] Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+  LoadBalancerResourceSettings({
+    this.backendAddressPools,
+    this.frontendIPConfigurations,
+    required this.resourceType,
+    this.sku,
+    this.tags,
+    this.targetResourceGroupName,
+    this.targetResourceName,
+    this.zones,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'backendAddressPools': ?backendAddressPools == null ? null : pulumi.Input.encodeList<LBBackendAddressPoolResourceSettings, Map<String, dynamic>>(backendAddressPools!, (value) => value.toMap()),
+      'frontendIPConfigurations': ?frontendIPConfigurations == null ? null : pulumi.Input.encodeList<LBFrontendIPConfigurationResourceSettings, Map<String, dynamic>>(frontendIPConfigurations!, (value) => value.toMap()),
+      'resourceType': resourceType,
+      'sku': ?sku,
+      'tags': ?tags,
+      'targetResourceGroupName': ?targetResourceGroupName,
+      'targetResourceName': ?targetResourceName,
+      'zones': ?zones,
+    };
+  }
+
+  factory LoadBalancerResourceSettings.fromMap(Map<String, dynamic> map) {
+    return LoadBalancerResourceSettings(
+      backendAddressPools: map['backendAddressPools'] == null ? null : pulumi.Input.decodeList<LBBackendAddressPoolResourceSettings>(map['backendAddressPools'], (value) => LBBackendAddressPoolResourceSettings.fromMap((value as Map).cast<String, dynamic>())),
+      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : pulumi.Input.decodeList<LBFrontendIPConfigurationResourceSettings>(map['frontendIPConfigurations'], (value) => LBFrontendIPConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>())),
+      resourceType: map['resourceType'] as String,
+      sku: map['sku'] == null ? null : map['sku'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
+      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
+      zones: map['zones'] == null ? null : map['zones'] as String,
+    );
+  }
+}
+

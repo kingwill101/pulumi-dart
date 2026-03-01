@@ -7,12 +7,10 @@ class GetConnectivityTestRunReachabilityDetail {
   /// (Output)
   /// Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
   final String result;
-
   /// (Output)
   /// List of connectivity test traces.
   /// Structure is documented below.
   final List<GetConnectivityTestRunReachabilityDetailTrace> traces;
-
   /// (Output)
   /// Time when reachability details were determined. An RFC3339 timestamp in UTC time.
   /// This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
@@ -31,29 +29,17 @@ class GetConnectivityTestRunReachabilityDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'result': result,
-      'traces':
-          pulumi.Input.encodeList<
-            GetConnectivityTestRunReachabilityDetailTrace,
-            Map<String, dynamic>
-          >(traces, (value) => value.toMap()),
+      'traces': pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetailTrace, Map<String, dynamic>>(traces, (value) => value.toMap()),
       'verifyTime': verifyTime,
     };
   }
 
-  factory GetConnectivityTestRunReachabilityDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectivityTestRunReachabilityDetail.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetail(
       result: map['result'] as String,
-      traces:
-          pulumi
-              .Input.decodeList<GetConnectivityTestRunReachabilityDetailTrace>(
-            map['traces'],
-            (value) => GetConnectivityTestRunReachabilityDetailTrace.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      traces: pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTrace>(map['traces'], (value) => GetConnectivityTestRunReachabilityDetailTrace.fromMap((value as Map).cast<String, dynamic>())),
       verifyTime: map['verifyTime'] as String,
     );
   }
 }
+

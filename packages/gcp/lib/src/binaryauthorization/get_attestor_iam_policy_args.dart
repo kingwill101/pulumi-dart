@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttestorIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> attestor;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -17,12 +16,18 @@ class GetAttestorIamPolicyArgs {
   /// Creates a new [GetAttestorIamPolicyArgs].
   /// [attestor] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetAttestorIamPolicyArgs({required String attestor, String? project})
-    : attestor = pulumi.Input.asInput<String>(attestor),
+  GetAttestorIamPolicyArgs({
+    required String attestor,
+    String? project,
+  }) :
+      attestor = pulumi.Input.asInput<String>(attestor),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attestor': attestor, 'project': ?project};
+    return <String, dynamic>{
+      'attestor': attestor,
+      'project': ?project,
+    };
   }
 
   factory GetAttestorIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +37,4 @@ class GetAttestorIamPolicyArgs {
     );
   }
 }
+

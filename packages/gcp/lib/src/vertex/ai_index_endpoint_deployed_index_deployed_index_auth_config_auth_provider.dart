@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
   /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
   final List<String>? allowedIssuers;
-
   /// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
   final List<String>? audiences;
 
@@ -22,16 +22,11 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
     };
   }
 
-  factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider(
-      allowedIssuers: map['allowedIssuers'] == null
-          ? null
-          : (map['allowedIssuers'] as List).cast<String>(),
-      audiences: map['audiences'] == null
-          ? null
-          : (map['audiences'] as List).cast<String>(),
+      allowedIssuers: map['allowedIssuers'] == null ? null : (map['allowedIssuers'] as List).cast<String>(),
+      audiences: map['audiences'] == null ? null : (map['audiences'] as List).cast<String>(),
     );
   }
 }
+

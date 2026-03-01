@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserHierarchyStructureHierarchyStructureLevelThree {
   /// ARN of the hierarchy level.
   final String arn;
-
   /// The identifier of the hierarchy level.
   final String id;
-
   /// Name of the user hierarchy level. Must not be more than 50 characters.
   final String name;
 
@@ -21,12 +20,14 @@ class GetUserHierarchyStructureHierarchyStructureLevelThree {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'id': id, 'name': name};
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+    };
   }
 
-  factory GetUserHierarchyStructureHierarchyStructureLevelThree.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserHierarchyStructureHierarchyStructureLevelThree.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureHierarchyStructureLevelThree(
       arn: map['arn'] as String,
       id: map['id'] as String,
@@ -34,3 +35,4 @@ class GetUserHierarchyStructureHierarchyStructureLevelThree {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterLogDeliveryConfiguration {
   final String destination;
   final String destinationType;
@@ -36,3 +37,4 @@ class GetClusterLogDeliveryConfiguration {
     );
   }
 }
+

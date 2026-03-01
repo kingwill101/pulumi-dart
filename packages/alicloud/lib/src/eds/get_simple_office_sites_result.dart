@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_simple_office_sites_site.dart';
+
+/// Result data returned by getSimpleOfficeSites.
+class GetSimpleOfficeSitesResult {
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final List<String> ids;
+  final String? nameRegex;
+  final List<String> names;
+  final String? outputFile;
+  final List<GetSimpleOfficeSitesSite> sites;
+  final String? status;
+
+  /// Creates a new [GetSimpleOfficeSitesResult].
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ids] Required.
+  /// [nameRegex] Optional.
+  /// [names] Required.
+  /// [outputFile] Optional.
+  /// [sites] Required.
+  /// [status] Optional.
+  GetSimpleOfficeSitesResult({
+    required this.id,
+    required this.ids,
+    this.nameRegex,
+    required this.names,
+    this.outputFile,
+    required this.sites,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'ids': ids,
+      'nameRegex': ?nameRegex,
+      'names': names,
+      'outputFile': ?outputFile,
+      'sites': pulumi.Input.encodeList<GetSimpleOfficeSitesSite, Map<String, dynamic>>(sites, (value) => value.toMap()),
+      'status': ?status,
+    };
+  }
+
+  factory GetSimpleOfficeSitesResult.fromMap(Map<String, dynamic> map) {
+    return GetSimpleOfficeSitesResult(
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      names: (map['names'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      sites: pulumi.Input.decodeList<GetSimpleOfficeSitesSite>(map['sites'], (value) => GetSimpleOfficeSitesSite.fromMap((value as Map).cast<String, dynamic>())),
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}
+

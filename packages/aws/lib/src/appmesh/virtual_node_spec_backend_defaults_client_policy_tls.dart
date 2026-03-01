@@ -6,13 +6,10 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_validation.dart';
 class VirtualNodeSpecBackendDefaultsClientPolicyTls {
   /// Listener's TLS certificate.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate? certificate;
-
   /// Whether the policy is enforced. Default is `true`.
   final bool? enforce;
-
   /// One or more ports that the policy is enforced for.
   final List<int>? ports;
-
   /// Listener's Transport Layer Security (TLS) validation context.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation validation;
 
@@ -37,21 +34,13 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTls {
     };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTls(
-      certificate: map['certificate'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap(
-              (map['certificate'] as Map).cast<String, dynamic>(),
-            ),
+      certificate: map['certificate'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
       enforce: map['enforce'] == null ? null : map['enforce'] as bool,
       ports: map['ports'] == null ? null : (map['ports'] as List).cast<int>(),
-      validation:
-          VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap(
-            (map['validation'] as Map).cast<String, dynamic>(),
-          ),
+      validation: VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

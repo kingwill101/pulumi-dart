@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersProcessPid {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final String? eq;
-
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final String? gte;
-
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final String? lte;
 
@@ -14,10 +13,18 @@ class InsightFiltersProcessPid {
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   /// [gte] The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   /// [lte] The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  InsightFiltersProcessPid({this.eq, this.gte, this.lte});
+  InsightFiltersProcessPid({
+    this.eq,
+    this.gte,
+    this.lte,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eq': ?eq, 'gte': ?gte, 'lte': ?lte};
+    return <String, dynamic>{
+      'eq': ?eq,
+      'gte': ?gte,
+      'lte': ?lte,
+    };
   }
 
   factory InsightFiltersProcessPid.fromMap(Map<String, dynamic> map) {
@@ -28,3 +35,4 @@ class InsightFiltersProcessPid {
     );
   }
 }
+

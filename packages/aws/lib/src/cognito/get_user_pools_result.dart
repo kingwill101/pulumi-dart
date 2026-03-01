@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserPools.
 class GetUserPoolsResult {
   /// Set of cognito user pool Amazon Resource Names (ARNs).
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of cognito user pool ids.
   final List<String> ids;
   final String name;
@@ -47,3 +46,4 @@ class GetUserPoolsResult {
     );
   }
 }
+

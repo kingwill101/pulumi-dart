@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'key_rotation_policy_attributes_response.dart';
+import 'lifetime_action_response.dart';
+
+class RotationPolicyResponse {
+  /// The attributes of key rotation policy.
+  final KeyRotationPolicyAttributesResponse? attributes;
+  /// The lifetimeActions for key rotation action.
+  final List<LifetimeActionResponse>? lifetimeActions;
+
+  /// Creates a new [RotationPolicyResponse].
+  /// [attributes] The attributes of key rotation policy.
+  /// [lifetimeActions] The lifetimeActions for key rotation action.
+  RotationPolicyResponse({
+    this.attributes,
+    this.lifetimeActions,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'attributes': ?attributes == null ? null : attributes!.toMap(),
+      'lifetimeActions': ?lifetimeActions == null ? null : pulumi.Input.encodeList<LifetimeActionResponse, Map<String, dynamic>>(lifetimeActions!, (value) => value.toMap()),
+    };
+  }
+
+  factory RotationPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return RotationPolicyResponse(
+      attributes: map['attributes'] == null ? null : KeyRotationPolicyAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
+      lifetimeActions: map['lifetimeActions'] == null ? null : pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions'], (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

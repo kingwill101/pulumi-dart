@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsNamespaceArgs {
   /// Name of the namespace.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
   final pulumi.Input<String> type;
 
@@ -29,10 +26,11 @@ class GetDnsNamespaceArgs {
     String? region,
     Map<String, String>? tags,
     required String type,
-  }) : name = pulumi.Input.asInput<String>(name),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       type = pulumi.Input.asInput<String>(type);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +45,9 @@ class GetDnsNamespaceArgs {
     return GetDnsNamespaceArgs(
       name: map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
+

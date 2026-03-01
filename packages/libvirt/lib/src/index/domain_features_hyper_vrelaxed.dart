@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class DomainFeaturesHyperVRelaxed {
+  /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
+  final String? state;
+
+  /// Creates a new [DomainFeaturesHyperVRelaxed].
+  /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
+  DomainFeaturesHyperVRelaxed({
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': ?state,
+    };
+  }
+
+  factory DomainFeaturesHyperVRelaxed.fromMap(Map<String, dynamic> map) {
+    return DomainFeaturesHyperVRelaxed(
+      state: map['state'] == null ? null : map['state'] as String,
+    );
+  }
+}
+

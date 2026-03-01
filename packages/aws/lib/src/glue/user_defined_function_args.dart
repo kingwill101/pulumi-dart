@@ -10,25 +10,18 @@ import 'user_defined_function_resource_uri.dart';
 class UserDefinedFunctionArgs {
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
   final pulumi.Input<String>? catalogId;
-
   /// The Java class that contains the function code.
   final pulumi.Input<String> className;
-
   /// The name of the Database to create the Function.
   final pulumi.Input<String> databaseName;
-
   /// The name of the function.
   final pulumi.Input<String>? name;
-
   /// The owner of the function.
   final pulumi.Input<String> ownerName;
-
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   final pulumi.Input<String> ownerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The configuration block for Resource URIs. See resource uris below for more details.
   final pulumi.Input<List<UserDefinedFunctionResourceUri>>? resourceUris;
 
@@ -50,17 +43,15 @@ class UserDefinedFunctionArgs {
     required String ownerType,
     String? region,
     List<UserDefinedFunctionResourceUri>? resourceUris,
-  }) : catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-       className = pulumi.Input.asInput<String>(className),
-       databaseName = pulumi.Input.asInput<String>(databaseName),
-       name = pulumi.Input.asOptionalInput<String>(name),
-       ownerName = pulumi.Input.asInput<String>(ownerName),
-       ownerType = pulumi.Input.asInput<String>(ownerType),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       resourceUris =
-           pulumi.Input.asOptionalInput<List<UserDefinedFunctionResourceUri>>(
-             resourceUris,
-           );
+  }) :
+      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
+      className = pulumi.Input.asInput<String>(className),
+      databaseName = pulumi.Input.asInput<String>(databaseName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      ownerName = pulumi.Input.asInput<String>(ownerName),
+      ownerType = pulumi.Input.asInput<String>(ownerType),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceUris = pulumi.Input.asOptionalInput<List<UserDefinedFunctionResourceUri>>(resourceUris);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,18 +62,7 @@ class UserDefinedFunctionArgs {
       'ownerName': ownerName,
       'ownerType': ownerType,
       'region': ?region,
-      'resourceUris':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserDefinedFunctionResourceUri>,
-            List<Map<String, dynamic>>
-          >(
-            resourceUris,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UserDefinedFunctionResourceUri,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resourceUris': ?pulumi.Input.mapOptionalInputValue<List<UserDefinedFunctionResourceUri>, List<Map<String, dynamic>>>(resourceUris, (value) => pulumi.Input.encodeList<UserDefinedFunctionResourceUri, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -95,14 +75,8 @@ class UserDefinedFunctionArgs {
       ownerName: map['ownerName'] as String,
       ownerType: map['ownerType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      resourceUris: map['resourceUris'] == null
-          ? null
-          : pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(
-              map['resourceUris'],
-              (value) => UserDefinedFunctionResourceUri.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      resourceUris: map['resourceUris'] == null ? null : pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -4,8 +4,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration_server_certifi
 
 class TlsInspectionConfigurationTlsInspectionConfiguration {
   /// Server certificate configurations that are associated with the TLS configuration. Detailed below.
-  final TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration
-  serverCertificateConfiguration;
+  final TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration serverCertificateConfiguration;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfiguration].
   /// [serverCertificateConfiguration] Server certificate configurations that are associated with the TLS configuration. Detailed below.
@@ -19,15 +18,10 @@ class TlsInspectionConfigurationTlsInspectionConfiguration {
     };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfiguration(
-      serverCertificateConfiguration:
-          TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration.fromMap(
-            (map['serverCertificateConfiguration'] as Map)
-                .cast<String, dynamic>(),
-          ),
+      serverCertificateConfiguration: TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration.fromMap((map['serverCertificateConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

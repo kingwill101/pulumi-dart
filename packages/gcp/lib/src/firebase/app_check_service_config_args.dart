@@ -8,11 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebase_app_check_service_config_app_check_service_config_args_doc}
 class AppCheckServiceConfigArgs {
   final pulumi.Input<String>? enforcementMode;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   /// firebasestorage.googleapis.com (Cloud Storage for Firebase)
   /// firebasedatabase.googleapis.com (Firebase Realtime Database)
@@ -28,9 +26,10 @@ class AppCheckServiceConfigArgs {
     String? enforcementMode,
     String? project,
     required String serviceId,
-  }) : enforcementMode = pulumi.Input.asOptionalInput<String>(enforcementMode),
-       project = pulumi.Input.asOptionalInput<String>(project),
-       serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      enforcementMode = pulumi.Input.asOptionalInput<String>(enforcementMode),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,11 +41,10 @@ class AppCheckServiceConfigArgs {
 
   factory AppCheckServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigArgs(
-      enforcementMode: map['enforcementMode'] == null
-          ? null
-          : map['enforcementMode'] as String,
+      enforcementMode: map['enforcementMode'] == null ? null : map['enforcementMode'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
     );
   }
 }
+

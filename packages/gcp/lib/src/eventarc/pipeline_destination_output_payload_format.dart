@@ -7,10 +7,8 @@ class PipelineDestinationOutputPayloadFormat {
   /// The format of an AVRO message payload.
   /// Structure is documented below.
   final PipelineDestinationOutputPayloadFormatAvro? avro;
-
   /// The format of a JSON message payload.
   final Map<String, dynamic>? json;
-
   /// The format of a Protobuf message payload.
   /// Structure is documented below.
   final PipelineDestinationOutputPayloadFormatProtobuf? protobuf;
@@ -19,7 +17,11 @@ class PipelineDestinationOutputPayloadFormat {
   /// [avro] The format of an AVRO message payload.
   /// [json] The format of a JSON message payload.
   /// [protobuf] The format of a Protobuf message payload.
-  PipelineDestinationOutputPayloadFormat({this.avro, this.json, this.protobuf});
+  PipelineDestinationOutputPayloadFormat({
+    this.avro,
+    this.json,
+    this.protobuf,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,23 +31,12 @@ class PipelineDestinationOutputPayloadFormat {
     };
   }
 
-  factory PipelineDestinationOutputPayloadFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineDestinationOutputPayloadFormat.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationOutputPayloadFormat(
-      avro: map['avro'] == null
-          ? null
-          : PipelineDestinationOutputPayloadFormatAvro.fromMap(
-              (map['avro'] as Map).cast<String, dynamic>(),
-            ),
-      json: map['json'] == null
-          ? null
-          : (map['json'] as Map).cast<String, dynamic>(),
-      protobuf: map['protobuf'] == null
-          ? null
-          : PipelineDestinationOutputPayloadFormatProtobuf.fromMap(
-              (map['protobuf'] as Map).cast<String, dynamic>(),
-            ),
+      avro: map['avro'] == null ? null : PipelineDestinationOutputPayloadFormatAvro.fromMap((map['avro'] as Map).cast<String, dynamic>()),
+      json: map['json'] == null ? null : (map['json'] as Map).cast<String, dynamic>(),
+      protobuf: map['protobuf'] == null ? null : PipelineDestinationOutputPayloadFormatProtobuf.fromMap((map['protobuf'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

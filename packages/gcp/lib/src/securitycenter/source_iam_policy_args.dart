@@ -21,9 +21,10 @@ class SourceIamPolicyArgs {
     required String organization,
     required String policyData,
     required String source,
-  }) : organization = pulumi.Input.asInput<String>(organization),
-       policyData = pulumi.Input.asInput<String>(policyData),
-       source = pulumi.Input.asInput<String>(source);
+  }) :
+      organization = pulumi.Input.asInput<String>(organization),
+      policyData = pulumi.Input.asInput<String>(policyData),
+      source = pulumi.Input.asInput<String>(source);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,3 +42,4 @@ class SourceIamPolicyArgs {
     );
   }
 }
+

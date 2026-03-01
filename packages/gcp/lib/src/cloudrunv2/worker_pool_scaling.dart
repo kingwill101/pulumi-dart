@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkerPoolScaling {
   /// The total number of instances in manual scaling mode.
   final int? manualInstanceCount;
-
   /// The maximum count of instances distributed among revisions based on the specified instance split percentages.
   final int? maxInstanceCount;
-
   /// The minimum count of instances distributed among revisions based on the specified instance split percentages.
   final int? minInstanceCount;
-
   /// The scaling mode for the worker pool. It defaults to MANUAL.
   /// Possible values are: `AUTOMATIC`, `MANUAL`.
   final String? scalingMode;
@@ -37,18 +35,11 @@ class WorkerPoolScaling {
 
   factory WorkerPoolScaling.fromMap(Map<String, dynamic> map) {
     return WorkerPoolScaling(
-      manualInstanceCount: map['manualInstanceCount'] == null
-          ? null
-          : map['manualInstanceCount'] as int,
-      maxInstanceCount: map['maxInstanceCount'] == null
-          ? null
-          : map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] == null
-          ? null
-          : map['minInstanceCount'] as int,
-      scalingMode: map['scalingMode'] == null
-          ? null
-          : map['scalingMode'] as String,
+      manualInstanceCount: map['manualInstanceCount'] == null ? null : map['manualInstanceCount'] as int,
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : map['maxInstanceCount'] as int,
+      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
+      scalingMode: map['scalingMode'] == null ? null : map['scalingMode'] as String,
     );
   }
 }
+

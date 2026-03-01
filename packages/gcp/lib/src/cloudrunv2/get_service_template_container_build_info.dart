@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTemplateContainerBuildInfo {
   /// Entry point of the function when the image is a Cloud Run function.
   final String functionTarget;
-
   /// Source code location of the image.
   final String sourceLocation;
 
@@ -22,12 +22,11 @@ class GetServiceTemplateContainerBuildInfo {
     };
   }
 
-  factory GetServiceTemplateContainerBuildInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateContainerBuildInfo.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerBuildInfo(
       functionTarget: map['functionTarget'] as String,
       sourceLocation: map['sourceLocation'] as String,
     );
   }
 }
+

@@ -151,25 +151,20 @@ import 'domain_mapping_ssl_settings.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// Relative name of the domain serving the application. Example: example.com.
   late final pulumi.Output<String> domainName;
-
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   late final pulumi.Output<String> name;
-
   /// Whether the domain creation should override any existing mappings for this domain.
   /// By default, overrides are rejected.
   /// Default value is `STRICT`.
   /// Possible values are: `STRICT`, `OVERRIDE`.
   late final pulumi.Output<String?> overrideStrategy;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// configuration in order to serve the application via this domain mapping.
   /// Structure is documented below.
   late final pulumi.Output<List<DomainMappingResourceRecord>> resourceRecords;
-
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSslSettings> sslSettings;
@@ -183,18 +178,16 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     this.overrideStrategy = registerOutput<String?>('overrideStrategy');
     this.project = registerOutput<String>('project');
-    this.resourceRecords = registerOutput<List<DomainMappingResourceRecord>>(
-      'resourceRecords',
-    );
+    this.resourceRecords = registerOutput<List<DomainMappingResourceRecord>>('resourceRecords');
     this.sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings');
   }
 }

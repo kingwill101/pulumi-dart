@@ -6,10 +6,8 @@ import 'get_budget_auto_adjust_data_historical_option.dart';
 class GetBudgetAutoAdjustData {
   /// (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`.
   final String autoAdjustType;
-
   /// (Optional) - Configuration block of Historical Options. Required for `auto_adjust_type` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
   final List<GetBudgetAutoAdjustDataHistoricalOption> historicalOptions;
-
   /// (Optional) - The last time that your budget was auto-adjusted.
   final String lastAutoAdjustTime;
 
@@ -26,11 +24,7 @@ class GetBudgetAutoAdjustData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoAdjustType': autoAdjustType,
-      'historicalOptions':
-          pulumi.Input.encodeList<
-            GetBudgetAutoAdjustDataHistoricalOption,
-            Map<String, dynamic>
-          >(historicalOptions, (value) => value.toMap()),
+      'historicalOptions': pulumi.Input.encodeList<GetBudgetAutoAdjustDataHistoricalOption, Map<String, dynamic>>(historicalOptions, (value) => value.toMap()),
       'lastAutoAdjustTime': lastAutoAdjustTime,
     };
   }
@@ -38,14 +32,9 @@ class GetBudgetAutoAdjustData {
   factory GetBudgetAutoAdjustData.fromMap(Map<String, dynamic> map) {
     return GetBudgetAutoAdjustData(
       autoAdjustType: map['autoAdjustType'] as String,
-      historicalOptions:
-          pulumi.Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(
-            map['historicalOptions'],
-            (value) => GetBudgetAutoAdjustDataHistoricalOption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      historicalOptions: pulumi.Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(map['historicalOptions'], (value) => GetBudgetAutoAdjustDataHistoricalOption.fromMap((value as Map).cast<String, dynamic>())),
       lastAutoAdjustTime: map['lastAutoAdjustTime'] as String,
     );
   }
 }
+

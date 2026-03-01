@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigIamMemberCondition {
   final String? description;
   final String expression;
@@ -23,15 +24,12 @@ class WorkstationConfigIamMemberCondition {
     };
   }
 
-  factory WorkstationConfigIamMemberCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkstationConfigIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigIamMemberCondition(
-      description: map['description'] == null
-          ? null
-          : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+
