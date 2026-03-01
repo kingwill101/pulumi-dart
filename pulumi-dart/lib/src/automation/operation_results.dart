@@ -5,6 +5,57 @@ import 'events.dart';
 /// Map of operation type to resource change count.
 typedef AutomationOpMap = Map<String, int>;
 
+/// The kind of update operation represented by an [AutomationUpdateSummary].
+enum AutomationUpdateKind {
+  update,
+  preview,
+  refresh,
+  rename,
+  destroy,
+  importOperation,
+}
+
+/// The result state represented by an [AutomationUpdateSummary].
+enum AutomationUpdateResult { notStarted, inProgress, succeeded, failed }
+
+extension AutomationUpdateKindParsing on AutomationUpdateKind {
+  static AutomationUpdateKind? tryParse(String? value) {
+    switch (value) {
+      case 'update':
+        return AutomationUpdateKind.update;
+      case 'preview':
+        return AutomationUpdateKind.preview;
+      case 'refresh':
+        return AutomationUpdateKind.refresh;
+      case 'rename':
+        return AutomationUpdateKind.rename;
+      case 'destroy':
+        return AutomationUpdateKind.destroy;
+      case 'import':
+        return AutomationUpdateKind.importOperation;
+      default:
+        return null;
+    }
+  }
+}
+
+extension AutomationUpdateResultParsing on AutomationUpdateResult {
+  static AutomationUpdateResult? tryParse(String? value) {
+    switch (value) {
+      case 'not-started':
+        return AutomationUpdateResult.notStarted;
+      case 'in-progress':
+        return AutomationUpdateResult.inProgress;
+      case 'succeeded':
+        return AutomationUpdateResult.succeeded;
+      case 'failed':
+        return AutomationUpdateResult.failed;
+      default:
+        return null;
+    }
+  }
+}
+
 /// Typed summary metadata for a completed stack operation.
 class AutomationUpdateSummary {
   const AutomationUpdateSummary({
@@ -115,6 +166,14 @@ class AutomationUpdateSummary {
   final dynamic deployment;
   final AutomationOpMap resourceChanges;
   final Map<String, dynamic> raw;
+
+  /// Parsed enum representation of [kind] when it matches known CLI values.
+  AutomationUpdateKind? get parsedKind =>
+      AutomationUpdateKindParsing.tryParse(kind);
+
+  /// Parsed enum representation of [result] when it matches known CLI values.
+  AutomationUpdateResult? get parsedResult =>
+      AutomationUpdateResultParsing.tryParse(result);
 }
 
 /// Base result for a Pulumi stack operation.

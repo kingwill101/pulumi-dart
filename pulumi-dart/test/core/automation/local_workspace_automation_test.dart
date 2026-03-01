@@ -1156,7 +1156,12 @@ void main() {
 
       expect(upResult.summary, isNotNull);
       expect(upResult.summary?.kind, equals('update'));
+      expect(upResult.summary?.parsedKind, equals(AutomationUpdateKind.update));
       expect(upResult.summary?.result, equals('succeeded'));
+      expect(
+        upResult.summary?.parsedResult,
+        equals(AutomationUpdateResult.succeeded),
+      );
       expect(upResult.summary?.version, equals(42));
       expect(upResult.summary?.resourceChanges['create'], equals(2));
       expect(upResult.summary?.resourceChanges['same'], equals(1));
@@ -1170,10 +1175,18 @@ void main() {
 
       expect(refreshResult.summary, isNotNull);
       expect(refreshResult.summary?.kind, equals('refresh'));
+      expect(
+        refreshResult.summary?.parsedKind,
+        equals(AutomationUpdateKind.refresh),
+      );
       expect(refreshResult.summary?.resourceChanges['same'], equals(3));
 
       expect(destroyResult.summary, isNotNull);
       expect(destroyResult.summary?.kind, equals('destroy'));
+      expect(
+        destroyResult.summary?.parsedKind,
+        equals(AutomationUpdateKind.destroy),
+      );
       expect(destroyResult.summary?.resourceChanges['delete'], equals(2));
 
       expect(
