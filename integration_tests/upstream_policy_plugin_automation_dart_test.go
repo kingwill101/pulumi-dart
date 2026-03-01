@@ -64,6 +64,59 @@ func rewritePulumiDependency(projectDir string) error {
 	return nil
 }
 
+func rewritePolicyDependencies(projectDir string) error {
+	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
+	data, err := os.ReadFile(pubspecPath)
+	if err != nil {
+		return fmt.Errorf("read pubspec.yaml: %w", err)
+	}
+
+	var pubspec map[string]interface{}
+	if err := yaml.Unmarshal(data, &pubspec); err != nil {
+		return fmt.Errorf("unmarshal pubspec.yaml: %w", err)
+	}
+
+	dependencies, ok := pubspec["dependencies"].(map[string]interface{})
+	if !ok {
+		dependencies = map[string]interface{}{}
+		pubspec["dependencies"] = dependencies
+	}
+
+	delete(dependencies, "pulumi")
+	delete(dependencies, "pulumi_policy")
+
+	dependencyOverrides, ok := pubspec["dependency_overrides"].(map[string]interface{})
+	if !ok {
+		dependencyOverrides = map[string]interface{}{}
+		pubspec["dependency_overrides"] = dependencyOverrides
+	}
+
+	delete(dependencyOverrides, "pulumi")
+	delete(dependencyOverrides, "pulumi_policy")
+
+	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
+	if err != nil {
+		return fmt.Errorf("resolve pulumi-dart path: %w", err)
+	}
+	policySdkPath, err := filepath.Abs("../packages/policy")
+	if err != nil {
+		return fmt.Errorf("resolve pulumi_policy path: %w", err)
+	}
+
+	dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
+	dependencies["pulumi"] = "^1.0.0"
+	dependencyOverrides["pulumi"] = map[string]string{"path": pulumiSdkPath}
+
+	updated, err := yaml.Marshal(pubspec)
+	if err != nil {
+		return fmt.Errorf("marshal updated pubspec.yaml: %w", err)
+	}
+	if err := os.WriteFile(pubspecPath, updated, 0o600); err != nil {
+		return fmt.Errorf("write updated pubspec.yaml: %w", err)
+	}
+	return nil
+}
+
 func configurePolicyDartProject(t *testing.T, e *ptesting.Environment, policyPacks ...string) {
 	t.Helper()
 
@@ -80,7 +133,9 @@ func configurePolicyDartProject(t *testing.T, e *ptesting.Environment, policyPac
 	require.NoError(t, err)
 
 	for _, pack := range policyPacks {
-		_, _, err = e.GetCommandResultsIn(filepath.Join(e.CWD, pack), "npm", "install")
+		packDir := filepath.Join(e.CWD, pack)
+		require.NoError(t, rewritePolicyDependencies(packDir))
+		_, _, err = e.GetCommandResultsIn(packDir, "dart", "pub", "get")
 		require.NoError(t, err)
 	}
 }
@@ -90,6 +145,15 @@ func cleanupPolicyStack(e *ptesting.Environment) {
 	_, _, _ = e.GetCommandResults("pulumi", "stack", "rm", "--yes")
 }
 
+func requireNoCommandError(t *testing.T, err error, stdout, stderr string) {
+	t.Helper()
+	if err != nil {
+		t.Logf("command stdout = %s", stdout)
+		t.Logf("command stderr = %s", stderr)
+	}
+	require.NoError(t, err)
+}
+
 func TestAdvisoryPolicyPackDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
@@ -97,8 +161,8 @@ func TestAdvisoryPolicyPackDart(t *testing.T) {
 
 	configurePolicyDartProject(t, e, "advisory_policy_pack")
 
-	stdout, _, err := e.GetCommandResults("pulumi", "up", "--skip-preview", "--yes", "--policy-pack", "advisory_policy_pack")
-	require.NoError(t, err)
+	stdout, stderr, err := e.GetCommandResults("pulumi", "up", "--skip-preview", "--yes", "--policy-pack", "advisory_policy_pack")
+	requireNoCommandError(t, err, stdout, stderr)
 	assert.Contains(t, stdout, "Failing advisory policy pack for testing")
 	assert.Contains(t, stdout, "foobar")
 }
@@ -133,6 +197,89 @@ func TestMultiplePolicyPacksDart(t *testing.T) {
 	assert.Contains(t, stdout, "error: update failed")
 	assert.Contains(t, stdout, "advisory_policy_pack")
 	assert.Contains(t, stdout, "mandatory_policy_pack")
+}
+
+func TestStackConfigPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "stack_config_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "false")
+	e.RunCommand("pulumi", "config", "set", "policyExpected", "true")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "stack_config_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "validate-stack-config-value")
+	assert.Contains(t, stdout, "Property was false")
+}
+
+func TestConfigSchemaPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "config_schema_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "false")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_schema_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "validator")
+	assert.Contains(t, stdout, "Property was")
+}
+
+func TestDryRunPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "dryrun_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "false")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "preview", "--non-interactive",
+		"--policy-pack", "dryrun_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "dryrun-policy-pack")
+}
+
+func TestStackTagsPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "stack_tags_policy_pack")
+	e.RunCommand("pulumi", "stack", "tag", "set", "value", "hello")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "stack_tags_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "stack-tags-policy-pack")
+	assert.Contains(t, stdout, "stack-tag=hello")
+}
+
+func TestRemediatePolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "remediate_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "false")
+
+	stdout, stderr, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "remediate_policy_pack",
+	)
+	requireNoCommandError(t, err, stdout, stderr)
 }
 
 func TestPluginInstall(t *testing.T) {

@@ -1,0 +1,9 @@
+name: dryrun_policy_pack
+description: Dart dry-run policy pack integration fixture.
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi_policy: ^1.0.0

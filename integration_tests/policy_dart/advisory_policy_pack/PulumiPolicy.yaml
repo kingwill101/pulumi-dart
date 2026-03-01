@@ -1,2 +1,2 @@
-runtime: nodejs
-description: A minimal Policy Pack for AWS using TypeScript.
+runtime: dart
+description: Failing advisory Dart policy pack for integration testing.
