@@ -545,6 +545,10 @@ func TestEnumOutputsDart(t *testing.T) {
 	})
 }
 
+func TestEnumOutputDart(t *testing.T) {
+	TestEnumOutputsDart(t)
+}
+
 // tests that when a resource transformation throws an exception, the program exits
 // and doesn't hang indefinitely.
 func TestFailingTransfomationExitsProgram(t *testing.T) {
@@ -881,7 +885,7 @@ func optsForConstructPlainDart(t *testing.T, expectedResourceCount int, localPro
 	env ...string) *integration.ProgramTestOptions {
 	return &integration.ProgramTestOptions{
 		Env:            env,
-		Dir:            filepath.Join("construct_component_plain", "dotnet"),
+		Dir:            filepath.Join("construct_component_plain", "dart"),
 		LocalProviders: localProviders,
 		Quick:          true,
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
@@ -893,7 +897,7 @@ func optsForConstructPlainDart(t *testing.T, expectedResourceCount int, localPro
 
 // Test remote component inputs properly handle unknowns.
 func TestConstructUnknownDart(t *testing.T) {
-	testConstructUnknown(t, "dotnet")
+	testConstructUnknown(t, "dart")
 }
 
 // Test methods on remote components.
@@ -907,7 +911,7 @@ func TestConstructMethodsDart(t *testing.T) {
 	}
 
 	testDartProgram(t, &integration.ProgramTestOptions{
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, "dart"),
 		LocalProviders: []integration.LocalDependency{localProvider},
 		Quick:          true,
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
@@ -917,15 +921,19 @@ func TestConstructMethodsDart(t *testing.T) {
 }
 
 func TestConstructMethodsUnknownDart(t *testing.T) {
-	testConstructMethodsUnknown(t, "dotnet")
+	testConstructMethodsUnknown(t, "dart")
 }
 
 func TestConstructMethodsResourcesDart(t *testing.T) {
 	testConstructMethodsResources(t, "dart")
 }
 
+func TestConstructMethodsErrorsDart(t *testing.T) {
+	testConstructMethodsErrors(t, "dart")
+}
+
 func TestCallFailuresDart(t *testing.T) {
-	testConstructMethodsErrors(t, "dotnet")
+	TestConstructMethodsErrorsDart(t)
 }
 
 func TestConstructMethodsProviderDart(t *testing.T) {
@@ -943,7 +951,7 @@ func TestConstructProviderDart(t *testing.T) {
 		Package: "testcomponent", Path: filepath.Join(testDir, componentDir),
 	}
 	testDartProgram(t, &integration.ProgramTestOptions{
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, "dart"),
 		LocalProviders: []integration.LocalDependency{localProvider},
 		Quick:          true,
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
@@ -1163,6 +1171,10 @@ func TestConvertTerraformProviderDart(t *testing.T) {
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "sdks/supabase")
 	assert.Contains(t, pubspec, "sdks/b2")
+}
+
+func TestConvertMultipleTerraformProviderDart(t *testing.T) {
+	TestConvertTerraformProviderDart(t)
 }
 
 func TestPackageAddNamespaceDart(t *testing.T) {

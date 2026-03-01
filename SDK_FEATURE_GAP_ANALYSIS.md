@@ -66,6 +66,16 @@ against upstream Pulumi behavior, based on the repository's current state.
 - Language-host startup hardening improved:
   - added analyzer attach test coverage for unreachable policy ports
     (`TestRunPluginAnalyzerAttachFailsWhenPolicyPackPortIsUnreachable`).
+- Integration-name parity sweep completed:
+  - added upstream-aligned Dart integration test entrypoints for
+    `TestConstructMethodsErrorsDart`, `TestConvertMultipleTerraformProviderDart`,
+    and `TestEnumOutputDart` to match upstream method naming baselines.
+- Construct-component parity hardening in integration tests:
+  - added dedicated Dart fixture directories for
+    `construct_component_unknown`, `construct_component_methods`,
+    `construct_component_methods_unknown`, `construct_component_plain`,
+    and `construct_component_provider` so Dart tests no longer execute those
+    scenarios from the dotnet fixture copies.
 - Policy proxy robustness hardened:
   - port-reading now skips noisy stdout lines before the port number,
     preventing attachment failures when policy packs print startup logs.
@@ -138,6 +148,16 @@ Implemented:
 - Stack-graph fidelity test coverage (parent/dependency/property-dependency
   mapping, options translation, provider metadata).
 
+### 9) Integration parity naming
+
+Status: **Closed in this pass**
+
+Implemented:
+- `parity_audit.sh` now reports zero missing upstream integration test names.
+- Added wrapper entrypoints so Dart integration tests expose the same names used by
+  upstream parity scripts for construct-method failures, multi-terraform conversion,
+  and enum outputs.
+
 Current deltas:
 - Maintain semantic alignment with upstream `pulumi-policy` as it evolves.
 
@@ -163,8 +183,10 @@ Actual feature-gap focus should avoid counting these as missing SDK features.
 ## Actionable next work queue
 
 1. Runtime long-tail parity sweeps
-   - keep adding targeted unknown/computed and nested dependency edge tests as
-     upstream scenarios appear.
+    - keep adding targeted unknown/computed and nested dependency edge tests as
+      upstream scenarios appear.
+  - Continue migrating any remaining integration helper tests still reusing dotnet
+    fixture paths once Dart fixture coverage is complete.
 2. Policy parity maintenance
    - stack-graph fidelity assertions completed; monitor for new upstream
      policy-runtime behaviors to port.
