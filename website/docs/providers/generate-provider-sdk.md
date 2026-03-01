@@ -114,6 +114,7 @@ Some providers may require registry dependency hints or manual dependency overri
 
 - [Run local smoke tests](./local-smoke-tests.md)
 - [Configure dependency registry entries](./dependency-registry.md)
+- [Author a provider plugin in Dart](./provider-authoring.md)
 
 ## Related links
 

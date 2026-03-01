@@ -88,6 +88,28 @@ It provides upstream-shaped dynamic provider/result models and a
 
 See [`example/dynamic_resource_example.dart`](example/dynamic_resource_example.dart).
 
+## Provider Authoring (Plugin)
+
+The SDK includes provider authoring APIs in:
+
+```dart
+import 'package:pulumi/provider.dart';
+```
+
+Use this API when you are implementing a Pulumi provider plugin in Dart.
+The plugin process should call `serve(...)` in `main` so the Pulumi engine can
+attach over gRPC.
+
+See [`example/provider_authoring_example.dart`](example/provider_authoring_example.dart),
+which demonstrates:
+- implementing `Provider` CRUD + invoke methods
+- returning structured `CheckResult`/`DiffResult`
+- implementing optional `parameterizeArgs` for parameterized packages
+- booting the provider server with `serve(provider, args)`
+
+For a full integration fixture (schema + check/diff/config/call/construct paths),
+see [`integration_tests/provider_authoring/dart/bin/provider_plugin.dart`](../integration_tests/provider_authoring/dart/bin/provider_plugin.dart).
+
 ## Automation Workflows
 
 The Dart SDK includes an automation API in

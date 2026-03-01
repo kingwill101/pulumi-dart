@@ -22,8 +22,14 @@ const sidebars: SidebarsConfig = {
         'providers/use-published-providers',
         'providers/generate-provider-sdk',
         'providers/local-smoke-tests',
+        'providers/provider-authoring',
         'providers/dependency-registry',
       ],
+    },
+    {
+      type: 'category',
+      label: 'Policy as Code',
+      items: ['policy/author-policy-pack'],
     },
     {
       type: 'category',
