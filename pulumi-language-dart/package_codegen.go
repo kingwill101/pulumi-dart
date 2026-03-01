@@ -2925,6 +2925,12 @@ func objectClassPropertyDartType(objectClass packageObjectClassSpec, property pa
 }
 
 func objectClassConstructorPropertyDartType(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+	if objectClass.UsesInputTypes {
+		if property.Required {
+			return "Object"
+		}
+		return "Object?"
+	}
 	base := propertyBaseDartType(property)
 	return nullableDartType(base, property.Required)
 }

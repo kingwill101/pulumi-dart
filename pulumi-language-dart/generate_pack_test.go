@@ -478,7 +478,8 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<int> size;")
 	assert.Contains(t, content, "final pulumi.Input<String>? label;")
-	assert.Contains(t, content, "required int size")
+	assert.Contains(t, content, "required Object size")
+	assert.Contains(t, content, "Object? label")
 	assert.Contains(t, content, "size = pulumi.Input.asInput<int>(size)")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
@@ -494,7 +495,7 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	assert.Contains(t, content, "class GetWidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<String> id;")
-	assert.Contains(t, content, "required String id")
+	assert.Contains(t, content, "required Object id")
 	assert.Contains(t, content, "id = pulumi.Input.asInput<String>(id)")
 	assert.Contains(t, content, "class GetWidgetResult")
 	assert.Contains(t, content, "final String name;")
@@ -664,6 +665,63 @@ func TestGeneratePackageWritesWorkspaceResolutionWhenEnabled(t *testing.T) {
 	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
 	require.NoError(t, err)
 	assert.Contains(t, string(pubspecData), "resolution: workspace")
+}
+
+func TestGeneratePackageUsesWorkspacePulumiVersion(t *testing.T) {
+	host := &dartLanguageHost{}
+	rootDir := t.TempDir()
+
+	rootPubspec := strings.TrimSpace(`
+name: root_workspace
+environment:
+  sdk: ^3.10.0
+workspace:
+  - pulumi-dart
+  - packages/command
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(rootDir, "pubspec.yaml"), []byte(rootPubspec), 0o600))
+
+	pulumiDir := filepath.Join(rootDir, "pulumi-dart")
+	require.NoError(t, os.MkdirAll(pulumiDir, 0o700))
+	pulumiPubspec := strings.TrimSpace(`
+name: pulumi
+version: 9.8.7
+resolution: workspace
+environment:
+  sdk: ^3.10.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(pulumiDir, "pubspec.yaml"), []byte(pulumiPubspec), 0o600))
+
+	generatedDir := filepath.Join(rootDir, "packages", "sdks", "sample")
+	require.NoError(t, os.MkdirAll(generatedDir, 0o700))
+
+	oldValue, hadOldValue := os.LookupEnv("PULUMI_DART_WORKSPACE_RESOLUTION")
+	require.NoError(t, os.Setenv("PULUMI_DART_WORKSPACE_RESOLUTION", "true"))
+	t.Cleanup(func() {
+		if !hadOldValue {
+			require.NoError(t, os.Unsetenv("PULUMI_DART_WORKSPACE_RESOLUTION"))
+			return
+		}
+		require.NoError(t, os.Setenv("PULUMI_DART_WORKSPACE_RESOLUTION", oldValue))
+	})
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: generatedDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(generatedDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi: 9.8.7")
+	assert.NotContains(t, pubspec, "git:")
+	assert.NotContains(t, pubspec, "path:")
 }
 
 func TestGeneratePackagePreservesExistingPubspec(t *testing.T) {
@@ -1546,7 +1604,7 @@ func TestGeneratePackageWritesExtraFiles(t *testing.T) {
 	assert.Equal(t, "include: package:lints/recommended.yaml\n", string(analysisOptions))
 }
 
-func TestGeneratePackageSkipsNonLibScaffoldingByDefault(t *testing.T) {
+func TestGeneratePackageWritesDefaultScaffoldingFiles(t *testing.T) {
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
 
@@ -1561,26 +1619,65 @@ func TestGeneratePackageSkipsNonLibScaffoldingByDefault(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	_, err = os.Stat(filepath.Join(targetDir, "README.md"))
-	require.Error(t, err)
-	assert.True(t, os.IsNotExist(err))
+	readme, err := os.ReadFile(filepath.Join(targetDir, "README.md"))
+	require.NoError(t, err)
+	assert.Contains(t, string(readme), "Generated Pulumi provider SDK for Dart")
 
-	_, err = os.Stat(filepath.Join(targetDir, "CHANGELOG.md"))
-	require.Error(t, err)
-	assert.True(t, os.IsNotExist(err))
+	changelog, err := os.ReadFile(filepath.Join(targetDir, "CHANGELOG.md"))
+	require.NoError(t, err)
+	assert.Contains(t, string(changelog), "## 1.2.3")
 
-	_, err = os.Stat(filepath.Join(targetDir, "analysis_options.yaml"))
-	require.Error(t, err)
-	assert.True(t, os.IsNotExist(err))
+	analysisOptions, err := os.ReadFile(filepath.Join(targetDir, "analysis_options.yaml"))
+	require.NoError(t, err)
+	assert.Equal(t, "include: package:lints/recommended.yaml\n", string(analysisOptions))
 
-	_, err = os.Stat(filepath.Join(targetDir, "example", "main.dart"))
-	require.Error(t, err)
-	assert.True(t, os.IsNotExist(err))
+	exampleMain, err := os.ReadFile(filepath.Join(targetDir, "example", "main.dart"))
+	require.NoError(t, err)
+	assert.Contains(t, string(exampleMain), "class ExampleStack extends pulumi.Stack")
 
 	pubspec, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
 	require.NoError(t, err)
 	pubspecContent := string(pubspec)
 	assert.NotContains(t, pubspecContent, "very_good_analysis")
+}
+
+func TestGeneratePackagePreservesExistingScaffoldingFiles(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	require.NoError(t, os.MkdirAll(filepath.Join(targetDir, "example"), 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "README.md"), []byte("existing readme\n"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "CHANGELOG.md"), []byte("existing changelog\n"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "analysis_options.yaml"), []byte("existing analysis\n"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "example", "main.dart"), []byte("existing example\n"), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	readme, err := os.ReadFile(filepath.Join(targetDir, "README.md"))
+	require.NoError(t, err)
+	assert.Equal(t, "existing readme\n", string(readme))
+
+	changelog, err := os.ReadFile(filepath.Join(targetDir, "CHANGELOG.md"))
+	require.NoError(t, err)
+	assert.Equal(t, "existing changelog\n", string(changelog))
+
+	analysisOptions, err := os.ReadFile(filepath.Join(targetDir, "analysis_options.yaml"))
+	require.NoError(t, err)
+	assert.Equal(t, "existing analysis\n", string(analysisOptions))
+
+	exampleMain, err := os.ReadFile(filepath.Join(targetDir, "example", "main.dart"))
+	require.NoError(t, err)
+	assert.Equal(t, "existing example\n", string(exampleMain))
 }
 
 func TestGeneratedPackageAnalysisOptionsUsesRecommendedLints(t *testing.T) {

@@ -122,7 +122,7 @@ class GetWidgetDetailsArgs {
   /// Creates a new [GetWidgetDetailsArgs].
   /// [id] Required.
   GetWidgetDetailsArgs({
-    required String id,
+    required Object id,
   }) :
       id = pulumi.Input.asInput<String>(id);
 
@@ -222,8 +222,8 @@ class WidgetArgs {
   /// [metadata] Optional.
   /// [mode] Required.
   WidgetArgs({
-    WidgetMetadata? metadata,
-    required WidgetMode mode,
+    Object? metadata,
+    required Object mode,
   }) :
       metadata = pulumi.Input.asOptionalInput<WidgetMetadata>(metadata),
       mode = pulumi.Input.asInput<WidgetMode>(mode);
