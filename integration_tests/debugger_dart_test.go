@@ -22,7 +22,6 @@ import (
 	"net"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -38,13 +37,13 @@ import (
 func TestDebuggerAttachDart(t *testing.T) {
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
-	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSdkPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
 	e.ImportDirectory("empty")
-	rewritePulumiPathDependency(t, filepath.Join(e.RootPath, "pubspec.yaml"), pulumiSdkPath)
+	require.NoError(t, rewritePulumiPathDependency(filepath.Join(e.RootPath, "pubspec.yaml"), pulumiSdkPath))
 
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
 	e.Env = append(e.Env, "PULUMI_DEBUG_COMMANDS=true", getProviderPath(languagePluginPath))
@@ -67,7 +66,7 @@ func TestDebuggerAttachDart(t *testing.T) {
 func TestPluginDebuggerAttachDart(t *testing.T) {
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
-	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSdkPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 
 	e := ptesting.NewEnvironment(t)
@@ -76,7 +75,7 @@ func TestPluginDebuggerAttachDart(t *testing.T) {
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
 	e.Env = append(e.Env, "PULUMI_DEBUG_COMMANDS=true", getProviderPath(languagePluginPath))
 	e.ImportDirectory("debug-plugin")
-	rewritePulumiPathDependency(t, filepath.Join(e.RootPath, "dart-plugin", "pubspec.yaml"), pulumiSdkPath)
+	require.NoError(t, rewritePulumiPathDependency(filepath.Join(e.RootPath, "dart-plugin", "pubspec.yaml"), pulumiSdkPath))
 	e.CWD = filepath.Join(e.RootPath, "program")
 	e.RunCommand("pulumi", "package", "add", "../dart-plugin")
 
@@ -406,18 +405,4 @@ func dartLanguageHostMethodContains(
 	}
 
 	return true
-}
-
-func rewritePulumiPathDependency(t *testing.T, pubspecPath string, pulumiSdkPath string) {
-	t.Helper()
-
-	content, err := os.ReadFile(pubspecPath)
-	require.NoError(t, err)
-
-	re := regexp.MustCompile(`(?m)^(\s*path:\s*)(?:\.\./)+pulumi-dart\s*$`)
-	updated := re.ReplaceAllString(string(content), fmt.Sprintf("${1}%s", filepath.ToSlash(pulumiSdkPath)))
-	require.NotEqual(t, string(content), updated, "expected to rewrite pulumi path in %s", pubspecPath)
-
-	err = os.WriteFile(pubspecPath, []byte(updated), 0o600)
-	require.NoError(t, err)
 }

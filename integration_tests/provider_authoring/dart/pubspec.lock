@@ -220,10 +220,10 @@ packages:
   pulumi:
     dependency: "direct main"
     description:
-      path: "/run/media/kingwill101/disk2/code/code/dart_packages/pulumi-dart/pulumi-dart"
+      path: "/home/kingwill101/code/dart_packages/pulumi-dart/packages/pulumi-dart"
       relative: false
     source: path
-    version: "0.0.1-dev"
+    version: "0.1.0"
   shelf:
     dependency: transitive
     description:
@@ -321,4 +321,4 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
-  dart: ">=3.10.0 <4.0.0"
+  dart: ">=3.11.0 <4.0.0"

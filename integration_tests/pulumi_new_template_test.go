@@ -64,7 +64,7 @@ func TestPulumiNewDartTemplateE2E(t *testing.T) {
 	languagePluginPath := buildLanguageHostBinary(t)
 	templateDir, err := filepath.Abs("../templates/dart-minimal")
 	require.NoError(t, err)
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 
 	workspaceDir := t.TempDir()
@@ -132,7 +132,7 @@ func TestPulumiNewDartRandomTemplateE2E(t *testing.T) {
 	languagePluginPath := buildLanguageHostBinary(t)
 	templateDir, err := filepath.Abs("../templates/dart-random")
 	require.NoError(t, err)
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 
 	workspaceDir := t.TempDir()

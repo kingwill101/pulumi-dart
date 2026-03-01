@@ -107,7 +107,7 @@ func prepareDartProject(projInfo *engine.Projinfo) error {
 		return err
 	}
 
-	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSdkPath, err := pulumiSDKPath()
 	if err != nil {
 		return err
 	}
@@ -126,41 +126,7 @@ func prepareDartProject(projInfo *engine.Projinfo) error {
 		}
 
 		if info.Name() == "pubspec.yaml" {
-			// Read the pubspec.yaml file
-			data, err := os.ReadFile(path)
-			if err != nil {
-				return err
-			}
-
-			// Parse the YAML
-			var pubspec map[string]interface{}
-			err = yaml.Unmarshal(data, &pubspec)
-			if err != nil {
-				return err
-			}
-
-			// Update the dependencies
-			dependencies, ok := pubspec["dependencies"].(map[string]interface{})
-			if !ok {
-				dependencies = make(map[string]interface{})
-				pubspec["dependencies"] = dependencies
-			}
-
-			// Remove existing Pulumi dependency and add the new one
-			delete(dependencies, "pulumi")
-			dependencies["pulumi"] = map[string]string{
-				"path": pulumiSdkPath,
-			}
-
-			// Marshal the updated YAML
-			updatedData, err := yaml.Marshal(pubspec)
-			if err != nil {
-				return err
-			}
-
-			// Write the updated content back to the file
-			err = os.WriteFile(path, updatedData, 0644)
-			if err != nil {
+			if err := rewritePulumiPathDependency(path, pulumiSdkPath); err != nil {
 				return err
 			}
 
@@ -177,6 +143,61 @@ func prepareDartProject(projInfo *engine.Projinfo) error {
 	})
 
 	return err
+}
+
+func pulumiSDKPath() (string, error) {
+	for _, candidate := range []string{
+		"../packages/pulumi-dart",
+		"../pulumi-dart",
+	} {
+		abs, err := filepath.Abs(candidate)
+		if err != nil {
+			continue
+		}
+		if _, err := os.Stat(abs); err == nil {
+			return abs, nil
+		}
+	}
+
+	return "", fmt.Errorf("unable to locate pulumi-dart at ../packages/pulumi-dart or ../pulumi-dart")
+}
+
+func rewritePulumiPathDependency(pubspecPath string, pulumiSDKPath string) error {
+	data, err := os.ReadFile(pubspecPath)
+	if err != nil {
+		return err
+	}
+
+	var pubspec map[string]interface{}
+	if err := yaml.Unmarshal(data, &pubspec); err != nil {
+		return err
+	}
+
+	dependencies, ok := pubspec["dependencies"].(map[string]interface{})
+	if !ok {
+		dependencies = map[string]interface{}{}
+		pubspec["dependencies"] = dependencies
+	}
+
+	dependencies["pulumi"] = map[string]string{
+		"path": filepath.ToSlash(pulumiSDKPath),
+	}
+
+	updated, err := yaml.Marshal(pubspec)
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(pubspecPath, updated, 0o600)
+}
+
+func rewritePulumiDependency(projectDir string) error {
+	pulumiPath, err := pulumiSDKPath()
+	if err != nil {
+		return err
+	}
+	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
+	return rewritePulumiPathDependency(pubspecPath, pulumiPath)
 }
 
 func getProviderPath(providerDir string) string {

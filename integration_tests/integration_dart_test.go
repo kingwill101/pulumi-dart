@@ -1093,7 +1093,7 @@ func TestPackageAddDart(t *testing.T) {
 	e.CWD = filepath.Join(e.RootPath, "dart")
 
 	setupLocalDartLanguagePluginPath(t, e.RootPath)
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
@@ -1151,7 +1151,7 @@ func TestConvertTerraformProviderDart(t *testing.T) {
 
 	e.ImportDirectory("convertmultiplefromterraform")
 	setupLocalDartLanguagePluginPath(t, e.RootPath)
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH", pulumiSDKPath)
 
@@ -1184,7 +1184,7 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	e.ImportDirectory(filepath.Join("package_add", "namespace"))
 	e.CWD = filepath.Join(e.RootPath, "dart")
 
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 	setupLocalDartLanguagePluginPath(t, e.RootPath)
 

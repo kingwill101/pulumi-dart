@@ -30,7 +30,7 @@ func TestParameterizedDart(t *testing.T) {
 			if err != nil {
 				return err
 			}
-			pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+			pulumiSDKPath, err := pulumiSDKPath()
 			if err != nil {
 				return err
 			}

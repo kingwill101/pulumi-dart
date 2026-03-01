@@ -31,41 +31,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func rewritePulumiDependency(projectDir string) error {
-	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
-	data, err := os.ReadFile(pubspecPath)
-	if err != nil {
-		return fmt.Errorf("read pubspec.yaml: %w", err)
-	}
-
-	var pubspec map[string]interface{}
-	if err := yaml.Unmarshal(data, &pubspec); err != nil {
-		return fmt.Errorf("unmarshal pubspec.yaml: %w", err)
-	}
-
-	dependencies, ok := pubspec["dependencies"].(map[string]interface{})
-	if !ok {
-		dependencies = map[string]interface{}{}
-		pubspec["dependencies"] = dependencies
-	}
-	delete(dependencies, "pulumi")
-
-	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
-	if err != nil {
-		return fmt.Errorf("resolve pulumi-dart path: %w", err)
-	}
-	dependencies["pulumi"] = map[string]string{"path": pulumiSdkPath}
-
-	updated, err := yaml.Marshal(pubspec)
-	if err != nil {
-		return fmt.Errorf("marshal updated pubspec.yaml: %w", err)
-	}
-	if err := os.WriteFile(pubspecPath, updated, 0o600); err != nil {
-		return fmt.Errorf("write updated pubspec.yaml: %w", err)
-	}
-	return nil
-}
-
 func rewritePolicyDependencies(projectDir string) error {
 	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
 	data, err := os.ReadFile(pubspecPath)
@@ -96,18 +61,20 @@ func rewritePolicyDependencies(projectDir string) error {
 	delete(dependencyOverrides, "pulumi")
 	delete(dependencyOverrides, "pulumi_policy")
 
-	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
+	pulumiSdkPath, err := pulumiSDKPath()
 	if err != nil {
 		return fmt.Errorf("resolve pulumi-dart path: %w", err)
 	}
-	policySdkPath, err := filepath.Abs("../packages/policy")
-	if err != nil {
-		return fmt.Errorf("resolve pulumi_policy path: %w", err)
-	}
-
-	dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
 	dependencies["pulumi"] = "^1.0.0"
 	dependencyOverrides["pulumi"] = map[string]string{"path": pulumiSdkPath}
+
+	policySdkPath, err := filepath.Abs("../packages/policy")
+	if err == nil {
+		if _, statErr := os.Stat(policySdkPath); statErr == nil {
+			dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
+			dependencyOverrides["pulumi_policy"] = map[string]string{"path": policySdkPath}
+		}
+	}
 
 	updated, err := yaml.Marshal(pubspec)
 	if err != nil {
@@ -155,7 +122,9 @@ func configurePolicyDartProject(t *testing.T, e *ptesting.Environment, policyPac
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
 	e.RunCommand("pulumi", "stack", "init", "dev")
 
-	require.NoError(t, rewritePulumiDependency(e.CWD))
+	pulumiSdkPath, err := pulumiSDKPath()
+	require.NoError(t, err)
+	require.NoError(t, rewritePulumiPathDependency(filepath.Join(e.CWD, "pubspec.yaml"), pulumiSdkPath))
 	_, _, err = e.GetCommandResultsIn(e.CWD, "dart", "pub", "get")
 	require.NoError(t, err)
 
@@ -185,7 +154,9 @@ func configurePolicyDartProjectService(
 	stackName := fmt.Sprintf("%s/policy_dart/dev-%d", org, time.Now().UnixNano())
 	e.RunCommand("pulumi", "stack", "init", stackName)
 
-	require.NoError(t, rewritePulumiDependency(e.CWD))
+	pulumiSdkPath, err := pulumiSDKPath()
+	require.NoError(t, err)
+	require.NoError(t, rewritePulumiPathDependency(filepath.Join(e.CWD, "pubspec.yaml"), pulumiSdkPath))
 	_, _, err = e.GetCommandResultsIn(e.CWD, "dart", "pub", "get")
 	require.NoError(t, err)
 

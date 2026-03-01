@@ -3,7 +3,7 @@ description: A minimal Pulumi source plugin for debugger attach integration test
 version: 0.0.1
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   grpc: ^5.1.0

@@ -3,7 +3,7 @@ description: Dart fixture for partial values integration test.
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   path: ^1.9.1

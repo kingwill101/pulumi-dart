@@ -2,6 +2,6 @@ name: config_missing_dart
 description: Missing required config integration fixture for Dart.
 version: 1.0.0
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 dependencies:
   pulumi: ^1.0.0
