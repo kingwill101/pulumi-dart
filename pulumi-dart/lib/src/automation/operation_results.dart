@@ -18,6 +18,25 @@ enum AutomationUpdateKind {
 /// The result state represented by an [AutomationUpdateSummary].
 enum AutomationUpdateResult { notStarted, inProgress, succeeded, failed }
 
+/// Granular resource operation types used in summary change maps.
+enum AutomationOpType {
+  same,
+  create,
+  update,
+  delete,
+  replace,
+  createReplacement,
+  deleteReplaced,
+  read,
+  readReplacement,
+  refresh,
+  discard,
+  discardReplaced,
+  removePendingReplace,
+  importOperation,
+  importReplacement,
+}
+
 extension AutomationUpdateKindParsing on AutomationUpdateKind {
   static AutomationUpdateKind? tryParse(String? value) {
     switch (value) {
@@ -50,6 +69,45 @@ extension AutomationUpdateResultParsing on AutomationUpdateResult {
         return AutomationUpdateResult.succeeded;
       case 'failed':
         return AutomationUpdateResult.failed;
+      default:
+        return null;
+    }
+  }
+}
+
+extension AutomationOpTypeParsing on AutomationOpType {
+  static AutomationOpType? tryParse(String key) {
+    switch (key) {
+      case 'same':
+        return AutomationOpType.same;
+      case 'create':
+        return AutomationOpType.create;
+      case 'update':
+        return AutomationOpType.update;
+      case 'delete':
+        return AutomationOpType.delete;
+      case 'replace':
+        return AutomationOpType.replace;
+      case 'create-replacement':
+        return AutomationOpType.createReplacement;
+      case 'delete-replaced':
+        return AutomationOpType.deleteReplaced;
+      case 'read':
+        return AutomationOpType.read;
+      case 'read-replacement':
+        return AutomationOpType.readReplacement;
+      case 'refresh':
+        return AutomationOpType.refresh;
+      case 'discard':
+        return AutomationOpType.discard;
+      case 'discard-replaced':
+        return AutomationOpType.discardReplaced;
+      case 'remove-pending-replace':
+        return AutomationOpType.removePendingReplace;
+      case 'import':
+        return AutomationOpType.importOperation;
+      case 'import-replacement':
+        return AutomationOpType.importReplacement;
       default:
         return null;
     }
@@ -174,6 +232,39 @@ class AutomationUpdateSummary {
   /// Parsed enum representation of [result] when it matches known CLI values.
   AutomationUpdateResult? get parsedResult =>
       AutomationUpdateResultParsing.tryParse(result);
+
+  /// Parsed enum representation of [resourceChanges] for known operation keys.
+  Map<AutomationOpType, int> get parsedResourceChanges {
+    final result = <AutomationOpType, int>{};
+    for (final entry in resourceChanges.entries) {
+      final op = AutomationOpTypeParsing.tryParse(entry.key);
+      if (op != null) {
+        result[op] = entry.value;
+      }
+    }
+    return result;
+  }
+
+  /// Aggregate count across all entries in [resourceChanges].
+  int get totalResourceChanges =>
+      resourceChanges.values.fold(0, (sum, count) => sum + count);
+
+  /// Duration between [startTime] and [endTime] when both are present.
+  Duration? get duration {
+    if (startTime == null || endTime == null) {
+      return null;
+    }
+    return endTime!.difference(startTime!);
+  }
+
+  /// True when the summary indicates a successful operation.
+  bool? get isSuccessful {
+    final parsed = parsedResult;
+    if (parsed == null) {
+      return null;
+    }
+    return parsed == AutomationUpdateResult.succeeded;
+  }
 }
 
 /// Base result for a Pulumi stack operation.

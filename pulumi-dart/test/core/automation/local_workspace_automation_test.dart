@@ -1165,6 +1165,13 @@ void main() {
       expect(upResult.summary?.version, equals(42));
       expect(upResult.summary?.resourceChanges['create'], equals(2));
       expect(upResult.summary?.resourceChanges['same'], equals(1));
+      expect(
+        upResult.summary?.parsedResourceChanges[AutomationOpType.create],
+        equals(2),
+      );
+      expect(upResult.summary?.totalResourceChanges, equals(3));
+      expect(upResult.summary?.isSuccessful, isTrue);
+      expect(upResult.summary?.duration, equals(const Duration(minutes: 1)));
       expect(upResult.summary?.config['proj:plain']?.value, equals('v'));
       expect(upResult.summary?.config['proj:plain']?.secret, isFalse);
       expect(
@@ -1179,6 +1186,7 @@ void main() {
         refreshResult.summary?.parsedKind,
         equals(AutomationUpdateKind.refresh),
       );
+      expect(refreshResult.summary?.isSuccessful, isTrue);
       expect(refreshResult.summary?.resourceChanges['same'], equals(3));
 
       expect(destroyResult.summary, isNotNull);
@@ -1187,6 +1195,7 @@ void main() {
         destroyResult.summary?.parsedKind,
         equals(AutomationUpdateKind.destroy),
       );
+      expect(destroyResult.summary?.isSuccessful, isTrue);
       expect(destroyResult.summary?.resourceChanges['delete'], equals(2));
 
       expect(
