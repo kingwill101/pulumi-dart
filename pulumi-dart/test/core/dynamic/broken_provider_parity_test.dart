@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:pulumi/dynamic.dart' as dyn;
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:test/test.dart';
@@ -34,12 +36,25 @@ void main() {
     });
 
     test('type mismatches fail quickly rather than hanging', () async {
-      _BrokenDynamicResource('broken');
+      final errors = <Object>[];
 
-      await expectLater(
-        deployment.registerOutputs().timeout(const Duration(seconds: 2)),
-        throwsA(isA<Exception>()),
+      await runZonedGuarded(
+        () async {
+          _BrokenDynamicResource('broken');
+          await Future<void>.delayed(const Duration(milliseconds: 10));
+          await expectLater(
+            deployment.registerOutputs().timeout(const Duration(seconds: 2)),
+            throwsA(isA<Exception>()),
+          );
+          await Future<void>.delayed(const Duration(milliseconds: 10));
+        },
+        (error, _) {
+          errors.add(error);
+        },
       );
+
+      expect(errors, isNotEmpty);
+      expect(errors.first, isA<Exception>());
       expect(monitor.registerResourceRequests, isEmpty);
     });
   });

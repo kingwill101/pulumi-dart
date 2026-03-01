@@ -67,5 +67,28 @@ void main() {
       );
       expect(monitor.registerResourceRequests, isEmpty);
     });
+
+    test(
+      'uses root dynamic token when module is empty after trimming',
+      () async {
+        final provider = dyn.SerializedProviderReference.fromValue(
+          'encoded-provider',
+        );
+
+        _TestDynamicResource(
+          provider,
+          'res',
+          pulumi.Input.mapToInputs(<String, dynamic>{'value': 'v'}),
+          module: '   ',
+          type: 'Widget',
+        );
+
+        await deployment.registerOutputs();
+
+        expect(monitor.registerResourceRequests, hasLength(1));
+        final request = monitor.registerResourceRequests.single;
+        expect(request.type, equals('pulumi-dart:dynamic:Widget'));
+      },
+    );
   });
 }
