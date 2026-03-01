@@ -122,6 +122,7 @@ export 'src/input_collections.dart';
 export 'src/input_union.dart';
 export 'src/input_args.dart';
 export 'src/invoke.dart';
+export 'src/invoke_output.dart';
 
 // Core runtime and stack/config APIs.
 export 'src/alias.dart';
