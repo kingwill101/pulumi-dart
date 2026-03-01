@@ -264,6 +264,25 @@ class IntegrationProvider extends Provider {
 
   @override
   Future<CallResult> call(String token, Inputs inputs) async {
+    if (token == 'testprovider:index:Echo/failSingle') {
+      throw const InputPropertyError('resource.echo', 'invalid echo value');
+    }
+    if (token == 'testprovider:index:Echo/failMultiple') {
+      throw const InputPropertiesError(
+        'multiple invalid properties',
+        <InputPropertyErrorDetails>[
+          InputPropertyErrorDetails(
+            propertyPath: 'resource.left',
+            reason: 'left invalid',
+          ),
+          InputPropertyErrorDetails(
+            propertyPath: 'resource.right',
+            reason: 'right invalid',
+          ),
+        ],
+      );
+    }
+
     if (token == 'testprovider:index:Echo/doEchoMethod') {
       final echo = await inputs['echo']?.toOutput().getValue();
       return CallResult(

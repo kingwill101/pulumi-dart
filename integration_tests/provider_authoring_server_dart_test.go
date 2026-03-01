@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"bytes"
 	"context"
+	"encoding/base64"
+	"net"
 	"os/exec"
 	"path/filepath"
 	"strings"
@@ -14,10 +16,86 @@ import (
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	grpcstatuspb "google.golang.org/genproto/googleapis/rpc/status"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/structpb"
 )
+
+type testMonitorServer struct {
+	pulumirpc.UnimplementedResourceMonitorServer
+}
+
+func (m *testMonitorServer) SupportsFeature(
+	context.Context,
+	*pulumirpc.SupportsFeatureRequest,
+) (*pulumirpc.SupportsFeatureResponse, error) {
+	return &pulumirpc.SupportsFeatureResponse{HasSupport: false}, nil
+}
+
+func startMonitorServer(t *testing.T) string {
+	t.Helper()
+
+	listener, err := net.Listen("tcp", "127.0.0.1:0")
+	require.NoError(t, err)
+
+	server := grpc.NewServer()
+	pulumirpc.RegisterResourceMonitorServer(server, &testMonitorServer{})
+	go func() {
+		_ = server.Serve(listener)
+	}()
+
+	t.Cleanup(func() {
+		server.Stop()
+		_ = listener.Close()
+	})
+
+	return listener.Addr().String()
+}
+
+func parseInputPropertiesErrorsFromTrailer(
+	t *testing.T,
+	trailer metadata.MD,
+) []*pulumirpc.InputPropertiesError_PropertyError {
+	t.Helper()
+
+	values := trailer.Get("grpc-status-details-bin")
+	require.NotEmpty(t, values, "expected grpc-status-details-bin trailer")
+
+	raw := values[0]
+	candidates := [][]byte{[]byte(raw)}
+
+	padding := (4 - (len(raw) % 4)) % 4
+	padded := raw + strings.Repeat("=", padding)
+	if decoded, err := base64.URLEncoding.DecodeString(padded); err == nil {
+		candidates = append(candidates, decoded)
+	}
+	if decoded, err := base64.StdEncoding.DecodeString(padded); err == nil {
+		candidates = append(candidates, decoded)
+	}
+
+	for _, payload := range candidates {
+		statusDetail := &grpcstatuspb.Status{}
+		if err := proto.Unmarshal(payload, statusDetail); err != nil {
+			continue
+		}
+		for _, detail := range statusDetail.GetDetails() {
+			if !strings.HasSuffix(detail.GetTypeUrl(), "pulumirpc.InputPropertiesError") {
+				continue
+			}
+			var typed pulumirpc.InputPropertiesError
+			require.NoError(t, proto.Unmarshal(detail.GetValue(), &typed))
+			return typed.GetErrors()
+		}
+	}
+
+	t.Fatalf("failed to decode InputPropertiesError from grpc-status-details-bin trailer")
+	return nil
+}
 
 func TestProviderAuthoringServerDart(t *testing.T) {
 	fixtureDir := filepath.Join("provider_authoring", "dart")
@@ -115,6 +193,20 @@ func TestProviderAuthoringServerDart(t *testing.T) {
 	assert.Equal(t, "param.value", parameterizedValue.GetName())
 	assert.Equal(t, "2.0.0", parameterizedValue.GetVersion())
 
+	_, err = client.Parameterize(rpcCtx, &pulumirpc.ParameterizeRequest{
+		Parameters: &pulumirpc.ParameterizeRequest_Value{
+			Value: &pulumirpc.ParameterizeRequest_ParametersValue{
+				Name:    "param.invalid",
+				Version: "2.0.0",
+				Value:   []byte{0xC3, 0x28},
+			},
+		},
+	})
+	require.Error(t, err)
+	invalidParamStatus, ok := status.FromError(err)
+	require.True(t, ok)
+	assert.Equal(t, codes.InvalidArgument, invalidParamStatus.Code())
+
 	invokeArgs, err := structpb.NewStruct(map[string]any{"echo": "hello"})
 	require.NoError(t, err)
 	invokeResp, err := client.Invoke(rpcCtx, &pulumirpc.InvokeRequest{
@@ -123,6 +215,69 @@ func TestProviderAuthoringServerDart(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, "hello", invokeResp.GetReturn().AsMap()["echo"])
+
+	monitorEndpoint := startMonitorServer(t)
+	callArgs, err := structpb.NewStruct(map[string]any{"echo": "hello"})
+	require.NoError(t, err)
+
+	var callTrailer metadata.MD
+	_, err = client.Call(
+		rpcCtx,
+		&pulumirpc.CallRequest{
+			Tok:             "testprovider:index:Echo/failSingle",
+			Project:         "proj",
+			Stack:           "dev",
+			Parallel:        1,
+			MonitorEndpoint: monitorEndpoint,
+			DryRun:          false,
+			Organization:    "org",
+			Config:          map[string]string{"proj:key": "value"},
+			ConfigSecretKeys: []string{
+				"proj:secret",
+			},
+			Args: callArgs,
+		},
+		grpc.Trailer(&callTrailer),
+	)
+	require.Error(t, err)
+	singleCallStatus, ok := status.FromError(err)
+	require.True(t, ok)
+	assert.Equal(t, codes.InvalidArgument, singleCallStatus.Code())
+	singleCallErrors := parseInputPropertiesErrorsFromTrailer(t, callTrailer)
+	require.Len(t, singleCallErrors, 1)
+	assert.Equal(t, "resource.echo", singleCallErrors[0].GetPropertyPath())
+	assert.Equal(t, "invalid echo value", singleCallErrors[0].GetReason())
+
+	var multiCallTrailer metadata.MD
+	_, err = client.Call(
+		rpcCtx,
+		&pulumirpc.CallRequest{
+			Tok:             "testprovider:index:Echo/failMultiple",
+			Project:         "proj",
+			Stack:           "dev",
+			Parallel:        1,
+			MonitorEndpoint: monitorEndpoint,
+			DryRun:          false,
+			Organization:    "org",
+			Config:          map[string]string{"proj:key": "value"},
+			ConfigSecretKeys: []string{
+				"proj:secret",
+			},
+			Args: callArgs,
+		},
+		grpc.Trailer(&multiCallTrailer),
+	)
+	require.Error(t, err)
+	multiCallStatus, ok := status.FromError(err)
+	require.True(t, ok)
+	assert.Equal(t, codes.InvalidArgument, multiCallStatus.Code())
+	assert.Equal(t, "multiple invalid properties", multiCallStatus.Message())
+	multiCallErrors := parseInputPropertiesErrorsFromTrailer(t, multiCallTrailer)
+	require.Len(t, multiCallErrors, 2)
+	assert.Equal(t, "resource.left", multiCallErrors[0].GetPropertyPath())
+	assert.Equal(t, "left invalid", multiCallErrors[0].GetReason())
+	assert.Equal(t, "resource.right", multiCallErrors[1].GetPropertyPath())
+	assert.Equal(t, "right invalid", multiCallErrors[1].GetReason())
 
 	olds, err := structpb.NewStruct(map[string]any{"name": "old-name"})
 	require.NoError(t, err)
