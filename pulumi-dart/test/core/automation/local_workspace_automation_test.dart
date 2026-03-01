@@ -1372,123 +1372,194 @@ void main() {
       );
     });
 
-    test('up/refresh/destroy include typed summary parsed from history', () async {
-      final runner = _FakeRunner(<PulumiCommandResult>[
-        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
-        const PulumiCommandResult(
-          exitCode: 0,
-          stdout:
-              '[{"kind":"update","startTime":"2025-01-01T00:00:00Z","endTime":"2025-01-01T00:01:00Z","message":"deploy","environment":{"PULUMI_HOME":"/tmp"},"config":{"proj:plain":{"value":"v","secret":false},"proj:secret":{"secret":true}},"result":"succeeded","version":42,"resourceChanges":{"create":2,"same":1}}]',
-          stderr: '',
-        ),
-        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
-        const PulumiCommandResult(
-          exitCode: 0,
-          stdout:
-              '[{"kind":"refresh","startTime":"2025-01-02T00:00:00Z","endTime":"2025-01-02T00:01:00Z","message":"refresh","environment":{},"config":{},"result":"succeeded","version":43,"resourceChanges":{"same":3}}]',
-          stderr: '',
-        ),
-        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
-        const PulumiCommandResult(
-          exitCode: 0,
-          stdout:
-              '[{"kind":"destroy","startTime":"2025-01-03T00:00:00Z","endTime":"2025-01-03T00:01:00Z","message":"destroy","environment":{},"config":{},"result":"succeeded","version":44,"resourceChanges":{"delete":2}}]',
-          stderr: '',
-        ),
-      ]);
-      final workspace = await LocalWorkspace.create(
-        LocalWorkspaceOptions(
-          workDir: tempDir.path,
-          commandRunner: runner.call,
-        ),
-      );
-      final stack = Stack('dev', workspace);
+    test(
+      'up/refresh/destroy include typed summary parsed from history',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          PulumiCommandResult(
+            exitCode: 0,
+            stdout: jsonEncode(<Map<String, dynamic>>[
+              <String, dynamic>{
+                'kind': 'update',
+                'startTime': '2025-01-01T00:00:00Z',
+                'endTime': '2025-01-01T00:01:00Z',
+                'message': 'deploy',
+                'environment': <String, String>{'PULUMI_HOME': '/tmp'},
+                'config': <String, Map<String, Object?>>{
+                  'proj:plain': <String, Object?>{
+                    'value': 'v',
+                    'secret': false,
+                  },
+                  'proj:secret': <String, Object?>{'secret': true},
+                },
+                'result': 'succeeded',
+                'version': 42,
+                'Deployment': jsonEncode(<String, Object?>{
+                  'resources': <Map<String, String>>[
+                    <String, String>{
+                      'urn':
+                          'urn:pulumi:dev::proj::pulumi:pulumi:Stack::proj-dev',
+                    },
+                  ],
+                }),
+                'PolicyPacks': <String, String>{'org/policy-pack': 'v1.2.3'},
+                'resourceChanges': <String, int>{'create': 2, 'same': 1},
+              },
+            ]),
+            stderr: '',
+          ),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          PulumiCommandResult(
+            exitCode: 0,
+            stdout: jsonEncode(<Map<String, dynamic>>[
+              <String, dynamic>{
+                'kind': 'refresh',
+                'startTime': '2025-01-02T00:00:00Z',
+                'endTime': '2025-01-02T00:01:00Z',
+                'message': 'refresh',
+                'environment': <String, String>{},
+                'config': <String, Object?>{},
+                'result': 'succeeded',
+                'version': 43,
+                'deployment': <String, Object?>{'resources': <Object?>[]},
+                'policyPacks': <String, String>{'org/policy-pack': 'v1.2.4'},
+                'resourceChanges': <String, int>{'same': 3},
+              },
+            ]),
+            stderr: '',
+          ),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          PulumiCommandResult(
+            exitCode: 0,
+            stdout: jsonEncode(<Map<String, dynamic>>[
+              <String, dynamic>{
+                'kind': 'destroy',
+                'startTime': '2025-01-03T00:00:00Z',
+                'endTime': '2025-01-03T00:01:00Z',
+                'message': 'destroy',
+                'environment': <String, String>{},
+                'config': <String, Object?>{},
+                'result': 'succeeded',
+                'version': 44,
+                'Deployment': 'not-json',
+                'resourceChanges': <String, int>{'delete': 2},
+              },
+            ]),
+            stderr: '',
+          ),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
 
-      final upResult = await stack.upResult(includeOutputs: false);
-      final refreshResult = await stack.refreshResult();
-      final destroyResult = await stack.destroyResult();
+        final upResult = await stack.upResult(includeOutputs: false);
+        final refreshResult = await stack.refreshResult();
+        final destroyResult = await stack.destroyResult();
 
-      expect(upResult.summary, isNotNull);
-      expect(upResult.summary?.kind, equals('update'));
-      expect(upResult.summary?.parsedKind, equals(AutomationUpdateKind.update));
-      expect(upResult.summary?.result, equals('succeeded'));
-      expect(
-        upResult.summary?.parsedResult,
-        equals(AutomationUpdateResult.succeeded),
-      );
-      expect(upResult.summary?.version, equals(42));
-      expect(upResult.summary?.resourceChanges['create'], equals(2));
-      expect(upResult.summary?.resourceChanges['same'], equals(1));
-      expect(
-        upResult.summary?.parsedResourceChanges[AutomationOpType.create],
-        equals(2),
-      );
-      expect(upResult.summary?.totalResourceChanges, equals(3));
-      expect(upResult.summary?.isSuccessful, isTrue);
-      expect(upResult.summary?.duration, equals(const Duration(minutes: 1)));
-      expect(upResult.summary?.config['proj:plain']?.value, equals('v'));
-      expect(upResult.summary?.config['proj:plain']?.secret, isFalse);
-      expect(
-        upResult.summary?.config['proj:secret']?.value,
-        equals('[secret]'),
-      );
-      expect(upResult.summary?.config['proj:secret']?.secret, isTrue);
+        expect(upResult.summary, isNotNull);
+        expect(upResult.summary?.kind, equals('update'));
+        expect(
+          upResult.summary?.parsedKind,
+          equals(AutomationUpdateKind.update),
+        );
+        expect(upResult.summary?.result, equals('succeeded'));
+        expect(
+          upResult.summary?.parsedResult,
+          equals(AutomationUpdateResult.succeeded),
+        );
+        expect(upResult.summary?.version, equals(42));
+        expect(upResult.summary?.resourceChanges['create'], equals(2));
+        expect(upResult.summary?.resourceChanges['same'], equals(1));
+        expect(
+          upResult.summary?.parsedResourceChanges[AutomationOpType.create],
+          equals(2),
+        );
+        expect(upResult.summary?.totalResourceChanges, equals(3));
+        expect(upResult.summary?.isSuccessful, isTrue);
+        expect(upResult.summary?.duration, equals(const Duration(minutes: 1)));
+        expect(upResult.summary?.config['proj:plain']?.value, equals('v'));
+        expect(upResult.summary?.config['proj:plain']?.secret, isFalse);
+        expect(
+          upResult.summary?.config['proj:secret']?.value,
+          equals('[secret]'),
+        );
+        expect(upResult.summary?.config['proj:secret']?.secret, isTrue);
+        expect(upResult.summary?.deploymentMap, isNotNull);
+        expect(upResult.summary?.deploymentMap?['resources'], hasLength(1));
+        expect(
+          upResult.summary?.policyPacks['org/policy-pack'],
+          equals('v1.2.3'),
+        );
 
-      expect(refreshResult.summary, isNotNull);
-      expect(refreshResult.summary?.kind, equals('refresh'));
-      expect(
-        refreshResult.summary?.parsedKind,
-        equals(AutomationUpdateKind.refresh),
-      );
-      expect(refreshResult.summary?.isSuccessful, isTrue);
-      expect(refreshResult.summary?.resourceChanges['same'], equals(3));
+        expect(refreshResult.summary, isNotNull);
+        expect(refreshResult.summary?.kind, equals('refresh'));
+        expect(
+          refreshResult.summary?.parsedKind,
+          equals(AutomationUpdateKind.refresh),
+        );
+        expect(refreshResult.summary?.isSuccessful, isTrue);
+        expect(refreshResult.summary?.resourceChanges['same'], equals(3));
+        expect(refreshResult.summary?.deploymentMap, isNotNull);
+        expect(refreshResult.summary?.deploymentMap?['resources'], isEmpty);
+        expect(
+          refreshResult.summary?.policyPacks['org/policy-pack'],
+          equals('v1.2.4'),
+        );
 
-      expect(destroyResult.summary, isNotNull);
-      expect(destroyResult.summary?.kind, equals('destroy'));
-      expect(
-        destroyResult.summary?.parsedKind,
-        equals(AutomationUpdateKind.destroy),
-      );
-      expect(destroyResult.summary?.isSuccessful, isTrue);
-      expect(destroyResult.summary?.resourceChanges['delete'], equals(2));
+        expect(destroyResult.summary, isNotNull);
+        expect(destroyResult.summary?.kind, equals('destroy'));
+        expect(
+          destroyResult.summary?.parsedKind,
+          equals(AutomationUpdateKind.destroy),
+        );
+        expect(destroyResult.summary?.isSuccessful, isTrue);
+        expect(destroyResult.summary?.resourceChanges['delete'], equals(2));
+        expect(destroyResult.summary?.deployment, equals('not-json'));
+        expect(destroyResult.summary?.deploymentMap, isNull);
 
-      expect(
-        runner.requests[1].arguments,
-        equals(<String>[
-          'stack',
-          'history',
-          '--json',
-          '--stack',
-          'dev',
-          '--page-size',
-          '1',
-        ]),
-      );
-      expect(
-        runner.requests[3].arguments,
-        equals(<String>[
-          'stack',
-          'history',
-          '--json',
-          '--stack',
-          'dev',
-          '--page-size',
-          '1',
-        ]),
-      );
-      expect(
-        runner.requests[5].arguments,
-        equals(<String>[
-          'stack',
-          'history',
-          '--json',
-          '--stack',
-          'dev',
-          '--page-size',
-          '1',
-        ]),
-      );
-    });
+        expect(
+          runner.requests[1].arguments,
+          equals(<String>[
+            'stack',
+            'history',
+            '--json',
+            '--stack',
+            'dev',
+            '--page-size',
+            '1',
+          ]),
+        );
+        expect(
+          runner.requests[3].arguments,
+          equals(<String>[
+            'stack',
+            'history',
+            '--json',
+            '--stack',
+            'dev',
+            '--page-size',
+            '1',
+          ]),
+        );
+        expect(
+          runner.requests[5].arguments,
+          equals(<String>[
+            'stack',
+            'history',
+            '--json',
+            '--stack',
+            'dev',
+            '--page-size',
+            '1',
+          ]),
+        );
+      },
+    );
 
     test('post-command callback still runs when operation fails', () async {
       final postCommandStacks = <String>[];

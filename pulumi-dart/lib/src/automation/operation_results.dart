@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'command.dart';
 import 'config.dart';
 import 'events.dart';
@@ -126,6 +128,8 @@ class AutomationUpdateSummary {
     this.result,
     this.version,
     this.deployment,
+    this.deploymentMap,
+    this.policyPacks = const <String, String>{},
     this.resourceChanges = const <String, int>{},
     this.raw = const <String, dynamic>{},
   });
@@ -198,6 +202,33 @@ class AutomationUpdateSummary {
       version = int.tryParse('$rawVersion');
     }
 
+    final policyPacks = <String, String>{};
+    final rawPolicyPacks = json['policyPacks'] ?? json['PolicyPacks'];
+    if (rawPolicyPacks is Map) {
+      for (final entry in rawPolicyPacks.entries) {
+        policyPacks['${entry.key}'] = '${entry.value}';
+      }
+    }
+
+    final dynamic deployment = json['deployment'] ?? json['Deployment'];
+    Map<String, dynamic>? deploymentMap;
+    if (deployment is Map) {
+      deploymentMap = Map<String, dynamic>.from(
+        deployment.map((key, value) => MapEntry('$key', value)),
+      );
+    } else if (deployment is String) {
+      try {
+        final decoded = jsonDecode(deployment);
+        if (decoded is Map) {
+          deploymentMap = Map<String, dynamic>.from(
+            decoded.map((key, value) => MapEntry('$key', value)),
+          );
+        }
+      } on FormatException {
+        // Keep raw deployment text when payload is not valid JSON.
+      }
+    }
+
     return AutomationUpdateSummary(
       kind: json['kind'] == null ? null : '${json['kind']}',
       startTime: parseDate('startTime'),
@@ -207,7 +238,9 @@ class AutomationUpdateSummary {
       config: config,
       result: json['result'] == null ? null : '${json['result']}',
       version: version,
-      deployment: json['deployment'] ?? json['Deployment'],
+      deployment: deployment,
+      deploymentMap: deploymentMap,
+      policyPacks: policyPacks,
       resourceChanges: resourceChanges,
       raw: json,
     );
@@ -222,6 +255,8 @@ class AutomationUpdateSummary {
   final String? result;
   final int? version;
   final dynamic deployment;
+  final Map<String, dynamic>? deploymentMap;
+  final Map<String, String> policyPacks;
   final AutomationOpMap resourceChanges;
   final Map<String, dynamic> raw;
 
