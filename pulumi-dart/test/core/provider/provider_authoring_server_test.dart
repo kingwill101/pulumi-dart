@@ -16,6 +16,7 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
     as resourcegrpc;
 import 'package:pulumi/src/resource/component_resource.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
+import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/struct_converter.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:test/test.dart';
@@ -652,6 +653,99 @@ void main() {
       expect(outputData.isSecret, isTrue);
       expect(outputData.resources, isEmpty);
     });
+
+    test(
+      'deserializeInputs wraps secret values with callback dependency metadata',
+      () async {
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'token': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialSecretSig,
+            Constants.valueName: 'super-secret',
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>['urn:pulumi:dev::proj::pkg:index:SecretDep::d'],
+        );
+
+        final outputData = await inputs['token']!.toOutput().getData();
+        expect(outputData.value, equals('super-secret'));
+        expect(outputData.isSecret, isTrue);
+        expect(outputData.resources, hasLength(1));
+        expect(
+          await outputData.resources.single.urn.getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:SecretDep::d'),
+        );
+      },
+    );
+
+    test(
+      'deserializeInputs preserves output-envelope unknowns and secret deps',
+      () async {
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'unknownOut': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialOutputValueSig,
+            Constants.dependenciesName: <String>[
+              'urn:pulumi:dev::proj::pkg:index:OutputDep::unknown',
+            ],
+          },
+          'secretOut': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialOutputValueSig,
+            Constants.valueName: 'secret-value',
+            Constants.secretName: true,
+            Constants.dependenciesName: <String>[
+              'urn:pulumi:dev::proj::pkg:index:OutputDep::secret',
+            ],
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>[
+            'urn:pulumi:dev::proj::pkg:index:CallbackDep::c',
+          ],
+        );
+
+        final unknownData = await inputs['unknownOut']!.toOutput().getData();
+        expect(unknownData.isKnown, isFalse);
+        expect(unknownData.resources, hasLength(1));
+        expect(
+          await unknownData.resources.single.urn.getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:OutputDep::unknown'),
+        );
+
+        final secretData = await inputs['secretOut']!.toOutput().getData();
+        expect(secretData.value, equals('secret-value'));
+        expect(secretData.isSecret, isTrue);
+        expect(secretData.resources, hasLength(1));
+        expect(
+          await secretData.resources.single.urn.getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:OutputDep::secret'),
+        );
+      },
+    );
+
+    test(
+      'deserializeInputs keeps matching provider references unwrapped',
+      () async {
+        const providerUrn =
+            'urn:pulumi:dev::proj::pulumi:providers:aws::default';
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'provider': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialResourceSig,
+            Constants.resourceUrnName: providerUrn,
+            Constants.resourceIdName: 'prov-id',
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>[providerUrn],
+        );
+
+        final outputData = await inputs['provider']!.toOutput().getData();
+        expect(outputData.value, isA<ProviderResource>());
+        expect(outputData.resources, isEmpty);
+      },
+    );
   });
 
   group('ProviderServer', () {
