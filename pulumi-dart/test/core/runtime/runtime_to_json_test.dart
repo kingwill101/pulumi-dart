@@ -112,5 +112,14 @@ void main() {
       );
       expect(await runtimeToJson([1, unknown, 3]), equals('null'));
     });
+
+    test('unknown map keys propagate unknown result', () async {
+      final unknownKey = Output.createUnknown<String>();
+
+      expect(
+        await runtimeToJson(<dynamic, dynamic>{unknownKey: 'value'}),
+        equals('null'),
+      );
+    });
   });
 }

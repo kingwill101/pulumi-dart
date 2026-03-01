@@ -20,6 +20,20 @@ class _PropertyDependentResource extends CustomResource {
       }, CustomResourceOptions());
 }
 
+class _NestedPropertyDependentResource extends CustomResource {
+  _NestedPropertyDependentResource(
+    String name, {
+    required Resource depA,
+    required Resource depB,
+  }) : super('test:index:NestedPropertyDependentResource', name, {
+         'nested': Input.fromValue(<String, dynamic>{
+           'first': depA,
+           'repeat': <Resource>[depA, depA],
+           'second': depB,
+         }),
+       }, CustomResourceOptions());
+}
+
 void main() {
   group('property_dependencies', () {
     late CapturingRegisterMonitor monitor;
@@ -50,5 +64,33 @@ void main() {
       final refDeps = targetRequest.propertyDependencies['ref']!.urns;
       expect(refDeps, contains(depUrn));
     });
+
+    test(
+      'propertyDependencies include nested references and deduplicate URNs',
+      () async {
+        final depA = _DependencyResource('depA');
+        final depB = _DependencyResource('depB');
+        _NestedPropertyDependentResource('target', depA: depA, depB: depB);
+
+        await deployment.registerOutputs();
+
+        expect(monitor.registerResourceRequests, hasLength(3));
+        final targetRequest = monitor.registerResourceRequests.firstWhere(
+          (r) => r.name == 'target',
+        );
+
+        expect(
+          targetRequest.propertyDependencies.containsKey('nested'),
+          isTrue,
+        );
+        final nestedDeps = targetRequest.propertyDependencies['nested']!.urns;
+
+        final depAUrn = await depA.urn.getValue();
+        final depBUrn = await depB.urn.getValue();
+
+        expect(nestedDeps, containsAll(<String>[depAUrn, depBUrn]));
+        expect(nestedDeps.toSet(), hasLength(2));
+      },
+    );
   });
 }
