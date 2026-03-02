@@ -2248,16 +2248,16 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			if !namedType.UseReferenceType {
 				continue
 			}
-				if classSpec := buildObjectClassSpec(
-					namedType.Name,
-					tokenModulePath(token),
-					t.Comment,
-					t.Properties,
-					namedTypeRefs,
-					true,
-					true,
-					pkg.Name,
-				); classSpec != nil {
+			if classSpec := buildObjectClassSpec(
+				namedType.Name,
+				tokenModulePath(token),
+				t.Comment,
+				t.Properties,
+				namedTypeRefs,
+				true,
+				true,
+				pkg.Name,
+			); classSpec != nil {
 				classSpec.CanonicalName = namedType.CanonicalName
 				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			}
@@ -3136,9 +3136,9 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	decodedExpr := typeSpecDecodeExpression(typeSpec, sourceExpr)
 	if objectClass.UsesInputTypes {
 		if property.Required {
-			return decodedExpr
+			return fmt.Sprintf("(%s).input()", decodedExpr)
 		}
-		return fmt.Sprintf("%s == null ? null : %s", sourceExpr, decodedExpr)
+		return fmt.Sprintf("%s == null ? null : (%s).input()", sourceExpr, decodedExpr)
 	}
 	if property.Required {
 		return decodedExpr
@@ -3363,54 +3363,14 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 		}
 		fmt.Fprintf(b, "  %s({\n", objectClass.ClassName)
 		for _, property := range objectClass.Properties {
-			constructorType := objectClassConstructorPropertyDartType(objectClass, property)
 			if property.Required {
-				if objectClass.UsesInputTypes {
-					fmt.Fprintf(b, "    required %s %s,\n", constructorType, property.FieldName)
-				} else {
-					fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)
-				}
+				fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)
 			} else {
-				if objectClass.UsesInputTypes {
-					fmt.Fprintf(b, "    %s %s,\n", constructorType, property.FieldName)
-				} else {
-					fmt.Fprintf(b, "    this.%s,\n", property.FieldName)
-				}
+				fmt.Fprintf(b, "    this.%s,\n", property.FieldName)
 			}
 		}
 		b.WriteString("  })")
-		if objectClass.UsesInputTypes {
-			b.WriteString(" :\n")
-			for i, property := range objectClass.Properties {
-				separator := ","
-				if i == len(objectClass.Properties)-1 {
-					separator = ";"
-				}
-				base := propertyBaseDartType(property)
-				if property.Required {
-					fmt.Fprintf(
-						b,
-						"      %s = pulumi.Input.asInput<%s>(%s)%s\n",
-						property.FieldName,
-						base,
-						property.FieldName,
-						separator,
-					)
-				} else {
-					fmt.Fprintf(
-						b,
-						"      %s = pulumi.Input.asOptionalInput<%s>(%s)%s\n",
-						property.FieldName,
-						base,
-						property.FieldName,
-						separator,
-					)
-				}
-			}
-			b.WriteString("\n")
-		} else {
-			b.WriteString(";\n\n")
-		}
+		b.WriteString(";\n\n")
 	}
 
 	b.WriteString("  Map<String, dynamic> toMap() {\n")
@@ -3472,16 +3432,12 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	usesDeploymentModels := len(functionTokens) > 0 || hasPackageRegistration
 	hasConfig := spec.Config != nil
 	configNeedsJSONDecode := false
-	hasTypedInputObjects := false
 	hasInputReferenceMappings := false
 	needsDecodeListHelper := false
 	needsDecodeMapHelper := false
 	needsEncodeListHelper := false
 	needsEncodeMapHelper := false
 	for _, objectClass := range spec.ObjectClasses {
-		if objectClass.UsesInputTypes {
-			hasTypedInputObjects = true
-		}
 		for _, property := range objectClass.Properties {
 			typeSpec := propertyTypeSpec(property)
 			if objectClass.UsesInputTypes && typeSpecNeedsEncodeConversion(typeSpec) {
@@ -3535,27 +3491,6 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
     }
   }
   return mapped;
-}
-
-`)
-	}
-
-	if hasTypedInputObjects {
-		b.WriteString(`pulumi.Input<T> _asInput<T>(dynamic value) {
-  if (value is pulumi.Input<T>) {
-    return value;
-  }
-  return pulumi.Input.fromValue(value as T);
-}
-
-pulumi.Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is pulumi.Input<T>) {
-    return value;
-  }
-  return pulumi.Input.fromValue(value as T);
 }
 
 `)
@@ -4073,7 +4008,7 @@ func generatedResourceFile(
 		if resource.ArgsClass != "" {
 			fmt.Fprintf(&b, "  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, resource.ArgsClass, dartStringLiteral(providerPackageName))
 		} else {
-			fmt.Fprintf(&b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, dynamic>{},\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, dartStringLiteral(providerPackageName))
+			fmt.Fprintf(&b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, pulumi.Input<dynamic>>{},\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, dartStringLiteral(providerPackageName))
 		}
 
 		if len(resource.OutputProperties) == 0 {
@@ -4295,7 +4230,7 @@ func writeGeneratedResourceMethods(
 		if method.ResultClass != "" {
 			fmt.Fprintf(
 				b,
-				"  Future<%s> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    final result = await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n    return %s.fromMap(result);\n  }\n",
+				"  Future<%s> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    final result = await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n    return %s.fromMap(result);\n  }\n",
 				method.ResultClass,
 				methodName,
 				signature,
@@ -4310,7 +4245,7 @@ func writeGeneratedResourceMethods(
 		if method.HasReturn {
 			fmt.Fprintf(
 				b,
-				"  Future<Map<String, dynamic>> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    return await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
+				"  Future<Map<String, dynamic>> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    return await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
 				methodName,
 				signature,
 				dartStringLiteral(methodToken),
@@ -4322,7 +4257,7 @@ func writeGeneratedResourceMethods(
 
 		fmt.Fprintf(
 			b,
-			"  Future<void> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    await deployment.call(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
+			"  Future<void> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    await deployment.call(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
 			methodName,
 			signature,
 			dartStringLiteral(methodToken),
