@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
+import 'package:pulumi_docker_build/index.dart' as docker_build_index;
 import 'package:pulumi_docker_build/pulumi_docker_build.dart' as docker_build;
 
 class ExampleStack extends pulumi.Stack {
@@ -20,49 +21,53 @@ class ExampleStack extends pulumi.Stack {
     );
 
     final auth = pulumi.output(
-      aws.ecr.getAuthorizationToken(
-        aws.ecr.GetAuthorizationTokenArgs(),
-      ),
+      aws.ecr.getAuthorizationToken(aws.ecr.GetAuthorizationTokenArgs()),
     );
 
     final image = docker_build.index.Image(
       'image',
       args: docker_build.index.ImageArgs(
         exec: true.output(),
-        builder: docker_build.index.BuilderConfig(name: builder).output(),
+        builder: docker_build.index
+            .BuilderConfig(name: builder.input())
+            .output(),
         cacheFrom: ecr.url.apply(
           (repositoryUrl) => [
             docker_build.index.CacheFrom(
-              registry: docker_build.index.CacheFromRegistry(
-                ref: '$repositoryUrl:cache',
-              ),
+              registry: docker_build.index
+                  .CacheFromRegistry(ref: '$repositoryUrl:cache'.input())
+                  .input(),
             ),
           ],
         ),
         cacheTo: ecr.url.apply(
           (repositoryUrl) => [
             docker_build.index.CacheTo(
-              registry: docker_build.index.CacheToRegistry(
-                imageManifest: true,
-                ociMediaTypes: true,
-                ref: '$repositoryUrl:cache',
-              ),
+              registry: docker_build.index
+                  .CacheToRegistry(
+                    imageManifest: true.input(),
+                    ociMediaTypes: true.input(),
+                    ref: '$repositoryUrl:cache'.input(),
+                  )
+                  .input(),
             ),
           ],
         ),
-        platforms: [docker_build.index.Platform.valueLinuxAmd64].output(),
+        platforms: [docker_build_index.Platform.valueLinuxAmd64].input(),
         push: true.output(),
         registries: pulumi.Output.tuple(ecr.url, auth).apply(
           (values) => [
             docker_build.index.Registry(
-              address: values.$1,
-              username: values.$2.userName,
-              password: values.$2.password,
+              address: values.$1.input(),
+              username: values.$2.userName.input(),
+              password: values.$2.password.input(),
             ),
           ],
         ),
         tags: ecr.url.apply((repositoryUrl) => ['$repositoryUrl:latest']),
-        context: docker_build.index.BuildContext(location: 'app').output(),
+        context: docker_build.index
+            .BuildContext(location: 'app'.input())
+            .input(),
       ),
     );
 
@@ -70,27 +75,30 @@ class ExampleStack extends pulumi.Stack {
       'service',
       args: awsx.ecs.FargateServiceArgs(
         cluster: cluster.arn,
-        assignPublicIp: true.output(),
-        taskDefinitionArgs: pulumi.Output.tuple(
-          image.ref,
-          loadbalancer.defaultTargetGroup,
-        ).apply(
-          (values) => awsx.ecs.FargateServiceTaskDefinition(
-            container: awsx.ecs.TaskDefinitionContainerDefinition(
-              name: 'service-container',
-              image: values.$1,
-              cpu: 128,
-              memory: 512,
-              essential: true,
-              portMappings: [
-                awsx.ecs.TaskDefinitionPortMapping(
-                  containerPort: 80,
-                  targetGroup: values.$2,
-                ),
-              ],
+        assignPublicIp: true.input(),
+        taskDefinitionArgs:
+            pulumi.Output.tuple(
+              image.ref,
+              loadbalancer.defaultTargetGroup,
+            ).apply(
+              (values) => awsx.ecs.FargateServiceTaskDefinition(
+                container: awsx.ecs
+                    .TaskDefinitionContainerDefinition(
+                      name: 'service-container'.input(),
+                      image: values.$1.input(),
+                      cpu: 128.input(),
+                      memory: 512.input(),
+                      essential: true.input(),
+                      portMappings: [
+                        awsx.ecs.TaskDefinitionPortMapping(
+                          containerPort: 80.input(),
+                          targetGroup: values.$2.input(),
+                        ),
+                      ].input(),
+                    )
+                    .input(),
+              ),
             ),
-          ),
-        ),
       ),
     );
 
@@ -99,9 +107,7 @@ class ExampleStack extends pulumi.Stack {
 
   @override
   List<pulumi.OutputProperty> getOutputProperties() {
-    return [
-      pulumi.OutputProperty('url', url),
-    ];
+    return [pulumi.OutputProperty('url', url)];
   }
 }
 

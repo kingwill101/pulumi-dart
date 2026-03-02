@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 import 'package:pulumi_eks/pulumi_eks.dart' as eks;
+import 'package:pulumi_eks/index.dart' as eks_index;
 import 'package:pulumi_kubernetes/apps.dart' as k8sapps;
 import 'package:pulumi_kubernetes/core.dart' as k8score;
 import 'package:pulumi_kubernetes/meta.dart' as k8smeta;
@@ -14,19 +15,19 @@ class LocalAiFlowiseStack extends pulumi.Stack {
   LocalAiFlowiseStack() {
     final vpc = awsx.ec2.Vpc(
       'vpc',
-      args: awsx.ec2.VpcArgs(numberOfAvailabilityZones: 2.output()),
+      args: awsx.ec2.VpcArgs(numberOfAvailabilityZones: 2.input()),
     );
 
-    final cluster = eks.Cluster(
+    final cluster = eks.index.Cluster(
       'eks-cluster',
-      args: eks.ClusterArgs(
+      args: eks.index.ClusterArgs(
         vpcId: vpc.vpcId,
         subnetIds: vpc.publicSubnetIds,
-        authenticationMode: eks.AuthenticationMode.api.output(),
-        desiredCapacity: 3.output(),
-        minSize: 2.output(),
-        maxSize: 4.output(),
-        storageClasses: 'gp2'.output(),
+        authenticationMode: eks_index.AuthenticationMode.api.input(),
+        desiredCapacity: 3.input(),
+        minSize: 2.input(),
+        maxSize: 4.input(),
+        storageClasses: 'gp2'.input(),
       ),
     );
 
@@ -42,28 +43,40 @@ class LocalAiFlowiseStack extends pulumi.Stack {
       options: pulumi.CustomResourceOptions(provider: provider),
     );
 
-    final localAiNsName = localAiNamespace.metadata.apply((m) => m.name ?? 'local-ai');
+    final localAiNsName = localAiNamespace.metadata.apply<String>(
+      (m) => m.name ?? 'local-ai',
+    );
 
     final localAiDeployment = k8sapps.DeploymentAppsV1(
       'local-ai',
       args: k8sapps.DeploymentArgs(
-        metadata: k8smeta.ObjectMeta(namespace: localAiNsName, labels: localAiLabels).output(),
+        metadata: k8smeta.ObjectMeta(
+          namespace: localAiNsName,
+          labels: localAiLabels.input(),
+        ).input(),
         spec: k8sapps.DeploymentSpec(
-          replicas: 1,
-          selector: k8smeta.LabelSelector(matchLabels: localAiLabels),
+          replicas: 1.input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: localAiLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: localAiLabels),
+            metadata: k8smeta.ObjectMeta(labels: localAiLabels.input()).input(),
             spec: k8score.PodSpec(
               containers: [
                 k8score.Container(
-                  name: 'local-ai',
-                  image: 'quay.io/go-skynet/local-ai:latest',
-                  ports: [k8score.ContainerPort(name: 'http', containerPort: 8080)],
+                  name: 'local-ai'.input(),
+                  image: 'quay.io/go-skynet/local-ai:latest'.input(),
+                  ports: [
+                    k8score.ContainerPort(
+                      name: 'http'.input(),
+                      containerPort: 8080.input(),
+                    ),
+                  ].input(),
                 ),
-              ],
-            ),
-          ),
-        ).output(),
+              ].input(),
+            ).input(),
+          ).input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
     );
@@ -73,13 +86,21 @@ class LocalAiFlowiseStack extends pulumi.Stack {
       args: k8score.ServiceArgs(
         metadata: k8smeta.ObjectMeta(
           namespace: localAiNsName,
-          labels: localAiDeployment.metadata.apply((m) => m.labels),
-        ).output(),
-        spec: k8score.ServiceSpec(
-          type: 'LoadBalancer',
-          selector: localAiLabels,
-          ports: [k8score.ServicePort(port: 8080, targetPort: 8080)],
-        ).output(),
+          labels: localAiDeployment.metadata
+              .apply<Map<String, String>?>((m) => m.labels)
+              .apply<Map<String, String>>((labels) => labels ?? localAiLabels)
+              .input(),
+        ).input(),
+          spec: k8score.ServiceSpec(
+          type: 'LoadBalancer'.input(),
+          selector: localAiLabels.input(),
+          ports: [
+            k8score.ServicePort(
+              port: 8080.input(),
+              targetPort: 8080.input(),
+            ),
+          ].input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
     );
@@ -91,28 +112,40 @@ class LocalAiFlowiseStack extends pulumi.Stack {
       options: pulumi.CustomResourceOptions(provider: provider),
     );
 
-    final flowiseNsName = flowiseNamespace.metadata.apply((m) => m.name ?? 'flowise');
+    final flowiseNsName = flowiseNamespace.metadata.apply<String>(
+      (m) => m.name ?? 'flowise',
+    );
 
     final flowiseDeployment = k8sapps.DeploymentAppsV1(
       'flowise',
       args: k8sapps.DeploymentArgs(
-        metadata: k8smeta.ObjectMeta(namespace: flowiseNsName, labels: flowiseLabels).output(),
+        metadata: k8smeta.ObjectMeta(
+          namespace: flowiseNsName,
+          labels: flowiseLabels.input(),
+        ).input(),
         spec: k8sapps.DeploymentSpec(
-          replicas: 1,
-          selector: k8smeta.LabelSelector(matchLabels: flowiseLabels),
+          replicas: 1.input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: flowiseLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: flowiseLabels),
+            metadata: k8smeta.ObjectMeta(labels: flowiseLabels.input()).input(),
             spec: k8score.PodSpec(
               containers: [
                 k8score.Container(
-                  name: 'flowise',
-                  image: 'flowiseai/flowise:latest',
-                  ports: [k8score.ContainerPort(name: 'http', containerPort: 3000)],
+                  name: 'flowise'.input(),
+                  image: 'flowiseai/flowise:latest'.input(),
+                  ports: [
+                    k8score.ContainerPort(
+                      name: 'http'.input(),
+                      containerPort: 3000.input(),
+                    ),
+                  ].input(),
                 ),
-              ],
-            ),
-          ),
-        ).output(),
+              ].input(),
+            ).input(),
+          ).input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
     );
@@ -122,32 +155,28 @@ class LocalAiFlowiseStack extends pulumi.Stack {
       args: k8score.ServiceArgs(
         metadata: k8smeta.ObjectMeta(
           namespace: flowiseNsName,
-          labels: flowiseDeployment.metadata.apply((m) => m.labels),
-        ).output(),
-        spec: k8score.ServiceSpec(
-          type: 'LoadBalancer',
-          selector: flowiseLabels,
-          ports: [k8score.ServicePort(port: 3000, targetPort: 3000)],
-        ).output(),
+          labels: flowiseDeployment.metadata
+              .apply<Map<String, String>?>((m) => m.labels)
+              .apply<Map<String, String>>((labels) => labels ?? flowiseLabels)
+              .input(),
+        ).input(),
+          spec: k8score.ServiceSpec(
+          type: 'LoadBalancer'.input(),
+          selector: flowiseLabels.input(),
+          ports: [
+            k8score.ServicePort(
+              port: 3000.input(),
+              targetPort: 3000.input(),
+            ),
+          ].input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
     );
 
     kubeconfig = cluster.kubeconfig;
-    localAiServiceHostname = localAiService.status.apply((s) {
-      final ingress = s?.loadBalancer?.ingress;
-      if (ingress == null || ingress.isEmpty) {
-        return '';
-      }
-      return ingress.first.hostname ?? ingress.first.ip ?? '';
-    });
-    flowiseServiceHostname = flowiseService.status.apply((s) {
-      final ingress = s?.loadBalancer?.ingress;
-      if (ingress == null || ingress.isEmpty) {
-        return '';
-      }
-      return ingress.first.hostname ?? ingress.first.ip ?? '';
-    });
+    localAiServiceHostname = localAiService.metadata.apply<String>((m) => m.name ?? '');
+    flowiseServiceHostname = flowiseService.metadata.apply<String>((m) => m.name ?? '');
   }
 
   @override

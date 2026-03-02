@@ -5,6 +5,7 @@ import 'package:mime/mime.dart';
 import 'package:path/path.dart' as p;
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
+import 'package:pulumi_aws/providers.dart' as providers;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 
 class NetlifyCmsAndOauthStack extends pulumi.Stack {
@@ -24,14 +25,15 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
 
     final oauthTargetDomain = oauthCfg.require('targetDomain');
     final githubKey = oauthCfg.require('githubKey');
-    final githubSecret = oauthCfg.requireSecret('githubSecret');
+    final githubSecret = oauthCfg.require('githubSecret');
     final githubScope = oauthCfg.get('githubScope') ?? 'public_repo';
-    final targetGroupPort = oauthCfg.getInt('targetGroupPort') ?? 80;
-    final sessionSecret = oauthCfg.requireSecret('sessionSecret');
+    final targetGroupPort =
+        oauthCfg.getNumber('targetGroupPort')?.toInt() ?? 80;
+    final sessionSecret = oauthCfg.require('sessionSecret');
 
     final cmsBucket = aws.s3.Bucket(
       'contentBucket',
-      args: aws.s3.BucketArgs(bucket: cmsTargetDomain.output()),
+      args: aws.s3.BucketArgs(bucket: cmsTargetDomain.input()),
     );
 
     final cmsOwnership = aws.s3.BucketOwnershipControls(
@@ -39,7 +41,7 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       args: aws.s3.BucketOwnershipControlsArgs(
         bucket: cmsBucket.bucket,
         rule: aws.s3.BucketOwnershipControlsRule(
-          objectOwnership: 'BucketOwnerPreferred'.output(),
+          objectOwnership: 'BucketOwnerPreferred'.input(),
         ).input(),
       ),
     );
@@ -48,10 +50,10 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       'contentBucket-public-access',
       args: aws.s3.BucketPublicAccessBlockArgs(
         bucket: cmsBucket.bucket,
-        blockPublicAcls: false.output(),
-        blockPublicPolicy: false.output(),
-        ignorePublicAcls: false.output(),
-        restrictPublicBuckets: false.output(),
+        blockPublicAcls: false.input(),
+        blockPublicPolicy: false.input(),
+        ignorePublicAcls: false.input(),
+        restrictPublicBuckets: false.input(),
       ),
     );
 
@@ -59,7 +61,7 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       'contentBucket-acl',
       args: aws.s3.BucketAclArgs(
         bucket: cmsBucket.bucket,
-        acl: 'public-read'.output(),
+        acl: 'public-read'.input(),
       ),
       options: pulumi.CustomResourceOptions(
         dependsOn: [cmsOwnership, cmsPublicBlock],
@@ -71,10 +73,10 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       args: aws.s3.BucketWebsiteConfigurationArgs(
         bucket: cmsBucket.bucket,
         indexDocument: aws.s3.BucketWebsiteConfigurationIndexDocument(
-          suffix: 'index.html'.output(),
+          suffix: 'index.html'.input(),
         ).input(),
         errorDocument: aws.s3.BucketWebsiteConfigurationErrorDocument(
-          key: '404.html'.output(),
+          key: '404.html'.input(),
         ).input(),
       ),
     );
@@ -92,12 +94,12 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         aws.s3.BucketObject(
           'cms-content-$i',
           args: aws.s3.BucketObjectArgs(
-            key: rel.output(),
+            key: rel.input(),
             bucket: cmsBucket.bucket,
-            acl: 'public-read'.output(),
+            acl: 'public-read'.input(),
             contentType: (lookupMimeType(entity.path) ?? 'application/octet-stream')
-                .output(),
-            source: pulumi.FileAsset(entity.path).output(),
+                .input(),
+            source: pulumi.FileAsset(entity.path).input(),
           ),
           options: pulumi.CustomResourceOptions(parent: cmsBucket),
         );
@@ -107,28 +109,30 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
 
     final logsBucket = aws.s3.Bucket(
       'requestLogs',
-      args: aws.s3.BucketArgs(bucket: '${cmsTargetDomain}-logs'.output()),
+      args: aws.s3.BucketArgs(bucket: '${cmsTargetDomain}-logs'.input()),
     );
 
-    final east = aws.Provider(
+    final east = providers.ProviderProvider(
       'east',
-      args: aws.ProviderArgs(region: 'us-east-1'.output()),
+      args: providers.ProviderArgs(region: 'us-east-1'.input()),
     );
 
     pulumi.Input<String> cmsCertArnInput;
     if (cmsCertificateArn != null && cmsCertificateArn.isNotEmpty) {
-      cmsCertArnInput = cmsCertificateArn.output();
+      cmsCertArnInput = cmsCertificateArn.input();
     } else {
       final cmsDomain = _domainParts(cmsTargetDomain);
-      final cmsZone = aws.route53.getZoneOutput(
-        args: aws.route53.GetZoneArgs(name: cmsDomain.parentDomain.output()),
+      final cmsZone = pulumi.output(
+        aws.route53.getZone(
+          aws.route53.GetZoneArgs(name: cmsDomain.parentDomain.input()),
+        ),
       );
 
       final cert = aws.acm.Certificate(
         'cms-certificate',
         args: aws.acm.CertificateArgs(
-          domainName: cmsTargetDomain.output(),
-          validationMethod: 'DNS'.output(),
+          domainName: cmsTargetDomain.input(),
+          validationMethod: 'DNS'.input(),
         ),
         options: pulumi.CustomResourceOptions(provider: east),
       );
@@ -137,20 +141,37 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         '${cmsTargetDomain}-validation',
         args: aws.route53.RecordArgs(
           name: cert.domainValidationOptions.apply((dvo) {
-            if (dvo == null || dvo.isEmpty) return '';
-            return dvo.first.resourceRecordName;
+            if (dvo.isEmpty) {
+              return pulumi.Output.create('');
+            }
+            final resourceRecordName = dvo.first.resourceRecordName;
+            if (resourceRecordName == null) {
+              return pulumi.Output.create('');
+            }
+            return resourceRecordName.toOutput();
           }),
-          zoneId: cmsZone.zoneId,
+          zoneId: cmsZone.apply((zone) => zone.zoneId),
           type: cert.domainValidationOptions.apply((dvo) {
-            if (dvo == null || dvo.isEmpty) return '';
-            return dvo.first.resourceRecordType;
+            if (dvo.isEmpty) {
+              return pulumi.Output.create('');
+            }
+            final resourceRecordType = dvo.first.resourceRecordType;
+            if (resourceRecordType == null) {
+              return pulumi.Output.create('');
+            }
+            return resourceRecordType.toOutput();
           }),
           records: cert.domainValidationOptions.apply((dvo) {
-            if (dvo == null || dvo.isEmpty) return <String>[];
+            if (dvo.isEmpty) {
+              return pulumi.Output.create(<String>[]);
+            }
             final value = dvo.first.resourceRecordValue;
-            return value == null ? <String>[] : <String>[value];
+            if (value == null) {
+              return pulumi.Output.create(<String>[]);
+            }
+            return value.toOutput().apply((value) => [value]);
           }),
-          ttl: 600.output(),
+          ttl: 600.input(),
         ),
       );
 
@@ -158,7 +179,9 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         'cms-certificateValidation',
         args: aws.acm.CertificateValidationArgs(
           certificateArn: cert.arn,
-          validationRecordFqdns: [certValidationDomain.fqdn].output(),
+          validationRecordFqdns: certValidationDomain.fqdn
+              .apply<List<String>>((fqdn) => [fqdn])
+              .input(),
         ),
         options: pulumi.CustomResourceOptions(provider: east),
       );
@@ -168,50 +191,50 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
     final cdn = aws.cloudfront.Distribution(
       'cdn',
       args: aws.cloudfront.DistributionArgs(
-        enabled: true.output(),
-        aliases: [cmsTargetDomain.output()].output(),
+        enabled: true.input(),
+        aliases: [cmsTargetDomain].input(),
         origins: [
           aws.cloudfront.DistributionOrigin(
             originId: cmsBucket.arn,
             domainName: cmsWebsite.websiteEndpoint,
             customOriginConfig: aws.cloudfront.DistributionOriginCustomOriginConfig(
-              originProtocolPolicy: 'http-only'.output(),
-              httpPort: 80.output(),
-              httpsPort: 443.output(),
-              originSslProtocols: ['TLSv1.2'].output(),
+              originProtocolPolicy: 'http-only'.input(),
+              httpPort: 80.input(),
+              httpsPort: 443.input(),
+              originSslProtocols: ['TLSv1.2'].input(),
             ).input(),
           ),
-        ].output(),
-        defaultRootObject: 'index.html'.output(),
+        ].input(),
+        defaultRootObject: 'index.html'.input(),
         defaultCacheBehavior: aws.cloudfront.DistributionDefaultCacheBehavior(
           targetOriginId: cmsBucket.arn,
-          viewerProtocolPolicy: 'redirect-to-https'.output(),
-          allowedMethods: ['GET', 'HEAD', 'OPTIONS'].output(),
-          cachedMethods: ['GET', 'HEAD', 'OPTIONS'].output(),
+          viewerProtocolPolicy: 'redirect-to-https'.input(),
+          allowedMethods: ['GET', 'HEAD', 'OPTIONS'].input(),
+          cachedMethods: ['GET', 'HEAD', 'OPTIONS'].input(),
           forwardedValues: aws.cloudfront.DistributionDefaultCacheBehaviorForwardedValues(
-            queryString: false.output(),
+            queryString: false.input(),
             cookies: aws.cloudfront.DistributionDefaultCacheBehaviorForwardedValuesCookies(
-              forward: 'none'.output(),
+              forward: 'none'.input(),
             ).input(),
           ).input(),
-          minTtl: 0.output(),
-          defaultTtl: 600.output(),
-          maxTtl: 600.output(),
+          minTtl: 0.input(),
+          defaultTtl: 600.input(),
+          maxTtl: 600.input(),
         ).input(),
-        priceClass: 'PriceClass_100'.output(),
+        priceClass: 'PriceClass_100'.input(),
         restrictions: aws.cloudfront.DistributionRestrictions(
           geoRestriction: aws.cloudfront.DistributionRestrictionsGeoRestriction(
-            restrictionType: 'none'.output(),
+            restrictionType: 'none'.input(),
           ).input(),
         ).input(),
         viewerCertificate: aws.cloudfront.DistributionViewerCertificate(
           acmCertificateArn: cmsCertArnInput,
-          sslSupportMethod: 'sni-only'.output(),
+          sslSupportMethod: 'sni-only'.input(),
         ).input(),
         loggingConfig: aws.cloudfront.DistributionLoggingConfig(
           bucket: logsBucket.bucketDomainName,
-          includeCookies: false.output(),
-          prefix: '${cmsTargetDomain}/'.output(),
+          includeCookies: false.input(),
+          prefix: '${cmsTargetDomain}/'.input(),
         ).input(),
       ),
     );
@@ -219,15 +242,17 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
     _createAliasRecord('cms', cmsTargetDomain, cdn.domainName, cdn.hostedZoneId);
 
     final oauthDomain = _domainParts(oauthTargetDomain);
-    final oauthZone = aws.route53.getZoneOutput(
-      args: aws.route53.GetZoneArgs(name: oauthDomain.parentDomain.output()),
+    final oauthZone = pulumi.output(
+      aws.route53.getZone(
+        aws.route53.GetZoneArgs(name: oauthDomain.parentDomain.input()),
+      ),
     );
 
     final oauthCert = aws.acm.Certificate(
       'oauth-certificate',
       args: aws.acm.CertificateArgs(
-        domainName: oauthTargetDomain.output(),
-        validationMethod: 'DNS'.output(),
+        domainName: oauthTargetDomain.input(),
+        validationMethod: 'DNS'.input(),
       ),
     );
 
@@ -235,56 +260,77 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       '${oauthTargetDomain}-validation',
       args: aws.route53.RecordArgs(
         name: oauthCert.domainValidationOptions.apply((dvo) {
-          if (dvo == null || dvo.isEmpty) return '';
-          return dvo.first.resourceRecordName;
+          if (dvo.isEmpty) {
+            return pulumi.Output.create('');
+          }
+          final resourceRecordName = dvo.first.resourceRecordName;
+          if (resourceRecordName == null) {
+            return pulumi.Output.create('');
+          }
+          return resourceRecordName.toOutput();
         }),
-        zoneId: oauthZone.zoneId,
+        zoneId: oauthZone.apply((zone) => zone.zoneId),
         type: oauthCert.domainValidationOptions.apply((dvo) {
-          if (dvo == null || dvo.isEmpty) return '';
-          return dvo.first.resourceRecordType;
+          if (dvo.isEmpty) {
+            return pulumi.Output.create('');
+          }
+          final resourceRecordType = dvo.first.resourceRecordType;
+          if (resourceRecordType == null) {
+            return pulumi.Output.create('');
+          }
+          return resourceRecordType.toOutput();
         }),
         records: oauthCert.domainValidationOptions.apply((dvo) {
-          if (dvo == null || dvo.isEmpty) return <String>[];
+          if (dvo.isEmpty) {
+            return pulumi.Output.create(<String>[]);
+          }
           final value = dvo.first.resourceRecordValue;
-          return value == null ? <String>[] : <String>[value];
+          if (value == null) {
+            return pulumi.Output.create(<String>[]);
+          }
+          return value.toOutput().apply((value) => [value]);
         }),
-        ttl: 600.output(),
+        ttl: 600.input(),
       ),
     );
 
-    final oauthCertValidation = aws.acm.CertificateValidation(
+      final oauthCertValidation = aws.acm.CertificateValidation(
       'oauth-certificateValidation',
       args: aws.acm.CertificateValidationArgs(
         certificateArn: oauthCert.arn,
-        validationRecordFqdns: [oauthValidationRecord.fqdn].output(),
+        validationRecordFqdns: oauthValidationRecord.fqdn
+            .apply<List<String>>((fqdn) => [fqdn])
+            .input(),
       ),
     );
 
     final oauthVpc = aws.ec2.Vpc(
       'oauth-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.42.0.0/16'.output(),
-        enableDnsHostnames: true.output(),
+        cidrBlock: '10.42.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
       ),
     );
 
-    final region = aws.getRegionOutput();
+    final region = pulumi.output(
+      aws.index.getRegion(aws.index.GetRegionArgs()),
+    );
     final oauthSubnetA = aws.ec2.Subnet(
       'oauth-subnet-a',
       args: aws.ec2.SubnetArgs(
         vpcId: oauthVpc.id,
-        cidrBlock: '10.42.1.0/24'.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}a'),
-        mapPublicIpOnLaunch: true.output(),
+        cidrBlock: '10.42.1.0/24'.input(),
+        availabilityZone: region.apply((r) => '${r.name}a'),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
     final oauthSubnetB = aws.ec2.Subnet(
       'oauth-subnet-b',
       args: aws.ec2.SubnetArgs(
         vpcId: oauthVpc.id,
-        cidrBlock: '10.42.2.0/24'.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}b'),
-        mapPublicIpOnLaunch: true.output(),
+        cidrBlock: '10.42.2.0/24'.input(),
+        availabilityZone: region.apply((r) => '${r.name}b'),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
 
@@ -298,10 +344,10 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         vpcId: oauthVpc.id,
         routes: [
           aws.ec2.RouteTableRoute(
-            cidrBlock: '0.0.0.0/0'.output(),
+            cidrBlock: '0.0.0.0/0'.input(),
             gatewayId: oauthIgw.id,
           ),
-        ].output(),
+        ].input(),
       ),
     );
     aws.ec2.RouteTableAssociation(
@@ -327,38 +373,44 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         vpcId: oauthVpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp'.output(),
-            fromPort: 443.output(),
-            toPort: 443.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: 'tcp'.input(),
+            fromPort: 443.input(),
+            toPort: 443.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1'.output(),
-            fromPort: 0.output(),
-            toPort: 0.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
     final oauthLb = aws.lb.LoadBalancer(
       'oauth-lb',
       args: aws.lb.LoadBalancerArgs(
-        loadBalancerType: 'application'.output(),
-        securityGroups: [oauthSg.id].output(),
-        subnets: [oauthSubnetA.id, oauthSubnetB.id].output(),
+        loadBalancerType: 'application'.input(),
+        securityGroups: pulumi.Output
+            .all([oauthSg.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
+        subnets: pulumi.Output
+            .all([oauthSubnetA.id, oauthSubnetB.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
       ),
     );
 
     final oauthTg = aws.lb.TargetGroup(
       'oauth-tg',
       args: aws.lb.TargetGroupArgs(
-        port: targetGroupPort.output(),
-        protocol: 'HTTP'.output(),
-        targetType: 'ip'.output(),
+        port: targetGroupPort.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
         vpcId: oauthVpc.id,
       ),
     );
@@ -367,15 +419,15 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       'oauth-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: oauthLb.arn,
-        port: 443.output(),
-        protocol: 'HTTPS'.output(),
+        port: 443.input(),
+        protocol: 'HTTPS'.input(),
         certificateArn: oauthCertValidation.certificateArn,
         defaultActions: [
           aws.lb.ListenerDefaultAction(
-            type: 'forward'.output(),
+            type: 'forward'.input(),
             targetGroupArn: oauthTg.arn,
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -399,7 +451,7 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       'oauth-task-exec-role',
       args: aws.iam.RoleArgs(
         assumeRolePolicy: '''{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"ecs-tasks.amazonaws.com"},"Action":"sts:AssumeRole"}]}'''
-            .output(),
+            .input(),
       ),
     );
     aws.iam.RolePolicyAttachment(
@@ -408,25 +460,30 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
         role: taskExecRole.name,
         policyArn:
             'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
-                .output(),
+                .input(),
       ),
     );
 
     final taskDef = aws.ecs.TaskDefinition(
       'oauth-task',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'netlify-cms-oauth'.output(),
-        cpu: '256'.output(),
-        memory: '512'.output(),
-        networkMode: 'awsvpc'.output(),
-        requiresCompatibilities: ['FARGATE'].output(),
+        family: 'netlify-cms-oauth'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
+        networkMode: 'awsvpc'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
         executionRoleArn: taskExecRole.arn,
-        containerDefinitions: pulumi.Output.tuple3(
-          oauthImage.imageUri,
-          githubSecret,
-          sessionSecret,
-        ).apply((values) {
-          final (imageUri, githubSecretValue, sessionSecretValue) = values;
+        containerDefinitions: pulumi.Output
+            .all([
+              oauthImage.imageUri,
+              pulumi.output(githubSecret),
+              pulumi.output(sessionSecret),
+            ]).apply(
+          (List<dynamic> values) {
+            final imageUri = values[0] as String;
+            final githubSecretValue = values[1] as String;
+            final sessionSecretValue = values[2] as String;
+
           return jsonEncode([
             {
               'name': 'oauth',
@@ -457,21 +514,27 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
       'oauth-service',
       args: aws.ecs.ServiceArgs(
         cluster: oauthCluster.arn,
-        desiredCount: 1.output(),
-        launchType: 'FARGATE'.output(),
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
         taskDefinition: taskDef.arn,
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.output(),
-          subnets: [oauthSubnetA.id, oauthSubnetB.id].output(),
-          securityGroups: [oauthSg.id].output(),
+          assignPublicIp: true.input(),
+          subnets: pulumi.Output
+              .all([oauthSubnetA.id, oauthSubnetB.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
+          securityGroups: pulumi.Output
+              .all([oauthSg.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
         ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: oauthTg.arn,
-            containerName: 'oauth'.output(),
-            containerPort: targetGroupPort.output(),
+            containerName: 'oauth'.input(),
+            containerPort: targetGroupPort.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -479,8 +542,8 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
 
     cmsContentBucketUri = cmsBucket.bucket.apply((b) => 's3://$b');
     cmsCloudFrontDomain = cdn.domainName;
-    cmsTargetDomainEndpoint = 'https://$cmsTargetDomain'.output();
-    oauthEndpoint = oauthLb.dnsName.apply((d) => 'https://${d ?? ''}');
+    cmsTargetDomainEndpoint = pulumi.Output.create('https://$cmsTargetDomain');
+    oauthEndpoint = oauthLb.dnsName.apply((d) => 'https://$d');
   }
 
   _DomainParts _domainParts(String domain) {
@@ -496,32 +559,34 @@ class NetlifyCmsAndOauthStack extends pulumi.Stack {
     return _DomainParts(sub, parent);
   }
 
-  aws.route53.Record _createAliasRecord(
+  void _createAliasRecord(
     String resourceName,
     String targetDomain,
     pulumi.Input<String> aliasDnsName,
     pulumi.Input<String> aliasZoneId,
   ) {
     final domainParts = _domainParts(targetDomain);
-    final hostedZone = aws.route53.getZoneOutput(
-      args: aws.route53.GetZoneArgs(name: domainParts.parentDomain.output()),
+    final hostedZone = pulumi.output(
+      aws.route53.getZone(
+        aws.route53.GetZoneArgs(name: domainParts.parentDomain.input()),
+      ),
     );
-    return aws.route53.Record(
+    aws.route53.Record(
       '$resourceName-alias',
       args: aws.route53.RecordArgs(
         name: (domainParts.subdomain.isEmpty
                 ? targetDomain
                 : domainParts.subdomain)
-            .output(),
-        zoneId: hostedZone.zoneId,
-        type: 'A'.output(),
+            .input(),
+        zoneId: hostedZone.apply((zone) => zone.zoneId),
+        type: 'A'.input(),
         aliases: [
           aws.route53.RecordAlias(
             name: aliasDnsName,
             zoneId: aliasZoneId,
-            evaluateTargetHealth: true.output(),
+            evaluateTargetHealth: true.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
   }

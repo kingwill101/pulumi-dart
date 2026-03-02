@@ -9,17 +9,17 @@ class NextJsStack extends pulumi.Stack {
   NextJsStack() {
     final siteBucket = aws.s3.Bucket(
       'site-bucket',
-      args: aws.s3.BucketArgs(forceDestroy: true),
+      args: aws.s3.BucketArgs(forceDestroy: true.input()),
     );
 
     aws.s3.BucketPublicAccessBlock(
       'site-bucket-public-access',
       args: aws.s3.BucketPublicAccessBlockArgs(
         bucket: siteBucket.id,
-        blockPublicAcls: false,
-        blockPublicPolicy: false,
-        ignorePublicAcls: false,
-        restrictPublicBuckets: false,
+        blockPublicAcls: false.input(),
+        blockPublicPolicy: false.input(),
+        ignorePublicAcls: false.input(),
+        restrictPublicBuckets: false.input(),
       ),
     );
 
@@ -28,11 +28,11 @@ class NextJsStack extends pulumi.Stack {
       args: aws.s3.BucketWebsiteConfigurationV2Args(
         bucket: siteBucket.id,
         indexDocument: aws.s3.BucketWebsiteConfigurationV2IndexDocument(
-          suffix: 'index.html',
-        ).output(),
+          suffix: 'index.html'.input(),
+        ).input(),
         errorDocument: aws.s3.BucketWebsiteConfigurationV2ErrorDocument(
-          key: 'index.html',
-        ).output(),
+          key: 'index.html'.input(),
+        ).input(),
       ),
     );
 
@@ -61,8 +61,8 @@ class NextJsStack extends pulumi.Stack {
       'site-index',
       args: aws.s3.BucketObjectArgs(
         bucket: siteBucket.id,
-        key: 'index.html',
-        contentType: 'text/html; charset=utf-8',
+        key: 'index.html'.input(),
+        contentType: 'text/html; charset=utf-8'.input(),
         content: '''
 <!doctype html>
 <html>
@@ -77,7 +77,7 @@ class NextJsStack extends pulumi.Stack {
     <p>For full OpenNext parity, add CloudFront + Lambda origins as a follow-up.</p>
   </body>
 </html>
-''',
+'''.input(),
       ),
     );
 

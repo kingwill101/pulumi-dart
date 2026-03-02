@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
-import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
-    as awsx_apigw;
+import 'package:pulumi_aws/lambda.dart' as aws_lambda;
+import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
+import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart' as awsx_apigw;
 
 class EscExternalAdapterLambdaStack extends pulumi.Stack {
   late final pulumi.Output<String> adapterUrl;
@@ -23,7 +24,7 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -32,7 +33,8 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+                .input(),
       ),
     );
 
@@ -40,9 +42,9 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
       'escExternalAdapter',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/adapter'),
+        runtime: aws_lambda.Runtime.nodeJS20dX.value.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/adapter').input(),
       ),
     );
 
@@ -51,12 +53,12 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
       args: awsx_apigw.index.RestAPIArgs(
         routes: [
           awsx_apigw.index.Route(
-            path: '/',
-            method: awsx_apigw.index.Method.valuePOST,
-            eventHandler: adapterFunction,
+            path: '/'.input(),
+            method: awsx_apigw_index.Method.valuePOST.input(),
+            eventHandler: adapterFunction.input(),
           ),
-        ].output(),
-        binaryMediaTypes: <String>[].output(),
+        ].input(),
+        binaryMediaTypes: <String>[].input(),
       ),
     );
 

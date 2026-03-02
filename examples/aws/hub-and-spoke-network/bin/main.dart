@@ -2,6 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import '../lib/main.dart';
 
-void main() {
-  pulumi.run((_) => HubAndSpokeNetworkStack());
+Future<void> main() async {
+  await pulumi.Deployment.run(() => HubAndSpokeNetworkStack());
 }

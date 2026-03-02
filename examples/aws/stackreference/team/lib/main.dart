@@ -34,14 +34,16 @@ class ExampleStack extends pulumi.Stack {
 
     final amiLookup = aws.ec2.getAmi(
       aws.ec2.GetAmiArgs(
-        owners: ['099720109477'],
-        mostRecent: true,
+        owners: <String>['099720109477'].input(),
+        mostRecent: true.input(),
         filters: [
           aws.ec2.GetAmiFilter(
-            name: 'name',
-            values: ['ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*'],
+            name: 'name'.input(),
+            values: <String>[
+              'ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*',
+            ].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
@@ -52,9 +54,9 @@ class ExampleStack extends pulumi.Stack {
     final instance = aws.ec2.Instance(
       'tagged',
       args: aws.ec2.InstanceArgs(
-        ami: amiId,
-        instanceType: 't2.medium',
-        tags: combinedTags,
+        ami: amiId.input(),
+        instanceType: 't2.medium'.input(),
+        tags: combinedTags.input(),
       ),
     );
 

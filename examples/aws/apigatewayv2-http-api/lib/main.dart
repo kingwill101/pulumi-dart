@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'package:pulumi_aws/iam.dart' as iam;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 
 class ExampleStack extends pulumi.Stack {
@@ -28,7 +29,7 @@ class ExampleStack extends pulumi.Stack {
       'lambdaRoleAttachment',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
-        policyArn: aws.iam.ManagedPolicy.aWSLambdaBasicExecutionRole.value.input(),
+        policyArn: iam.ManagedPolicy.aWSLambdaBasicExecutionRole.value.input(),
       ),
     );
 
@@ -100,9 +101,10 @@ class ExampleStack extends pulumi.Stack {
       options: pulumi.CustomResourceOptions(dependsOn: [route]),
     );
 
-    endpoint = pulumi.Output
-        .all<dynamic>([apigw.apiEndpoint, stage.name])
-        .apply<String>((values) => '${values[0] as String}/${values[1] as String}');
+    endpoint = pulumi.Output.all<dynamic>([apigw.apiEndpoint, stage.name])
+        .apply<String>(
+          (values) => '${values[0] as String}/${values[1] as String}',
+        );
   }
 
   @override

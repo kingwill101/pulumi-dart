@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
     as awsx_apigw;
+import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
 
 class PulumiWebhooksStack extends pulumi.Stack {
   late final pulumi.Output<String> url;
@@ -26,7 +27,7 @@ class PulumiWebhooksStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -35,7 +36,8 @@ class PulumiWebhooksStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+                .input(),
       ),
     );
 
@@ -43,35 +45,35 @@ class PulumiWebhooksStack extends pulumi.Stack {
       'pulumi-webhook-handler',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/handler'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/handler').input(),
         environment: aws.lambda.FunctionEnvironment(
           variables: {
             'SLACK_WEBHOOK': slackWebhook,
             'SLACK_CHANNEL': slackChannel,
             if (sharedSecret != null) 'SHARED_SECRET': sharedSecret,
-          },
-        ).output(),
+          }.input(),
+        ).input(),
       ),
     );
 
     final api = awsx_apigw.index.RestAPI(
       'pulumi-webhook-api',
       args: awsx_apigw.index.RestAPIArgs(
-        binaryMediaTypes: ['application/json'].output(),
+        binaryMediaTypes: ['application/json'].input(),
         routes: [
           awsx_apigw.index.Route(
-            path: '/',
-            method: awsx_apigw.index.Method.valueGET,
-            eventHandler: handler,
+            path: '/'.input(),
+            method: awsx_apigw_index.Method.valueGET.input(),
+            eventHandler: handler.input(),
           ),
           awsx_apigw.index.Route(
-            path: '/',
-            method: awsx_apigw.index.Method.valuePOST,
-            eventHandler: handler,
+            path: '/'.input(),
+            method: awsx_apigw_index.Method.valuePOST.input(),
+            eventHandler: handler.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 

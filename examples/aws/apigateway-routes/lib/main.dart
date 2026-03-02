@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/apigateway.dart' as aws_apigw;
 import 'package:pulumi_aws/iam.dart' as aws_iam;
 import 'package:pulumi_aws/lambda.dart' as aws_lambda;
-import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
-    as awsx_apigw;
+import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
+import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart' as awsx_apigw;
 
 class ApigatewayRoutesStack extends pulumi.Stack {
   late final pulumi.Output<String> url;
@@ -25,7 +25,7 @@ class ApigatewayRoutesStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -34,7 +34,8 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       args: aws_iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+                .input(),
       ),
     );
 
@@ -42,9 +43,9 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       'hello-handler',
       args: aws_lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws_lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/hello'),
+        runtime: aws_lambda.Runtime.nodeJS20dX.value.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/hello').input(),
       ),
     );
 
@@ -52,22 +53,27 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       'api',
       args: awsx_apigw.index.RestAPIArgs(
         routes: [
-          awsx_apigw.index.Route(path: 'static', localPath: './www'),
           awsx_apigw.index.Route(
-            path: 'lambda',
-            method: awsx_apigw.index.Method.valueGET,
-            eventHandler: helloHandler,
+            path: 'static'.input(),
+            localPath: './www'.input(),
           ),
           awsx_apigw.index.Route(
-            path: 'proxy',
-            target: awsx_apigw.index.Target(
-              type: awsx_apigw.index.IntegrationType.valueHttpProxy,
-              uri: 'https://www.google.com',
-            ),
+            path: 'lambda'.input(),
+            method: awsx_apigw_index.Method.valueGET.input(),
+            eventHandler: helloHandler.input(),
           ),
           awsx_apigw.index.Route(
-            path: 'swagger',
-            method: awsx_apigw.index.Method.valueGET,
+            path: 'proxy'.input(),
+            target: awsx_apigw.index
+                .Target(
+                  type: awsx_apigw_index.IntegrationType.valueHttpProxy.input(),
+                  uri: 'https://www.google.com'.input(),
+                )
+                .input(),
+          ),
+          awsx_apigw.index.Route(
+            path: 'swagger'.input(),
+            method: awsx_apigw_index.Method.valueGET.input(),
             data: {
               'x-amazon-apigateway-integration': {
                 'httpMethod': 'GET',
@@ -75,15 +81,15 @@ class ApigatewayRoutesStack extends pulumi.Stack {
                 'type': 'http_proxy',
                 'uri': 'https://httpbin.org/uuid',
               },
-            },
+            }.input(),
           ),
           awsx_apigw.index.Route(
-            path: 'key-authorized',
-            method: awsx_apigw.index.Method.valueGET,
-            eventHandler: helloHandler,
-            apiKeyRequired: true,
+            path: 'key-authorized'.input(),
+            method: awsx_apigw_index.Method.valueGET.input(),
+            eventHandler: helloHandler.input(),
+            apiKeyRequired: true.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -106,7 +112,7 @@ class ApigatewayRoutesStack extends pulumi.Stack {
             },
           },
           'x-amazon-apigateway-binary-media-types': ['*/*'],
-        }).output(),
+        }).input(),
       ),
     );
 
@@ -119,7 +125,7 @@ class ApigatewayRoutesStack extends pulumi.Stack {
             apiId: api.api.apply((a) => a.id),
             stage: api.stage.apply((s) => s.stageName),
           ),
-        ],
+        ].input(),
       ),
     );
 
@@ -127,7 +133,7 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       'usage-plan-key',
       args: aws_apigw.UsagePlanKeyArgs(
         keyId: apiKey.id,
-        keyType: 'API_KEY',
+        keyType: 'API_KEY'.input(),
         usagePlanId: usagePlan.id,
       ),
     );

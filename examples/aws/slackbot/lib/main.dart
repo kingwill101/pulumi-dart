@@ -15,10 +15,10 @@ class SlackbotStack extends pulumi.Stack {
       'subscriptions',
       args: aws.dynamodb.TableArgs(
         attributes: [
-          aws.dynamodb.TableAttribute(name: 'id', type: 'S'),
-        ].output(),
-        hashKey: 'id',
-        billingMode: 'PAY_PER_REQUEST',
+          aws.dynamodb.TableAttribute(name: 'id'.input(), type: 'S'.input()),
+        ].input(),
+        hashKey: 'id'.input(),
+        billingMode: 'PAY_PER_REQUEST'.input(),
       ),
     );
 
@@ -36,7 +36,7 @@ class SlackbotStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -57,7 +57,7 @@ class SlackbotStack extends pulumi.Stack {
               'Resource': 'arn:aws:logs:*:*:*',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -79,7 +79,7 @@ class SlackbotStack extends pulumi.Stack {
               'Resource': subscriptionsTable.arn,
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -87,8 +87,7 @@ class SlackbotStack extends pulumi.Stack {
       'lambda-sns-policy',
       args: aws.iam.RolePolicyArgs(
         role: lambdaRole.id,
-        policy: messageTopic.arn.apply(
-          (topicArn) => jsonEncode({
+        policy: messageTopic.arn.apply<String>((topicArn) => jsonEncode({
             'Version': '2012-10-17',
             'Statement': [
               {
@@ -97,8 +96,7 @@ class SlackbotStack extends pulumi.Stack {
                 'Resource': topicArn,
               },
             ],
-          }),
-        ),
+          })).input(),
       ),
     );
 
@@ -106,14 +104,15 @@ class SlackbotStack extends pulumi.Stack {
       'webhook-handler',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: 'nodejs20.x',
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/webhook'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/webhook').input(),
         environment: aws.lambda.FunctionEnvironment(
-          variables: pulumi.Output.all([subscriptionsTable.name, messageTopic.arn]).apply(
+          variables: pulumi.Output.all([subscriptionsTable.name, messageTopic.arn])
+              .apply<Map<String, String>>(
             (values) {
-              final tableName = values[0] as String;
-              final topicArn = values[1] as String;
+              final tableName = values[0];
+              final topicArn = values[1];
               return <String, String>{
                 'SLACK_TOKEN': slackToken,
                 'SLACK_VERIFICATION_TOKEN': verificationToken,
@@ -121,8 +120,8 @@ class SlackbotStack extends pulumi.Stack {
                 'MESSAGE_TOPIC_ARN': topicArn,
               };
             },
-          ),
-        ),
+          ).input(),
+        ).input(),
       ),
     );
 
@@ -130,17 +129,17 @@ class SlackbotStack extends pulumi.Stack {
       'process-topic-message',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: 'nodejs20.x',
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/process'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/process').input(),
         environment: aws.lambda.FunctionEnvironment(
-          variables: subscriptionsTable.name.apply(
+          variables: subscriptionsTable.name.apply<Map<String, String>>(
             (tableName) => {
               'SLACK_TOKEN': slackToken,
               'SUBSCRIPTIONS_TABLE_NAME': tableName,
             },
-          ),
-        ),
+          ).input(),
+        ).input(),
       ),
     );
 
@@ -148,7 +147,7 @@ class SlackbotStack extends pulumi.Stack {
       'message-processor-subscription',
       args: aws.sns.TopicSubscriptionArgs(
         topic: messageTopic.arn,
-        protocol: 'lambda',
+        protocol: 'lambda'.input(),
         endpoint: processFn.arn,
       ),
     );
@@ -156,9 +155,9 @@ class SlackbotStack extends pulumi.Stack {
     aws.lambda.Permission(
       'allow-sns-invoke',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: processFn.name,
-        principal: 'sns.amazonaws.com',
+        principal: 'sns.amazonaws.com'.input(),
         sourceArn: messageTopic.arn,
       ),
     );
@@ -166,8 +165,8 @@ class SlackbotStack extends pulumi.Stack {
     final gateway = aws.apigateway.RestApi(
       'mentionbot-api',
       args: aws.apigateway.RestApiArgs(
-        name: 'mentionbot-api',
-        description: 'Slack mention bot webhook API',
+        name: 'mentionbot-api'.input(),
+        description: 'Slack mention bot webhook API'.input(),
       ),
     );
 
@@ -176,7 +175,7 @@ class SlackbotStack extends pulumi.Stack {
       args: aws.apigateway.ResourceArgs(
         restApi: gateway.id,
         parentId: gateway.rootResourceId,
-        pathPart: '{proxy+}',
+        pathPart: '{proxy+}'.input(),
       ),
     );
 
@@ -185,8 +184,8 @@ class SlackbotStack extends pulumi.Stack {
       args: aws.apigateway.MethodArgs(
         restApi: gateway.id,
         resourceId: apiResource.id,
-        httpMethod: 'ANY',
-        authorization: 'NONE',
+        httpMethod: 'ANY'.input(),
+        authorization: 'NONE'.input(),
       ),
     );
 
@@ -196,8 +195,8 @@ class SlackbotStack extends pulumi.Stack {
         restApi: gateway.id,
         resourceId: apiResource.id,
         httpMethod: anyMethod.httpMethod,
-        integrationHttpMethod: 'POST',
-        type: 'AWS_PROXY',
+        integrationHttpMethod: 'POST'.input(),
+        type: 'AWS_PROXY'.input(),
         uri: webhookFn.invokeArn,
       ),
     );
@@ -206,7 +205,7 @@ class SlackbotStack extends pulumi.Stack {
       'mentionbot-api-deployment',
       args: aws.apigateway.DeploymentArgs(
         restApi: gateway.id,
-        description: 'Slackbot API deployment',
+        description: 'Slackbot API deployment'.input(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [anyMethod]),
     );
@@ -216,16 +215,16 @@ class SlackbotStack extends pulumi.Stack {
       args: aws.apigateway.StageArgs(
         restApi: gateway.id,
         deployment: deployment.id,
-        stageName: 'prod',
+        stageName: 'prod'.input(),
       ),
     );
 
     aws.lambda.Permission(
       'allow-apigateway-invoke',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: webhookFn.name,
-        principal: 'apigateway.amazonaws.com',
+        principal: 'apigateway.amazonaws.com'.input(),
         sourceArn: stage.executionArn.apply((arn) => '$arn*/*'),
       ),
     );

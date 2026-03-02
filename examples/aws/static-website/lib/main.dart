@@ -16,21 +16,21 @@ class StaticWebsiteStack extends pulumi.Stack {
 
     final contentBucket = aws.s3.Bucket(
       'content-bucket',
-      args: aws.s3.BucketArgs(forceDestroy: true),
+      args: aws.s3.BucketArgs(forceDestroy: true.input()),
     );
 
     aws.s3.BucketPublicAccessBlock(
       'content-bucket-public-access',
       args: aws.s3.BucketPublicAccessBlockArgs(
         bucket: contentBucket.bucket,
-        blockPublicAcls: false,
-        blockPublicPolicy: false,
-        ignorePublicAcls: false,
-        restrictPublicBuckets: false,
+        blockPublicAcls: false.input(),
+        blockPublicPolicy: false.input(),
+        ignorePublicAcls: false.input(),
+        restrictPublicBuckets: false.input(),
       ),
     );
 
-    final bucketPolicyJson = contentBucket.arn.apply(
+    final bucketPolicyJson = contentBucket.arn.apply<String>(
       (arn) => jsonEncode({
         'Version': '2012-10-17',
         'Statement': [
@@ -49,7 +49,7 @@ class StaticWebsiteStack extends pulumi.Stack {
       'content-bucket-policy',
       args: aws.s3.BucketPolicyArgs(
         bucket: contentBucket.bucket,
-        policy: bucketPolicyJson,
+        policy: bucketPolicyJson.output(),
       ),
     );
 
@@ -57,22 +57,23 @@ class StaticWebsiteStack extends pulumi.Stack {
       'content-bucket-website',
       args: aws.s3.BucketWebsiteConfigurationArgs(
         bucket: contentBucket.bucket,
-        indexDocument: aws.s3.BucketWebsiteConfigurationIndexDocument(
-          suffix: 'index.html',
-        ),
-        errorDocument: aws.s3.BucketWebsiteConfigurationErrorDocument(
-          key: '404.html',
-        ),
+        indexDocument: aws.s3
+            .BucketWebsiteConfigurationIndexDocument(
+              suffix: 'index.html'.input(),
+            )
+            .output(),
+        errorDocument: aws.s3
+            .BucketWebsiteConfigurationErrorDocument(key: '404.html'.input())
+            .output(),
       ),
     );
 
     final rootDir = Directory(pathToWebsiteContents).absolute.path;
     final rootDirNormalized = _normalize(rootDir);
 
-    final files = Directory(pathToWebsiteContents)
-        .listSync(recursive: true, followLinks: false)
-        .whereType<File>()
-        .toList();
+    final files = Directory(
+      pathToWebsiteContents,
+    ).listSync(recursive: true, followLinks: false).whereType<File>().toList();
 
     for (var i = 0; i < files.length; i++) {
       final file = files[i];
@@ -85,8 +86,8 @@ class StaticWebsiteStack extends pulumi.Stack {
         'content-file-$i',
         args: aws.s3.BucketObjectArgs(
           bucket: contentBucket.bucket,
-          key: relative,
-          source: pulumi.FileAsset(file.path),
+          key: relative.input(),
+          source: pulumi.FileAsset(file.path).output(),
         ),
       );
     }

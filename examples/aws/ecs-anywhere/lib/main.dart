@@ -1,7 +1,10 @@
 import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_aws/pulumi_aws.dart' as aws;
+import 'package:pulumi_aws/ecs.dart' as ecs;
+import 'package:pulumi_aws/iam.dart' as iam;
+import 'package:pulumi_aws/ssm.dart' as ssm;
+import 'package:pulumi_aws/cloudwatch.dart' as cloudwatch;
 
 class EcsAnywhereStack extends pulumi.Stack {
   late final pulumi.Output<String> clusterName;
@@ -12,9 +15,9 @@ class EcsAnywhereStack extends pulumi.Stack {
     final numberNodes = (projectConfig.getNumber('numberNodes') ?? 2).toInt();
     final awsRegion = pulumi.Config('aws').get('region') ?? 'us-east-1';
 
-    final ssmRole = aws.iam.Role(
+    final ssmRole = iam.Role(
       'ssmRole',
-      args: aws.iam.RoleArgs(
+      args: iam.RoleArgs(
         assumeRolePolicy: jsonEncode({
           'Version': '2012-10-17',
           'Statement': [
@@ -24,30 +27,32 @@ class EcsAnywhereStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
-    aws.iam.RolePolicyAttachment(
+    iam.RolePolicyAttachment(
       'rpa-ssmrole-ssminstancecore',
-      args: aws.iam.RolePolicyAttachmentArgs(
-        policyArn: 'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
+      args: iam.RolePolicyAttachmentArgs(
+        policyArn: 'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore'
+            .input(),
         role: ssmRole.name,
       ),
     );
 
-    aws.iam.RolePolicyAttachment(
+    iam.RolePolicyAttachment(
       'rpa-ssmrole-ec2containerservice',
-      args: aws.iam.RolePolicyAttachmentArgs(
+      args: iam.RolePolicyAttachmentArgs(
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role',
+            'arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role'
+                .input(),
         role: ssmRole.name,
       ),
     );
 
-    final executionRole = aws.iam.Role(
+    final executionRole = iam.Role(
       'taskExecutionRole',
-      args: aws.iam.RoleArgs(
+      args: iam.RoleArgs(
         assumeRolePolicy: jsonEncode({
           'Version': '2012-10-17',
           'Statement': [
@@ -57,21 +62,22 @@ class EcsAnywhereStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
-    aws.iam.RolePolicyAttachment(
+    iam.RolePolicyAttachment(
       'rpa-ecsanywhere-ecstaskexecution',
-      args: aws.iam.RolePolicyAttachmentArgs(
+      args: iam.RolePolicyAttachmentArgs(
         role: executionRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy',
+            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+                .input(),
       ),
     );
 
-    final taskRole = aws.iam.Role(
+    final taskRole = iam.Role(
       'taskRole',
-      args: aws.iam.RoleArgs(
+      args: iam.RoleArgs(
         assumeRolePolicy: jsonEncode({
           'Version': '2012-10-17',
           'Statement': [
@@ -81,13 +87,13 @@ class EcsAnywhereStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
-    aws.iam.RolePolicy(
+    iam.RolePolicy(
       'taskRolePolicy',
-      args: aws.iam.RolePolicyArgs(
+      args: iam.RolePolicyArgs(
         role: taskRole.id,
         policy: jsonEncode({
           'Version': '2012-10-17',
@@ -114,29 +120,29 @@ class EcsAnywhereStack extends pulumi.Stack {
               'Resource': '*',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
-    final activation = aws.ssm.Activation(
+    final activation = ssm.Activation(
       'ecsanywhere-ssmactivation',
-      args: aws.ssm.ActivationArgs(
+      args: ssm.ActivationArgs(
         iamRole: ssmRole.name,
-        registrationLimit: numberNodes,
+        registrationLimit: numberNodes.input(),
       ),
     );
 
-    final cluster = aws.ecs.Cluster('cluster');
-    final logGroup = aws.cloudwatch.LogGroup('logGroup');
+    final cluster = ecs.Cluster('cluster');
+    final logGroup = cloudwatch.LogGroup('logGroup');
 
-    final taskDefinition = aws.ecs.TaskDefinition(
+    final taskDefinition = ecs.TaskDefinition(
       'taskdefinition',
-      args: aws.ecs.TaskDefinitionArgs(
-        family: 'ecs-anywhere',
-        requiresCompatibilities: ['EXTERNAL'],
+      args: ecs.TaskDefinitionArgs(
+        family: 'ecs-anywhere'.input(),
+        requiresCompatibilities: ['EXTERNAL'].input(),
         taskRoleArn: taskRole.arn,
         executionRoleArn: executionRole.arn,
-        containerDefinitions: logGroup.name.apply(
+        containerDefinitions: logGroup.name.apply<String>(
           (lg) => jsonEncode([
             {
               'name': 'app',
@@ -161,13 +167,13 @@ class EcsAnywhereStack extends pulumi.Stack {
       ),
     );
 
-    aws.ecs.Service(
+    ecs.Service(
       'service',
-      args: aws.ecs.ServiceArgs(
-        launchType: 'EXTERNAL',
+      args: ecs.ServiceArgs(
+        launchType: 'EXTERNAL'.input(),
         taskDefinition: taskDefinition.arn,
         cluster: cluster.id,
-        desiredCount: numberNodes > 0 ? numberNodes - 1 : 0,
+        desiredCount: (numberNodes > 0 ? numberNodes - 1 : 0).input(),
       ),
     );
 

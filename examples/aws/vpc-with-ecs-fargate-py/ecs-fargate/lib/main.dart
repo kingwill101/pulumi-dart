@@ -65,7 +65,7 @@ class ExampleStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -74,31 +74,32 @@ class ExampleStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: taskExecutionRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy',
+            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+                .input(),
       ),
     );
 
     final sgroup = aws.ec2.SecurityGroup(
       'pulumi-fargate-sg',
       args: aws.ec2.SecurityGroupArgs(
-        description: 'Enable HTTP access',
+        description: 'Enable HTTP access'.input(),
         vpcId: vpcId,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 80,
-            toPort: 80,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: 'tcp'.input(),
+            fromPort: 80.input(),
+            toPort: 80.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         tags: withName('pulumi-fargate-security-group'),
       ),
     );
@@ -112,7 +113,8 @@ class ExampleStack extends pulumi.Stack {
 
     final albSecurityGroups = pulumi.Output
         .all<String>([sgroup.id])
-        .apply<List<String>>((ids) => ids);
+        .apply<List<String>>((ids) => ids)
+        .input();
 
     final alb = aws.lb.LoadBalancer(
       'pulumi-fargate-alb',
@@ -126,9 +128,9 @@ class ExampleStack extends pulumi.Stack {
     final albTargetGroup = aws.lb.TargetGroup(
       'pulumi-fargate-alb-tg',
       args: aws.lb.TargetGroupArgs(
-        port: 80,
-        protocol: 'HTTP',
-        targetType: 'ip',
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
         vpcId: vpcId,
       ),
     );
@@ -137,25 +139,25 @@ class ExampleStack extends pulumi.Stack {
       'pulumi-fargate-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: alb.arn,
-        port: 80,
-        protocol: 'HTTP',
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
         defaultActions: [
           aws.lb.ListenerDefaultAction(
-            type: 'forward',
+            type: 'forward'.input(),
             targetGroupArn: albTargetGroup.arn,
           ),
-        ],
+        ].input(),
       ),
     );
 
     final taskDefinition = aws.ecs.TaskDefinition(
       'pulumi-fargate-task-definition',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'fargate-task-definition',
-        cpu: '256',
-        memory: '512',
-        networkMode: 'awsvpc',
-        requiresCompatibilities: ['FARGATE'],
+        family: 'fargate-task-definition'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
+        networkMode: 'awsvpc'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
         executionRoleArn: taskExecutionRole.arn,
         tags: withName('pulumi-fargate-task-definition'),
         containerDefinitions: jsonEncode([
@@ -166,33 +168,34 @@ class ExampleStack extends pulumi.Stack {
               {'containerPort': 80, 'hostPort': 80, 'protocol': 'tcp'},
             ],
           },
-        ]),
+        ]).input(),
       ),
     );
 
     final serviceSecurityGroups = pulumi.Output
         .all<String>([sgroup.id])
-        .apply<List<String>>((ids) => ids);
+        .apply<List<String>>((ids) => ids)
+        .input();
 
     aws.ecs.Service(
       'pulumi-fargate-service',
       args: aws.ecs.ServiceArgs(
         cluster: cluster.arn,
-        desiredCount: azAmount,
-        launchType: 'FARGATE',
+        desiredCount: azAmount.input(),
+        launchType: 'FARGATE'.input(),
         taskDefinition: taskDefinition.arn,
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true,
+          assignPublicIp: true.input(),
           subnets: publicSubnets,
           securityGroups: serviceSecurityGroups,
-        ),
+        ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: albTargetGroup.arn,
-            containerName: 'pulumi-myfargate-app',
-            containerPort: 80,
+            containerName: 'pulumi-myfargate-app'.input(),
+            containerPort: 80.input(),
           ),
-        ],
+        ].input(),
         tags: withName('pulumi-fargate-service'),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [frontEndListener]),

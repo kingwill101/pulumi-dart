@@ -30,9 +30,9 @@ class ExampleStack extends pulumi.Stack {
     final vpc = awsx.ec2.Vpc(
       vpcName,
       args: awsx.ec2.VpcArgs(
-        cidrBlock: vpcCidr,
-        numberOfAvailabilityZones: zoneNumber,
-        tags: baseTags,
+        cidrBlock: vpcCidr.input(),
+        numberOfAvailabilityZones: zoneNumber.input(),
+        tags: baseTags.input(),
       ),
     );
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
+import 'package:pulumi_aws/providers.dart' as providers;
 
 const nonAutomationUserAssumeRoleName = 'DeveloperRole';
 const automationUserAssumeRoleName = 'AutomationRole';
@@ -59,21 +60,28 @@ String buildMonthlyBackupPolicyJson({
   });
 }
 
-Future<void> run() async {
-  final config = pulumi.Config();
-  final devAccountEmailContact = config.require('devAccountEmailContact');
+class OrganizationsStack extends pulumi.Stack {
+  late final pulumi.Output<String> organizationId;
+  late final pulumi.Output<String> developmentOuId;
+  late final pulumi.Output<String> devAccountId;
 
-  final organization = await aws.organizations.getOrganization(
-    aws.organizations.GetOrganizationArgs(),
-  );
-  final orgRootId = organization.roots[0].id;
+  OrganizationsStack() {
+    final config = pulumi.Config();
+    final devAccountEmailContact = config.require('devAccountEmailContact');
+
+    final organization = pulumi.output(
+      aws.organizations.getOrganization(
+        aws.organizations.GetOrganizationArgs(),
+      ),
+    );
+    final organizationRootId = organization.apply<String>((org) => org.roots[0].id);
 
   const initialRoleName = 'OrganizationalAccountAccessRole';
 
   final devOrgUnit = aws.organizations.OrganizationalUnit(
     'orgUnit',
     args: aws.organizations.OrganizationalUnitArgs(
-      parentId: orgRootId.input(),
+      parentId: organizationRootId,
       name: 'Development'.input(),
     ),
   );
@@ -135,10 +143,13 @@ Future<void> run() async {
     ),
   );
 
-  final devAccountProvider = aws.ProviderProvider(
+  final devAccountProvider = providers.ProviderProvider(
     'devAccountProvider',
-    args: aws.providers.ProviderArgs(
-      allowedAccountIds: [devAccount.id].input(),
+    args: providers.ProviderArgs(
+      allowedAccountIds: pulumi.Output
+          .all([devAccount.id])
+      .apply<List<String>>((ids) => ids.cast<String>())
+          .input(),
       assumeRoles: [
         aws.index.ProviderAssumeRole(
           roleArn: devAccount.id.apply(
@@ -149,10 +160,10 @@ Future<void> run() async {
     ),
   );
 
-  final callerIdentity = await aws.index.getCallerIdentity(
-    aws.index.GetCallerIdentityArgs(),
+  final callerIdentity = pulumi.output(
+    aws.index.getCallerIdentity(aws.index.GetCallerIdentityArgs()),
   );
-  final managementAccountId = callerIdentity.accountId;
+  final managementAccountId = callerIdentity.apply((identity) => identity.accountId);
 
   final devBoundaryPolicy = aws.iam.Policy(
     'devDevBoundary',
@@ -175,16 +186,18 @@ Future<void> run() async {
     'devDevRole',
     args: aws.iam.RoleArgs(
       name: nonAutomationUserAssumeRoleName.input(),
-      assumeRolePolicy: jsonEncode({
-        'Version': '2012-10-17',
-        'Statement': [
-          {
-            'Effect': 'Allow',
-            'Principal': {'AWS': 'arn:aws:iam::$managementAccountId:root'},
-            'Action': 'sts:AssumeRole',
-          },
-        ],
-      }).input(),
+      assumeRolePolicy: managementAccountId.apply<String>(
+        (id) => jsonEncode({
+          'Version': '2012-10-17',
+          'Statement': [
+            {
+              'Effect': 'Allow',
+              'Principal': {'AWS': 'arn:aws:iam::$id:root'},
+              'Action': 'sts:AssumeRole',
+            },
+          ],
+        }),
+      ),
       permissionsBoundary: devBoundaryPolicy.arn,
     ),
     options: pulumi.CustomResourceOptions(provider: devAccountProvider),
@@ -267,7 +280,7 @@ Future<void> run() async {
     'orgTagPolicyAttachment',
     args: aws.organizations.PolicyAttachmentArgs(
       policyId: orgTagPolicy.id,
-      targetId: organization.roots[0].id.input(),
+      targetId: organizationRootId,
     ),
   );
 
@@ -350,7 +363,17 @@ Future<void> run() async {
     ),
   );
 
-  pulumi.export('organizationId', organization.id);
-  pulumi.export('developmentOuId', devOrgUnit.id);
-  pulumi.export('devAccountId', devAccount.id);
+    organizationId = organization.apply((organization) => organization.id);
+    developmentOuId = devOrgUnit.id;
+    devAccountId = devAccount.id;
+  }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() {
+    return [
+      pulumi.OutputProperty('organizationId', organizationId),
+      pulumi.OutputProperty('developmentOuId', developmentOuId),
+      pulumi.OutputProperty('devAccountId', devAccountId),
+    ];
+  }
 }

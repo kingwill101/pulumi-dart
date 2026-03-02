@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'package:pulumi_aws/iam.dart' as iam;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 
 class ExampleStack extends pulumi.Stack {
@@ -47,7 +48,7 @@ class ExampleStack extends pulumi.Stack {
           ],
         }).input(),
         managedPolicyArns: [
-          'arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess'.input(),
+          'arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess',
         ].input(),
       ),
     );
@@ -72,7 +73,9 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    final routeTarget = integration.id.apply<String>((id) => 'integrations/$id');
+    final routeTarget = integration.id.apply<String>(
+      (id) => 'integrations/$id',
+    );
 
     aws.apigatewayv2.Route(
       'route',
@@ -104,7 +107,7 @@ class ExampleStack extends pulumi.Stack {
       'lambdaRoleAttachment',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
-        policyArn: aws.iam.ManagedPolicy.cloudWatchLogsFullAccess.value.input(),
+        policyArn: iam.ManagedPolicy.cloudWatchLogsFullAccess.value.input(),
       ),
     );
 
@@ -137,9 +140,10 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    url = pulumi.Output
-        .all<dynamic>([api.apiEndpoint, stage.name])
-        .apply<String>((values) => '${values[0] as String}/${values[1] as String}');
+    url = pulumi.Output.all<dynamic>([api.apiEndpoint, stage.name])
+        .apply<String>(
+          (values) => '${values[0] as String}/${values[1] as String}',
+        );
   }
 
   @override

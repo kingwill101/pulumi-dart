@@ -17,7 +17,7 @@ class TwitterAthenaStack extends pulumi.Stack {
 
     final bucket = aws.s3.Bucket(
       'tweet-bucket',
-      args: aws.s3.BucketArgs(forceDestroy: true),
+      args: aws.s3.BucketArgs(forceDestroy: true.input()),
     );
 
     aws.s3.BucketServerSideEncryptionConfigurationV2(
@@ -28,11 +28,10 @@ class TwitterAthenaStack extends pulumi.Stack {
           aws.s3.BucketServerSideEncryptionConfigurationV2Rule(
             applyServerSideEncryptionByDefault:
                 aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault(
-                      sseAlgorithm: 'AES256',
-                    )
-                    .output(),
+                  sseAlgorithm: 'AES256'.input(),
+                ).input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -51,7 +50,7 @@ class TwitterAthenaStack extends pulumi.Stack {
     }
   ]
 }
-''',
+'''.input(),
       ),
     );
 
@@ -59,7 +58,7 @@ class TwitterAthenaStack extends pulumi.Stack {
       'fetch-tweets-lambda-exec',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: fetchTweetsRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AWSLambdaExecute',
+        policyArn: 'arn:aws:iam::aws:policy/AWSLambdaExecute'.input(),
       ),
     );
 
@@ -67,27 +66,31 @@ class TwitterAthenaStack extends pulumi.Stack {
       'on-timer-event',
       args: aws.lambda.FunctionArgs(
         role: fetchTweetsRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/fetch-tweets'),
-        timeout: 30,
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/fetch-tweets').input(),
+        timeout: 30.input(),
         environment: aws.lambda.FunctionEnvironment(
-          variables: {
-            'TWITTER_CONSUMER_KEY': consumerKey,
-            'TWITTER_CONSUMER_SECRET': consumerSecret,
-            'TWITTER_ACCESS_TOKEN_KEY': accessTokenKey,
-            'TWITTER_ACCESS_TOKEN_SECRET': accessTokenSecret,
-            'TWITTER_QUERY': twitterQuery,
-            'OUTPUT_FOLDER': 'tweets',
-            'BUCKET_NAME': bucket.bucket,
-          },
-        ).output(),
+          variables: bucket.bucket.apply<Map<String, String>>((bucketName) {
+            return {
+              'TWITTER_CONSUMER_KEY': consumerKey,
+              'TWITTER_CONSUMER_SECRET': consumerSecret,
+              'TWITTER_ACCESS_TOKEN_KEY': accessTokenKey,
+              'TWITTER_ACCESS_TOKEN_SECRET': accessTokenSecret,
+              'TWITTER_QUERY': twitterQuery,
+              'OUTPUT_FOLDER': 'tweets',
+              'BUCKET_NAME': bucketName,
+            };
+          }).input(),
+        ).input(),
       ),
     );
 
     final rule = aws.cloudwatch.EventRule(
       'twitter-search-timer',
-      args: aws.cloudwatch.EventRuleArgs(scheduleExpression: 'rate(1 minute)'),
+      args: aws.cloudwatch.EventRuleArgs(
+        scheduleExpression: 'rate(1 minute)'.input(),
+      ),
     );
 
     aws.cloudwatch.EventTarget(
@@ -98,19 +101,22 @@ class TwitterAthenaStack extends pulumi.Stack {
     aws.lambda.Permission(
       'allow-events-invoke-fetch-tweets',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: fetchTweets.name,
-        principal: 'events.amazonaws.com',
+        principal: 'events.amazonaws.com'.input(),
         sourceArn: rule.arn,
       ),
     );
 
     final athenaDb = aws.athena.Database(
       'tweets_database_1',
-      args: aws.athena.DatabaseArgs(bucket: bucket.bucket, forceDestroy: true),
+      args: aws.athena.DatabaseArgs(
+        bucket: bucket.bucket,
+        forceDestroy: true.input(),
+      ),
     );
 
-    final createTableQuery = bucket.bucket.apply(
+    final createTableQuery = bucket.bucket.apply<String>(
       (b) => '''
 CREATE EXTERNAL TABLE IF NOT EXISTS tweets (
   id string,
@@ -132,7 +138,7 @@ select distinct user, followers, text, url
 from tweets
 where isRetweet = false and followers > 1000
 order by followers desc
-''';
+'''.input();
 
     final createTableNamed = aws.athena.NamedQuery(
       'createTable',
@@ -155,8 +161,8 @@ order by followers desc
 
     bucketName = bucket.bucket;
     athenaDatabase = athenaDb.id;
-    topUsersQueryUri = topUsersNamed.id.apply(queryUri);
-    createTableQueryUri = createTableNamed.id.apply(queryUri);
+    topUsersQueryUri = topUsersNamed.id.apply<String>(queryUri);
+    createTableQueryUri = createTableNamed.id.apply<String>(queryUri);
   }
 
   @override

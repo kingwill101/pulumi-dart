@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import '../lib/main.dart';
 
-void main() {
-  pulumi.run((_) => DjangoVotingAppStack());
+Future<void> main() async {
+  await pulumi.Deployment.run(() => DjangoVotingAppStack());
 }
-

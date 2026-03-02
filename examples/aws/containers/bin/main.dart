@@ -12,9 +12,7 @@ class ExampleStack extends pulumi.Stack {
 
     final repo = awsx.ecr.Repository(
       'repo',
-      args: awsx.ecr.RepositoryArgs(
-        forceDelete: true.output(),
-      ),
+      args: awsx.ecr.RepositoryArgs(forceDelete: true.output()),
     );
 
     final image = awsx.ecr.Image(
@@ -30,27 +28,30 @@ class ExampleStack extends pulumi.Stack {
       'service',
       args: awsx.ecs.FargateServiceArgs(
         cluster: cluster.arn,
-        assignPublicIp: true.output(),
-        taskDefinitionArgs: pulumi.Output.tuple(
-          image.imageUri,
-          loadbalancer.defaultTargetGroup,
-        ).apply(
-          (values) => awsx.ecs.FargateServiceTaskDefinition(
-            container: awsx.ecs.TaskDefinitionContainerDefinition(
-              name: 'service-container',
-              image: values.$1,
-              cpu: 128,
-              memory: 512,
-              essential: true,
-              portMappings: [
-                awsx.ecs.TaskDefinitionPortMapping(
-                  containerPort: 80,
-                  targetGroup: values.$2,
-                ),
-              ],
+        assignPublicIp: true.input(),
+        taskDefinitionArgs:
+            pulumi.Output.tuple(
+              image.imageUri,
+              loadbalancer.defaultTargetGroup,
+            ).apply(
+              (values) => awsx.ecs.FargateServiceTaskDefinition(
+                container: awsx.ecs
+                    .TaskDefinitionContainerDefinition(
+                      name: 'service-container'.input(),
+                      image: values.$1.input(),
+                      cpu: 128.input(),
+                      memory: 512.input(),
+                      essential: true.input(),
+                      portMappings: [
+                        awsx.ecs.TaskDefinitionPortMapping(
+                          containerPort: 80.input(),
+                          targetGroup: values.$2.input(),
+                        ),
+                      ].input(),
+                    )
+                    .input(),
+              ),
             ),
-          ),
-        ),
       ),
     );
 
@@ -61,9 +62,7 @@ class ExampleStack extends pulumi.Stack {
 
   @override
   List<pulumi.OutputProperty> getOutputProperties() {
-    return [
-      pulumi.OutputProperty('frontendURL', frontendURL),
-    ];
+    return [pulumi.OutputProperty('frontendURL', frontendURL)];
   }
 }
 

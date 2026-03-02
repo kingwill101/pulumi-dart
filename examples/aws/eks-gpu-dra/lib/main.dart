@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
+import 'package:pulumi_eks/index.dart' as eks_index;
 import 'package:pulumi_eks/pulumi_eks.dart' as eks;
 import 'package:pulumi_kubernetes/apiextensions_k8s_io.dart' as k8sApiExt;
 import 'package:pulumi_kubernetes/core.dart' as k8sCore;
@@ -36,7 +37,7 @@ class EksGpuDraStack extends pulumi.Stack {
         vpcId: vpc.vpcId,
         publicSubnetIds: vpc.publicSubnetIds,
         privateSubnetIds: vpc.privateSubnetIds,
-        authenticationMode: eks.index.AuthenticationMode.api.output(),
+        authenticationMode: eks_index.AuthenticationMode.api.input(),
         skipDefaultNodeGroup: true.output(),
         version: '1.34'.output(),
       ),
@@ -45,8 +46,9 @@ class EksGpuDraStack extends pulumi.Stack {
     final nodeRole = aws.iam.Role(
       'system-node-role',
       args: aws.iam.RoleArgs(
-        assumeRolePolicy: '''{"Version":"2012-10-17","Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"ec2.amazonaws.com"}}]}'''
-            .output(),
+        assumeRolePolicy:
+            '''{"Version":"2012-10-17","Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"ec2.amazonaws.com"}}]}'''
+                .output(),
       ),
     );
 
@@ -74,11 +76,13 @@ class EksGpuDraStack extends pulumi.Stack {
         nodeRole: nodeRole.output(),
         instanceTypes: ['m6i.large'].output(),
         capacityType: 'ON_DEMAND'.output(),
-        scalingConfig: aws.eks.NodeGroupScalingConfig(
-          desiredSize: 2.output(),
-          minSize: 1.output(),
-          maxSize: 4.output(),
-        ).output(),
+        scalingConfig: aws.eks
+            .NodeGroupScalingConfig(
+              desiredSize: 2.output(),
+              minSize: 1.output(),
+              maxSize: 4.output(),
+            )
+            .output(),
         labels: {'node-role': 'system'}.output(),
       ),
     );
@@ -91,11 +95,13 @@ class EksGpuDraStack extends pulumi.Stack {
         nodeRole: nodeRole.output(),
         instanceTypes: ['p4d.24xlarge'].output(),
         capacityType: 'ON_DEMAND'.output(),
-        scalingConfig: aws.eks.NodeGroupScalingConfig(
-          desiredSize: 1.output(),
-          minSize: 0.output(),
-          maxSize: 2.output(),
-        ).output(),
+        scalingConfig: aws.eks
+            .NodeGroupScalingConfig(
+              desiredSize: 1.output(),
+              minSize: 0.output(),
+              maxSize: 2.output(),
+            )
+            .output(),
         diskSize: 100.output(),
         amiType: 'AL2023_x86_64_NVIDIA'.output(),
         labels: {
@@ -141,8 +147,9 @@ class EksGpuDraStack extends pulumi.Stack {
       'ebs-csi-role',
       args: aws.iam.RoleArgs(
         name: 'AmazonEKS_EBS_CSI_DriverRole-$clusterName'.output(),
-        assumeRolePolicy: '''{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"pods.eks.amazonaws.com"},"Action":["sts:AssumeRole","sts:TagSession"]}]}'''
-            .output(),
+        assumeRolePolicy:
+            '''{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"pods.eks.amazonaws.com"},"Action":["sts:AssumeRole","sts:TagSession"]}]}'''
+                .output(),
       ),
     );
 
@@ -193,10 +200,10 @@ class EksGpuDraStack extends pulumi.Stack {
       'gp3-storage-class',
       args: k8sStorage.StorageClassArgs(
         metadata: k8sMeta.ObjectMeta(
-          name: 'gp3',
+          name: 'gp3'.input(),
           annotations: {
             'storageclass.kubernetes.io/is-default-class': 'true',
-          },
+          }.input(),
         ).output(),
         provisioner: 'ebs.csi.aws.com'.output(),
         volumeBindingMode: 'WaitForFirstConsumer'.output(),
@@ -213,7 +220,7 @@ class EksGpuDraStack extends pulumi.Stack {
     final gpuOperatorNamespace = k8sCore.NamespaceCoreV1(
       'gpu-operator-ns',
       args: k8sCore.NamespaceArgs(
-        metadata: k8sMeta.ObjectMeta(name: 'gpu-operator').output(),
+        metadata: k8sMeta.ObjectMeta(name: 'gpu-operator'.input()).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
@@ -256,7 +263,9 @@ class EksGpuDraStack extends pulumi.Stack {
     final draDriverNamespace = k8sCore.NamespaceCoreV1(
       'dra-driver-ns',
       args: k8sCore.NamespaceArgs(
-        metadata: k8sMeta.ObjectMeta(name: 'nvidia-dra-driver').output(),
+        metadata: k8sMeta.ObjectMeta(
+          name: 'nvidia-dra-driver'.input(),
+        ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
@@ -317,7 +326,7 @@ class EksGpuDraStack extends pulumi.Stack {
     final monitoringNamespace = k8sCore.NamespaceCoreV1(
       'monitoring-ns',
       args: k8sCore.NamespaceArgs(
-        metadata: k8sMeta.ObjectMeta(name: 'monitoring').output(),
+        metadata: k8sMeta.ObjectMeta(name: 'monitoring'.input()).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
@@ -356,7 +365,7 @@ class EksGpuDraStack extends pulumi.Stack {
     final migTestNamespace = k8sCore.NamespaceCoreV1(
       'mig-test-ns',
       args: k8sCore.NamespaceArgs(
-        metadata: k8sMeta.ObjectMeta(name: 'mig-test').output(),
+        metadata: k8sMeta.ObjectMeta(name: 'mig-test'.input()).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
@@ -365,8 +374,8 @@ class EksGpuDraStack extends pulumi.Stack {
       'fashion-mnist-scripts',
       args: k8sCore.ConfigMapArgs(
         metadata: k8sMeta.ObjectMeta(
-          name: 'fashion-mnist-scripts',
-          namespace: 'mig-test',
+          name: 'fashion-mnist-scripts'.input(),
+          namespace: 'mig-test'.input(),
         ).output(),
         data: {
           'large-training-script.py': 'print("large training workload")',
@@ -386,8 +395,8 @@ class EksGpuDraStack extends pulumi.Stack {
         apiVersion: 'resource.k8s.io/v1'.output(),
         kind: 'ResourceClaimTemplate'.output(),
         metadata: k8sMeta.ObjectMeta(
-          name: 'mig-large-template',
-          namespace: 'mig-test',
+          name: 'mig-large-template'.input(),
+          namespace: 'mig-test'.input(),
         ).output(),
         others: {
           'spec': {

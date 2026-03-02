@@ -3,118 +3,140 @@ import 'dart:convert';
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 
-Future<void> run() async {
-  final config = pulumi.Config();
-  final dockerHubUsername = config.get('dockerHubUsername');
-  final gitHubUsername = config.get('gitHubUsername');
-  final gitLabUsername = config.get('gitLabUsername');
+class EcrCacheStack extends pulumi.Stack {
+  late final pulumi.Output<String> pullThroughCacheECRRepositoryUrl;
+  late final pulumi.Output<String> dockerHubPrefix;
+  late final pulumi.Output<String> k8sPrefix;
+  late final pulumi.Output<String> githubPrefix;
+  late final pulumi.Output<String> gitlabPrefix;
 
-  final pullThroughCacheEcr = aws.ecr.Repository(
-    'pullThroughCacheECR',
-    args: aws.ecr.RepositoryArgs(name: 'pull-through-cache-ecr'.input()),
-  );
+  EcrCacheStack() {
+    final config = pulumi.Config();
+    final dockerHubUsername = config.get('dockerHubUsername');
+    final gitHubUsername = config.get('gitHubUsername');
+    final gitLabUsername = config.get('gitLabUsername');
 
-  if (dockerHubUsername != null) {
-    final dockerHubSecret = aws.secretsmanager.Secret(
-      'ecrPullThroughCacheDockerHubSecret',
-      args: aws.secretsmanager.SecretArgs(
-        name: 'ecr-pullthroughcache/dockerHubSecret'.input(),
-        recoveryWindowInDays: 0.input(),
-      ),
+    final pullThroughCacheEcr = aws.ecr.Repository(
+      'pullThroughCacheECR',
+      args: aws.ecr.RepositoryArgs(name: 'pull-through-cache-ecr'.input()),
     );
 
-    aws.secretsmanager.SecretVersion(
-      'dockerHubSecretValue',
-      args: aws.secretsmanager.SecretVersionArgs(
-        secretId: dockerHubSecret.id,
-        secretString: jsonEncode({
-          'username': dockerHubUsername,
-          'accessToken': config.require('dockerHubAccessToken'),
-        }).input(),
-      ),
-    );
+    if (dockerHubUsername != null) {
+      final dockerHubSecret = aws.secretsmanager.Secret(
+        'ecrPullThroughCacheDockerHubSecret',
+        args: aws.secretsmanager.SecretArgs(
+          name: 'ecr-pullthroughcache/dockerHubSecret'.input(),
+          recoveryWindowInDays: 0.input(),
+        ),
+      );
 
-    aws.ecr.PullThroughCacheRule(
-      'dockerHubCacheRule',
+      aws.secretsmanager.SecretVersion(
+        'dockerHubSecretValue',
+        args: aws.secretsmanager.SecretVersionArgs(
+          secretId: dockerHubSecret.id,
+          secretString: jsonEncode({
+            'username': dockerHubUsername,
+            'accessToken': config.require('dockerHubAccessToken'),
+          }).input(),
+        ),
+      );
+
+      aws.ecr.PullThroughCacheRule(
+        'dockerHubCacheRule',
+        args: aws.ecr.PullThroughCacheRuleArgs(
+          ecrRepositoryPrefix: 'docker-hub'.input(),
+          upstreamRegistryUrl: 'registry-1.docker.io'.input(),
+          credentialArn: dockerHubSecret.arn,
+        ),
+      );
+    }
+
+    final k8sCacheRule = aws.ecr.PullThroughCacheRule(
+      'k8sCacheRule',
       args: aws.ecr.PullThroughCacheRuleArgs(
-        ecrRepositoryPrefix: 'docker-hub'.input(),
-        upstreamRegistryUrl: 'registry-1.docker.io'.input(),
-        credentialArn: dockerHubSecret.arn,
+        ecrRepositoryPrefix: 'k8si0'.input(),
+        upstreamRegistryUrl: 'registry.k8s.io'.input(),
       ),
     );
+
+    if (gitHubUsername != null) {
+      final gitHubSecret = aws.secretsmanager.Secret(
+        'ecrPullThroughCacheGitHubSecret',
+        args: aws.secretsmanager.SecretArgs(
+          name: 'ecr-pullthroughcache/githubSecret'.input(),
+          recoveryWindowInDays: 0.input(),
+        ),
+      );
+
+      aws.secretsmanager.SecretVersion(
+        'gitHubSecretValue',
+        args: aws.secretsmanager.SecretVersionArgs(
+          secretId: gitHubSecret.id,
+          secretString: jsonEncode({
+            'username': gitHubUsername,
+            'accessToken': config.require('gitHubAccessToken'),
+          }).input(),
+        ),
+      );
+
+      aws.ecr.PullThroughCacheRule(
+        'githubCacheRule',
+        args: aws.ecr.PullThroughCacheRuleArgs(
+          ecrRepositoryPrefix: 'github'.input(),
+          upstreamRegistryUrl: 'ghcr.io'.input(),
+          credentialArn: gitHubSecret.arn,
+        ),
+      );
+    }
+
+    if (gitLabUsername != null) {
+      final gitLabSecret = aws.secretsmanager.Secret(
+        'ecrPullThroughCacheGitLabSecret',
+        args: aws.secretsmanager.SecretArgs(
+          name: 'ecr-pullthroughcache/gitLabSecret'.input(),
+          recoveryWindowInDays: 0.input(),
+        ),
+      );
+
+      aws.secretsmanager.SecretVersion(
+        'gitLabSecretValue',
+        args: aws.secretsmanager.SecretVersionArgs(
+          secretId: gitLabSecret.id,
+          secretString: jsonEncode({
+            'username': gitLabUsername,
+            'accessToken': config.require('gitLabAccessToken'),
+          }).input(),
+        ),
+      );
+
+      aws.ecr.PullThroughCacheRule(
+        'gitLabCacheRule',
+        args: aws.ecr.PullThroughCacheRuleArgs(
+          ecrRepositoryPrefix: 'gitlab'.input(),
+          upstreamRegistryUrl: 'registry.gitlab.com'.input(),
+          credentialArn: gitLabSecret.arn,
+        ),
+      );
+    }
+
+    pullThroughCacheECRRepositoryUrl = pullThroughCacheEcr.repositoryUrl;
+    dockerHubPrefix = (dockerHubUsername != null ? 'docker-hub' : '').output();
+    k8sPrefix = k8sCacheRule.ecrRepositoryPrefix;
+    githubPrefix = (gitHubUsername != null ? 'github' : '').output();
+    gitlabPrefix = (gitLabUsername != null ? 'gitlab' : '').output();
   }
 
-  final k8sCacheRule = aws.ecr.PullThroughCacheRule(
-    'k8sCacheRule',
-    args: aws.ecr.PullThroughCacheRuleArgs(
-      ecrRepositoryPrefix: 'k8si0'.input(),
-      upstreamRegistryUrl: 'registry.k8s.io'.input(),
-    ),
-  );
-
-  if (gitHubUsername != null) {
-    final gitHubSecret = aws.secretsmanager.Secret(
-      'ecrPullThroughCacheGitHubSecret',
-      args: aws.secretsmanager.SecretArgs(
-        name: 'ecr-pullthroughcache/githubSecret'.input(),
-        recoveryWindowInDays: 0.input(),
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() {
+    return [
+      pulumi.OutputProperty(
+        'pullThroughCacheECRRepositoryUrl',
+        pullThroughCacheECRRepositoryUrl,
       ),
-    );
-
-    aws.secretsmanager.SecretVersion(
-      'gitHubSecretValue',
-      args: aws.secretsmanager.SecretVersionArgs(
-        secretId: gitHubSecret.id,
-        secretString: jsonEncode({
-          'username': gitHubUsername,
-          'accessToken': config.require('gitHubAccessToken'),
-        }).input(),
-      ),
-    );
-
-    aws.ecr.PullThroughCacheRule(
-      'githubCacheRule',
-      args: aws.ecr.PullThroughCacheRuleArgs(
-        ecrRepositoryPrefix: 'github'.input(),
-        upstreamRegistryUrl: 'ghcr.io'.input(),
-        credentialArn: gitHubSecret.arn,
-      ),
-    );
+      pulumi.OutputProperty('dockerHubPrefix', dockerHubPrefix),
+      pulumi.OutputProperty('k8sPrefix', k8sPrefix),
+      pulumi.OutputProperty('githubPrefix', githubPrefix),
+      pulumi.OutputProperty('gitlabPrefix', gitlabPrefix),
+    ];
   }
-
-  if (gitLabUsername != null) {
-    final gitLabSecret = aws.secretsmanager.Secret(
-      'ecrPullThroughCacheGitLabSecret',
-      args: aws.secretsmanager.SecretArgs(
-        name: 'ecr-pullthroughcache/gitLabSecret'.input(),
-        recoveryWindowInDays: 0.input(),
-      ),
-    );
-
-    aws.secretsmanager.SecretVersion(
-      'gitLabSecretValue',
-      args: aws.secretsmanager.SecretVersionArgs(
-        secretId: gitLabSecret.id,
-        secretString: jsonEncode({
-          'username': gitLabUsername,
-          'accessToken': config.require('gitLabAccessToken'),
-        }).input(),
-      ),
-    );
-
-    aws.ecr.PullThroughCacheRule(
-      'gitLabCacheRule',
-      args: aws.ecr.PullThroughCacheRuleArgs(
-        ecrRepositoryPrefix: 'gitlab'.input(),
-        upstreamRegistryUrl: 'registry.gitlab.com'.input(),
-        credentialArn: gitLabSecret.arn,
-      ),
-    );
-  }
-
-  pulumi.export('pullThroughCacheECRRepositoryUrl', pullThroughCacheEcr.repositoryUrl);
-  pulumi.export('dockerHubPrefix', dockerHubUsername != null ? 'docker-hub' : '');
-  pulumi.export('k8sPrefix', k8sCacheRule.ecrRepositoryPrefix);
-  pulumi.export('githubPrefix', gitHubUsername != null ? 'github' : '');
-  pulumi.export('gitlabPrefix', gitLabUsername != null ? 'gitlab' : '');
 }

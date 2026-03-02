@@ -1,5 +1,6 @@
 import 'package:aws_dart_stepfunctions/main.dart' as app;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 Future<void> main() async {
-  await app.run();
+  await pulumi.Deployment.run(() => app.StepFunctionsStack());
 }

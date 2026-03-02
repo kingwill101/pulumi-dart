@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 
-class ThumbnailerStack extends pulumi.Stack {
+  class ThumbnailerStack extends pulumi.Stack {
   late final pulumi.Output<String> bucketName;
 
   ThumbnailerStack() {
@@ -21,7 +21,7 @@ class ThumbnailerStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -29,7 +29,7 @@ class ThumbnailerStack extends pulumi.Stack {
       'thumbnailer-lambda-exec',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AWSLambdaExecute',
+        policyArn: 'arn:aws:iam::aws:policy/AWSLambdaExecute'.input(),
       ),
     );
 
@@ -37,12 +37,16 @@ class ThumbnailerStack extends pulumi.Stack {
       'onNewVideo',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/on-new-video'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/on-new-video').input(),
         environment: aws.lambda.FunctionEnvironment(
-          variables: {'S3_BUCKET': bucket.id},
-        ).output(),
+          variables: pulumi
+              .Output
+              .all([bucket.id])
+              .apply<Map<String, String>>((List<String> ids) => {'S3_BUCKET': ids[0]})
+              .input(),
+        ).input(),
       ),
     );
 
@@ -50,18 +54,18 @@ class ThumbnailerStack extends pulumi.Stack {
       'onNewThumbnail',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/on-new-thumbnail'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/on-new-thumbnail').input(),
       ),
     );
 
     aws.lambda.Permission(
       'allow-s3-invoke-on-new-video',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: onNewVideo.arn,
-        principal: 's3.amazonaws.com',
+        principal: 's3.amazonaws.com'.input(),
         sourceArn: bucket.arn,
       ),
     );
@@ -69,9 +73,9 @@ class ThumbnailerStack extends pulumi.Stack {
     aws.lambda.Permission(
       'allow-s3-invoke-on-new-thumbnail',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: onNewThumbnail.arn,
-        principal: 's3.amazonaws.com',
+        principal: 's3.amazonaws.com'.input(),
         sourceArn: bucket.arn,
       ),
     );
@@ -81,19 +85,19 @@ class ThumbnailerStack extends pulumi.Stack {
       args: aws.s3.BucketNotificationArgs(
         bucket: bucket.id,
         lambdaFunctions: [
-          aws.s3.BucketNotificationLambdaFunction(
-            id: 'on-new-video',
-            lambdaFunctionArn: onNewVideo.arn,
-            events: ['s3:ObjectCreated:*'],
-            filterSuffix: '.mp4',
-          ),
-          aws.s3.BucketNotificationLambdaFunction(
-            id: 'on-new-thumbnail',
-            lambdaFunctionArn: onNewThumbnail.arn,
-            events: ['s3:ObjectCreated:*'],
-            filterSuffix: '.jpg',
-          ),
-        ].output(),
+            aws.s3.BucketNotificationLambdaFunction(
+              id: 'on-new-video'.input(),
+              lambdaFunctionArn: onNewVideo.arn,
+              events: ['s3:ObjectCreated:*'].input(),
+              filterSuffix: '.mp4'.input(),
+            ),
+            aws.s3.BucketNotificationLambdaFunction(
+              id: 'on-new-thumbnail'.input(),
+              lambdaFunctionArn: onNewThumbnail.arn,
+              events: ['s3:ObjectCreated:*'].input(),
+              filterSuffix: '.jpg'.input(),
+            ),
+        ].input(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [onNewVideo, onNewThumbnail]),
     );

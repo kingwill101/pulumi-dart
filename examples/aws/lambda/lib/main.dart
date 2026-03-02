@@ -8,7 +8,8 @@ class ExampleStack extends pulumi.Stack {
     final role = aws.iam.Role(
       'task-exec-role',
       args: aws.iam.RoleArgs(
-        assumeRolePolicy: '''{
+        assumeRolePolicy:
+            '''{
   "Version": "2012-10-17",
   "Statement": [{
     "Sid": "",
@@ -18,7 +19,8 @@ class ExampleStack extends pulumi.Stack {
     },
     "Action": "sts:AssumeRole"
   }]
-}'''.input(),
+}'''
+                .input(),
       ),
     );
 
@@ -26,7 +28,8 @@ class ExampleStack extends pulumi.Stack {
       'lambda-log-policy',
       args: aws.iam.RolePolicyArgs(
         role: role.name,
-        policy: '''{
+        policy:
+            '''{
   "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
@@ -37,11 +40,12 @@ class ExampleStack extends pulumi.Stack {
     ],
     "Resource": "arn:aws:logs:*:*:*"
   }]
-}'''.input(),
+}'''
+                .input(),
       ),
     );
 
-    final function = aws.lambda.Function(
+    final function = aws.lambda.FunctionType(
       'basicLambda',
       args: aws.lambda.FunctionArgs(
         handler: 'bootstrap'.input(),

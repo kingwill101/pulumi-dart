@@ -14,46 +14,46 @@ class RubyOnRailsStack extends pulumi.Stack {
     final webSg = aws.ec2.SecurityGroup(
       'webServerSecurityGroup',
       args: aws.ec2.SecurityGroupArgs(
-        description: 'Enable HTTP and SSH access',
+        description: 'Enable HTTP and SSH access'.input(),
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
     final amiId = pulumi
         .output(
-          aws.ec2.getAmi(
+            aws.ec2.getAmi(
             aws.ec2.GetAmiArgs(
-              mostRecent: true,
-              owners: ['137112412989'],
+              mostRecent: true.input(),
+              owners: ['137112412989'].input(),
               filters: [
                 aws.ec2.GetAmiFilter(
-                  name: 'name',
-                  values: ['al2023-ami-*-x86_64'],
+                  name: 'name'.input(),
+                  values: ['al2023-ami-*-x86_64'].input(),
                 ),
                 aws.ec2.GetAmiFilter(
-                  name: 'virtualization-type',
-                  values: ['hvm'],
+                  name: 'virtualization-type'.input(),
+                  values: ['hvm'].input(),
                 ),
-              ],
+              ].input(),
             ),
           ),
         )
-        .apply((ami) => (ami as aws.ec2.GetAmiResult).id);
+        .apply<String>((ami) => ami.id);
 
     final userData = '''
 #!/bin/bash
@@ -75,12 +75,15 @@ echo "Rails bootstrap baseline complete." >/var/log/rails-bootstrap.log
 ''';
 
     final webServer = aws.ec2.Instance(
-      'webServer',
+        'webServer',
       args: aws.ec2.InstanceArgs(
         ami: amiId,
-        instanceType: 't3.medium',
-        vpcSecurityGroupIds: [webSg.id].output(),
-        userData: userData,
+        instanceType: 't3.medium'.input(),
+        vpcSecurityGroupIds: pulumi.Output
+            .all([webSg.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
+        userData: userData.input(),
       ),
     );
 

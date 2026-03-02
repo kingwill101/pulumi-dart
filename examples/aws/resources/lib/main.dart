@@ -89,7 +89,7 @@ class ExampleStack extends pulumi.Stack {
         namespace: 'AWS/EC2'.input(),
         period: 120.input(),
         statistic: 'Average'.input(),
-        threshold: 80.input(),
+        threshold: 80.0.input(),
         alarmDescription: 'This metric monitors ec2 cpu utilization'.input(),
       ),
     );

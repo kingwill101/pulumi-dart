@@ -21,61 +21,61 @@ class ExampleStack extends pulumi.Stack {
 
     final azNames = pulumi
         .output(
-          aws
-              .getAvailabilityZones(aws.GetAvailabilityZonesArgs(state: 'available'))
-              .then((zones) => zones.names.take(azCount).toList()),
+          aws.index.getAvailabilityZones(
+            aws.index.GetAvailabilityZonesArgs(state: 'available'.input()),
+          ),
         )
-        .apply<List<String>>((value) => (value as List).cast<String>());
+        .apply<List<String>>((zones) => zones.names.take(azCount).toList());
 
     final appVpc = awsx.ec2.Vpc(
       'app-vpc',
       args: awsx.ec2.VpcArgs(
-        cidrBlock: '172.28.0.0/16',
+        cidrBlock: '172.28.0.0/16'.input(),
         availabilityZoneNames: azNames,
         tags: {
           ...baseTags,
           'Name': '${baseTags['ManagedBy']} App VPC',
-        },
+        }.input(),
       ),
     );
 
     final dataVpc = awsx.ec2.Vpc(
       'data-vpc',
       args: awsx.ec2.VpcArgs(
-        cidrBlock: '172.18.0.0/16',
+        cidrBlock: '172.18.0.0/16'.input(),
         availabilityZoneNames: azNames,
         tags: {
           ...baseTags,
           'Name': '${baseTags['ManagedBy']} Data VPC',
-        },
+        }.input(),
       ),
     );
 
     final peeredSg = aws.ec2.SecurityGroup(
       'data-app-peering-sg',
       args: aws.ec2.SecurityGroupArgs(
-        description: 'Allows traffic from app VPC to data resources',
+        description: 'Allows traffic from app VPC to data resources'.input(),
         vpcId: dataVpc.vpcId,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            cidrBlocks: ['172.28.0.0/16'],
-            fromPort: 0,
-            toPort: 0,
-            protocol: '-1',
+            cidrBlocks: ['172.28.0.0/16'].input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            protocol: '-1'.input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            cidrBlocks: ['0.0.0.0/0'],
-            fromPort: 0,
-            toPort: 0,
-            protocol: '-1',
+            cidrBlocks: ['0.0.0.0/0'].input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            protocol: '-1'.input(),
           ),
-        ],
+        ].input(),
         tags: {
           ...baseTags,
           'Name': '${baseTags['ManagedBy']} Peer App to Data',
-        },
+        }.input(),
       ),
     );
 

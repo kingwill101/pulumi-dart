@@ -12,9 +12,9 @@ class AirflowStack extends pulumi.Stack {
     final vpc = aws.ec2.Vpc(
       'airflow-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.20.0.0/16',
-        enableDnsHostnames: true,
-        enableDnsSupport: true,
+        cidrBlock: '10.20.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
       ),
     );
 
@@ -22,16 +22,16 @@ class AirflowStack extends pulumi.Stack {
       'airflow-subnet-a',
       args: aws.ec2.SubnetArgs(
         vpcId: vpc.id,
-        cidrBlock: '10.20.1.0/24',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '10.20.1.0/24'.input(),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
     final subnetB = aws.ec2.Subnet(
       'airflow-subnet-b',
       args: aws.ec2.SubnetArgs(
         vpcId: vpc.id,
-        cidrBlock: '10.20.2.0/24',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '10.20.2.0/24'.input(),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
 
@@ -41,62 +41,64 @@ class AirflowStack extends pulumi.Stack {
         vpcId: vpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 5432,
-            toPort: 5432,
-            cidrBlocks: ['10.20.0.0/16'],
+            protocol: 'tcp'.input(),
+            fromPort: 5432.input(),
+            toPort: 5432.input(),
+            cidrBlocks: ['10.20.0.0/16'].input(),
           ),
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 6379,
-            toPort: 6379,
-            cidrBlocks: ['10.20.0.0/16'],
+            protocol: 'tcp'.input(),
+            fromPort: 6379.input(),
+            toPort: 6379.input(),
+            cidrBlocks: ['10.20.0.0/16'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
     final dbSubnets = aws.rds.SubnetGroup(
       'dbsubnets',
-      args: aws.rds.SubnetGroupArgs(subnetIds: [subnetA.id, subnetB.id].output()),
+      args: aws.rds.SubnetGroupArgs(
+        subnetIds: pulumi.Output.all([subnetA.id, subnetB.id]),
+      ),
     );
 
     final db = aws.rds.Instance(
       'postgresdb',
       args: aws.rds.InstanceArgs(
-        engine: 'postgres',
-        instanceClass: 'db.t3.micro',
-        allocatedStorage: 20,
+        engine: 'postgres'.input(),
+        instanceClass: 'db.t3.micro'.input(),
+        allocatedStorage: 20.input(),
         dbSubnetGroupName: dbSubnets.id,
         vpcSecurityGroupIds: securityGroup.id.apply((id) => [id]),
-        dbName: 'airflow',
-        username: 'airflow',
-        password: dbPassword,
-        skipFinalSnapshot: true,
+        dbName: 'airflow'.input(),
+        username: 'airflow'.input(),
+        password: dbPassword.input(),
+        skipFinalSnapshot: true.input(),
       ),
     );
 
     final cacheSubnets = aws.elasticache.SubnetGroup(
       'cachesubnets',
       args: aws.elasticache.SubnetGroupArgs(
-        subnetIds: [subnetA.id, subnetB.id].output(),
+        subnetIds: pulumi.Output.all([subnetA.id, subnetB.id]),
       ),
     );
 
     final cacheCluster = aws.elasticache.Cluster(
       'cachecluster',
       args: aws.elasticache.ClusterArgs(
-        engine: 'redis',
-        nodeType: 'cache.t2.micro',
-        numCacheNodes: 1,
+        engine: 'redis'.input(),
+        nodeType: 'cache.t2.micro'.input(),
+        numCacheNodes: 1.input(),
         subnetGroupName: cacheSubnets.id,
         securityGroupIds: securityGroup.id.apply((id) => [id]),
       ),

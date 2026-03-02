@@ -1,8 +1,6 @@
+import 'package:aws_dart_ecs_instances_autoapi/main.dart' as app;
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import '../lib/main.dart';
-
-void main() {
-  pulumi.run((_) => EcsInstancesAutoApiStack());
+Future<void> main() async {
+  await pulumi.Deployment.run(() => app.EcsInstancesAutoApiStack());
 }
-

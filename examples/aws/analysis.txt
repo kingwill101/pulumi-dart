@@ -1,0 +1,12 @@
+Analyzing aws...
+
+  error - assume-role/assume-role/bin/main.dart:37:27 - The function 'ProviderAssumeRole' isn't defined. Try importing the library that defines 'ProviderAssumeRole', correcting the name to the name of an existing function, or defining a function named 'ProviderAssumeRole'. - undefined_function
+  error - lambda-secrets/bin/main.dart:114:15 - The operator '<' isn't defined for the type 'Output<U> Function<U>(FutureOr<dynamic> Function(Map<String, String>))'. Try defining the operator '<'. - undefined_operator
+  error - lambda-secrets/bin/main.dart:114:46 - A comparison expression can't be an operand of another comparison expression. Try putting parentheses around one of the comparisons. - equality_cannot_be_equality_operand
+  error - organizations/lib/main.dart:154:19 - The function 'ProviderAssumeRole' isn't defined. Try importing the library that defines 'ProviderAssumeRole', correcting the name to the name of an existing function, or defining a function named 'ProviderAssumeRole'. - undefined_function
+  error - scheduled-function/bin/main.dart:70:15 - The operator '<' isn't defined for the type 'Output<U> Function<U>(FutureOr<dynamic> Function(String))'. Try defining the operator '<'. - undefined_operator
+  error - scheduled-function/bin/main.dart:70:46 - A comparison expression can't be an operand of another comparison expression. Try putting parentheses around one of the comparisons. - equality_cannot_be_equality_operand
+  error - thumbnailer/lib/main.dart:91:19 - The argument type 'String' can't be assigned to the parameter type 'Input<String>?'.  - argument_type_not_assignable
+  error - thumbnailer/lib/main.dart:97:19 - The argument type 'String' can't be assigned to the parameter type 'Input<String>?'.  - argument_type_not_assignable
+
+8 issues found.

@@ -9,11 +9,13 @@ class DynamicResourceStack extends pulumi.Stack {
   DynamicResourceStack() {
     final config = pulumi.Config();
     final adminName = config.require('sql-admin-name');
-    final adminPassword = config.requireSecret('sql-admin-password');
+    final adminPassword = config.require('sql-admin-password');
     final userName = config.require('sql-user-name');
-    final userPassword = config.requireSecret('sql-user-password');
+    final userPassword = config.require('sql-user-password');
 
-    final region = aws.getRegionOutput();
+    final region = pulumi.output(
+      aws.index.getRegion(aws.index.GetRegionArgs()),
+    );
 
     final appVpc = aws.ec2.Vpc(
       'app-vpc',
@@ -27,7 +29,7 @@ class DynamicResourceStack extends pulumi.Stack {
       'app-vpc-subnet',
       args: aws.ec2.SubnetArgs(
         cidrBlock: '172.31.0.0/20'.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}a'),
+        availabilityZone: region.apply((r) => '${r.name}a'),
         vpcId: appVpc.id,
       ),
     );
@@ -36,7 +38,7 @@ class DynamicResourceStack extends pulumi.Stack {
       'extra-rds-subnet',
       args: aws.ec2.SubnetArgs(
         cidrBlock: '172.31.128.0/20'.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}b'),
+        availabilityZone: region.apply((r) => '${r.name}b'),
         vpcId: appVpc.id,
       ),
     );
@@ -71,29 +73,31 @@ class DynamicResourceStack extends pulumi.Stack {
       'security-group',
       args: aws.ec2.SecurityGroupArgs(
         vpcId: appVpc.id,
-        description: 'Enables MySQL access'.output(),
+        description: 'Enables MySQL access'.input(),
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp'.output(),
-            fromPort: 3306.output(),
-            toPort: 3306.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: 'tcp'.input(),
+            fromPort: 3306.input(),
+            toPort: 3306.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1'.output(),
-            fromPort: 0.output(),
-            toPort: 0.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
     final subnetGroup = aws.rds.SubnetGroup(
       'app-database-subnetgroup',
-      args: aws.rds.SubnetGroupArgs(subnetIds: [subnetA.id, subnetB.id].output()),
+      args: aws.rds.SubnetGroupArgs(
+        subnetIds: pulumi.InputList<String>([subnetA.id, subnetB.id]),
+      ),
     );
 
     final mysqlServer = aws.rds.Instance(
@@ -101,48 +105,48 @@ class DynamicResourceStack extends pulumi.Stack {
       args: aws.rds.InstanceArgs(
         engine: 'mysql'.output(),
         username: adminName.output(),
-        password: adminPassword,
+        password: adminPassword.input(),
         instanceClass: 'db.t3.micro'.output(),
         allocatedStorage: 20.output(),
         skipFinalSnapshot: true.output(),
         publiclyAccessible: true.output(),
         dbSubnetGroupName: subnetGroup.id,
-        vpcSecurityGroupIds: [securityGroup.id].output(),
+        vpcSecurityGroupIds: pulumi.InputList<String>([securityGroup.id]),
       ),
     );
 
-    final mysqlProvider = mysql.ProviderProvider(
+    final mysqlProvider = mysql.providers.Mysql(
       'mysql-provider',
-      args: mysql.ProviderArgs(
-        endpoint: mysqlServer.endpoint,
+      args: mysql.providers.ProviderArgs(
+        endpoint: mysqlServer.endpoint.apply<String>((endpoint) => endpoint),
         username: adminName.output(),
-        password: adminPassword,
+        password: adminPassword.input(),
       ),
     );
 
-    final database = mysql.Database(
+    final database = mysql.index.Database(
       'mysql-database',
-      args: mysql.DatabaseArgs(name: 'votes-database'.output()),
+      args: mysql.index.DatabaseArgs(name: 'votes-database'.output()),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );
 
-    final dbUser = mysql.User(
+    final dbUser = mysql.index.User(
       'mysql-standard-user',
-      args: mysql.UserArgs(
+      args: mysql.index.UserArgs(
         user: userName.output(),
         host: 'example.com'.output(),
-        plaintextPassword: userPassword,
+        plaintextPassword: userPassword.input(),
       ),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );
 
-    mysql.Grant(
+    mysql.index.Grant(
       'mysql-access-grant',
-      args: mysql.GrantArgs(
+      args: mysql.index.GrantArgs(
         user: dbUser.user,
-        host: dbUser.host,
+        host: dbUser.host.apply<String>((host) => host ?? 'example.com'),
         database: database.name,
-        privileges: ['SELECT', 'UPDATE'].output(),
+        privileges: ['SELECT', 'UPDATE'].input(),
       ),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );

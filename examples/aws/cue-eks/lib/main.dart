@@ -6,9 +6,9 @@ class CueEksStack extends pulumi.Stack {
   late final pulumi.Output<dynamic> stack72Kubeconfig;
 
   CueEksStack() {
-    final rawkode = eks.Cluster(
+    final rawkode = eks.index.Cluster(
       'rawkode',
-      args: eks.ClusterArgs(
+      args: eks.index.ClusterArgs(
         instanceType: 't2.medium'.output(),
         desiredCapacity: 2.output(),
         minSize: 1.output(),
@@ -16,9 +16,9 @@ class CueEksStack extends pulumi.Stack {
       ),
     );
 
-    final stack72 = eks.Cluster(
+    final stack72 = eks.index.Cluster(
       'stack72',
-      args: eks.ClusterArgs(
+      args: eks.index.ClusterArgs(
         instanceType: 't2.medium'.output(),
         desiredCapacity: 4.output(),
         minSize: 1.output(),

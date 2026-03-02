@@ -14,7 +14,7 @@ class SyntheticsCanaryStack extends pulumi.Stack {
 
     final canaryResultsS3Bucket = s3.Bucket(
       '$baseName-results',
-      args: s3.BucketArgs(forceDestroy: true.output()),
+      args: s3.BucketArgs(forceDestroy: true.input()),
     );
 
     final canaryExecutionRole = iam.Role(
@@ -29,7 +29,7 @@ class SyntheticsCanaryStack extends pulumi.Stack {
               'Principal': {'Service': 'lambda.amazonaws.com'},
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -37,42 +37,46 @@ class SyntheticsCanaryStack extends pulumi.Stack {
       '$baseName-exec-policy',
       args: iam.RolePolicyArgs(
         role: canaryExecutionRole.name,
-        policy: canaryResultsS3Bucket.arn.apply(_generateCanaryPolicy),
+        policy: canaryResultsS3Bucket.arn.apply<String>(
+          _generateCanaryPolicy,
+        ).input(),
       ),
     );
 
     final canaryScriptsBucket = s3.Bucket('$baseName-scripts');
 
-    final canaryScriptBucketVersioning = s3.BucketVersioning(
+    s3.BucketVersioningV2(
       '$baseName-scripts-versioning',
-      args: s3.BucketVersioningArgs(
+      args: s3.BucketVersioningV2Args(
         bucket: canaryScriptsBucket.id,
-        versioningConfiguration: s3.BucketVersioningVersioningConfiguration(
-          status: 'Enabled',
-        ),
+        versioningConfiguration: s3.BucketVersioningV2VersioningConfiguration(
+          status: 'Enabled'.input(),
+        ).input(),
       ),
     );
 
     final canaryScriptObject = s3.BucketObjectv2(
       '$baseName-simple-canary',
       args: s3.BucketObjectv2Args(
-        bucket: canaryScriptBucketVersioning.bucket,
-        source: pulumi.FileArchive('./canaries/simple-canary/'),
+        bucket: canaryScriptsBucket.id,
+        source: pulumi.FileArchive('./canaries/simple-canary/').input(),
       ),
     );
 
     final canary = synthetics.Canary(
       '$baseName-simple',
       args: synthetics.CanaryArgs(
-        artifactS3Location: canaryResultsS3Bucket.id.apply((id) => 's3://$id'),
+        artifactS3Location: canaryResultsS3Bucket.id.apply<String>((id) => 's3://$id'),
         executionRoleArn: canaryExecutionRole.arn,
-        handler: 'exports.handler',
-        runtimeVersion: 'syn-nodejs-puppeteer-3.5',
-        schedule: synthetics.CanarySchedule(expression: 'rate(1 minute)'),
+        handler: 'exports.handler'.input(),
+        runtimeVersion: 'syn-nodejs-puppeteer-3.5'.input(),
+        schedule: synthetics.CanarySchedule(
+          expression: 'rate(1 minute)'.input(),
+        ).input(),
         s3Bucket: canaryScriptsBucket.id,
         s3Key: canaryScriptObject.id,
         s3Version: canaryScriptObject.versionId,
-        startCanary: true.output(),
+        startCanary: true.input(),
       ),
     );
 

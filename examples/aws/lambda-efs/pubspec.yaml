@@ -7,7 +7,7 @@ environment:
   sdk: ^3.11.0
 dependencies:
   pulumi: 0.1.0
-  pulumi_aws: any
+  pulumi_aws: ^7.20.0
   pulumi_aws_apigateway: any
   pulumi_awsx: any
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
-import 'package:pulumi_docker/pulumi_docker.dart' as docker;
+import 'package:pulumi_docker/index.dart' as docker;
 import 'package:pulumi_mysql/index.dart' as mysql;
 import 'package:pulumi_mysql/providers.dart' as mysqlproviders;
 
@@ -19,8 +19,8 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final djangoAdminPassword = config.require('django-admin-password');
     final djangoSecretKey = config.require('django-secret-key');
 
-    final awsRegion = pulumi.Output(
-      aws.getRegion(aws.GetRegionArgs()),
+    final awsRegion = pulumi.output(
+      aws.index.getRegion(aws.index.GetRegionArgs()),
     ).apply((region) => region.name);
 
     final appCluster = aws.ecs.Cluster('app-cluster');
@@ -28,15 +28,15 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final appVpc = aws.ec2.Vpc(
       'app-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '172.31.0.0/16',
-        enableDnsHostnames: true,
+        cidrBlock: '172.31.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
       ),
     );
 
     final appVpcSubnet = aws.ec2.Subnet(
       'app-vpc-subnet',
       args: aws.ec2.SubnetArgs(
-        cidrBlock: '172.31.0.0/20',
+        cidrBlock: '172.31.0.0/20'.input(),
         availabilityZone: awsRegion.apply((region) => '${region}a'),
         vpcId: appVpc.id,
       ),
@@ -52,8 +52,11 @@ class DjangoVotingAppStack extends pulumi.Stack {
       args: aws.ec2.RouteTableArgs(
         vpcId: appVpc.id,
         routes: [
-          aws.ec2.RouteTableRoute(cidrBlock: '0.0.0.0/0', gatewayId: appGateway.id),
-        ].output(),
+          aws.ec2.RouteTableRoute(
+            cidrBlock: '0.0.0.0/0'.input(),
+            gatewayId: appGateway.id,
+          ),
+        ].input(),
       ),
     );
 
@@ -69,23 +72,23 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'security-group',
       args: aws.ec2.SecurityGroupArgs(
         vpcId: appVpc.id,
-        description: 'Enables HTTP access',
+        description: 'Enables HTTP access'.input(),
         ingress: [
           aws.ec2.SecurityGroupIngressArgs(
-            protocol: 'tcp',
-            fromPort: 0,
-            toPort: 65535,
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: 'tcp'.input(),
+            fromPort: 0.input(),
+            toPort: 65535.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgressArgs(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -102,7 +105,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
               'Sid': '',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -111,7 +114,8 @@ class DjangoVotingAppStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: appExecRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy',
+            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+                .input(),
       ),
     );
 
@@ -128,7 +132,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
               'Sid': '',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -136,13 +140,13 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'app-access-policy',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: appTaskRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AmazonECS_FullAccess',
+        policyArn: 'arn:aws:iam::aws:policy/AmazonECS_FullAccess'.input(),
       ),
     );
 
     final appEcrRepo = aws.ecr.Repository(
       'app-ecr-repo',
-      args: aws.ecr.RepositoryArgs(imageTagMutability: 'MUTABLE'),
+      args: aws.ecr.RepositoryArgs(imageTagMutability: 'MUTABLE'.input()),
     );
 
     aws.ecr.LifecyclePolicy(
@@ -162,14 +166,14 @@ class DjangoVotingAppStack extends pulumi.Stack {
               'action': {'type': 'expire'},
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
     final extraRdsSubnet = aws.ec2.Subnet(
       'extra-rds-subnet',
       args: aws.ec2.SubnetArgs(
-        cidrBlock: '172.31.128.0/20',
+        cidrBlock: '172.31.128.0/20'.input(),
         availabilityZone: awsRegion.apply((region) => '${region}b'),
         vpcId: appVpc.id,
       ),
@@ -178,22 +182,28 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final appDatabaseSubnetgroup = aws.rds.SubnetGroup(
       'app-database-subnetgroup',
       args: aws.rds.SubnetGroupArgs(
-        subnetIds: [appVpcSubnet.id, extraRdsSubnet.id].output(),
+        subnetIds: pulumi.Output
+            .all([appVpcSubnet.id, extraRdsSubnet.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
       ),
     );
 
     final mysqlRdsServer = aws.rds.Instance(
       'mysql-server',
       args: aws.rds.InstanceArgs(
-        engine: 'mysql',
-        username: sqlAdminName,
-        password: sqlAdminPassword,
-        instanceClass: 'db.t3.micro',
-        allocatedStorage: 20,
-        skipFinalSnapshot: true,
-        publiclyAccessible: true,
+        engine: 'mysql'.input(),
+        username: sqlAdminName.input(),
+        password: sqlAdminPassword.input(),
+        instanceClass: 'db.t3.micro'.input(),
+        allocatedStorage: 20.input(),
+        skipFinalSnapshot: true.input(),
+        publiclyAccessible: true.input(),
         dbSubnetGroupName: appDatabaseSubnetgroup.id,
-        vpcSecurityGroupIds: [appSecurityGroup.id].output(),
+        vpcSecurityGroupIds: pulumi.Output
+            .all([appSecurityGroup.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
       ),
     );
 
@@ -201,23 +211,23 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'mysql-provider',
       args: mysqlproviders.ProviderArgs(
         endpoint: mysqlRdsServer.endpoint,
-        username: sqlAdminName.output(),
-        password: sqlAdminPassword.output(),
+        username: sqlAdminName.input(),
+        password: sqlAdminPassword.input(),
       ),
     );
 
     final mysqlDatabase = mysql.Database(
       'mysql-database',
-      args: mysql.DatabaseArgs(name: 'votes'.output()),
+      args: mysql.DatabaseArgs(name: 'votes'.input()),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );
 
     final mysqlUser = mysql.User(
       'mysql-standard-user',
       args: mysql.UserArgs(
-        user: sqlUserName.output(),
-        host: '%'.output(),
-        plaintextPassword: sqlUserPassword.output(),
+        user: sqlUserName.input(),
+        host: '%'.input(),
+        plaintextPassword: sqlUserPassword.input(),
       ),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );
@@ -226,9 +236,9 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'mysql-access-grant',
       args: mysql.GrantArgs(
         user: mysqlUser.user,
-        host: mysqlUser.host,
+        host: mysqlUser.host.apply<String>((host) => host!).input(),
         database: mysqlDatabase.name,
-        privileges: ['SELECT', 'UPDATE', 'INSERT', 'DELETE'].output(),
+        privileges: ['SELECT', 'UPDATE', 'INSERT', 'DELETE'].input(),
       ),
       options: pulumi.CustomResourceOptions(provider: mysqlProvider),
     );
@@ -236,10 +246,13 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final djangoTargetgroup = aws.lb.TargetGroup(
       'django-targetgroup',
       args: aws.lb.TargetGroupArgs(
-        port: 80,
-        protocol: 'TCP',
-        targetType: 'ip',
-        stickiness: aws.lb.TargetGroupStickiness(enabled: false, type: 'lb_cookie'),
+        port: 80.input(),
+        protocol: 'TCP'.input(),
+        targetType: 'ip'.input(),
+        stickiness: aws.lb.TargetGroupStickiness(
+          enabled: false.input(),
+          type: 'lb_cookie'.input(),
+        ).input(),
         vpcId: appVpc.id,
       ),
     );
@@ -247,10 +260,13 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final djangoBalancer = aws.lb.LoadBalancer(
       'django-balancer',
       args: aws.lb.LoadBalancerArgs(
-        loadBalancerType: 'network',
-        internal: false,
-        securityGroups: <String>[].output(),
-        subnets: [appVpcSubnet.id].output(),
+        loadBalancerType: 'network'.input(),
+        internal: false.input(),
+        securityGroups: <String>[].input(),
+        subnets: pulumi.Output
+            .all([appVpcSubnet.id])
+            .apply<List<String>>((ids) => ids.cast<String>())
+            .input(),
       ),
     );
 
@@ -258,25 +274,28 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'django-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: djangoBalancer.arn,
-        port: 80,
-        protocol: 'TCP',
+        port: 80.input(),
+        protocol: 'TCP'.input(),
         defaultActions: [
-          aws.lb.ListenerDefaultAction(type: 'forward', targetGroupArn: djangoTargetgroup.arn),
-        ].output(),
+          aws.lb.ListenerDefaultAction(
+            type: 'forward'.input(),
+            targetGroupArn: djangoTargetgroup.arn.input(),
+          ),
+        ].input(),
       ),
     );
 
     final repoCreds = appEcrRepo.registryId.apply(
       (rid) => aws.ecr.getAuthorizationToken(
-        aws.ecr.GetAuthorizationTokenArgs(registryId: rid),
+        aws.ecr.GetAuthorizationTokenArgs(registryId: rid.input()),
       ),
     );
 
-    final appRegistry = repoCreds.apply(
+    final appRegistry = repoCreds.apply<docker.Registry>(
       (creds) => docker.Registry(
-        server: creds.proxyEndpoint,
-        username: creds.userName,
-        password: creds.password,
+        server: creds.proxyEndpoint.input(),
+        username: creds.userName.input(),
+        password: creds.password.input(),
       ),
     );
 
@@ -284,30 +303,30 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'django-dockerimage',
       args: docker.ImageArgs(
         imageName: appEcrRepo.repositoryUrl,
-        build: docker.DockerBuild(context: './frontend').output(),
-        skipPush: false.output(),
-        registry: appRegistry,
+        build: docker.DockerBuild(context: './frontend'.input()).input(),
+        skipPush: false.input(),
+        registry: appRegistry.input(),
       ),
     );
 
     final djangoLogGroup = aws.cloudwatch.LogGroup(
       'django-log-group',
       args: aws.cloudwatch.LogGroupArgs(
-        retentionInDays: 1,
-        name: 'django-log-group',
+        retentionInDays: 1.input(),
+        name: 'django-log-group'.input(),
       ),
     );
 
     final djangoDatabaseTaskDefinition = aws.ecs.TaskDefinition(
       'django-database-task-definition',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'django_database_task_definition-family',
-        cpu: '256',
-        memory: '512',
-        networkMode: 'awsvpc',
-        requiresCompatibilities: ['FARGATE'].output(),
-        executionRoleArn: appExecRole.arn,
-        taskRoleArn: appTaskRole.arn,
+        family: 'django_database_task_definition-family'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
+        networkMode: 'awsvpc'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
+        executionRoleArn: appExecRole.arn.input(),
+        taskRoleArn: appTaskRole.arn.input(),
         containerDefinitions: pulumi
             .Output
             .all([
@@ -318,7 +337,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
               awsRegion,
               djangoLogGroup.name,
             ])
-            .apply((values) {
+            .apply<String>((values) {
               final imageName = values[0] as String;
               final dbName = values[1] as String;
               final dbAddress = values[2] as String;
@@ -355,7 +374,8 @@ class DjangoVotingAppStack extends pulumi.Stack {
                   'command': ['/mysite/setupDatabase.sh'],
                 },
               ]);
-            }),
+            })
+            .input(),
       ),
     );
 
@@ -363,22 +383,28 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'django-database-service',
       args: aws.ecs.ServiceArgs(
         cluster: appCluster.arn,
-        desiredCount: 1,
-        launchType: 'FARGATE',
-        taskDefinition: djangoDatabaseTaskDefinition.arn,
-        waitForSteadyState: false,
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
+        taskDefinition: djangoDatabaseTaskDefinition.arn.input(),
+        waitForSteadyState: false.input(),
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true,
-          subnets: [appVpcSubnet.id].output(),
-          securityGroups: [appSecurityGroup.id].output(),
-        ),
+          assignPublicIp: true.input(),
+          subnets: pulumi.Output
+              .all([appVpcSubnet.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
+          securityGroups: pulumi.Output
+              .all([appSecurityGroup.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
+        ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: djangoTargetgroup.arn,
-            containerName: 'django-container',
-            containerPort: 80,
+            containerName: 'django-container'.input(),
+            containerPort: 80.input(),
           ),
-        ].output(),
+        ].input(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [djangoListener]),
     );
@@ -386,13 +412,13 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final djangoSiteTaskDefinition = aws.ecs.TaskDefinition(
       'django-site-task-definition',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'django-site-task-definition-family',
-        cpu: '256',
-        memory: '512',
-        networkMode: 'awsvpc',
-        requiresCompatibilities: ['FARGATE'].output(),
-        executionRoleArn: appExecRole.arn,
-        taskRoleArn: appTaskRole.arn,
+        family: 'django-site-task-definition-family'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
+        networkMode: 'awsvpc'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
+        executionRoleArn: appExecRole.arn.input(),
+        taskRoleArn: appTaskRole.arn.input(),
         containerDefinitions: pulumi
             .Output
             .all([
@@ -403,7 +429,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
               awsRegion,
               djangoLogGroup.name,
             ])
-            .apply((values) {
+            .apply<String>((values) {
               final imageName = values[0] as String;
               final dbName = values[1] as String;
               final dbAddress = values[2] as String;
@@ -437,7 +463,8 @@ class DjangoVotingAppStack extends pulumi.Stack {
                   },
                 },
               ]);
-            }),
+            })
+            .input(),
       ),
     );
 
@@ -445,22 +472,28 @@ class DjangoVotingAppStack extends pulumi.Stack {
       'django-site-service',
       args: aws.ecs.ServiceArgs(
         cluster: appCluster.arn,
-        desiredCount: 1,
-        launchType: 'FARGATE',
-        taskDefinition: djangoSiteTaskDefinition.arn,
-        waitForSteadyState: false,
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
+        taskDefinition: djangoSiteTaskDefinition.arn.input(),
+        waitForSteadyState: false.input(),
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true,
-          subnets: [appVpcSubnet.id].output(),
-          securityGroups: [appSecurityGroup.id].output(),
-        ),
+          assignPublicIp: true.input(),
+          subnets: pulumi.Output
+              .all([appVpcSubnet.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
+          securityGroups: pulumi.Output
+              .all([appSecurityGroup.id])
+              .apply<List<String>>((ids) => ids.cast<String>())
+              .input(),
+        ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: djangoTargetgroup.arn,
-            containerName: 'django-container',
-            containerPort: 80,
+            containerName: 'django-container'.input(),
+            containerPort: 80.input(),
           ),
-        ].output(),
+        ].input(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [djangoListener]),
     );
@@ -473,4 +506,3 @@ class DjangoVotingAppStack extends pulumi.Stack {
     return [pulumi.OutputProperty('app-url', appUrl)];
   }
 }
-

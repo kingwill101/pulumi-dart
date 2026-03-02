@@ -17,20 +17,20 @@ class AnsibleWordpressStack extends pulumi.Stack {
     final dbPassword = config.require('dbPassword');
     final ec2InstanceSize = config.get('ec2InstanceSize') ?? 't3.small';
 
-    final availabilityZones = pulumi.Output(
-      aws.getAvailabilityZones(aws.GetAvailabilityZonesArgs()),
+    final availabilityZones = pulumi.output(
+      aws.index.getAvailabilityZones(aws.index.GetAvailabilityZonesArgs()),
     );
-    final awsLinuxAmi = pulumi.Output(
+    final awsLinuxAmi = pulumi.output(
       aws.ec2.getAmi(
         aws.ec2.GetAmiArgs(
-          owners: ['amazon'].output(),
+          owners: ['amazon'].input(),
           filters: [
             aws.ec2.GetAmiFilter(
-              name: 'name',
-              values: ['amzn2-ami-hvm-*-x86_64-ebs'].output(),
+              name: 'name'.input(),
+              values: ['amzn2-ami-hvm-*-x86_64-ebs'].input(),
             ),
-          ].output(),
-          mostRecent: true,
+          ].input(),
+          mostRecent: true.input(),
         ),
       ),
     );
@@ -41,10 +41,10 @@ class AnsibleWordpressStack extends pulumi.Stack {
     final prodVpc = aws.ec2.Vpc(
       'prod-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.192.0.0/16',
-        enableDnsSupport: true,
-        enableDnsHostnames: true,
-        instanceTenancy: 'default',
+        cidrBlock: '10.192.0.0/16'.input(),
+        enableDnsSupport: true.input(),
+        enableDnsHostnames: true.input(),
+        instanceTenancy: 'default'.input(),
       ),
     );
 
@@ -52,8 +52,8 @@ class AnsibleWordpressStack extends pulumi.Stack {
       'prod-subnet-public-1',
       args: aws.ec2.SubnetArgs(
         vpcId: prodVpc.id,
-        cidrBlock: '10.192.0.0/24',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '10.192.0.0/24'.input(),
+        mapPublicIpOnLaunch: true.input(),
         availabilityZone: availabilityZones.apply((azs) => azs.names[0]),
       ),
     );
@@ -62,8 +62,8 @@ class AnsibleWordpressStack extends pulumi.Stack {
       'prod-subnet-private-1',
       args: aws.ec2.SubnetArgs(
         vpcId: prodVpc.id,
-        cidrBlock: '10.192.20.0/24',
-        mapPublicIpOnLaunch: false,
+        cidrBlock: '10.192.20.0/24'.input(),
+        mapPublicIpOnLaunch: false.input(),
         availabilityZone: availabilityZones.apply((azs) => azs.names[1]),
       ),
     );
@@ -72,8 +72,8 @@ class AnsibleWordpressStack extends pulumi.Stack {
       'prod-subnet-private-2',
       args: aws.ec2.SubnetArgs(
         vpcId: prodVpc.id,
-        cidrBlock: '10.192.21.0/24',
-        mapPublicIpOnLaunch: false,
+        cidrBlock: '10.192.21.0/24'.input(),
+        mapPublicIpOnLaunch: false.input(),
         availabilityZone: availabilityZones.apply((azs) => azs.names[2]),
       ),
     );
@@ -89,7 +89,7 @@ class AnsibleWordpressStack extends pulumi.Stack {
         vpcId: prodVpc.id,
         routes: [
           aws.ec2.RouteTableRoute(
-            cidrBlock: '0.0.0.0/0',
+            cidrBlock: '0.0.0.0/0'.input(),
             gatewayId: prodIgw.id,
           ),
         ].output(),
@@ -110,32 +110,32 @@ class AnsibleWordpressStack extends pulumi.Stack {
         vpcId: prodVpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngressArgs(
-            description: 'HTTPS',
-            fromPort: 443,
-            toPort: 443,
-            protocol: 'tcp',
+            description: 'HTTPS'.input(),
+            fromPort: 443.input(),
+            toPort: 443.input(),
+            protocol: 'tcp'.input(),
             cidrBlocks: ['0.0.0.0/0'].output(),
           ),
           aws.ec2.SecurityGroupIngressArgs(
-            description: 'HTTP',
-            fromPort: 80,
-            toPort: 80,
-            protocol: 'tcp',
+            description: 'HTTP'.input(),
+            fromPort: 80.input(),
+            toPort: 80.input(),
+            protocol: 'tcp'.input(),
             cidrBlocks: ['0.0.0.0/0'].output(),
           ),
           aws.ec2.SecurityGroupIngressArgs(
-            description: 'SSH',
-            fromPort: 22,
-            toPort: 22,
-            protocol: 'tcp',
+            description: 'SSH'.input(),
+            fromPort: 22.input(),
+            toPort: 22.input(),
+            protocol: 'tcp'.input(),
             cidrBlocks: ['0.0.0.0/0'].output(),
           ),
         ].output(),
         egress: [
           aws.ec2.SecurityGroupEgressArgs(
-            fromPort: 0,
-            toPort: 0,
-            protocol: '-1',
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            protocol: '-1'.input(),
             cidrBlocks: ['0.0.0.0/0'].output(),
           ),
         ].output(),
@@ -149,18 +149,20 @@ class AnsibleWordpressStack extends pulumi.Stack {
         vpcId: prodVpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngressArgs(
-            description: 'MySQL',
-            fromPort: 3306,
-            toPort: 3306,
-            protocol: 'tcp',
-            securityGroups: [ec2AllowRule.id].output(),
+            description: 'MySQL'.input(),
+            fromPort: 3306.input(),
+            toPort: 3306.input(),
+            protocol: 'tcp'.input(),
+            securityGroups: pulumi.Output.all<String>([
+              ec2AllowRule.id,
+            ]).apply<List<String>>((ids) => ids),
           ),
         ].output(),
         egress: [
           aws.ec2.SecurityGroupEgressArgs(
-            fromPort: 0,
-            toPort: 0,
-            protocol: '-1',
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            protocol: '-1'.input(),
             cidrBlocks: ['0.0.0.0/0'].output(),
           ),
         ].output(),
@@ -171,38 +173,45 @@ class AnsibleWordpressStack extends pulumi.Stack {
     final rdsSubnetGrp = aws.rds.SubnetGroup(
       'rds-subnet-grp',
       args: aws.rds.SubnetGroupArgs(
-        subnetIds: [prodSubnetPrivate1.id, prodSubnetPrivate2.id].output(),
+        subnetIds: pulumi.Output.all<String>([
+          prodSubnetPrivate1.id,
+          prodSubnetPrivate2.id,
+        ]).apply<List<String>>((ids) => ids),
       ),
     );
 
     final wordpressdb = aws.rds.Instance(
       'wordpressdb',
       args: aws.rds.InstanceArgs(
-        allocatedStorage: 10,
-        engine: 'mysql',
-        engineVersion: '5.7',
-        instanceClass: dbInstanceSize,
+        allocatedStorage: 10.input(),
+        engine: 'mysql'.input(),
+        engineVersion: '5.7'.input(),
+        instanceClass: dbInstanceSize.input(),
         dbSubnetGroupName: rdsSubnetGrp.id,
-        vpcSecurityGroupIds: [rdsAllowRule.id].output(),
-        dbName: dbName,
-        username: dbUsername,
-        password: dbPassword,
-        skipFinalSnapshot: true,
+        vpcSecurityGroupIds: pulumi.Output.all<String>([
+          rdsAllowRule.id,
+        ]).apply<List<String>>((ids) => ids),
+        dbName: dbName.input(),
+        username: dbUsername.input(),
+        password: dbPassword.input(),
+        skipFinalSnapshot: true.input(),
       ),
     );
 
     final wordpressKeypair = aws.ec2.KeyPair(
       'wordpress-keypair',
-      args: aws.ec2.KeyPairArgs(publicKey: publicKey),
+      args: aws.ec2.KeyPairArgs(publicKey: publicKey.input()),
     );
 
     final wordpressInstance = aws.ec2.Instance(
       'wordpress-instance',
       args: aws.ec2.InstanceArgs(
         ami: awsLinuxAmi.apply((ami) => ami.id),
-        instanceType: ec2InstanceSize,
+        instanceType: ec2InstanceSize.input(),
         subnetId: prodSubnetPublic1.id,
-        vpcSecurityGroupIds: [ec2AllowRule.id].output(),
+        vpcSecurityGroupIds: pulumi.Output.all<String>([
+          ec2AllowRule.id,
+        ]).apply<List<String>>((ids) => ids),
         keyName: wordpressKeypair.id,
         tags: {'Name': 'Wordpress.web'}.output(),
       ),
@@ -218,48 +227,51 @@ class AnsibleWordpressStack extends pulumi.Stack {
       'renderPlaybookCmd',
       args: command.local.CommandArgs(
         create: 'cat playbook.yml | envsubst > playbook_rendered.yml'.output(),
-        environment: pulumi
-            .Output
-            .all([wordpressdb.endpoint])
-            .apply((values) => <String, String>{
-                  'DB_RDS': values[0] as String,
-                  'DB_NAME': dbName,
-                  'DB_USERNAME': dbUsername,
-                  'DB_PASSWORD': dbPassword,
-                }),
+        environment: pulumi.Output.all<String>([wordpressdb.endpoint])
+            .apply<Map<String, String>>(
+              (values) => <String, String>{
+                'DB_RDS': values[0],
+                'DB_NAME': dbName,
+                'DB_USERNAME': dbUsername,
+                'DB_PASSWORD': dbPassword,
+              },
+            )
+            .input(),
       ),
     );
 
     final updatePythonCmd = command.remote.Command(
       'updatePythonCmd',
       args: command.remote.CommandArgs(
-        connection: wordpressEip.publicIp
-            .apply((host) => command.remote.Connection(
-                  host: host,
-                  port: 22,
-                  user: 'ec2-user',
-                  privateKey: privateKey,
-                )),
-        create: '''
+        connection: wordpressEip.publicIp.apply(
+          (host) => command.remote.Connection(
+            host: host.input(),
+            port: 22.0.input(),
+            user: 'ec2-user'.input(),
+            privateKey: privateKey.input(),
+          ),
+        ),
+        create:
+            '''
 (sudo yum update -y || true);
 (sudo yum install python35 -y);
 (sudo yum install amazon-linux-extras -y)
 '''
-            .output(),
+                .input(),
       ),
     );
 
     command.local.Command(
       'playAnsiblePlaybookCmd',
       args: command.local.CommandArgs(
-        create: wordpressEip.publicIp.apply((publicIp) {
+        create: wordpressEip.publicIp.apply<String>((publicIp) {
           return '''
 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
 -u ec2-user \
 -i '$publicIp,' \
 --private-key $privateKeyPath \
 playbook_rendered.yml''';
-        }),
+        }).input(),
       ),
       options: pulumi.CustomResourceOptions(
         dependsOn: [renderPlaybookCmd, updatePythonCmd],
@@ -274,4 +286,3 @@ playbook_rendered.yml''';
     return [pulumi.OutputProperty('url', url)];
   }
 }
-

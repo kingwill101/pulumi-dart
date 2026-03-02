@@ -32,30 +32,32 @@ class ExampleStack extends pulumi.Stack {
       'db-subnet-group',
       args: aws.rds.SubnetGroupArgs(
         subnetIds: subnetIds,
-        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Subnet Group'},
+        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Subnet Group'}
+            .input(),
       ),
     );
 
     final rds = aws.rds.Instance(
       'db-instance-rds',
       args: aws.rds.InstanceArgs(
-        allocatedStorage: 40,
-        dbSubnetGroupName: subnetGroup.name,
-        engine: 'postgres',
-        engineVersion: '11.4',
-        instanceClass: aws.rds.InstanceType.r3Large.value,
-        username: username,
-        password: password,
-        dbName: dbName,
-        storageType: 'gp2',
-        backupRetentionPeriod: 7,
-        backupWindow: '00:00-01:00',
-        maintenanceWindow: 'Mon:02:00-Mon:04:00',
-        skipFinalSnapshot: true,
+        allocatedStorage: 40.input(),
+        dbSubnetGroupName: subnetGroup.name.input(),
+        engine: 'postgres'.input(),
+        engineVersion: '11.4'.input(),
+        instanceClass: 'db.r3.large'.input(),
+        username: username.input(),
+        password: password.input(),
+        dbName: dbName.input(),
+        storageType: 'gp2'.input(),
+        backupRetentionPeriod: 7.input(),
+        backupWindow: '00:00-01:00'.input(),
+        maintenanceWindow: 'Mon:02:00-Mon:04:00'.input(),
+        skipFinalSnapshot: true.input(),
         vpcSecurityGroupIds: pulumi.Output
             .all<String>([peeredSgId])
-            .apply<List<String>>((ids) => ids),
-        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Instance'},
+            .apply<List<String>>((ids) => ids)
+            .input(),
+        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Instance'}.input(),
       ),
     );
 

@@ -36,17 +36,28 @@ class GetHistoryDeliveryJobsJob {
   /// [trailName] The name of the trail.
   /// [updatedTime] The time when the task was updated.
   GetHistoryDeliveryJobsJob({
-    required this.createTime,
-    required this.endTime,
-    required this.historyDeliveryJobId,
-    required this.homeRegion,
-    required this.id,
-    required this.jobStatuses,
-    required this.startTime,
-    required this.status,
-    required this.trailName,
-    required this.updatedTime,
-  });
+    required String createTime,
+    required String endTime,
+    required String historyDeliveryJobId,
+    required String homeRegion,
+    required String id,
+    required List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses,
+    required String startTime,
+    required int status,
+    required String trailName,
+    required String updatedTime,
+  }) :
+
+      createTime = createTime.input(),
+      endTime = endTime.input(),
+      historyDeliveryJobId = historyDeliveryJobId.input(),
+      homeRegion = homeRegion.input(),
+      id = id.input(),
+      jobStatuses = jobStatuses.input(),
+      startTime = startTime.input(),
+      status = status.input(),
+      trailName = trailName.input(),
+      updatedTime = updatedTime.input();
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,16 +76,16 @@ class GetHistoryDeliveryJobsJob {
 
   factory GetHistoryDeliveryJobsJob.fromMap(Map<String, dynamic> map) {
     return GetHistoryDeliveryJobsJob(
-      createTime: (map['createTime'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      historyDeliveryJobId: (map['historyDeliveryJobId'] as String).input(),
-      homeRegion: (map['homeRegion'] as String).input(),
-      id: (map['id'] as String).input(),
-      jobStatuses: (pulumi.Input.decodeList<GetHistoryDeliveryJobsJobJobStatus>(map['jobStatuses'], (value) => GetHistoryDeliveryJobsJobJobStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as int).input(),
-      trailName: (map['trailName'] as String).input(),
-      updatedTime: (map['updatedTime'] as String).input(),
+      createTime: map['createTime'] as String,
+      endTime: map['endTime'] as String,
+      historyDeliveryJobId: map['historyDeliveryJobId'] as String,
+      homeRegion: map['homeRegion'] as String,
+      id: map['id'] as String,
+      jobStatuses: pulumi.Input.decodeList<GetHistoryDeliveryJobsJobJobStatus>(map['jobStatuses'], (value) => GetHistoryDeliveryJobsJobJobStatus.fromMap((value as Map).cast<String, dynamic>())),
+      startTime: map['startTime'] as String,
+      status: map['status'] as int,
+      trailName: map['trailName'] as String,
+      updatedTime: map['updatedTime'] as String,
     );
   }
 }

@@ -8,10 +8,10 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
     final transitGateway = aws.ec2transitgateway.TransitGateway(
       'tgw',
       args: aws.ec2transitgateway.TransitGatewayArgs(
-        description: 'Transit Gateway - hub and spoke',
-        defaultRouteTableAssociation: 'disable',
-        defaultRouteTablePropagation: 'disable',
-        tags: {'Name': 'Pulumi'}.output(),
+        description: 'Transit Gateway - hub and spoke'.input(),
+        defaultRouteTableAssociation: 'disable'.input(),
+        defaultRouteTablePropagation: 'disable'.input(),
+        tags: {'Name': 'Pulumi'}.input(),
       ),
     );
 
@@ -19,7 +19,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke-tgw-route-table',
       args: aws.ec2transitgateway.RouteTableArgs(
         transitGatewayId: transitGateway.id,
-        tags: {'Name': 'spoke-tgw'}.output(),
+        tags: {'Name': 'spoke-tgw'}.input(),
       ),
     );
 
@@ -27,16 +27,16 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-tgw-route-table',
       args: aws.ec2transitgateway.RouteTableArgs(
         transitGatewayId: transitGateway.id,
-        tags: {'Name': 'inspection-tgw'}.output(),
+        tags: {'Name': 'inspection-tgw'}.input(),
       ),
     );
 
     final inspectionVpc = aws.ec2.Vpc(
       'inspection-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.129.0.0/24',
-        enableDnsHostnames: true,
-        enableDnsSupport: true,
+        cidrBlock: '10.129.0.0/24'.input(),
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
       ),
     );
 
@@ -49,8 +49,8 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-public-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: inspectionVpc.id,
-        cidrBlock: '10.129.0.0/26',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '10.129.0.0/26'.input(),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
 
@@ -58,7 +58,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-transit-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: inspectionVpc.id,
-        cidrBlock: '10.129.0.64/26',
+        cidrBlock: '10.129.0.64/26'.input(),
       ),
     );
 
@@ -71,7 +71,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-public-default-route',
       args: aws.ec2.RouteArgs(
         routeTableId: inspectionPublicRouteTable.id,
-        destinationCidrBlock: '0.0.0.0/0',
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         gatewayId: inspectionIgw.id,
       ),
     );
@@ -103,7 +103,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-private-default-route',
       args: aws.ec2.RouteArgs(
         routeTableId: inspectionPrivateRouteTable.id,
-        destinationCidrBlock: '0.0.0.0/0',
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         natGatewayId: inspectionNat.id,
       ),
     );
@@ -121,9 +121,9 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       args: aws.ec2transitgateway.VpcAttachmentArgs(
         transitGatewayId: transitGateway.id,
         vpcId: inspectionVpc.id,
-        subnetIds: inspectionTransitSubnet.id.apply((id) => [id]),
-        transitGatewayDefaultRouteTableAssociation: false,
-        transitGatewayDefaultRouteTablePropagation: false,
+        subnetIds: pulumi.InputList<String>([inspectionTransitSubnet.id]),
+        transitGatewayDefaultRouteTableAssociation: false.input(),
+        transitGatewayDefaultRouteTablePropagation: false.input(),
       ),
     );
 
@@ -146,9 +146,9 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
     final spoke1Vpc = aws.ec2.Vpc(
       'spoke1-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.0.0.0/16',
-        enableDnsHostnames: true,
-        enableDnsSupport: true,
+        cidrBlock: '10.0.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
       ),
     );
 
@@ -156,7 +156,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke1-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: spoke1Vpc.id,
-        cidrBlock: '10.0.0.0/24',
+        cidrBlock: '10.0.0.0/24'.input(),
       ),
     );
 
@@ -178,9 +178,9 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       args: aws.ec2transitgateway.VpcAttachmentArgs(
         transitGatewayId: transitGateway.id,
         vpcId: spoke1Vpc.id,
-        subnetIds: spoke1Subnet.id.apply((id) => [id]),
-        transitGatewayDefaultRouteTableAssociation: false,
-        transitGatewayDefaultRouteTablePropagation: false,
+        subnetIds: pulumi.InputList<String>([spoke1Subnet.id]),
+        transitGatewayDefaultRouteTableAssociation: false.input(),
+        transitGatewayDefaultRouteTablePropagation: false.input(),
       ),
     );
 
@@ -188,7 +188,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke1-default-route',
       args: aws.ec2.RouteArgs(
         routeTableId: spoke1RouteTable.id,
-        destinationCidrBlock: '0.0.0.0/0',
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         transitGatewayId: transitGateway.id,
       ),
     );
@@ -212,9 +212,9 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
     final spoke2Vpc = aws.ec2.Vpc(
       'spoke2-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: '10.1.0.0/16',
-        enableDnsHostnames: true,
-        enableDnsSupport: true,
+        cidrBlock: '10.1.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
       ),
     );
 
@@ -222,7 +222,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke2-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: spoke2Vpc.id,
-        cidrBlock: '10.1.0.0/24',
+        cidrBlock: '10.1.0.0/24'.input(),
       ),
     );
 
@@ -244,9 +244,9 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       args: aws.ec2transitgateway.VpcAttachmentArgs(
         transitGatewayId: transitGateway.id,
         vpcId: spoke2Vpc.id,
-        subnetIds: spoke2Subnet.id.apply((id) => [id]),
-        transitGatewayDefaultRouteTableAssociation: false,
-        transitGatewayDefaultRouteTablePropagation: false,
+        subnetIds: pulumi.InputList<String>([spoke2Subnet.id]),
+        transitGatewayDefaultRouteTableAssociation: false.input(),
+        transitGatewayDefaultRouteTablePropagation: false.input(),
       ),
     );
 
@@ -254,7 +254,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke2-default-route',
       args: aws.ec2.RouteArgs(
         routeTableId: spoke2RouteTable.id,
-        destinationCidrBlock: '0.0.0.0/0',
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         transitGatewayId: transitGateway.id,
       ),
     );
@@ -279,7 +279,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'spoke-tgw-default-route-to-inspection',
       args: aws.ec2transitgateway.RouteArgs(
         transitGatewayRouteTableId: spokeTgwRouteTable.id,
-        destinationCidrBlock: '0.0.0.0/0',
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         transitGatewayAttachmentId: inspectionAttachment.id,
       ),
     );
@@ -288,7 +288,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-tgw-route-to-spoke1',
       args: aws.ec2transitgateway.RouteArgs(
         transitGatewayRouteTableId: inspectionTgwRouteTable.id,
-        destinationCidrBlock: '10.0.0.0/16',
+        destinationCidrBlock: '10.0.0.0/16'.input(),
         transitGatewayAttachmentId: spoke1Attachment.id,
       ),
     );
@@ -297,7 +297,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-tgw-route-to-spoke2',
       args: aws.ec2transitgateway.RouteArgs(
         transitGatewayRouteTableId: inspectionTgwRouteTable.id,
-        destinationCidrBlock: '10.1.0.0/16',
+        destinationCidrBlock: '10.1.0.0/16'.input(),
         transitGatewayAttachmentId: spoke2Attachment.id,
       ),
     );
@@ -306,7 +306,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-private-route-to-spoke1',
       args: aws.ec2.RouteArgs(
         routeTableId: inspectionPrivateRouteTable.id,
-        destinationCidrBlock: '10.0.0.0/16',
+        destinationCidrBlock: '10.0.0.0/16'.input(),
         transitGatewayId: transitGateway.id,
       ),
     );
@@ -315,7 +315,7 @@ class HubAndSpokeNetworkStack extends pulumi.Stack {
       'inspection-private-route-to-spoke2',
       args: aws.ec2.RouteArgs(
         routeTableId: inspectionPrivateRouteTable.id,
-        destinationCidrBlock: '10.1.0.0/16',
+        destinationCidrBlock: '10.1.0.0/16'.input(),
         transitGatewayId: transitGateway.id,
       ),
     );

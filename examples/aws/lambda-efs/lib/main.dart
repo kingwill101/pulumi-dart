@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
     as awsx_apigw;
+import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 
 class LambdaEfsStack extends pulumi.Stack {
@@ -12,7 +13,10 @@ class LambdaEfsStack extends pulumi.Stack {
   LambdaEfsStack() {
     final vpc = awsx.ec2.Vpc(
       'vpc',
-      args: awsx.ec2.VpcArgs(enableDnsHostnames: true, enableDnsSupport: true),
+      args: awsx.ec2.VpcArgs(
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
+      ),
     );
 
     final securityGroup = aws.ec2.SecurityGroup(
@@ -21,20 +25,20 @@ class LambdaEfsStack extends pulumi.Stack {
         vpcId: vpc.vpcId,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 2049,
-            toPort: 2049,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: 'tcp'.input(),
+            fromPort: 2049.input(),
+            toPort: 2049.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
@@ -44,8 +48,10 @@ class LambdaEfsStack extends pulumi.Stack {
       'fs-mount-0',
       args: aws.efs.MountTargetArgs(
         fileSystemId: fileSystem.id,
-        subnetId: vpc.publicSubnetIds.apply((ids) => ids[0]),
-        securityGroups: securityGroup.id.apply((id) => [id]),
+        subnetId: vpc.publicSubnetIds.apply<String>((List<String> ids) => ids[0]).input(),
+        securityGroups: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
+          (List<String> ids) => [ids[0]],
+        ).input(),
       ),
     );
 
@@ -53,8 +59,10 @@ class LambdaEfsStack extends pulumi.Stack {
       'fs-mount-1',
       args: aws.efs.MountTargetArgs(
         fileSystemId: fileSystem.id,
-        subnetId: vpc.publicSubnetIds.apply((ids) => ids[1]),
-        securityGroups: securityGroup.id.apply((id) => [id]),
+        subnetId: vpc.publicSubnetIds.apply<String>((List<String> ids) => ids[1]).input(),
+        securityGroups: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
+          (List<String> ids) => [ids[0]],
+        ).input(),
       ),
     );
 
@@ -62,15 +70,18 @@ class LambdaEfsStack extends pulumi.Stack {
       'ap',
       args: aws.efs.AccessPointArgs(
         fileSystemId: fileSystem.id,
-        posixUser: aws.efs.AccessPointPosixUser(uid: 1000, gid: 1000).output(),
+        posixUser: aws.efs.AccessPointPosixUser(
+          uid: 1000.input(),
+          gid: 1000.input(),
+        ).input(),
         rootDirectory: aws.efs.AccessPointRootDirectory(
-          path: '/www',
+          path: '/www'.input(),
           creationInfo: aws.efs.AccessPointRootDirectoryCreationInfo(
-            ownerGid: 1000,
-            ownerUid: 1000,
-            permissions: '755',
-          ).output(),
-        ).output(),
+            ownerGid: 1000.input(),
+            ownerUid: 1000.input(),
+            permissions: '755'.input(),
+          ).input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [mountTarget0, mountTarget1]),
     );
@@ -87,7 +98,7 @@ class LambdaEfsStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -96,7 +107,8 @@ class LambdaEfsStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole',
+            'arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole'
+                .input(),
       ),
     );
 
@@ -104,27 +116,29 @@ class LambdaEfsStack extends pulumi.Stack {
       'lambda-full-access',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AWSLambda_FullAccess',
+        policyArn: 'arn:aws:iam::aws:policy/AWSLambda_FullAccess'.input(),
       ),
     );
 
     final vpcConfig = aws.lambda.FunctionVpcConfig(
-      subnetIds: vpc.privateSubnetIds,
-      securityGroupIds: securityGroup.id.apply((id) => [id]),
-    ).output();
+      subnetIds: vpc.privateSubnetIds.apply<List<String>>((List<String> ids) => ids).input(),
+      securityGroupIds: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
+        (List<String> ids) => [ids[0]],
+      ).input(),
+    ).input();
 
     final fsConfig = aws.lambda.FunctionFileSystemConfig(
       arn: accessPoint.arn,
-      localMountPath: '/mnt/storage',
-    ).output();
+      localMountPath: '/mnt/storage'.input(),
+    ).input();
 
     final getHandler = aws.lambda.FunctionType(
       'get-handler',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/get'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/get').input(),
         vpcConfig: vpcConfig,
         fileSystemConfig: fsConfig,
       ),
@@ -135,9 +149,9 @@ class LambdaEfsStack extends pulumi.Stack {
       'upload-handler',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/upload'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/upload').input(),
         vpcConfig: vpcConfig,
         fileSystemConfig: fsConfig,
       ),
@@ -148,9 +162,9 @@ class LambdaEfsStack extends pulumi.Stack {
       'exec-handler',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/exec'),
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/exec').input(),
         vpcConfig: vpcConfig,
         fileSystemConfig: fsConfig,
       ),
@@ -162,21 +176,21 @@ class LambdaEfsStack extends pulumi.Stack {
       args: awsx_apigw.index.RestAPIArgs(
         routes: [
           awsx_apigw.index.Route(
-            method: awsx_apigw.index.Method.valueGET,
-            path: 'files/{filename+}',
-            eventHandler: getHandler,
+            method: awsx_apigw_index.Method.valueGET.input(),
+            path: 'files/{filename+}'.input(),
+            eventHandler: getHandler.input(),
           ),
           awsx_apigw.index.Route(
-            method: awsx_apigw.index.Method.valuePOST,
-            path: 'files/{filename+}',
-            eventHandler: uploadHandler,
+            method: awsx_apigw_index.Method.valuePOST.input(),
+            path: 'files/{filename+}'.input(),
+            eventHandler: uploadHandler.input(),
           ),
           awsx_apigw.index.Route(
-            method: awsx_apigw.index.Method.valuePOST,
-            path: '/',
-            eventHandler: execHandler,
+            method: awsx_apigw_index.Method.valuePOST.input(),
+            path: '/'.input(),
+            eventHandler: execHandler.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 

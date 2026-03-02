@@ -18,35 +18,42 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
 
     final dataWarehouseBucket = aws.s3.Bucket(
       'analytics-dw-bucket',
-      args: aws.s3.BucketArgs(forceDestroy: isDev),
+      args: aws.s3.BucketArgs(forceDestroy: isDev.input()),
     );
     final queryResultsBucket = aws.s3.Bucket(
       'analytics-query-results-bucket',
-      args: aws.s3.BucketArgs(forceDestroy: isDev),
+      args: aws.s3.BucketArgs(forceDestroy: isDev.input()),
     );
 
     final db = aws.glue.CatalogDatabase(
       'analytics_dw',
-      args: aws.glue.CatalogDatabaseArgs(name: 'analytics_dw'),
+      args: aws.glue.CatalogDatabaseArgs(name: 'analytics_dw'.input()),
     );
 
     final impressionsInput = aws.kinesis.Stream(
       'impressions-input-stream',
-      args: aws.kinesis.StreamArgs(name: 'impressions-input', shardCount: 1),
+      args: aws.kinesis.StreamArgs(
+        name: 'impressions-input'.input(),
+        shardCount: 1.input(),
+      ),
     );
     final clicksInput = aws.kinesis.Stream(
       'clicks-input-stream',
-      args: aws.kinesis.StreamArgs(name: 'clicks-input', shardCount: 1),
+      args: aws.kinesis.StreamArgs(
+        name: 'clicks-input'.input(),
+        shardCount: 1.input(),
+      ),
     );
 
     aws.s3.BucketObject(
       'factsFile',
       args: aws.s3.BucketObjectArgs(
         bucket: dataWarehouseBucket.bucket,
-        key: 'facts/facts.json',
+        key: 'facts/facts.json'.input(),
         content:
-            '{"thing":"sky","color":"blue"}\n{"thing":"seattle sky","color":"grey"}\n{"thing":"oranges","color":"orange"}\n',
-        contentType: 'application/json',
+            '{"thing":"sky","color":"blue"}\n{"thing":"seattle sky","color":"grey"}\n{"thing":"oranges","color":"orange"}\n'
+                .input(),
+        contentType: 'application/json'.input(),
       ),
     );
 
@@ -62,7 +69,7 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
 
@@ -71,21 +78,22 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: aggregateRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+                .input(),
       ),
     );
     aws.iam.RolePolicyAttachment(
       'aggregate-role-athena',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: aggregateRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AmazonAthenaFullAccess',
+        policyArn: 'arn:aws:iam::aws:policy/AmazonAthenaFullAccess'.input(),
       ),
     );
     aws.iam.RolePolicyAttachment(
       'aggregate-role-s3',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: aggregateRole.name,
-        policyArn: 'arn:aws:iam::aws:policy/AmazonS3FullAccess',
+        policyArn: 'arn:aws:iam::aws:policy/AmazonS3FullAccess'.input(),
       ),
     );
 
@@ -93,26 +101,37 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
       'aggregate-job',
       args: aws.lambda.FunctionArgs(
         role: aggregateRole.arn,
-        runtime: aws.lambda.Runtime.nodeJS20dX.value,
-        handler: 'index.handler',
-        code: pulumi.FileArchive('./lambda/aggregate'),
-        timeout: 60,
+        runtime: 'nodejs20.x'.input(),
+        handler: 'index.handler'.input(),
+        code: pulumi.FileArchive('./lambda/aggregate').input(),
+        timeout: 60.input(),
         environment: aws.lambda.FunctionEnvironment(
-          variables: {
-            'DATABASE_NAME': db.name,
-            'IMPRESSIONS_TABLE': 'impressions',
-            'CLICKS_TABLE': 'clicks',
-            'RESULTS_BUCKET': queryResultsBucket.bucket,
-            'DW_BUCKET': dataWarehouseBucket.bucket,
-            'AGGREGATE_TABLE': 'aggregates',
-          },
-        ).output(),
+          variables: pulumi
+              .Output
+              .all([db.name, queryResultsBucket.bucket, dataWarehouseBucket.bucket])
+              .apply<Map<String, String>>((values) {
+                final databaseName = values[0];
+                final resultsBucket = values[1];
+                final dataBucket = values[2];
+                return {
+                  'DATABASE_NAME': databaseName,
+                  'IMPRESSIONS_TABLE': 'impressions',
+                  'CLICKS_TABLE': 'clicks',
+                  'RESULTS_BUCKET': resultsBucket,
+                  'DW_BUCKET': dataBucket,
+                  'AGGREGATE_TABLE': 'aggregates',
+                };
+              })
+              .input(),
+        ).input(),
       ),
     );
 
     final aggregateRule = aws.cloudwatch.EventRule(
       'aggregate-schedule',
-      args: aws.cloudwatch.EventRuleArgs(scheduleExpression: scheduleExpression),
+      args: aws.cloudwatch.EventRuleArgs(
+        scheduleExpression: scheduleExpression.input(),
+      ),
     );
     aws.cloudwatch.EventTarget(
       'aggregate-target',
@@ -124,9 +143,9 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
     aws.lambda.Permission(
       'allow-events-aggregate',
       args: aws.lambda.PermissionArgs(
-        action: 'lambda:InvokeFunction',
+        action: 'lambda:InvokeFunction'.input(),
         function: aggregateFn.name,
-        principal: 'events.amazonaws.com',
+        principal: 'events.amazonaws.com'.input(),
         sourceArn: aggregateRule.arn,
       ),
     );
@@ -134,8 +153,8 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
     impressionInputStream = impressionsInput.name;
     clickInputStream = clicksInput.name;
     databaseName = db.name;
-    impressionTableName = 'impressions'.output();
-    clickTableName = 'clicks'.output();
+    impressionTableName = pulumi.Output.create('impressions');
+    clickTableName = pulumi.Output.create('clicks');
     athenaResultsBucket = queryResultsBucket.bucket;
   }
 

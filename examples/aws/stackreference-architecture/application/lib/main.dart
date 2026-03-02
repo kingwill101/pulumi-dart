@@ -46,15 +46,16 @@ class ExampleStack extends pulumi.Stack {
       'app-image',
       args: awsx.ecr.ImageArgs(
         repositoryUrl: repo.url,
-        context: '../../../aws-ts-stackreference-architecture/application/src/backend',
+        context: '../../../aws-ts-stackreference-architecture/application/src/backend'
+            .input(),
       ),
     );
 
-    final vpc = aws.ec2.Vpc.get('app-service-vpc', appVpcId);
+    final vpcId = appVpcId;
 
     final albSg = aws.ec2.SecurityGroup(
       'app-service-alb-sg',
-      args: aws.ec2.SecurityGroupArgs(vpcId: vpc.id),
+      args: aws.ec2.SecurityGroupArgs(vpcId: vpcId),
     );
 
     final appAlb = aws.lb.LoadBalancer(
@@ -63,18 +64,19 @@ class ExampleStack extends pulumi.Stack {
         subnets: appPublicSubnetIds,
         securityGroups: pulumi.Output
             .all<String>([albSg.id])
-            .apply<List<String>>((ids) => ids),
-        tags: {...baseTags, 'Name': '${baseTags['Project']} ALB'},
+            .apply<List<String>>((ids) => ids)
+            .input(),
+        tags: {...baseTags, 'Name': '${baseTags['Project']} ALB'}.input(),
       ),
     );
 
     final targetGroup = aws.lb.TargetGroup(
       'app-service-tg',
       args: aws.lb.TargetGroupArgs(
-        port: 80,
-        protocol: 'HTTP',
-        targetType: 'ip',
-        vpcId: vpc.id,
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
+        vpcId: vpcId,
       ),
     );
 
@@ -82,43 +84,43 @@ class ExampleStack extends pulumi.Stack {
       'app-service-alb-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: appAlb.arn,
-        port: 80,
+        port: 80.input(),
         defaultActions: [
           aws.lb.ListenerDefaultAction(
-            type: 'forward',
+            type: 'forward'.input(),
             targetGroupArn: targetGroup.arn,
           ),
-        ],
+        ].input(),
       ),
     );
 
     final cluster = aws.ecs.Cluster(
       'app-cluster',
       args: aws.ecs.ClusterArgs(
-        tags: {...baseTags, 'Name': '${baseTags['Project']} Cluster'},
+        tags: {...baseTags, 'Name': '${baseTags['Project']} Cluster'}.input(),
       ),
     );
 
     final appSg = aws.ec2.SecurityGroup(
       'app-service-sg',
       args: aws.ec2.SecurityGroupArgs(
-        vpcId: vpc.id,
+        vpcId: vpcId,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            fromPort: 80,
-            toPort: 80,
-            protocol: 'tcp',
-            cidrBlocks: ['0.0.0.0/0'],
+            fromPort: 80.input(),
+            toPort: 80.input(),
+            protocol: 'tcp'.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            fromPort: 0,
-            toPort: 0,
-            protocol: '-1',
-            cidrBlocks: ['0.0.0.0/0'],
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            protocol: '-1'.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
@@ -126,39 +128,49 @@ class ExampleStack extends pulumi.Stack {
       'app-service',
       args: awsx.ecs.FargateServiceArgs(
         cluster: cluster.arn,
-        assignPublicIp: false,
-        desiredCount: 1,
+        assignPublicIp: false.input(),
+        desiredCount: 1.input(),
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
           subnets: appPrivateSubnetIds,
           securityGroups: pulumi.Output
               .all<String>([appSg.id])
-              .apply<List<String>>((ids) => ids),
-        ),
+              .apply<List<String>>((ids) => ids)
+              .input(),
+        ).input(),
         taskDefinitionArgs: awsx.ecs.FargateServiceTaskDefinition(
           container: awsx.ecs.TaskDefinitionContainerDefinition(
-            name: 'app',
+            name: 'app'.input(),
             image: image.imageUri,
             portMappings: [
               awsx.ecs.TaskDefinitionPortMapping(
-                containerPort: 80,
-                targetGroup: targetGroup,
+                containerPort: 80.input(),
+                targetGroup: targetGroup.input(),
               ),
-            ],
+            ].input(),
             environment: [
-              awsx.ecs.TaskDefinitionKeyValuePair(name: 'DB_HOST', value: dbHost),
               awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'DB_USERNAME',
+                name: 'DB_HOST'.input(),
+                value: dbHost,
+              ),
+              awsx.ecs.TaskDefinitionKeyValuePair(
+                name: 'DB_USERNAME'.input(),
                 value: dbUsername,
               ),
               awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'DB_PASSWORD',
+                name: 'DB_PASSWORD'.input(),
                 value: dbPassword,
               ),
-              awsx.ecs.TaskDefinitionKeyValuePair(name: 'DB_PORT', value: dbPort),
-              awsx.ecs.TaskDefinitionKeyValuePair(name: 'DB_NAME', value: dbName),
-            ],
-          ),
-        ),
+              awsx.ecs.TaskDefinitionKeyValuePair(
+                name: 'DB_PORT'.input(),
+                value: dbPort,
+              ),
+              awsx.ecs.TaskDefinitionKeyValuePair(
+                name: 'DB_NAME'.input(),
+                value: dbName,
+              ),
+            ].input(),
+          ).input(),
+        ).input(),
       ),
       options: pulumi.ComponentResourceOptions(dependsOn: [listener]),
     );

@@ -15,16 +15,16 @@ class LangserveStack extends pulumi.Stack {
     final containerContext = config.get('container-context') ?? '.';
     final openApiKey = config.get('open-api-key') ?? 'CHANGEME';
 
-    final project = pulumi.getProject();
-    final stack = pulumi.getStack();
+    final project = pulumi.Deployment.instance.projectName;
+    final stack = pulumi.Deployment.instance.stackName;
 
     final vpc = aws.ec2.Vpc(
       'langserve-vpc',
       args: aws.ec2.VpcArgs(
-        cidrBlock: vpcCidr.output(),
-        enableDnsHostnames: true.output(),
-        enableDnsSupport: true.output(),
-        tags: {'Name': '$project-$stack'}.output(),
+        cidrBlock: vpcCidr.input(),
+        enableDnsHostnames: true.input(),
+        enableDnsSupport: true.input(),
+        tags: {'Name': '$project-$stack'}.input(),
       ),
     );
 
@@ -32,7 +32,7 @@ class LangserveStack extends pulumi.Stack {
       'langserve-rt',
       args: aws.ec2.RouteTableArgs(
         vpcId: vpc.id,
-        tags: {'Name': '$project-$stack'}.output(),
+        tags: {'Name': '$project-$stack'}.input(),
       ),
     );
 
@@ -40,7 +40,7 @@ class LangserveStack extends pulumi.Stack {
       'langserve-igw',
       args: aws.ec2.InternetGatewayArgs(
         vpcId: vpc.id,
-        tags: {'Name': '$project-$stack'}.output(),
+        tags: {'Name': '$project-$stack'}.input(),
       ),
     );
 
@@ -48,21 +48,21 @@ class LangserveStack extends pulumi.Stack {
       'langserve-route',
       args: aws.ec2.RouteArgs(
         routeTableId: routeTable.id,
-        destinationCidrBlock: '0.0.0.0/0'.output(),
+        destinationCidrBlock: '0.0.0.0/0'.input(),
         gatewayId: igw.id,
       ),
     );
 
-    final region = aws.getRegionOutput();
+    final region = pulumi.output(aws.index.getRegion(aws.index.GetRegionArgs()));
 
     final subnet1 = aws.ec2.Subnet(
       'langserve-subnet1',
       args: aws.ec2.SubnetArgs(
         vpcId: vpc.id,
-        cidrBlock: subnet1Cidr.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}a'),
-        mapPublicIpOnLaunch: true.output(),
-        tags: {'Name': '$project-$stack-1'}.output(),
+        cidrBlock: subnet1Cidr.input(),
+        availabilityZone: region.apply((r) => '${r.name}a'),
+        mapPublicIpOnLaunch: true.input(),
+        tags: {'Name': '$project-$stack-1'}.input(),
       ),
     );
 
@@ -70,10 +70,10 @@ class LangserveStack extends pulumi.Stack {
       'langserve-subnet2',
       args: aws.ec2.SubnetArgs(
         vpcId: vpc.id,
-        cidrBlock: subnet2Cidr.output(),
-        availabilityZone: region.apply((r) => '${r?.name ?? ''}b'),
-        mapPublicIpOnLaunch: true.output(),
-        tags: {'Name': '$project-$stack-2'}.output(),
+        cidrBlock: subnet2Cidr.input(),
+        availabilityZone: region.apply((r) => '${r.name}b'),
+        mapPublicIpOnLaunch: true.input(),
+        tags: {'Name': '$project-$stack-2'}.input(),
       ),
     );
 
@@ -115,38 +115,46 @@ class LangserveStack extends pulumi.Stack {
         vpcId: vpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp'.output(),
-            fromPort: 80.output(),
-            toPort: 80.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: 'tcp'.input(),
+            fromPort: 80.input(),
+            toPort: 80.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1'.output(),
-            fromPort: 0.output(),
-            toPort: 0.output(),
-            cidrBlocks: ['0.0.0.0/0'].output(),
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
     final lb = aws.lb.LoadBalancer(
       'langserve-load-balancer',
       args: aws.lb.LoadBalancerArgs(
-        loadBalancerType: 'application'.output(),
-        securityGroups: [securityGroup.id].output(),
-        subnets: [subnet1.id, subnet2.id].output(),
+        loadBalancerType: 'application'.input(),
+        securityGroups: pulumi
+            .Output
+            .all([securityGroup.id])
+            .apply<List<String>>((values) => values.cast<String>())
+            .input(),
+        subnets: pulumi
+            .Output
+            .all([subnet1.id, subnet2.id])
+            .apply<List<String>>((values) => values.cast<String>())
+            .input(),
       ),
     );
 
     final tg = aws.lb.TargetGroup(
       'langserve-target-group',
       args: aws.lb.TargetGroupArgs(
-        port: 80.output(),
-        protocol: 'HTTP'.output(),
-        targetType: 'ip'.output(),
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
         vpcId: vpc.id,
       ),
     );
@@ -155,14 +163,14 @@ class LangserveStack extends pulumi.Stack {
       'langserve-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: lb.arn,
-        port: 80.output(),
-        protocol: 'HTTP'.output(),
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
         defaultActions: [
           aws.lb.ListenerDefaultAction(
-            type: 'forward'.output(),
+            type: 'forward'.input(),
             targetGroupArn: tg.arn,
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
@@ -178,7 +186,7 @@ class LangserveStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }).output(),
+        }).input(),
       ),
     );
 
@@ -194,7 +202,7 @@ class LangserveStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }).output(),
+        }).input(),
       ),
     );
 
@@ -204,21 +212,21 @@ class LangserveStack extends pulumi.Stack {
         role: taskExecRole.name,
         policyArn:
             'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
-                .output(),
+                .input(),
       ),
     );
 
     final taskDef = aws.ecs.TaskDefinition(
       'langserve-task-definition',
       args: aws.ecs.TaskDefinitionArgs(
-        family: '$project-$stack'.output(),
-        cpu: '256'.output(),
-        memory: '512'.output(),
-        networkMode: 'awsvpc'.output(),
-        requiresCompatibilities: ['FARGATE'].output(),
+        family: '$project-$stack'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
+        networkMode: 'awsvpc'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
         executionRoleArn: taskExecRole.arn,
         taskRoleArn: taskRole.arn,
-        containerDefinitions: image.imageUri.apply((uri) {
+        containerDefinitions: image.imageUri.apply<String>((uri) {
           return jsonEncode([
             {
               'name': 'langserve-app',
@@ -232,7 +240,7 @@ class LangserveStack extends pulumi.Stack {
               ],
             },
           ]);
-        }),
+        }).input(),
       ),
     );
 
@@ -240,25 +248,33 @@ class LangserveStack extends pulumi.Stack {
       'langserve-service',
       args: aws.ecs.ServiceArgs(
         cluster: cluster.arn,
-        desiredCount: 1.output(),
-        launchType: 'FARGATE'.output(),
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
         taskDefinition: taskDef.arn,
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.output(),
-          subnets: [subnet1.id, subnet2.id].output(),
-          securityGroups: [securityGroup.id].output(),
+          assignPublicIp: true.input(),
+          subnets: pulumi
+              .Output
+              .all([subnet1.id, subnet2.id])
+              .apply<List<String>>((values) => values.cast<String>())
+              .input(),
+          securityGroups: pulumi
+              .Output
+              .all([securityGroup.id])
+              .apply<List<String>>((values) => values.cast<String>())
+              .input(),
         ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: tg.arn,
-            containerName: 'langserve-app'.output(),
-            containerPort: 80.output(),
+            containerName: 'langserve-app'.input(),
+            containerPort: 80.input(),
           ),
-        ].output(),
+        ].input(),
       ),
     );
 
-    url = lb.dnsName.apply((dns) => 'http://${dns ?? ''}');
+    url = lb.dnsName.apply((dns) => 'http://$dns');
   }
 
   @override

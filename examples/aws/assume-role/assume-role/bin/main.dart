@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
+import 'package:pulumi_aws/providers.dart' as providers;
 
 class AssumeRoleStack extends pulumi.Stack {
   late final pulumi.Output<String> bucketName;
@@ -9,7 +10,9 @@ class AssumeRoleStack extends pulumi.Stack {
     final roleToAssumeArn = config.require('roleToAssumeARN');
 
     final isPreview = pulumi.Deployment.instance.isDryRun;
-    final previewArnPattern = RegExp(r'^arn:aws:iam::123456789012:role/preview-');
+    final previewArnPattern = RegExp(
+      r'^arn:aws:iam::123456789012:role/preview-',
+    );
     if (!isPreview && previewArnPattern.hasMatch(roleToAssumeArn)) {
       throw StateError(
         "Configure a real roleToAssumeARN before 'pulumi up'. "
@@ -21,21 +24,21 @@ class AssumeRoleStack extends pulumi.Stack {
     final region = awsConfig.get('region');
 
     final provider = isPreview
-        ? aws.Aws(
+        ? providers.ProviderProvider(
             'privileged',
-            args: aws.AwsArgs(region: region?.output()),
+            args: providers.ProviderArgs(region: region?.input()),
           )
-        : aws.Aws(
+        : providers.ProviderProvider(
             'privileged',
-            args: aws.AwsArgs(
-              region: region?.output(),
+                args: providers.ProviderArgs(
+              region: region?.input(),
               assumeRoles: [
-                aws.ProviderAssumeRole(
-                  roleArn: roleToAssumeArn,
-                  sessionName: 'PulumiSession',
-                  externalId: 'PulumiApplication',
+                aws.index.ProviderAssumeRole(
+                  roleArn: roleToAssumeArn.input(),
+                  sessionName: 'PulumiSession'.input(),
+                  externalId: 'PulumiApplication'.input(),
                 ),
-              ].output(),
+              ].input(),
             ),
           );
 

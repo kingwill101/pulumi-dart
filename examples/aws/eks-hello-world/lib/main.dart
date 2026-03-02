@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
+import 'package:pulumi_eks/index.dart' as eks_index;
 import 'package:pulumi_eks/pulumi_eks.dart' as eks;
 import 'package:pulumi_kubernetes/apps.dart' as k8sapps;
 import 'package:pulumi_kubernetes/core.dart' as k8score;
@@ -22,16 +23,16 @@ class EksHelloWorldStack extends pulumi.Stack {
       args: awsx.ec2.VpcArgs(numberOfAvailabilityZones: 2.output()),
     );
 
-    final cluster = eks.Cluster(
+    final cluster = eks.index.Cluster(
       name,
-      args: eks.ClusterArgs(
+      args: eks.index.ClusterArgs(
         vpcId: vpc.vpcId,
         subnetIds: vpc.publicSubnetIds,
-        authenticationMode: eks.AuthenticationMode.api.output(),
+        authenticationMode: eks_index.AuthenticationMode.api.input(),
         desiredCapacity: 2.output(),
         minSize: 1.output(),
         maxSize: 2.output(),
-        storageClasses: 'gp2'.output(),
+        storageClasses: 'gp2'.input(),
       ),
     );
 
@@ -46,61 +47,64 @@ class EksHelloWorldStack extends pulumi.Stack {
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
 
-    namespaceName = ns.metadata.apply((m) => m.name ?? '');
+    namespaceName = ns.metadata.apply((m) => m.name);
 
     final deployment = k8sapps.DeploymentAppsV1(
       name,
       args: k8sapps.DeploymentArgs(
         metadata: k8smeta.ObjectMeta(
           namespace: namespaceName,
-          labels: appLabels,
-        ).output(),
+          labels: appLabels.input(),
+        ).input(),
         spec: k8sapps.DeploymentSpec(
-          replicas: 1,
-          selector: k8smeta.LabelSelector(matchLabels: appLabels),
+          replicas: 1.input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: appLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: appLabels),
+            metadata: k8smeta.ObjectMeta(labels: appLabels.input()).input(),
             spec: k8score.PodSpec(
               containers: [
                 k8score.Container(
-                  name: name,
-                  image: 'nginx:latest',
-                  ports: [k8score.ContainerPort(name: 'http', containerPort: 80)],
+                  name: name.input(),
+                  image: 'nginx:latest'.input(),
+                  ports: [
+                    k8score.ContainerPort(
+                      name: 'http'.input(),
+                      containerPort: 80.input(),
+                    ),
+                  ].input(),
                 ),
-              ],
-            ),
-          ),
-        ).output(),
+              ].input(),
+            ).input(),
+          ).input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
 
-    deploymentName = deployment.metadata.apply((m) => m.name ?? '');
+    deploymentName = deployment.metadata.apply((m) => m.name);
 
     final service = k8score.ServiceCoreV1(
       name,
       args: k8score.ServiceArgs(
         metadata: k8smeta.ObjectMeta(
           namespace: namespaceName,
-          labels: appLabels,
-        ).output(),
+          labels: appLabels.input(),
+        ).input(),
         spec: k8score.ServiceSpec(
-          type: 'LoadBalancer',
-          selector: appLabels,
-          ports: [k8score.ServicePort(port: 80, targetPort: 80)],
-        ).output(),
+          type: 'LoadBalancer'.input(),
+          selector: appLabels.input(),
+          ports: [
+            k8score.ServicePort(port: 80.input(), targetPort: 80.input()),
+          ].input(),
+        ).input(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
 
-    serviceName = service.metadata.apply((m) => m.name ?? '');
-    serviceHostname = service.status.apply((status) {
-      final ingress = status?.loadBalancer?.ingress;
-      if (ingress == null || ingress.isEmpty) {
-        return '';
-      }
-      return ingress.first.hostname ?? ingress.first.ip ?? '';
-    });
+    serviceName = service.metadata.apply((m) => m.name);
+    serviceHostname = service.status.apply<String>((_) => '');
 
     kubeconfig = cluster.kubeconfig;
   }

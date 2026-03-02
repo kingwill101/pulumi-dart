@@ -15,7 +15,10 @@ class PernVotingAppStack extends pulumi.Stack {
 
     final appVpc = aws.ec2.Vpc(
       'app-vpc',
-      args: aws.ec2.VpcArgs(cidrBlock: '172.31.0.0/16', enableDnsHostnames: true),
+      args: aws.ec2.VpcArgs(
+        cidrBlock: '172.31.0.0/16'.input(),
+        enableDnsHostnames: true.input(),
+      ),
     );
 
     final appGateway = aws.ec2.InternetGateway(
@@ -28,8 +31,11 @@ class PernVotingAppStack extends pulumi.Stack {
       args: aws.ec2.RouteTableArgs(
         vpcId: appVpc.id,
         routes: [
-          aws.ec2.RouteTableRoute(cidrBlock: '0.0.0.0/0', gatewayId: appGateway.id),
-        ],
+          aws.ec2.RouteTableRoute(
+            cidrBlock: '0.0.0.0/0'.input(),
+            gatewayId: appGateway.id,
+          ),
+        ].input(),
       ),
     );
 
@@ -37,8 +43,8 @@ class PernVotingAppStack extends pulumi.Stack {
       'first-rds-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: appVpc.id,
-        cidrBlock: '172.31.0.0/20',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '172.31.0.0/20'.input(),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
 
@@ -46,8 +52,8 @@ class PernVotingAppStack extends pulumi.Stack {
       'second-rds-subnet',
       args: aws.ec2.SubnetArgs(
         vpcId: appVpc.id,
-        cidrBlock: '172.31.128.0/20',
-        mapPublicIpOnLaunch: true,
+        cidrBlock: '172.31.128.0/20'.input(),
+        mapPublicIpOnLaunch: true.input(),
       ),
     );
 
@@ -70,46 +76,51 @@ class PernVotingAppStack extends pulumi.Stack {
       'rds-security-group',
       args: aws.ec2.SecurityGroupArgs(
         vpcId: appVpc.id,
-        description: 'Enable app connectivity',
+        description: 'Enable app connectivity'.input(),
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 0,
-            toPort: 65535,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: 'tcp'.input(),
+            fromPort: 0.input(),
+            toPort: 65535.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
     final rdsSubnetGroup = aws.rds.SubnetGroup(
       'rds-subnet-group',
       args: aws.rds.SubnetGroupArgs(
-        subnetIds: [firstRdsSubnet.id, secondRdsSubnet.id].output(),
+        subnetIds:
+            pulumi.Output.all([firstRdsSubnet.id, secondRdsSubnet.id]).apply<List<String>>(
+          (List<String> ids) => ids,
+        ).input(),
       ),
     );
 
     final postgresqlRdsServer = aws.rds.Instance(
       'postgresql-rds-server',
       args: aws.rds.InstanceArgs(
-        engine: 'postgres',
-        username: sqlAdminName,
-        password: sqlAdminPassword,
-        instanceClass: 'db.t3.micro',
-        allocatedStorage: 20,
-        skipFinalSnapshot: true,
-        publiclyAccessible: true,
-        port: 2000,
-        dbSubnetGroupName: rdsSubnetGroup.name,
-        vpcSecurityGroupIds: [rdsSecurityGroup.id].output(),
+        engine: 'postgres'.input(),
+        username: sqlAdminName.input(),
+        password: sqlAdminPassword.input(),
+        instanceClass: 'db.t3.micro'.input(),
+        allocatedStorage: 20.input(),
+        skipFinalSnapshot: true.input(),
+        publiclyAccessible: true.input(),
+        port: 2000.input(),
+        dbSubnetGroupName: rdsSubnetGroup.name.input(),
+        vpcSecurityGroupIds: pulumi.Output.all([rdsSecurityGroup.id]).apply<List<String>>(
+          (List<String> ids) => [ids[0]],
+        ).input(),
       ),
     );
 
@@ -127,7 +138,7 @@ class PernVotingAppStack extends pulumi.Stack {
               'Action': 'sts:AssumeRole',
             },
           ],
-        }),
+        }).input(),
       ),
     );
     aws.iam.RolePolicyAttachment(
@@ -135,7 +146,8 @@ class PernVotingAppStack extends pulumi.Stack {
       args: aws.iam.RolePolicyAttachmentArgs(
         role: ecsExecutionRole.name,
         policyArn:
-            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy',
+            'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+                .input(),
       ),
     );
 
@@ -145,39 +157,44 @@ class PernVotingAppStack extends pulumi.Stack {
         vpcId: appVpc.id,
         ingress: [
           aws.ec2.SecurityGroupIngress(
-            protocol: 'tcp',
-            fromPort: 80,
-            toPort: 80,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: 'tcp'.input(),
+            fromPort: 80.input(),
+            toPort: 80.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
         egress: [
           aws.ec2.SecurityGroupEgress(
-            protocol: '-1',
-            fromPort: 0,
-            toPort: 0,
-            cidrBlocks: ['0.0.0.0/0'],
+            protocol: '-1'.input(),
+            fromPort: 0.input(),
+            toPort: 0.input(),
+            cidrBlocks: ['0.0.0.0/0'].input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
-    final appSubnets = [firstRdsSubnet.id, secondRdsSubnet.id].output();
+    final appSubnets = pulumi.Output
+        .all([firstRdsSubnet.id, secondRdsSubnet.id])
+        .apply<List<String>>((List<String> ids) => ids)
+        .input();
 
     final serverLb = aws.lb.LoadBalancer(
       'server-lb',
       args: aws.lb.LoadBalancerArgs(
-        loadBalancerType: 'application',
-        securityGroups: [lbSg.id].output(),
+        loadBalancerType: 'application'.input(),
+        securityGroups: pulumi.Output.all([lbSg.id]).apply<List<String>>(
+          (List<String> ids) => [ids[0]],
+        ).input(),
         subnets: appSubnets,
       ),
     );
     final serverTg = aws.lb.TargetGroup(
       'server-tg',
       args: aws.lb.TargetGroupArgs(
-        port: 5000,
-        protocol: 'HTTP',
-        targetType: 'ip',
+        port: 5000.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
         vpcId: appVpc.id,
       ),
     );
@@ -185,48 +202,61 @@ class PernVotingAppStack extends pulumi.Stack {
       'server-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: serverLb.arn,
-        port: 80,
-        protocol: 'HTTP',
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
         defaultActions: [
-          aws.lb.ListenerDefaultAction(type: 'forward', targetGroupArn: serverTg.arn),
-        ],
+          aws.lb.ListenerDefaultAction(
+            type: 'forward'.input(),
+            targetGroupArn: serverTg.arn,
+          ),
+        ].input(),
       ),
     );
 
     final serverTask = aws.ecs.TaskDefinition(
       'server-task',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'server-side-service',
-        requiresCompatibilities: ['FARGATE'],
-        networkMode: 'awsvpc',
-        cpu: '256',
-        memory: '512',
+        family: 'server-side-service'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
+        networkMode: 'awsvpc'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
         executionRoleArn: ecsExecutionRole.arn,
-        containerDefinitions: pulumi.Output.tuple4(
-          postgresqlRdsServer.address,
-          postgresqlRdsServer.port,
-          sqlUserName.output(),
-          sqlUserPassword.output(),
-        ).apply(
-          (v) => jsonEncode([
-            {
-              'name': 'serversideService',
-              'image': 'public.ecr.aws/docker/library/node:20-alpine',
-              'essential': true,
-              'portMappings': [
-                {'containerPort': 5000, 'hostPort': 5000, 'protocol': 'tcp'},
-              ],
-              'command': ['sh', '-c', 'node -e "console.log(\\\"server\\\")" && sleep 3600'],
-              'environment': [
-                {'name': 'USER_NAME', 'value': v.$3},
-                {'name': 'USER_PASSWORD', 'value': v.$4},
-                {'name': 'RDS_ADDRESS', 'value': v.$1},
-                {'name': 'RDS_PORT', 'value': '${v.$2}'},
-                {'name': 'DATABASE_NAME', 'value': 'votes'},
-              ],
-            },
-          ]),
-        ),
+        containerDefinitions: pulumi.Output
+            .all([
+              postgresqlRdsServer.address,
+              postgresqlRdsServer.port,
+              sqlUserName.output(),
+              sqlUserPassword.output(),
+            ]).apply<String>((values) {
+              final address = values[0] as String;
+              final port = values[1] as int;
+              final userName = values[2] as String;
+              final userPassword = values[3] as String;
+
+              return jsonEncode([
+                {
+                  'name': 'serversideService',
+                  'image': 'public.ecr.aws/docker/library/node:20-alpine',
+                  'essential': true,
+                  'portMappings': [
+                    {'containerPort': 5000, 'hostPort': 5000, 'protocol': 'tcp'},
+                  ],
+                  'command': [
+                    'sh',
+                    '-c',
+                    'node -e "console.log(\\"server\\")" && sleep 3600',
+                  ],
+                  'environment': [
+                    {'name': 'USER_NAME', 'value': userName},
+                    {'name': 'USER_PASSWORD', 'value': userPassword},
+                    {'name': 'RDS_ADDRESS', 'value': address},
+                    {'name': 'RDS_PORT', 'value': '$port'},
+                    {'name': 'DATABASE_NAME', 'value': 'votes'},
+                  ],
+                },
+              ]);
+            }),
       ),
     );
 
@@ -234,38 +264,42 @@ class PernVotingAppStack extends pulumi.Stack {
       'server-service',
       args: aws.ecs.ServiceArgs(
         cluster: appCluster.arn,
-        desiredCount: 1,
-        launchType: 'FARGATE',
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
         taskDefinition: serverTask.arn,
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true,
+          assignPublicIp: true.input(),
           subnets: appSubnets,
-          securityGroups: [rdsSecurityGroup.id, lbSg.id].output(),
-        ).output(),
+          securityGroups: pulumi.Output.all([rdsSecurityGroup.id, lbSg.id]).apply<List<String>>(
+            (List<String> ids) => ids,
+          ).input(),
+        ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: serverTg.arn,
-            containerName: 'serversideService',
-            containerPort: 5000,
+            containerName: 'serversideService'.input(),
+            containerPort: 5000.input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
     final clientLb = aws.lb.LoadBalancer(
       'client-lb',
       args: aws.lb.LoadBalancerArgs(
-        loadBalancerType: 'application',
-        securityGroups: [lbSg.id].output(),
+        loadBalancerType: 'application'.input(),
+        securityGroups: pulumi.Output.all([lbSg.id]).apply<List<String>>(
+          (List<String> ids) => [ids[0]],
+        ).input(),
         subnets: appSubnets,
       ),
     );
     final clientTg = aws.lb.TargetGroup(
       'client-tg',
       args: aws.lb.TargetGroupArgs(
-        port: 3000,
-        protocol: 'HTTP',
-        targetType: 'ip',
+        port: 3000.input(),
+        protocol: 'HTTP'.input(),
+        targetType: 'ip'.input(),
         vpcId: appVpc.id,
       ),
     );
@@ -273,25 +307,28 @@ class PernVotingAppStack extends pulumi.Stack {
       'client-listener',
       args: aws.lb.ListenerArgs(
         loadBalancerArn: clientLb.arn,
-        port: 80,
-        protocol: 'HTTP',
+        port: 80.input(),
+        protocol: 'HTTP'.input(),
         defaultActions: [
-          aws.lb.ListenerDefaultAction(type: 'forward', targetGroupArn: clientTg.arn),
-        ],
+          aws.lb.ListenerDefaultAction(
+            type: 'forward'.input(),
+            targetGroupArn: clientTg.arn,
+          ),
+        ].input(),
       ),
     );
 
     final clientTask = aws.ecs.TaskDefinition(
       'client-task',
       args: aws.ecs.TaskDefinitionArgs(
-        family: 'client-side-service',
-        requiresCompatibilities: ['FARGATE'],
-        networkMode: 'awsvpc',
-        cpu: '256',
-        memory: '512',
+        family: 'client-side-service'.input(),
+        requiresCompatibilities: ['FARGATE'].input(),
+        networkMode: 'awsvpc'.input(),
+        cpu: '256'.input(),
+        memory: '512'.input(),
         executionRoleArn: ecsExecutionRole.arn,
         containerDefinitions: serverLb.dnsName.apply(
-          (serverHost) => jsonEncode([
+          (String serverHost) => jsonEncode([
             {
               'name': 'clientsideService',
               'image': 'public.ecr.aws/docker/library/node:20-alpine',
@@ -313,21 +350,23 @@ class PernVotingAppStack extends pulumi.Stack {
       'client-service',
       args: aws.ecs.ServiceArgs(
         cluster: appCluster.arn,
-        desiredCount: 1,
-        launchType: 'FARGATE',
+        desiredCount: 1.input(),
+        launchType: 'FARGATE'.input(),
         taskDefinition: clientTask.arn,
         networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true,
+          assignPublicIp: true.input(),
           subnets: appSubnets,
-          securityGroups: [rdsSecurityGroup.id, lbSg.id].output(),
-        ).output(),
+          securityGroups: pulumi.Output.all([rdsSecurityGroup.id, lbSg.id]).apply<List<String>>(
+            (List<String> ids) => ids,
+          ).input(),
+        ).input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: clientTg.arn,
-            containerName: 'clientsideService',
-            containerPort: 3000,
+            containerName: 'clientsideService'.input(),
+            containerPort: 3000.input(),
           ),
-        ],
+        ].input(),
       ),
     );
 
