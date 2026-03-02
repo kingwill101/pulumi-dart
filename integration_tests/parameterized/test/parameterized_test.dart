@@ -4,10 +4,10 @@ import 'package:test/test.dart';
 
 void main() {
   test('generated parameterized SDK exposes resource and invoke symbols', () {
-    final randomCtor = pkg.Random.new;
-    final echoCtor = pkg.Echo.new;
-    final doEcho = pkg.doEcho;
-    final doEchoArgsCtor = pkg.DoEchoArgs.new;
+    final randomCtor = pkg.index.Random;
+    final echoCtor = pkg.index.Echo;
+    final doEcho = pkg.index.doEcho;
+    final doEchoArgsCtor = pkg.index.DoEchoArgs;
 
     expect(randomCtor, isNotNull);
     expect(echoCtor, isNotNull);

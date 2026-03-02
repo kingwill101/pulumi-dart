@@ -1,6 +1,6 @@
 dependencies:
     pulumi:
-        path: /home/kingwill101/code/dart_packages/pulumi-dart/packages/pulumi-dart
+        path: /run/media/kingwill101/disk2/code/code/dart_packages/pulumi-dart/packages/pulumi-dart
 description: Integration fixture for Dart provider authoring server.
 environment:
     sdk: '>=3.11.0 <4.0.0'

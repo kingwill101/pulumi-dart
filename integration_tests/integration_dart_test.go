@@ -20,6 +20,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sync"
 	"strings"
 	"testing"
 
@@ -1065,24 +1066,65 @@ func TestAboutDart(t *testing.T) {
 
 func setupLocalDartLanguagePluginPath(t *testing.T, rootPath string) {
 	t.Helper()
+	_ = rootPath
 
-	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
-	require.NoError(t, err)
-
-	languagePluginBinary := filepath.Join(rootPath, "pulumi-language-dart")
-	if runtime.GOOS == WindowsOS {
-		languagePluginBinary += ".exe"
-	}
-	buildLanguagePlugin := exec.Command("go", "build", "-o", languagePluginBinary, ".")
-	buildLanguagePlugin.Dir = languagePluginPath
-	if out, err := buildLanguagePlugin.CombinedOutput(); err != nil {
-		require.FailNowf(t, "build language plugin", "failed to build pulumi-language-dart: %v\n%s", err, string(out))
+	languagePluginBinary, err := exec.LookPath("pulumi-language-dart")
+	if err != nil {
+		require.FailNow(t, "pulumi-language-dart not found in PATH; run `cd pulumi-language-dart && go install .` first")
 	}
 
 	t.Setenv(
-		"PATH",
-		filepath.Dir(languagePluginBinary)+string(os.PathListSeparator)+os.Getenv("PATH"),
+		"PATH", filepath.Dir(languagePluginBinary)+string(os.PathListSeparator)+os.Getenv("PATH"),
 	)
+}
+
+var (
+	preseedConversionPluginsOnce   sync.Once
+	preseedConversionPluginsHome = defaultPulumiHome()
+)
+
+func defaultPulumiHome() string {
+	pulumiHome := os.Getenv("PULUMI_HOME")
+	if pulumiHome != "" {
+		return pulumiHome
+	}
+
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return filepath.Join(os.Getenv("HOME"), ".pulumi")
+	}
+
+	return filepath.Join(homeDir, ".pulumi")
+}
+
+func preseedConversionPluginCache(t *testing.T) {
+	t.Helper()
+
+	preseedConversionPluginsOnce.Do(func() {
+		require.NoError(t, os.MkdirAll(preseedConversionPluginsHome, 0o700))
+
+		run := func(args ...string) {
+			cmd := exec.Command("pulumi", args...)
+			cmd.Env = append(
+				os.Environ(),
+				"PULUMI_HOME="+preseedConversionPluginsHome,
+				"PULUMI_NON_INTERACTIVE=1",
+			)
+			out, err := cmd.CombinedOutput()
+			require.NoErrorf(
+				t,
+				err,
+				"failed seeding plugin cache with %v: %s",
+				args,
+				string(out),
+			)
+		}
+
+		run("plugin", "install", "converter", "terraform")
+		run("plugin", "install", "resource", "terraform-provider")
+	})
+
+	require.DirExists(t, preseedConversionPluginsHome)
 }
 
 func TestPackageAddDart(t *testing.T) {
@@ -1146,17 +1188,18 @@ func TestPackageAddDart(t *testing.T) {
 }
 
 func TestConvertTerraformProviderDart(t *testing.T) {
+	preseedConversionPluginCache(t)
+
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
 
 	e.ImportDirectory("convertmultiplefromterraform")
+	e.SetEnvVars("PULUMI_HOME=" + preseedConversionPluginsHome)
 	setupLocalDartLanguagePluginPath(t, e.RootPath)
 	pulumiSDKPath, err := pulumiSDKPath()
 	require.NoError(t, err)
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH", pulumiSDKPath)
 
-	_, _ = e.RunCommand("pulumi", "plugin", "install", "converter", "terraform")
-	_, _ = e.RunCommand("pulumi", "plugin", "install", "resource", "terraform-provider")
 	_, _, err = e.GetCommandResults("pulumi", "convert", "--from", "terraform", "--language", "dart", "--out", "dartdir")
 	if err != nil {
 		require.NoError(t, err)

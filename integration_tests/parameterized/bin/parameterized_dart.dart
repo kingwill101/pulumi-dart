@@ -3,9 +3,9 @@ import 'package:pulumi/pulumi.dart';
 
 class MyStack extends Stack {
   MyStack() {
-    final customA = pkg.Echo(
+    final customA = pkg.index.Echo(
       'a',
-      args: pkg.EchoArgs(echo: Input.fromValue(42)),
+      args: pkg.index.EchoArgs(echo: 42.input()),
     );
     final deployment = DeploymentImpl.instance as DeploymentImpl;
 
@@ -19,9 +19,7 @@ class MyStack extends Stack {
     });
 
     final echoInvoke = customA.urn.apply((_) async {
-      final result = await pkg.doEcho(
-        pkg.DoEchoArgs(echo: Input.fromValue('hello')),
-      );
+      final result = await pkg.index.doEcho(pkg.index.DoEchoArgs(echo: 'hello'.input()));
       return result.echo;
     });
 
